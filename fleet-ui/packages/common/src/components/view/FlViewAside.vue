@@ -1,0 +1,91 @@
+<template>
+  <aside class="view-aside">
+    <slot></slot>
+    <ATree v-model:selected-keys="selectedKeys"
+      :data="treeData"
+      :selectable="true"
+      :multiple="false"
+      :checkable="true"
+      :check-strictly="true"
+      :block-node="true"
+      :draggable="true"
+      :show-line="true"
+    ></ATree>
+  </aside>
+</template>
+<script lang="ts" setup>
+import {ref} from "vue";
+
+import ATree from '@arco-design/web-vue/es/tree';
+import '@arco-design/web-vue/es/tree/style/css.js';
+
+const selectedKeys = ref([]);
+const multiple = ref(true);
+const treeData = [
+  {
+    title: 'Trunk 0-0',
+    key: '0-0',
+    children: [
+      {
+        title: 'Leaf',
+        key: '0-0-1',
+      },
+      {
+        title: 'Branch 0-0-2',
+        key: '0-0-2',
+        children: [
+          {
+            title: 'Leaf',
+            key: '0-0-2-1'
+          }
+        ]
+      },
+    ],
+  },
+  {
+    title: 'Trunk 0-1',
+    key: '0-1',
+    children: [
+      {
+        title: 'Branch 0-1-1',
+        key: '0-1-1',
+        children: [
+          {
+            title: 'Leaf',
+            key: '0-1-1-1',
+          },
+          {
+            title: 'Leaf',
+            key: '0-1-1-2',
+          },
+        ]
+      },
+      {
+        title: 'Leaf',
+        key: '0-1-2',
+      },
+    ],
+  },
+];
+
+</script>
+<style lang="scss">
+.view-aside {
+  height: 100%;
+  width: 272px;
+  flex-basis: 272px;
+  flex-grow: 0;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  border-right: 1px solid #f5f5f5;
+  overflow: auto;
+  .arco-tree-node-title:hover {
+    background-color: #ECEFF1;
+  }
+  .arco-tree-node-title-block .arco-tree-node-drag-icon {
+    right: -14px;
+  }
+}
+</style>

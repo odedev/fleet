@@ -1,47 +1,51 @@
-<script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
-</script>
-
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
+  <FlHeader>
 
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
-  </header>
+  </FlHeader>
+  <FlBody>
+    <FlMenu>
+    </FlMenu>
+    <FlMain>
+      <FlNav>
 
-  <main>
-    <TheWelcome />
-  </main>
+      </FlNav>
+      <FlPage>
+        <FlView>
+          <FlViewAside>
+
+          </FlViewAside>
+          <FlViewMain>
+            <FlViewNav>
+
+            </FlViewNav>
+            <FlViewHead>
+
+            </FlViewHead>
+            <FlViewBody>
+              <FlContent>
+                <FlTable></FlTable>
+              </FlContent>
+              <FlContent>
+                <FlTable></FlTable>
+              </FlContent>
+            </FlViewBody>
+          </FlViewMain>
+        </FlView>
+      </FlPage>
+    </FlMain>
+  </FlBody>
+  <FlFooter>
+
+  </FlFooter>
 </template>
+<script setup lang="ts">
+import {
+  FlHeader, FlBody, FlFooter, FlMenu, FlMain, FlNav, FlPage,
+  FlView, FlViewAside, FlViewMain, FlViewNav, FlViewHead, FlViewBody,
+  FlContent,
+  FlTable,
+} from './components/index.ts'
+</script>
+<style lang="scss" scoped>
 
-<style scoped>
-header {
-  line-height: 1.5;
-}
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-}
 </style>
