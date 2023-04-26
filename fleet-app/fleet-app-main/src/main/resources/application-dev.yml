@@ -1,0 +1,24 @@
+spring:
+  datasource:
+    username: root
+    password: 123456
+    driverClassName: org.sqlite.JDBC
+    url: jdbc:sqlite:fleet.db
+  sql:
+    init:
+      platform: sqlite
+  devtools:
+    restart:
+      poll-interval: "2s"
+      quiet-period: "1s"
+      exclude: "static/**,public/**"
+  flyway:
+    enabled: false
+    locations: "classpath:db/migration, classpath:db/sqlite"
+    table: flyway_schema_history
+    encoding: UTF-8
+    clean-disabled: true
+    baseline-on-migrate: true
+    validate-on-migrate: true
+    create-schemas: false
+    schemas: flyway

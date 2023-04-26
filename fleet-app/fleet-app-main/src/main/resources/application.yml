@@ -1,0 +1,39 @@
+server:
+  port: 23426
+
+spring:
+  application:
+    name: FleetMain
+  main:
+    allow-bean-definition-overriding: true
+  profiles:
+    active: dev
+  datasource:
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/fleet?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=UTC
+  sql:
+    init:
+      platform: mysql
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml, classpath*:mapper/*.xml
+  #  config-location: classpath:mybatis/mybatis-config.xml
+  #  type-aliases-package: dev.odes.demo.user
+  #  type-handlers-package: dev.odes.persist.typehandler
+  configuration:
+    map-underscore-to-camel-case: true
+    default-fetch-size: 100
+    default-statement-timeout: 300
+    cache-enabled: false
+
+pagehelper:
+  helperDialect: mysql
+  propertyName: propertyValue
+  reasonable: false
+  defaultCount: true # 分页插件默认参数支持 default-count 形式，自定义扩展的参数，必须大小写一致
+
+logging:
+  file:
+    path: "./logs"
