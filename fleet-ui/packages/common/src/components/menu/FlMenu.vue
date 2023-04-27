@@ -11,7 +11,7 @@
     >
       <SubMenu key="0">
         <template #icon><IconApps></IconApps></template>
-        <template #title>Navigation 1</template>
+        <template #title>系统管理</template>
         <MenuItem key="0_0">Menu 1</MenuItem>
         <MenuItem key="0_1">Menu 2</MenuItem>
         <MenuItem key="0_2">Menu 3</MenuItem>
@@ -19,7 +19,7 @@
       </SubMenu>
       <SubMenu key="1">
         <template #icon><IconBug></IconBug></template>
-        <template #title>Navigation 2</template>
+        <template #title>用户管理</template>
         <MenuItem key="1_0">Menu 1</MenuItem>
         <MenuItem key="1_1">Menu 2</MenuItem>
         <MenuItem key="1_2">Menu 3</MenuItem>
@@ -59,6 +59,8 @@ const onCollapse = (val: any, type: string) => {
 }
 </script>
 <style lang="scss">
+@use "../../assets/mixin" as *;
+
 .menu {
   --menu-width: 208px;
   width: var(--menu-width);
@@ -76,6 +78,27 @@ const onCollapse = (val: any, type: string) => {
   }
   .arco-menu-inner {
     padding: 0;
+  }
+
+  .arco-menu-vertical .arco-menu-item.arco-menu-has-icon .arco-menu-title,
+  .arco-menu-vertical .arco-menu-group-title.arco-menu-has-icon .arco-menu-title,
+  .arco-menu-vertical .arco-menu-pop-header.arco-menu-has-icon .arco-menu-title,
+  .arco-menu-vertical .arco-menu-inline-header.arco-menu-has-icon .arco-menu-title {
+    font-weight: 500;
+  }
+  .arco-menu-light .arco-menu-inline-header.arco-menu-selected {
+    @include color-primary();
+    @include color-primary-theme();
+    .arco-icon,
+    .arco-menu-icon {
+      @include color-primary();
+      @include color-primary-theme();
+    }
+  }
+
+  .arco-menu-light .arco-menu-item.arco-menu-selected {
+    @include background-color-tertiary();
+    @include background-color-tertiary-theme();
   }
 }
 </style>

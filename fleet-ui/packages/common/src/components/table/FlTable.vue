@@ -129,6 +129,7 @@ onMounted(() => {
     height: 100%;
     border: 1px solid #F6EDFF;
     border-bottom-width: 0;
+    overflow: auto;
 
     .arco-table-container {
       border-radius: 0;
@@ -189,6 +190,24 @@ onMounted(() => {
       overflow-x: auto;
       overflow-x: overlay;
     }
+  }
+  .arco-table-hover:not(.arco-table-dragging) .arco-table-tr:not(.arco-table-tr-empty):not(.arco-table-tr-summary):hover .arco-table-td:not(.arco-table-col-fixed-left):not(.arco-table-col-fixed-right),
+  .arco-table-hover .arco-table-tr-drag .arco-table-td:not(.arco-table-col-fixed-left):not(.arco-table-col-fixed-right) {
+    @include background-color-tertiary();
+    @include background-color-tertiary-theme();
+  }
+
+  .arco-pagination-item:hover,
+  .arco-pagination-item-active,
+  .arco-pagination-item-active:hover {
+    @include background-color-tertiary();
+    @include background-color-tertiary-theme();
+  }
+
+  .arco-pagination .arco-pagination-item-previous.arco-pagination-item-disabled,
+  .arco-pagination .arco-pagination-item-next.arco-pagination-item-disabled {
+    color: rgb(201,205,212);
+    background-color: transparent;
   }
 }
 

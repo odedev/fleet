@@ -69,6 +69,8 @@ const treeData = [
 
 </script>
 <style lang="scss">
+@use "../../assets/mixin" as *;
+
 .tree {
   height: 100%;
   width: 100%;
@@ -84,6 +86,8 @@ const treeData = [
   }
   .arco-tree-node-title:hover {
     background-color: #ECEFF1;
+    @include background-color-tertiary();
+    @include background-color-tertiary-theme();
   }
   .arco-tree-node-title-block .arco-tree-node-drag-icon {
     right: -14px;
