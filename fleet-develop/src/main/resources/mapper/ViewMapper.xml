@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dev.odes.fleet.develop.mapper.ViewMapper">
+  <sql id="tableColumn">
+    `develop_view`.`id`,
+    `develop_view`.`code`,
+    `develop_view`.`name`,
+    `develop_view`.`path`,
+    `develop_view`.`sn`
+    `develop_view`.`parent`,
+    `develop_view`.`module`
+  </sql>
+  <sql id="column">
+    `id`,
+    `code`,
+    `name`,
+    `path`,
+    `sn`,
+    `module`,
+    `parent`
+  </sql>
+
+  <sql id="insertColumn">
+    <trim suffixOverrides=",">
+      `id`,
+      <if test="code != null">`code`,</if>
+      <if test="name != null">`name`,</if>
+      <if test="path != null">`path`,</if>
+      <if test="SN != null">`sn`,</if>
+      <if test="module != null">`module`,</if>
+      <if test="parent != null">`parent`,</if>
+    </trim>
+  </sql>
+  <sql id="insertValue">
+    <trim suffixOverrides=",">
+      #{id},
+      <if test="code != null">#{code},</if>
+      <if test="name != null">#{name},</if>
+      <if test="path != null">#{path},</if>
+      <if test="SN != null">#{SN},</if>
+      <if test="module != null">#{module},</if>
+      <if test="parent != null">#{parent},</if>
+    </trim>
+  </sql>
+  <sql id="insertEntityValue">
+    <trim suffixOverrides=",">
+      #{view.id},
+      <if test="view.code != null">#{view.code},</if>
+      <if test="view.name != null">#{view.name},</if>
+      <if test="view.path != null">#{view.path},</if>
+      <if test="view.SN != null">#{view.SN},</if>
+      <if test="view.module != null">#{view.module},</if>
+      <if test="view.parent != null">#{view.parent},</if>
+    </trim>
+  </sql>
+
+  <sql id="updateColumn">
+    <trim prefix="set" suffixOverrides=",">
+      <if test="code != null">`code` = #{code},</if>
+      <if test="name != null">`name` = #{name},</if>
+      <if test="email != null">`email` = #{email},</if>
+      <if test="phone != null">`phone` = #{phone},</if>
+      <if test="type != null">`type` = #{type},</if>
+      <if test="status != null">`status` = #{status},</if>
+      <if test="isAdmin != null">`is_admin` = #{isAdmin},</if>
+    </trim>
+  </sql>
+  <sql id="updateEntityColumn">
+    <trim prefix="set" suffixOverrides=",">
+      <if test="view.code != null">`code` = #{view.code},</if>
+      <if test="view.name != null">`name` = #{view.name},</if>
+      <if test="view.email != null">`email` = #{view.email},</if>
+      <if test="view.phone != null">`phone` = #{view.phone},</if>
+      <if test="view.type != null">`type` = #{view.type},</if>
+      <if test="view.status != null">`status` = #{view.status},</if>
+      <if test="view.isAdmin != null">`is_admin` = #{view.isAdmin},</if>
+    </trim>
+  </sql>
+
+  <sql id="deleteColumn">
+    <trim prefix="set" suffixOverrides=",">
+      <if test="deletedAt != null">`deleted_at` = #{deletedAt},</if>
+    </trim>
+  </sql>
+  <sql id="deleteEntityColumn">
+    <trim prefix="set" suffixOverrides=",">
+      <if test="view.deletedAt != null">`deleted_at` = #{view.deletedAt},</if>
+    </trim>
+  </sql>
+
+  <resultMap id="resultMap" type="dev.odes.fleet.develop.entity.View">
+    <id property="id" column="id"/>
+    <result property="code" column="code"/>
+    <result property="name" column="name"/>
+    <result property="email" column="email"/>
+    <result property="phone" column="phone"/>
+    <result property="type" column="type"/>
+    <result property="status" column="status"/>
+    <result property="isAdmin" column="is_admin"/>
+  </resultMap>
+
+  <select id="find" resultMap="resultMap" resultType="dev.odes.fleet.develop.entity.View">
+    SELECT
+    <include refid="column"/>
+    FROM `develop_view`
+    <if test="where != null and where != ''">
+      <where>
+        ${where}
+      </where>
+    </if>
+    <!--    <if test="order != null and order != ''">-->
+    <!--      ORDER BY ${order}-->
+    <!--    </if>-->
+    <choose>
+      <when test="order != null and order != ''">
+        ORDER BY ${order}
+      </when>
+      <otherwise>
+        ORDER BY code
+      </otherwise>
+    </choose>
+  </select>
+
+  <select id="findOne" resultMap="resultMap" resultType="dev.odes.fleet.develop.entity.View">
+    SELECT
+    <include refid="column"/>
+    FROM `develop_view`
+    <if test="where != null and where != ''">
+      <where>
+        ${where}
+      </where>
+    </if>
+    LIMIT 1
+  </select>
+
+  <insert id="insertOne" parameterType="dev.odes.fleet.develop.entity.View">
+    INSERT INTO `develop_view`
+    (<include refid="insertColumn"/>)
+    VALUES
+    (<include refid="insertValue"/>)
+  </insert>
+
+  <insert id="insertMany" parameterType="java.util.List">
+    INSERT INTO `develop_view`
+    (<include refid="insertColumn"/>)
+    VALUES
+    <foreach collection="list" item="view" separator=",">
+      (<include refid="insertEntityValue"/>)
+    </foreach>
+  </insert>
+
+  <update id="updateOne" parameterType="dev.odes.fleet.develop.entity.View">
+    UPDATE `develop_view`
+    <include refid="updateColumn"/>
+    WHERE id=#{id}
+  </update>
+
+  <!--  <update id="updateMany" parameterType="java.util.HashMap">-->
+  <!--    UPDATE `view`-->
+  <!--    <foreach collection="viewList" item="view" separator=",">-->
+  <!--      <include refid="updateColumn"/>-->
+  <!--    </foreach>-->
+  <!--    WHERE id=#{id} AND updated_count=#{updatedCount, jdbcType=INTEGER}-->
+  <!--  </update>-->
+
+  <update id="deleteOne">
+    UPDATE `develop_view`
+    <include refid="deleteColumn"/>
+    WHERE id=#{id}
+  </update>
+
+  <delete id="removeOne" parameterType="java.lang.String">
+    DELETE FROM `develop_view` WHERE id=#{id}
+  </delete>
+
+  <select id="count" resultType="java.lang.Integer">
+    SELECT COUNT(1) FROM `develop_view`
+    <if test="where != null and where != ''">
+      ${where}
+    </if>
+    LIMIT 1
+  </select>
+
+  <select id="exist" resultType="java.lang.Integer">
+    SELECT COUNT(1) FROM `develop_view`
+    <if test="where != null and where != ''">
+      ${where}
+    </if>
+    LIMIT 1
+  </select>
+
+  <select id="findIndex" resultType="java.lang.Integer">
+    SELECT num FROM (
+    SELECT D.id, (@row_number:=@row_number+1) as num FROM (SELECT `develop_view`.id FROM `develop_view`
+    <if test="where != null and where != ''">
+      ${where}
+    </if>
+    <if test="order != null and order != ''">
+      ORDER BY ${order}
+    </if>
+    ) AS D, (SELECT @row_number:=-1) as T) as A WHERE A.id=#{id} LIMIT 1
+  </select>
+
+</mapper>

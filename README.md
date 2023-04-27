@@ -26,16 +26,16 @@ dev.odes.fleet.develop.enumeration
 dev.odes.fleet.develop.dto
 
 
-ApplicationController
-ApplicationService
-ApplicationRepository
-ApplicationModel
-Application
+ViewController
+ViewService
+ViewRepository
+ViewModel
+View
 
 TypeEnum
 
-ApplicationMapper
-ApplicationMapper.xml
+ViewMapper
+ViewMapper.xml
 
 
 
