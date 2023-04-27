@@ -1,5 +1,5 @@
 <template>
-  <aside class="view-aside">
+  <div class="tree">
     <slot></slot>
     <ATree v-model:selected-keys="selectedKeys"
       :data="treeData"
@@ -11,7 +11,7 @@
       :draggable="true"
       :show-line="false"
     ></ATree>
-  </aside>
+  </div>
 </template>
 <script lang="ts" setup>
 import {ref} from "vue";

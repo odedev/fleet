@@ -104,10 +104,16 @@ onMounted(() => {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    padding-bottom: 4px;
+
+    h3 {
+      font-weight: 500;
+      font-size: 18px;
+    }
   }
   .table-body {
     height: 100%;
-    border: 1px solid #2c3e50;
+    border: 1px solid #F6EDFF;
     border-bottom-width: 0;
 
     .arco-table-container {
@@ -119,7 +125,7 @@ onMounted(() => {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    border: 1px solid #2c3e50;
+    border: 1px solid #F6EDFF;
 
   }
 }

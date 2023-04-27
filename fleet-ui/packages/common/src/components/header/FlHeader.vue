@@ -8,6 +8,8 @@
 
 </script>
 <style lang="scss">
+@use "../../assets/mixin" as *;
+
 .header {
   --header-height: 64px;
   width: 100%;
@@ -28,6 +30,8 @@
   background-color: #009688;
   background-color: #607D8B;
   background-color: #546E7A;
+  @include background-color-primary();
+  @include background-color-primary-theme();
 }
 
 </style>
