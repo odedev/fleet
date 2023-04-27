@@ -44,7 +44,7 @@ public class MysqlRepository<E extends AbstractEntity, M extends GenericMapper<E
     }
 
     @Override
-    public E insert(E e) {
+    public E insertOne(E e) {
         this.mapper.insertOne(e);
         return null;
     }
@@ -55,7 +55,7 @@ public class MysqlRepository<E extends AbstractEntity, M extends GenericMapper<E
     }
 
     @Override
-    public E update(E e) {
+    public E updateOne(E e) {
         return null;
     }
 
@@ -65,7 +65,7 @@ public class MysqlRepository<E extends AbstractEntity, M extends GenericMapper<E
     }
 
     @Override
-    public E delete(E e) {
+    public E deleteOne(E e) {
         return null;
     }
 

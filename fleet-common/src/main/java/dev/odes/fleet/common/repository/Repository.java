@@ -11,13 +11,13 @@ public interface Repository<E extends AbstractEntity> {
     E findOne(Parameter parameter);
     E findById(String id);
 
-    E insert(E e);
+    E insertOne(E e);
     List<E> insert(List<E> list);
 
-    E update(E e);
+    E updateOne(E e);
     List<E> update(List<E> list);
 
-    E delete(E e);
+    E deleteOne(E e);
     List<E> delete(List<E> list);
 
     Integer count(Parameter parameter);
