@@ -1,9 +1,12 @@
 <template>
   <nav class="nav">
+    <IconMenuFold />
+    <IconMenuUnfold />
     <slot></slot>
   </nav>
 </template>
 <script lang="ts" setup>
+import {IconMenuFold, IconMenuUnfold} from "@arco-design/web-vue/es/icon";
 </script>
 <style lang="scss">
 .nav {

@@ -5,38 +5,47 @@
       首页 / demo
     </div>
     <div class="footer-tool">
-      <div class="footer-tool-item">历史</div>
-      <div class="footer-tool-item">通知</div>
-      <div class="footer-tool-item" @click="handleClick">帮助</div>
+      <div class="footer-tool-item">
+        <IconRefresh />
+        <span>刷新</span>
+      </div>
+      <div class="footer-tool-item">
+        <IconHistory />
+        <span>历史</span>
+      </div>
+      <div class="footer-tool-item">
+        <IconNotification />
+        <span>通知</span>
+      </div>
+      <div class="footer-tool-item">
+        <IconMessage />
+        <span>消息</span>
+      </div>
+      <div class="footer-tool-item" @click="handleClick">
+        <IconQuestionCircle />
+        <span>帮助</span>
+      </div>
     </div>
 
-    <Drawer :width="680" :visible="visible" @ok="handleOk" @cancel="handleCancel" unmountOnClose>
-      <template #title>
-        Title
-      </template>
+    <FlDrawer>
       <div>You can customize modal body text by the current situation. This modal will be closed immediately once you
         press the OK button.
       </div>
-    </Drawer>
+    </FlDrawer>
   </footer>
 </template>
 <script lang="ts" setup>
 import {ref} from "vue";
 
-import {Drawer} from '@arco-design/web-vue';
-import '@arco-design/web-vue/es/drawer/style/css.js';
+import FlDrawer from "../drawer/FlDrawer.vue";
+import {IconHistory, IconNotification, IconQuestionCircle, IconRefresh, IconMessage} from "@arco-design/web-vue/es/icon";
 
 const visible = ref(false);
 
 const handleClick = () => {
   visible.value = true;
 };
-const handleOk = () => {
-  visible.value = false;
-};
-const handleCancel = () => {
-  visible.value = false;
-}
+
 
 
 </script>
@@ -62,6 +71,7 @@ const handleCancel = () => {
   overflow: hidden;
   @include background-color-primary-container();
   @include background-color-primary-container-theme();
+  
 
   .footer-info {
     height: 100%;
@@ -78,7 +88,7 @@ const handleCancel = () => {
 
   .footer-tool-item {
     height: 100%;
-    padding: 0 16px;
+    padding: 0 12px;
     display: flex;
     align-items: center;
     cursor: pointer;

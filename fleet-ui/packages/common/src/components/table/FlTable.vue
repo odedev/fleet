@@ -19,9 +19,13 @@
       </Table>
     </div>
     <div class="table-foot">
-      <div>过滤</div>
+      <div class="icon">
+        <i><IconFilter /></i>
+        <i><IconUpload /></i>
+        <i><IconDownload /></i>
+      </div>
       <div>
-        <Pagination  :total="15000" size="small" show-total></Pagination>
+        <Pagination  :total="150000" size="small" show-total></Pagination>
       </div>
     </div>
   </section>
@@ -31,6 +35,7 @@
 <script lang="ts" setup>
 import { ref, reactive, onMounted } from 'vue';
 import FlButton from "../button/FlButton.vue";
+import {IconFilter, IconUpload, IconDownload} from "@arco-design/web-vue/es/icon";
 import {Table, Pagination} from "@arco-design/web-vue";
 import '@arco-design/web-vue/es/table/style/css.js';
 
@@ -103,16 +108,14 @@ onMounted(() => {
   .table-head {
     width: 100%;
     height: 36px;
+    flex-basis: 36px;
     flex-grow: 0;
     flex-shrink: 0;
-    flex-basis: 36px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items: center;
     align-items: flex-end;
     padding-bottom: 4px;
-    background-color: aliceblue;
 
     h3 {
       font-size: 18px;
@@ -130,12 +133,28 @@ onMounted(() => {
     }
   }
   .table-foot {
+    width: 100%;
+    height: 32px;
+    flex-basis: 32px;
+    flex-grow: 0;
+    flex-shrink: 0;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     border: 1px solid #F6EDFF;
 
+    .icon {
+
+      height: 100%;
+      width: 80px;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 24px;
+      line-height: 1;
+    }
   }
 }
 

@@ -78,11 +78,18 @@ const treeData = [
   padding: 0;
   border-right: 1px solid #f5f5f5;
   overflow: auto;
+
+  .arco-tree-node-title {
+    padding: 3px 0;
+  }
   .arco-tree-node-title:hover {
     background-color: #ECEFF1;
   }
   .arco-tree-node-title-block .arco-tree-node-drag-icon {
     right: -14px;
+  }
+  .arco-tree-node-switcher {
+    height: 28px;
   }
 }
 </style>

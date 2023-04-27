@@ -1,10 +1,14 @@
 <template>
   <header id="header" class="header">
+    <FlLogo></FlLogo>
     <slot></slot>
+    <FlProfile></FlProfile>
   </header>
 </template>
 
 <script lang="ts" setup>
+import FlLogo from './FlLogo.vue'
+import FlProfile from './FlProfile.vue'
 
 </script>
 <style lang="scss">
@@ -14,7 +18,7 @@
   --header-height: 64px;
   width: 100%;
   height: var(--header-height);
-  padding: 0 16px 0 0;
+  padding: 0;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
