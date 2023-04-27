@@ -69,9 +69,12 @@ const handleClick = () => {
   color: #263238;
   background-color: #CFD8DC;
   overflow: hidden;
+
+  user-select: none;
+
   @include background-color-primary-container();
   @include background-color-primary-container-theme();
-  
+
 
   .footer-info {
     height: 100%;
@@ -91,7 +94,7 @@ const handleClick = () => {
     padding: 0 12px;
     display: flex;
     align-items: center;
-    cursor: pointer;
+    //cursor: pointer;
 
     &:hover {
       @include background-color-tertiary();

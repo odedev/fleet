@@ -20,7 +20,7 @@
   //justify-content: flex-start;
   align-items: center;
   align-items: flex-start;
-  padding: 0 16px;
+  //padding: 0 16px;
   /* border-bottom: 1px solid #f0f0f0; */
   //background-color: #CFD8DC;
 

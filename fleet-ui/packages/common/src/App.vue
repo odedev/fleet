@@ -19,7 +19,7 @@
 
             </FlViewNav>
             <FlViewHead>
-
+              <FlSearch></FlSearch>
             </FlViewHead>
             <FlViewBody>
               <FlContent>
@@ -43,7 +43,7 @@ import {
   FlHeader, FlBody, FlFooter, FlMenu, FlMain, FlNav, FlPage,
   FlView, FlViewAside, FlViewMain, FlViewNav, FlViewHead, FlViewBody,
   FlContent,
-  FlTable,
+  FlTable, FlButton, FlSearch,
 } from './components/index.ts'
 </script>
 <style lang="scss" scoped>

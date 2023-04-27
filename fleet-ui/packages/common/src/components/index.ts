@@ -16,6 +16,10 @@ import FlContent from "./content/FlContent.vue";
 
 import FlTable from "./table/FlTable.vue";
 
+import FlButton from "./button/FlButton.vue";
+
+import FlSearch from "./search/FlSearch.vue";
+
 export {
   FlHeader,
   FlBody,
@@ -34,4 +38,7 @@ export {
   FlContent,
 
   FlTable,
+
+  FlButton,
+  FlSearch,
 }

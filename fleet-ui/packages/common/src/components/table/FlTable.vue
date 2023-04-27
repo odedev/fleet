@@ -19,12 +19,12 @@
       </Table>
     </div>
     <div class="table-foot">
-      <div class="icon">
-        <i><IconFilter /></i>
-        <i><IconUpload /></i>
-        <i><IconDownload /></i>
+      <div class="action">
+        <i class="icon"><IconFilter /></i>
+        <i class="icon"><IconUpload /></i>
+        <i class="icon"><IconDownload /></i>
       </div>
-      <div>
+      <div class="pagination">
         <Pagination  :total="150000" size="small" show-total></Pagination>
       </div>
     </div>
@@ -100,6 +100,8 @@ onMounted(() => {
 </script>
 
 <style lang="scss">
+@use "../../assets/mixin" as *;
+
 .table-box {
   display: flex;
   flex-direction: column;
@@ -144,16 +146,48 @@ onMounted(() => {
     align-items: center;
     border: 1px solid #F6EDFF;
 
-    .icon {
-
+    .action {
       height: 100%;
       width: 80px;
+      flex-basis: 80px;
+      flex-grow: 0;
+      flex-shrink: 0;
       display: flex;
       flex-direction: row;
       justify-content: space-between;
       align-items: center;
-      font-size: 24px;
+      font-size: 20px;
       line-height: 1;
+      padding: 0 4px;
+
+      .icon {
+        display: block;
+        width: 28px;
+        height: 28px;
+        padding: 4px;
+        cursor: pointer;
+
+        &:hover {
+          @include background-color-tertiary();
+          @include background-color-tertiary-theme();
+        }
+      }
+    }
+
+    .pagination {
+      height: 100%;
+      width: 100%;
+      flex-basis: 100%;
+      flex-grow: 1;
+      flex-shrink: 1;
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
+      align-items: center;
+
+      overflow-y: hidden;
+      overflow-x: auto;
+      overflow-x: overlay;
     }
   }
 }
