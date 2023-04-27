@@ -1,7 +1,7 @@
 <template>
   <div class="tree">
     <slot></slot>
-    <ATree v-model:selected-keys="selectedKeys"
+    <Tree v-model:selected-keys="selectedKeys"
       :data="treeData"
       :selectable="true"
       :multiple="false"
@@ -10,13 +10,12 @@
       :block-node="true"
       :draggable="true"
       :show-line="false"
-    ></ATree>
+    ></Tree>
   </div>
 </template>
 <script lang="ts" setup>
 import {ref} from "vue";
-
-import ATree from '@arco-design/web-vue/es/tree';
+import {Tree} from '@arco-design/web-vue'
 import '@arco-design/web-vue/es/tree/style/css.js';
 
 const selectedKeys = ref([]);
@@ -70,12 +69,10 @@ const treeData = [
 
 </script>
 <style lang="scss">
-.view-aside {
+.tree {
   height: 100%;
-  width: 272px;
-  flex-basis: 272px;
-  flex-grow: 0;
-  flex-shrink: 0;
+  width: 100%;
+  max-width: 272px;
   display: flex;
   flex-direction: column;
   padding: 0;

@@ -1,15 +1,15 @@
 <template>
   <div class="view-nav">
     <slot></slot>
-    <ABreadcrumb :style="{fontSize: `12px`}">
-      <ABreadcrumb-item>Home</ABreadcrumb-item>
-      <ABreadcrumb-item>Channel</ABreadcrumb-item>
-      <ABreadcrumb-item>News</ABreadcrumb-item>
-    </ABreadcrumb>
+    <Breadcrumb :style="{fontSize: `12px`}">
+      <BreadcrumbItem>Home</BreadcrumbItem>
+      <BreadcrumbItem>Channel</BreadcrumbItem>
+      <BreadcrumbItem>News</BreadcrumbItem>
+    </Breadcrumb>
   </div>
 </template>
 <script lang="ts" setup>
-import ABreadcrumb from '@arco-design/web-vue/es/breadcrumb';
+import {Breadcrumb, BreadcrumbItem} from '@arco-design/web-vue';
 import '@arco-design/web-vue/es/breadcrumb/style/css.js';
 </script>
 <style lang="scss">

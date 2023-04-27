@@ -3,7 +3,7 @@
     <div class="table-head">
       <h3>标题</h3>
       <div>
-        <Button type="primary" size="small">新增</Button>
+        <FlButton type="primary" size="small">新增</FlButton>
       </div>
     </div>
     <div class="table-body">
@@ -30,7 +30,8 @@
 
 <script lang="ts" setup>
 import { ref, reactive, onMounted } from 'vue';
-import {Table, Pagination, Button} from "@arco-design/web-vue";
+import FlButton from "../button/FlButton.vue";
+import {Table, Pagination} from "@arco-design/web-vue";
 import '@arco-design/web-vue/es/table/style/css.js';
 
 const table = ref(null);
@@ -100,15 +101,23 @@ onMounted(() => {
   height: 100%;
 
   .table-head {
+    width: 100%;
+    height: 36px;
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: 36px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    align-items: flex-end;
     padding-bottom: 4px;
+    background-color: aliceblue;
 
     h3 {
-      font-weight: 500;
       font-size: 18px;
+      line-height: 1;
+      font-weight: 500;
     }
   }
   .table-body {

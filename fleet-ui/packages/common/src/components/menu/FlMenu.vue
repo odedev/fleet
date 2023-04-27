@@ -10,7 +10,7 @@
       @collapse="onCollapse"
     >
       <SubMenu key="0">
-        <template #icon><icon-apps></icon-apps></template>
+        <template #icon><IconApps></IconApps></template>
         <template #title>Navigation 1</template>
         <MenuItem key="0_0">Menu 1</MenuItem>
         <MenuItem key="0_1">Menu 2</MenuItem>
@@ -18,14 +18,14 @@
         <MenuItem key="0_3">Menu 4</MenuItem>
       </SubMenu>
       <SubMenu key="1">
-        <template #icon><icon-bug></icon-bug></template>
+        <template #icon><IconBug></IconBug></template>
         <template #title>Navigation 2</template>
         <MenuItem key="1_0">Menu 1</MenuItem>
         <MenuItem key="1_1">Menu 2</MenuItem>
         <MenuItem key="1_2">Menu 3</MenuItem>
       </SubMenu>
       <SubMenu key="2">
-        <template #icon><icon-bulb></icon-bulb></template>
+        <template #icon><IconBulb></IconBulb></template>
         <template #title>Navigation 3</template>
         <MenuItem key="2_0">Menu 1</MenuItem>
         <MenuItem key="2_1">Menu 2</MenuItem>
@@ -40,10 +40,8 @@
 
 <script lang="ts" setup>
 import { ref } from 'vue';
-import Menu from '@arco-design/web-vue/es/menu';
-import {MenuItem, SubMenu} from '@arco-design/web-vue/es/menu';
+import {Menu, MenuItem, SubMenu, Message} from '@arco-design/web-vue';
 import '@arco-design/web-vue/es/menu/style/css.js';
-import { Message } from '@arco-design/web-vue';
 import {
   IconMenuFold,
   IconMenuUnfold,
