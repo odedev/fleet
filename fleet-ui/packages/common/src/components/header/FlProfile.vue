@@ -1,6 +1,6 @@
 <template>
 <div class="profile">
-  <div class="title">科技开发有限公司</div>
+  <div class="title">管理员</div>
   <Dropdown class="profile-dropdown" trigger="hover">
     <Avatar :style="{ backgroundColor: '#00d0b6' }">Admin</Avatar>
     <template #content>

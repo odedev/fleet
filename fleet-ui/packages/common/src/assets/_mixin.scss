@@ -53,6 +53,16 @@
   }
 }
 
+@mixin color-secondary-theme() {
+  @include color-secondary();
+
+  @each $name, $theme in $themes {
+    [data-theme="#{$name}"] & {
+      color: map.get($theme, "secondary");
+    }
+  }
+}
+
 @mixin background-color-primary-theme() {
   @include background-color-primary();
 
@@ -60,6 +70,17 @@
     [data-theme="#{$name}"] & {
       color: map.get($theme, "on-primary");
       background-color: map.get($theme, "primary");
+    }
+  }
+}
+
+@mixin background-color-secondary-theme() {
+  @include background-color-secondary();
+
+  @each $name, $theme in $themes {
+    [data-theme="#{$name}"] & {
+      color: map.get($theme, "on-secondary");
+      background-color: map.get($theme, "secondary");
     }
   }
 }

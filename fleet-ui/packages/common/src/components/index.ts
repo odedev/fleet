@@ -4,6 +4,7 @@ import FlFooter from './footer/FlFooter.vue';
 import FlMenu from './menu/FlMenu.vue';
 import FlMain from './main/FlMain.vue';
 import FlNav from './nav/FlNav.vue';
+import FlTab from './tab/FlTab.vue';
 import FlPage from './page/FlPage.vue';
 import FlView from './view/FlView.vue';
 import FlViewAside from './view/FlViewAside.vue';
@@ -27,6 +28,7 @@ export {
   FlMenu,
   FlMain,
   FlNav,
+  FlTab,
   FlPage,
   FlView,
   FlViewAside,

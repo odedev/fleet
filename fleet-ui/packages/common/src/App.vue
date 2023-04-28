@@ -6,6 +6,10 @@
     <FlMenu>
     </FlMenu>
     <FlMain>
+
+      <FlTab>
+
+      </FlTab>
       <FlNav>
 
       </FlNav>
@@ -34,13 +38,13 @@
       </FlPage>
     </FlMain>
   </FlBody>
-  <FlFooter>
+<!--  <FlFooter>-->
 
-  </FlFooter>
+<!--  </FlFooter>-->
 </template>
 <script setup lang="ts">
 import {
-  FlHeader, FlBody, FlFooter, FlMenu, FlMain, FlNav, FlPage,
+  FlHeader, FlBody, FlFooter, FlMenu, FlMain, FlNav, FlTab, FlPage,
   FlView, FlViewAside, FlViewMain, FlViewNav, FlViewHead, FlViewBody,
   FlContent,
   FlTable, FlButton, FlSearch,

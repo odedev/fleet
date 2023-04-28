@@ -86,19 +86,24 @@ const onCollapse = (val: any, type: string) => {
   .arco-menu-vertical .arco-menu-inline-header.arco-menu-has-icon .arco-menu-title {
     font-weight: 500;
   }
-  .arco-menu-light .arco-menu-inline-header.arco-menu-selected {
-    @include color-primary();
-    @include color-primary-theme();
-    .arco-icon,
-    .arco-menu-icon {
-      @include color-primary();
-      @include color-primary-theme();
-    }
-  }
 
-  .arco-menu-light .arco-menu-item.arco-menu-selected {
-    @include background-color-tertiary();
-    @include background-color-tertiary-theme();
+
+
+  .arco-menu-inner .arco-icon:not(.arco-icon-down) {
+    font-size: 16px;
+  }
+  .arco-menu-indent {
+    width: 30px;
+  }
+  //.arco-menu .arco-menu-item .arco-icon,
+  //.arco-menu .arco-menu-group-title .arco-icon,
+  //.arco-menu .arco-menu-pop-header .arco-icon,
+  //.arco-menu .arco-menu-inline-header .arco-icon,
+  //.arco-menu .arco-menu-item .arco-menu-icon,
+  //.arco-menu .arco-menu-group-title .arco-menu-icon,
+  //.arco-menu .arco-menu-pop-header .arco-menu-icon,
+  .arco-menu .arco-menu-inline-header .arco-menu-icon {
+    margin-right: 12px;
   }
 }
 </style>

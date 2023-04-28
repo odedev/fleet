@@ -1,5 +1,5 @@
 <template>
-  <nav class="nav">
+  <nav class="tab">
     <IconMenuFold />
     <IconMenuUnfold />
     <slot></slot>
@@ -9,9 +9,9 @@
 import {IconMenuFold, IconMenuUnfold} from "@arco-design/web-vue/es/icon";
 </script>
 <style lang="scss">
-.nav {
-  height: 40px;
-  flex-basis: 40px;
+.tab {
+  height: 48px;
+  flex-basis: 48px;
   flex-grow: 0;
   flex-shrink: 0;
   display: flex;
@@ -20,8 +20,6 @@ import {IconMenuFold, IconMenuUnfold} from "@arco-design/web-vue/es/icon";
   align-items: center;
   font-size: 14px;
   padding: 0;
-  //border-bottom: 1px solid #F5F5F5;
-  background-color: #F8F8F8;
 
 }
 </style>

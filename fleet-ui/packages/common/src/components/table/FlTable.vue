@@ -13,6 +13,7 @@
         :stripe="true"
         :table-layout-fixed="true"
         :column-resizable="true"
+        :sticky-header="10"
         :bordered="{cell:true}"
         :draggable="{ type: 'handle', width: 40 }"
         :pagination="false">
@@ -20,9 +21,15 @@
     </div>
     <div class="table-foot">
       <div class="action">
-        <i class="icon"><IconFilter /></i>
-        <i class="icon"><IconUpload /></i>
-        <i class="icon"><IconDownload /></i>
+        <i class="icon">
+          <Tooltip content="设置"><IconSettings /></Tooltip>
+        </i>
+        <i class="icon">
+          <Tooltip content="导入"><IconUpload /></Tooltip>
+        </i>
+        <i class="icon">
+          <Tooltip content="导出"><IconDownload /></Tooltip>
+        </i>
       </div>
       <div class="pagination">
         <Pagination  :total="150000" size="small" show-total></Pagination>
@@ -35,8 +42,8 @@
 <script lang="ts" setup>
 import { ref, reactive, onMounted } from 'vue';
 import FlButton from "../button/FlButton.vue";
-import {IconFilter, IconUpload, IconDownload} from "@arco-design/web-vue/es/icon";
-import {Table, Pagination} from "@arco-design/web-vue";
+import {IconFilter, IconSettings, IconUpload, IconDownload} from "@arco-design/web-vue/es/icon";
+import {Table, Pagination, Tooltip} from "@arco-design/web-vue";
 import '@arco-design/web-vue/es/table/style/css.js';
 
 const table = ref(null);
