@@ -16,6 +16,7 @@ import FlProfile from './FlProfile.vue'
 
 .header {
   --header-height: 64px;
+  --header-height: 56px;
   width: 100%;
   height: var(--header-height);
   padding: 0;

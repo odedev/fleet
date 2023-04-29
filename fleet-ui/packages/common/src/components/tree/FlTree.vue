@@ -3,6 +3,7 @@
     <slot></slot>
     <Tree v-model:selected-keys="selectedKeys"
       :data="treeData"
+      size="small"
       :selectable="true"
       :multiple="false"
       :checkable="false"
@@ -22,11 +23,11 @@ const selectedKeys = ref([]);
 const multiple = ref(true);
 const treeData = [
   {
-    title: 'Trunk 0-0',
+    title: '用户中心',
     key: '0-0',
     children: [
       {
-        title: 'Leaf',
+        title: '用户',
         key: '0-0-1',
       },
       {
@@ -42,7 +43,7 @@ const treeData = [
     ],
   },
   {
-    title: 'Trunk 0-1',
+    title: '系统管理',
     key: '0-1',
     children: [
       {

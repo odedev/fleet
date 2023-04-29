@@ -6,33 +6,34 @@
       :default-open-keys="['0']"
       :default-selected-keys="['0_2']"
       :show-collapse-button="false"
+      :accordion="true"
       breakpoint="xl"
       @collapse="onCollapse"
     >
+      <SubMenu key="00">
+        <template #icon><IconCode /></template>
+        <template #title>开发工具</template>
+        <MenuItem key="00_0">应用管理</MenuItem>
+        <MenuItem key="00_1">模块管理</MenuItem>
+      </SubMenu>
+      <SubMenu key="01">
+        <template #icon><IconApps /></template>
+        <template #title>组织架构</template>
+        <MenuItem key="01_0">组织管理</MenuItem>
+        <MenuItem key="01_1">部门管理</MenuItem>
+      </SubMenu>
       <SubMenu key="0">
-        <template #icon><IconApps></IconApps></template>
+        <template #icon><IconSettings /></template>
         <template #title>系统管理</template>
-        <MenuItem key="0_0">Menu 1</MenuItem>
-        <MenuItem key="0_1">Menu 2</MenuItem>
-        <MenuItem key="0_2">Menu 3</MenuItem>
-        <MenuItem key="0_3">Menu 4</MenuItem>
+        <MenuItem key="0_0">菜单管理</MenuItem>
+        <MenuItem key="0_1">角色管理</MenuItem>
+        <MenuItem key="0_2">用户角色</MenuItem>
       </SubMenu>
       <SubMenu key="1">
-        <template #icon><IconBug></IconBug></template>
-        <template #title>用户管理</template>
-        <MenuItem key="1_0">Menu 1</MenuItem>
-        <MenuItem key="1_1">Menu 2</MenuItem>
-        <MenuItem key="1_2">Menu 3</MenuItem>
-      </SubMenu>
-      <SubMenu key="2">
-        <template #icon><IconBulb></IconBulb></template>
-        <template #title>Navigation 3</template>
-        <MenuItem key="2_0">Menu 1</MenuItem>
-        <MenuItem key="2_1">Menu 2</MenuItem>
-        <MenuItem key="2_2" title="Navigation 4">
-          <MenuItem key="2_2_0">Menu 1</MenuItem>
-          <MenuItem key="2_2_1">Menu 2</MenuItem>
-        </MenuItem>
+        <template #icon><IconUser /></template>
+        <template #title>用户中心</template>
+        <MenuItem key="1_0">用户管理</MenuItem>
+        <MenuItem key="1_1">用户资料</MenuItem>
       </SubMenu>
     </Menu>
   </menu>
@@ -48,6 +49,9 @@ import {
   IconApps,
   IconBug,
   IconBulb,
+  IconUser,
+  IconSettings,
+  IconCode,
 } from '@arco-design/web-vue/es/icon';
 
 const onCollapse = (val: any, type: string) => {

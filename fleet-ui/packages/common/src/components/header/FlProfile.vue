@@ -9,7 +9,7 @@
           <template #icon>
             <IconRelation />
           </template>
-          <template #default>用户角色</template>
+          <template #default>角色权限</template>
         </Doption>
         <Doption>
           <template #icon>
@@ -33,12 +33,12 @@
         </Doption>
       </Dgroup>
       <Dgroup>
-        <Doption>
-          <template #icon>
-            <IconSettings />
-          </template>
-          <template #default>系统设置</template>
-        </Doption>
+<!--        <Doption>-->
+<!--          <template #icon>-->
+<!--            <IconSettings />-->
+<!--          </template>-->
+<!--          <template #default>系统设置</template>-->
+<!--        </Doption>-->
         <Doption>
           <template #icon>
             <IconPoweroff />

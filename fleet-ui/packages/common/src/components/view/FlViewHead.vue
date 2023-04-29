@@ -9,6 +9,8 @@
 .view-head {
   --view-head-height: 64px;
   --view-head-height: 104px;
+  --view-head-height: 112px;
+  --view-head-height: 128px;
   height: var(--view-head-height);
   flex-grow: 0;
   flex-shrink: 0;
@@ -23,6 +25,8 @@
   //padding: 0 16px;
   /* border-bottom: 1px solid #f0f0f0; */
   //background-color: #CFD8DC;
+  //border-bottom: 1px solid #f5f5f5;
+
 
 }
 </style>

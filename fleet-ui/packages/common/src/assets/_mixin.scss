@@ -34,8 +34,8 @@
 }
 
 @mixin background-color-primary-container() {
-  color: $on-primary-container;
-  background-color: var($primary-container, --theme-primary-container);
+  //color: $on-primary-container;
+  //background-color: var($primary-container, --theme-primary-container);
 }
 
 @mixin surface-color() {

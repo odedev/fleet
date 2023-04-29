@@ -14,6 +14,8 @@ import FlViewHead from './view/FlViewHead.vue';
 import FlViewBody from './view/FlViewBody.vue';
 
 import FlContent from "./content/FlContent.vue";
+import FlCell from "./cell/FlCell.vue";
+import FlItem from "./item/FlItem.vue";
 
 import FlTable from "./table/FlTable.vue";
 
@@ -38,6 +40,8 @@ export {
   FlViewBody,
 
   FlContent,
+  FlCell,
+  FlItem,
 
   FlTable,
 

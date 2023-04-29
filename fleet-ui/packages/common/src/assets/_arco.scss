@@ -4,6 +4,10 @@
   max-height: 272px;
 }
 
+.arco-btn-size-small {
+ padding: 0 12px;
+}
+
 .arco-btn-primary, .arco-btn-primary[type='button'],
 .arco-btn-primary[type='submit'] {
   @include background-color-primary();
@@ -15,6 +19,8 @@
 .arco-btn-primary[type='submit']:hover {
   @include background-color-secondary();
   @include background-color-secondary-theme();
+  @include background-color-primary();
+  @include background-color-primary-theme();
 }
 
 .arco-menu-light .arco-menu-inline-header.arco-menu-selected {
@@ -47,11 +53,13 @@
 
 .arco-tree-node-selected .arco-tree-node-title,
 .arco-tree-node-selected .arco-tree-node-title:hover {
-  @include color-primary();
-  @include color-primary-theme();
+  //@include color-primary();
+  //@include color-primary-theme();
 
-  @include color-secondary();
-  @include color-secondary-theme();
+  //@include color-secondary();
+  //@include color-secondary-theme();
+  @include background-color-tertiary();
+  @include background-color-tertiary-theme();
 }
 .arco-tree-node-title:hover {
   @include background-color-tertiary();
@@ -60,4 +68,7 @@
 .arco-tree-node-drag-icon {
   @include color-primary();
   @include color-primary-theme();
+}
+.arco-tree-node-indent-block {
+  margin-right: 8px;
 }

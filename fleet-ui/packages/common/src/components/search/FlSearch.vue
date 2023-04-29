@@ -1,26 +1,41 @@
 <template>
   <section class="search">
     <div class="search-parameter">
-      <input type="text" name="" id="">
-      <input type="number" name="" id="">
+      <FlItem>
+        <input type="text" name="" id="">
+      </FlItem>
+      <FlItem>
+        <input type="text" name="" id="">
+      </FlItem>
+      <FlItem>
+        <input type="number" name="" id="">
+      </FlItem>
+      <FlItem>
+        <input type="number" name="" id="">
+      </FlItem>
     </div>
     <div class="search-action">
-      <button>搜索</button>
-      <button>重置</button>
+      <FlButton>搜索</FlButton>
+      <FlButton>重置</FlButton>
     </div>
   </section>
 </template>
 
 <script lang="ts" setup>
+import FlCell from "../cell/FlCell.vue";
+import FlItem from "../item/FlItem.vue";
+import FlButton from "../button/FlButton.vue";
 
 </script>
 
 <style lang="scss">
 .search {
   width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: row;
   padding: 16px;
+  overflow: hidden;
 
   .search-parameter {
     width: 100%;
@@ -30,16 +45,33 @@
     flex-shrink: 1;
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
+
+    overflow: auto;
+    .item {
+      margin-bottom: 8px;
+    }
   }
   .search-action {
-    width: 120px;
     height: 100%;
-    flex-basis: 120px;
+    width: 132px;
+    flex-basis: 132px;
     flex-grow: 0;
     flex-shrink: 0;
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
+
+    padding-top: 6px;
+
+    button {
+      margin-left: 12px;
+    }
+  }
+
+  input {
+    width: 100%;
+    height: 28px;
   }
 }
 </style>

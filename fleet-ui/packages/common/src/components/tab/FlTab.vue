@@ -10,8 +10,10 @@ import {IconMenuFold, IconMenuUnfold} from "@arco-design/web-vue/es/icon";
 </script>
 <style lang="scss">
 .tab {
-  height: 48px;
-  flex-basis: 48px;
+  --tab-height: 48px;
+  --tab-height: 40px;
+  height: var(--tab-height);
+  flex-basis: var(--tab-height);
   flex-grow: 0;
   flex-shrink: 0;
   display: flex;

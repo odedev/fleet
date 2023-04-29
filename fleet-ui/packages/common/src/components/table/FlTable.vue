@@ -2,6 +2,7 @@
   <section ref="table" class="table-box">
     <div class="table-head">
       <h3>标题</h3>
+      <div style="font-size: 10px;line-height: 1;">已选 3 项 <span>清空</span></div>
       <div>
         <FlButton type="primary" size="small">新增</FlButton>
       </div>
@@ -10,6 +11,7 @@
       <Table
         :columns="columns"
         :data="data"
+        size="large"
         :stripe="true"
         :table-layout-fixed="true"
         :column-resizable="true"
@@ -22,16 +24,17 @@
     <div class="table-foot">
       <div class="action">
         <i class="icon">
-          <Tooltip content="设置"><IconSettings /></Tooltip>
+          <Tooltip :mini="true" content="设置"><IconSettings /></Tooltip>
         </i>
         <i class="icon">
-          <Tooltip content="导入"><IconUpload /></Tooltip>
+          <Tooltip :mini="true" content="导入"><IconUpload /></Tooltip>
         </i>
         <i class="icon">
-          <Tooltip content="导出"><IconDownload /></Tooltip>
+          <Tooltip :mini="true" content="导出"><IconDownload /></Tooltip>
         </i>
       </div>
       <div class="pagination">
+        <div style="margin-right: 18px;">每页 10 条</div>
         <Pagination  :total="150000" size="small" show-total></Pagination>
       </div>
     </div>
@@ -196,6 +199,8 @@ onMounted(() => {
       overflow-y: hidden;
       overflow-x: auto;
       overflow-x: overlay;
+
+      font-size: 14px;
     }
   }
   .arco-table-hover:not(.arco-table-dragging) .arco-table-tr:not(.arco-table-tr-empty):not(.arco-table-tr-summary):hover .arco-table-td:not(.arco-table-col-fixed-left):not(.arco-table-col-fixed-right),
