@@ -10,4 +10,5 @@ public class View extends AbstractEntity {
     private Integer SN;
     private String parent;
     private String module;
+    private Boolean isMasterView;
 }

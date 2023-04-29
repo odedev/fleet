@@ -10,6 +10,7 @@ CREATE TABLE IF NOT EXISTS `develop_view` (
     `status` TINYINT(3) NULL DEFAULT '0' COMMENT '状态',
     `is_admin` TINYINT(1) NULL DEFAULT '0' COMMENT '是否管理员',
     `salt` VARCHAR(255) NOT NULL DEFAULT '' COMMENT '密码加盐',
+    `weight` INT(10) NULL DEFAULT '10' COMMENT '权重',
     `remark` VARCHAR(255) NULL DEFAULT '' COMMENT '备注',
     `is_valid` TINYINT(1) NULL DEFAULT '1' COMMENT '是否生效',
     `created_by` VARCHAR(32) NULL DEFAULT NULL COMMENT '创建人ID',

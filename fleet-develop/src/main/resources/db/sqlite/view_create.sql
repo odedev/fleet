@@ -4,6 +4,7 @@ CREATE TABLE IF NOT EXISTS `develop_view` (
     `name` VARCHAR(32) NOT NULL DEFAULT '',
     `path` VARCHAR(255) NOT NULL DEFAULT '' UNIQUE,
     `sn` INT(4) NULL DEFAULT '1',
+    `weight` INT(10) NULL DEFAULT '10',
     `parent` VARCHAR(32) NULL DEFAULT NULL,
     `module` VARCHAR(32) NULL DEFAULT NULL,
     `created_by` VARCHAR(32) NULL DEFAULT NULL,
