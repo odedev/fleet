@@ -10,7 +10,8 @@
   --view-head-height: 64px;
   --view-head-height: 104px;
   --view-head-height: 112px;
-  --view-head-height: 128px;
+  --view-head-height: 80px;
+  //--view-head-height: 128px;
   height: var(--view-head-height);
   flex-grow: 0;
   flex-shrink: 0;
@@ -18,7 +19,7 @@
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
-  justify-content: space-between;
+  //justify-content: space-between;
   //justify-content: flex-start;
   align-items: center;
   align-items: flex-start;

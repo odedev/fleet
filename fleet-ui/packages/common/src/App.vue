@@ -14,27 +14,7 @@
 
       </FlNav>
       <FlPage>
-        <FlView>
-          <FlViewAside>
-
-          </FlViewAside>
-          <FlViewMain>
-            <FlViewNav>
-
-            </FlViewNav>
-            <FlViewHead>
-              <FlSearch></FlSearch>
-            </FlViewHead>
-            <FlViewBody>
-              <FlContent>
-                <FlTable></FlTable>
-              </FlContent>
-<!--              <FlContent>-->
-<!--                <FlTable></FlTable>-->
-<!--              </FlContent>-->
-            </FlViewBody>
-          </FlViewMain>
-        </FlView>
+        <RouterView />
       </FlPage>
     </FlMain>
   </FlBody>
@@ -43,6 +23,8 @@
 <!--  </FlFooter>-->
 </template>
 <script setup lang="ts">
+import {RouterView} from 'vue-router';
+
 import {
   FlHeader, FlBody, FlFooter, FlMenu, FlMain, FlNav, FlTab, FlPage,
   FlView, FlViewAside, FlViewMain, FlViewNav, FlViewHead, FlViewBody,

@@ -27,12 +27,15 @@ import {IconQuestionCircle} from "@arco-design/web-vue/es/icon";
   height: 28px;
   height: 32px;
   height: 40px;
+  //height: 56px;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
   font-size: 14px;
   line-height: 22px;
+  margin-bottom: 16px;
+
   .item-label {
     width: 104px;
     width: 128px;
@@ -53,6 +56,12 @@ import {IconQuestionCircle} from "@arco-design/web-vue/es/icon";
     width: 336px;
     width: 272px;
     padding: 0 8px;
+  }
+
+
+  input {
+    width: 100%;
+    height: 28px;
   }
 }
 </style>

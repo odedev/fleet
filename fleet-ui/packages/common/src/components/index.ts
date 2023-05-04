@@ -13,6 +13,7 @@ import FlViewNav from './view/FlViewNav.vue';
 import FlViewHead from './view/FlViewHead.vue';
 import FlViewBody from './view/FlViewBody.vue';
 
+import FlBox from "./box/FlBox.vue";
 import FlContent from "./content/FlContent.vue";
 import FlCell from "./cell/FlCell.vue";
 import FlItem from "./item/FlItem.vue";
@@ -22,6 +23,7 @@ import FlTable from "./table/FlTable.vue";
 import FlButton from "./button/FlButton.vue";
 
 import FlSearch from "./search/FlSearch.vue";
+import FlAction from "./action/FlAction.vue";
 
 export {
   FlHeader,
@@ -39,6 +41,7 @@ export {
   FlViewHead,
   FlViewBody,
 
+  FlBox,
   FlContent,
   FlCell,
   FlItem,
@@ -47,4 +50,5 @@ export {
 
   FlButton,
   FlSearch,
+  FlAction,
 }

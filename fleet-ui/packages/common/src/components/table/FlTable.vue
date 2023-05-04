@@ -22,7 +22,7 @@
       </Table>
     </div>
     <div class="table-foot">
-      <div class="action">
+      <div class="table-action">
         <i class="icon">
           <Tooltip :mini="true" content="设置"><IconSettings /></Tooltip>
         </i>
@@ -33,7 +33,7 @@
           <Tooltip :mini="true" content="导出"><IconDownload /></Tooltip>
         </i>
       </div>
-      <div class="pagination">
+      <div class="table-pagination">
         <div style="margin-right: 18px;">每页 10 条</div>
         <Pagination  :total="150000" size="small" show-total></Pagination>
       </div>
@@ -157,7 +157,7 @@ onMounted(() => {
     align-items: center;
     border: 1px solid #F6EDFF;
 
-    .action {
+    .table-action {
       height: 100%;
       width: 80px;
       flex-basis: 80px;
@@ -185,7 +185,7 @@ onMounted(() => {
       }
     }
 
-    .pagination {
+    .table-pagination {
       height: 100%;
       width: 100%;
       flex-basis: 100%;

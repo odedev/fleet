@@ -13,18 +13,31 @@
 <!--      <Tooltip :mini="true" content="设置"><IconSettings /></Tooltip>-->
       <Tooltip :mini="true" content="刷新"><IconRefresh /></Tooltip>
 <!--      <Tooltip :mini="true" content="帮助"><IconQuestionCircle /></Tooltip>-->
-      <Tooltip :mini="true" content="文档"><IconBook /></Tooltip>
+      <Tooltip :mini="true" content="文档" @click="onHelpClick"><IconBook /></Tooltip>
     </div>
+
+
+    <FlDrawer>
+      <div>You can customize modal body text by the current situation. This modal will be closed immediately once you
+        press the OK button.
+      </div>
+    </FlDrawer>
   </nav>
 </template>
 <script lang="ts" setup>
 import {Breadcrumb, BreadcrumbItem, Tooltip} from "@arco-design/web-vue";
 import {IconHome, IconQuestionCircle, IconRefresh, IconBook, IconSettings} from "@arco-design/web-vue/es/icon";
+import FlDrawer from "../drawer/FlDrawer.vue";
+
+const onHelpClick = () => {
+
+}
 </script>
 <style lang="scss">
 .nav {
   --nav-height: 40px;
   --nav-height: 28px;
+  --nav-height: 32px;
   height: var(--nav-height);
   flex-basis: var(--nav-height);
   flex-grow: 0;

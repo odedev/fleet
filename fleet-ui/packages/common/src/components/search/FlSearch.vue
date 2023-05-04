@@ -10,9 +10,9 @@
       <FlItem>
         <input type="number" name="" id="">
       </FlItem>
-      <FlItem>
-        <input type="number" name="" id="">
-      </FlItem>
+<!--      <FlItem>-->
+<!--        <input type="number" name="" id="">-->
+<!--      </FlItem>-->
     </div>
     <div class="search-action">
       <FlButton>搜索</FlButton>
@@ -69,9 +69,5 @@ import FlButton from "../button/FlButton.vue";
     }
   }
 
-  input {
-    width: 100%;
-    height: 28px;
-  }
 }
 </style>
