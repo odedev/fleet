@@ -72,3 +72,18 @@
 .arco-tree-node-indent-block {
   margin-right: 8px;
 }
+
+
+.arco-tabs-tab-active,
+.arco-tabs-tab-active:hover {
+  @include color-secondary();
+  @include color-secondary-theme();
+}
+.arco-tabs-nav-type-line .arco-tabs-tab:hover .arco-tabs-tab-title::before {
+  @include background-color-tertiary();
+  @include background-color-tertiary-theme();
+}
+.arco-tabs-nav-ink {
+  @include background-color-secondary();
+  @include background-color-secondary-theme();
+}

@@ -11,6 +11,8 @@
 </script>
 
 <style lang="scss">
+@use "../../assets/mixin" as *;
+
 .logo {
   width: 208px;
   height: 100%;
@@ -22,6 +24,7 @@
 
   h1 {
     font-size: inherit;
+    color: #FFFFFF;
   }
 }
 </style>
