@@ -13,6 +13,13 @@ public class ModuleModel extends AbstractModel<Module> {
     private ModuleTypeEnum moduleType;
     private StorageTypeEnum storageType;
 
+    public ModuleModel() {
+    }
+
+    public ModuleModel(Module module) {
+        this.fromEntity(module);
+    }
+
     public String getId() {
         return id;
     }
@@ -59,5 +66,24 @@ public class ModuleModel extends AbstractModel<Module> {
 
     public void setStorageType(StorageTypeEnum storageType) {
         this.storageType = storageType;
+    }
+
+    public void fromEntity(Module module) {
+        if (module == null) {
+            return;
+        }
+        this.setId(module.getId());
+        this.setCode(module.getCode());
+        this.setName(module.getName());
+        this.setDescription(module.getDescription());
+    }
+
+    public Module toEntity() {
+        Module module = new Module();
+        module.setId(this.getId());
+        module.setCode(this.getCode());
+        module.setName(this.getName());
+        module.setDescription(this.getDescription());
+        return module;
     }
 }

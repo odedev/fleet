@@ -155,13 +155,7 @@
   <!--    WHERE id=#{id} AND updated_count=#{updatedCount, jdbcType=INTEGER}-->
   <!--  </update>-->
 
-  <update id="deleteOne">
-    UPDATE `develop_app`
-    <include refid="deleteColumn"/>
-    WHERE id=#{id}
-  </update>
-
-  <delete id="removeOne" parameterType="java.lang.String">
+  <delete id="deleteOne" parameterType="java.lang.String">
     DELETE FROM `develop_app` WHERE id=#{id}
   </delete>
 
@@ -171,26 +165,6 @@
       ${where}
     </if>
     LIMIT 1
-  </select>
-
-  <select id="exist" resultType="java.lang.Integer">
-    SELECT COUNT(1) FROM `develop_app`
-    <if test="where != null and where != ''">
-      ${where}
-    </if>
-    LIMIT 1
-  </select>
-
-  <select id="findIndex" resultType="java.lang.Integer">
-    SELECT num FROM (
-    SELECT D.id, (@row_number:=@row_number+1) as num FROM (SELECT `develop_app`.id FROM `develop_app`
-    <if test="where != null and where != ''">
-      ${where}
-    </if>
-    <if test="order != null and order != ''">
-      ORDER BY ${order}
-    </if>
-    ) AS D, (SELECT @row_number:=-1) as T) as A WHERE A.id=#{id} LIMIT 1
   </select>
 
 </mapper>

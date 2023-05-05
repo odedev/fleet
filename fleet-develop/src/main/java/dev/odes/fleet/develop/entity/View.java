@@ -7,7 +7,7 @@ public class View extends AbstractEntity {
     private String code;
     private String name;
     private String path;
-    private Integer sn;
+    private Integer sequence;
     private Boolean isMasterView;
     private String parent;
     private String module;
@@ -44,12 +44,12 @@ public class View extends AbstractEntity {
         this.path = path;
     }
 
-    public Integer getSn() {
-        return sn;
+    public Integer getSequence() {
+        return sequence;
     }
 
-    public void setSn(Integer sn) {
-        this.sn = sn;
+    public void setSequence(Integer sequence) {
+        this.sequence = sequence;
     }
 
     public Boolean getIsMasterView() {

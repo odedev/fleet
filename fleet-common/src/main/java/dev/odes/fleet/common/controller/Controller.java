@@ -9,13 +9,15 @@ import java.util.List;
 
 public interface Controller<E extends AbstractEntity, M extends AbstractModel<E>> {
 
-    ResponseData find(Parameter parameter);
+    ResponseData findById(String id);
+
+    ResponseData findOne(Parameter parameter);
+
+    ResponseData findMany(Parameter parameter);
 
     ResponseData findPage(Parameter parameter);
 
     ResponseData findTree(Parameter parameter);
-
-    ResponseData findById(String id);
 
     ResponseData insertOne(M m);
 

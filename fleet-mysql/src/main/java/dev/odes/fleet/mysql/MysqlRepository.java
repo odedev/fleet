@@ -27,7 +27,7 @@ public class MysqlRepository<E extends AbstractEntity, M extends GenericMapper<E
         String order = "";
         Integer pageNum = 1;
         Integer pageSize = 10;
-        PageHelper.startPage(pageNum, pageSize);
+        PageHelper.startPage(pageNum.intValue(), pageSize.intValue());
         return this.mapper.find(where, order);
     }
 
@@ -39,14 +39,17 @@ public class MysqlRepository<E extends AbstractEntity, M extends GenericMapper<E
 
     @Override
     public E findById(String id) {
-        String where = "";
+        if (id == null || id.isEmpty()) {
+            return null;
+        }
+        String where = "id=" + id;
         return this.mapper.findOne(where);
     }
 
     @Override
     public E insertOne(E e) {
         this.mapper.insertOne(e);
-        return null;
+        return e;
     }
 
     @Override
@@ -56,7 +59,7 @@ public class MysqlRepository<E extends AbstractEntity, M extends GenericMapper<E
 
     @Override
     public E updateOne(E e) {
-        this.mapper.insertOne(e);
+        this.mapper.updateOne(e);
         return null;
     }
 

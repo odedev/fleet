@@ -17,11 +17,13 @@ public class ModuleService extends AbstractService<Module, ModuleModel, ModuleRe
 
     @Override
     public ModuleModel transform(Module module) {
-        return null;
+        ModuleModel moduleModel = new ModuleModel(module);
+        return moduleModel;
     }
 
     @Override
     public Module transform(ModuleModel moduleModel) {
-        return null;
+        Module module = moduleModel.toEntity();
+        return module;
     }
 }

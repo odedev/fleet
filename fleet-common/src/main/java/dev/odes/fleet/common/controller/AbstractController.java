@@ -6,8 +6,11 @@ import dev.odes.fleet.common.parameter.Parameter;
 import dev.odes.fleet.common.repository.Repository;
 import dev.odes.fleet.common.response.ResponseData;
 import dev.odes.fleet.common.service.AbstractService;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 
@@ -19,61 +22,87 @@ public abstract class AbstractController<E extends AbstractEntity, M extends Abs
     }
 
     @Override
+    @GetMapping(path = "/find/{id}")
+    public ResponseData findById(@PathVariable String id) {
+        M m = this.service.findById(id);
+        return new ResponseData(m);
+    }
+
+    @Override
     @PostMapping(path = "/find")
-    public ResponseData find(Parameter parameter) {
+    public ResponseData findOne(@RequestBody Parameter parameter) {
+        M m = this.service.findOne(parameter);
+        return new ResponseData(m);
+    }
+
+    @Override
+    @PostMapping(path = "/find/many")
+    public ResponseData findMany(@RequestBody Parameter parameter) {
         List<M> mList = this.service.find(parameter);
-        return null;
+        return new ResponseData(mList);
     }
 
     @Override
-    @PostMapping(path = "/page")
-    public ResponseData findPage(Parameter parameter) {
-        return null;
+    @PostMapping(path = "/find/page")
+    public ResponseData findPage(@RequestBody Parameter parameter) {
+        List<M> mList = this.service.findPage(parameter);
+        return new ResponseData(mList);
     }
 
     @Override
-    @PostMapping(path = "/tree")
-    public ResponseData findTree(Parameter parameter) {
-        return null;
+    @PostMapping(path = "/find/tree")
+    public ResponseData findTree(@RequestBody Parameter parameter) {
+        List<M> mList = this.service.findTree(parameter);
+        return new ResponseData(mList);
     }
 
     @Override
-    public ResponseData findById(String id) {
-        return null;
+    @Transactional
+    @PostMapping(path = "/insert")
+    public ResponseData insertOne(@RequestBody M m) {
+        M one = this.service.insertOne(m);
+        return new ResponseData(one);
     }
 
     @Override
-    public ResponseData insertOne(M m) {
-        return null;
+    @Transactional
+    @PostMapping(path = "/insert/many")
+    public ResponseData insertMany(@RequestBody List<M> list) {
+        return new ResponseData(list);
     }
 
     @Override
-    public ResponseData insertMany(List<M> list) {
-        return null;
+    @Transactional
+    @PostMapping(path = "/update")
+    public ResponseData updateOne(@RequestBody M m) {
+        M one = this.service.updateOne(m);
+        return new ResponseData(one);
     }
 
     @Override
-    public ResponseData updateOne(M m) {
-        return null;
+    @Transactional
+    @PostMapping(path = "/update/many")
+    public ResponseData updateMany(@RequestBody List<M> list) {
+        return new ResponseData(list);
     }
 
     @Override
-    public ResponseData updateMany(List<M> list) {
-        return null;
+    @Transactional
+    @PostMapping(path = "/delete")
+    public ResponseData deleteOne(@RequestBody M m) {
+        return new ResponseData(m);
     }
 
     @Override
-    public ResponseData deleteOne(M m) {
-        return null;
+    @Transactional
+    @PostMapping(path = "/delete/many")
+    public ResponseData deleteMany(@RequestBody List<M> list) {
+        return new ResponseData(list);
     }
 
     @Override
-    public ResponseData deleteMany(List<M> list) {
-        return null;
-    }
-
-    @Override
-    public Integer count(Parameter parameter) {
+    @PostMapping(path = "/count")
+    public Integer count(@RequestBody Parameter parameter) {
         return null;
     }
 }
