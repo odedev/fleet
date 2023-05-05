@@ -38,17 +38,23 @@ public abstract class AbstractService<E extends AbstractEntity, M extends Abstra
 
     @Override
     public M findOne(Parameter parameter) {
-        return null;
+        E e = this.repository.findOne(parameter);
+        M m = transform(e);
+        return m;
     }
 
     @Override
     public M findById(String id) {
-        return null;
+        E e = this.repository.findById(id);
+        M m = transform(e);
+        return m;
     }
 
     @Override
     public M insertOne(M m) {
-        return null;
+        E e = transform(m);
+        this.repository.insertOne(e);
+        return m;
     }
 
     @Override
@@ -58,7 +64,9 @@ public abstract class AbstractService<E extends AbstractEntity, M extends Abstra
 
     @Override
     public M updateOne(M m) {
-        return null;
+        E e = transform(m);
+        this.repository.updateOne(e);
+        return m;
     }
 
     @Override
@@ -68,7 +76,9 @@ public abstract class AbstractService<E extends AbstractEntity, M extends Abstra
 
     @Override
     public M deleteOne(M m) {
-        return null;
+        E e = transform(m);
+        this.repository.deleteOne(e);
+        return m;
     }
 
     @Override
@@ -78,6 +88,6 @@ public abstract class AbstractService<E extends AbstractEntity, M extends Abstra
 
     @Override
     public Integer count(Parameter parameter) {
-        return null;
+        return this.repository.count(parameter);
     }
 }

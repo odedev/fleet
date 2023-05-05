@@ -56,6 +56,7 @@ public class MysqlRepository<E extends AbstractEntity, M extends GenericMapper<E
 
     @Override
     public E updateOne(E e) {
+        this.mapper.insertOne(e);
         return null;
     }
 
@@ -66,6 +67,7 @@ public class MysqlRepository<E extends AbstractEntity, M extends GenericMapper<E
 
     @Override
     public E deleteOne(E e) {
+        this.mapper.deleteOne(e);
         return null;
     }
 
@@ -76,6 +78,7 @@ public class MysqlRepository<E extends AbstractEntity, M extends GenericMapper<E
 
     @Override
     public Integer count(Parameter parameter) {
-        return null;
+        String where = "";
+        return this.mapper.count(where);
     }
 }
