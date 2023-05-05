@@ -15,59 +15,11 @@ import java.util.List;
 @RestController
 @RequestMapping(path = "/develop/app")
 public class AppController extends AbstractController<App, AppModel, AppRepository, AppService> {
-
+    private final AppService appService;
 
     public AppController(AppService appService) {
         super(appService);
+        this.appService = appService;
     }
 
-    @Override
-    public ResponseData findPage(Parameter parameter) {
-        return null;
-    }
-
-    @Override
-    public ResponseData findTree(Parameter parameter) {
-        return null;
-    }
-
-    @Override
-    public ResponseData findById(String id) {
-        return null;
-    }
-
-    @Override
-    public ResponseData insertOne(AppModel appModel) {
-        return null;
-    }
-
-    @Override
-    public ResponseData insertMany(List<AppModel> list) {
-        return null;
-    }
-
-    @Override
-    public ResponseData updateOne(AppModel appModel) {
-        return null;
-    }
-
-    @Override
-    public ResponseData updateMany(List<AppModel> list) {
-        return null;
-    }
-
-    @Override
-    public ResponseData deleteOne(AppModel appModel) {
-        return null;
-    }
-
-    @Override
-    public ResponseData deleteMany(List<AppModel> list) {
-        return null;
-    }
-
-    @Override
-    public Integer count(Parameter parameter) {
-        return null;
-    }
 }

@@ -6,7 +6,7 @@ public class App extends AbstractEntity {
     private String id;
     private String code;
     private String name;
-    private Integer port;
+    private String port;
     private String description;
 
 }

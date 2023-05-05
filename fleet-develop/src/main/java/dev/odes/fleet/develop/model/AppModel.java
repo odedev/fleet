@@ -8,4 +8,5 @@ public class AppModel extends AbstractModel<App> {
     private String code;
     private String name;
     private String port;
+    private String description;
 }

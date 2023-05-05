@@ -12,7 +12,4 @@ public class AppRepository extends MysqlRepository<App, AppMapper> {
         super(appMapper);
     }
 
-    public App findOne() {
-        return null;
-    }
 }

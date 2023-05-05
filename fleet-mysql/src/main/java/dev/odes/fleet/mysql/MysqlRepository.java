@@ -8,7 +8,7 @@ import dev.odes.fleet.common.repository.Repository;
 import java.util.List;
 
 public class MysqlRepository<E extends AbstractEntity, M extends GenericMapper<E>> implements Repository<E> {
-    private M mapper;
+    private final M mapper;
 
     public MysqlRepository(M mapper) {
         this.mapper = mapper;
