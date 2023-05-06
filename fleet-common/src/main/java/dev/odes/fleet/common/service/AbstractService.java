@@ -4,6 +4,7 @@ import dev.odes.fleet.common.entity.AbstractEntity;
 import dev.odes.fleet.common.model.AbstractModel;
 import dev.odes.fleet.common.parameter.Parameter;
 import dev.odes.fleet.common.repository.Repository;
+import dev.odes.fleet.common.utils.IDUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,6 +53,7 @@ public abstract class AbstractService<E extends AbstractEntity, M extends Abstra
 
     @Override
     public M insertOne(M m) {
+        _beforeInsert(m);
         E e = transform(m);
         this.repository.insertOne(e);
         return m;
@@ -89,5 +91,14 @@ public abstract class AbstractService<E extends AbstractEntity, M extends Abstra
     @Override
     public Integer count(Parameter parameter) {
         return this.repository.count(parameter);
+    }
+
+    private void _beforeInsert(M m) {
+        if (m.getId() == null) {
+            m.setId(IDUtils.getID());
+        }
+    }
+
+    private void _beforeInsert(E e) {
     }
 }
