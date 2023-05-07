@@ -8,13 +8,6 @@ import dev.odes.fleet.develop.model.EnumerationValueModel;
 import dev.odes.fleet.develop.repository.EnumerationRepository;
 import org.springframework.stereotype.Component;
 
-/**
- * package: dev.odes.fleet.develop.transform
- * class: EnumerationValueTransform
- * date: 2023/5/7 13:35
- * version: 1.0.0
- * description:
- */
 @Component
 public class EnumerationValueTransform implements Transform<EnumerationValue, EnumerationValueModel> {
     private final EnumerationRepository enumerationRepository;

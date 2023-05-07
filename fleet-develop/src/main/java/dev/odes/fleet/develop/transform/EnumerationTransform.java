@@ -11,13 +11,6 @@ import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * package: dev.odes.fleet.develop.transform
- * class: EnumerationTransform
- * date: 2023/5/7 13:25
- * version: 1.0.0
- * description:
- */
 @Component
 public class EnumerationTransform implements Transform<Enumeration, EnumerationModel> {
     private final EnumerationValueRepository enumerationValueRepository;
