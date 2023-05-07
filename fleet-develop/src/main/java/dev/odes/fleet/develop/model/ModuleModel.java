@@ -68,6 +68,7 @@ public class ModuleModel extends AbstractModel<Module> {
         this.storageType = storageType;
     }
 
+    @Override
     public void fromEntity(Module module) {
         if (module == null) {
             return;
@@ -76,14 +77,19 @@ public class ModuleModel extends AbstractModel<Module> {
         this.setCode(module.getCode());
         this.setName(module.getName());
         this.setDescription(module.getDescription());
+        this.setModuleType(ModuleTypeEnum.getByValue(module.getModuleType()));
+        this.setStorageType(StorageTypeEnum.getByValue(module.getStorageType()));
     }
 
+    @Override
     public Module toEntity() {
         Module module = new Module();
         module.setId(this.getId());
         module.setCode(this.getCode());
         module.setName(this.getName());
         module.setDescription(this.getDescription());
+        module.setModuleType(this.getModuleType().getValue());
+        module.setStorageType(this.getStorageType().getValue());
         return module;
     }
 }

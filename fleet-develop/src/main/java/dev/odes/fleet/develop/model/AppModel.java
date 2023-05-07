@@ -10,6 +10,13 @@ public class AppModel extends AbstractModel<App> {
     private String port;
     private String description;
 
+    public AppModel() {
+    }
+
+    public AppModel(App app) {
+        this.fromEntity(app);
+    }
+
     @Override
     public String getId() {
         return id;
@@ -50,5 +57,15 @@ public class AppModel extends AbstractModel<App> {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    @Override
+    public void fromEntity(App app) {
+
+    }
+
+    @Override
+    public App toEntity() {
+        return null;
     }
 }

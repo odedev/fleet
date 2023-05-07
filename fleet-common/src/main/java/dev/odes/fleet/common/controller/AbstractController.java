@@ -68,7 +68,8 @@ public abstract class AbstractController<E extends AbstractEntity, M extends Abs
     @Transactional
     @PostMapping(path = "/insert/many")
     public ResponseData insertMany(@RequestBody List<M> list) {
-        return new ResponseData(list);
+        List<M> mList = this.service.insertMany(list);
+        return new ResponseData(mList);
     }
 
     @Override
@@ -83,26 +84,30 @@ public abstract class AbstractController<E extends AbstractEntity, M extends Abs
     @Transactional
     @PostMapping(path = "/update/many")
     public ResponseData updateMany(@RequestBody List<M> list) {
-        return new ResponseData(list);
+        List<M> mList = this.service.updateMany(list);
+        return new ResponseData(mList);
     }
 
     @Override
     @Transactional
     @PostMapping(path = "/delete")
     public ResponseData deleteOne(@RequestBody M m) {
-        return new ResponseData(m);
+        M one = this.service.deleteOne(m);
+        return new ResponseData(one);
     }
 
     @Override
     @Transactional
     @PostMapping(path = "/delete/many")
     public ResponseData deleteMany(@RequestBody List<M> list) {
-        return new ResponseData(list);
+        List<M> mList = this.service.deleteMany(list);
+        return new ResponseData(mList);
     }
 
     @Override
     @PostMapping(path = "/count")
-    public Integer count(@RequestBody Parameter parameter) {
-        return null;
+    public ResponseData count(@RequestBody Parameter parameter) {
+        Integer count = this.service.count(parameter);
+        return new ResponseData(count);
     }
 }

@@ -34,18 +34,14 @@ public class IDUtils {
     }
 
     public static String getSnowflakeID() {
-        String id = "";
-        id = IdUtil.getSnowflakeNextIdStr();
-        return id;
+        return IdUtil.getSnowflakeNextIdStr();
     }
 
     public static String getObjectID() {
-        String id = IdUtil.objectId();
-        return id;
+        return IdUtil.objectId();
     }
 
     public static String getNanoID() {
-        String id = IdUtil.nanoId();
-        return id;
+        return IdUtil.nanoId();
     }
 }

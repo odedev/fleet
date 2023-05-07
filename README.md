@@ -33,11 +33,12 @@ ViewRepository
 ViewModel
 View
 
-TypeEnum
 
 ViewMapper
 ViewMapper.xml
 
+
+TypeEnum
 
 
 abstract

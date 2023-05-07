@@ -10,10 +10,12 @@ public class Module extends AbstractEntity {
     private Integer moduleType;
     private Integer storageType;
 
+    @Override
     public String getId() {
         return id;
     }
 
+    @Override
     public void setId(String id) {
         this.id = id;
     }

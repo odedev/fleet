@@ -24,4 +24,10 @@ public interface Service<E extends AbstractEntity, M extends AbstractModel<E>> {
 
     Integer count(Parameter parameter);
 
+    default void setDefaultValue(M m) {}
+    default void validate(M m) {}
+    default void beforeInsert(M m){}
+    default void beforeUpdate(M m) {}
+    default void beforeDelete(M m) {}
+
 }

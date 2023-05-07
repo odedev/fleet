@@ -31,5 +31,5 @@ public interface Controller<E extends AbstractEntity, M extends AbstractModel<E>
 
     ResponseData deleteMany(List<M> list);
 
-    Integer count(Parameter parameter);
+    ResponseData count(Parameter parameter);
 }

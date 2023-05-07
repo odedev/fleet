@@ -13,7 +13,7 @@ public interface GenericMapper<T> {
 
     public void updateOne(T t);
 
-    public void deleteOne(T t);
+    public void deleteOne(@Param("id") String id);
 
     public Integer count(@Param("where") String where);
 }

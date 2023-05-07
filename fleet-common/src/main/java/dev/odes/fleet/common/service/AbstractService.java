@@ -5,8 +5,10 @@ import dev.odes.fleet.common.model.AbstractModel;
 import dev.odes.fleet.common.parameter.Parameter;
 import dev.odes.fleet.common.repository.Repository;
 import dev.odes.fleet.common.utils.IDUtils;
+import dev.odes.fleet.common.utils.StringUtils;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public abstract class AbstractService<E extends AbstractEntity, M extends AbstractModel<E>, R extends Repository<E>> implements Service<E, M> {
@@ -21,7 +23,7 @@ public abstract class AbstractService<E extends AbstractEntity, M extends Abstra
 
     @Override
     public List<M> find(Parameter parameter) {
-        List<E> eList = this.repository.find(parameter);
+        List<E> eList = this.repository.findMany(parameter);
         List<M> mList = new ArrayList<>();
         eList.forEach(e -> mList.add(transform(e)));
         return mList;
@@ -29,63 +31,98 @@ public abstract class AbstractService<E extends AbstractEntity, M extends Abstra
 
     @Override
     public List<M> findPage(Parameter parameter) {
-        return null;
+        List<E> eList = this.repository.findPage(parameter);
+        List<M> mList = new ArrayList<>();
+        eList.forEach(e -> mList.add(transform(e)));
+        return mList;
     }
 
     @Override
     public List<M> findTree(Parameter parameter) {
-        return null;
+        List<E> eList = this.repository.findMany(parameter);
+        List<M> mList = new ArrayList<>();
+        eList.forEach(e -> mList.add(transform(e)));
+        // TODO TREE 结构
+        return mList;
     }
 
     @Override
     public M findOne(Parameter parameter) {
         E e = this.repository.findOne(parameter);
-        M m = transform(e);
-        return m;
+        return this._transform(e);
     }
 
     @Override
     public M findById(String id) {
-        E e = this.repository.findById(id);
-        M m = transform(e);
-        return m;
+        E e = this.repository.findOneById(id);
+        return this._transform(e);
     }
 
     @Override
     public M insertOne(M m) {
-        _beforeInsert(m);
-        E e = transform(m);
+        this._setDefaultValue(m);
+        this._validate(m);
+        this._beforeInsert(m);
+        E e = this._transform(m);
+        this._beforeInsert(e);
         this.repository.insertOne(e);
         return m;
     }
 
     @Override
     public List<M> insertMany(List<M> list) {
-        return null;
+        List<E> eList = new ArrayList<>();
+        list.forEach(m -> {
+            this._setDefaultValue(m);
+            this._validate(m);
+            this._beforeInsert(m);
+            E e = this._transform(m);
+            this._beforeInsert(e);
+            eList.add(e);
+        });
+        this.repository.insertMany(eList);
+        return list;
     }
 
     @Override
     public M updateOne(M m) {
-        E e = transform(m);
+        this._beforeUpdate(m);
+        E e = this._transform(m);
+        this._beforeUpdate(e);
         this.repository.updateOne(e);
         return m;
     }
 
     @Override
     public List<M> updateMany(List<M> list) {
-        return null;
+        List<E> eList = new ArrayList<>();
+        list.forEach(m -> {
+            this._beforeUpdate(m);
+            E e = this._transform(m);
+            this._beforeUpdate(e);
+            eList.add(e);
+        });
+        this.repository.updateMany(eList);
+        return list;
     }
 
     @Override
     public M deleteOne(M m) {
-        E e = transform(m);
+        this._beforeDelete(m);
+        E e = this._transform(m);
         this.repository.deleteOne(e);
         return m;
     }
 
     @Override
     public List<M> deleteMany(List<M> list) {
-        return null;
+        List<E> eList = new ArrayList<>();
+        list.forEach(m -> {
+            this._beforeDelete(m);
+            eList.add(this._transform(m));
+        });
+        this.repository.deleteMany(eList);
+        return list;
     }
 
     @Override
@@ -93,12 +130,48 @@ public abstract class AbstractService<E extends AbstractEntity, M extends Abstra
         return this.repository.count(parameter);
     }
 
+    private M _transform(E e) {
+        if (e == null) {
+            return null;
+        }
+        return this.transform(e);
+    }
+
+    private E _transform(M m) {
+        if (m == null) {
+            return null;
+        }
+        return this.transform(m);
+    }
+
+    private void _setDefaultValue(M m) {
+        this.setDefaultValue(m);
+    }
+
+    private void _validate(M m) {
+        this.validate(m);
+    }
+
     private void _beforeInsert(M m) {
-        if (m.getId() == null) {
+        this.beforeInsert(m);
+        if (StringUtils.isNullOrEmpty(m.getId())) {
             m.setId(IDUtils.getID());
         }
     }
 
+    private void _beforeUpdate(M m) {
+        this.beforeUpdate(m);
+    }
+
+    private void _beforeDelete(M m) {
+        this.beforeDelete(m);
+    }
+
     private void _beforeInsert(E e) {
+        e.setCreatedAt(new Date());
+    }
+
+    private void _beforeUpdate(E e) {
+        e.setUpdatedAt(new Date());
     }
 }

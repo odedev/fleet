@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="dev.odes.celerity.core.develop.infrastructure.mapper.ModuleMapper">
+<mapper namespace="dev.odes.fleet.core.uc.mapper.UserMapper">
   <sql id="tableColumn">
     `develop_module`.`id`,
     `develop_module`.`code`,
@@ -93,7 +93,7 @@
     </trim>
   </sql>
 
-  <resultMap id="resultMap" type="dev.odes.celerity.core.develop.domain.entity.Module">
+  <resultMap id="resultMap" type="dev.odes.fleet.core.uc.entity.User">
     <id property="id" column="id"/>
     <result property="code" column="code"/>
     <result property="name" column="name"/>
@@ -104,7 +104,7 @@
     <result property="isAdmin" column="is_admin"/>
   </resultMap>
 
-  <select id="findOne" resultMap="resultMap" resultType="dev.odes.celerity.core.develop.domain.entity.Module">
+  <select id="findOne" resultMap="resultMap" resultType="dev.odes.fleet.core.uc.entity.User">
     SELECT
     <include refid="column"/>
     FROM `develop_module`
@@ -128,7 +128,7 @@
     LIMIT 1
   </select>
 
-  <select id="findMany" resultMap="resultMap" resultType="dev.odes.celerity.core.develop.domain.entity.Module">
+  <select id="findMany" resultMap="resultMap" resultType="dev.odes.fleet.core.uc.entity.User">
     SELECT
     <include refid="column"/>
     FROM `develop_module`
@@ -150,7 +150,7 @@
     </choose>
   </select>
 
-  <select id="findAll" resultMap="resultMap" resultType="dev.odes.celerity.core.develop.domain.entity.Module">
+  <select id="findAll" resultMap="resultMap" resultType="dev.odes.fleet.core.uc.entity.User">
     SELECT
     <include refid="column"/>
     FROM `develop_module`
@@ -172,7 +172,7 @@
     </choose>
   </select>
 
-  <insert id="insertOne" parameterType="dev.odes.celerity.core.develop.domain.entity.Module">
+  <insert id="insertOne" parameterType="dev.odes.fleet.core.uc.entity.User">
     INSERT INTO `develop_module`
     (<include refid="insertColumn"/>)
     VALUES
@@ -188,7 +188,7 @@
     </foreach>
   </insert>
 
-  <update id="updateOne" parameterType="dev.odes.celerity.core.develop.domain.entity.Module">
+  <update id="updateOne" parameterType="dev.odes.fleet.core.uc.entity.User">
     UPDATE `develop_module`
     <include refid="updateColumn"/>
     WHERE id=#{id}
@@ -202,13 +202,7 @@
   <!--    WHERE id=#{id} AND updated_count=#{updatedCount, jdbcType=INTEGER}-->
   <!--  </update>-->
 
-  <update id="deleteOne">
-    UPDATE `develop_module`
-    <include refid="deleteColumn"/>
-    WHERE id=#{id}
-  </update>
-
-  <delete id="removeOne" parameterType="java.lang.String">
+  <delete id="deleteOne" parameterType="java.lang.String">
     DELETE FROM `develop_module` WHERE id=#{id}
   </delete>
 
@@ -226,18 +220,6 @@
       ${where}
     </if>
     LIMIT 1
-  </select>
-
-  <select id="findIndex" resultType="java.lang.Integer">
-    SELECT num FROM (
-    SELECT D.id, (@row_number:=@row_number+1) as num FROM (SELECT `develop_module`.id FROM `develop_module`
-    <if test="where != null and where != ''">
-      ${where}
-    </if>
-    <if test="order != null and order != ''">
-      ORDER BY ${order}
-    </if>
-    ) AS D, (SELECT @row_number:=-1) as T) as A WHERE A.id=#{id} LIMIT 1
   </select>
 
 </mapper>

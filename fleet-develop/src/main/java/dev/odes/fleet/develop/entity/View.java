@@ -1,21 +1,25 @@
 package dev.odes.fleet.develop.entity;
 
 import dev.odes.fleet.common.entity.AbstractEntity;
+import dev.odes.fleet.develop.enumeration.ViewTypeEnum;
 
 public class View extends AbstractEntity {
     private String id;
     private String code;
     private String name;
     private String path;
-    private Integer sequence;
+    private String sequence;
     private Boolean isMasterView;
+    private Integer viewType;
     private String parent;
     private String module;
 
+    @Override
     public String getId() {
         return id;
     }
 
+    @Override
     public void setId(String id) {
         this.id = id;
     }
@@ -44,11 +48,11 @@ public class View extends AbstractEntity {
         this.path = path;
     }
 
-    public Integer getSequence() {
+    public String getSequence() {
         return sequence;
     }
 
-    public void setSequence(Integer sequence) {
+    public void setSequence(String sequence) {
         this.sequence = sequence;
     }
 

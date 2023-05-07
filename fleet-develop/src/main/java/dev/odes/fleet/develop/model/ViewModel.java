@@ -2,6 +2,7 @@ package dev.odes.fleet.develop.model;
 
 import dev.odes.fleet.common.model.AbstractModel;
 import dev.odes.fleet.develop.entity.View;
+import dev.odes.fleet.develop.enumeration.ViewTypeEnum;
 
 import java.util.List;
 
@@ -10,8 +11,9 @@ public class ViewModel extends AbstractModel<View> {
     private String code;
     private String name;
     private String path;
-    private Integer sequence;
+    private String sequence;
     private Boolean isMasterView;
+    private ViewTypeEnum viewType;
     private ViewModel parent;
     private ModuleModel module;
 
@@ -56,11 +58,11 @@ public class ViewModel extends AbstractModel<View> {
         this.path = path;
     }
 
-    public Integer getSequence() {
+    public String getSequence() {
         return sequence;
     }
 
-    public void setSequence(Integer sequence) {
+    public void setSequence(String sequence) {
         this.sequence = sequence;
     }
 
@@ -116,6 +118,7 @@ public class ViewModel extends AbstractModel<View> {
         this.children = children;
     }
 
+    @Override
     public void fromEntity(View view) {
         if (view == null) {
             return;
@@ -130,6 +133,7 @@ public class ViewModel extends AbstractModel<View> {
         this.setModule(view.getModule());
     }
 
+    @Override
     public View toEntity() {
         View view = new View();
         view.setId(this.getId());

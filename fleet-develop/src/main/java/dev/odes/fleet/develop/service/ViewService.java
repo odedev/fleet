@@ -27,8 +27,8 @@ public class ViewService extends AbstractService<View, ViewModel, ViewRepository
         }
         ViewModel viewModel = new ViewModel(view);
 
-        Module module = this.moduleRepository.findById(view.getModule());
-        View parentView = this.viewRepository.findById(view.getParent());
+        Module module = this.moduleRepository.findOneById(view.getModule());
+        View parentView = this.viewRepository.findOneById(view.getParent());
         if (module == null) {
             viewModel.setModule((ModuleModel) null);
         } else {

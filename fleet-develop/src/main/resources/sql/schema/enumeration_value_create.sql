@@ -1,10 +1,8 @@
-CREATE TABLE IF NOT EXISTS `develop_module` (
+CREATE TABLE IF NOT EXISTS `develop_enumeration_value` (
     `id` VARCHAR(32) NOT NULL COMMENT '主键ID',
-    `code` VARCHAR(32) NOT NULL COMMENT '编码',
+    `value` TINYINT NOT NULL DEFAULT '0' COMMENT '值',
     `name` VARCHAR(32) NOT NULL DEFAULT '' COMMENT '名称',
-    `description` VARCHAR(255) NULL DEFAULT '' COMMENT '描述',
-    `module_type` TINYINT NULL DEFAULT '1' COMMENT '模块类型',
-    `storage_type` TINYINT NULL DEFAULT '0' COMMENT '存储类型',
+    `enumeration` VARCHAR(32) NOT NULL COMMENT '枚举',
     `created_by` VARCHAR(32) NULL DEFAULT NULL COMMENT '创建人ID',
     `created_at` DATETIME NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
     `updated_by` VARCHAR(32) NULL DEFAULT NULL COMMENT '更新人ID',
@@ -12,5 +10,5 @@ CREATE TABLE IF NOT EXISTS `develop_module` (
     `deleted_by` VARCHAR(32) NULL DEFAULT NULL COMMENT '删除人ID',
     `deleted_at` DATETIME NULL DEFAULT NULL COMMENT '删除时间',
     PRIMARY KEY (`id`),
-    UNIQUE INDEX `code` (`code`)
+    UNIQUE INDEX `code` (`value`)
 );

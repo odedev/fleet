@@ -26,6 +26,11 @@
   </properties>
 
   <dependencies>
+    <dependency>
+      <groupId>dev.odes</groupId>
+      <artifactId>fleet-mysql</artifactId>
+      <version>1.0.0</version>
+    </dependency>
   </dependencies>
 
 </project>

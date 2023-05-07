@@ -2,20 +2,16 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="dev.odes.fleet.develop.mapper.AppMapper">
+<mapper namespace="dev.odes.fleet.develop.mapper.EnumerationMapper">
   <sql id="tableColumn">
-    `develop_app`.`id`,
-    `develop_app`.`code`,
-    `develop_app`.`name`,
-    `develop_app`.`port`,
-    `develop_app`.`description`
+    `develop_enumeration`.`id`,
+    `develop_enumeration`.`code`,
+    `develop_enumeration`.`name`
   </sql>
   <sql id="column">
     `id`,
     `code`,
-    `name`,
-    `port`,
-    `description`
+    `name`
   </sql>
 
   <sql id="insertColumn">
@@ -23,8 +19,6 @@
       `id`,
       <if test="code != null">`code`,</if>
       <if test="name != null">`name`,</if>
-      <if test="port != null">`port`,</if>
-      <if test="description != null">`description`,</if>
     </trim>
   </sql>
   <sql id="insertValue">
@@ -32,17 +26,13 @@
       #{id},
       <if test="code != null">#{code},</if>
       <if test="name != null">#{name},</if>
-      <if test="port != null">#{port},</if>
-      <if test="description != null">#{description},</if>
     </trim>
   </sql>
   <sql id="insertEntityValue">
     <trim suffixOverrides=",">
-      #{app.id},
-      <if test="app.code != null">#{app.code},</if>
-      <if test="app.name != null">#{app.name},</if>
-      <if test="app.port != null">#{app.port},</if>
-      <if test="app.description != null">#{app.description},</if>
+      #{enumeration.id},
+      <if test="enumeration.code != null">#{enumeration.code},</if>
+      <if test="enumeration.name != null">#{enumeration.name},</if>
     </trim>
   </sql>
 
@@ -50,22 +40,12 @@
     <trim prefix="set" suffixOverrides=",">
       <if test="code != null">`code` = #{code},</if>
       <if test="name != null">`name` = #{name},</if>
-      <if test="email != null">`email` = #{email},</if>
-      <if test="phone != null">`phone` = #{phone},</if>
-      <if test="type != null">`type` = #{type},</if>
-      <if test="status != null">`status` = #{status},</if>
-      <if test="isAdmin != null">`is_admin` = #{isAdmin},</if>
     </trim>
   </sql>
   <sql id="updateEntityColumn">
     <trim prefix="set" suffixOverrides=",">
-      <if test="app.code != null">`code` = #{app.code},</if>
-      <if test="app.name != null">`name` = #{app.name},</if>
-      <if test="app.email != null">`email` = #{app.email},</if>
-      <if test="app.phone != null">`phone` = #{app.phone},</if>
-      <if test="app.type != null">`type` = #{app.type},</if>
-      <if test="app.status != null">`status` = #{app.status},</if>
-      <if test="app.isAdmin != null">`is_admin` = #{app.isAdmin},</if>
+      <if test="enumeration.code != null">`code` = #{enumeration.code},</if>
+      <if test="enumeration.name != null">`name` = #{enumeration.name},</if>
     </trim>
   </sql>
 
@@ -76,25 +56,20 @@
   </sql>
   <sql id="deleteEntityColumn">
     <trim prefix="set" suffixOverrides=",">
-      <if test="app.deletedAt != null">`deleted_at` = #{app.deletedAt},</if>
+      <if test="enumeration.deletedAt != null">`deleted_at` = #{enumeration.deletedAt},</if>
     </trim>
   </sql>
 
-  <resultMap id="resultMap" type="dev.odes.fleet.develop.entity.App">
+  <resultMap id="resultMap" type="dev.odes.fleet.develop.entity.Enumeration">
     <id property="id" column="id"/>
     <result property="code" column="code"/>
     <result property="name" column="name"/>
-    <result property="email" column="email"/>
-    <result property="phone" column="phone"/>
-    <result property="type" column="type"/>
-    <result property="status" column="status"/>
-    <result property="isAdmin" column="is_admin"/>
   </resultMap>
 
-  <select id="find" resultMap="resultMap" resultType="dev.odes.fleet.develop.entity.App">
+  <select id="find" resultMap="resultMap" resultType="dev.odes.fleet.develop.entity.Enumeration">
     SELECT
     <include refid="column"/>
-    FROM `develop_app`
+    FROM `develop_enumeration`
     <if test="where != null and where != ''">
       <where>
         ${where}
@@ -113,10 +88,10 @@
     </choose>
   </select>
 
-  <select id="findOne" resultMap="resultMap" resultType="dev.odes.fleet.develop.entity.App">
+  <select id="findOne" resultMap="resultMap" resultType="dev.odes.fleet.develop.entity.Enumeration">
     SELECT
     <include refid="column"/>
-    FROM `develop_app`
+    FROM `develop_enumeration`
     <if test="where != null and where != ''">
       <where>
         ${where}
@@ -125,24 +100,24 @@
     LIMIT 1
   </select>
 
-  <insert id="insertOne" parameterType="dev.odes.fleet.develop.entity.App">
-    INSERT INTO `develop_app`
+  <insert id="insertOne" parameterType="dev.odes.fleet.develop.entity.Enumeration">
+    INSERT INTO `develop_enumeration`
     (<include refid="insertColumn"/>)
     VALUES
     (<include refid="insertValue"/>)
   </insert>
 
   <insert id="insertMany" parameterType="java.util.List">
-    INSERT INTO `develop_app`
+    INSERT INTO `develop_enumeration`
     (<include refid="insertColumn"/>)
     VALUES
-    <foreach collection="list" item="app" separator=",">
+    <foreach collection="list" item="enumeration" separator=",">
       (<include refid="insertEntityValue"/>)
     </foreach>
   </insert>
 
-  <update id="updateOne" parameterType="dev.odes.fleet.develop.entity.App">
-    UPDATE `develop_app`
+  <update id="updateOne" parameterType="dev.odes.fleet.develop.entity.Enumeration">
+    UPDATE `develop_enumeration`
     <include refid="updateColumn"/>
     WHERE id=#{id}
   </update>
@@ -156,11 +131,11 @@
   <!--  </update>-->
 
   <delete id="deleteOne" parameterType="java.lang.String">
-    DELETE FROM `develop_app` WHERE id=#{id}
+    DELETE FROM `develop_enumeration` WHERE id=#{id}
   </delete>
 
   <select id="count" resultType="java.lang.Integer">
-    SELECT COUNT(1) FROM `develop_app`
+    SELECT COUNT(1) FROM `develop_enumeration`
     <if test="where != null and where != ''">
       ${where}
     </if>

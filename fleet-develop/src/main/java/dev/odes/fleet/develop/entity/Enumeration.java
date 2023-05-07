@@ -2,12 +2,18 @@ package dev.odes.fleet.develop.entity;
 
 import dev.odes.fleet.common.entity.AbstractEntity;
 
-public class App extends AbstractEntity {
+/**
+ * package: dev.odes.fleet.develop.entity
+ * class: Enumeration
+ * date: 2023/5/6 20:42
+ * version: 1.0.0
+ * description:
+ */
+public class Enumeration extends AbstractEntity {
     private String id;
     private String code;
     private String name;
-    private String port;
-    private String description;
+    private String module;
 
     @Override
     public String getId() {
@@ -35,19 +41,11 @@ public class App extends AbstractEntity {
         this.name = name;
     }
 
-    public String getPort() {
-        return port;
+    public String getModule() {
+        return module;
     }
 
-    public void setPort(String port) {
-        this.port = port;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
+    public void setModule(String module) {
+        this.module = module;
     }
 }
