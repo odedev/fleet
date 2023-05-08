@@ -6,8 +6,8 @@ import java.util.Arrays;
 import java.util.Objects;
 
 public enum ModuleTypeEnum {
-    CORE(0, "CORE"),
-    MODULE(1, "MODULE");
+    CORE(0, "core"),
+    MODULE(1, "module");
 
     @JsonValue
     private final Integer value;

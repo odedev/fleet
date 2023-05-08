@@ -30,4 +30,6 @@ public class TemplateConstant {
 
     public static final String TARGET_ENUM = "Enum.java";
 
+    public static final String TARGET_POM = "pom.xml";
+
 }

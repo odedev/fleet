@@ -6,16 +6,16 @@
 
   <parent>
     <groupId>dev.odes</groupId>
-    <artifactId>fleet</artifactId>
+    <artifactId>fleet-module</artifactId>
     <version>1.0.0</version>
   </parent>
 
-  <artifactId>fleet-core</artifactId>
+  <artifactId>fleet-module-${templateContext.module.code.toLowerCase()}</artifactId>
   <version>1.0.0</version>
-  <name>fleet-core</name>
-  <description>Fleet core 不使用core, 全部放在 module 下</description>
+  <name>fleet-module-${templateContext.module.code.toLowerCase()}</name>
+  <description>${templateContext.module.name}</description>
 
-  <packaging>pom</packaging>
+  <packaging>jar</packaging>
 
   <properties>
     <java.version>17</java.version>
@@ -25,11 +25,12 @@
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
   </properties>
 
-  <modules>
-    <module>fleet-core-uc</module>
-  </modules>
-
   <dependencies>
+    <dependency>
+      <groupId>dev.odes</groupId>
+      <artifactId>fleet-mysql</artifactId>
+      <version>1.0.0</version>
+    </dependency>
   </dependencies>
 
 </project>
