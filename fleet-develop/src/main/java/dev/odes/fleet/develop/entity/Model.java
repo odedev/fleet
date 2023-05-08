@@ -7,6 +7,7 @@ public class Model extends AbstractEntity {
     private String code;
     private String name;
     private String description;
+    private String fullName;
     private String module;
 
     @Override
@@ -41,6 +42,14 @@ public class Model extends AbstractEntity {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getFullName() {
+        return fullName;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 
     public String getModule() {

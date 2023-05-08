@@ -3,12 +3,16 @@ package dev.odes.fleet.develop.model;
 import dev.odes.fleet.common.model.AbstractModel;
 import dev.odes.fleet.develop.entity.Model;
 
+import java.util.List;
+
 public class ModelModel extends AbstractModel<Model> {
     private String id;
     private String code;
     private String name;
     private String description;
+    private String fullName;
     private ModuleModel module;
+    private List<ModelFieldModel> modelFields;
 
     public ModelModel() {
     }
@@ -51,6 +55,14 @@ public class ModelModel extends AbstractModel<Model> {
         this.description = description;
     }
 
+    public String getFullName() {
+        return fullName;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
+
     public ModuleModel getModule() {
         return module;
     }
@@ -69,6 +81,14 @@ public class ModelModel extends AbstractModel<Model> {
         }
     }
 
+    public List<ModelFieldModel> getModelFields() {
+        return modelFields;
+    }
+
+    public void setModelFields(List<ModelFieldModel> modelFields) {
+        this.modelFields = modelFields;
+    }
+
     @Override
     public void fromEntity(Model model) {
         if (model == null) {
@@ -78,6 +98,7 @@ public class ModelModel extends AbstractModel<Model> {
         this.setCode(model.getCode());
         this.setName(model.getName());
         this.setDescription(model.getDescription());
+        this.setFullName(model.getFullName());
         this.setModule(model.getModule());
     }
 
@@ -88,6 +109,7 @@ public class ModelModel extends AbstractModel<Model> {
         model.setCode(this.getCode());
         model.setName(this.getName());
         model.setDescription(this.getDescription());
+        model.setFullName(this.getFullName());
         ModuleModel module = this.getModule();
         if (module != null) {
             model.setModule(module.getId());
