@@ -1,5 +1,7 @@
 package dev.odes.fleet.develop.entity;
 
+import dev.odes.fleet.common.field.Field;
+
 /**
  * package: dev.odes.fleet.develop.entity
  * class: ModelField
@@ -7,9 +9,7 @@ package dev.odes.fleet.develop.entity;
  * version: 1.0.0
  * description:
  */
-public class ModelField {
+public class ModelField extends Field {
     private String id;
-    private String code;
-    private String name;
-    private String model;
+
 }

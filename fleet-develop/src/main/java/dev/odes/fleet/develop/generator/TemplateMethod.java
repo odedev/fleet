@@ -8,13 +8,13 @@ import java.util.Map;
 public class TemplateMethod {
     public static final Map<String, String> TEMPLATE_FILE = new HashMap<>(
         Map.ofEntries(
-            new AbstractMap.SimpleEntry<>(TemplateConstant.TARGET_ENTITY, getVMPath("entity.java.vm")),
-            new AbstractMap.SimpleEntry<>(TemplateConstant.TARGET_MODEL, getVMPath("model.java.vm")),
+            new AbstractMap.SimpleEntry<>(TemplateConstant.TARGET_ENTITY, getVMFile("entity.java.vm")),
+            new AbstractMap.SimpleEntry<>(TemplateConstant.TARGET_MODEL, getVMFile("model.java.vm")),
 //            new AbstractMap.SimpleEntry<>(TemplateConstant.TARGET_METADATA, getVMPath("metadata.java.vm")),
-            new AbstractMap.SimpleEntry<>(TemplateConstant.TARGET_CONTROLLER, getVMPath("controller.java.vm")),
-            new AbstractMap.SimpleEntry<>(TemplateConstant.TARGET_SERVICE, getVMPath("service.java.vm")),
-            new AbstractMap.SimpleEntry<>(TemplateConstant.TARGET_REPOSITORY, getVMPath("repository.java.vm")),
-            new AbstractMap.SimpleEntry<>(TemplateConstant.TARGET_MAPPER, getVMPath("mapper.java.vm"))
+            new AbstractMap.SimpleEntry<>(TemplateConstant.TARGET_CONTROLLER, getVMFile("controller.java.vm")),
+            new AbstractMap.SimpleEntry<>(TemplateConstant.TARGET_SERVICE, getVMFile("service.java.vm")),
+            new AbstractMap.SimpleEntry<>(TemplateConstant.TARGET_REPOSITORY, getVMFile("repository.java.vm")),
+            new AbstractMap.SimpleEntry<>(TemplateConstant.TARGET_MAPPER, getVMFile("mapper.java.vm"))
         )
     );
 
@@ -26,7 +26,8 @@ public class TemplateMethod {
             new AbstractMap.SimpleEntry<>(TemplateConstant.TARGET_CONTROLLER, "controller"),
             new AbstractMap.SimpleEntry<>(TemplateConstant.TARGET_SERVICE, "service"),
             new AbstractMap.SimpleEntry<>(TemplateConstant.TARGET_REPOSITORY, "repository"),
-            new AbstractMap.SimpleEntry<>(TemplateConstant.TARGET_MAPPER, "mapper")
+            new AbstractMap.SimpleEntry<>(TemplateConstant.TARGET_MAPPER, "mapper"),
+            new AbstractMap.SimpleEntry<>(TemplateConstant.TARGET_TRANSFORM, "transform")
         )
     );
 
@@ -38,12 +39,16 @@ public class TemplateMethod {
         return TARGET_DIR;
     }
 
-    public static String getVMPath(String fileName) {
+    public static String getVMFile(String fileName) {
         return TemplateConstant.TEMPLATE_DIR + File.separator + fileName;
     }
 
-    public static String getFilePath(String entityCode, String fileName) {
-        return TemplateConstant.ROOT_PATH + File.separator + TemplateConstant.module_PATH + File.separator + entityCode.toLowerCase() + File.separator + entityCode + fileName;
+    public static String getTargetDir(String fileName) {
+        return TemplateConstant.TEMPLATE_DIR + File.separator + fileName;
+    }
+
+    public static String getTargetPath(String targetDir, String entityCode, String fileName) {
+        return TemplateConstant.MODULE_PACKAGE_PATH + File.separator + targetDir + File.separator + entityCode + fileName;
     }
 
 }

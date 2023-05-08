@@ -60,8 +60,6 @@ public abstract class AbstractService<E extends AbstractEntity, M extends Abstra
 
     @Override
     public M insertOne(M m) {
-        this._setDefaultValue(m);
-        this._validate(m);
         this._beforeInsert(m);
         E e = this._transform(m);
         this._beforeInsert(e);
@@ -73,8 +71,6 @@ public abstract class AbstractService<E extends AbstractEntity, M extends Abstra
     public List<M> insertMany(List<M> list) {
         List<E> eList = new ArrayList<>();
         list.forEach(m -> {
-            this._setDefaultValue(m);
-            this._validate(m);
             this._beforeInsert(m);
             E e = this._transform(m);
             this._beforeInsert(e);
@@ -153,6 +149,8 @@ public abstract class AbstractService<E extends AbstractEntity, M extends Abstra
     }
 
     private void _beforeInsert(M m) {
+        this._setDefaultValue(m);
+        this._validate(m);
         this.beforeInsert(m);
         if (StringUtils.isNullOrEmpty(m.getId())) {
             m.setId(IDUtils.getID());
@@ -160,6 +158,7 @@ public abstract class AbstractService<E extends AbstractEntity, M extends Abstra
     }
 
     private void _beforeUpdate(M m) {
+        this._validate(m);
         this.beforeUpdate(m);
     }
 
