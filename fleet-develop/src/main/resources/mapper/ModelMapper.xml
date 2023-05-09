@@ -4,20 +4,20 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="dev.odes.fleet.develop.mapper.ModelMapper">
   <sql id="tableColumn">
-    `develop_module`.`id`,
-    `develop_module`.`code`,
-    `develop_module`.`name`,
-    `develop_module`.`description`,
-    `develop_module`.`module_type`,
-    `develop_module`.`storage_type`
+    `develop_model`.`id`,
+    `develop_model`.`code`,
+    `develop_model`.`name`,
+    `develop_model`.`description`,
+    `develop_model`.`full_name`,
+    `develop_model`.`module`
   </sql>
   <sql id="column">
     `id`,
     `code`,
     `name`,
     `description`,
-    `module_type`,
-    `storage_type`
+    `full_name`,
+    `module`
   </sql>
 
   <sql id="insertColumn">
@@ -26,8 +26,8 @@
       <if test="code != null">`code`,</if>
       <if test="name != null">`name`,</if>
       <if test="description != null">`description`,</if>
-      <if test="moduleType != null">`module_type`,</if>
-      <if test="storageType != null">`storage_type`,</if>
+      <if test="fullName != null">`full_name`,</if>
+      <if test="module != null">`module`,</if>
     </trim>
   </sql>
   <sql id="insertValue">
@@ -36,8 +36,8 @@
       <if test="code != null">#{code},</if>
       <if test="name != null">#{name},</if>
       <if test="description != null">#{description},</if>
-      <if test="moduleType != null">#{moduleType},</if>
-      <if test="storageType != null">#{storageType},</if>
+      <if test="fullName != null">#{fullName},</if>
+      <if test="module != null">#{module},</if>
     </trim>
   </sql>
   <sql id="insertEntityValue">
@@ -46,8 +46,8 @@
       <if test="module.code != null">#{module.code},</if>
       <if test="module.name != null">#{module.name},</if>
       <if test="module.description != null">#{module.description},</if>
-      <if test="module.moduleType != null">#{module.moduleType},</if>
-      <if test="module.storageType != null">#{module.storageType},</if>
+      <if test="module.fullName != null">#{module.fullName},</if>
+      <if test="module.module != null">#{module.module},</if>
     </trim>
   </sql>
 
@@ -56,8 +56,8 @@
       <if test="code != null">`code` = #{code},</if>
       <if test="name != null">`name` = #{name},</if>
       <if test="description != null">`description` = #{description},</if>
-      <if test="moduleType != null">`module_type` = #{moduleType},</if>
-      <if test="storageType != null">`storage_type` = #{storageType},</if>
+      <if test="fullName != null">`full_name` = #{fullName},</if>
+      <if test="module != null">`module` = #{module},</if>
     </trim>
   </sql>
   <sql id="updateEntityColumn">
@@ -65,8 +65,8 @@
       <if test="module.code != null">`code` = #{module.code},</if>
       <if test="module.name != null">`name` = #{module.name},</if>
       <if test="module.description != null">`description` = #{module.description},</if>
-      <if test="module.moduleType != null">`module_type` = #{module.moduleType},</if>
-      <if test="module.storageType != null">`storage_type` = #{module.storageType},</if>
+      <if test="module.fullName != null">`full_name` = #{module.fullName},</if>
+      <if test="module.module != null">`module` = #{module.module},</if>
     </trim>
   </sql>
 
@@ -75,14 +75,14 @@
     <result property="code" column="code"/>
     <result property="name" column="name"/>
     <result property="description" column="description"/>
-    <result property="moduleType" column="module_type"/>
-    <result property="storageType" column="storage_type"/>
+    <result property="fullName" column="full_name"/>
+    <result property="module" column="module"/>
   </resultMap>
 
   <select id="find" resultMap="resultMap" resultType="dev.odes.fleet.develop.entity.Model">
     SELECT
     <include refid="column"/>
-    FROM `develop_module`
+    FROM `develop_model`
     <if test="where != null and where != ''">
       <where>
         ${where}
@@ -104,7 +104,7 @@
   <select id="findOne" resultMap="resultMap" resultType="dev.odes.fleet.develop.entity.Model">
     SELECT
     <include refid="column"/>
-    FROM `develop_module`
+    FROM `develop_model`
     <if test="where != null and where != ''">
       <where>
         ${where}
@@ -114,14 +114,14 @@
   </select>
 
   <insert id="insertOne" parameterType="dev.odes.fleet.develop.entity.Model">
-    INSERT INTO `develop_module`
+    INSERT INTO `develop_model`
     (<include refid="insertColumn"/>)
     VALUES
     (<include refid="insertValue"/>)
   </insert>
 
   <insert id="insertMany" parameterType="java.util.List">
-    INSERT INTO `develop_module`
+    INSERT INTO `develop_model`
     (<include refid="insertColumn"/>)
     VALUES
     <foreach collection="list" item="module" separator=",">
@@ -130,7 +130,7 @@
   </insert>
 
   <update id="updateOne" parameterType="dev.odes.fleet.develop.entity.Model">
-    UPDATE `develop_module`
+    UPDATE `develop_model`
     <include refid="updateColumn"/>
     WHERE id=#{id}
   </update>
@@ -144,11 +144,11 @@
   <!--  </update>-->
 
   <delete id="deleteOne" parameterType="java.lang.String">
-    DELETE FROM `develop_module` WHERE id=#{id}
+    DELETE FROM `develop_model` WHERE id=#{id}
   </delete>
 
   <select id="count" resultType="java.lang.Integer">
-    SELECT COUNT(1) FROM `develop_module`
+    SELECT COUNT(1) FROM `develop_model`
     <if test="where != null and where != ''">
       ${where}
     </if>

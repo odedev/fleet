@@ -4,20 +4,28 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="dev.odes.fleet.develop.mapper.ModelFieldMapper">
   <sql id="tableColumn">
-    `develop_module`.`id`,
-    `develop_module`.`code`,
-    `develop_module`.`name`,
-    `develop_module`.`description`,
-    `develop_module`.`module_type`,
-    `develop_module`.`storage_type`
+    <trim suffixOverrides=",">
+      `develop_model_field`.`id`,
+      `develop_model_field`.`code`,
+      `develop_model_field`.`name`,
+      `develop_model_field`.`data_type`,
+      `develop_model_field`.`length`,
+      `develop_model_field`.`data_enum`,
+      `develop_model_field`.`data_model`,
+      `develop_model_field`.`model`,
+    </trim>
   </sql>
   <sql id="column">
-    `id`,
-    `code`,
-    `name`,
-    `description`,
-    `module_type`,
-    `storage_type`
+    <trim suffixOverrides=",">
+      `id`,
+      `code`,
+      `name`,
+      `data_type`,
+      `length`,
+      `data_enum`,
+      `data_model`,
+      `model`,
+    </trim>
   </sql>
 
   <sql id="insertColumn">
@@ -25,9 +33,9 @@
       `id`,
       <if test="code != null">`code`,</if>
       <if test="name != null">`name`,</if>
-      <if test="description != null">`description`,</if>
-      <if test="moduleType != null">`module_type`,</if>
-      <if test="storageType != null">`storage_type`,</if>
+      <if test="dataType != null">`data_type`,</if>
+      <if test="length != null">`length`,</if>
+      <if test="dataEnum != null">`data_enum`,</if>
     </trim>
   </sql>
   <sql id="insertValue">
@@ -35,9 +43,9 @@
       #{id},
       <if test="code != null">#{code},</if>
       <if test="name != null">#{name},</if>
-      <if test="description != null">#{description},</if>
-      <if test="moduleType != null">#{moduleType},</if>
-      <if test="storageType != null">#{storageType},</if>
+      <if test="dataType != null">#{data_type},</if>
+      <if test="length != null">#{length},</if>
+      <if test="dataEnum != null">#{dataEnum},</if>
     </trim>
   </sql>
   <sql id="insertEntityValue">
@@ -45,9 +53,9 @@
       #{module.id},
       <if test="module.code != null">#{module.code},</if>
       <if test="module.name != null">#{module.name},</if>
-      <if test="module.description != null">#{module.description},</if>
-      <if test="module.moduleType != null">#{module.moduleType},</if>
-      <if test="module.storageType != null">#{module.storageType},</if>
+      <if test="module.dataType != null">#{module.dataType},</if>
+      <if test="module.length != null">#{module.length},</if>
+      <if test="module.dataEnum != null">#{module.dataEnum},</if>
     </trim>
   </sql>
 
@@ -55,18 +63,18 @@
     <trim prefix="set" suffixOverrides=",">
       <if test="code != null">`code` = #{code},</if>
       <if test="name != null">`name` = #{name},</if>
-      <if test="description != null">`description` = #{description},</if>
-      <if test="moduleType != null">`module_type` = #{moduleType},</if>
-      <if test="storageType != null">`storage_type` = #{storageType},</if>
+      <if test="dataType != null">`data_type` = #{dataType},</if>
+      <if test="length != null">`length` = #{length},</if>
+      <if test="dataEnum != null">`data_enum` = #{dataEnum},</if>
     </trim>
   </sql>
   <sql id="updateEntityColumn">
     <trim prefix="set" suffixOverrides=",">
       <if test="module.code != null">`code` = #{module.code},</if>
       <if test="module.name != null">`name` = #{module.name},</if>
-      <if test="module.description != null">`description` = #{module.description},</if>
-      <if test="module.moduleType != null">`module_type` = #{module.moduleType},</if>
-      <if test="module.storageType != null">`storage_type` = #{module.storageType},</if>
+      <if test="module.dataType != null">`data_type` = #{module.dataType},</if>
+      <if test="module.length != null">`length` = #{module.length},</if>
+      <if test="module.dataEnum != null">`data_enum` = #{module.dataEnum},</if>
     </trim>
   </sql>
 
@@ -74,15 +82,17 @@
     <id property="id" column="id"/>
     <result property="code" column="code"/>
     <result property="name" column="name"/>
-    <result property="description" column="description"/>
-    <result property="moduleType" column="module_type"/>
-    <result property="storageType" column="storage_type"/>
+    <result property="dataType" column="data_type"/>
+    <result property="length" column="length"/>
+    <result property="dataEnum" column="data_enum"/>
+    <result property="dataModel" column="data_model"/>
+    <result property="model" column="model"/>
   </resultMap>
 
   <select id="find" resultMap="resultMap" resultType="dev.odes.fleet.develop.entity.ModelField">
     SELECT
     <include refid="column"/>
-    FROM `develop_module`
+    FROM `develop_model_field`
     <if test="where != null and where != ''">
       <where>
         ${where}
@@ -104,7 +114,7 @@
   <select id="findOne" resultMap="resultMap" resultType="dev.odes.fleet.develop.entity.ModelField">
     SELECT
     <include refid="column"/>
-    FROM `develop_module`
+    FROM `develop_model_field`
     <if test="where != null and where != ''">
       <where>
         ${where}
@@ -114,14 +124,14 @@
   </select>
 
   <insert id="insertOne" parameterType="dev.odes.fleet.develop.entity.ModelField">
-    INSERT INTO `develop_module`
+    INSERT INTO `develop_model_field`
     (<include refid="insertColumn"/>)
     VALUES
     (<include refid="insertValue"/>)
   </insert>
 
   <insert id="insertMany" parameterType="java.util.List">
-    INSERT INTO `develop_module`
+    INSERT INTO `develop_model_field`
     (<include refid="insertColumn"/>)
     VALUES
     <foreach collection="list" item="module" separator=",">
@@ -130,7 +140,7 @@
   </insert>
 
   <update id="updateOne" parameterType="dev.odes.fleet.develop.entity.ModelField">
-    UPDATE `develop_module`
+    UPDATE `develop_model_field`
     <include refid="updateColumn"/>
     WHERE id=#{id}
   </update>
@@ -144,11 +154,11 @@
   <!--  </update>-->
 
   <delete id="deleteOne" parameterType="java.lang.String">
-    DELETE FROM `develop_module` WHERE id=#{id}
+    DELETE FROM `develop_model_field` WHERE id=#{id}
   </delete>
 
   <select id="count" resultType="java.lang.Integer">
-    SELECT COUNT(1) FROM `develop_module`
+    SELECT COUNT(1) FROM `develop_model_field`
     <if test="where != null and where != ''">
       ${where}
     </if>

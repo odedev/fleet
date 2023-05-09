@@ -27,7 +27,7 @@ public class ModelTransform implements Transform<Model, ModelModel> {
     public ModelModel toModel(Model model) {
         ModelModel modelModel = new ModelModel(model);
         Module module = this.moduleRepository.findOneById(model.getModule());
-        List<ModelField> modelFieldList = this.modelFieldRepository.findManyById("", model.getId());
+        List<ModelField> modelFieldList = this.modelFieldRepository.findManyById("model", model.getId());
 
         if (module != null) {
             modelModel.setModule(new ModuleModel(module));

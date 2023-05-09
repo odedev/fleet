@@ -1,5 +1,7 @@
 package dev.odes.fleet.common.enumeration;
 
+import com.fasterxml.jackson.annotation.JsonValue;
+
 import java.util.Arrays;
 import java.util.Objects;
 
@@ -15,6 +17,7 @@ public enum DataTypeEnum {
     JSON(8, "JSON"),
     FILE(9, "File");
 
+    @JsonValue
     private final Integer value;
     private final String name;
 

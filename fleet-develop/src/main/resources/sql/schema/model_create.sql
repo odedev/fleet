@@ -3,7 +3,7 @@ CREATE TABLE IF NOT EXISTS `develop_model` (
     `code` VARCHAR(32) NOT NULL COMMENT '编码',
     `name` VARCHAR(32) NULL DEFAULT '' COMMENT '名称',
     `description` VARCHAR(255) NULL DEFAULT '' COMMENT '描述',
-    `fullName` VARCHAR(255) NOT NULL DEFAULT '' COMMENT '全称',
+    `full_name` VARCHAR(255) NOT NULL DEFAULT '' COMMENT '全称',
     `module` VARCHAR(32) NOT NULL DEFAULT '' COMMENT '模块',
     `created_by` VARCHAR(32) NULL DEFAULT NULL COMMENT '创建人ID',
     `created_at` DATETIME NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
