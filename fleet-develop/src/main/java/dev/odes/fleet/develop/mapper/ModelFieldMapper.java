@@ -1,4 +1,9 @@
 package dev.odes.fleet.develop.mapper;
 
-public interface ModelFieldMapper {
+import dev.odes.fleet.develop.entity.ModelField;
+import dev.odes.fleet.mysql.GenericMapper;
+import org.apache.ibatis.annotations.Mapper;
+
+@Mapper
+public interface ModelFieldMapper extends GenericMapper<ModelField> {
 }

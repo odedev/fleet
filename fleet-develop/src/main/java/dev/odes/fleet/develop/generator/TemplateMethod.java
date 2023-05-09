@@ -29,14 +29,14 @@ public class TemplateMethod {
 
     public static final Map<String, String> TEMPLATE_FILE = new HashMap<>(
         Map.ofEntries(
-            new AbstractMap.SimpleEntry<>(TemplateConstant.TARGET_ENTITY, getJavaVMFile("entity.java.vm")),
-            new AbstractMap.SimpleEntry<>(TemplateConstant.TARGET_MODEL, getJavaVMFile("model.java.vm")),
+            new AbstractMap.SimpleEntry<>(TemplateConstant.TARGET_ENTITY, getModelVMFile("entity.java.vm")),
+            new AbstractMap.SimpleEntry<>(TemplateConstant.TARGET_MODEL, getModelVMFile("model.java.vm")),
 //            new AbstractMap.SimpleEntry<>(TemplateConstant.TARGET_METADATA, getVMPath("metadata.java.vm")),
-            new AbstractMap.SimpleEntry<>(TemplateConstant.TARGET_CONTROLLER, getJavaVMFile("controller.java.vm")),
-            new AbstractMap.SimpleEntry<>(TemplateConstant.TARGET_SERVICE, getJavaVMFile("service.java.vm")),
-            new AbstractMap.SimpleEntry<>(TemplateConstant.TARGET_REPOSITORY, getJavaVMFile("repository.java.vm")),
-            new AbstractMap.SimpleEntry<>(TemplateConstant.TARGET_MAPPER, getJavaVMFile("mapper.java.vm")),
-            new AbstractMap.SimpleEntry<>(TemplateConstant.TARGET_TRANSFORM, getJavaVMFile("transform.java.vm")),
+            new AbstractMap.SimpleEntry<>(TemplateConstant.TARGET_CONTROLLER, getModelVMFile("controller.java.vm")),
+            new AbstractMap.SimpleEntry<>(TemplateConstant.TARGET_SERVICE, getModelVMFile("service.java.vm")),
+            new AbstractMap.SimpleEntry<>(TemplateConstant.TARGET_REPOSITORY, getModelVMFile("repository.java.vm")),
+            new AbstractMap.SimpleEntry<>(TemplateConstant.TARGET_MAPPER, getModelVMFile("mapper.java.vm")),
+            new AbstractMap.SimpleEntry<>(TemplateConstant.TARGET_TRANSFORM, getModelVMFile("transform.java.vm")),
 
             new AbstractMap.SimpleEntry<>(TemplateConstant.TARGET_POM, getModuleVMFile("pom.xml.vm"))
         )
@@ -73,14 +73,21 @@ public class TemplateMethod {
         return TemplateConstant.TEMPLATE_DIR + File.separator + fileName;
     }
 
-    public static String getJavaVMFile(String fileName) {
-        return TemplateConstant.TEMPLATE_DIR + File.separator + "java" + File.separator + fileName;
-    }
-
     public static String getModuleVMFile(String fileName) {
-        return TemplateConstant.TEMPLATE_DIR + File.separator + fileName;
+        return TemplateConstant.TEMPLATE_DIR + File.separator + "module" + File.separator + fileName;
     }
 
+    public static String getModelVMFile(String fileName) {
+        return TemplateConstant.TEMPLATE_DIR + File.separator + "model" + File.separator + fileName;
+    }
+
+    public static String getEnumVMFile(String fileName) {
+        return TemplateConstant.TEMPLATE_DIR + File.separator + "enum" + File.separator + fileName;
+    }
+
+    public static String getViewVMFile(String fileName) {
+        return TemplateConstant.TEMPLATE_DIR + File.separator + "view" + File.separator + fileName;
+    }
 
     public static String getModulePath(String moduleCode) {
         StringBuilder path = new StringBuilder();

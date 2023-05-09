@@ -1,9 +1,0 @@
-package dev.odes.fleet.module.${templateContext.module.code.toLowerCase()}.mapper;
-
-import dev.odes.fleet.module.${templateContext.module.code.toLowerCase()}.entity.${templateContext.model};
-import dev.odes.fleet.mysql.GenericMapper;
-import org.apache.ibatis.annotations.Mapper;
-
-@Mapper
-public interface ${templateContext.model}Mapper extends GenericMapper<${templateContext.model}> {
-}

@@ -2,16 +2,16 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="dev.odes.fleet.develop.mapper.ViewMapper">
+<mapper namespace="dev.odes.fleet.develop.mapper.ViewModelMapper">
   <sql id="tableColumn">
-    `develop_view`.`id`,
-    `develop_view`.`code`,
-    `develop_view`.`name`,
-    `develop_view`.`path`,
-    `develop_view`.`sequence`,
-    `develop_view`.`is_master_view`,
-    `develop_view`.`parent`,
-    `develop_view`.`module`
+    `develop_view_model`.`id`,
+    `develop_view_model`.`code`,
+    `develop_view_model`.`name`,
+    `develop_view_model`.`path`,
+    `develop_view_model`.`sequence`,
+    `develop_view_model`.`is_master_view`,
+    `develop_view_model`.`parent`,
+    `develop_view_model`.`module`
   </sql>
   <sql id="column">
     `id`,
@@ -95,7 +95,7 @@
     </trim>
   </sql>
 
-  <resultMap id="resultMap" type="dev.odes.fleet.develop.entity.View">
+  <resultMap id="resultMap" type="dev.odes.fleet.develop.entity.ViewModel">
     <id property="id" column="id"/>
     <result property="code" column="code"/>
     <result property="name" column="name"/>
@@ -106,10 +106,10 @@
     <result property="parent" column="parent"/>
   </resultMap>
 
-  <select id="find" resultMap="resultMap" resultType="dev.odes.fleet.develop.entity.View">
+  <select id="find" resultMap="resultMap" resultType="dev.odes.fleet.develop.entity.ViewModel">
     SELECT
     <include refid="column"/>
-    FROM `develop_view`
+    FROM `develop_view_model`
     <if test="where != null and where != ''">
       <where>
         ${where}
@@ -128,10 +128,10 @@
     </choose>
   </select>
 
-  <select id="findOne" resultMap="resultMap" resultType="dev.odes.fleet.develop.entity.View">
+  <select id="findOne" resultMap="resultMap" resultType="dev.odes.fleet.develop.entity.ViewModel">
     SELECT
     <include refid="column"/>
-    FROM `develop_view`
+    FROM `develop_view_model`
     <if test="where != null and where != ''">
       <where>
         ${where}
@@ -140,15 +140,15 @@
     LIMIT 1
   </select>
 
-  <insert id="insertOne" parameterType="dev.odes.fleet.develop.entity.View">
-    INSERT INTO `develop_view`
+  <insert id="insertOne" parameterType="dev.odes.fleet.develop.entity.ViewModel">
+    INSERT INTO `develop_view_model`
     (<include refid="insertColumn"/>)
     VALUES
     (<include refid="insertValue"/>)
   </insert>
 
   <insert id="insertMany" parameterType="java.util.List">
-    INSERT INTO `develop_view`
+    INSERT INTO `develop_view_model`
     (<include refid="insertColumn"/>)
     VALUES
     <foreach collection="list" item="view" separator=",">
@@ -156,8 +156,8 @@
     </foreach>
   </insert>
 
-  <update id="updateOne" parameterType="dev.odes.fleet.develop.entity.View">
-    UPDATE `develop_view`
+  <update id="updateOne" parameterType="dev.odes.fleet.develop.entity.ViewModel">
+    UPDATE `develop_view_model`
     <include refid="updateColumn"/>
     WHERE id=#{id}
   </update>
@@ -171,11 +171,11 @@
   <!--  </update>-->
 
   <delete id="deleteOne" parameterType="java.lang.String">
-    DELETE FROM `develop_view` WHERE id=#{id}
+    DELETE FROM `develop_view_model` WHERE id=#{id}
   </delete>
 
   <select id="count" resultType="java.lang.Integer">
-    SELECT COUNT(1) FROM `develop_view`
+    SELECT COUNT(1) FROM `develop_view_model`
     <if test="where != null and where != ''">
       ${where}
     </if>

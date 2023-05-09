@@ -1,12 +1,9 @@
-CREATE TABLE IF NOT EXISTS `develop_view_model` (
+CREATE TABLE IF NOT EXISTS `develop_app_module` (
     `id` VARCHAR(32) NOT NULL COMMENT '主键ID',
     `code` VARCHAR(32) NOT NULL COMMENT '编码',
     `name` VARCHAR(32) NOT NULL DEFAULT '' COMMENT '名称',
-    `path` VARCHAR(255) NULL DEFAULT '' COMMENT '路径',
-    `sequence` INT NULL DEFAULT '10' COMMENT '顺序',
-    `is_master_view` TINYINT NULL DEFAULT '0' COMMENT '是否主视图',
-    `parent` VARCHAR(32) NULL DEFAULT NULL COMMENT '父级',
-    `module` VARCHAR(32) NULL DEFAULT NULL COMMENT '模块',
+    `port` VARCHAR(10) NULL DEFAULT '8080' COMMENT '端口',
+    `description` VARCHAR(255) NULL DEFAULT '' COMMENT '描述',
     `created_by` VARCHAR(32) NULL DEFAULT NULL COMMENT '创建人ID',
     `created_at` DATETIME NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
     `updated_by` VARCHAR(32) NULL DEFAULT NULL COMMENT '更新人ID',

@@ -1,0 +1,23 @@
+#set($moduleCode = $templateContext.module.code.toLowerCase())
+#set($modelCode = $templateContext.model.code)
+package dev.odes.fleet.module.${moduleCode}.transform;
+
+import dev.odes.fleet.common.transform.Transform;
+import dev.odes.fleet.module.${moduleCode}.entity.${modelCode};
+import dev.odes.fleet.module.${moduleCode}.model.${modelCode}Model;
+import org.springframework.stereotype.Component;
+
+@Component
+public class ${modelCode}Transform implements Transform<${modelCode}, ${modelCode}Model> {
+    @Override
+    public ${modelCode}Model toModel(${modelCode} entity) {
+        ${modelCode}Model model = new ${modelCode}Model(entity);
+
+        return model;
+    }
+
+    @Override
+    public ${modelCode} toEntity(${modelCode}Model model) {
+        return model.toEntity();
+    }
+}

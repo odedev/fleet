@@ -1,4 +1,9 @@
 package dev.odes.fleet.develop.mapper;
 
-public interface AppModuleMapper {
+import dev.odes.fleet.develop.entity.AppModule;
+import dev.odes.fleet.mysql.GenericMapper;
+import org.apache.ibatis.annotations.Mapper;
+
+@Mapper
+public interface AppModuleMapper extends GenericMapper<AppModule> {
 }

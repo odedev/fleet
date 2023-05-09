@@ -1,0 +1,33 @@
+#set($moduleCode = $templateContext.module.code.toLowerCase())
+#set($modelCode = $templateContext.model.code)
+package dev.odes.fleet.module.${moduleCode}.model;
+
+import dev.odes.fleet.common.model.AbstractModel;
+import dev.odes.fleet.module.${moduleCode}.entity.${modelCode};
+
+public class ${modelCode}Model extends AbstractModel<${modelCode}> {
+    private String id;
+
+    @Override
+    public String getId() {
+        return id;
+    }
+
+    @Override
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    @Override
+    public void fromEntity(${modelCode} entity) {
+        if (entity == null) {
+            return;
+        }
+    }
+
+    @Override
+    public ${modelCode} toEntity() {
+        ${modelCode} entity = new ${modelCode}();
+        return entity;
+    }
+}
