@@ -64,6 +64,14 @@ public class View extends AbstractEntity {
         isMasterView = masterView;
     }
 
+    public Integer getViewType() {
+        return viewType;
+    }
+
+    public void setViewType(Integer viewType) {
+        this.viewType = viewType;
+    }
+
     public String getParent() {
         return parent;
     }

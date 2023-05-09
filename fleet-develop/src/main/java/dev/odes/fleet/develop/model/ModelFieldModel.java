@@ -85,12 +85,32 @@ public class ModelFieldModel extends AbstractModel<ModelField> {
         this.dataEnum = dataEnum;
     }
 
+    public void setDataEnum(String dataEnum) {
+        if (dataEnum == null) {
+            this.dataEnum = null;
+        } else {
+            EnumerationModel enumerationModel = new EnumerationModel();
+            enumerationModel.setId(dataEnum);
+            this.dataEnum = enumerationModel;
+        }
+    }
+
     public ModelModel getDataModel() {
         return dataModel;
     }
 
     public void setDataModel(ModelModel dataModel) {
         this.dataModel = dataModel;
+    }
+
+    public void setDataModel(String dataModel) {
+        if (dataModel == null) {
+            this.dataModel = null;
+        } else {
+            ModelModel modelModel = new ModelModel();
+            modelModel.setId(dataModel);
+            this.dataModel = modelModel;
+        }
     }
 
     public Boolean getNullable() {
@@ -133,6 +153,16 @@ public class ModelFieldModel extends AbstractModel<ModelField> {
         this.model = model;
     }
 
+    public void setModel(String model) {
+        if (model == null) {
+            this.model = null;
+        } else {
+            ModelModel modelModel = new ModelModel();
+            modelModel.setId(model);
+            this.model = modelModel;
+        }
+    }
+
     @Override
     public void fromEntity(ModelField modelField) {
         if (modelField == null) {
@@ -141,6 +171,11 @@ public class ModelFieldModel extends AbstractModel<ModelField> {
         this.setId(modelField.getId());
         this.setCode(modelField.getCode());
         this.setName(modelField.getName());
+        this.setDataType(DataTypeEnum.getByValue(modelField.getDataType()));
+        this.setLength(modelField.getLength());
+        this.setDataEnum(modelField.getDataEnum());
+        this.setDataModel(modelField.getDataModel());
+        this.setModel(modelField.getModel());
     }
 
     @Override
@@ -149,6 +184,22 @@ public class ModelFieldModel extends AbstractModel<ModelField> {
         modelField.setId(this.getId());
         modelField.setCode(this.getCode());
         modelField.setName(this.getName());
+        modelField.setDataType(this.getDataType().getValue());
+        modelField.setLength(this.getLength());
+
+        ModelModel dataModel = this.getDataModel();
+        EnumerationModel dataEnum = this.getDataEnum();
+        ModelModel model = this.getModel();
+        if (dataModel != null) {
+            modelField.setDataModel(dataModel.getId());
+        }
+        if (dataEnum != null) {
+            modelField.setDataEnum(dataEnum.getId());
+        }
+        if (model != null) {
+            modelField.setModel(model.getId());
+        }
+
         return modelField;
     }
 }

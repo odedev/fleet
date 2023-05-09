@@ -5,6 +5,7 @@ CREATE TABLE IF NOT EXISTS `develop_view` (
     `path` VARCHAR(255) NULL DEFAULT '' COMMENT '路径',
     `sequence` INT NULL DEFAULT '10' COMMENT '顺序',
     `is_master_view` TINYINT NULL DEFAULT '0' COMMENT '是否主视图',
+    `view_type` TINYINT NULL DEFAULT '0' COMMENT '视图类型',
     `parent` VARCHAR(32) NULL DEFAULT NULL COMMENT '父级',
     `module` VARCHAR(32) NULL DEFAULT NULL COMMENT '模块',
     `created_by` VARCHAR(32) NULL DEFAULT NULL COMMENT '创建人ID',
