@@ -6,25 +6,28 @@ import dev.odes.fleet.develop.enumeration.ModuleTypeEnum;
 import dev.odes.fleet.develop.enumeration.StorageTypeEnum;
 import dev.odes.fleet.develop.model.ModuleModel;
 import dev.odes.fleet.develop.repository.ModuleRepository;
+import dev.odes.fleet.develop.transform.ModuleTransform;
 import org.springframework.stereotype.Service;
 
 @Service
 public class ModuleService extends AbstractService<Module, ModuleModel, ModuleRepository> {
+    private final ModuleTransform moduleTransform;
     private final ModuleRepository moduleRepository;
 
-    public ModuleService(ModuleRepository moduleRepository) {
+    public ModuleService(ModuleTransform moduleTransform, ModuleRepository moduleRepository) {
         super(moduleRepository);
+        this.moduleTransform = moduleTransform;
         this.moduleRepository = moduleRepository;
     }
 
     @Override
     public ModuleModel transform(Module module) {
-        return new ModuleModel(module);
+        return this.moduleTransform.toModel(module);
     }
 
     @Override
     public Module transform(ModuleModel moduleModel) {
-        return moduleModel.toEntity();
+        return this.moduleTransform.toEntity(moduleModel);
     }
 
     @Override
@@ -40,7 +43,6 @@ public class ModuleService extends AbstractService<Module, ModuleModel, ModuleRe
     @Override
     public void beforeInsert(ModuleModel moduleModel) {
         super.beforeInsert(moduleModel);
-        moduleModel.setModuleType(ModuleTypeEnum.MODULE);
         moduleModel.setStorageType(StorageTypeEnum.MYSQL);
     }
 }

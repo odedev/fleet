@@ -9,16 +9,16 @@ public class ModelFieldModel extends AbstractModel<ModelField> {
     private String code;
     private String name;
     private DataTypeEnum dataType;
-    private Integer length;
-    private String defaultValue;
-    private EnumerationModel dataEnum;
-    private ModelModel dataModel;
+    private Integer dataLength;
+    private EnumerationModel enumType;
+    private ModelModel modelType;
+    private Boolean isSlaveModel;
     private Boolean isNullable;
     private Boolean isSearchable;
     private Boolean isDefaultDisplay;
-    private Boolean isSlaveModel;
+    private String note;
+    private String sequence;
     private ModelModel model;
-
 
     public ModelFieldModel() {
     }
@@ -61,88 +61,96 @@ public class ModelFieldModel extends AbstractModel<ModelField> {
         this.dataType = dataType;
     }
 
-    public Integer getLength() {
-        return length;
+    public Integer getDataLength() {
+        return dataLength;
     }
 
-    public void setLength(Integer length) {
-        this.length = length;
+    public void setDataLength(Integer dataLength) {
+        this.dataLength = dataLength;
     }
 
-    public String getDefaultValue() {
-        return defaultValue;
+    public EnumerationModel getEnumType() {
+        return enumType;
     }
 
-    public void setDefaultValue(String defaultValue) {
-        this.defaultValue = defaultValue;
+    public void setEnumType(EnumerationModel enumType) {
+        this.enumType = enumType;
     }
 
-    public EnumerationModel getDataEnum() {
-        return dataEnum;
-    }
-
-    public void setDataEnum(EnumerationModel dataEnum) {
-        this.dataEnum = dataEnum;
-    }
-
-    public void setDataEnum(String dataEnum) {
+    public void setEnumType(String dataEnum) {
         if (dataEnum == null) {
-            this.dataEnum = null;
+            this.enumType = null;
         } else {
             EnumerationModel enumerationModel = new EnumerationModel();
             enumerationModel.setId(dataEnum);
-            this.dataEnum = enumerationModel;
+            this.enumType = enumerationModel;
         }
     }
 
-    public ModelModel getDataModel() {
-        return dataModel;
+    public ModelModel getModelType() {
+        return modelType;
     }
 
-    public void setDataModel(ModelModel dataModel) {
-        this.dataModel = dataModel;
+    public void setModelType(ModelModel modelType) {
+        this.modelType = modelType;
     }
 
-    public void setDataModel(String dataModel) {
+    public void setModelType(String dataModel) {
         if (dataModel == null) {
-            this.dataModel = null;
+            this.modelType = null;
         } else {
             ModelModel modelModel = new ModelModel();
             modelModel.setId(dataModel);
-            this.dataModel = modelModel;
+            this.modelType = modelModel;
         }
     }
 
-    public Boolean getNullable() {
-        return isNullable;
-    }
-
-    public void setNullable(Boolean nullable) {
-        isNullable = nullable;
-    }
-
-    public Boolean getSearchable() {
-        return isSearchable;
-    }
-
-    public void setSearchable(Boolean searchable) {
-        isSearchable = searchable;
-    }
-
-    public Boolean getDefaultDisplay() {
-        return isDefaultDisplay;
-    }
-
-    public void setDefaultDisplay(Boolean defaultDisplay) {
-        isDefaultDisplay = defaultDisplay;
-    }
-
-    public Boolean getSlaveModel() {
+    public Boolean getIsSlaveModel() {
         return isSlaveModel;
     }
 
-    public void setSlaveModel(Boolean slaveModel) {
-        isSlaveModel = slaveModel;
+    public void setIsSlaveModel(Boolean isSlaveModel) {
+        this.isSlaveModel = isSlaveModel;
+    }
+
+    public Boolean getIsNullable() {
+        return isNullable;
+    }
+
+    public void setIsNullable(Boolean isNullable) {
+        this.isNullable = isNullable;
+    }
+
+    public Boolean getIsSearchable() {
+        return isSearchable;
+    }
+
+    public void setIsSearchable(Boolean isSearchable) {
+        this.isSearchable = isSearchable;
+    }
+
+    public Boolean getIsDefaultDisplay() {
+        return isDefaultDisplay;
+    }
+
+    public void setIsDefaultDisplay(Boolean isDefaultDisplay) {
+        this.isDefaultDisplay = isDefaultDisplay;
+    }
+
+    public String getNote() {
+        return note;
+    }
+
+    public void setNote(String note) {
+        this.note = note;
+    }
+
+    public String getSequence() {
+        return sequence;
+    }
+
+    public void setSequence(String sequence) {
+        this.sequence = sequence;
     }
 
     public ModelModel getModel() {
@@ -172,9 +180,15 @@ public class ModelFieldModel extends AbstractModel<ModelField> {
         this.setCode(modelField.getCode());
         this.setName(modelField.getName());
         this.setDataType(DataTypeEnum.getByValue(modelField.getDataType()));
-        this.setLength(modelField.getLength());
-        this.setDataEnum(modelField.getDataEnum());
-        this.setDataModel(modelField.getDataModel());
+        this.setDataLength(modelField.getDataLength());
+        this.setEnumType(modelField.getEnumType());
+        this.setModelType(modelField.getModelType());
+        this.setIsSlaveModel(modelField.getIsSlaveModel());
+        this.setIsNullable(modelField.getIsNullable());
+        this.setIsSearchable(modelField.getIsSearchable());
+        this.setIsDefaultDisplay(modelField.getIsDefaultDisplay());
+        this.setNote(modelField.getNote());
+        this.setSequence(modelField.getSequence());
         this.setModel(modelField.getModel());
     }
 
@@ -185,17 +199,23 @@ public class ModelFieldModel extends AbstractModel<ModelField> {
         modelField.setCode(this.getCode());
         modelField.setName(this.getName());
         modelField.setDataType(this.getDataType().getValue());
-        modelField.setLength(this.getLength());
+        modelField.setDataLength(this.getDataLength());
+        modelField.setIsSlaveModel(this.getIsSlaveModel());
+        modelField.setIsNullable(this.getIsNullable());
+        modelField.setIsSearchable(this.getIsSearchable());
+        modelField.setIsDefaultDisplay(this.getIsDefaultDisplay());
+        modelField.setNote(this.getNote());
+        modelField.setSequence(this.getSequence());
 
-        ModelModel dataModel = this.getDataModel();
-        EnumerationModel dataEnum = this.getDataEnum();
+        ModelModel modelType = this.getModelType();
+        if (modelType != null) {
+            modelField.setModelType(modelType.getId());
+        }
+        EnumerationModel enumType = this.getEnumType();
+        if (enumType != null) {
+            modelField.setEnumType(enumType.getId());
+        }
         ModelModel model = this.getModel();
-        if (dataModel != null) {
-            modelField.setDataModel(dataModel.getId());
-        }
-        if (dataEnum != null) {
-            modelField.setDataEnum(dataEnum.getId());
-        }
         if (model != null) {
             modelField.setModel(model.getId());
         }

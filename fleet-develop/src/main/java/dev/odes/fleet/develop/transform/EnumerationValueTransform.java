@@ -19,10 +19,12 @@ public class EnumerationValueTransform implements Transform<EnumerationValue, En
     @Override
     public EnumerationValueModel toModel(EnumerationValue enumerationValue) {
         EnumerationValueModel enumerationValueModel = new EnumerationValueModel(enumerationValue);
+
         Enumeration enumeration = this.enumerationRepository.findOneById(enumerationValue.getEnumeration());
         if (enumeration != null) {
             enumerationValueModel.setEnumeration(new EnumerationModel(enumeration));
         }
+
         return enumerationValueModel;
     }
 

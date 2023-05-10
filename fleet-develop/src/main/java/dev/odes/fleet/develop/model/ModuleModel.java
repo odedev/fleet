@@ -10,7 +10,6 @@ public class ModuleModel extends AbstractModel<Module> {
     private String code;
     private String name;
     private String description;
-    private ModuleTypeEnum moduleType;
     private StorageTypeEnum storageType;
 
     public ModuleModel() {
@@ -52,14 +51,6 @@ public class ModuleModel extends AbstractModel<Module> {
         this.description = description;
     }
 
-    public ModuleTypeEnum getModuleType() {
-        return moduleType;
-    }
-
-    public void setModuleType(ModuleTypeEnum moduleType) {
-        this.moduleType = moduleType;
-    }
-
     public StorageTypeEnum getStorageType() {
         return storageType;
     }
@@ -77,7 +68,6 @@ public class ModuleModel extends AbstractModel<Module> {
         this.setCode(module.getCode());
         this.setName(module.getName());
         this.setDescription(module.getDescription());
-        this.setModuleType(ModuleTypeEnum.getByValue(module.getModuleType()));
         this.setStorageType(StorageTypeEnum.getByValue(module.getStorageType()));
     }
 
@@ -88,7 +78,6 @@ public class ModuleModel extends AbstractModel<Module> {
         module.setCode(this.getCode());
         module.setName(this.getName());
         module.setDescription(this.getDescription());
-        module.setModuleType(this.getModuleType().getValue());
         module.setStorageType(this.getStorageType().getValue());
         return module;
     }

@@ -26,18 +26,19 @@ public class ModelTransform implements Transform<Model, ModelModel> {
     @Override
     public ModelModel toModel(Model model) {
         ModelModel modelModel = new ModelModel(model);
-        Module module = this.moduleRepository.findOneById(model.getModule());
-        List<ModelField> modelFieldList = this.modelFieldRepository.findManyById("model", model.getId());
 
+        Module module = this.moduleRepository.findOneById(model.getModule());
         if (module != null) {
             modelModel.setModule(new ModuleModel(module));
         }
 
+        List<ModelField> modelFieldList = this.modelFieldRepository.findManyById("model", model.getId());
         List<ModelFieldModel> modelFields = new ArrayList<>();
         modelFieldList.forEach(modelField -> {
             modelFields.add(new ModelFieldModel(modelField));
         });
         modelModel.setModelFields(modelFields);
+
         return modelModel;
     }
 

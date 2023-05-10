@@ -31,6 +31,9 @@ public class ModelFieldService extends AbstractService<ModelField, ModelFieldMod
     @Override
     public void setDefaultValue(ModelFieldModel modelFieldModel) {
         super.setDefaultValue(modelFieldModel);
+        if (modelFieldModel.getDataLength() != null) {
+            modelFieldModel.setDataLength(255);
+        }
     }
 
     @Override

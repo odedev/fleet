@@ -61,11 +61,24 @@ public class AppModel extends AbstractModel<App> {
 
     @Override
     public void fromEntity(App app) {
-
+        if (app == null) {
+            return;
+        }
+        this.setId(app.getId());
+        this.setCode(app.getCode());
+        this.setName(app.getName());
+        this.setPort(app.getPort());
+        this.setDescription(app.getDescription());
     }
 
     @Override
     public App toEntity() {
-        return null;
+        App app = new App();
+        app.setId(this.getId());
+        app.setCode(this.getCode());
+        app.setName(this.getName());
+        app.setPort(this.getPort());
+        app.setDescription(this.getDescription());
+        return app;
     }
 }

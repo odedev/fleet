@@ -7,14 +7,15 @@ public class ModelField extends AbstractEntity {
     private String code;
     private String name;
     private Integer dataType;
-    private Integer length;
-    private String defaultValue;
-    private String dataEnum;
-    private String dataModel;
+    private Integer dataLength;
+    private String enumType;
+    private String modelType;
+    private Boolean isSlaveModel;
     private Boolean isNullable;
     private Boolean isSearchable;
     private Boolean isDefaultDisplay;
-    private Boolean isSlaveModel;
+    private String note;
+    private String sequence;
     private String model;
 
     @Override
@@ -51,68 +52,76 @@ public class ModelField extends AbstractEntity {
         this.dataType = dataType;
     }
 
-    public Integer getLength() {
-        return length;
+    public Integer getDataLength() {
+        return dataLength;
     }
 
-    public void setLength(Integer length) {
-        this.length = length;
+    public void setDataLength(Integer dataLength) {
+        this.dataLength = dataLength;
     }
 
-    public String getDefaultValue() {
-        return defaultValue;
+    public String getEnumType() {
+        return enumType;
     }
 
-    public void setDefaultValue(String defaultValue) {
-        this.defaultValue = defaultValue;
+    public void setEnumType(String enumType) {
+        this.enumType = enumType;
     }
 
-    public String getDataEnum() {
-        return dataEnum;
+    public String getModelType() {
+        return modelType;
     }
 
-    public void setDataEnum(String dataEnum) {
-        this.dataEnum = dataEnum;
+    public void setModelType(String modelType) {
+        this.modelType = modelType;
     }
 
-    public String getDataModel() {
-        return dataModel;
-    }
-
-    public void setDataModel(String dataModel) {
-        this.dataModel = dataModel;
-    }
-
-    public Boolean getNullable() {
-        return isNullable;
-    }
-
-    public void setNullable(Boolean nullable) {
-        isNullable = nullable;
-    }
-
-    public Boolean getSearchable() {
-        return isSearchable;
-    }
-
-    public void setSearchable(Boolean searchable) {
-        isSearchable = searchable;
-    }
-
-    public Boolean getDefaultDisplay() {
-        return isDefaultDisplay;
-    }
-
-    public void setDefaultDisplay(Boolean defaultDisplay) {
-        isDefaultDisplay = defaultDisplay;
-    }
-
-    public Boolean getSlaveModel() {
+    public Boolean getIsSlaveModel() {
         return isSlaveModel;
     }
 
-    public void setSlaveModel(Boolean slaveModel) {
-        isSlaveModel = slaveModel;
+    public void setIsSlaveModel(Boolean isSlaveModel) {
+        this.isSlaveModel = isSlaveModel;
+    }
+
+    public Boolean getIsNullable() {
+        return isNullable;
+    }
+
+    public void setIsNullable(Boolean isNullable) {
+        this.isNullable = isNullable;
+    }
+
+    public Boolean getIsSearchable() {
+        return isSearchable;
+    }
+
+    public void setIsSearchable(Boolean isSearchable) {
+        this.isSearchable = isSearchable;
+    }
+
+    public Boolean getIsDefaultDisplay() {
+        return isDefaultDisplay;
+    }
+
+    public void setIsDefaultDisplay(Boolean isDefaultDisplay) {
+        this.isDefaultDisplay = isDefaultDisplay;
+    }
+
+    public String getNote() {
+        return note;
+    }
+
+    public void setNote(String note) {
+        this.note = note;
+    }
+
+    public String getSequence() {
+        return sequence;
+    }
+
+    public void setSequence(String sequence) {
+        this.sequence = sequence;
     }
 
     public String getModel() {

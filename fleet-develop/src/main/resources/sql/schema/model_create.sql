@@ -1,7 +1,7 @@
 CREATE TABLE IF NOT EXISTS `develop_model` (
     `id` VARCHAR(32) NOT NULL COMMENT '主键ID',
-    `code` VARCHAR(32) NOT NULL COMMENT '编码',
-    `name` VARCHAR(32) NULL DEFAULT '' COMMENT '名称',
+    `code` VARCHAR(64) NOT NULL COMMENT '编码',
+    `name` VARCHAR(64) NULL DEFAULT '' COMMENT '名称',
     `description` VARCHAR(255) NULL DEFAULT '' COMMENT '描述',
     `full_name` VARCHAR(255) NOT NULL DEFAULT '' COMMENT '全称',
     `module` VARCHAR(32) NOT NULL DEFAULT '' COMMENT '模块',

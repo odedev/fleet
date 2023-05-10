@@ -1,7 +1,6 @@
 package dev.odes.fleet.develop.generator;
 
 import dev.odes.fleet.common.utils.CaseFormatUtils;
-import dev.odes.fleet.develop.enumeration.ModuleTypeEnum;
 import dev.odes.fleet.develop.model.ModelModel;
 import dev.odes.fleet.develop.model.ModuleModel;
 import org.apache.commons.io.FileUtils;
@@ -25,8 +24,7 @@ public class CodeGenerator {
 
         models.forEach(model -> {
             templateContext.setModel(model);
-
-            generateJava(templateContext);
+            generateModel(templateContext);
         });
     }
 
@@ -37,12 +35,12 @@ public class CodeGenerator {
 
         String moduleCode = templateContext.getModule().getCode();
 
-        Map<String, String> templateFileMap = TemplateMethod.TEMPLATE_FILE;
-        Map<String, String> targetDirMap = TemplateMethod.MODULE_TARGET_DIR;
+        Map<String, String> templateFileMap = TemplateUtils.TEMPLATE_FILE;
+        Map<String, String> targetDirMap = TemplateUtils.MODULE_TARGET_DIR;
 
-        for (String file : TemplateMethod.MODULE_FILES) {
+        for (String file : TemplateUtils.MODULE_FILES) {
             String targetDir = targetDirMap.get(file);
-            String path = TemplateMethod.getModuleTargetPath(targetDir, file, moduleCode);
+            String path = TemplateUtils.getModuleTargetPath(targetDir, file, moduleCode);
             if (new File(path).exists()) {
                 continue;
             }
@@ -56,23 +54,24 @@ public class CodeGenerator {
         }
     }
 
-    public static void generateJava(TemplateContext templateContext) {
+    public static void generateModel(TemplateContext templateContext) {
         VelocityInitializer.init();
         VelocityContext velocityContext = new VelocityContext();
         velocityContext.put("templateContext", templateContext);
 
         String moduleCode = templateContext.getModule().getCode();
-        String entityCode = templateContext.getModel().getCode();
+        String modelCode = templateContext.getModel().getCode();
+        modelCode = CaseFormatUtils.upperCamel(modelCode);
 
-        Map<String, String> templateFileMap = TemplateMethod.TEMPLATE_FILE;
-        Map<String, String> targetDirMap = TemplateMethod.JAVA_TARGET_DIR;
+        Map<String, String> templateFileMap = TemplateUtils.TEMPLATE_FILE;
+        Map<String, String> modelJavaTargetDir = TemplateUtils.MODEL_JAVA_TARGET_DIR;
+        Map<String, String> modelResourcesTargetDir = TemplateUtils.MODEL_RESOURCES_TARGET_DIR;
 
-        for (String file : TemplateMethod.JAVA_FILES) {
-            entityCode = CaseFormatUtils.upperCamel(entityCode);
 
-            String targetDir = targetDirMap.get(file);
-            String path = TemplateMethod.getJavaTargetPath(targetDir, file, moduleCode, entityCode);
-            if (!Arrays.asList(TemplateMethod.JAVA_REWRITE_FILES).contains(file) && new File(path).exists()) {
+        for (String file : TemplateUtils.MODEL_JAVA_FILES) {
+            String targetDir = modelJavaTargetDir.get(file);
+            String path = TemplateUtils.getModelJavaTargetPath(targetDir, file, moduleCode, modelCode);
+            if (!Arrays.asList(TemplateUtils.JAVA_REWRITE_FILES).contains(file) && new File(path).exists()) {
                 continue;
             }
             String templateFile = templateFileMap.get(file);
@@ -80,6 +79,16 @@ public class CodeGenerator {
                 continue;
             }
 
+            write(velocityContext, templateFile, path);
+        }
+
+        for (String file : TemplateUtils.MODEL_RESOURCES_FILES) {
+            String targetDir = modelResourcesTargetDir.get(file);
+            String path = TemplateUtils.getModelResourcesTargetPath(targetDir, file, moduleCode, modelCode);
+            String templateFile = templateFileMap.get(file);
+            if (templateFile == null) {
+                continue;
+            }
             write(velocityContext, templateFile, path);
         }
     }

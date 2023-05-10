@@ -25,17 +25,18 @@ public class ModelFieldTransform implements Transform<ModelField, ModelFieldMode
         ModelFieldModel modelFieldModel = new ModelFieldModel(modelField);
 
         Model model = this.modelRepository.findOneById(modelField.getModel());
-        Model dataModel = this.modelRepository.findOneById(modelField.getDataModel());
-        Enumeration dataEnum = this.enumerationRepository.findOneById(modelField.getDataEnum());
-
         if (model != null) {
             modelFieldModel.setModel(new ModelModel(model));
         }
+
+        Model dataModel = this.modelRepository.findOneById(modelField.getModelType());
         if (dataModel != null) {
-            modelFieldModel.setDataModel(new ModelModel(dataModel));
+            modelFieldModel.setModelType(new ModelModel(dataModel));
         }
+
+        Enumeration dataEnum = this.enumerationRepository.findOneById(modelField.getEnumType());
         if (dataEnum != null) {
-            modelFieldModel.setDataEnum(new EnumerationModel(dataEnum));
+            modelFieldModel.setEnumType(new EnumerationModel(dataEnum));
         }
 
         return modelFieldModel;

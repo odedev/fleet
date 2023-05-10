@@ -7,7 +7,6 @@ public class Module extends AbstractEntity {
     private String code;
     private String name;
     private String description;
-    private Integer moduleType;
     private Integer storageType;
 
     @Override
@@ -42,14 +41,6 @@ public class Module extends AbstractEntity {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public Integer getModuleType() {
-        return moduleType;
-    }
-
-    public void setModuleType(Integer moduleType) {
-        this.moduleType = moduleType;
     }
 
     public Integer getStorageType() {
