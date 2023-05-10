@@ -6,7 +6,7 @@ public class CaseFormatUtils {
 
     // snake_case
     // lower_underscore
-    public static String LOWER_UNDERSCORE(String word) {
+    public static String lowerUnderscore(String word) {
         return CaseFormat.LOWER_CAMEL.to(CaseFormat.LOWER_UNDERSCORE, word);
     }
 
@@ -23,7 +23,7 @@ public class CaseFormatUtils {
 
     // lowerCamelCase
     // lowerCamel
-    public static String LOWER_CAMEL(String word) {
+    public static String lowerCamel(String word) {
         return CaseFormat.UPPER_CAMEL.to(CaseFormat.LOWER_CAMEL, word);
     }
 

@@ -1,13 +1,15 @@
+#set($moduleCode = $templateContext.module.code.toLowerCase())
+#set($modelCode = $templateContext.model.code)
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="dev.odes.fleet.develop.mapper.ModelMapper">
+<mapper namespace="dev.odes.fleet.module.${moduleCode}.mapper.${modelCode}Mapper">
   <sql id="tableColumn">
     <trim suffixOverrides=",">
-      `develop_model`.`id`,
-      `develop_model`.`code`,
-      `develop_model`.`name`,
+      `${moduleCode}_$templateContext.lowerUnderscore(${modelCode})`.`id`,
+      `${moduleCode}_$templateContext.lowerUnderscore(${modelCode})`.`code`,
+      `${moduleCode}_$templateContext.lowerUnderscore(${modelCode})`.`name`,
     </trim>
   </sql>
   <sql id="column">
@@ -53,16 +55,16 @@
     </trim>
   </sql>
 
-  <resultMap id="resultMap" type="dev.odes.fleet.develop.entity.Model">
+  <resultMap id="resultMap" type="dev.odes.fleet.module.${moduleCode}.entity.${modelCode}">
     <id property="id" column="id"/>
     <result property="code" column="code"/>
     <result property="name" column="name"/>
   </resultMap>
 
-  <select id="find" resultMap="resultMap" resultType="dev.odes.fleet.develop.entity.Model">
+  <select id="find" resultMap="resultMap" resultType="dev.odes.fleet.module.${moduleCode}.entity.${modelCode}">
     SELECT
     <include refid="column"/>
-    FROM `develop_model`
+    FROM `${moduleCode}_$templateContext.lowerUnderscore(${modelCode})`
     <if test="where != null and where != ''">
       <where>
         ${where}
@@ -78,10 +80,10 @@
     </choose>
   </select>
 
-  <select id="findOne" resultMap="resultMap" resultType="dev.odes.fleet.develop.entity.Model">
+  <select id="findOne" resultMap="resultMap" resultType="dev.odes.fleet.module.${moduleCode}.entity.${modelCode}">
     SELECT
     <include refid="column"/>
-    FROM `develop_model`
+    FROM `${moduleCode}_$templateContext.lowerUnderscore(${modelCode})`
     <if test="where != null and where != ''">
       <where>
         ${where}
@@ -90,15 +92,15 @@
     LIMIT 1
   </select>
 
-  <insert id="insertOne" parameterType="dev.odes.fleet.develop.entity.Model">
-    INSERT INTO `develop_model`
+  <insert id="insertOne" parameterType="dev.odes.fleet.module.${moduleCode}.entity.${modelCode}">
+    INSERT INTO `${moduleCode}_$templateContext.lowerUnderscore(${modelCode})`
     (<include refid="insertColumn"/>)
     VALUES
     (<include refid="insertValue"/>)
   </insert>
 
   <insert id="insertMany" parameterType="java.util.List">
-    INSERT INTO `develop_model`
+    INSERT INTO `${moduleCode}_$templateContext.lowerUnderscore(${modelCode})`
     (<include refid="insertColumn"/>)
     VALUES
     <foreach collection="list" item="module" separator=",">
@@ -106,26 +108,18 @@
     </foreach>
   </insert>
 
-  <update id="updateOne" parameterType="dev.odes.fleet.develop.entity.Model">
-    UPDATE `develop_model`
+  <update id="updateOne" parameterType="dev.odes.fleet.module.${moduleCode}.entity.${modelCode}">
+    UPDATE `${moduleCode}_$templateContext.lowerUnderscore(${modelCode})`
     <include refid="updateColumn"/>
     WHERE id=#{id}
   </update>
 
-  <!--  <update id="updateMany" parameterType="java.util.HashMap">-->
-  <!--    UPDATE `module`-->
-  <!--    <foreach collection="moduleList" item="module" separator=",">-->
-  <!--      <include refid="updateColumn"/>-->
-  <!--    </foreach>-->
-  <!--    WHERE id=#{id} AND updated_count=#{updatedCount, jdbcType=INTEGER}-->
-  <!--  </update>-->
-
   <delete id="deleteOne" parameterType="java.lang.String">
-    DELETE FROM `develop_model` WHERE id=#{id}
+    DELETE FROM `${moduleCode}_$templateContext.lowerUnderscore(${modelCode})` WHERE id=#{id}
   </delete>
 
   <select id="count" resultType="java.lang.Integer">
-    SELECT COUNT(1) FROM `develop_model`
+    SELECT COUNT(1) FROM `${moduleCode}_$templateContext.lowerUnderscore(${modelCode})`
     <if test="where != null and where != ''">
       ${where}
     </if>

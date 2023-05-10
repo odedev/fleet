@@ -24,6 +24,10 @@ public class GeneratorService {
         modelModel2.setCode("User");
         modelModels.add(modelModel2);
 
+        ModelModel modelModel3 = new ModelModel();
+        modelModel3.setCode("UserRole");
+        modelModels.add(modelModel3);
+
         CodeGenerator.generate(moduleModel, modelModels);
 
 

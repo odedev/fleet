@@ -1,5 +1,6 @@
 package dev.odes.fleet.develop.generator;
 
+import dev.odes.fleet.common.utils.CaseFormatUtils;
 import dev.odes.fleet.develop.model.ModelModel;
 import dev.odes.fleet.develop.model.ModuleModel;
 
@@ -39,5 +40,13 @@ public class TemplateContext {
 
     public void setModel(ModelModel model) {
         this.model = model;
+    }
+
+    public static String lowerUnderscore(String word) {
+        return CaseFormatUtils.lowerUnderscore(word);
+    }
+
+    public static String lowerCamel(String word) {
+        return CaseFormatUtils.lowerCamel(word);
     }
 }

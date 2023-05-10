@@ -46,8 +46,8 @@ public class TemplateUtils {
             new AbstractMap.SimpleEntry<>(TemplateConstant.MODEL_TARGET_REPOSITORY, getModelVMFile("repository.java.vm")),
             new AbstractMap.SimpleEntry<>(TemplateConstant.MODEL_TARGET_MAPPER, getModelVMFile("mapper.java.vm")),
             new AbstractMap.SimpleEntry<>(TemplateConstant.MODEL_TARGET_TRANSFORM, getModelVMFile("transform.java.vm")),
-            new AbstractMap.SimpleEntry<>(TemplateConstant.MODEL_TARGET_MAPPER_XML, getModuleVMFile("mapper.xml.vm")),
-            new AbstractMap.SimpleEntry<>(TemplateConstant.MODEL_TARGET_CREATE_SQL, getModuleVMFile("create.sql.vm"))
+            new AbstractMap.SimpleEntry<>(TemplateConstant.MODEL_TARGET_MAPPER_XML, getModelVMFile("mapper.xml.vm")),
+            new AbstractMap.SimpleEntry<>(TemplateConstant.MODEL_TARGET_CREATE_SQL, getModelVMFile("create.sql.vm"))
         )
     );
 

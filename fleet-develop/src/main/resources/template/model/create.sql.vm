@@ -1,4 +1,6 @@
-CREATE TABLE IF NOT EXISTS `develop_model` (
+#set($moduleCode = $templateContext.module.code.toLowerCase())
+#set($modelCode = $templateContext.model.code)
+CREATE TABLE IF NOT EXISTS `${moduleCode}_$templateContext.lowerUnderscore(${modelCode})` (
     `id` VARCHAR(32) NOT NULL COMMENT '主键ID',
     `code` VARCHAR(64) NOT NULL COMMENT '编码',
     `name` VARCHAR(64) NULL DEFAULT '' COMMENT '名称',
