@@ -1,5 +1,7 @@
 #set($moduleCode = $templateContext.module.code.toLowerCase())
 #set($modelCode = $templateContext.model.code)
+#set($modelCodeLowerCamel = $templateContext.lowerCamel($templateContext.model.code))
+#set($modelCodeLowerUnderscore = $templateContext.lowerUnderscore($templateContext.model.code))
 package dev.odes.fleet.module.${moduleCode}.transform;
 
 import dev.odes.fleet.common.transform.Transform;
@@ -10,14 +12,14 @@ import org.springframework.stereotype.Component;
 @Component
 public class ${modelCode}Transform implements Transform<${modelCode}, ${modelCode}Model> {
     @Override
-    public ${modelCode}Model toModel(${modelCode} entity) {
-        ${modelCode}Model model = new ${modelCode}Model(entity);
+    public ${modelCode}Model toModel(${modelCode} ${modelCodeLowerCamel}) {
+        ${modelCode}Model ${modelCodeLowerCamel}Model = new ${modelCode}Model(${modelCodeLowerCamel});
 
-        return model;
+        return ${modelCodeLowerCamel}Model;
     }
 
     @Override
-    public ${modelCode} toEntity(${modelCode}Model model) {
-        return model.toEntity();
+    public ${modelCode} toEntity(${modelCode}Model ${modelCodeLowerCamel}Model) {
+        return ${modelCodeLowerCamel}Model.toEntity();
     }
 }

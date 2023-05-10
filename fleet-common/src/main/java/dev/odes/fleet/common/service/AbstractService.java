@@ -53,10 +53,17 @@ public abstract class AbstractService<E extends AbstractEntity, M extends Abstra
     }
 
     @Override
-    public M findById(String id) {
+    public M findOneById(String id) {
         E e = this.repository.findOneById(id);
         return this._transform(e);
     }
+
+    List<M> findManyById(String field, String id){
+        List<E> eList = this.repository.findManyById(field, id);
+
+        return null;
+    }
+
 
     @Override
     public M insertOne(M m) {

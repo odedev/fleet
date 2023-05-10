@@ -1,5 +1,7 @@
 #set($moduleCode = $templateContext.module.code.toLowerCase())
 #set($modelCode = $templateContext.model.code)
+#set($modelCodeLowerCamel = $templateContext.lowerCamel($templateContext.model.code))
+#set($modelCodeLowerUnderscore = $templateContext.lowerUnderscore($templateContext.model.code))
 package dev.odes.fleet.module.${moduleCode}.repository;
 
 import dev.odes.fleet.module.${moduleCode}.entity.${modelCode};
@@ -9,9 +11,9 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public class ${modelCode}Repository extends MysqlRepository<${modelCode}, ${modelCode}Mapper> {
-    private final ${modelCode}Mapper mapper;
-    public AppModuleRepository(${modelCode}Mapper mapper) {
-        super(mapper);
-        this.mapper = mapper;
+    private final ${modelCode}Mapper ${modelCodeLowerCamel}Mapper;
+    public AppModuleRepository(${modelCode}Mapper ${modelCodeLowerCamel}Mapper) {
+        super(${modelCodeLowerCamel}Mapper);
+        this.${modelCodeLowerCamel}Mapper = ${modelCodeLowerCamel}Mapper;
     }
 }

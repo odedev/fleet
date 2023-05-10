@@ -1,19 +1,23 @@
 #set($moduleCode = $templateContext.module.code.toLowerCase())
 #set($modelCode = $templateContext.model.code)
+#set($modelFields = $templateContext.model.modelFields)
 package dev.odes.fleet.module.${moduleCode}.entity;
 
 import dev.odes.fleet.common.entity.AbstractEntity;
 
 public class ${modelCode} extends AbstractEntity {
     private String id;
+    #foreach($field in $modelFields)
+    private String $velocityCount;
+    #end
 
     @Override
     public String getId() {
-        return null;
+        return this.id;
     }
 
     @Override
     public void setId(String id) {
-
+        this.id = id;
     }
 }

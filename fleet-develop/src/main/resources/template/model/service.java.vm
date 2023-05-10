@@ -1,29 +1,34 @@
 #set($moduleCode = $templateContext.module.code.toLowerCase())
 #set($modelCode = $templateContext.model.code)
+#set($modelCodeLowerCamel = $templateContext.lowerCamel($templateContext.model.code))
+#set($modelCodeLowerUnderscore = $templateContext.lowerUnderscore($templateContext.model.code))
 package dev.odes.fleet.module.${moduleCode}.service;
 
 import dev.odes.fleet.common.service.AbstractService;
 import dev.odes.fleet.module.${moduleCode}.entity.${modelCode};
 import dev.odes.fleet.module.${moduleCode}.model.${modelCode}Model;
 import dev.odes.fleet.module.${moduleCode}.repository.${modelCode}Repository;
+import dev.odes.fleet.module.${moduleCode}.transform.${modelCode}Transform;
 import org.springframework.stereotype.Service;
 
 @Service
 public class ${modelCode}Service extends AbstractService<${modelCode}, ${modelCode}Model, ${modelCode}Repository> {
-    private final ${modelCode}Repository repository;
-    public ${modelCode}Service(${modelCode}Repository repository) {
-        super(repository);
-        this.repository = repository;
+    private final ${modelCode}Transform ${modelCodeLowerCamel}Transform;
+    private final ${modelCode}Repository ${modelCodeLowerCamel}Repository;
+    public ${modelCode}Service(${modelCode}Transform ${modelCodeLowerCamel}Transform, ${modelCode}Repository ${modelCodeLowerCamel}Repository) {
+        super(${modelCodeLowerCamel}Repository);
+        this.${modelCodeLowerCamel}Transform = ${modelCodeLowerCamel}Transform;
+        this.${modelCodeLowerCamel}Repository = ${modelCodeLowerCamel}Repository;
     }
 
     @Override
-    public ${modelCode}Model transform(${modelCode} entity) {
-        return null;
+    public ${modelCode}Model transform(${modelCode} ${modelCodeLowerCamel}) {
+        return this.${modelCodeLowerCamel}Transform.toModel(${modelCodeLowerCamel});
     }
 
     @Override
-    public ${modelCode} transform(${modelCode}Model model) {
-        return null;
+    public ${modelCode} transform(${modelCode}Model ${modelCodeLowerCamel}Model) {
+        return this.${modelCodeLowerCamel}Transform.toEntity(${modelCodeLowerCamel}Model);;
     }
 
 }

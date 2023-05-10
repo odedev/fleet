@@ -1,6 +1,7 @@
 package dev.odes.fleet.develop.service;
 
 import dev.odes.fleet.develop.generator.CodeGenerator;
+import dev.odes.fleet.develop.model.ModelFieldModel;
 import dev.odes.fleet.develop.model.ModelModel;
 import dev.odes.fleet.develop.model.ModuleModel;
 import org.springframework.stereotype.Service;
@@ -10,8 +11,18 @@ import java.util.List;
 
 @Service
 public class GeneratorService {
+    private final ModuleService moduleService;
+    private final ModelService modelService;
 
-    public void generate() {
+    public GeneratorService(ModuleService moduleService, ModelService modelService) {
+        this.moduleService = moduleService;
+        this.modelService = modelService;
+    }
+
+    public void generate(String moduleId) {
+
+        ModuleModel module = this.moduleService.findOneById(moduleId);
+
         ModuleModel moduleModel = new ModuleModel();
         moduleModel.setCode("system");
         moduleModel.setName("系统管理");
@@ -22,6 +33,10 @@ public class GeneratorService {
         modelModels.add(modelModel1);
         ModelModel modelModel2 = new ModelModel();
         modelModel2.setCode("User");
+        List<ModelFieldModel> modelFieldModelList = new ArrayList<>();
+        modelFieldModelList.add(new ModelFieldModel());
+        modelFieldModelList.add(new ModelFieldModel());
+        modelModel2.setModelFields(modelFieldModelList);
         modelModels.add(modelModel2);
 
         ModelModel modelModel3 = new ModelModel();

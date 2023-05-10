@@ -24,7 +24,7 @@ public class ParameterConvert {
             if (!where.isEmpty()) {
                 where.append(" AND ");
             }
-            if (dataType == DataTypeEnum.ENTITY) {
+            if (dataType == DataTypeEnum.MODEL) {
                 where.append(key);
                 where.append("=");
                 where.append(value.toString());

@@ -13,7 +13,7 @@ public enum DataTypeEnum {
     FLOAT(4, "Float"),
     DATE(5, "Date"),
     ENUM(6, "Enum"),
-    ENTITY(7, "Entity"),
+    MODEL(7, "Model"),
     JSON(8, "JSON"),
     FILE(9, "File");
 

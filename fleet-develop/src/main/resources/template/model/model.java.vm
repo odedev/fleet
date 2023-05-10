@@ -1,5 +1,7 @@
 #set($moduleCode = $templateContext.module.code.toLowerCase())
 #set($modelCode = $templateContext.model.code)
+#set($modelCodeLowerCamel = $templateContext.lowerCamel($templateContext.model.code))
+#set($modelCodeLowerUnderscore = $templateContext.lowerUnderscore($templateContext.model.code))
 package dev.odes.fleet.module.${moduleCode}.model;
 
 import dev.odes.fleet.common.model.AbstractModel;
@@ -19,15 +21,15 @@ public class ${modelCode}Model extends AbstractModel<${modelCode}> {
     }
 
     @Override
-    public void fromEntity(${modelCode} entity) {
-        if (entity == null) {
+    public void fromEntity(${modelCode} ${modelCodeLowerCamel}) {
+        if (${modelCodeLowerCamel} == null) {
             return;
         }
     }
 
     @Override
     public ${modelCode} toEntity() {
-        ${modelCode} entity = new ${modelCode}();
-        return entity;
+        ${modelCode} ${modelCodeLowerCamel} = new ${modelCode}();
+        return ${modelCodeLowerCamel};
     }
 }

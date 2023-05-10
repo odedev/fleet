@@ -11,7 +11,7 @@ public interface Service<E extends AbstractEntity, M extends AbstractModel<E>> {
     List<M> findPage(Parameter parameter);
     List<M> findTree(Parameter parameter);
     M findOne(Parameter parameter);
-    M findById(String id);
+    M findOneById(String id);
 
     M insertOne(M m);
     List<M> insertMany(List<M> list);

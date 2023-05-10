@@ -1,8 +1,13 @@
 package dev.odes.fleet.develop.generator;
 
+import dev.odes.fleet.common.enumeration.DataTypeEnum;
 import dev.odes.fleet.common.utils.CaseFormatUtils;
+import dev.odes.fleet.develop.model.ModelFieldModel;
 import dev.odes.fleet.develop.model.ModelModel;
 import dev.odes.fleet.develop.model.ModuleModel;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class TemplateContext {
     private String moduleType;
@@ -40,6 +45,32 @@ public class TemplateContext {
 
     public void setModel(ModelModel model) {
         this.model = model;
+    }
+
+    public List<ModelFieldModel> getModelList() {
+        List<ModelFieldModel> modelFields = this.getModel().getModelFields();
+        List<ModelFieldModel> modelFieldList = new ArrayList<>();
+        modelFields.forEach(modelField -> {
+            if (modelField.getDataType().equals(DataTypeEnum.MODEL)) {
+                modelFieldList.add(modelField);
+            }
+        });
+        return modelFieldList;
+    }
+
+    public List<ModelFieldModel> getEnumList() {
+        List<ModelFieldModel> modelFields = this.getModel().getModelFields();
+        List<ModelFieldModel> modelFieldList = new ArrayList<>();
+        modelFields.forEach(modelField -> {
+            if (modelField.getDataType().equals(DataTypeEnum.ENUM)) {
+                modelFieldList.add(modelField);
+            }
+        });
+        return modelFieldList;
+    }
+
+    public static String getFieldType(ModelFieldModel modelField) {
+        return DataTypeUtils.getDataType(modelField);
     }
 
     public static String lowerUnderscore(String word) {
