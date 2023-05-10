@@ -9,10 +9,10 @@ import java.util.UUID;
 
 public class IDUtils {
     public static String getID() {
-        String id = getUUID();
-        id = getSnowflakeID();
+//        String id = getUUID();
+        String id = getSnowflakeID();
 //        id = getObjectID();
-        id = Strings.padStart(id, 32, '0');
+//        id = Strings.padStart(id, 32, '0');
         return id;
     }
 

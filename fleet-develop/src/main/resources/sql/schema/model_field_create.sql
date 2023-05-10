@@ -20,5 +20,5 @@ CREATE TABLE IF NOT EXISTS `develop_model_field` (
     `deleted_by` VARCHAR(32) NULL DEFAULT NULL COMMENT '删除人',
     `deleted_at` DATETIME NULL DEFAULT NULL COMMENT '删除时间',
     PRIMARY KEY (`id`),
-    UNIQUE INDEX `code` (`code`)
+    UNIQUE INDEX `code_model` (`code`, `model`)
 );

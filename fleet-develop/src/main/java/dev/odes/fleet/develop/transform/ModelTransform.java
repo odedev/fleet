@@ -9,6 +9,7 @@ import dev.odes.fleet.develop.model.ModelModel;
 import dev.odes.fleet.develop.model.ModuleModel;
 import dev.odes.fleet.develop.repository.ModelFieldRepository;
 import dev.odes.fleet.develop.repository.ModuleRepository;
+import dev.odes.fleet.develop.service.ModelFieldService;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -17,10 +18,10 @@ import java.util.List;
 @Component
 public class ModelTransform implements Transform<Model, ModelModel> {
     private final ModuleRepository moduleRepository;
-    private final ModelFieldRepository modelFieldRepository;
-    public ModelTransform(ModuleRepository moduleRepository, ModelFieldRepository modelFieldRepository) {
+    private final ModelFieldService modelFieldService;
+    public ModelTransform(ModuleRepository moduleRepository, ModelFieldService modelFieldService) {
         this.moduleRepository = moduleRepository;
-        this.modelFieldRepository = modelFieldRepository;
+        this.modelFieldService = modelFieldService;
     }
 
     @Override
@@ -32,11 +33,13 @@ public class ModelTransform implements Transform<Model, ModelModel> {
             modelModel.setModule(new ModuleModel(module));
         }
 
-        List<ModelField> modelFieldList = this.modelFieldRepository.findManyById("model", model.getId());
-        List<ModelFieldModel> modelFields = new ArrayList<>();
-        modelFieldList.forEach(modelField -> {
-            modelFields.add(new ModelFieldModel(modelField));
-        });
+        // 主从关系需要调用service
+        List<ModelFieldModel> modelFields = this.modelFieldService.findManyById("model", model.getId());
+//        List<ModelField> modelFieldList = this.modelFieldRepository.findManyById("model", model.getId());
+//        List<ModelFieldModel> modelFields = new ArrayList<>();
+//        modelFieldList.forEach(modelField -> {
+//            modelFields.add(new ModelFieldModel(modelField));
+//        });
         modelModel.setModelFields(modelFields);
 
         return modelModel;

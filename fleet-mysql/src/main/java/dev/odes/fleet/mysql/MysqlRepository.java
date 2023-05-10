@@ -43,13 +43,13 @@ public class MysqlRepository<E extends AbstractEntity, M extends GenericMapper<E
         if (StringUtils.isNullOrEmpty(id)) {
             return null;
         }
-        String where = "id=" + id;
+        String where = "id='" + id + "'";
         return this.mapper.findOne(where);
     }
 
     @Override
     public List<E> findManyById(String field, String id) {
-        String where = field + "=" + id;
+        String where = field + "='" + id + "'";
         String order = "";
         return this.mapper.find(where, order);
     }

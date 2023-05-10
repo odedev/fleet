@@ -9,6 +9,11 @@ import dev.odes.fleet.module.${moduleCode}.entity.${modelCode};
 
 public class ${modelCode}Model extends AbstractModel<${modelCode}> {
     private String id;
+    #foreach($field in $modelFields)
+    #set($fieldCode = $field.code)
+    #set($type = $templateContext.getFieldType($field))
+    private $type $fieldCode;
+    #end
 
     @Override
     public String getId() {
@@ -20,6 +25,19 @@ public class ${modelCode}Model extends AbstractModel<${modelCode}> {
         this.id = id;
     }
 
+    #foreach($field in $modelFields)
+    #set($fieldCode = $field.code)
+    #set($fieldCodeUpperCamel = $templateContext.upperCamel($fieldCode))
+    #set($type = $templateContext.getFieldType($field))
+    public $type get${fieldCodeUpperCamel}() {
+      return $fieldCode;
+    }
+
+    public void set${fieldCodeUpperCamel}($type ${fieldCode}) {
+      this.${fieldCode} = ${fieldCode};
+    }
+
+    #end
     @Override
     public void fromEntity(${modelCode} ${modelCodeLowerCamel}) {
         if (${modelCodeLowerCamel} == null) {

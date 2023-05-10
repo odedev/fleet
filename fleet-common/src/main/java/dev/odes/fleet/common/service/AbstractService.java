@@ -58,10 +58,12 @@ public abstract class AbstractService<E extends AbstractEntity, M extends Abstra
         return this._transform(e);
     }
 
-    List<M> findManyById(String field, String id){
+    @Override
+    public List<M> findManyById(String field, String id){
         List<E> eList = this.repository.findManyById(field, id);
-
-        return null;
+        List<M> mList = new ArrayList<>();
+        eList.forEach(e -> mList.add(transform(e)));
+        return mList;
     }
 
 

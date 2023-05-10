@@ -19,45 +19,13 @@ public class GeneratorService {
         this.modelService = modelService;
     }
 
-    public void generate(String moduleId) {
+    public Object generate(String moduleId) {
 
         ModuleModel module = this.moduleService.findOneById(moduleId);
+        List<ModelModel> models = this.modelService.findManyById("module", moduleId);
 
-        ModuleModel moduleModel = new ModuleModel();
-        moduleModel.setCode("system");
-        moduleModel.setName("系统管理");
+        CodeGenerator.generate(module, models);
 
-        List<ModelModel> modelModels = new ArrayList<>();
-        ModelModel modelModel1 = new ModelModel();
-        modelModel1.setCode("Menu");
-        modelModels.add(modelModel1);
-        ModelModel modelModel2 = new ModelModel();
-        modelModel2.setCode("User");
-        List<ModelFieldModel> modelFieldModelList = new ArrayList<>();
-        modelFieldModelList.add(new ModelFieldModel());
-        modelFieldModelList.add(new ModelFieldModel());
-        modelModel2.setModelFields(modelFieldModelList);
-        modelModels.add(modelModel2);
-
-        ModelModel modelModel3 = new ModelModel();
-        modelModel3.setCode("UserRole");
-        modelModels.add(modelModel3);
-
-        CodeGenerator.generate(moduleModel, modelModels);
-
-
-        ModuleModel moduleModel1 = new ModuleModel();
-        moduleModel1.setCode("org");
-        moduleModel1.setName("组织架构");
-
-        List<ModelModel> modelModels1 = new ArrayList<>();
-        ModelModel modelModel11 = new ModelModel();
-        modelModel11.setCode("Org");
-        modelModels1.add(modelModel11);
-        ModelModel modelModel12 = new ModelModel();
-        modelModel12.setCode("Department");
-        modelModels1.add(modelModel12);
-
-        CodeGenerator.generate(moduleModel1, modelModels1);
+        return models;
     }
 }

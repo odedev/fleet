@@ -73,6 +73,10 @@ public class TemplateContext {
         return DataTypeUtils.getDataType(modelField);
     }
 
+    public static String upperCamel(String word) {
+        return CaseFormatUtils.upperCamel(word);
+    }
+
     public static String lowerUnderscore(String word) {
         return CaseFormatUtils.lowerUnderscore(word);
     }

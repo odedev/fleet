@@ -1,6 +1,7 @@
 package dev.odes.fleet.develop.generator;
 
 import dev.odes.fleet.common.utils.CaseFormatUtils;
+import dev.odes.fleet.develop.model.ModelFieldModel;
 import dev.odes.fleet.develop.model.ModelModel;
 import dev.odes.fleet.develop.model.ModuleModel;
 import org.apache.commons.io.FileUtils;
@@ -11,9 +12,7 @@ import org.apache.velocity.app.Velocity;
 import java.io.File;
 import java.io.IOException;
 import java.io.StringWriter;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class CodeGenerator {
     public static void generate(ModuleModel module, List<ModelModel> models) {
@@ -23,6 +22,7 @@ public class CodeGenerator {
         generateModule(templateContext);
 
         models.forEach(model -> {
+            model.getModelFields().sort(Comparator.comparing(ModelFieldModel::getSequence));
             templateContext.setModel(model);
             generateModel(templateContext);
         });
