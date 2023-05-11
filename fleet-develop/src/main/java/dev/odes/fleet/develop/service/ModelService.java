@@ -3,6 +3,7 @@ package dev.odes.fleet.develop.service;
 import dev.odes.fleet.common.service.AbstractService;
 import dev.odes.fleet.develop.entity.Model;
 import dev.odes.fleet.develop.model.ModelModel;
+import dev.odes.fleet.develop.model.ModuleModel;
 import dev.odes.fleet.develop.repository.ModelRepository;
 import dev.odes.fleet.develop.transform.ModelTransform;
 import org.springframework.stereotype.Service;
@@ -31,6 +32,13 @@ public class ModelService extends AbstractService<Model, ModelModel, ModelReposi
     @Override
     public void setDefaultValue(ModelModel modelModel) {
         super.setDefaultValue(modelModel);
+        String modelCode = modelModel.getCode();
+        String moduleCode = "";
+        ModuleModel module = modelModel.getModule();
+        if (module != null) {
+            moduleCode = module.getCode();
+        }
+        modelModel.setFullName("dev.odes.fleet.module." + moduleCode + ".model." + modelCode + "Model");
     }
 
     @Override

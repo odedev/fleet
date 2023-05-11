@@ -10,57 +10,79 @@
   <sql id="tableColumn">
     <trim suffixOverrides=",">
       `${moduleCode}_${modelCodeLowerUnderscore}`.`id`,
-      `${moduleCode}_${modelCodeLowerUnderscore}`.`code`,
-      `${moduleCode}_${modelCodeLowerUnderscore}`.`name`,
+      #foreach($field in $modelFields)
+      #set($fieldCode = $field.code)
+      #set($fieldCodeLowerUnderscore = $templateContext.lowerUnderscore($fieldCode))
+      `${moduleCode}_${modelCodeLowerUnderscore}`.`${fieldCodeLowerUnderscore}`,
+      #end
     </trim>
   </sql>
   <sql id="column">
     <trim suffixOverrides=",">
       `id`,
-      `code`,
-      `name`,
+      #foreach($field in $modelFields)
+      #set($fieldCode = $field.code)
+      #set($fieldCodeLowerUnderscore = $templateContext.lowerUnderscore($fieldCode))
+      `${fieldCodeLowerUnderscore}`,
+      #end
     </trim>
   </sql>
 
   <sql id="insertColumn">
     <trim suffixOverrides=",">
       `id`,
-      <if test="code != null">`code`,</if>
-      <if test="name != null">`name`,</if>
+      #foreach($field in $modelFields)
+      #set($fieldCode = $field.code)
+      #set($fieldCodeLowerUnderscore = $templateContext.lowerUnderscore($fieldCode))
+      <if test="${fieldCode} != null">`${fieldCodeLowerUnderscore}`,</if>
+      #end
     </trim>
   </sql>
   <sql id="insertValue">
     <trim suffixOverrides=",">
       #{id},
-      <if test="code != null">#{code},</if>
-      <if test="name != null">#{name},</if>
+      #foreach($field in $modelFields)
+      #set($fieldCode = $field.code)
+      <if test="${fieldCode} != null">#{${fieldCode}},</if>
+      #end
     </trim>
   </sql>
   <sql id="insertEntityValue">
     <trim suffixOverrides=",">
-      #{module.id},
-      <if test="module.code != null">#{module.code},</if>
-      <if test="module.name != null">#{module.name},</if>
+      #{${modelCodeLowerCamel}.id},
+      #foreach($field in $modelFields)
+      #set($fieldCode = $field.code)
+      <if test="${modelCodeLowerCamel}.${fieldCode} != null">#{${modelCodeLowerCamel}.${fieldCode}},</if>
+      #end
     </trim>
   </sql>
 
   <sql id="updateColumn">
     <trim prefix="set" suffixOverrides=",">
-      <if test="code != null">`code` = #{code},</if>
-      <if test="name != null">`name` = #{name},</if>
+      #foreach($field in $modelFields)
+      #set($fieldCode = $field.code)
+      #set($fieldCodeLowerUnderscore = $templateContext.lowerUnderscore($fieldCode))
+      <if test="${fieldCode} != null">`${fieldCodeLowerUnderscore}` = #{${fieldCode}},</if>
+      #end
     </trim>
   </sql>
   <sql id="updateEntityColumn">
     <trim prefix="set" suffixOverrides=",">
-      <if test="module.code != null">`code` = #{module.code},</if>
-      <if test="module.name != null">`name` = #{module.name},</if>
+      #foreach($field in $modelFields)
+      #set($fieldCode = $field.code)
+      #set($fieldCodeLowerUnderscore = $templateContext.lowerUnderscore($fieldCode))
+      <if test="${modelCodeLowerCamel}.${fieldCode} != null">`${fieldCodeLowerUnderscore}` = #{${modelCodeLowerCamel}.${fieldCode}},</if>
+      #end
     </trim>
   </sql>
 
   <resultMap id="resultMap" type="dev.odes.fleet.module.${moduleCode}.entity.${modelCode}">
     <id property="id" column="id"/>
-    <result property="code" column="code"/>
-    <result property="name" column="name"/>
+    #foreach($field in $modelFields)
+    #set($fieldCode = $field.code)
+    #set($fieldCodeLowerUnderscore = $templateContext.lowerUnderscore($fieldCode))
+    <result property="${fieldCode}" column="${fieldCodeLowerUnderscore}"/>
+    #end
   </resultMap>
 
   <select id="find" resultMap="resultMap" resultType="dev.odes.fleet.module.${moduleCode}.entity.${modelCode}">

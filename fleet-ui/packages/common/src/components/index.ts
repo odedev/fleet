@@ -13,6 +13,7 @@ import FlViewNav from './view/FlViewNav.vue';
 import FlViewHead from './view/FlViewHead.vue';
 import FlViewBody from './view/FlViewBody.vue';
 
+import FlSection from "./section/FlSection.vue";
 import FlBox from "./box/FlBox.vue";
 import FlContent from "./content/FlContent.vue";
 import FlCell from "./cell/FlCell.vue";
@@ -41,6 +42,7 @@ export {
   FlViewHead,
   FlViewBody,
 
+  FlSection,
   FlBox,
   FlContent,
   FlCell,

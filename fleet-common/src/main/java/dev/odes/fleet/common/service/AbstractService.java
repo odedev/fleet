@@ -22,7 +22,7 @@ public abstract class AbstractService<E extends AbstractEntity, M extends Abstra
     public abstract E transform(M m);
 
     @Override
-    public List<M> find(Parameter parameter) {
+    public List<M> findMany(Parameter parameter) {
         List<E> eList = this.repository.findMany(parameter);
         List<M> mList = new ArrayList<>();
         eList.forEach(e -> mList.add(transform(e)));
@@ -73,6 +73,7 @@ public abstract class AbstractService<E extends AbstractEntity, M extends Abstra
         E e = this._transform(m);
         this._beforeInsert(e);
         this.repository.insertOne(e);
+        this._inserted(m);
         return m;
     }
 
@@ -86,6 +87,9 @@ public abstract class AbstractService<E extends AbstractEntity, M extends Abstra
             eList.add(e);
         });
         this.repository.insertMany(eList);
+        list.forEach(m -> {
+            this._inserted(m);
+        });
         return list;
     }
 
@@ -95,6 +99,7 @@ public abstract class AbstractService<E extends AbstractEntity, M extends Abstra
         E e = this._transform(m);
         this._beforeUpdate(e);
         this.repository.updateOne(e);
+        this._updated(m);
         return m;
     }
 
@@ -108,6 +113,9 @@ public abstract class AbstractService<E extends AbstractEntity, M extends Abstra
             eList.add(e);
         });
         this.repository.updateMany(eList);
+        list.forEach(m -> {
+            this._updated(m);
+        });
         return list;
     }
 
@@ -116,6 +124,7 @@ public abstract class AbstractService<E extends AbstractEntity, M extends Abstra
         this._beforeDelete(m);
         E e = this._transform(m);
         this.repository.deleteOne(e);
+        this._deleted(m);
         return m;
     }
 
@@ -127,6 +136,9 @@ public abstract class AbstractService<E extends AbstractEntity, M extends Abstra
             eList.add(this._transform(m));
         });
         this.repository.deleteMany(eList);
+        list.forEach(m -> {
+            this._deleted(m);
+        });
         return list;
     }
 
@@ -173,6 +185,18 @@ public abstract class AbstractService<E extends AbstractEntity, M extends Abstra
 
     private void _beforeDelete(M m) {
         this.beforeDelete(m);
+    }
+
+    private void _inserted(M m) {
+        this.inserted(m);
+    }
+
+    private void _updated(M m) {
+        this.updated(m);
+    }
+
+    private void _deleted(M m) {
+        this.deleted(m);
     }
 
     private void _beforeInsert(E e) {

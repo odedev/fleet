@@ -56,6 +56,41 @@ public class DataTypeUtils {
         return type;
     }
 
+
+    public static String getSqlDataType(ModelFieldModel modelField) {
+        String type = "";
+        DataTypeEnum dataType = modelField.getDataType();
+        Integer dataLength = modelField.getDataLength();
+        switch (dataType) {
+            case BOOLEAN, ENUM -> {
+                type = "TINYINT";
+            }
+            case STRING -> {
+                type = "VARCHAR(" + dataLength + ")";
+            }
+            case TEXT -> {
+                type = "TEXT";
+            }
+            case INTEGER -> {
+                type = "INT";
+            }
+            case FLOAT -> {
+                type = "Double";
+            }
+            case DATE -> {
+                type = "DATETIME";
+            }
+            case MODEL -> {
+                type = "VARCHAR(32)";
+            }
+            case JSON -> {
+                type = "JSON";
+            }
+        }
+
+        return type;
+    }
+
     public static Boolean isModelDataType(ModelFieldModel modelField) {
         return modelField.getDataType().equals(DataTypeEnum.MODEL);
     }

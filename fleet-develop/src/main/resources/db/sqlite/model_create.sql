@@ -1,13 +1,10 @@
-CREATE TABLE IF NOT EXISTS `develop_view` (
+CREATE TABLE IF NOT EXISTS `develop_model` (
     `id` VARCHAR(32) NOT NULL,
     `code` VARCHAR(64) NOT NULL,
-    `name` VARCHAR(64) NOT NULL DEFAULT '',
-    `path` VARCHAR(255) NULL DEFAULT '',
-    `sequence` VARCHAR(64) NULL DEFAULT '10',
-    `is_master_view` TINYINT NULL DEFAULT '0',
-    `view_type` TINYINT NULL DEFAULT '0',
-    `parent` VARCHAR(32) NULL DEFAULT NULL,
-    `module` VARCHAR(32) NULL DEFAULT NULL,
+    `name` VARCHAR(64) NULL DEFAULT '',
+    `description` VARCHAR(255) NULL DEFAULT '',
+    `full_name` VARCHAR(255) NOT NULL DEFAULT '',
+    `module` VARCHAR(32) NOT NULL DEFAULT '',
     `created_by` VARCHAR(32) NULL DEFAULT NULL,
     `created_at` DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
     `updated_by` VARCHAR(32) NULL DEFAULT NULL,

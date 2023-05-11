@@ -10,9 +10,9 @@ const nav = [
     activeMatch: '^/api/'
   },
   {
-    text: '核心模块',
-    link: '/core/',
-    activeMatch: '^/core/'
+    text: '模块',
+    link: '/module/',
+    activeMatch: '^/module/'
   },
 ]
 
@@ -53,13 +53,13 @@ const sidebar = {
       ]
     },
   ],
-  '/core/': [
+  '/module/': [
     {
       text: '核心模块',
       collapsed: false,
       items: [
-        { text: '用户管理', link: '/core/user' },
-        { text: '系统管理', link: '/core/system' },
+        { text: '用户管理', link: '/module/user' },
+        { text: '系统管理', link: '/module/system' },
       ]
     },
   ],

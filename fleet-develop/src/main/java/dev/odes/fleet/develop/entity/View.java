@@ -11,6 +11,7 @@ public class View extends AbstractEntity {
     private String sequence;
     private Boolean isMasterView;
     private Integer viewType;
+    private Integer layoutType;
     private String parent;
     private String module;
 

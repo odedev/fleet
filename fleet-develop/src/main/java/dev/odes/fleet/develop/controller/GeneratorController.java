@@ -16,7 +16,7 @@ public class GeneratorController {
         this.generatorService = generatorService;
     }
 
-    @GetMapping(path = "/{moduleId}")
+    @GetMapping(path = "/module/{moduleId}")
     public ResponseData generate(@PathVariable String moduleId) {
         Object data = this.generatorService.generate(moduleId);
         return new ResponseData(data);

@@ -19,7 +19,7 @@ import {
   FlView, FlViewAside, FlViewMain, FlViewNav, FlViewHead, FlViewBody,
   FlContent, FlCell,
   FlTable, FlButton, FlSearch,
-} from '../../components'
+} from '../components/index.ts';
 </script>
 <style lang="scss" scoped>
 

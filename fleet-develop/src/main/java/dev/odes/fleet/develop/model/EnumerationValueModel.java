@@ -3,13 +3,6 @@ package dev.odes.fleet.develop.model;
 import dev.odes.fleet.common.model.AbstractModel;
 import dev.odes.fleet.develop.entity.EnumerationValue;
 
-/**
- * package: dev.odes.fleet.develop.model
- * class: EnumerationValueModel
- * date: 2023/5/6 21:06
- * version: 1.0.0
- * description:
- */
 public class EnumerationValueModel extends AbstractModel<EnumerationValue> {
     private String id;
     private Integer value;

@@ -7,6 +7,15 @@ package dev.odes.fleet.module.${moduleCode}.model;
 import dev.odes.fleet.common.model.AbstractModel;
 import dev.odes.fleet.module.${moduleCode}.entity.${modelCode};
 
+#foreach($field in $templateContext.getModelList())
+#if($field.modelType.fullName != $templateContext.model.fullName)
+import ${field.modelType.fullName};
+#end
+#end
+#foreach($field in $templateContext.getEnumList())
+import ${field.enumType.fullName};
+#end
+
 public class ${modelCode}Model extends AbstractModel<${modelCode}> {
     private String id;
     #foreach($field in $modelFields)
@@ -80,6 +89,7 @@ public class ${modelCode}Model extends AbstractModel<${modelCode}> {
         #set($fieldCode = $field.code)
         #set($fieldCodeUpperCamel = $templateContext.upperCamel($fieldCode))
         ${modelCodeLowerCamel}.set${fieldCodeUpperCamel}(this.get${fieldCodeUpperCamel}());
+        #end
         return ${modelCodeLowerCamel};
     }
 }

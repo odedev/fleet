@@ -127,7 +127,6 @@ cache/
 workspace/
 
 # data
-# data/
 *.db
 # cache/
 temp/

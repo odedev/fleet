@@ -7,7 +7,7 @@ import dev.odes.fleet.common.parameter.Parameter;
 import java.util.List;
 
 public interface Service<E extends AbstractEntity, M extends AbstractModel<E>> {
-    List<M> find(Parameter parameter);
+    List<M> findMany(Parameter parameter);
     List<M> findPage(Parameter parameter);
     List<M> findTree(Parameter parameter);
     M findOne(Parameter parameter);
@@ -30,5 +30,8 @@ public interface Service<E extends AbstractEntity, M extends AbstractModel<E>> {
     default void beforeInsert(M m){}
     default void beforeUpdate(M m) {}
     default void beforeDelete(M m) {}
+    default void inserted(M m) {}
+    default void updated(M m) {}
+    default void deleted(M m) {}
 
 }

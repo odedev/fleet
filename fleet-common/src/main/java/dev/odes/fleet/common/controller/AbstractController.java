@@ -22,14 +22,14 @@ public abstract class AbstractController<E extends AbstractEntity, M extends Abs
     }
 
     @Override
-    @GetMapping(path = "/find/{id}")
+    @GetMapping(path = "/find/id/{id}")
     public ResponseData findById(@PathVariable String id) {
         M m = this.service.findOneById(id);
         return new ResponseData(m);
     }
 
     @Override
-    @PostMapping(path = "/find")
+    @PostMapping(path = "/find/one")
     public ResponseData findOne(@RequestBody Parameter parameter) {
         M m = this.service.findOne(parameter);
         return new ResponseData(m);
@@ -38,7 +38,7 @@ public abstract class AbstractController<E extends AbstractEntity, M extends Abs
     @Override
     @PostMapping(path = "/find/many")
     public ResponseData findMany(@RequestBody Parameter parameter) {
-        List<M> mList = this.service.find(parameter);
+        List<M> mList = this.service.findMany(parameter);
         return new ResponseData(mList);
     }
 
@@ -58,7 +58,7 @@ public abstract class AbstractController<E extends AbstractEntity, M extends Abs
 
     @Override
     @Transactional
-    @PostMapping(path = "/insert")
+    @PostMapping(path = "/insert/one")
     public ResponseData insertOne(@RequestBody M m) {
         M one = this.service.insertOne(m);
         return new ResponseData(one);
@@ -74,7 +74,7 @@ public abstract class AbstractController<E extends AbstractEntity, M extends Abs
 
     @Override
     @Transactional
-    @PostMapping(path = "/update")
+    @PostMapping(path = "/update/one")
     public ResponseData updateOne(@RequestBody M m) {
         M one = this.service.updateOne(m);
         return new ResponseData(one);
@@ -90,7 +90,7 @@ public abstract class AbstractController<E extends AbstractEntity, M extends Abs
 
     @Override
     @Transactional
-    @PostMapping(path = "/delete")
+    @PostMapping(path = "/delete/one")
     public ResponseData deleteOne(@RequestBody M m) {
         M one = this.service.deleteOne(m);
         return new ResponseData(one);

@@ -1,17 +1,12 @@
 <template>
 <div class="item">
-  <div class="item-body">
-    <div class="item-label">
-      <b style="padding-right: 4px;color: red;">*</b>
-      <label>名称</label>
-      <Tooltip :mini="true" content="文档"><IconQuestionCircle /></Tooltip>
-    </div>
-    <div class="item-content">
-      <slot></slot>
-    </div>
+  <div class="item-label">
+    <b style="padding-right: 4px;color: red;">*</b>
+    <label>名称</label>
+    <Tooltip :mini="true" content="文档"><IconQuestionCircle /></Tooltip>
   </div>
-  <div class="item-foot">
-
+  <div class="item-content">
+    <slot></slot>
   </div>
 </div>
 </template>

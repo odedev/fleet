@@ -77,6 +77,50 @@ public class TemplateContext {
         return DataTypeUtils.getEntityDataType(modelField);
     }
 
+    public static String getSqlColumn(ModelFieldModel modelField) {
+        String name = modelField.getName();
+        Boolean isNullable = modelField.getIsNullable();
+        StringBuilder column = new StringBuilder();
+
+        // columnName
+        column.append("`");
+        column.append(lowerUnderscore(modelField.getCode()));
+        column.append("`");
+
+        // columnType
+        column.append(" ");
+        String sqlDataType = DataTypeUtils.getSqlDataType(modelField);
+        column.append(sqlDataType);
+
+        // Nullable
+        column.append(" ");
+        if (isNullable != null && !isNullable) {
+            column.append("NOT NULL");
+        } else {
+            column.append("NULL");
+        }
+
+        // DEFAULT
+        column.append(" ");
+        column.append("DEFAULT");
+        column.append(" ");
+        column.append("NULL");
+
+        // COMMENT
+        column.append(" ");
+        column.append("COMMENT");
+
+        column.append(" ");
+        column.append("'");
+        if (name != null) {
+            column.append(name);
+        }
+        column.append("'");
+        column.append(",");
+
+        return column.toString();
+    }
+
     public static Boolean isModelDataType(ModelFieldModel modelField) {
         return DataTypeUtils.isModelDataType(modelField);
     }

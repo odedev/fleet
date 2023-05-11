@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="dev.odes.fleet.develop.mapper.ViewModelMapper">
+<mapper namespace="dev.odes.fleet.develop.mapper.ViewBlockMapper">
   <sql id="tableColumn">
     `develop_view_model`.`id`,
     `develop_view_model`.`code`,
@@ -95,7 +95,7 @@
     </trim>
   </sql>
 
-  <resultMap id="resultMap" type="dev.odes.fleet.develop.entity.ViewModel">
+  <resultMap id="resultMap" type="dev.odes.fleet.develop.entity.ViewBlock">
     <id property="id" column="id"/>
     <result property="code" column="code"/>
     <result property="name" column="name"/>
@@ -106,7 +106,7 @@
     <result property="parent" column="parent"/>
   </resultMap>
 
-  <select id="find" resultMap="resultMap" resultType="dev.odes.fleet.develop.entity.ViewModel">
+  <select id="find" resultMap="resultMap" resultType="dev.odes.fleet.develop.entity.ViewBlock">
     SELECT
     <include refid="column"/>
     FROM `develop_view_model`
@@ -128,7 +128,7 @@
     </choose>
   </select>
 
-  <select id="findOne" resultMap="resultMap" resultType="dev.odes.fleet.develop.entity.ViewModel">
+  <select id="findOne" resultMap="resultMap" resultType="dev.odes.fleet.develop.entity.ViewBlock">
     SELECT
     <include refid="column"/>
     FROM `develop_view_model`
@@ -140,7 +140,7 @@
     LIMIT 1
   </select>
 
-  <insert id="insertOne" parameterType="dev.odes.fleet.develop.entity.ViewModel">
+  <insert id="insertOne" parameterType="dev.odes.fleet.develop.entity.ViewBlock">
     INSERT INTO `develop_view_model`
     (<include refid="insertColumn"/>)
     VALUES
@@ -156,7 +156,7 @@
     </foreach>
   </insert>
 
-  <update id="updateOne" parameterType="dev.odes.fleet.develop.entity.ViewModel">
+  <update id="updateOne" parameterType="dev.odes.fleet.develop.entity.ViewBlock">
     UPDATE `develop_view_model`
     <include refid="updateColumn"/>
     WHERE id=#{id}
