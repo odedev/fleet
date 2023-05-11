@@ -69,8 +69,20 @@ public class TemplateContext {
         return modelFieldList;
     }
 
-    public static String getFieldType(ModelFieldModel modelField) {
-        return DataTypeUtils.getDataType(modelField);
+    public static String getModelFieldType(ModelFieldModel modelField) {
+        return DataTypeUtils.getModelDataType(modelField);
+    }
+
+    public static String getEntityFieldType(ModelFieldModel modelField) {
+        return DataTypeUtils.getEntityDataType(modelField);
+    }
+
+    public static Boolean isModelDataType(ModelFieldModel modelField) {
+        return DataTypeUtils.isModelDataType(modelField);
+    }
+
+    public static Boolean isEnumDataType(ModelFieldModel modelField) {
+        return DataTypeUtils.isEnumDataType(modelField);
     }
 
     public static String upperCamel(String word) {

@@ -8,14 +8,14 @@ import dev.odes.fleet.common.entity.AbstractEntity;
 public class ${modelCode} extends AbstractEntity {
     private String id;
     #foreach($field in $modelFields)
-    #set($type = $templateContext.getFieldType($field))
+    #set($type = $templateContext.getEntityFieldType($field))
     private $type $field.code;
     #end
 
     #foreach($field in $modelFields)
     #set($fieldCode = $field.code)
     #set($fieldCodeUpperCamel = $templateContext.upperCamel($fieldCode))
-    #set($type = $templateContext.getFieldType($field))
+    #set($type = $templateContext.getEntityFieldType($field))
     public $type get${fieldCodeUpperCamel}() {
         return $fieldCode;
     }
