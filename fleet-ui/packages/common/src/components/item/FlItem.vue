@@ -1,5 +1,5 @@
 <template>
-<div class="item">
+<div class="item item__compact">
   <div class="item-body">
     <div class="item-label">
       <b style="padding-right: 4px;color: red;">*</b>
@@ -11,7 +11,8 @@
     </div>
   </div>
   <div class="item-foot">
-
+    <div class="item-tip-title">格式错误</div>
+    <div class="item-tip-message">请输入正确的手机号</div>
   </div>
 </div>
 </template>
@@ -32,15 +33,33 @@ import {IconQuestionCircle} from "@arco-design/web-vue/es/icon";
   height: 28px;
   height: 32px;
   height: 40px;
-  //height: 56px;
+  height: 56px;
+  // height: 60px;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: flex-start;
   align-items: center;
   font-size: 14px;
   line-height: 22px;
-  margin-bottom: 16px;
+  // margin-bottom: 16px;
 
+  &.item__compact {
+    height: 40px;
+
+    .item-foot {
+      display: none;
+    }
+  }
+
+  .item-body {
+    width: 100%;
+    height: 40px;
+    //height: 56px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+  }
   .item-label {
     width: 104px;
     width: 128px;
@@ -63,6 +82,26 @@ import {IconQuestionCircle} from "@arco-design/web-vue/es/icon";
     padding: 0 8px;
   }
 
+  .item-foot {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+    font-size: 10px;
+    line-height: 1;
+    color: red;
+  }
+  .item-tip-title {
+    width: 128px;
+    font-size: 10px;
+    line-height: 1;
+    text-align: right;
+  }
+  .item-tip-message {
+    width: 272px;
+    padding: 0 8px;
+  }
 
   input {
     width: 100%;
