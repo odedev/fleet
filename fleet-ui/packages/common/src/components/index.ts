@@ -29,11 +29,16 @@ import FlContentJSON from "./content/FlContentJSON.vue";
 import FlContentFile from "./content/FlContentFile.vue";
 
 import FlInput from "./input/FlInput.vue";
+import FlInputText from "./input/FlInputText.vue";
+import FlInputNumber from "./input/FlInputNumber.vue";
+import FlInputDate from "./input/FlInputDate.vue";
+import FlInputTree from "./input/FlInputTree.vue";
 
 import FlCell from "./cell/FlCell.vue";
 import FlItem from "./item/FlItem.vue";
 
 import FlTable from "./table/FlTable.vue";
+import FlTree from "./tree/FlTree.vue";
 
 import FlButton from "./button/FlButton.vue";
 
@@ -71,11 +76,16 @@ export {
   FlContentFile,
 
   FlInput,
+  FlInputText,
+  FlInputNumber,
+  FlInputDate,
+  FlInputTree,
 
   FlCell,
   FlItem,
 
   FlTable,
+  FlTree,
 
   FlButton,
   FlSearch,
