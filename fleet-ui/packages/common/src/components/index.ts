@@ -21,6 +21,7 @@ import FlContent from "./content/FlContent.vue";
 import FlContentBase from "./content/FlContentBase.vue";
 import FlContentBoolean from "./content/FlContentBoolean.vue";
 import FlContentText from "./content/FlContentText.vue";
+import FlContentTextarea from "./content/FlContentTextarea.vue";
 import FlContentNumber from "./content/FlContentNumber.vue";
 import FlContentDate from "./content/FlContentDate.vue";
 import FlContentEnum from "./content/FlContentEnum.vue";
@@ -31,11 +32,11 @@ import FlContentMask from "./content/FlContentMask.vue";
 
 import FlInput from "./input/FlInput.vue";
 import FlInputText from "./input/FlInputText.vue";
+import FlInputTextarea from "./input/FlInputTextarea.vue";
 import FlInputNumber from "./input/FlInputNumber.vue";
 import FlInputDate from "./input/FlInputDate.vue";
 import FlInputTree from "./input/FlInputTree.vue";
 import FlInputPassword from "./input/FlInputPassword.vue";
-
 
 
 import FlCell from "./cell/FlCell.vue";
@@ -72,6 +73,7 @@ export {
   FlContentBase,
   FlContentBoolean,
   FlContentText,
+  FlContentTextarea,
   FlContentNumber,
   FlContentDate,
   FlContentEnum,
@@ -82,6 +84,7 @@ export {
 
   FlInput,
   FlInputText,
+  FlInputTextarea,
   FlInputNumber,
   FlInputDate,
   FlInputTree,
