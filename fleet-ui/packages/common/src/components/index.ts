@@ -6,6 +6,7 @@ import FlMain from './main/FlMain.vue';
 import FlNav from './nav/FlNav.vue';
 import FlTab from './tab/FlTab.vue';
 import FlPage from './page/FlPage.vue';
+
 import FlView from './view/FlView.vue';
 import FlViewAside from './view/FlViewAside.vue';
 import FlViewMain from './view/FlViewMain.vue';
@@ -17,13 +18,17 @@ import FlBlock from "./block/FlBlock.vue";
 import FlBox from "./box/FlBox.vue";
 
 import FlContent from "./content/FlContent.vue";
+import FlContentBase from "./content/FlContentBase.vue";
 import FlContentBoolean from "./content/FlContentBoolean.vue";
 import FlContentText from "./content/FlContentText.vue";
 import FlContentNumber from "./content/FlContentNumber.vue";
 import FlContentDate from "./content/FlContentDate.vue";
 import FlContentEnum from "./content/FlContentEnum.vue";
 import FlContentModel from "./content/FlContentModel.vue";
+import FlContentJSON from "./content/FlContentJSON.vue";
+import FlContentFile from "./content/FlContentFile.vue";
 
+import FlInput from "./input/FlInput.vue";
 
 import FlCell from "./cell/FlCell.vue";
 import FlItem from "./item/FlItem.vue";
@@ -55,8 +60,17 @@ export {
   FlBox,
 
   FlContent,
+  FlContentBase,
+  FlContentBoolean,
   FlContentText,
   FlContentNumber,
+  FlContentDate,
+  FlContentEnum,
+  FlContentModel,
+  FlContentJSON,
+  FlContentFile,
+
+  FlInput,
 
   FlCell,
   FlItem,

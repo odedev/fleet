@@ -1,11 +1,9 @@
 <template>
-  <FlContentBase>
+  <section class="content">
     <slot></slot>
-  </FlContentBase>
+  </section>
 </template>
 <script lang="ts" setup>
-import FlContentBase from "./FlContentBase.vue";
-
 </script>
 <style lang="scss">
 .content {
