@@ -39,6 +39,7 @@ import FlInputTree from "./input/FlInputTree.vue";
 import FlInputPassword from "./input/FlInputPassword.vue";
 
 
+
 import FlCell from "./cell/FlCell.vue";
 import FlItem from "./item/FlItem.vue";
 
@@ -46,6 +47,8 @@ import FlTable from "./table/FlTable.vue";
 import FlTree from "./tree/FlTree.vue";
 
 import FlButton from "./button/FlButton.vue";
+
+import FlLoading from "./loading/FlLoading.vue";
 
 import FlSearch from "./search/FlSearch.vue";
 import FlAction from "./action/FlAction.vue";
