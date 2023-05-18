@@ -23,13 +23,13 @@
         </FlBox>
       </TabPane>
       <TabPane key="2" title="Tab 2">
-        <FlContent>
+        <FlBlock>
           <FlTable></FlTable>
-        </FlContent>
+        </FlBlock>
       </TabPane>
       <TabPane key="3">
         <template #title>Tab 3</template>
-        <FlContent>Content of Tab Panel 3</FlContent>
+        <FlBlock>Content of Tab Panel 3</FlBlock>
       </TabPane>
     </Tabs>
 <!--    </FlContent>-->
@@ -43,7 +43,7 @@ import "@arco-design/web-vue/es/tabs/style/css.js";
 import {
   FlHeader, FlBody, FlFooter, FlMenu, FlMain, FlNav, FlTab, FlPage,
   FlView, FlViewAside, FlViewMain, FlViewNav, FlViewHead, FlViewBody,
-  FlBox, FlContent, FlCell, FlItem,
+  FlBlock, FlBox, FlContent, FlCell, FlItem,
   FlTable, FlButton, FlSearch, FlAction
 } from '../components/index.ts'
 

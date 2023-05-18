@@ -60,9 +60,9 @@
 <!--            <input type="text" name="" id="">-->
 <!--          </FlItem>-->
 <!--        </FlContent>-->
-        <FlContent>
+        <FlBlock>
           <FlTable></FlTable>
-        </FlContent>
+        </FlBlock>
       </FlViewBody>
     </FlViewMain>
   </FlView>
@@ -71,7 +71,7 @@
 import {
   FlHeader, FlBody, FlFooter, FlMenu, FlMain, FlNav, FlTab, FlPage,
   FlView, FlViewAside, FlViewMain, FlViewNav, FlViewHead, FlViewBody,
-  FlBox, FlContent, FlCell, FlItem,
+  FlBlock, FlBox, FlContent, FlCell, FlItem,
   FlTable, FlButton, FlSearch, FlAction
 } from '../components/index.ts'
 

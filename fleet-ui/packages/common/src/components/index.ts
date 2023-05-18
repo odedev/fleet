@@ -13,9 +13,18 @@ import FlViewNav from './view/FlViewNav.vue';
 import FlViewHead from './view/FlViewHead.vue';
 import FlViewBody from './view/FlViewBody.vue';
 
-import FlSection from "./section/FlSection.vue";
+import FlBlock from "./block/FlBlock.vue";
 import FlBox from "./box/FlBox.vue";
+
 import FlContent from "./content/FlContent.vue";
+import FlContentBoolean from "./content/FlContentBoolean.vue";
+import FlContentText from "./content/FlContentText.vue";
+import FlContentNumber from "./content/FlContentNumber.vue";
+import FlContentDate from "./content/FlContentDate.vue";
+import FlContentEnum from "./content/FlContentEnum.vue";
+import FlContentModel from "./content/FlContentModel.vue";
+
+
 import FlCell from "./cell/FlCell.vue";
 import FlItem from "./item/FlItem.vue";
 
@@ -42,9 +51,13 @@ export {
   FlViewHead,
   FlViewBody,
 
-  FlSection,
+  FlBlock,
   FlBox,
+
   FlContent,
+  FlContentText,
+  FlContentNumber,
+
   FlCell,
   FlItem,
 

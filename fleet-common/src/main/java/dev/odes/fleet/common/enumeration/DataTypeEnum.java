@@ -6,7 +6,7 @@ import java.util.Arrays;
 import java.util.Objects;
 
 public enum DataTypeEnum {
-    BOOLEAN(0, "BOOLEAN"),
+    BOOLEAN(0, "Boolean"),
     STRING(1, "String"),
     TEXT(2, "Text"),
     INTEGER(3, "Integer"),

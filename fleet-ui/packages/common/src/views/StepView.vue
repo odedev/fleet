@@ -8,13 +8,13 @@
         </FlAction>
       </FlViewHead>
       <FlViewBody>
-        <FlContent>
+        <FlBlock>
         <Steps label-placement="vertical">
           <Step description="This is a description">Succeeded</Step>
           <Step description="This is a description">Processing</Step>
           <Step description="This is a description">Pending</Step>
         </Steps>
-        </FlContent>
+        </FlBlock>
       </FlViewBody>
     </FlViewMain>
   </FlView>
@@ -26,7 +26,7 @@ import "@arco-design/web-vue/es/steps/style/css.js";
 import {
   FlHeader, FlBody, FlFooter, FlMenu, FlMain, FlNav, FlTab, FlPage,
   FlView, FlViewAside, FlViewMain, FlViewNav, FlViewHead, FlViewBody,
-  FlBox, FlContent, FlCell, FlItem,
+  FlBlock, FlBox, FlContent, FlCell, FlItem,
   FlTable, FlButton, FlSearch, FlAction
 } from '../components/index.ts'
 

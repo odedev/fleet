@@ -8,14 +8,14 @@
 <!--        </FlAction>-->
 <!--      </FlViewHead>-->
       <FlViewBody>
-        <FlContent>
+        <FlBlock>
         <Descriptions :data="data" title="User Info" layout="inline-horizontal" bordered/>
         <Descriptions :data="data" title="User Info" :column="{xs:1, md:3, lg:4}" bordered>
           <Descriptions-item v-for="item of data" :label="item.label">
             <a-tag>{{ item.value }}</a-tag>
           </Descriptions-item>
         </Descriptions>
-        </FlContent>
+        </FlBlock>
       </FlViewBody>
     </FlViewMain>
   </FlView>
@@ -27,7 +27,7 @@ import "@arco-design/web-vue/es/descriptions/style/css.js";
 import {
   FlHeader, FlBody, FlFooter, FlMenu, FlMain, FlNav, FlTab, FlPage,
   FlView, FlViewAside, FlViewMain, FlViewNav, FlViewHead, FlViewBody,
-  FlBox, FlContent, FlCell, FlItem,
+  FlBlock, FlBox, FlContent, FlCell, FlItem,
   FlTable, FlButton, FlSearch, FlAction
 } from '../components/index.ts'
 

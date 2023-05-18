@@ -11,9 +11,9 @@
         <FlSearch></FlSearch>
       </FlViewHead>
       <FlViewBody>
-        <FlContent>
+        <FlBlock>
           <FlTable></FlTable>
-        </FlContent>
+        </FlBlock>
 <!--              <FlContent>-->
 <!--                <FlTable></FlTable>-->
 <!--              </FlContent>-->
@@ -25,7 +25,7 @@
 import {
   FlHeader, FlBody, FlFooter, FlMenu, FlMain, FlNav, FlTab, FlPage,
   FlView, FlViewAside, FlViewMain, FlViewNav, FlViewHead, FlViewBody,
-  FlContent, FlCell,
+  FlBlock, FlContent, FlCell,
   FlTable, FlButton, FlSearch,
 } from '../components/index.ts'
 

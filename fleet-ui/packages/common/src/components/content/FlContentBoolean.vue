@@ -1,12 +1,12 @@
 <template>
-  <section class="section">
+  <section class="content">
     <slot></slot>
   </section>
 </template>
 <script lang="ts" setup>
 </script>
 <style lang="scss">
-.section {
+.content {
   height: max-content;
   height: 100%;
   min-height: max-content;
