@@ -22,9 +22,8 @@ app.use(views(path.join(__dirname, '/views'), { extension: 'hbs', map: { hbs: 'h
 app.use(cors());
 app.use(responseTime({ hrtime: true }));
 
-app
-  .use(router.routes())
-  .use(router.allowedMethods());
+app.use(router.routes());
+app.use(router.allowedMethods());
 
 console.log(__dirname)
 export default app;
