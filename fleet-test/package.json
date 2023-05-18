@@ -5,7 +5,9 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "node main.js"
+    "start": "node main.js",
+    "pull": "prisma db pull",
+    "generate": "prisma generate"
   },
   "keywords": [],
   "author": "",
@@ -13,6 +15,7 @@
   "dependencies": {
     "@koa/cors": "^4.0.0",
     "@koa/router": "^12.0.0",
+    "@prisma/client": "^4.14.1",
     "axios": "^1.4.0",
     "handlebars": "^4.7.7",
     "koa": "^2.14.2",
@@ -21,5 +24,8 @@
     "koa-response-time": "^2.1.0",
     "koa-static": "^5.0.0",
     "koa-views": "^8.0.0"
+  },
+  "devDependencies": {
+    "prisma": "^4.14.1"
   }
 }
