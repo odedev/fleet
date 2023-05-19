@@ -30,5 +30,6 @@ server.on('error', error => {
 server.on('listening', () => {
   const addr = server.address();
   const bind = typeof addr === 'string' ? 'pipe ' + addr : 'port ' + addr.port;
-  debug('Listening on ' + bind);
 });
+
+export default server
