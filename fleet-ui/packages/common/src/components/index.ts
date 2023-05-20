@@ -31,14 +31,13 @@ import FlContentFile from "./content/FlContentFile.vue";
 import FlContentMask from "./content/FlContentMask.vue";
 
 import FlInput from "./input/FlInput.vue";
+import FlInputBase from "./input/FlInputBase.vue";
 import FlInputText from "./input/FlInputText.vue";
 import FlInputTextarea from "./input/FlInputTextarea.vue";
 import FlInputNumber from "./input/FlInputNumber.vue";
 import FlInputDate from "./input/FlInputDate.vue";
 import FlInputTree from "./input/FlInputTree.vue";
 import FlInputPassword from "./input/FlInputPassword.vue";
-
-
 
 import FlCell from "./cell/FlCell.vue";
 import FlItem from "./item/FlItem.vue";
@@ -47,6 +46,9 @@ import FlTable from "./table/FlTable.vue";
 import FlTree from "./tree/FlTree.vue";
 
 import FlButton from "./button/FlButton.vue";
+
+import FlRichText from "./editor/FlRichText.vue";
+import FlMarkdown from "./editor/FlMarkdown.vue";
 
 import FlLoading from "./loading/FlLoading.vue";
 
@@ -86,6 +88,7 @@ export {
   FlContentMask,
 
   FlInput,
+  FlInputBase,
   FlInputText,
   FlInputTextarea,
   FlInputNumber,
@@ -100,6 +103,12 @@ export {
   FlTree,
 
   FlButton,
+
+  FlRichText,
+  FlMarkdown,
+
+  FlLoading,
+
   FlSearch,
   FlAction,
 }
