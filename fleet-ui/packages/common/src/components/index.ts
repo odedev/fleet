@@ -36,6 +36,7 @@ import FlInputText from "./input/FlInputText.vue";
 import FlInputTextarea from "./input/FlInputTextarea.vue";
 import FlInputNumber from "./input/FlInputNumber.vue";
 import FlInputDate from "./input/FlInputDate.vue";
+import FlInputList from "./input/FlInputList.vue";
 import FlInputTree from "./input/FlInputTree.vue";
 import FlInputPassword from "./input/FlInputPassword.vue";
 
@@ -93,6 +94,7 @@ export {
   FlInputTextarea,
   FlInputNumber,
   FlInputDate,
+  FlInputList,
   FlInputTree,
   FlInputPassword,
 

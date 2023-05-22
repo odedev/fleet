@@ -21,7 +21,9 @@
     "@bytemd/plugin-mermaid": "^1.21.0",
     "axios": "^1.4.0",
     "bytemd": "^1.21.0",
+    "dayjs": "^1.11.7",
     "lodash": "^4.17.21",
+    "lodash-es": "^4.17.21",
     "vue": "^3.3.4",
     "vue-router": "^4.2.1"
   },
