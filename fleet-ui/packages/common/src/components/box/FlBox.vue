@@ -26,6 +26,7 @@
   padding: 16px;
 
   .box-title {
+    width: 100%;
     padding-bottom: 8px;
     font-size: 18px;
     line-height: 1;
@@ -33,6 +34,7 @@
     display: none;
   }
   .box-content {
+    width: 100%;
     display: flex;
     flex-direction: row;
     align-items: flex-start;

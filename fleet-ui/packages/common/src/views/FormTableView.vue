@@ -60,6 +60,9 @@
 <!--            <input type="text" name="" id="">-->
 <!--          </FlItem>-->
 <!--        </FlContent>-->
+        <FlBlock>
+          <FlTable></FlTable>
+        </FlBlock>
       </FlViewBody>
     </FlViewMain>
   </FlView>

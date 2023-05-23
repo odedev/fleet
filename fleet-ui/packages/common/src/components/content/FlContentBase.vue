@@ -10,7 +10,7 @@
 <style lang="scss">
 .content {
   height: 28px;
-  //height: 32px;
+  height: 32px;
   //height: 40px;
   width: 100%;
   min-width: 40px;

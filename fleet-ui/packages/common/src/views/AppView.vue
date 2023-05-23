@@ -1,25 +1,46 @@
 <template>
   <FlHeader></FlHeader>
   <FlBody>
-    <FlMenu></FlMenu>
+    <FlMenu v-model="current" :menus="menus" @update:model-value="onMenuChange"></FlMenu>
     <FlMain>
-      <FlTab></FlTab>
+      <FlTab v-model="current" v-model:tabs="tabs" @update:model-value="onTabChange"></FlTab>
       <FlNav></FlNav>
-      <FlPage>
-        <RouterView />
-      </FlPage>
+      <FlPage />
     </FlMain>
   </FlBody>
 </template>
 <script setup lang="ts">
-import {RouterView} from 'vue-router';
-
+import {ref} from 'vue';
 import {
   FlHeader, FlBody, FlFooter, FlMenu, FlMain, FlNav, FlTab, FlPage,
   FlView, FlViewAside, FlViewMain, FlViewNav, FlViewHead, FlViewBody,
   FlContent, FlCell,
   FlTable, FlButton, FlSearch,
 } from '../components/index.ts';
+
+import {menus as menuList} from '../datas/menu';
+
+const menus = ref<any[]>(menuList);
+const tabs = ref<any[]>([]);
+const current = ref<any>(null);
+
+const onMenuChange = (menu: any) => {
+  let item = tabs.value.find(tab => tab.id === menu.id);
+  if (item) {
+    current.value = item;
+  } else {
+    tabs.value.push(menu);
+    current.value = menu;
+  }
+};
+
+const onTabChange = (menu: any) => {
+  let item = tabs.value.find(tab => tab.id === menu.id);
+  if (item) {
+    current.value = item;
+  }
+};
+
 </script>
 <style lang="scss" scoped>
 

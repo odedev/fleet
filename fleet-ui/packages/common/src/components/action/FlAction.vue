@@ -13,11 +13,10 @@
   height: 100%;
   display: flex;
   flex-direction: row;
-  padding: 16px;
-  overflow: hidden;
   justify-content: flex-end;
-
-  padding-top: 22px;
+  overflow: hidden;
+  padding: 16px;
+  //padding-top: 22px;
 
   button {
     margin-left: 12px;

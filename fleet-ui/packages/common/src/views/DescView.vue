@@ -8,10 +8,6 @@
 <!--        </FlAction>-->
 <!--      </FlViewHead>-->
       <FlViewBody>
-        <FlBlock style="width: 200px;">
-          <FlContentText value="dsddsdsadsdsdsadsdsdsadssads" :is-show-tip="true"/>
-          <FlContentNumber value="121212.1212212212212" :is-show-tip="false" />
-        </FlBlock>
         <FlBlock>
         <Descriptions :data="data" title="User Info" layout="inline-horizontal" bordered/>
         <Descriptions :data="data" title="User Info" :column="{xs:1, md:3, lg:4}" bordered>

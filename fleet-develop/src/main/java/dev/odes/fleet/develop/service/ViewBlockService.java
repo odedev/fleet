@@ -5,7 +5,9 @@ import dev.odes.fleet.develop.entity.ViewBlock;
 import dev.odes.fleet.develop.model.ViewBlockModel;
 import dev.odes.fleet.develop.repository.ViewBlockRepository;
 import dev.odes.fleet.develop.transform.ViewBlockTransform;
+import org.springframework.stereotype.Service;
 
+@Service
 public class ViewBlockService extends AbstractService<ViewBlock, ViewBlockModel, ViewBlockRepository> {
     private final ViewBlockTransform viewBlockTransform;
     private final ViewBlockRepository viewBlockRepository;

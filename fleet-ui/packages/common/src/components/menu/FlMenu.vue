@@ -2,19 +2,38 @@
   <menu class="menu">
     <slot></slot>
     <Menu
-      :style="{ width: '100%', height: '100%' }"
-      :default-open-keys="['0']"
-      :default-selected-keys="['0_2']"
+      v-model:selected-keys="selectedKeys"
       :show-collapse-button="false"
       :accordion="true"
       breakpoint="xl"
+      @menu-item-click="onMenuItemClick"
+      @sub-menu-click="onSubMenuClick"
       @collapse="onCollapse"
     >
-      <SubMenu key="00">
+      <SubMenu v-for="menu in menus" :key="menu.id">
+        <template #icon><IconBug /></template>
+        <template #title>{{menu.name}}</template>
+        <template v-for="child in menu.children">
+          <template v-if="child.children && child.children.length">
+<!--            <SubMenu :key="child.id">-->
+<!--              <template #title>{{child.name}}</template>-->
+<!--              <MenuItem v-for="item in child.children" :key="item.id">{{item.name}}</MenuItem>-->
+<!--            </SubMenu>-->
+            <MenuItemGroup :title="child.name" :key="child.id">
+              <MenuItem v-for="item in child.children" :key="item.id">{{item.name}}</MenuItem>
+            </MenuItemGroup>
+          </template>
+          <template v-else>
+            <MenuItem :key="child.id">{{child.name}}</MenuItem>
+          </template>
+        </template>
+      </SubMenu>
+
+      <SubMenu key="1660841476692684880">
         <template #icon><IconCode /></template>
         <template #title>开发工具</template>
-        <MenuItem key="00_0">应用管理</MenuItem>
-        <MenuItem key="00_1">模块管理</MenuItem>
+        <MenuItem key="1660841476692684881">应用管理</MenuItem>
+        <MenuItem key="1660841476692684882">模块管理</MenuItem>
       </SubMenu>
       <SubMenu key="01">
         <template #icon><IconApps /></template>
@@ -22,12 +41,18 @@
         <MenuItem key="01_0">组织管理</MenuItem>
         <MenuItem key="01_1">部门管理</MenuItem>
       </SubMenu>
-      <SubMenu key="0">
+      <SubMenu key="1660843130011824130">
         <template #icon><IconSettings /></template>
         <template #title>系统管理</template>
-        <MenuItem key="0_0">菜单管理</MenuItem>
-        <MenuItem key="0_1">角色管理</MenuItem>
-        <MenuItem key="0_2">用户角色</MenuItem>
+        <MenuItemGroup title="角色权限">
+          <MenuItem key="1660843130011824131">菜单管理</MenuItem>
+          <MenuItem key="1660843130011824132">角色管理</MenuItem>
+          <MenuItem key="1660843130011824133">用户角色</MenuItem>
+        </MenuItemGroup>
+        <MenuItemGroup title="用户中心">
+          <MenuItem key="1660843130011824134">用户管理</MenuItem>
+          <MenuItem key="1660843130011824135">用户资料</MenuItem>
+        </MenuItemGroup>
       </SubMenu>
       <SubMenu key="1">
         <template #icon><IconUser /></template>
@@ -40,12 +65,14 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue';
-import {Menu, MenuItem, SubMenu, Message} from '@arco-design/web-vue';
+import { ref, computed, defineEmits } from 'vue';
+import {useRouter} from "vue-router";
+import {Menu, SubMenu, MenuItem, MenuItemGroup, Message} from '@arco-design/web-vue';
 import '@arco-design/web-vue/es/menu/style/css.js';
 import {
   IconMenuFold,
   IconMenuUnfold,
+  IconList,
   IconApps,
   IconBug,
   IconBulb,
@@ -53,6 +80,42 @@ import {
   IconSettings,
   IconCode,
 } from '@arco-design/web-vue/es/icon';
+import {arrayToTree, arrayToMap} from "../../utils/array_utils";
+
+const router = useRouter();
+
+const emit = defineEmits(['update:modelValue', 'change']);
+
+const props = defineProps<{
+  modelValue: any,
+  menus: any[],
+}>();
+
+const menu = computed<any>({
+  get: () => {
+    console.log(props.modelValue)
+    return props.modelValue
+  },
+  set: (value) => {
+    emit('update:modelValue', value);
+  }
+});
+
+const menus = computed(() => {
+  return arrayToTree(props.menus);
+});
+
+const selectedKeys = computed(() => {
+  return props.modelValue ? [props.modelValue.id] : [];
+});
+
+const openKeys = computed(() => {
+  return props.modelValue ? [props.modelValue.parent?.id || props.modelValue.parent] : [];
+});
+
+const menuMap = arrayToMap(props.menus);
+
+console.log(menus, menuMap)
 
 const onCollapse = (val: any, type: string) => {
   const content = type === 'responsive' ? '触发响应式收缩' : '点击触发收缩';
@@ -61,6 +124,19 @@ const onCollapse = (val: any, type: string) => {
     duration: 2000,
   });
 }
+
+const onSubMenuClick = (key: string) => {
+  console.log(key)
+}
+
+const onMenuItemClick = (key: string) => {
+  const item = menuMap.get(key);
+  if (item && item.path) {
+    router.push(item.path);
+    menu.value = item;
+  }
+}
+
 </script>
 <style lang="scss">
 @use "../../assets/mixin" as *;
@@ -90,8 +166,6 @@ const onCollapse = (val: any, type: string) => {
   .arco-menu-vertical .arco-menu-inline-header.arco-menu-has-icon .arco-menu-title {
     font-weight: 500;
   }
-
-
 
   .arco-menu-inner .arco-icon:not(.arco-icon-down) {
     font-size: 16px;
