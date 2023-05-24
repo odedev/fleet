@@ -33,7 +33,7 @@ import {
   FlBlock, FlBox, FlContent, FlContentText, FlContentNumber,
   FlCell, FlItem,
   FlTable, FlButton, FlSearch, FlAction
-} from '../components/index.ts'
+} from '../components'
 
 </script>
 <style>

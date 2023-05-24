@@ -16,14 +16,14 @@ export const menus: any[] = [
   {
     id: '1660898963689091102',
     name: '表单&表格',
-    path: '/form-table',
+    path: '/FormTable',
     parent: '1660898963689091100',
     children: [],
   },
   {
     id: '1660898963689091103',
-    name: '树&表格',
-    path: '',
+    name: '树&表单',
+    path: '/TreeForm',
     parent: '1660898963689091100',
     children: [],
   },
@@ -86,7 +86,7 @@ export const menus: any[] = [
   {
     id: '1660898963689091112',
     name: '树&表格',
-    path: '',
+    path: '/TreeTable',
     parent: '1660898963689091110',
     children: [],
   },
@@ -149,14 +149,14 @@ export const menus: any[] = [
   {
     id: '1660898963689091121',
     name: 'Content',
-    path: '',
+    path: '/Content',
     parent: '1660898963689091120',
     children: [],
   },
   {
     id: '1660898963689091122',
     name: 'Input',
-    path: '',
+    path: '/Input',
     parent: '1660898963689091120',
     children: [],
   },
@@ -169,8 +169,8 @@ export const menus: any[] = [
   },
   {
     id: '1660898963689091124',
-    name: '表单页',
-    path: '',
+    name: 'Button',
+    path: '/Button',
     parent: '1660898963689091120',
     children: [],
   },
@@ -306,5 +306,12 @@ export const menus: any[] = [
     path: '',
     parent: '1660898963689091163',
     children: [],
-  }
+  },
+  {
+    id: '1660898963689091260',
+    name: '系统管理',
+    path: '/cell',
+    parent: null,
+    children: [],
+  },
 ]

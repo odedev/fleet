@@ -1,13 +1,21 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
-import FormView from '../views/FormView.vue'
-import FormTableView from '../views/FormTableView.vue'
-import TableView from '../views/TableView.vue'
-import PanelView from '../views/PanelView.vue'
-import CardView from '../views/CardView.vue'
-import StepView from '../views/StepView.vue'
-import DescView from '../views/DescView.vue'
-import CellView from '../views/CellView.vue'
+
+import FormView from '../examples/FormView.vue'
+import FormTableView from '../examples/FormTableView.vue'
+import TreeFormView from '../examples/TreeFormView.vue'
+import PanelView from '../examples/PanelView.vue'
+import StepView from '../examples/StepView.vue'
+import DescView from '../examples/DescView.vue'
+
+import TableView from '../examples/TableView.vue'
+import TreeTableView from '../examples/TreeTableView.vue'
+import CardView from '../examples/CardView.vue'
+
+import CellView from '../examples/CellView.vue'
+import ContentView from '../examples/ContentView.vue'
+import InputView from '../examples/InputView.vue'
+import ButtonView from '../examples/ButtonView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -23,14 +31,24 @@ const router = createRouter({
       component: FormView
     },
     {
-      path: '/form-table',
-      name: 'formTable',
+      path: '/FormTable',
+      name: 'FormTable',
       component: FormTableView
+    },
+    {
+      path: '/TreeForm',
+      name: 'TreeForm',
+      component: TreeFormView
     },
     {
       path: '/table',
       name: 'table',
       component: TableView
+    },
+    {
+      path: '/TreeTable',
+      name: 'TreeTable',
+      component: TreeTableView
     },
     {
       path: '/panel',
@@ -56,6 +74,21 @@ const router = createRouter({
       path: '/cell',
       name: 'cell',
       component: CellView
+    },
+    {
+      path: '/Content',
+      name: 'Content',
+      component: ContentView
+    },
+    {
+      path: '/Input',
+      name: 'Input',
+      component: InputView
+    },
+    {
+      path: '/Button',
+      name: 'Button',
+      component: ButtonView
     }
   ]
 })

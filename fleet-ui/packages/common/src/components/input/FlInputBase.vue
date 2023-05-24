@@ -1,13 +1,6 @@
 <template>
-  <div class="item">
-    <div class="item-label">
-      <b style="padding-right: 4px;color: red;">*</b>
-      <label>名称</label>
-      <Tooltip :mini="true" content="文档"><IconQuestionCircle /></Tooltip>
-    </div>
-    <div class="item-content">
-      <slot></slot>
-    </div>
+  <div class="input">
+    <slot></slot>
   </div>
 </template>
 
@@ -20,13 +13,12 @@ import {IconQuestionCircle} from "@arco-design/web-vue/es/icon";
 <style lang="scss">
 @use "../../assets/mixin" as *;
 
-.item {
-  width: 440px;
-  max-width: 440px;
-  max-width: 400px;
+.input {
+  width: 336px;
+  width: 272px;
   height: 28px;
   height: 32px;
-  height: 40px;
+  //height: 40px;
   //height: 56px;
   display: flex;
   flex-direction: row;
@@ -34,34 +26,6 @@ import {IconQuestionCircle} from "@arco-design/web-vue/es/icon";
   align-items: center;
   font-size: 14px;
   line-height: 22px;
-  margin-bottom: 16px;
-
-  .item-label {
-    width: 104px;
-    width: 128px;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    align-items: center;
-    flex-wrap: nowrap;
-    label {
-      white-space: nowrap;
-      @include ellipsis();
-    }
-    .arco-icon {
-      margin-left: 6px;
-    }
-  }
-  .item-content {
-    width: 336px;
-    width: 272px;
-    padding: 0 8px;
-  }
-
-
-  input {
-    width: 100%;
-    height: 28px;
-  }
+  padding: 0 8px;
 }
 </style>

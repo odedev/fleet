@@ -29,6 +29,7 @@
 
   @include color-secondary();
   @include color-secondary-theme();
+
   .arco-icon,
   .arco-menu-icon {
     @include color-primary();
@@ -49,6 +50,22 @@
 .arco-menu-light .arco-menu-item.arco-menu-selected {
   @include background-color-tertiary();
   @include background-color-tertiary-theme();
+}
+
+.arco-menu-light .arco-menu-item.arco-menu-selected .arco-icon,
+.arco-menu-light .arco-menu-group-title.arco-menu-selected .arco-icon,
+.arco-menu-light .arco-menu-pop-header.arco-menu-selected .arco-icon,
+.arco-menu-light .arco-menu-inline-header.arco-menu-selected .arco-icon,
+.arco-menu-light .arco-menu-item.arco-menu-selected .arco-menu-icon,
+.arco-menu-light .arco-menu-group-title.arco-menu-selected .arco-menu-icon,
+.arco-menu-light .arco-menu-pop-header.arco-menu-selected .arco-menu-icon,
+.arco-menu-light .arco-menu-inline-header.arco-menu-selected .arco-menu-icon {
+  @include color-primary();
+  @include color-primary-theme();
+}
+.arco-menu-light .arco-menu-group-title {
+  @include color-primary();
+  @include color-primary-theme();
 }
 
 .arco-tree-node-selected .arco-tree-node-title,
@@ -86,4 +103,14 @@
 .arco-tabs-nav-ink {
   @include background-color-secondary();
   @include background-color-secondary-theme();
+}
+
+.arco-checkbox-checked .arco-checkbox-icon {
+  @include background-color-primary();
+  @include background-color-primary-theme();
+}
+
+.arco-input-wrapper:focus-within,
+.arco-input-wrapper.arco-input-focus {
+  @include border-color-primary();
 }

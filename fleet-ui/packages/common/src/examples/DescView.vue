@@ -12,7 +12,7 @@
         <Descriptions :data="data" title="User Info" layout="inline-horizontal" bordered/>
         <Descriptions :data="data" title="User Info" :column="{xs:1, md:3, lg:4}" bordered>
           <Descriptions-item v-for="item of data" :label="item.label">
-            <a-tag>{{ item.value }}</a-tag>
+            <Tag>{{ item.value }}</Tag>
           </Descriptions-item>
         </Descriptions>
         </FlBlock>
@@ -21,8 +21,9 @@
   </FlView>
 </template>
 <script lang="ts" setup>
-import {Descriptions, DescriptionsItem} from "@arco-design/web-vue";
+import {Descriptions, DescriptionsItem, Tag} from "@arco-design/web-vue";
 import "@arco-design/web-vue/es/descriptions/style/css.js";
+import "@arco-design/web-vue/es/tag/style/css.js";
 
 import {
   FlHeader, FlBody, FlFooter, FlMenu, FlMain, FlNav, FlTab, FlPage,
@@ -30,7 +31,7 @@ import {
   FlBlock, FlBox, FlContent, FlContentText, FlContentNumber,
   FlCell, FlItem,
   FlTable, FlButton, FlSearch, FlAction
-} from '../components/index.ts'
+} from '../components'
 
 const data = [{
   label: 'Name',

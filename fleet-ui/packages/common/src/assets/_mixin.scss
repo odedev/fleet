@@ -107,6 +107,11 @@
   }
 }
 
+
+@mixin border-color-primary() {
+  border-color: var(--theme-primary, $primary);
+}
+
 @mixin caret-color-primary() {
   caret-color: var($primary, --theme-primary);
 }

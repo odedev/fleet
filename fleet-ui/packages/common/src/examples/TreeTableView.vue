@@ -27,7 +27,7 @@ import {
   FlView, FlViewAside, FlViewMain, FlViewNav, FlViewHead, FlViewBody,
   FlBlock, FlContent, FlCell,
   FlTable, FlButton, FlSearch,
-} from '../components/index.ts'
+} from '../components'
 
 </script>
 <style>

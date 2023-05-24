@@ -36,8 +36,12 @@ import FlInputText from "./input/FlInputText.vue";
 import FlInputTextarea from "./input/FlInputTextarea.vue";
 import FlInputNumber from "./input/FlInputNumber.vue";
 import FlInputDate from "./input/FlInputDate.vue";
+import FlInputCheckbox from "./input/FlInputCheckbox.vue";
+import FlInputBoolean from "./input/FlInputBoolean.vue";
+import FlInputEnum from "./input/FlInputEnum.vue";
 import FlInputList from "./input/FlInputList.vue";
 import FlInputTree from "./input/FlInputTree.vue";
+import FlInputFile from "./input/FlInputFile.vue";
 import FlInputPassword from "./input/FlInputPassword.vue";
 
 import FlCell from "./cell/FlCell.vue";
@@ -94,8 +98,12 @@ export {
   FlInputTextarea,
   FlInputNumber,
   FlInputDate,
+  FlInputBoolean,
+  // FlInputCheckbox,
+  FlInputEnum,
   FlInputList,
   FlInputTree,
+  FlInputFile,
   FlInputPassword,
 
   FlCell,

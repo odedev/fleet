@@ -46,10 +46,9 @@ const onClick = (item: any) => {
 };
 
 const onClose = (item: any) => {
-  let node = tabs.value.find(tab => tab.id === item.id);
-  const index = tabs.value.indexOf(node);
+  // let node = tabs.value.findIndex(tab => tab.id === item.id);
+  const index = tabs.value.findIndex(tab => tab.id === item.id);
   tabs.value.splice(index, 1);
-
   if (tab.value.id === item.id) {
     const preTab = index === 0 ? tabs.value[0] : tabs.value[index-1];
     onClick(preTab);

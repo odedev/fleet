@@ -2,7 +2,7 @@
   <menu class="menu">
     <slot></slot>
     <Menu
-      v-model:selected-keys="selectedKeys"
+      :selected-keys="selectedKeys"
       :show-collapse-button="false"
       :accordion="true"
       breakpoint="xl"
@@ -10,24 +10,34 @@
       @sub-menu-click="onSubMenuClick"
       @collapse="onCollapse"
     >
-      <SubMenu v-for="menu in menus" :key="menu.id">
-        <template #icon><IconBug /></template>
-        <template #title>{{menu.name}}</template>
-        <template v-for="child in menu.children">
-          <template v-if="child.children && child.children.length">
-<!--            <SubMenu :key="child.id">-->
-<!--              <template #title>{{child.name}}</template>-->
-<!--              <MenuItem v-for="item in child.children" :key="item.id">{{item.name}}</MenuItem>-->
-<!--            </SubMenu>-->
-            <MenuItemGroup :title="child.name" :key="child.id">
-              <MenuItem v-for="item in child.children" :key="item.id">{{item.name}}</MenuItem>
-            </MenuItemGroup>
-          </template>
-          <template v-else>
-            <MenuItem :key="child.id">{{child.name}}</MenuItem>
-          </template>
+      <template v-for="menu in menus">
+        <template v-if="menu.children && menu.children.length">
+          <SubMenu :key="menu.id">
+            <template #icon><IconBug /></template>
+            <template #title>{{menu.name}}</template>
+            <template v-for="child in menu.children">
+              <template v-if="child.children && child.children.length">
+    <!--            <SubMenu :key="child.id">-->
+    <!--              <template #title>{{child.name}}</template>-->
+    <!--              <MenuItem v-for="item in child.children" :key="item.id">{{item.name}}</MenuItem>-->
+    <!--            </SubMenu>-->
+                <MenuItemGroup :title="child.name" :key="child.id">
+                  <MenuItem v-for="item in child.children" :key="item.id" :disabled="!item.path">{{item.name}}</MenuItem>
+                </MenuItemGroup>
+              </template>
+              <template v-else>
+                <MenuItem :key="child.id" :disabled="!child.path">{{child.name}}</MenuItem>
+              </template>
+            </template>
+          </SubMenu>
         </template>
-      </SubMenu>
+        <template v-else>
+          <MenuItem :key="menu.id" :disabled="!menu.path">
+            <template #icon><IconCode /></template>
+            {{menu.name}}
+          </MenuItem>
+        </template>
+      </template>
 
       <SubMenu key="1660841476692684880">
         <template #icon><IconCode /></template>
@@ -36,7 +46,7 @@
         <MenuItem key="1660841476692684882">模块管理</MenuItem>
       </SubMenu>
       <SubMenu key="01">
-        <template #icon><IconApps /></template>
+        <template #icon><IconUserGroup /></template>
         <template #title>组织架构</template>
         <MenuItem key="01_0">组织管理</MenuItem>
         <MenuItem key="01_1">部门管理</MenuItem>
@@ -77,6 +87,7 @@ import {
   IconBug,
   IconBulb,
   IconUser,
+  IconUserGroup,
   IconSettings,
   IconCode,
 } from '@arco-design/web-vue/es/icon';
@@ -182,6 +193,17 @@ const onMenuItemClick = (key: string) => {
   //.arco-menu .arco-menu-pop-header .arco-menu-icon,
   .arco-menu .arco-menu-inline-header .arco-menu-icon {
     margin-right: 12px;
+  }
+
+  .arco-menu-vertical .arco-menu-item.arco-menu-has-icon .arco-menu-icon,
+  .arco-menu-vertical .arco-menu-group-title.arco-menu-has-icon .arco-menu-icon,
+  .arco-menu-vertical .arco-menu-pop-header.arco-menu-has-icon .arco-menu-icon,
+  .arco-menu-vertical .arco-menu-inline-header.arco-menu-has-icon .arco-menu-icon {
+    margin-right: 12px;
+  }
+
+  .arco-menu-light .arco-menu-group-title {
+    font-weight: 600;
   }
 }
 </style>
