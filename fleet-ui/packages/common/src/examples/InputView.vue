@@ -15,8 +15,9 @@
           <FlInputNumber />
           <FlInputEnum />
           <FlInputTree />
-          <FlInputList />
+          <FlInputModel />
           <FlInputFile />
+          <FlInputPassword />
           <FlInputTextarea />
 
         </FlBox>
@@ -27,8 +28,9 @@
           <FlInputNumber />
           <FlInputEnum />
           <FlInputTree />
-          <FlInputList />
+          <FlInputModel />
           <FlInputFile />
+          <FlInputPassword />
           <FlInputTextarea />
 
         </FlBlock>
@@ -41,8 +43,9 @@ import {
   FlHeader, FlBody, FlFooter, FlMenu, FlMain, FlNav, FlTab, FlPage,
   FlView, FlViewAside, FlViewMain, FlViewNav, FlViewHead, FlViewBody,
   FlBlock, FlBox, FlContent, FlContentText, FlContentNumber,
-  FlInputBoolean, FlInputText, FlInputDate, FlInputNumber, FlInputEnum, FlInputList, FlInputTree, FlInputTextarea, FlInputFile,
-  FlCell, FlItem,
+  FlInputBoolean, FlInputText, FlInputDate, FlInputNumber, FlInputEnum, FlInputModel, FlInputTree, FlInputFile,
+  FlInputTextarea, FlInputPassword,
+  FlFormItem,
   FlTable, FlButton, FlSearch, FlAction
 } from '../components'
 

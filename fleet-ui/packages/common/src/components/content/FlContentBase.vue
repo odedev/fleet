@@ -13,6 +13,8 @@
   height: 32px;
   //height: 40px;
   width: 100%;
+  width: 336px;
+  width: 272px;
   min-width: 40px;
   padding: 0 8px;
   display: flex;
@@ -22,6 +24,7 @@
   flex-wrap: nowrap;
 
   .content-value {
+
     font-size: 14px;
     line-height: 22px;
     overflow: hidden;

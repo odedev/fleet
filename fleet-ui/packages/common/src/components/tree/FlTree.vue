@@ -1,5 +1,6 @@
 <template>
   <div class="tree">
+    <InputSearch size="small"/>
     <slot></slot>
     <Tree v-model:selected-keys="selectedKeys"
       :data="treeData"
@@ -16,12 +17,14 @@
 </template>
 <script lang="ts" setup>
 import {ref} from "vue";
-import {Tree} from '@arco-design/web-vue'
-import '@arco-design/web-vue/es/tree/style/css.js';
+import {Tree, InputSearch} from '@arco-design/web-vue'
+import "@arco-design/web-vue/es/tree/style/index.css";
+import "@arco-design/web-vue/es/tree-select/style/index.css";
+import "@arco-design/web-vue/es/input/style/index.css";
 
 const selectedKeys = ref([]);
 const multiple = ref(true);
-const treeData = [
+const defaultTreeData = [
   {
     title: '用户中心',
     key: '0-0',
@@ -37,6 +40,11 @@ const treeData = [
           {
             title: 'Leaf',
             key: '0-0-2-1'
+          },
+          {
+            draggable: false,
+            title: 'Leaf 0-0-2-2 (Drag disabled)',
+            key: '0-0-2-2'
           }
         ]
       },
@@ -68,6 +76,42 @@ const treeData = [
   },
 ];
 
+const treeData = ref(defaultTreeData);
+const checkedKeys = ref([]);
+const checked = ref(false);
+
+
+const onDrop = ({ dragNode, dropNode, dropPosition }) => {
+  const data = treeData.value;
+  const loop = (data: any, key: any, callback: Function) => {
+    data.some((item: any, index: any, arr: any) => {
+      if (item.key === key) {
+        callback(item, index, arr);
+        return true;
+      }
+      if (item.children) {
+        return loop(item.children, key, callback);
+      }
+      return false;
+    });
+  };
+
+  loop(data, dragNode.key, (_, index, arr) => {
+    arr.splice(index, 1);
+  });
+
+  if (dropPosition === 0) {
+    loop(data, dropNode.key, (item) => {
+      item.children = item.children || [];
+      item.children.push(dragNode);
+    });
+  } else {
+    loop(data, dropNode.key, (_, index, arr) => {
+      arr.splice(dropPosition < 0 ? index : index + 1, 0, dragNode);
+    });
+  }
+}
+
 </script>
 <style lang="scss">
 @use "../../assets/mixin" as *;
@@ -85,7 +129,7 @@ const treeData = [
     padding: 3px 0;
   }
   .arco-tree-node-title-block .arco-tree-node-drag-icon {
-    right: -14px;
+    right: 2px;
   }
   .arco-tree-node-switcher {
     height: 28px;

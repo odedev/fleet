@@ -16,6 +16,7 @@ import {IconQuestionCircle} from "@arco-design/web-vue/es/icon";
 .input {
   width: 336px;
   width: 272px;
+  width: 100%;
   height: 28px;
   height: 32px;
   //height: 40px;

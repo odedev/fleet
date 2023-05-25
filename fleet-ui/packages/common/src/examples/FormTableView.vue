@@ -9,21 +9,21 @@
       </FlViewHead>
       <FlViewBody>
         <FlBox>
-          <FlItem>
+          <FlFormItem>
             <input type="text" name="" id="">
-          </FlItem>
-          <FlItem>
+          </FlFormItem>
+          <FlFormItem>
             <input type="text" name="" id="">
-          </FlItem>
-          <FlItem>
+          </FlFormItem>
+          <FlFormItem>
             <input type="text" name="" id="">
-          </FlItem>
-          <FlItem>
+          </FlFormItem>
+          <FlFormItem>
             <input type="text" name="" id="">
-          </FlItem>
-          <FlItem>
+          </FlFormItem>
+          <FlFormItem>
             <input type="text" name="" id="">
-          </FlItem>
+          </FlFormItem>
         </FlBox>
 <!--        <FlBox>-->
 <!--          <FlItem>-->
@@ -71,7 +71,7 @@
 import {
   FlHeader, FlBody, FlFooter, FlMenu, FlMain, FlNav, FlTab, FlPage,
   FlView, FlViewAside, FlViewMain, FlViewNav, FlViewHead, FlViewBody,
-  FlBlock, FlBox, FlContent, FlCell, FlItem,
+  FlBlock, FlBox, FlContent, FlFormItem,
   FlTable, FlButton, FlSearch, FlAction
 } from '../components'
 

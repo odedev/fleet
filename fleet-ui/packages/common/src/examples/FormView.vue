@@ -8,22 +8,21 @@
         </FlAction>
       </FlViewHead>
       <FlViewBody>
+        <FlForm></FlForm>
         <FlBox>
-          <FlItem>
-            <input type="text" name="" id="">
-          </FlItem>
-          <FlItem>
-            <input type="text" name="" id="">
-          </FlItem>
-          <FlItem>
-            <input type="text" name="" id="">
-          </FlItem>
-          <FlItem>
-            <input type="text" name="" id="">
-          </FlItem>
-          <FlItem>
-            <input type="text" name="" id="">
-          </FlItem>
+          <FlFormItem>
+          </FlFormItem>
+          <FlFormItem>
+          </FlFormItem>
+          <FlFormItem>
+            <FlInputPassword />
+          </FlFormItem>
+          <FlFormItem>
+            <FlInputPassword />
+          </FlFormItem>
+          <FlFormItem>
+            <FlInputPassword />
+          </FlFormItem>
         </FlBox>
 <!--        <FlBox>-->
 <!--          <FlItem>-->
@@ -68,7 +67,7 @@
 import {
   FlHeader, FlBody, FlFooter, FlMenu, FlMain, FlNav, FlTab, FlPage,
   FlView, FlViewAside, FlViewMain, FlViewNav, FlViewHead, FlViewBody,
-  FlBlock, FlBox, FlContent, FlCell, FlItem,
+  FlBlock, FlBox, FlForm, FlFormItem, FlInputBoolean, FlInputPassword,
   FlTable, FlButton, FlSearch, FlAction
 } from '../components'
 

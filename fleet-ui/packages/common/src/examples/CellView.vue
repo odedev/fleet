@@ -31,7 +31,7 @@ import {
   FlHeader, FlBody, FlFooter, FlMenu, FlMain, FlNav, FlTab, FlPage,
   FlView, FlViewAside, FlViewMain, FlViewNav, FlViewHead, FlViewBody,
   FlBlock, FlBox, FlContent, FlContentText, FlContentNumber,
-  FlCell, FlItem,
+  FlFormItem,
   FlTable, FlButton, FlSearch, FlAction
 } from '../components'
 

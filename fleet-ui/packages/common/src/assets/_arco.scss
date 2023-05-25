@@ -114,3 +114,9 @@
 .arco-input-wrapper.arco-input-focus {
   @include border-color-primary();
 }
+
+
+.arco-table-border-cell .arco-table-th-resizing,
+.arco-table-border-cell .arco-table-td-resizing:not(.arco-table-tr-expand) {
+  @include border-right-color-primary();
+}

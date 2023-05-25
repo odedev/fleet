@@ -14,6 +14,6 @@ const props = defineProps<{
 </script>
 <style lang="scss">
 .content.content-number {
-  justify-content: flex-end;
+  //justify-content: flex-end;
 }
 </style>

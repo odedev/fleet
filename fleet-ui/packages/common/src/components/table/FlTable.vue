@@ -19,6 +19,18 @@
         :bordered="{cell:true}"
         :draggable="{ type: 'handle', width: 40 }"
         :pagination="false">
+        <template #columns>
+          <TableColumn title="name">
+            <template #cell>
+              <FlTableCell />
+            </template>
+          </TableColumn>
+          <TableColumn title="code">
+            <template #cell>
+              <FlTableCell />
+            </template>
+          </TableColumn>
+        </template>
       </Table>
     </div>
     <div class="table-foot">
@@ -44,10 +56,11 @@
 
 <script lang="ts" setup>
 import { ref, reactive, onMounted } from 'vue';
-import FlButton from "../button/FlButton.vue";
 import {IconFilter, IconSettings, IconUpload, IconDownload} from "@arco-design/web-vue/es/icon";
-import {Table, Pagination, Tooltip} from "@arco-design/web-vue";
+import {Table, TableColumn, Pagination, Tooltip} from "@arco-design/web-vue";
 import '@arco-design/web-vue/es/table/style/css.js';
+import FlButton from "../button/FlButton.vue";
+import FlTableCell from "./FlTableCell.vue";
 
 const table = ref(null);
 
@@ -143,6 +156,13 @@ onMounted(() => {
 
     .arco-table-container {
       border-radius: 0;
+    }
+
+    .arco-table-th .arco-table-cell {
+      padding: 9px 8px;
+    }
+    .arco-table-td .arco-table-cell {
+      padding: 4px 0;
     }
   }
   .table-foot {

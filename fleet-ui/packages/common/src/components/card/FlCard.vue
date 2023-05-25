@@ -1,7 +1,7 @@
 <template>
 <div class="card">
   <Card></Card>
-</div>group
+</div>
 </template>
 
 <script lang="ts" setup>

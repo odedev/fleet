@@ -14,7 +14,6 @@ import {ref} from 'vue';
 import {
   FlHeader, FlBody, FlFooter, FlMenu, FlMain, FlNav, FlTab, FlPage,
   FlView, FlViewAside, FlViewMain, FlViewNav, FlViewHead, FlViewBody,
-  FlContent, FlCell,
   FlTable, FlButton, FlSearch,
 } from '../components/index.ts';
 

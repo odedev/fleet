@@ -26,7 +26,7 @@ import "@arco-design/web-vue/es/steps/style/css.js";
 import {
   FlHeader, FlBody, FlFooter, FlMenu, FlMain, FlNav, FlTab, FlPage,
   FlView, FlViewAside, FlViewMain, FlViewNav, FlViewHead, FlViewBody,
-  FlBlock, FlBox, FlContent, FlCell, FlItem,
+  FlBlock, FlBox, FlContent, FlFormItem,
   FlTable, FlButton, FlSearch, FlAction
 } from '../components'
 

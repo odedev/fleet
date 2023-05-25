@@ -75,7 +75,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, computed, defineEmits } from 'vue';
+import { ref, computed } from 'vue';
 import {useRouter} from "vue-router";
 import {Menu, SubMenu, MenuItem, MenuItemGroup, Message} from '@arco-design/web-vue';
 import '@arco-design/web-vue/es/menu/style/css.js';

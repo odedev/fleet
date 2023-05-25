@@ -5,21 +5,21 @@
     <Tabs type="line" default-active-key="1">
       <TabPane key="1" title="Tab 1">
         <FlBox>
-          <FlItem>
+          <FlFormItem>
             <input type="text" name="" id="">
-          </FlItem>
-          <FlItem>
+          </FlFormItem>
+          <FlFormItem>
             <input type="text" name="" id="">
-          </FlItem>
-          <FlItem>
+          </FlFormItem>
+          <FlFormItem>
             <input type="text" name="" id="">
-          </FlItem>
-          <FlItem>
+          </FlFormItem>
+          <FlFormItem>
             <input type="text" name="" id="">
-          </FlItem>
-          <FlItem>
+          </FlFormItem>
+          <FlFormItem>
             <input type="text" name="" id="">
-          </FlItem>
+          </FlFormItem>
         </FlBox>
       </TabPane>
       <TabPane key="2" title="Tab 2">
@@ -43,7 +43,7 @@ import "@arco-design/web-vue/es/tabs/style/css.js";
 import {
   FlHeader, FlBody, FlFooter, FlMenu, FlMain, FlNav, FlTab, FlPage,
   FlView, FlViewAside, FlViewMain, FlViewNav, FlViewHead, FlViewBody,
-  FlBlock, FlBox, FlContent, FlCell, FlItem,
+  FlBlock, FlBox, FlContent, FlFormItem,
   FlTable, FlButton, FlSearch, FlAction
 } from '../components'
 

@@ -22,8 +22,8 @@
 </template>
 
 <script lang="ts" setup>
-import FlCell from "../cell/FlCell.vue";
-import FlItem from "../item/FlItem.vue";
+import FlCell from "../table/FlTableCell.vue";
+import FlItem from "../form/FlFormItem.vue";
 import FlButton from "../button/FlButton.vue";
 
 </script>

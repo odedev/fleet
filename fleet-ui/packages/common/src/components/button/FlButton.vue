@@ -6,7 +6,7 @@
   </div>
 </template>
 <script lang="ts" setup>
-import {defineEmits, onUnmounted} from 'vue';
+import {onUnmounted} from 'vue';
 import {debounce, throttle} from 'lodash-es';
 import {Button} from "@arco-design/web-vue";
 import '@arco-design/web-vue/es/button/style/css.js';

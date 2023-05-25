@@ -1,6 +1,6 @@
 <template>
   <FlInputBase class="input-list">
-    <InputSearch allow-clear allow-search size="small">
+    <InputSearch allow-clear allow-search readonly size="small">
 
     </InputSearch>
   </FlInputBase>

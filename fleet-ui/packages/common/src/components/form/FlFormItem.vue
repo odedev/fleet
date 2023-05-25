@@ -7,7 +7,9 @@
       <Tooltip :mini="true" content="文档"><IconQuestionCircle /></Tooltip>
     </div>
     <div class="item-content">
-      <slot></slot>
+      <slot>
+        <FlInput :data-type="1"/>
+      </slot>
     </div>
   </div>
   <div class="item-foot">
@@ -20,6 +22,7 @@
 <script lang="ts" setup>
 import {Breadcrumb, BreadcrumbItem, Tooltip} from "@arco-design/web-vue";
 import {IconQuestionCircle} from "@arco-design/web-vue/es/icon";
+import FlInput from "../input/FlInput.vue";
 
 </script>
 
@@ -79,7 +82,7 @@ import {IconQuestionCircle} from "@arco-design/web-vue/es/icon";
   .item-content {
     width: 336px;
     width: 272px;
-    padding: 0 8px;
+    //padding: 0 8px;
   }
 
   .item-foot {

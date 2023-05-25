@@ -1,0 +1,32 @@
+<template>
+<form class="form">
+  <FlFormItem />
+  <FlFormItem />
+  <FlFormItem />
+</form>
+</template>
+
+<script lang="ts" setup>
+import FlFormItem from "./FlFormItem.vue";
+
+</script>
+
+<style lang="scss">
+@use "../../assets/mixin" as *;
+
+.form {
+  width: 100%;
+  height: max-content;
+  flex-basis: max-content;
+  flex-grow: 0;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-content: flex-start;
+  padding: 16px;
+  // margin-bottom: 16px;
+
+}
+</style>

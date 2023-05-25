@@ -1,67 +1,68 @@
 <template>
-<div class="item">
-  <div class="item-label">
-    <b style="padding-right: 4px;color: red;">*</b>
-    <label>名称</label>
-    <Tooltip :mini="true" content="文档"><IconQuestionCircle /></Tooltip>
-  </div>
-  <div class="item-content">
-    <slot></slot>
-  </div>
-</div>
+  <FlInputBoolean v-if="dataType === 'boolean'"/>
+  <FlInputText v-else-if="dataType === 'text'" />
+  <FlInputNumber v-else-if="dataType === 'number'"/>
+  <FlInputDate v-else-if="dataType === 'date'"/>
+  <FlInputEnum v-else-if="dataType === 'enum'"/>
+  <FlInputModel v-else-if="dataType === 'model'"/>
+  <FlInputJson v-else-if="dataType === 'json'"/>
+  <FlInputFile v-else-if="dataType === 'file'"/>
+  <FlInputBase v-else>{{value}}</FlInputBase>
 </template>
 
 <script lang="ts" setup>
-import {Breadcrumb, BreadcrumbItem, Tooltip} from "@arco-design/web-vue";
-import {IconQuestionCircle} from "@arco-design/web-vue/es/icon";
+import {computed} from "vue";
+import FlInputBase from "./FlInputBase.vue";
+import FlInputBoolean from "./FlInputBoolean.vue";
+import FlInputText from "./FlInputText.vue";
+import FlInputNumber from "./FlInputNumber.vue";
+import FlInputDate from "./FlInputDate.vue";
+import FlInputEnum from "./FlInputEnum.vue";
+import FlInputModel from "./FlInputModel.vue";
+import FlInputJson from "./FlInputJson.vue";
+import FlInputFile from "./FlInputFile.vue";
+
+
+const props = defineProps<{
+  modelValue: any,
+  dataType: number,
+}>();
+
+const value = computed<string>(() => {
+  return props.modelValue;
+});
+
+const dataType = computed<string>(() => {
+  switch (props.dataType) {
+    case 0:
+      return 'boolean';
+    case 1:
+    case 2:
+      return 'text';
+    case 3:
+    case 4:
+      return 'number';
+    case 5:
+      return 'date';
+    case 6:
+      return 'enum';
+    case 7:
+      return 'model';
+    case 8:
+      return 'json';
+    case 9:
+      return 'file';
+  }
+  return '';
+});
+
+
+const emits = defineEmits(['update:modelValue']);
+
 
 </script>
 
 <style lang="scss">
 @use "../../assets/mixin" as *;
 
-.item {
-  width: 440px;
-  max-width: 440px;
-  max-width: 400px;
-  height: 28px;
-  height: 32px;
-  height: 40px;
-  //height: 56px;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-  font-size: 14px;
-  line-height: 22px;
-  margin-bottom: 16px;
-
-  .item-label {
-    width: 104px;
-    width: 128px;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    align-items: center;
-    flex-wrap: nowrap;
-    label {
-      white-space: nowrap;
-      @include ellipsis();
-    }
-    .arco-icon {
-      margin-left: 6px;
-    }
-  }
-  .item-content {
-    width: 336px;
-    width: 272px;
-    padding: 0 8px;
-  }
-
-
-  input {
-    width: 100%;
-    height: 28px;
-  }
-}
 </style>
