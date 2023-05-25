@@ -10,5 +10,5 @@ CREATE TABLE IF NOT EXISTS `develop_enumeration_value` (
     `deleted_by` VARCHAR(32) NULL DEFAULT NULL COMMENT '删除人ID',
     `deleted_at` DATETIME NULL DEFAULT NULL COMMENT '删除时间',
     PRIMARY KEY (`id`),
-    UNIQUE INDEX `code` (`value`)
+    UNIQUE INDEX `value` (`value`)
 );
