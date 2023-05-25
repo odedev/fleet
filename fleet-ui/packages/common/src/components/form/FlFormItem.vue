@@ -31,8 +31,9 @@ import FlInput from "../input/FlInput.vue";
 
 .item {
   width: 440px;
+  width: 416px;
   max-width: 440px;
-  max-width: 400px;
+  //max-width: 376px;
   height: 28px;
   height: 32px;
   height: 40px;
@@ -82,6 +83,7 @@ import FlInput from "../input/FlInput.vue";
   .item-content {
     width: 336px;
     width: 272px;
+    //width: 248px;
     //padding: 0 8px;
   }
 
