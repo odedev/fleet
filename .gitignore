@@ -125,6 +125,7 @@ coverage
 site/
 cache/
 workspace/
+public/
 
 # data
 *.db
