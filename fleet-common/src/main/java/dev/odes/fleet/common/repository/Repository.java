@@ -6,9 +6,9 @@ import dev.odes.fleet.common.parameter.Parameter;
 import java.util.List;
 
 public interface Repository<E extends AbstractEntity> {
+    E findOne(Parameter parameter);
     List<E> findMany(Parameter parameter);
     List<E> findPage(Parameter parameter);
-    E findOne(Parameter parameter);
     E findOneById(String id);
     List<E> findManyById(String field, String id);
 

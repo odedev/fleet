@@ -13,7 +13,7 @@
   <artifactId>fleet-core</artifactId>
   <version>1.0.0</version>
   <name>fleet-core</name>
-  <description>Fleet core 不使用core, 全部放在 module 下</description>
+  <description>Fleet core</description>
 
   <packaging>pom</packaging>
 
@@ -26,7 +26,9 @@
   </properties>
 
   <modules>
+    <module>fleet-core-base</module>
     <module>fleet-core-uc</module>
+    <module>fleet-core-file</module>
   </modules>
 
   <dependencies>

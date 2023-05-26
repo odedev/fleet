@@ -26,10 +26,10 @@ dev.odes.fleet.develop.enumeration
 
 dev.odes.fleet.develop.dto
 
-ViewController
 View
-ViewMapper
 ViewModel
+ViewMapper
+ViewController
 ViewRepository
 ViewService
 ViewTransform

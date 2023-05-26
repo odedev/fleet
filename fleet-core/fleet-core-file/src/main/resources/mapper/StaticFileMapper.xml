@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dev.odes.fleet.core.file.mapper.StaticFileMapper">
+  <sql id="tableColumn">
+    <trim suffixOverrides=",">
+      `static_file`.`id`,
+      `static_file`.`name`,
+      `static_file`.`size`,
+      `static_file`.`type`,
+      `static_file`.`path`,
+      `static_file`.`url`,
+      `static_file`.`folder`,
+      `static_file`.`category`,
+      `static_file`.`status`,
+      `static_file`.`user`,
+    </trim>
+  </sql>
+  <sql id="column">
+    <trim suffixOverrides=",">
+      `id`,
+      `name`,
+      `size`,
+      `type`,
+      `path`,
+      `url`,
+      `folder`,
+      `category`,
+      `status`,
+      `user`,
+    </trim>
+  </sql>
+
+  <sql id="insertColumn">
+    <trim suffixOverrides=",">
+      `id`,
+      <if test="name != null">`name`,</if>
+      <if test="size != null">`size`,</if>
+      <if test="type != null">`type`,</if>
+      <if test="path != null">`path`,</if>
+      <if test="url != null">`url`,</if>
+      <if test="folder != null">`folder`,</if>
+      <if test="category != null">`category`,</if>
+      <if test="status != null">`status`,</if>
+      <if test="user != null">`user`,</if>
+    </trim>
+  </sql>
+  <sql id="insertValue">
+    <trim suffixOverrides=",">
+      #{id},
+      <if test="name != null">#{name},</if>
+      <if test="size != null">#{size},</if>
+      <if test="type != null">#{type},</if>
+      <if test="path != null">#{path},</if>
+      <if test="url != null">#{url},</if>
+      <if test="folder != null">#{folder},</if>
+      <if test="category != null">#{category},</if>
+      <if test="status != null">#{status},</if>
+      <if test="user != null">#{user},</if>
+    </trim>
+  </sql>
+  <sql id="insertEntityValue">
+    <trim suffixOverrides=",">
+      #{staticFile.id},
+      <if test="staticFile.name != null">#{staticFile.name},</if>
+      <if test="staticFile.size != null">#{staticFile.size},</if>
+      <if test="staticFile.type != null">#{staticFile.type},</if>
+      <if test="staticFile.path != null">#{staticFile.path},</if>
+      <if test="staticFile.url != null">#{staticFile.url},</if>
+      <if test="staticFile.folder != null">#{staticFile.folder},</if>
+      <if test="staticFile.category != null">#{staticFile.category},</if>
+      <if test="staticFile.status != null">#{staticFile.status},</if>
+      <if test="staticFile.user != null">#{staticFile.user},</if>
+    </trim>
+  </sql>
+
+  <sql id="updateColumn">
+    <trim prefix="set" suffixOverrides=",">
+      <if test="name != null">`name` = #{name},</if>
+      <if test="size != null">`size` = #{size},</if>
+      <if test="type != null">`type` = #{type},</if>
+      <if test="path != null">`path` = #{path},</if>
+      <if test="url != null">`url` = #{url},</if>
+      <if test="folder != null">`folder` = #{folder},</if>
+      <if test="category != null">`category` = #{category},</if>
+      <if test="status != null">`status` = #{status},</if>
+      <if test="user != null">`user` = #{user},</if>
+    </trim>
+  </sql>
+  <sql id="updateEntityColumn">
+    <trim prefix="set" suffixOverrides=",">
+      <if test="staticFile.name != null">`name` = #{staticFile.name},</if>
+      <if test="staticFile.size != null">`size` = #{staticFile.size},</if>
+      <if test="staticFile.type != null">`type` = #{staticFile.type},</if>
+      <if test="staticFile.path != null">`path` = #{staticFile.path},</if>
+      <if test="staticFile.url != null">`url` = #{staticFile.url},</if>
+      <if test="staticFile.folder != null">`folder` = #{staticFile.folder},</if>
+      <if test="staticFile.category != null">`category` = #{staticFile.category},</if>
+      <if test="staticFile.status != null">`status` = #{staticFile.status},</if>
+      <if test="staticFile.user != null">`user` = #{staticFile.user},</if>
+    </trim>
+  </sql>
+
+  <resultMap id="resultMap" type="dev.odes.fleet.core.file.entity.StaticFile">
+    <id property="id" column="id"/>
+    <result property="name" column="name"/>
+    <result property="size" column="size"/>
+    <result property="type" column="type"/>
+    <result property="path" column="path"/>
+    <result property="url" column="url"/>
+    <result property="folder" column="folder"/>
+    <result property="category" column="category"/>
+    <result property="status" column="status"/>
+    <result property="user" column="user"/>
+  </resultMap>
+
+  <select id="findOne" resultMap="resultMap" resultType="dev.odes.fleet.core.file.entity.StaticFile">
+    SELECT
+    <include refid="column"/>
+    FROM `static_file`
+    <if test="where != null and where != ''">
+      <where>
+        ${where}
+      </where>
+    </if>
+    LIMIT 1
+  </select>
+
+  <select id="findMany" resultMap="resultMap" resultType="dev.odes.fleet.core.file.entity.StaticFile">
+    SELECT
+    <include refid="column"/>
+    FROM `static_file`
+    <if test="where != null and where != ''">
+      <where>
+        ${where}
+      </where>
+    </if>
+    <choose>
+      <when test="order != null and order != ''">
+        ORDER BY ${order}
+      </when>
+      <otherwise>
+        ORDER BY id DESC
+      </otherwise>
+    </choose>
+  </select>
+
+  <insert id="insertOne" parameterType="dev.odes.fleet.core.file.entity.StaticFile">
+    INSERT INTO `static_file`
+    (<include refid="insertColumn"/>)
+    VALUES
+    (<include refid="insertValue"/>)
+  </insert>
+
+  <insert id="insertMany" parameterType="java.util.List">
+    INSERT INTO `static_file`
+    (<include refid="insertColumn"/>)
+    VALUES
+    <foreach collection="list" item="module" separator=",">
+      (<include refid="insertEntityValue"/>)
+    </foreach>
+  </insert>
+
+  <update id="updateOne" parameterType="dev.odes.fleet.core.file.entity.StaticFile">
+    UPDATE `static_file`
+    <include refid="updateColumn"/>
+    WHERE id=#{id}
+  </update>
+
+  <delete id="deleteOne" parameterType="java.lang.String">
+    DELETE FROM `static_file` WHERE id=#{id}
+  </delete>
+
+  <select id="count" resultType="java.lang.Integer">
+    SELECT COUNT(1) FROM `static_file`
+    <if test="where != null and where != ''">
+      <where>
+        ${where}
+      </where>
+    </if>
+    LIMIT 1
+  </select>
+
+</mapper>

@@ -1,18 +1,7 @@
 <template>
   <section class="search">
     <div class="search-parameter">
-      <FlItem>
-        <input type="text" name="" id="">
-      </FlItem>
-      <FlItem>
-        <input type="text" name="" id="">
-      </FlItem>
-      <FlItem>
-        <input type="number" name="" id="">
-      </FlItem>
-<!--      <FlItem>-->
-<!--        <input type="number" name="" id="">-->
-<!--      </FlItem>-->
+      <FlForm />
     </div>
     <div class="search-action">
       <FlButton>搜索</FlButton>
@@ -24,6 +13,8 @@
 <script lang="ts" setup>
 import FlCell from "../table/FlTableCell.vue";
 import FlItem from "../form/FlFormItem.vue";
+import FlForm from "../form/FlForm.vue";
+
 import FlButton from "../button/FlButton.vue";
 
 </script>

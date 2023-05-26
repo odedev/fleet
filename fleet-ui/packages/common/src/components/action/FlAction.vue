@@ -11,6 +11,7 @@
 .action {
   width: 100%;
   height: 100%;
+  height: 64px;
   display: flex;
   flex-direction: row;
   justify-content: flex-end;

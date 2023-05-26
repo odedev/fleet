@@ -83,7 +83,19 @@
     <result property="module" column="module"/>
   </resultMap>
 
-  <select id="find" resultMap="resultMap" resultType="dev.odes.fleet.develop.entity.Model">
+  <select id="findOne" resultMap="resultMap" resultType="dev.odes.fleet.develop.entity.Model">
+    SELECT
+    <include refid="column"/>
+    FROM `develop_model`
+    <if test="where != null and where != ''">
+      <where>
+        ${where}
+      </where>
+    </if>
+    LIMIT 1
+  </select>
+
+  <select id="findMany" resultMap="resultMap" resultType="dev.odes.fleet.develop.entity.Model">
     SELECT
     <include refid="column"/>
     FROM `develop_model`
@@ -100,18 +112,6 @@
         ORDER BY id DESC
       </otherwise>
     </choose>
-  </select>
-
-  <select id="findOne" resultMap="resultMap" resultType="dev.odes.fleet.develop.entity.Model">
-    SELECT
-    <include refid="column"/>
-    FROM `develop_model`
-    <if test="where != null and where != ''">
-      <where>
-        ${where}
-      </where>
-    </if>
-    LIMIT 1
   </select>
 
   <insert id="insertOne" parameterType="dev.odes.fleet.develop.entity.Model">
@@ -151,7 +151,9 @@
   <select id="count" resultType="java.lang.Integer">
     SELECT COUNT(1) FROM `develop_model`
     <if test="where != null and where != ''">
-      ${where}
+      <where>
+        ${where}
+      </where>
     </if>
     LIMIT 1
   </select>

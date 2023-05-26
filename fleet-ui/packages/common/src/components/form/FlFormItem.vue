@@ -83,6 +83,8 @@ import FlInput from "../input/FlInput.vue";
   .item-content {
     width: 336px;
     width: 272px;
+    width: 288px;
+
     //width: 248px;
     //padding: 0 8px;
   }

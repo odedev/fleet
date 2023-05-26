@@ -6,13 +6,6 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-/**
- * package: dev.odes.fleet.mysql
- * class: GenericRepository
- * date: 2023/5/6 0:01
- * version: 1.0.0
- * description:
- */
 @Repository
 public class GenericRepository {
     private final JdbcTemplate jdbcTemplate;

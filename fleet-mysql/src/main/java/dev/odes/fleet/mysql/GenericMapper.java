@@ -5,11 +5,11 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
 public interface GenericMapper<T> {
-    public List<T> find(@Param("where") String where, @Param("order") String order);
     public T findOne(@Param("where") String where);
+    public List<T> findMany(@Param("where") String where, @Param("order") String order);
 
-    public void insert(List<T> list);
     public void insertOne(T t);
+    public void insertMany(List<T> list);
 
     public void updateOne(T t);
 

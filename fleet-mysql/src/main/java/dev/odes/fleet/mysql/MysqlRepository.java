@@ -16,10 +16,16 @@ public class MysqlRepository<E extends AbstractEntity, M extends GenericMapper<E
     }
 
     @Override
+    public E findOne(Parameter parameter) {
+        String where = "";
+        return this.mapper.findOne(where);
+    }
+
+    @Override
     public List<E> findMany(Parameter parameter) {
         String where = ParameterConvert.toWhere(parameter);
         String order = "";
-        return this.mapper.find(where, order);
+        return this.mapper.findMany(where, order);
     }
 
     @Override
@@ -29,13 +35,7 @@ public class MysqlRepository<E extends AbstractEntity, M extends GenericMapper<E
         Integer pageNum = 1;
         Integer pageSize = 3;
         PageHelper.startPage(pageNum.intValue(), pageSize.intValue());
-        return this.mapper.find(where, order);
-    }
-
-    @Override
-    public E findOne(Parameter parameter) {
-        String where = "";
-        return this.mapper.findOne(where);
+        return this.mapper.findMany(where, order);
     }
 
     @Override
@@ -51,7 +51,7 @@ public class MysqlRepository<E extends AbstractEntity, M extends GenericMapper<E
     public List<E> findManyById(String field, String id) {
         String where = field + "='" + id + "'";
         String order = "";
-        return this.mapper.find(where, order);
+        return this.mapper.findMany(where, order);
     }
 
     @Override

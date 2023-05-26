@@ -11,6 +11,8 @@
   --view-head-height: 104px;
   --view-head-height: 112px;
   --view-head-height: 80px;
+  --view-head-height: max-content;
+
   //--view-head-height: 128px;
   height: var(--view-head-height);
   flex-grow: 0;

@@ -14,23 +14,8 @@
         </FlAction>
       </FlViewHead>
       <FlViewBody>
-        <FlBox>
-          <FlFormItem>
-            <input type="text" name="" id="">
-          </FlFormItem>
-          <FlFormItem>
-            <input type="text" name="" id="">
-          </FlFormItem>
-          <FlFormItem>
-            <input type="text" name="" id="">
-          </FlFormItem>
-          <FlFormItem>
-            <input type="text" name="" id="">
-          </FlFormItem>
-          <FlFormItem>
-            <input type="text" name="" id="">
-          </FlFormItem>
-        </FlBox>
+        <FlForm />
+
         <!--        <FlBox>-->
         <!--          <FlItem>-->
         <!--            <input type="text" name="" id="">-->
@@ -69,6 +54,9 @@
         <FlBlock>
           <FlTable></FlTable>
         </FlBlock>
+        <FlBlock>
+          <FlTable></FlTable>
+        </FlBlock>
       </FlViewBody>
     </FlViewMain>
   </FlView>
@@ -77,7 +65,7 @@
 import {
   FlHeader, FlBody, FlFooter, FlMenu, FlMain, FlNav, FlTab, FlPage,
   FlView, FlViewAside, FlViewMain, FlViewNav, FlViewHead, FlViewBody,
-  FlBlock, FlBox, FlContent, FlFormItem,
+  FlBlock, FlBox, FlForm, FlFormItem,
   FlTable, FlButton, FlSearch, FlAction
 } from '../components/index.ts'
 

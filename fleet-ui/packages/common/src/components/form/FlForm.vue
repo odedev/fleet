@@ -16,6 +16,7 @@ import FlFormItem from "./FlFormItem.vue";
 
 .form {
   width: 100%;
+  max-width: 100%;
   height: max-content;
   flex-basis: max-content;
   flex-grow: 0;
@@ -25,6 +26,7 @@ import FlFormItem from "./FlFormItem.vue";
   align-items: flex-start;
   justify-content: flex-start;
   align-content: flex-start;
+  flex-wrap: wrap;
   padding: 16px;
   // margin-bottom: 16px;
 

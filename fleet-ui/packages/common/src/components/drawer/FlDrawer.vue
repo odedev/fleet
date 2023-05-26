@@ -16,7 +16,7 @@ import {Drawer} from '@arco-design/web-vue';
 import '@arco-design/web-vue/es/drawer/style/css.js';
 
 // width: 720, 552, 440, 336
-const visible = ref(true);
+const visible = ref(false);
 
 
 const handleClick = () => {

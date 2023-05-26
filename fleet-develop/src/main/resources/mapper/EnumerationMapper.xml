@@ -66,7 +66,19 @@
     <result property="name" column="name"/>
   </resultMap>
 
-  <select id="find" resultMap="resultMap" resultType="dev.odes.fleet.develop.entity.Enumeration">
+  <select id="findOne" resultMap="resultMap" resultType="dev.odes.fleet.develop.entity.Enumeration">
+    SELECT
+    <include refid="column"/>
+    FROM `develop_enumeration`
+    <if test="where != null and where != ''">
+      <where>
+        ${where}
+      </where>
+    </if>
+    LIMIT 1
+  </select>
+
+  <select id="findMany" resultMap="resultMap" resultType="dev.odes.fleet.develop.entity.Enumeration">
     SELECT
     <include refid="column"/>
     FROM `develop_enumeration`
@@ -86,18 +98,6 @@
         ORDER BY id DESC
       </otherwise>
     </choose>
-  </select>
-
-  <select id="findOne" resultMap="resultMap" resultType="dev.odes.fleet.develop.entity.Enumeration">
-    SELECT
-    <include refid="column"/>
-    FROM `develop_enumeration`
-    <if test="where != null and where != ''">
-      <where>
-        ${where}
-      </where>
-    </if>
-    LIMIT 1
   </select>
 
   <insert id="insertOne" parameterType="dev.odes.fleet.develop.entity.Enumeration">
@@ -137,7 +137,9 @@
   <select id="count" resultType="java.lang.Integer">
     SELECT COUNT(1) FROM `develop_enumeration`
     <if test="where != null and where != ''">
-      ${where}
+      <where>
+        ${where}
+      </where>
     </if>
     LIMIT 1
   </select>
