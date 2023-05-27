@@ -6,8 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-@MapperScan(basePackages = {"dev.odes.fleet.develop.**.mapper", "dev.odes.fleet.core.**.mapper"})
-@ComponentScan(basePackages = {"dev.odes.fleet.core.**", "dev.odes.fleet.develop.*"})
+@MapperScan(basePackages = {"dev.odes.fleet.core.**.mapper", "dev.odes.fleet.app.**.mapper", "dev.odes.fleet.develop.**.mapper"})
+@ComponentScan(basePackages = {"dev.odes.fleet.core.*", "dev.odes.fleet.app.*", "dev.odes.fleet.develop.*"})
 public class FleetAppMainApplication {
 
 	public static void main(String[] args) {

@@ -1,0 +1,31 @@
+package dev.odes.fleet.core.file.controller;
+
+import dev.odes.fleet.common.response.ResponseData;
+import dev.odes.fleet.core.file.dto.ResourceUploadDto;
+import dev.odes.fleet.core.file.model.StaticFileModel;
+import dev.odes.fleet.core.file.service.ResourceService;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@RequestMapping(path = "/file/resource")
+public class ResourceController {
+    private final ResourceService resourceService;
+    public ResourceController(ResourceService resourceService) {
+        this.resourceService = resourceService;
+    }
+
+    @PostMapping(path = "/upload")
+    public ResponseData upload(@ModelAttribute ResourceUploadDto resourceUploadDto) {
+        StaticFileModel staticFileModel = this.resourceService.upload(resourceUploadDto);
+        return new ResponseData(staticFileModel);
+    }
+
+    @PostMapping(path = "/download")
+    public ResponseData download() {
+        this.resourceService.download();
+        return new ResponseData("download");
+    }
+}

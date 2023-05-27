@@ -1,31 +1,30 @@
 package dev.odes.fleet.common.utils;
 
 import cn.hutool.core.util.IdUtil;
-import com.google.common.base.Strings;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-public class IDUtils {
-    public static String getID() {
+public class IdUtils {
+    public static String getId() {
 //        String id = getUUID();
-        String id = getSnowflakeID();
+        String id = getSnowflakeId();
 //        id = getObjectID();
 //        id = Strings.padStart(id, 32, '0');
         return id;
     }
 
-    public static List<String> getIDList(Integer number) {
+    public static List<String> getIdList(Integer number) {
         List<String> ids = new ArrayList<>();
         for (int i = 0; i < number; i++) {
-            ids.add(getID());
+            ids.add(getId());
         }
         return ids;
     }
 
-    public static List<String> getIDList() {
-        return getIDList(100);
+    public static List<String> getIdList() {
+        return getIdList(100);
     }
 
     public static String getUUID() {
@@ -33,15 +32,15 @@ public class IDUtils {
         return uuid.replaceAll("-", "");
     }
 
-    public static String getSnowflakeID() {
+    public static String getSnowflakeId() {
         return IdUtil.getSnowflakeNextIdStr();
     }
 
-    public static String getObjectID() {
+    public static String getObjectId() {
         return IdUtil.objectId();
     }
 
-    public static String getNanoID() {
+    public static String getNanoId() {
         return IdUtil.nanoId();
     }
 }

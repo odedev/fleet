@@ -126,6 +126,7 @@ site/
 cache/
 workspace/
 public/
+!fleet-tool/public/
 
 # data
 *.db

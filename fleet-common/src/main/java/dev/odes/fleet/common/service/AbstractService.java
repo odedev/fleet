@@ -4,7 +4,7 @@ import dev.odes.fleet.common.entity.AbstractEntity;
 import dev.odes.fleet.common.model.AbstractModel;
 import dev.odes.fleet.common.parameter.Parameter;
 import dev.odes.fleet.common.repository.Repository;
-import dev.odes.fleet.common.utils.IDUtils;
+import dev.odes.fleet.common.utils.IdUtils;
 import dev.odes.fleet.common.utils.StringUtils;
 
 import java.util.ArrayList;
@@ -174,7 +174,7 @@ public abstract class AbstractService<E extends AbstractEntity, M extends Abstra
         this._validate(m);
         this.beforeInsert(m);
         if (StringUtils.isNullOrEmpty(m.getId())) {
-            m.setId(IDUtils.getID());
+            m.setId(IdUtils.getId());
         }
     }
 

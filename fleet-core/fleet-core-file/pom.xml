@@ -36,6 +36,11 @@
       <artifactId>fleet-mysql</artifactId>
       <version>1.0.0</version>
     </dependency>
+    <dependency>
+      <groupId>io.minio</groupId>
+      <artifactId>minio</artifactId>
+      <version>8.5.3</version>
+    </dependency>
   </dependencies>
 
 </project>

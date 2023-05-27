@@ -3,8 +3,10 @@ spring:
     name: FleetAppMain
   main:
     allow-bean-definition-overriding: true
-  profiles:
-    active: dev
+  servlet:
+    multipart:
+      max-file-size: 128MB
+      max-request-size: 1024MB
   datasource:
     username: root
     password: 123456
@@ -13,6 +15,8 @@ spring:
   sql:
     init:
       platform: mysql
+#  profiles:
+#    active: dev
 
 server:
   port: 23501
@@ -37,3 +41,8 @@ pagehelper:
 logging:
   file:
     path: "./logs"
+
+#minio:
+#  endpoint: ""
+#  accessKey: ""
+#  secretKey: ""

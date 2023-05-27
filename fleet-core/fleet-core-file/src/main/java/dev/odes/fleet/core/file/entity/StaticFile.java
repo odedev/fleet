@@ -5,10 +5,11 @@ import dev.odes.fleet.common.entity.AbstractEntity;
 public class StaticFile extends AbstractEntity {
     private String id;
     private String name;
-    private Double size;
+    private Long size;
     private String type;
     private String path;
     private String url;
+    private Integer location;
     private String folder;
     private String category;
     private String status;
@@ -32,11 +33,11 @@ public class StaticFile extends AbstractEntity {
         this.name = name;
     }
 
-    public Double getSize() {
+    public Long getSize() {
         return size;
     }
 
-    public void setSize(Double size) {
+    public void setSize(Long size) {
         this.size = size;
     }
 
@@ -62,6 +63,14 @@ public class StaticFile extends AbstractEntity {
 
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    public Integer getLocation() {
+        return location;
+    }
+
+    public void setLocation(Integer location) {
+        this.location = location;
     }
 
     public String getFolder() {
