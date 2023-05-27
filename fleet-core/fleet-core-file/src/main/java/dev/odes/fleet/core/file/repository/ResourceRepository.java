@@ -1,5 +1,6 @@
 package dev.odes.fleet.core.file.repository;
 
+import com.google.common.io.Files;
 import dev.odes.fleet.common.utils.StringUtils;
 import dev.odes.fleet.core.file.config.MinioClientConfig;
 import dev.odes.fleet.core.file.constant.FileConstant;
@@ -42,29 +43,6 @@ public class ResourceRepository {
         }
     }
 
-    public void makeBucket() {
-        try {
-            this.minioClient.makeBucket(MakeBucketArgs.builder().bucket("asiatrip").build());
-        } catch (ErrorResponseException e) {
-            throw new RuntimeException(e);
-        } catch (InsufficientDataException e) {
-            throw new RuntimeException(e);
-        } catch (InternalException e) {
-            throw new RuntimeException(e);
-        } catch (InvalidKeyException e) {
-            throw new RuntimeException(e);
-        } catch (InvalidResponseException e) {
-            throw new RuntimeException(e);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        } catch (NoSuchAlgorithmException e) {
-            throw new RuntimeException(e);
-        } catch (ServerException e) {
-            throw new RuntimeException(e);
-        } catch (XmlParserException e) {
-            throw new RuntimeException(e);
-        }
-    }
 
     public ResourceDto upload(ResourceUploadDto resourceUploadDto) {
         MultipartFile multipartFile = resourceUploadDto.getFile();
@@ -87,23 +65,46 @@ public class ResourceRepository {
             throw new RuntimeException("获取原文件名失败");
         }
         if (!StringUtils.isNullOrEmpty(name)) {
-            filename = name;
+            String fileExtension = "." + Files.getFileExtension(filename);
+            if (name.endsWith(fileExtension)) {
+                filename = name;
+            } else {
+                filename = name + fileExtension;
+            }
         }
 
         String publicPath = new File(FileConstant.PUBLIC_PATH).getAbsolutePath();
         String path = publicPath + File.separator + filename;
         String url = "/" + FileConstant.PUBLIC_PATH + "/" + filename;
         if (!StringUtils.isNullOrEmpty(folder)) {
-            path = publicPath + File.separator + folder + File.separator + filename;
-            url = "/" + FileConstant.PUBLIC_PATH + "/" + folder + "/" + filename;
+            folder = folder.replace("\\", File.separator);
+            folder = folder.replace("/", File.separator);
+            path = publicPath;
+            url = "/" + FileConstant.PUBLIC_PATH;
+            if (folder.startsWith(File.separator)) {
+                path = path + folder;
+                url = url + folder;
+            } else {
+                path = path + File.separator + folder;
+                url = url + "/" + folder;
+            }
+            if (folder.endsWith(File.separator)) {
+                path = path + filename;
+                url = url + filename;
+            } else {
+                path = path + File.separator + filename;
+                url = url + "/" + filename;
+            }
+            url = url.replace("\\", "/");
         }
         File file = new File(path);
         if (file.exists()) {
             throw new RuntimeException("文件[" + url + "]已存在");
         }
         if (!file.getParentFile().exists()) {
-            boolean isMkdir = file.getParentFile().mkdir();
-            if (!isMkdir) {
+            try {
+                Files.createParentDirs(file);
+            } catch (IOException e) {
                 throw new RuntimeException("创建文件夹[" + folder + "]失败");
             }
         }
@@ -157,5 +158,34 @@ public class ResourceRepository {
                 + "object 'asiaphotos-2015.zip' to bucket 'asiatrip'.");
 
         return null;
+    }
+
+
+    public void makeBucket() {
+        if (this.minioClient == null) {
+            return;
+        }
+
+        try {
+            this.minioClient.makeBucket(MakeBucketArgs.builder().bucket("asiatrip").build());
+        } catch (ErrorResponseException e) {
+            throw new RuntimeException(e);
+        } catch (InsufficientDataException e) {
+            throw new RuntimeException(e);
+        } catch (InternalException e) {
+            throw new RuntimeException(e);
+        } catch (InvalidKeyException e) {
+            throw new RuntimeException(e);
+        } catch (InvalidResponseException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (NoSuchAlgorithmException e) {
+            throw new RuntimeException(e);
+        } catch (ServerException e) {
+            throw new RuntimeException(e);
+        } catch (XmlParserException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
