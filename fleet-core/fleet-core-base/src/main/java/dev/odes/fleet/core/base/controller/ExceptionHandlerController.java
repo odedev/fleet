@@ -1,6 +1,8 @@
 package dev.odes.fleet.core.base.controller;
 
 import dev.odes.fleet.common.response.ResponseError;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
@@ -24,9 +26,9 @@ public class ExceptionHandlerController {
      * @return
      */
     @ExceptionHandler(RuntimeException.class)
-    public ResponseError handler(RuntimeException e) {
+    public ResponseEntity<ResponseError> handler(RuntimeException e) {
         e.printStackTrace();
-        return new ResponseError("运行时异常", e.getMessage());
+        return new ResponseEntity<>(new ResponseError("运行时异常", e.getMessage()), HttpStatus.INSUFFICIENT_STORAGE);
     }
 
     /**
@@ -35,9 +37,9 @@ public class ExceptionHandlerController {
      * @return
      */
     @ExceptionHandler(NullPointerException.class)
-    public Object handler(NullPointerException e) {
+    public ResponseEntity<ResponseError>  handler(NullPointerException e) {
         e.printStackTrace();
-        return new ResponseError("空指针异常", e.getMessage());
+        return new ResponseEntity<>(new ResponseError("空指针异常", e.getMessage()), HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     /**
