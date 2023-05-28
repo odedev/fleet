@@ -8,6 +8,7 @@ public class ResourceDto {
     private String type;
     private String path;
     private String url;
+    private String folder;
     private LocationEnum location;
 
     public String getName() {
@@ -48,6 +49,14 @@ public class ResourceDto {
 
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    public String getFolder() {
+        return folder;
+    }
+
+    public void setFolder(String folder) {
+        this.folder = folder;
     }
 
     public LocationEnum getLocation() {

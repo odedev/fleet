@@ -121,6 +121,7 @@ public class ResourceRepository {
         resourceDto.setType(multipartFile.getContentType());
         resourceDto.setUrl(url);
         resourceDto.setPath(path);
+        resourceDto.setFolder(folder);
         resourceDto.setLocation(LocationEnum.HOST);
         return resourceDto;
     }

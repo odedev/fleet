@@ -21,7 +21,6 @@ public class ResourceService {
         if (resourceDto == null) {
             throw new RuntimeException("上传失败");
         }
-        String folder = resourceUploadDto.getFolder();
         String category = resourceUploadDto.getCategory();
         StaticFileModel staticFileModel = new StaticFileModel();
         staticFileModel.setId(IdUtils.getId());
@@ -31,7 +30,7 @@ public class ResourceService {
         staticFileModel.setPath(resourceDto.getPath());
         staticFileModel.setUrl(resourceDto.getUrl());
         staticFileModel.setLocation(resourceDto.getLocation());
-        staticFileModel.setFolder(folder);
+        staticFileModel.setFolder(resourceDto.getFolder());
         staticFileModel.setCategory(category);
         StaticFileModel fileModel = this.staticFileService.insertOne(staticFileModel);
         return fileModel;
