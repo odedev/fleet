@@ -1,5 +1,6 @@
 package dev.odes.fleet.core.base.controller;
 
+import dev.odes.fleet.common.response.ResponseError;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
@@ -23,9 +24,9 @@ public class ExceptionHandlerController {
      * @return
      */
     @ExceptionHandler(RuntimeException.class)
-    public Object handler(RuntimeException e) {
+    public ResponseError handler(RuntimeException e) {
         e.printStackTrace();
-        return e.getMessage();
+        return new ResponseError("运行时异常", e.getMessage());
     }
 
     /**
@@ -36,7 +37,7 @@ public class ExceptionHandlerController {
     @ExceptionHandler(NullPointerException.class)
     public Object handler(NullPointerException e) {
         e.printStackTrace();
-        return e.getMessage();
+        return new ResponseError("空指针异常", e.getMessage());
     }
 
     /**
@@ -47,6 +48,6 @@ public class ExceptionHandlerController {
     @ExceptionHandler(ArithmeticException.class)
     public Object handler(ArithmeticException e) {
         e.printStackTrace();
-        return e.getMessage();
+        return new ResponseError("算术运算异常", e.getMessage());
     }
 }
