@@ -129,6 +129,10 @@ public class TemplateContext {
         return DataTypeUtils.isEnumDataType(modelField);
     }
 
+    public static Boolean isFileDataType(ModelFieldModel modelField) {
+        return DataTypeUtils.isFileDataType(modelField);
+    }
+
     public static String upperCamel(String word) {
         return CaseFormatUtils.upperCamel(word);
     }

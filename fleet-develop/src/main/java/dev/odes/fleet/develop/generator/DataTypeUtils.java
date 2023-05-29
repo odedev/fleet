@@ -36,6 +36,9 @@ public class DataTypeUtils {
             case JSON -> {
                 type = "Object";
             }
+            case FILE -> {
+                type = "StaticFile";
+            }
         }
 
         return type;
@@ -46,7 +49,7 @@ public class DataTypeUtils {
         DataTypeEnum dataType = modelField.getDataType();
         switch (dataType) {
             case BOOLEAN -> type = "Boolean";
-            case STRING, TEXT, MODEL -> type = "String";
+            case STRING, TEXT, MODEL, FILE -> type = "String";
             case INTEGER, ENUM -> type = "Integer";
             case FLOAT -> type = "Double";
             case DATE -> type = "Date";
@@ -80,7 +83,7 @@ public class DataTypeUtils {
             case DATE -> {
                 type = "DATETIME";
             }
-            case MODEL -> {
+            case MODEL, FILE -> {
                 type = "VARCHAR(32)";
             }
             case JSON -> {
@@ -97,5 +100,9 @@ public class DataTypeUtils {
 
     public static Boolean isEnumDataType(ModelFieldModel modelField) {
         return modelField.getDataType().equals(DataTypeEnum.ENUM);
+    }
+
+    public static Boolean isFileDataType(ModelFieldModel modelField) {
+        return modelField.getDataType().equals(DataTypeEnum.FILE);
     }
 }

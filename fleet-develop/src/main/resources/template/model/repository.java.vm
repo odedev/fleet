@@ -12,7 +12,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class ${modelCode}Repository extends MysqlRepository<${modelCode}, ${modelCode}Mapper> {
     private final ${modelCode}Mapper ${modelCodeLowerCamel}Mapper;
-    public AppModuleRepository(${modelCode}Mapper ${modelCodeLowerCamel}Mapper) {
+    public ${modelCode}Repository(${modelCode}Mapper ${modelCodeLowerCamel}Mapper) {
         super(${modelCodeLowerCamel}Mapper);
         this.${modelCodeLowerCamel}Mapper = ${modelCodeLowerCamel}Mapper;
     }

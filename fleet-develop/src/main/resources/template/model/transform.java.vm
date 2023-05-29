@@ -7,13 +7,52 @@ package dev.odes.fleet.module.${moduleCode}.transform;
 import dev.odes.fleet.common.transform.Transform;
 import dev.odes.fleet.module.${moduleCode}.entity.${modelCode};
 import dev.odes.fleet.module.${moduleCode}.model.${modelCode}Model;
+
+#foreach($field in $templateContext.getModelList())
+#set($type = $templateContext.getModelFieldType($field))
+#set($typeLowerCamel = $templateContext.lowerCamel($type))
+import dev.odes.fleet.module.${moduleCode}.entity.${type};
+import dev.odes.fleet.module.${moduleCode}.model.${type}Model;
+import dev.odes.fleet.module.${moduleCode}.repository.${type}Repository;
+#end
+
 import org.springframework.stereotype.Component;
 
 @Component
 public class ${modelCode}Transform implements Transform<${modelCode}, ${modelCode}Model> {
+    #foreach($field in $templateContext.getModelList())
+    #set($type = $templateContext.getModelFieldType($field))
+    #set($typeLowerCamel = $templateContext.lowerCamel($type))
+    private final ${type}Repository ${typeLowerCamel}Repository;
+    #end
+    public ${modelCode}Transform(
+        #foreach($field in $templateContext.getModelList())
+        #set($type = $templateContext.getModelFieldType($field))
+        #set($typeLowerCamel = $templateContext.lowerCamel($type))
+        ${type}Repository ${typeLowerCamel}Repository,
+        #end
+    ) {
+        #foreach($field in $templateContext.getModelList())
+        #set($type = $templateContext.getModelFieldType($field))
+        #set($typeLowerCamel = $templateContext.lowerCamel($type))
+        this.${typeLowerCamel}Repository = ${typeLowerCamel}Repository;
+        #end
+    }
+
     @Override
     public ${modelCode}Model toModel(${modelCode} ${modelCodeLowerCamel}) {
         ${modelCode}Model ${modelCodeLowerCamel}Model = new ${modelCode}Model(${modelCodeLowerCamel});
+
+        #foreach($field in $templateContext.getModelList())
+        #set($fieldCode = $field.code)
+        #set($fieldCodeUpperCamel = $templateContext.upperCamel($fieldCode))
+        #set($type = $templateContext.getModelFieldType($field))
+        #set($typeLowerCamel = $templateContext.lowerCamel($type))
+        ${type} ${typeLowerCamel}${fieldCodeUpperCamel} = this.${typeLowerCamel}Repository.findOneById(${modelCodeLowerCamel}.get${fieldCodeUpperCamel}());
+        if (${typeLowerCamel}${fieldCodeUpperCamel} != null) {
+            ${modelCodeLowerCamel}Model.set${fieldCodeUpperCamel}(new ${type}Model(${typeLowerCamel}${fieldCodeUpperCamel}));
+        }
+        #end
 
         return ${modelCodeLowerCamel}Model;
     }

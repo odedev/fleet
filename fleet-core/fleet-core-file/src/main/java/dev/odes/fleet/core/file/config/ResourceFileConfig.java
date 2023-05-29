@@ -21,7 +21,6 @@ public class ResourceFileConfig implements WebMvcConfigurer {
         registry
             .addResourceHandler("/public/**")
             .addResourceLocations(file.toURI().toString());
-        System.out.println("ResourceLocation-----" + file.toURI());
     }
 }
 

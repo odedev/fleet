@@ -25,12 +25,21 @@ public class ${modelCode}Model extends AbstractModel<${modelCode}> {
     private ${type}Model $fieldCode;
     #elseif($templateContext.isEnumDataType($field))
     private ${type}Enum $fieldCode;
+    #elseif($templateContext.isFileDataType($field))
+    private StaticFileModel $fieldCode;
     #elseif($field.isSlaveModel)
     private List<${type}Model> $fieldCode;
     #else
     private $type $fieldCode;
     #end
     #end
+
+    public ${modelCode}Model() {
+    }
+
+    public ${modelCode}Model(${modelCode} ${modelCodeLowerCamel}) {
+        this.fromEntity(${modelCodeLowerCamel});
+    }
 
     @Override
     public String getId() {
@@ -46,15 +55,14 @@ public class ${modelCode}Model extends AbstractModel<${modelCode}> {
     #set($fieldCode = $field.code)
     #set($fieldCodeUpperCamel = $templateContext.upperCamel($fieldCode))
     #set($type = $templateContext.getModelFieldType($field))
-    public $type get${fieldCodeUpperCamel}() {
+    #if($templateContext.isModelDataType($field))
+    public ${type}Model get${fieldCodeUpperCamel}() {
         return $fieldCode;
     }
 
-    public void set${fieldCodeUpperCamel}($type ${fieldCode}) {
+    public void set${fieldCodeUpperCamel}(${type}Model ${fieldCode}) {
         this.${fieldCode} = ${fieldCode};
     }
-
-    #if($templateContext.isModelDataType($field))
     public void set${fieldCodeUpperCamel}(String ${fieldCode}) {
         if (${fieldCode} == null) {
             this.${fieldCode} = null;
@@ -64,7 +72,14 @@ public class ${modelCode}Model extends AbstractModel<${modelCode}> {
             this.${fieldCode} = ${fieldCode}Model;
         }
     }
+    #else
+    public $type get${fieldCodeUpperCamel}() {
+        return $fieldCode;
+    }
 
+    public void set${fieldCodeUpperCamel}($type ${fieldCode}) {
+        this.${fieldCode} = ${fieldCode};
+    }
     #end
     #end
     @Override
@@ -84,11 +99,19 @@ public class ${modelCode}Model extends AbstractModel<${modelCode}> {
     @Override
     public ${modelCode} toEntity() {
         ${modelCode} ${modelCodeLowerCamel} = new ${modelCode}();
-        model.setId(this.getId());
+        ${modelCodeLowerCamel}.setId(this.getId());
         #foreach($field in $modelFields)
         #set($fieldCode = $field.code)
         #set($fieldCodeUpperCamel = $templateContext.upperCamel($fieldCode))
+        #set($type = $templateContext.getModelFieldType($field))
+        #if($templateContext.isModelDataType($field))
+        ${type}Model ${fieldCode}Model = this.get${fieldCodeUpperCamel}();
+        if (${fieldCode}Model != null) {
+            ${modelCodeLowerCamel}.set${fieldCodeUpperCamel}(${fieldCode}Model.getId());
+        }
+        #else
         ${modelCodeLowerCamel}.set${fieldCodeUpperCamel}(this.get${fieldCodeUpperCamel}());
+        #end
         #end
         return ${modelCodeLowerCamel};
     }

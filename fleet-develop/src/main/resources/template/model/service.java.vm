@@ -28,7 +28,7 @@ public class ${modelCode}Service extends AbstractService<${modelCode}, ${modelCo
 
     @Override
     public ${modelCode} transform(${modelCode}Model ${modelCodeLowerCamel}Model) {
-        return this.${modelCodeLowerCamel}Transform.toEntity(${modelCodeLowerCamel}Model);;
+        return this.${modelCodeLowerCamel}Transform.toEntity(${modelCodeLowerCamel}Model);
     }
 
 }

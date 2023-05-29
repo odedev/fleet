@@ -28,7 +28,6 @@ public class ResourceRepository {
 
     public ResourceRepository(MinioClientConfig minioClientConfig) {
         this.minioClientConfig = minioClientConfig;
-        System.out.println("getEndpoint" + this.minioClientConfig.getEndpoint());
         if (!StringUtils.isNullOrEmpty(this.minioClientConfig.getEndpoint())) {
             try {
                 this.minioClient = MinioClient
