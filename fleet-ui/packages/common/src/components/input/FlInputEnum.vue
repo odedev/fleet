@@ -18,6 +18,8 @@ import FlInputBase from "./FlInputBase.vue";
   .arco-select {
     padding-left: 8px;
     padding-right: 8px;
+    padding-top: 1px;
+    padding-bottom: 1px;
   }
 }
 </style>

@@ -2,23 +2,26 @@
   <template v-if="isShowTip">
     <Tooltip :content="value" position="tl" mini>
       <FlContentBase>
-        {{props.value}}
+        {{value}}
       </FlContentBase>
     </Tooltip>
   </template>
   <template v-else>
     <FlContentBase>
-      {{props.value}}
+      {{value}}
     </FlContentBase>
   </template>
 </template>
 <script lang="ts" setup>
+import {computed} from "vue";
 import {Tooltip} from '@arco-design/web-vue';
 import FlContentBase from "./FlContentBase.vue";
 
 const props = defineProps<{
-  value: string,
-  isShowTip: boolean,
+  modelValue: any,
+  isShowTip?: boolean,
 }>();
+
+const value = computed<string>(() => props.modelValue);
 
 </script>

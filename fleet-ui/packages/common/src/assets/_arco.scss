@@ -110,11 +110,29 @@
   @include background-color-primary-theme();
 }
 
+.arco-checkbox-disabled.arco-checkbox-checked .arco-checkbox-icon,
+.arco-checkbox-disabled.arco-checkbox-checked:hover .arco-checkbox-icon {
+  @include background-color-secondary();
+  @include background-color-secondary-theme();
+}
+
 .arco-input-wrapper:focus-within,
 .arco-input-wrapper.arco-input-focus {
   @include border-color-primary();
 }
+.arco-select-view-single:focus-within,
+.arco-select-view-single.arco-select-view-focus {
+  @include border-color-primary();
+}
 
+.arco-picker-focused,
+.arco-picker-focused:hover {
+  @include border-color-primary();
+}
+.arco-textarea-wrapper:focus-within,
+.arco-textarea-wrapper.arco-textarea-focus {
+  @include border-color-primary();
+}
 
 .arco-table-border-cell .arco-table-th-resizing,
 .arco-table-border-cell .arco-table-td-resizing:not(.arco-table-tr-expand) {

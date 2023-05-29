@@ -1,5 +1,5 @@
 <template>
-  <FlInputBase class="input-number">
+  <FlInputBase class="input-password">
     <InputPassword allow-clear size="small" />
   </FlInputBase>
 </template>
@@ -9,3 +9,13 @@ import "@arco-design/web-vue/es/input/style/index.css";
 import FlInputBase from "./FlInputBase.vue";
 
 </script>
+<style lang="scss">
+.input-password {
+  .arco-input-wrapper {
+    padding-left: 8px;
+    padding-right: 8px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+  }
+}
+</style>

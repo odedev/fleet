@@ -73,11 +73,12 @@ import FlInput from "../input/FlInput.vue";
     align-items: center;
     flex-wrap: nowrap;
     label {
+      margin-right: 6px;
       white-space: nowrap;
       @include ellipsis();
     }
     .arco-icon {
-      margin-left: 6px;
+      margin-right: 6px;
     }
   }
   .item-content {
@@ -110,9 +111,5 @@ import FlInput from "../input/FlInput.vue";
     padding: 0 8px;
   }
 
-  input {
-    width: 100%;
-    height: 28px;
-  }
 }
 </style>

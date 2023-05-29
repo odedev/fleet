@@ -12,10 +12,10 @@
   height: 28px;
   height: 32px;
   //height: 40px;
-  width: 100%;
   width: 336px;
   width: 272px;
-  min-width: 40px;
+  width: 100%;
+  min-width: 32px;
   padding: 0 8px;
   display: flex;
   align-items: center;

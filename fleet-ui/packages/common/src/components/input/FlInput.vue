@@ -1,6 +1,26 @@
 <template>
-  <FlInputBoolean v-if="dataType === 'boolean'"/>
-  <FlInputText v-else-if="dataType === 'text'" />
+  <FlInputBoolean
+    v-if="dataType === 'boolean'"
+    :model-value="value"
+    :is-disabled="isDisabled"
+    @update:model-value="handleUpdate"
+    @change="handleChange"
+  />
+  <FlInputText
+    v-else-if="dataType === 'text'"
+    :model-value="value"
+    :is-nullable="isNullable"
+    :is-disabled="isDisabled"
+    :is-readonly="isReadonly"
+    :is-invalid="isInvalid"
+    :autofocus="props.autofocus"
+    @update:model-value="handleUpdate"
+    @input="handleInput"
+    @change="handleChange"
+    @focus="handleFocus"
+    @blur="handleBlur"
+    @clear="handleClear"
+  />
   <FlInputNumber v-else-if="dataType === 'number'"/>
   <FlInputDate v-else-if="dataType === 'date'"/>
   <FlInputEnum v-else-if="dataType === 'enum'"/>
@@ -22,15 +42,33 @@ import FlInputModel from "./FlInputModel.vue";
 import FlInputJson from "./FlInputJson.vue";
 import FlInputFile from "./FlInputFile.vue";
 
+const emits = defineEmits([
+  'update:modelValue',
+  'input',
+  'change',
+  'focus',
+  'blur',
+  'clear',
+  'pressEnter'
+]);
 
-const props = defineProps<{
+const props = withDefaults(defineProps<{
   modelValue: any,
   dataType: number,
-}>();
-
-const value = computed<string>(() => {
-  return props.modelValue;
+  isNullable?: boolean,
+  isDisabled?: boolean,
+  isReadonly?: boolean,
+  isInvalid?: boolean,
+  autofocus?: boolean,
+}>(), {
+  isNullable: true,
+  isDisabled: false,
+  isReadonly: false,
+  isInvalid: false,
+  autofocus: false,
 });
+
+const value = computed<any>(() => props.modelValue);
 
 const dataType = computed<string>(() => {
   switch (props.dataType) {
@@ -56,9 +94,36 @@ const dataType = computed<string>(() => {
   return '';
 });
 
+const isNullable = computed<boolean>(() => props.isNullable);
+const isDisabled = computed<boolean>(() => props.isDisabled);
+const isReadonly = computed<boolean>(() => props.isReadonly);
+const isInvalid = computed<boolean>(() => props.isInvalid);
 
-const emits = defineEmits(['update:modelValue']);
 
+const handleUpdate = (value: string) => {
+  console.log(value);
+  emits('update:modelValue', value);
+};
+
+const handleInput = (value:string, e: Event) => {
+  emits('input', value);
+};
+
+const handleChange = (value:string, e: Event) => {
+  emits('change', value);
+};
+
+const handleFocus = (e: FocusEvent) => {
+  emits('focus', e);
+};
+
+const handleBlur = (e: FocusEvent) => {
+  emits('blur', e);
+};
+
+const handleClear = (e: MouseEvent) => {
+  emits('clear', e);
+};
 
 </script>
 

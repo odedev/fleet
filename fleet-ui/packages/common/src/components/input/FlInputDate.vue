@@ -15,6 +15,7 @@ import FlInputBase from "./FlInputBase.vue";
 .input-date {
   .arco-picker {
     width: 100%;
+    height: 30px;
     padding-left: 0px;
     padding-right: 8px;
   }

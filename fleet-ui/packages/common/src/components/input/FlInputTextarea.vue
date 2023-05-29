@@ -14,7 +14,6 @@ import FlInputBase from "./FlInputBase.vue";
   height: max-content;
   padding-top: 2px;
   padding-bottom: 2px;
-
   .arco-textarea {
     padding-left: 8px;
     padding-right: 8px;

@@ -12,7 +12,7 @@
       </FlViewHead>
       <FlViewBody>
         <FlBlock>
-          <FlTable></FlTable>
+          <FlTable is-editable></FlTable>
         </FlBlock>
 <!--              <FlContent>-->
 <!--                <FlTable></FlTable>-->

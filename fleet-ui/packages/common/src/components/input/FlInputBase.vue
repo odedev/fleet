@@ -28,5 +28,6 @@ import {IconQuestionCircle} from "@arco-design/web-vue/es/icon";
   font-size: 14px;
   line-height: 22px;
   padding: 0 8px;
+  padding: 0;
 }
 </style>

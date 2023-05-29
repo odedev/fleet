@@ -9,8 +9,8 @@
       </FlViewHead>
       <FlViewBody>
         <FlBox>
-          <FlInputBoolean />
-          <FlInputText />
+          <FlInputBoolean v-model="booleanValue"/>
+          <FlInputText v-model="textValue"/>
           <FlInputDate />
           <FlInputNumber />
           <FlInputEnum />
@@ -39,6 +39,7 @@
   </FlView>
 </template>
 <script lang="ts" setup>
+import {ref} from 'vue';
 import {
   FlHeader, FlBody, FlFooter, FlMenu, FlMain, FlNav, FlTab, FlPage,
   FlView, FlViewAside, FlViewMain, FlViewNav, FlViewHead, FlViewBody,
@@ -48,6 +49,9 @@ import {
   FlFormItem,
   FlTable, FlButton, FlSearch, FlAction
 } from '../components'
+
+const booleanValue = ref(true);
+const textValue = ref('');
 
 </script>
 <style>

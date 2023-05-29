@@ -1,6 +1,12 @@
 <template>
-  <FlContentBoolean v-if="dataType === 'boolean'"/>
-  <FlContentText v-else-if="dataType === 'text'" />
+  <FlContentBoolean
+    v-if="dataType === 'boolean'"
+    :model-value="value"
+  />
+  <FlContentText
+    v-else-if="dataType === 'text'"
+    :model-value="value"
+  />
   <FlContentNumber v-else-if="dataType === 'number'"/>
   <FlContentDate v-else-if="dataType === 'date'"/>
   <FlContentEnum v-else-if="dataType === 'enum'"/>
@@ -26,7 +32,7 @@ const props = defineProps<{
   dataType: number,
 }>();
 
-const value = computed<string>(() => {
+const value = computed<any>(() => {
   return props.modelValue;
 });
 

@@ -22,12 +22,17 @@
         <template #columns>
           <TableColumn title="name">
             <template #cell>
-              <FlTableCell />
+              <FlTableCell  v-model="value" :data-type="1" :is-editable="isEditable"/>
             </template>
           </TableColumn>
           <TableColumn title="code">
             <template #cell>
-              <FlTableCell />
+              <FlTableCell v-model="value" :data-type="0" :is-editable="isEditable"/>
+            </template>
+          </TableColumn>
+          <TableColumn title="code">
+            <template #cell>
+              <FlTableCell v-model="value" :data-type="1" :is-editable="isEditable"/>
             </template>
           </TableColumn>
         </template>
@@ -55,7 +60,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, reactive, onMounted } from 'vue';
+import { ref, reactive, computed, onMounted } from 'vue';
 import {IconFilter, IconSettings, IconUpload, IconDownload} from "@arco-design/web-vue/es/icon";
 import {Table, TableColumn, Pagination, Tooltip} from "@arco-design/web-vue";
 import '@arco-design/web-vue/es/table/style/css.js';
@@ -63,6 +68,17 @@ import FlButton from "../button/FlButton.vue";
 import FlTableCell from "./FlTableCell.vue";
 
 const table = ref(null);
+const value = ref('123');
+
+const props = defineProps<{
+  dataType: number,
+  modelValue: string,
+  isEditable?: boolean,
+  isNullable?: boolean,
+  isDisabled?: boolean,
+}>();
+
+const isEditable = computed<boolean>(() => props.isEditable);
 
 const columns = [
   {
@@ -163,6 +179,7 @@ onMounted(() => {
     }
     .arco-table-td .arco-table-cell {
       padding: 4px 0;
+      padding: 0;
     }
   }
   .table-foot {

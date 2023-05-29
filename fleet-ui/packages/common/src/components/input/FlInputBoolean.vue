@@ -1,6 +1,11 @@
 <template>
 <FlInputBase class="input-boolean">
-  <Checkbox />
+  <Checkbox
+    :model-value="value"
+    :disabled="isDisabled"
+    @update:model-value="handleUpdate"
+    @change="handleChange"
+  />
 </FlInputBase>
 </template>
 <script lang="ts" setup>
@@ -8,6 +13,34 @@ import {Checkbox} from "@arco-design/web-vue";
 import '@arco-design/web-vue/es/checkbox/style/index.css';
 
 import FlInputBase from "./FlInputBase.vue";
+import {computed} from "vue";
+
+const emits = defineEmits([
+  'update:modelValue',
+  'change',
+  'pressEnter'
+]);
+
+
+let props = withDefaults(defineProps<{
+  modelValue: boolean,
+  isNullable?: boolean,
+  isDisabled?: boolean,
+}>(), {
+  isDisabled: false,
+});
+
+const value = computed<boolean>(() => props.modelValue)
+const isDisabled = computed<boolean>(() => props.isDisabled);
+
+const handleUpdate = (value: boolean) => {
+  emits('update:modelValue', value);
+};
+
+const handleChange = (value: boolean, e: Event) => {
+  emits('change', value);
+};
+
 </script>
 <style lang="scss">
 .input.input-boolean {
