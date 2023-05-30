@@ -5,7 +5,8 @@
     :data-type="dataType"
     :model-value="value"
     @update:model-value="handleUpdate"
-    @blur="onBlur"
+    @change="handleChange"
+    @blur="handleBlur"
     autofocus
   />
   <FlContent
@@ -34,13 +35,17 @@ const emits = defineEmits([
   'pressEnter'
 ]);
 
-const props = defineProps<{
+const props = withDefaults(defineProps<{
   dataType: number,
   modelValue: string,
   isEditable?: boolean,
   isNullable?: boolean,
   isDisabled?: boolean,
-}>();
+}>(), {
+  isEditable: true,
+  isNullable: true,
+  isDisabled: false,
+});
 
 const value = computed<string>(() => props.modelValue);
 const dataType = computed<number>(() => props.dataType);
@@ -54,7 +59,8 @@ const handleClick = () => {
 };
 
 const handleDblclick = () => {
-  if (!props.isEditable) {
+  console.log(props.isDisabled)
+  if (!props.isEditable || props.isDisabled) {
     isEditable.value = false;
     return
   }
@@ -64,12 +70,18 @@ const handleDblclick = () => {
 }
 
 
-const handleUpdate = (value: string) => {
+const handleUpdate = (value: any) => {
   console.log(value);
   emits('update:modelValue', value);
 };
 
-const onBlur = () => {
+const handleChange = (value: any) => {
+  if (dataType.value === 0) {
+    isEditable.value = false;
+  }
+};
+
+const handleBlur = () => {
   isEditable.value = false;
 }
 

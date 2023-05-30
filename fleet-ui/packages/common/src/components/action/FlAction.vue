@@ -20,7 +20,7 @@
   //padding-top: 22px;
 
   button {
-    margin-left: 12px;
+    margin-left: 8px;
   }
 }
 </style>

@@ -9,15 +9,20 @@
       </FlViewHead>
       <FlViewBody>
         <FlBox>
-          <FlContentText value="dsddsdsadsdsdsadsdsdsadssads" :is-show-tip="true"/>
-          <FlContentText value="文本内容显示" :is-show-tip="false"/>
-          <FlContentText value="文本内容显示" :is-show-tip="false"/>
-
-<!--          <FlContentNumber value="121212.1212212212212" :is-show-tip="false" />-->
+          <FlButton>维护模块</FlButton>
+          <FlButtonAdd />
+          <FlButtonEdit />
+          <FlButtonDelete />
+          <FlButtonView />
         </FlBox>
-        <FlBlock style="width: 200px;">
-          <FlContentText value="dsddsdsadsdsdsadsdsdsadssads" :is-show-tip="true"/>
-          <FlContentNumber value="121212.1212212212212" :is-show-tip="false" />
+        <FlBlock>
+          <FlButtonGroup>
+            <FlButton>维护</FlButton>
+            <FlButtonAdd />
+            <FlButtonEdit />
+            <FlButtonDelete />
+            <FlButtonView />
+          </FlButtonGroup>
         </FlBlock>
       </FlViewBody>
     </FlViewMain>
@@ -29,10 +34,8 @@ import "@arco-design/web-vue/es/card/style/css.js";
 
 import {
   FlHeader, FlBody, FlFooter, FlMenu, FlMain, FlNav, FlTab, FlPage,
-  FlView, FlViewAside, FlViewMain, FlViewNav, FlViewHead, FlViewBody,
-  FlBlock, FlBox, FlContent, FlContentText, FlContentNumber,
-  FlFormItem,
-  FlTable, FlButton, FlSearch, FlAction
+  FlView, FlViewAside, FlViewMain, FlViewNav, FlViewHead, FlViewBody, FlBlock, FlBox, FlAction,
+  FlButton, FlButtonAdd, FlButtonEdit, FlButtonDelete, FlButtonView, FlButtonGroup
 } from '../components'
 
 </script>

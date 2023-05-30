@@ -3,6 +3,8 @@
   <FlFormItem />
   <FlFormItem />
   <FlFormItem />
+  <FlFormItem />
+  <FlFormItem />
 </form>
 </template>
 

@@ -2,19 +2,15 @@
   <FlView>
     <FlViewMain>
       <FlViewHead>
-        <FlAction>
-          <FlButton>保存</FlButton>
-          <FlButton>生成代码</FlButton>
-        </FlAction>
+        <FlSearch></FlSearch>
       </FlViewHead>
       <FlViewBody>
-        <FlBox>
-          <FlForm />
-        </FlBox>
-
         <FlBlock>
-          <FlTable :is-editable="true"></FlTable>
+          <FlTable></FlTable>
         </FlBlock>
+<!--              <FlContent>-->
+<!--                <FlTable></FlTable>-->
+<!--              </FlContent>-->
       </FlViewBody>
     </FlViewMain>
   </FlView>
@@ -23,8 +19,8 @@
 import {
   FlHeader, FlBody, FlFooter, FlMenu, FlMain, FlNav, FlTab, FlPage,
   FlView, FlViewAside, FlViewMain, FlViewNav, FlViewHead, FlViewBody,
-  FlBlock, FlBox, FlForm, FlFormItem,
-  FlTable, FlButton, FlSearch, FlAction
+  FlBlock, FlContent,
+  FlTable, FlButton, FlSearch,
 } from '../components'
 
 </script>

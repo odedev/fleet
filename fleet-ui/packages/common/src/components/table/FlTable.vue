@@ -4,7 +4,12 @@
       <h3>标题</h3>
       <div style="font-size: 10px;line-height: 1;">已选 3 项 <span>清空</span></div>
       <div>
-        <FlButton type="primary" size="small">新增</FlButton>
+        <FlButtonGroup>
+          <FlButton type="primary" size="small">执行DDL</FlButton>
+          <FlButton type="primary" size="small">生成代码</FlButton>
+          <FlButton type="primary" size="small">维护功能</FlButton>
+          <FlButton type="primary" size="small">新增</FlButton>
+        </FlButtonGroup>
       </div>
     </div>
     <div class="table-body">
@@ -30,9 +35,25 @@
               <FlTableCell v-model="value" :data-type="0" :is-editable="isEditable"/>
             </template>
           </TableColumn>
-          <TableColumn title="code">
+          <TableColumn title="code" :width="221">
             <template #cell>
               <FlTableCell v-model="value" :data-type="1" :is-editable="isEditable"/>
+            </template>
+          </TableColumn>
+          <TableColumn title="code" :width="221">
+            <template #cell>
+              <FlTableCell v-model="value" :data-type="1" :is-editable="isEditable"/>
+            </template>
+          </TableColumn>
+          <TableColumn title="code" :width="221">
+          <template #cell>
+            <FlTableCell v-model="value" :data-type="1" :is-editable="isEditable"/>
+          </template>
+        </TableColumn>
+
+          <TableColumn title="操作" :width="operationColumnWidth" align="center" fixed="right">
+            <template #cell>
+              <FlTableCellButton :is-editable="isEditable"/>
             </template>
           </TableColumn>
         </template>
@@ -61,11 +82,13 @@
 
 <script lang="ts" setup>
 import { ref, reactive, computed, onMounted } from 'vue';
-import {IconFilter, IconSettings, IconUpload, IconDownload} from "@arco-design/web-vue/es/icon";
-import {Table, TableColumn, Pagination, Tooltip} from "@arco-design/web-vue";
+import {Table, TableColumn, Pagination, Tooltip, Button} from "@arco-design/web-vue";
 import '@arco-design/web-vue/es/table/style/css.js';
+import {IconFilter, IconSettings, IconUpload, IconDownload} from "@arco-design/web-vue/es/icon";
 import FlButton from "../button/FlButton.vue";
+import FlButtonGroup from "../button/FlButtonGroup.vue";
 import FlTableCell from "./FlTableCell.vue";
+import FlTableCellButton from "./FlTableCellButton.vue";
 
 const table = ref(null);
 const value = ref('123');
@@ -79,6 +102,13 @@ const props = defineProps<{
 }>();
 
 const isEditable = computed<boolean>(() => props.isEditable);
+const operationColumnWidth = computed<number>(() => {
+  if (props.isEditable) {
+    return 86;
+  } else {
+    return 140;
+  }
+});
 
 const columns = [
   {
@@ -174,6 +204,10 @@ onMounted(() => {
       border-radius: 0;
     }
 
+    .arco-table-th,
+    .arco-table-td {
+      min-width: 34px;
+    }
     .arco-table-th .arco-table-cell {
       padding: 9px 8px;
     }
@@ -181,6 +215,12 @@ onMounted(() => {
       padding: 4px 0;
       padding: 0;
     }
+
+    .arco-table-border-cell .arco-table-th.arco-table-col-fixed-right,
+    .arco-table-border-cell .arco-table-td.arco-table-col-fixed-right:not(.arco-table-tr-expand) {
+      border-left: 1px solid var(--color-neutral-3);
+    }
+
   }
   .table-foot {
     width: 100%;

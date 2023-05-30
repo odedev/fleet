@@ -3,13 +3,9 @@
     <slot></slot>
   </div>
 </template>
-
 <script lang="ts" setup>
-import {Breadcrumb, BreadcrumbItem, Tooltip} from "@arco-design/web-vue";
-import {IconQuestionCircle} from "@arco-design/web-vue/es/icon";
 
 </script>
-
 <style lang="scss">
 @use "../../assets/mixin" as *;
 
@@ -20,7 +16,6 @@ import {IconQuestionCircle} from "@arco-design/web-vue/es/icon";
   height: 28px;
   height: 32px;
   //height: 40px;
-  //height: 56px;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;

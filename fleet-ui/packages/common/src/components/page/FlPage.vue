@@ -53,7 +53,7 @@ import {RouterView} from 'vue-router';
   }
 
   .slide-fade-leave-active {
-    transition: all 0.8s cubic-bezier(1, 0.5, 0.8, 1);
+    transition: all 0.6s cubic-bezier(1, 0.5, 0.8, 1);
   }
 
   .slide-fade-enter-from,

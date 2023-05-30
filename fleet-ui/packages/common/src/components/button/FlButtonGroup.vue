@@ -16,9 +16,9 @@
   justify-content: flex-start;
   overflow: hidden;
   .button {
-    margin-left: 12px;
+    margin-left: 8px;
 
-    &:last-child {
+    &:first-child {
       margin-left: 0;
     }
   }

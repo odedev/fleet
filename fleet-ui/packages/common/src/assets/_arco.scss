@@ -8,20 +8,67 @@
  padding: 0 12px;
 }
 
-.arco-btn-primary, .arco-btn-primary[type='button'],
+.arco-btn-primary,
+.arco-btn-primary[type='button'],
 .arco-btn-primary[type='submit'] {
   @include background-color-primary();
-  @include background-color-primary-theme();
+  //@include background-color-primary-theme();
 }
 
 .arco-btn-primary:hover,
 .arco-btn-primary[type='button']:hover,
 .arco-btn-primary[type='submit']:hover {
   @include background-color-secondary();
-  @include background-color-secondary-theme();
+  //@include background-color-secondary-theme();
   @include background-color-primary();
-  @include background-color-primary-theme();
+  //@include background-color-primary-theme();
 }
+
+
+
+.arco-btn-primary {
+  &.arco-btn-status-normal {
+
+  }
+  &.arco-btn-status-success,
+  &.arco-btn-status-success:hover {
+    @include background-color-success();
+  }
+  &.arco-btn-status-danger,
+  &.arco-btn-status-danger:hover {
+    @include background-color-error();
+  }
+  &.arco-btn-status-warning,
+  &.arco-btn-status-warning:hover {
+    @include background-color-warn();
+  }
+}
+
+.arco-btn-text.arco-btn-status-success {
+  @include color-success();
+  background-color: transparent;
+  &:hover {
+    @include color-success();
+    background-color: transparent;
+  }
+}
+.arco-btn-text.arco-btn-status-danger {
+  @include color-error();
+  background-color: transparent;
+  &:hover {
+    @include color-error();
+    background-color: transparent;
+  }
+}
+.arco-btn-text.arco-btn-status-warning {
+  @include color-warn();
+  background-color: transparent;
+  &:hover {
+    @include color-warn();
+    background-color: transparent;
+  }
+}
+
 
 .arco-menu-light .arco-menu-inline-header.arco-menu-selected {
   @include color-primary();

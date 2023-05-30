@@ -44,6 +44,14 @@ import FlInputTextarea from "./input/FlInputTextarea.vue";
 import FlInputPassword from "./input/FlInputPassword.vue";
 import FlInputCheckbox from "./input/FlInputCheckbox.vue";
 
+import FlButton from "./button/FlButton.vue";
+import FlButtonAdd from "./button/FlButtonAdd.vue";
+import FlButtonEdit from "./button/FlButtonEdit.vue";
+import FlButtonDelete from "./button/FlButtonDelete.vue";
+import FlButtonView from "./button/FlButtonView.vue";
+import FlButtonGroup from "./button/FlButtonGroup.vue";
+
+
 import FlForm from "./form/FlForm.vue";
 import FlFormItem from "./form/FlFormItem.vue";
 
@@ -52,7 +60,6 @@ import FlTableCell from "./table/FlTableCell.vue";
 
 import FlTree from "./tree/FlTree.vue";
 
-import FlButton from "./button/FlButton.vue";
 
 import FlEditorMarkdown from "./editor/FlEditorMarkdown.vue";
 import FlEditorRichText from "./editor/FlEditorRichText.vue";
@@ -82,7 +89,6 @@ export {
   FlBlock,
   FlBox,
 
-  FlButton,
 
   FlContent,
   FlContentBase,
@@ -110,6 +116,13 @@ export {
   FlInputTextarea,
   FlInputPassword,
   // FlInputCheckbox,
+
+  FlButton,
+  FlButtonAdd,
+  FlButtonEdit,
+  FlButtonDelete,
+  FlButtonView,
+  FlButtonGroup,
 
   FlForm,
   FlFormItem,

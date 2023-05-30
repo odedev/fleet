@@ -6,21 +6,34 @@
 
 
 @mixin color-primary() {
-  color: var($primary, --theme-primary);
+  color: var(--theme-primary, $primary);
 }
 
 @mixin color-secondary() {
-  color: var($secondary, --theme-color-secondary);
+  color: var(--theme-color-secondary, $secondary);
+}
+
+@mixin color-success() {
+  color: var(--theme-color-success, $success);
+}
+@mixin color-error() {
+  color: var(--theme-color-error, $error);
+}
+@mixin color-warn() {
+  color: var(--theme-color-warn, $warn);
+}
+@mixin color-info() {
+  color: var(--theme-color-info, $info);
 }
 
 @mixin background-color() {
   color: $on-background;
-  background-color: var($background, --theme-background);
+  background-color: var(--theme-background, $background);
 }
 
 @mixin background-color-primary() {
   color: $on-primary;
-  background-color: var($primary, --theme-primary);
+  background-color: var(--theme-primary, $primary);
 }
 
 @mixin background-color-secondary() {
@@ -31,6 +44,26 @@
 @mixin background-color-tertiary() {
   color: $on-tertiary;
   background-color: var($tertiary, --theme-color-tertiary);
+}
+
+@mixin background-color-success() {
+  color: $on-primary;
+  background-color: var(--theme-color-success, $success);
+}
+
+@mixin background-color-error() {
+  color: $on-primary;
+  background-color: var(--theme-color-error, $error);
+}
+
+@mixin background-color-warn() {
+  color: $on-primary;
+  background-color: var(--theme-color-warn, $warn);
+}
+
+@mixin background-color-info() {
+  color: $on-primary;
+  background-color: var(--theme-color-info, $info);
 }
 
 @mixin background-color-primary-container() {

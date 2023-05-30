@@ -1,7 +1,8 @@
 <template>
   <section class="search">
     <div class="search-parameter">
-      <FlForm />
+      <FlFormItem />
+      <FlFormItem />
     </div>
     <div class="search-action">
       <FlButton>搜索</FlButton>
@@ -12,7 +13,7 @@
 
 <script lang="ts" setup>
 import FlCell from "../table/FlTableCell.vue";
-import FlItem from "../form/FlFormItem.vue";
+import FlFormItem from "../form/FlFormItem.vue";
 import FlForm from "../form/FlForm.vue";
 
 import FlButton from "../button/FlButton.vue";
@@ -53,10 +54,10 @@ import FlButton from "../button/FlButton.vue";
     flex-direction: row;
     justify-content: flex-end;
 
-    padding-top: 6px;
+    padding-top: 4px;
 
     button {
-      margin-left: 12px;
+      margin-left: 8px;
     }
   }
 
