@@ -43,7 +43,7 @@
 
 @mixin background-color-tertiary() {
   color: $on-tertiary;
-  background-color: var($tertiary, --theme-color-tertiary);
+  background-color: var(--theme-color-tertiary, $tertiary);
 }
 
 @mixin background-color-success() {
