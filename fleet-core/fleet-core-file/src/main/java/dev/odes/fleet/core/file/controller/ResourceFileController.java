@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(path = "/file/static_file")
+@RequestMapping(path = "/file/resource_file")
 public class ResourceFileController extends AbstractController<ResourceFile, ResourceFileModel, ResourceFileRepository, ResourceFileService> {
     private final ResourceFileService resourceFileService;
     public ResourceFileController(ResourceFileService resourceFileService) {

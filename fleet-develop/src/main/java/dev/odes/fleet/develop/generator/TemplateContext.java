@@ -69,6 +69,25 @@ public class TemplateContext {
         return modelFieldList;
     }
 
+    public String getRepositoryTypeList() {
+        List<ModelFieldModel> modelFields = this.getModelList();
+        StringBuilder stringBuilder = new StringBuilder();
+        System.out.println(modelFields.size());
+        for (int i = 0; i < modelFields.size(); i++) {
+            ModelFieldModel modelField = modelFields.get(i);
+            String repositoryType = getRepositoryType(modelField.getModelType());
+            stringBuilder.append(repositoryType);
+            stringBuilder.append(" ");
+            stringBuilder.append(lowerCamel(repositoryType));
+            if (i != modelFields.size() - 1) {
+
+                stringBuilder.append(", ");
+            }
+        }
+
+        return stringBuilder.toString();
+    }
+
     public static String getModelFieldType(ModelFieldModel modelField) {
         return DataTypeUtils.getModelDataType(modelField);
     }
@@ -76,6 +95,39 @@ public class TemplateContext {
     public static String getEntityFieldType(ModelFieldModel modelField) {
         return DataTypeUtils.getEntityDataType(modelField);
     }
+
+    public static String getEntityImport(ModelModel modelModel) {
+        String entityImport = "";
+        if (modelModel != null) {
+            String fullName = modelModel.getFullName();
+            entityImport = fullName.replace(".model", ".entity");
+            entityImport = entityImport.replace("Model", "");
+        }
+
+        return entityImport;
+    }
+
+    public static String getRepositoryType(ModelModel modelModel) {
+        String repository = "";
+        if (modelModel != null) {
+            String code = modelModel.getCode();
+            repository = code + "Repository";
+        }
+
+        return repository;
+    }
+
+    public static String getRepositoryImport(ModelModel modelModel) {
+        String repositoryImport = "";
+        if (modelModel != null) {
+            String fullName = modelModel.getFullName();
+            repositoryImport = fullName.replace(".model", ".repository");
+            repositoryImport = repositoryImport.replace("Model", "Repository");
+        }
+
+        return repositoryImport;
+    }
+
 
     public static String getSqlColumn(ModelFieldModel modelField) {
         String name = modelField.getName();
