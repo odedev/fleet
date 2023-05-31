@@ -5,8 +5,9 @@ import org.springframework.web.multipart.MultipartFile;
 public class ResourceUploadDto {
     private MultipartFile file;
     private String name;
-    private String folder;
+    private String directory;
     private String category;
+    private String scope;
 
     public MultipartFile getFile() {
         return file;
@@ -24,12 +25,12 @@ public class ResourceUploadDto {
         this.name = name;
     }
 
-    public String getFolder() {
-        return folder;
+    public String getDirectory() {
+        return directory;
     }
 
-    public void setFolder(String folder) {
-        this.folder = folder;
+    public void setDirectory(String directory) {
+        this.directory = directory;
     }
 
     public String getCategory() {
@@ -38,5 +39,13 @@ public class ResourceUploadDto {
 
     public void setCategory(String category) {
         this.category = category;
+    }
+
+    public String getScope() {
+        return scope;
+    }
+
+    public void setScope(String scope) {
+        this.scope = scope;
     }
 }

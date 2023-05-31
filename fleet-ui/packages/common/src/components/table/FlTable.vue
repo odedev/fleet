@@ -177,9 +177,11 @@ onMounted(() => {
   height: 100%;
 
   .table-head {
+    --table-head-height: 36px;
+    --table-head-height: 32px;
     width: 100%;
-    height: 36px;
-    flex-basis: 36px;
+    height: var(--table-head-height);
+    flex-basis: var(--table-head-height);
     flex-grow: 0;
     flex-shrink: 0;
     display: flex;

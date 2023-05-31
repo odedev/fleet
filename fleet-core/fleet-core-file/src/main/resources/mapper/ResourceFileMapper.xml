@@ -2,20 +2,20 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="dev.odes.fleet.core.file.mapper.StaticFileMapper">
+<mapper namespace="dev.odes.fleet.core.file.mapper.ResourceFileMapper">
   <sql id="tableColumn">
     <trim suffixOverrides=",">
-      `static_file`.`id`,
-      `static_file`.`name`,
-      `static_file`.`size`,
-      `static_file`.`type`,
-      `static_file`.`path`,
-      `static_file`.`url`,
-      `static_file`.`location`,
-      `static_file`.`folder`,
-      `static_file`.`category`,
-      `static_file`.`status`,
-      `static_file`.`user`,
+      `resource_file`.`id`,
+      `resource_file`.`name`,
+      `resource_file`.`size`,
+      `resource_file`.`type`,
+      `resource_file`.`path`,
+      `resource_file`.`url`,
+      `resource_file`.`location`,
+      `resource_file`.`directory`,
+      `resource_file`.`category`,
+      `resource_file`.`status`,
+      `resource_file`.`scope`,
     </trim>
   </sql>
   <sql id="column">
@@ -27,10 +27,10 @@
       `path`,
       `url`,
       `location`,
-      `folder`,
+      `directory`,
       `category`,
       `status`,
-      `user`,
+      `scope`,
     </trim>
   </sql>
 
@@ -43,10 +43,10 @@
       <if test="path != null">`path`,</if>
       <if test="url != null">`url`,</if>
       <if test="location != null">`location`,</if>
-      <if test="folder != null">`folder`,</if>
+      <if test="directory != null">`directory`,</if>
       <if test="category != null">`category`,</if>
       <if test="status != null">`status`,</if>
-      <if test="user != null">`user`,</if>
+      <if test="scope != null">`scope`,</if>
     </trim>
   </sql>
   <sql id="insertValue">
@@ -58,10 +58,10 @@
       <if test="path != null">#{path},</if>
       <if test="url != null">#{url},</if>
       <if test="location != null">#{location},</if>
-      <if test="folder != null">#{folder},</if>
+      <if test="directory != null">#{directory},</if>
       <if test="category != null">#{category},</if>
       <if test="status != null">#{status},</if>
-      <if test="user != null">#{user},</if>
+      <if test="scope != null">#{scope},</if>
     </trim>
   </sql>
   <sql id="insertEntityValue">
@@ -73,10 +73,10 @@
       <if test="staticFile.path != null">#{staticFile.path},</if>
       <if test="staticFile.url != null">#{staticFile.url},</if>
       <if test="staticFile.location != null">#{staticFile.location},</if>
-      <if test="staticFile.folder != null">#{staticFile.folder},</if>
+      <if test="staticFile.directory != null">#{staticFile.directory},</if>
       <if test="staticFile.category != null">#{staticFile.category},</if>
       <if test="staticFile.status != null">#{staticFile.status},</if>
-      <if test="staticFile.user != null">#{staticFile.user},</if>
+      <if test="staticFile.scope != null">#{staticFile.scope},</if>
     </trim>
   </sql>
 
@@ -88,10 +88,10 @@
       <if test="path != null">`path` = #{path},</if>
       <if test="url != null">`url` = #{url},</if>
       <if test="location != null">`location` = #{location},</if>
-      <if test="folder != null">`folder` = #{folder},</if>
+      <if test="directory != null">`directory` = #{directory},</if>
       <if test="category != null">`category` = #{category},</if>
       <if test="status != null">`status` = #{status},</if>
-      <if test="user != null">`user` = #{user},</if>
+      <if test="scope != null">`scope` = #{scope},</if>
     </trim>
   </sql>
   <sql id="updateEntityColumn">
@@ -102,14 +102,14 @@
       <if test="staticFile.path != null">`path` = #{staticFile.path},</if>
       <if test="staticFile.url != null">`url` = #{staticFile.url},</if>
       <if test="staticFile.location != null">`location` = #{staticFile.location},</if>
-      <if test="staticFile.folder != null">`folder` = #{staticFile.folder},</if>
+      <if test="staticFile.directory != null">`directory` = #{staticFile.directory},</if>
       <if test="staticFile.category != null">`category` = #{staticFile.category},</if>
       <if test="staticFile.status != null">`status` = #{staticFile.status},</if>
-      <if test="staticFile.user != null">`user` = #{staticFile.user},</if>
+      <if test="staticFile.scope != null">`scope` = #{staticFile.scope},</if>
     </trim>
   </sql>
 
-  <resultMap id="resultMap" type="dev.odes.fleet.core.file.entity.StaticFile">
+  <resultMap id="resultMap" type="dev.odes.fleet.core.file.entity.ResourceFile">
     <id property="id" column="id"/>
     <result property="name" column="name"/>
     <result property="size" column="size"/>
@@ -117,16 +117,16 @@
     <result property="path" column="path"/>
     <result property="url" column="url"/>
     <result property="location" column="location"/>
-    <result property="folder" column="folder"/>
+    <result property="directory" column="directory"/>
     <result property="category" column="category"/>
     <result property="status" column="status"/>
-    <result property="user" column="user"/>
+    <result property="scope" column="scope"/>
   </resultMap>
 
-  <select id="findOne" resultMap="resultMap" resultType="dev.odes.fleet.core.file.entity.StaticFile">
+  <select id="findOne" resultMap="resultMap" resultType="dev.odes.fleet.core.file.entity.ResourceFile">
     SELECT
     <include refid="column"/>
-    FROM `static_file`
+    FROM `resource_file`
     <if test="where != null and where != ''">
       <where>
         ${where}
@@ -135,10 +135,10 @@
     LIMIT 1
   </select>
 
-  <select id="findMany" resultMap="resultMap" resultType="dev.odes.fleet.core.file.entity.StaticFile">
+  <select id="findMany" resultMap="resultMap" resultType="dev.odes.fleet.core.file.entity.ResourceFile">
     SELECT
     <include refid="column"/>
-    FROM `static_file`
+    FROM `resource_file`
     <if test="where != null and where != ''">
       <where>
         ${where}
@@ -154,15 +154,15 @@
     </choose>
   </select>
 
-  <insert id="insertOne" parameterType="dev.odes.fleet.core.file.entity.StaticFile">
-    INSERT INTO `static_file`
+  <insert id="insertOne" parameterType="dev.odes.fleet.core.file.entity.ResourceFile">
+    INSERT INTO `resource_file`
     (<include refid="insertColumn"/>)
     VALUES
     (<include refid="insertValue"/>)
   </insert>
 
   <insert id="insertMany" parameterType="java.util.List">
-    INSERT INTO `static_file`
+    INSERT INTO `resource_file`
     (<include refid="insertColumn"/>)
     VALUES
     <foreach collection="list" item="module" separator=",">
@@ -170,18 +170,18 @@
     </foreach>
   </insert>
 
-  <update id="updateOne" parameterType="dev.odes.fleet.core.file.entity.StaticFile">
-    UPDATE `static_file`
+  <update id="updateOne" parameterType="dev.odes.fleet.core.file.entity.ResourceFile">
+    UPDATE `resource_file`
     <include refid="updateColumn"/>
     WHERE id=#{id}
   </update>
 
   <delete id="deleteOne" parameterType="java.lang.String">
-    DELETE FROM `static_file` WHERE id=#{id}
+    DELETE FROM `resource_file` WHERE id=#{id}
   </delete>
 
   <select id="count" resultType="java.lang.Integer">
-    SELECT COUNT(1) FROM `static_file`
+    SELECT COUNT(1) FROM `resource_file`
     <if test="where != null and where != ''">
       <where>
         ${where}

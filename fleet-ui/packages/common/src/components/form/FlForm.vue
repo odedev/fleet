@@ -29,7 +29,7 @@ import FlFormItem from "./FlFormItem.vue";
   justify-content: flex-start;
   align-content: flex-start;
   flex-wrap: wrap;
-  padding: 16px;
+  //padding: 16px;
   // margin-bottom: 16px;
 
 }

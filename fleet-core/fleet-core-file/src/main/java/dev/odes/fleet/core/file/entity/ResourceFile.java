@@ -2,7 +2,7 @@ package dev.odes.fleet.core.file.entity;
 
 import dev.odes.fleet.common.entity.AbstractEntity;
 
-public class StaticFile extends AbstractEntity {
+public class ResourceFile extends AbstractEntity {
     private String id;
     private String name;
     private Long size;
@@ -10,10 +10,10 @@ public class StaticFile extends AbstractEntity {
     private String path;
     private String url;
     private Integer location;
-    private String folder;
+    private String directory;
     private String category;
     private String status;
-    private String user;
+    private String scope;
 
     @Override
     public String getId() {
@@ -73,12 +73,12 @@ public class StaticFile extends AbstractEntity {
         this.location = location;
     }
 
-    public String getFolder() {
-        return folder;
+    public String getDirectory() {
+        return directory;
     }
 
-    public void setFolder(String folder) {
-        this.folder = folder;
+    public void setDirectory(String directory) {
+        this.directory = directory;
     }
 
     public String getCategory() {
@@ -97,11 +97,11 @@ public class StaticFile extends AbstractEntity {
         this.status = status;
     }
 
-    public String getUser() {
-        return user;
+    public String getScope() {
+        return scope;
     }
 
-    public void setUser(String user) {
-        this.user = user;
+    public void setScope(String scope) {
+        this.scope = scope;
     }
 }

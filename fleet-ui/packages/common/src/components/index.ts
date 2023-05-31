@@ -49,6 +49,9 @@ import FlButtonAdd from "./button/FlButtonAdd.vue";
 import FlButtonEdit from "./button/FlButtonEdit.vue";
 import FlButtonDelete from "./button/FlButtonDelete.vue";
 import FlButtonView from "./button/FlButtonView.vue";
+import FlButtonSave from "./button/FlButtonSave.vue";
+import FlButtonReset from "./button/FlButtonReset.vue";
+import FlButtonUpload from "./button/FlButtonUpload.vue";
 import FlButtonGroup from "./button/FlButtonGroup.vue";
 
 
@@ -122,6 +125,9 @@ export {
   FlButtonEdit,
   FlButtonDelete,
   FlButtonView,
+  FlButtonReset,
+  FlButtonSave,
+  FlButtonUpload,
   FlButtonGroup,
 
   FlForm,

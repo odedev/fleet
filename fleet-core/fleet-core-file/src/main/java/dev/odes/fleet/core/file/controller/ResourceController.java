@@ -2,7 +2,7 @@ package dev.odes.fleet.core.file.controller;
 
 import dev.odes.fleet.common.response.ResponseData;
 import dev.odes.fleet.core.file.dto.ResourceUploadDto;
-import dev.odes.fleet.core.file.model.StaticFileModel;
+import dev.odes.fleet.core.file.model.ResourceFileModel;
 import dev.odes.fleet.core.file.service.ResourceService;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,7 +19,7 @@ public class ResourceController {
 
     @PostMapping(path = "/upload")
     public ResponseData upload(@ModelAttribute ResourceUploadDto resourceUploadDto) {
-        StaticFileModel staticFileModel = this.resourceService.upload(resourceUploadDto);
+        ResourceFileModel staticFileModel = this.resourceService.upload(resourceUploadDto);
         return new ResponseData(staticFileModel);
     }
 

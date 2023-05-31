@@ -12,7 +12,6 @@ import '@arco-design/web-vue/es/button/style/css.js';
 const emit = defineEmits(['click']);
 
 const handleClick = throttle(() => {
-  console.log('click')
   emit('click');
 }, 500);
 
@@ -25,5 +24,6 @@ onUnmounted(() => {
 <style lang="scss">
 .button {
   height: 32px;
+  height: 28px;
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <FlButton @click="handleClick">编辑</FlButton>
+  <FlButton type="warn" @click="handleClick">编辑</FlButton>
 </template>
 <script lang="ts" setup>
 import FlButton from "./FlButton.vue";

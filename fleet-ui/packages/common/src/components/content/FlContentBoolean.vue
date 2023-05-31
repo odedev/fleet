@@ -27,7 +27,7 @@ const value = computed<boolean>(() => props.modelValue);
   justify-content: flex-start;
 
   .arco-checkbox.arco-checkbox-disabled {
-    cursor: pointer;
+    cursor: default;
     .arco-checkbox-icon-hover {
       cursor: default;
     }

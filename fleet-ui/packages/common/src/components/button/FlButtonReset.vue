@@ -1,5 +1,5 @@
 <template>
-  <FlButton type="success" @click="handleClick">查看</FlButton>
+  <FlButton type="neutral" @click="handleClick">重置</FlButton>
 </template>
 <script lang="ts" setup>
 import FlButton from "./FlButton.vue";

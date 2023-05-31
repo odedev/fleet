@@ -78,6 +78,8 @@ const onClose = (item: any) => {
     display: flex;
     flex-direction: row;
     list-style: none;
+    overflow: auto;
+    overflow: overlay;
   }
   .tab-item {
     height: 100%;
@@ -102,6 +104,7 @@ const onClose = (item: any) => {
       //@include color-secondary();
       //@include color-secondary-theme();
       cursor: pointer;
+      min-width: max-content;
     }
 
     .icon {

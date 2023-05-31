@@ -2,7 +2,7 @@
   <FlButton type="primary" @click="handleClick">新增</FlButton>
 </template>
 <script lang="ts" setup>
-import FlButton from "@/components/button/FlButton.vue";
+import FlButton from "./FlButton.vue";
 
 const emit = defineEmits(['click']);
 

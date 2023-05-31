@@ -2,7 +2,7 @@
   <div class="page">
     <RouterView v-slot="{ Component, route }">
       <template v-if="Component">
-        <Transition mode="out-in" >
+        <Transition name="fade" mode="out-in" >
           <KeepAlive>
             <Suspense>
               <!-- 主要内容 -->
@@ -48,6 +48,17 @@ import {RouterView} from 'vue-router';
   .v-leave-to {
     opacity: 0;
   }
+
+  .fade-enter-active,
+  .fade-leave-active {
+    transition: opacity 0.5s ease;
+  }
+
+  .fade-enter-from,
+  .fade-leave-to {
+    opacity: 0;
+  }
+
   .slide-fade-enter-active {
     transition: all 0.3s ease-out;
   }
@@ -60,6 +71,24 @@ import {RouterView} from 'vue-router';
   .slide-fade-leave-to {
     transform: translateX(20px);
     opacity: 0;
+  }
+
+  .bounce-enter-active {
+    animation: bounce-in 0.5s;
+  }
+  .bounce-leave-active {
+    animation: bounce-in 0.5s reverse;
+  }
+  @keyframes bounce-in {
+    0% {
+      transform: scale(0);
+    }
+    50% {
+      transform: scale(0.4);
+    }
+    100% {
+      transform: scale(1);
+    }
   }
 }
 </style>

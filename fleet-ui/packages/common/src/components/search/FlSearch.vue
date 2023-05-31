@@ -6,7 +6,7 @@
     </div>
     <div class="search-action">
       <FlButton>搜索</FlButton>
-      <FlButton>重置</FlButton>
+      <FlButtonReset />
     </div>
   </section>
 </template>
@@ -17,6 +17,7 @@ import FlFormItem from "../form/FlFormItem.vue";
 import FlForm from "../form/FlForm.vue";
 
 import FlButton from "../button/FlButton.vue";
+import FlButtonReset from "../button/FlButtonReset.vue";
 
 </script>
 
@@ -55,6 +56,7 @@ import FlButton from "../button/FlButton.vue";
     justify-content: flex-end;
 
     padding-top: 4px;
+    padding-top: 6px;
 
     button {
       margin-left: 8px;

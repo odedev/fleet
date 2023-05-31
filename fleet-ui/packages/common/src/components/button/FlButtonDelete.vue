@@ -1,13 +1,8 @@
 <template>
-  <FlButtonBase @click="handleClick">
-    <Button type="primary" status="danger" size="medium">删除</Button>
-  </FlButtonBase>
+  <FlButton type="error" @click="handleClick">删除</FlButton>
 </template>
 <script lang="ts" setup>
-import {Button} from "@arco-design/web-vue";
-import '@arco-design/web-vue/es/button/style/css.js';
-import FlButton from "@/components/button/FlButton.vue";
-import FlButtonBase from "@/components/button/FlButtonBase.vue";
+import FlButton from "./FlButton.vue";
 
 const emit = defineEmits(['click']);
 

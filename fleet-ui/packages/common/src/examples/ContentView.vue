@@ -11,7 +11,7 @@
         <FlBox>
           <FlContentText value="文本内容显示文本内容显示" :is-show-tip="false"/>
           <FlContentNumber value="121212.1212212212212" :is-show-tip="false" />
-          <FlInputBoolean />
+          <FlContentBoolean />
           <FlContentDate />
           <FlContentEnum />
           <FlContentModel />
@@ -20,7 +20,7 @@
         <FlBlock>
           <FlContentText value="文本内容显示文本内容显示文本内容显示文本内容显示" :is-show-tip="false"/>
           <FlContentNumber value="121212.1212212212212" :is-show-tip="false" />
-          <FlInputBoolean />
+          <FlContentBoolean :model-value="true"/>
           <FlContentDate />
           <FlContentEnum />
           <FlContentModel />
@@ -38,7 +38,7 @@ import {
   FlHeader, FlBody, FlFooter, FlMenu, FlMain, FlNav, FlTab, FlPage,
   FlView, FlViewAside, FlViewMain, FlViewNav, FlViewHead, FlViewBody,
   FlBlock, FlBox,
-  FlContent, FlContentText, FlContentNumber, FlInputBoolean, FlContentDate, FlContentEnum, FlContentModel,
+  FlContent, FlContentText, FlContentNumber, FlContentBoolean, FlContentDate, FlContentEnum, FlContentModel,
   FlContentFile,
   FlFormItem,
   FlTable, FlButton, FlSearch, FlAction

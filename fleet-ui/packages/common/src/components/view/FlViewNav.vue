@@ -1,7 +1,7 @@
 <template>
   <div class="view-nav">
     <slot></slot>
-    <Breadcrumb :style="{fontSize: `12px`}">
+    <Breadcrumb  separator=">" >
       <BreadcrumbItem>Home</BreadcrumbItem>
       <BreadcrumbItem>Channel</BreadcrumbItem>
       <BreadcrumbItem>News</BreadcrumbItem>
@@ -11,6 +11,8 @@
 <script lang="ts" setup>
 import {Breadcrumb, BreadcrumbItem} from '@arco-design/web-vue';
 import '@arco-design/web-vue/es/breadcrumb/style/css.js';
+
+
 </script>
 <style lang="scss">
 .view-nav {

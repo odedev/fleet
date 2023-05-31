@@ -38,12 +38,17 @@
 
 @mixin background-color-secondary() {
   color: $on-secondary;
-  background-color: var($secondary, --theme-color-secondary);
+  background-color: var(--theme-color-secondary, $secondary);
 }
 
 @mixin background-color-tertiary() {
   color: $on-tertiary;
   background-color: var(--theme-color-tertiary, $tertiary);
+}
+
+@mixin background-color-neutral() {
+  color: $on-neutral;
+  background-color: var(--theme-color-neutral, $neutral);
 }
 
 @mixin background-color-success() {

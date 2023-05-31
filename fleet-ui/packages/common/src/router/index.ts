@@ -9,14 +9,18 @@ import FormView from '../examples/FormView.vue'
 
 import LayoutTableView from '../examples/LayoutTableView.vue'
 
-import FormTableView from '../examples/FormTableView.vue'
-import TreeFormView from '../examples/TreeFormView.vue'
+import LayoutFormView from '../examples/LayoutFormView.vue'
+import LayoutFormTableView from '../examples/LayoutFormTableView.vue'
+import LayoutFormTableListView from '../examples/LayoutFormTableListView.vue'
+
+import LayoutTreeFormView from '../examples/LayoutTreeFormView.vue'
 import PanelView from '../examples/PanelView.vue'
 import StepView from '../examples/StepView.vue'
 import DescView from '../examples/DescView.vue'
 
 import TreeTableView from '../examples/TreeTableView.vue'
 import CardView from '../examples/CardView.vue'
+import TreeView from '../examples/TreeView.vue'
 
 import CellView from '../examples/CellView.vue'
 
@@ -55,14 +59,29 @@ const router = createRouter({
       component: FormView
     },
     {
-      path: '/FormTable',
-      name: 'FormTable',
-      component: FormTableView
+      path: '/Tree',
+      name: 'Tree',
+      component: TreeView
     },
     {
-      path: '/TreeForm',
-      name: 'TreeForm',
-      component: TreeFormView
+      path: '/LayoutFormView',
+      name: 'LayoutFormView',
+      component: LayoutFormView
+    },
+    {
+      path: '/LayoutFormTable',
+      name: 'LayoutFormTable',
+      component: LayoutFormTableView
+    },
+    {
+      path: '/LayoutFormTableList',
+      name: 'LayoutFormTableList',
+      component: LayoutFormTableListView
+    },
+    {
+      path: '/LayoutTreeForm',
+      name: 'LayoutTreeForm',
+      component: LayoutTreeFormView
     },
     {
       path: '/LayoutTable',
