@@ -7,9 +7,9 @@
   </FlContentBase>
 </template>
 <script lang="ts" setup>
+import {computed} from "vue";
 import FlContentBase from "./FlContentBase.vue";
 import FlInputBoolean from "../input/FlInputBoolean.vue";
-import {computed} from "vue";
 
 const props = defineProps<{
   modelValue: boolean,

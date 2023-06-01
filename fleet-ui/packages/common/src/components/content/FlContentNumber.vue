@@ -1,15 +1,17 @@
 <template>
   <FlContentBase class="content-number">
-    {{props.value}}
+    {{value}}
   </FlContentBase>
 </template>
 <script lang="ts" setup>
+import {computed} from "vue";
 import FlContentBase from "./FlContentBase.vue";
 
 const props = defineProps<{
-  value: string,
-  isShowTip: boolean,
+  modelValue: number,
 }>();
+
+const value = computed<number>(() => props.modelValue);
 
 </script>
 <style lang="scss">

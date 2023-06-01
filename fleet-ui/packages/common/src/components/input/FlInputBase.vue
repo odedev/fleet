@@ -1,10 +1,14 @@
 <template>
-  <div class="input">
+  <div class="input" @click="handleClick">
     <slot></slot>
   </div>
 </template>
 <script lang="ts" setup>
+const emit = defineEmits(['click']);
 
+const handleClick = () => {
+  emit('click');
+};
 </script>
 <style lang="scss">
 @use "../../assets/mixin" as *;

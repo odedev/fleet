@@ -7,12 +7,32 @@
     v-else-if="dataType === 'text'"
     :model-value="value"
   />
-  <FlContentNumber v-else-if="dataType === 'number'"/>
-  <FlContentDate v-else-if="dataType === 'date'"/>
-  <FlContentEnum v-else-if="dataType === 'enum'"/>
-  <FlContentModel v-else-if="dataType === 'model'"/>
-  <FlContentJson v-else-if="dataType === 'json'"/>
-  <FlContentFile v-else-if="dataType === 'file'"/>
+  <FlContentNumber
+    v-else-if="dataType === 'number'"
+    :model-value="value"
+  />
+  <FlContentDate
+    v-else-if="dataType === 'date'"
+    :model-value="value"
+  />
+  <FlContentEnum
+    v-else-if="dataType === 'enum'"
+    :model-value="value"
+    :enums="props.enums"
+  />
+  <FlContentModel
+    v-else-if="dataType === 'model'"
+    :model-value="value"
+    :display-field="props.displayField"
+  />
+  <FlContentJson
+    v-else-if="dataType === 'json'"
+    :model-value="value"
+  />
+  <FlContentFile
+    v-else-if="dataType === 'file'"
+    :model-value="value"
+  />
   <FlContentBase v-else>{{value}}</FlContentBase>
 </template>
 <script lang="ts" setup>
@@ -30,6 +50,8 @@ import FlContentFile from "./FlContentFile.vue";
 const props = defineProps<{
   modelValue: any,
   dataType: number,
+  enums?: any[],
+  displayField?: string,
 }>();
 
 const value = computed<any>(() => {
@@ -59,9 +81,6 @@ const dataType = computed<string>(() => {
   }
   return '';
 });
-
-
-const emits = defineEmits(['update:modelValue']);
 
 </script>
 <style lang="scss">

@@ -12,9 +12,7 @@
       @change="handleChange"
       @clear="handleClear"
       size="small">
-      <Option :value="0" label="Beijing"></Option>
-      <Option>Shanghai</Option>
-      <Option>Chongqing</Option>
+      <Option v-for="item in props.enums" :value="item.value" :label="item.name"></Option>
     </Select>
   </FlInputBase>
 </template>
@@ -37,6 +35,7 @@ const emits = defineEmits([
 
 const props = withDefaults(defineProps<{
   modelValue: number,
+  enums: any[],
   isNullable?: boolean,
   isDisabled?: boolean,
   isReadonly?: boolean,
@@ -68,6 +67,8 @@ const handleChange = (value:number, e: Event) => {
 
 const handleClear = (e: MouseEvent) => {
   emits('clear', e);
+  handleUpdate(0);
+  handleChange(0, e);
 };
 
 </script>
@@ -79,5 +80,8 @@ const handleClear = (e: MouseEvent) => {
     padding-top: 1px;
     padding-bottom: 1px;
   }
+}
+.arco-select-dropdown .arco-select-option {
+  line-height: 30px;
 }
 </style>

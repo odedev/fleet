@@ -5,6 +5,8 @@ import ContentView from '../examples/ContentView.vue'
 import InputView from '../examples/InputView.vue'
 import ButtonView from '../examples/ButtonView.vue'
 import TableView from '../examples/TableView.vue'
+import TableConciseView from '../examples/TableConciseView.vue'
+
 import FormView from '../examples/FormView.vue'
 
 import LayoutTableView from '../examples/LayoutTableView.vue'
@@ -52,6 +54,11 @@ const router = createRouter({
       path: '/Table',
       name: 'Table',
       component: TableView
+    },
+    {
+      path: '/TableConcise',
+      name: 'TableConcise',
+      component: TableConciseView
     },
     {
       path: '/form',

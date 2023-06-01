@@ -59,6 +59,7 @@ import FlForm from "./form/FlForm.vue";
 import FlFormItem from "./form/FlFormItem.vue";
 
 import FlTable from "./table/FlTable.vue";
+import FlTableConcise from "./table/FlTableConcise.vue";
 import FlTableCell from "./table/FlTableCell.vue";
 
 import FlTree from "./tree/FlTree.vue";
@@ -134,6 +135,7 @@ export {
   FlFormItem,
 
   FlTable,
+  FlTableConcise,
   FlTableCell,
 
   FlTree,

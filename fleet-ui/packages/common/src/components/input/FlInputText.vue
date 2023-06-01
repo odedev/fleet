@@ -71,6 +71,7 @@ const handleChange = (value:string, e: Event) => {
 };
 
 const handleFocus = (e: FocusEvent) => {
+  console.log('focus')
   emits('focus', e);
 };
 
@@ -79,6 +80,7 @@ const handleBlur = (e: FocusEvent) => {
 };
 
 const handleClear = (e: MouseEvent) => {
+  console.log('clear')
   emits('clear', e);
 };
 

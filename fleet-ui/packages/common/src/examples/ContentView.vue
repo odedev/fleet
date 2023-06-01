@@ -9,22 +9,22 @@
       </FlViewHead>
       <FlViewBody>
         <FlBox>
-          <FlContentText value="文本内容显示文本内容显示" :is-show-tip="false"/>
-          <FlContentNumber value="121212.1212212212212" :is-show-tip="false" />
-          <FlContentBoolean />
-          <FlContentDate />
-          <FlContentEnum />
-          <FlContentModel />
-          <FlContentFile />
+          <FlContentText model-value="文本内容显示文本内容显示" :is-show-tip="false"/>
+          <FlContentNumber :model-value="12122122.33" />
+          <FlContentBoolean  :model-value="false"/>
+          <FlContentDate :model-value="'2023-05-27 11:33:31'"/>
+          <FlContentEnum :model-value="2" :enums="enumList"/>
+          <FlContentModel :model-value="user"/>
+          <FlContentFile :model-value="resourceFile"/>
         </FlBox>
         <FlBlock>
-          <FlContentText value="文本内容显示文本内容显示文本内容显示文本内容显示" :is-show-tip="false"/>
-          <FlContentNumber value="121212.1212212212212" :is-show-tip="false" />
+          <FlContentText model-value="文本内容显示文本内容显示文本内容显示文本内容显示" :is-show-tip="false"/>
+          <FlContentNumber :model-value="121212.1212212212212" :is-show-tip="false" />
           <FlContentBoolean :model-value="true"/>
-          <FlContentDate />
-          <FlContentEnum />
-          <FlContentModel />
-          <FlContentFile />
+          <FlContentDate :model-value="new Date()"/>
+          <FlContentEnum  :model-value="0" :enums="enumList"/>
+          <FlContentModel :model-value="user" display-field="username"/>
+          <FlContentFile :model-value="resourceFile"/>
         </FlBlock>
       </FlViewBody>
     </FlViewMain>
@@ -43,6 +43,34 @@ import {
   FlFormItem,
   FlTable, FlButton, FlSearch, FlAction
 } from '../components'
+
+
+const enumList = [
+  {
+    value: 0,
+    name: '初始化',
+  },
+  {
+    value: 1,
+    name: '处理中',
+  },
+  {
+    value: 2,
+    name: '完成',
+  }
+]
+
+const user = {
+  id: 'dsdsd',
+  username: 'admin',
+  name: '管理员',
+};
+
+const resourceFile = {
+  name: '手册.pdf',
+  type: '',
+  url: '',
+};
 
 </script>
 <style>

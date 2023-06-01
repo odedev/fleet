@@ -1,11 +1,17 @@
 <template>
-  <div class="content">
+  <div class="content" @click="handleClick">
     <div class="content-value">
       <slot></slot>
     </div>
   </div>
 </template>
 <script lang="ts" setup>
+const emit = defineEmits(['click']);
+
+const handleClick = () => {
+  emit('click');
+};
+
 </script>
 <style lang="scss">
 .content {

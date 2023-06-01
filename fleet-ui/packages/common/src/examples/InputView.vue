@@ -13,9 +13,9 @@
           <FlInputText v-model="textValue"/>
           <FlInputDate />
           <FlInputNumber />
-          <FlInputEnum />
+          <FlInputEnum v-model="enumValue" :enums="enums"/>
           <FlInputTree />
-          <FlInputModel />
+          <FlInputModel v-model="modelValue"/>
           <FlInputFile />
           <FlInputPassword />
           <FlInputTextarea />
@@ -52,6 +52,25 @@ import {
 
 const booleanValue = ref(true);
 const textValue = ref('');
+const modelValue = ref({
+  name: '1212',
+  code: 'dsdsd'
+});
+const enumValue = ref(0);
+const enums = ref([
+  {
+    value: 0,
+    name: '初始化',
+  },
+  {
+    value: 1,
+    name: '处理中',
+  },
+  {
+    value: 2,
+    name: '完成',
+  }
+])
 
 </script>
 <style>
