@@ -23,6 +23,15 @@ import {IconFilter, IconSettings, IconUpload, IconDownload} from "@arco-design/w
     border-radius: 0;
   }
 
+  .arco-table-header {
+    background-color: transparent;
+  }
+
+  //.arco-table .arco-table-element {
+  //  width: auto;
+  //  min-width: auto;
+  //}
+
   .arco-table-th,
   .arco-table-td {
     min-width: 34px;
@@ -35,6 +44,9 @@ import {IconFilter, IconSettings, IconUpload, IconDownload} from "@arco-design/w
     padding: 0;
   }
 
+  .arco-table .arco-table-cell {
+    min-width: 48px;
+  }
   .arco-table-border-cell .arco-table-th.arco-table-col-fixed-right,
   .arco-table-border-cell .arco-table-td.arco-table-col-fixed-right:not(.arco-table-tr-expand) {
     border-left: 1px solid var(--color-neutral-3);

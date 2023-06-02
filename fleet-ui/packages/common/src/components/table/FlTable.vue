@@ -21,22 +21,22 @@
         :draggable="{ type: 'handle', width: 40 }"
         :pagination="false">
           <template #columns>
-            <TableColumn title="name">
+            <TableColumn title="name" :width="208">
               <template #cell>
                 <FlTableCell  v-model="value" :data-type="1" :is-editable="isEditable"/>
               </template>
             </TableColumn>
-            <TableColumn title="code">
+            <TableColumn title="code" :width="64">
               <template #cell>
                 <FlTableCell v-model="value" :data-type="0" :is-editable="isEditable"/>
               </template>
             </TableColumn>
-            <TableColumn title="code" :width="221">
+            <TableColumn title="code" :width="208">
               <template #cell>
                 <FlTableCell v-model="value" :data-type="1" :is-editable="isEditable"/>
               </template>
             </TableColumn>
-            <TableColumn title="code" :width="221">
+            <TableColumn title="code" :width="208">
               <template #cell>
                 <FlTableCell v-model="value" :data-type="1" :is-editable="isEditable"/>
               </template>
@@ -73,7 +73,7 @@ import FlTableCellButton from "./FlTableCellButton.vue";
 import FlButton from "../button/FlButton.vue";
 import FlButtonGroup from "../button/FlButtonGroup.vue";
 const table = ref(null);
-const value = ref('123');
+const value = ref('123456789abcdefghijklmnopqrstuvwxyz');
 
 const props = defineProps<{
   dataType: number,

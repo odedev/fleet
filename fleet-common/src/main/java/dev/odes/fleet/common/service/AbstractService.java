@@ -10,6 +10,8 @@ import dev.odes.fleet.common.utils.StringUtils;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public abstract class AbstractService<E extends AbstractEntity, M extends AbstractModel<E>, R extends Repository<E>> implements Service<E, M> {
     private final R repository;
@@ -43,6 +45,9 @@ public abstract class AbstractService<E extends AbstractEntity, M extends Abstra
         List<M> mList = new ArrayList<>();
         eList.forEach(e -> mList.add(transform(e)));
         // TODO TREE 结构
+
+        Map<String, M> map = mList.stream().collect(Collectors.toMap(M::getId, m -> m));
+
         return mList;
     }
 
