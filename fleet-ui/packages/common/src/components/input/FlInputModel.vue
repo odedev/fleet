@@ -56,7 +56,11 @@ let props = withDefaults(defineProps<{
   isInvalid?: boolean,
   autofocus?: boolean,
   datas: any[],
+  models: any[],
   columns: any[],
+  module: string,
+  model: any,
+  modelParameter: any,
 }>(), {
   isNullable: true,
   isDisabled: false,
