@@ -14,7 +14,16 @@ const props = defineProps<{
 }>();
 
 const value = computed<any>(() => {
-  return props.displayField ? props.modelValue[props.displayField] : props.modelValue?.name || props.modelValue;
+  let displayField: string = props.displayField || 'name';
+  if (props.model) {
+    for (const field of props.model.fields) {
+      if (field.isDefaultDisplay) {
+        displayField = field.code;
+        break
+      }
+    }
+  }
+  return props.modelValue[displayField] || props.modelValue;
 });
 </script>
 <style lang="scss">
