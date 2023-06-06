@@ -17,7 +17,7 @@ const value = computed<any>(() => {
 });
 
 const handleClick = () => {
-  console.log('click');
+  console.log(props.modelValue);
 };
 
 </script>

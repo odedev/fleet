@@ -32,8 +32,6 @@
   </FlView>
 </template>
 <script lang="ts" setup>
-import {Card} from "@arco-design/web-vue";
-import "@arco-design/web-vue/es/card/style/css.js";
 
 import {
   FlHeader, FlBody, FlFooter, FlMenu, FlMain, FlNav, FlTab, FlPage,
@@ -70,9 +68,17 @@ const user = {
 };
 
 const resourceFile = {
-  name: '手册.pdf',
+  id: '',
+  name: '资源文件手册.pdf',
+  size: 12000,
   type: '',
+  path: '',
   url: '',
+  location: 0,
+  directory: '',
+  category: '',
+  status: '',
+  scope: '',
 };
 
 </script>
