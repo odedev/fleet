@@ -22,7 +22,7 @@ public class CodeGenerator {
         generateModule(templateContext);
 
         models.forEach(model -> {
-            model.getModelFields().sort(Comparator.comparing(ModelFieldModel::getSequence));
+            model.getFields().sort(Comparator.comparing(ModelFieldModel::getSequence));
             templateContext.setModel(model);
             generateModel(templateContext);
         });

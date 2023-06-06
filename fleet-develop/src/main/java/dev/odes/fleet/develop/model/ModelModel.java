@@ -12,7 +12,7 @@ public class ModelModel extends AbstractModel<Model> {
     private String description;
     private String fullName;
     private ModuleModel module;
-    private List<ModelFieldModel> modelFields;
+    private List<ModelFieldModel> fields;
 
     public ModelModel() {
     }
@@ -81,12 +81,12 @@ public class ModelModel extends AbstractModel<Model> {
         }
     }
 
-    public List<ModelFieldModel> getModelFields() {
-        return modelFields;
+    public List<ModelFieldModel> getFields() {
+        return fields;
     }
 
-    public void setModelFields(List<ModelFieldModel> modelFields) {
-        this.modelFields = modelFields;
+    public void setFields(List<ModelFieldModel> fields) {
+        this.fields = fields;
     }
 
     @Override

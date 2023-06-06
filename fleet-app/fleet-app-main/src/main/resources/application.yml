@@ -15,8 +15,8 @@ spring:
   sql:
     init:
       platform: mysql
-#  profiles:
-#    active: dev
+  profiles:
+    active: dev
 
 server:
   port: 23501

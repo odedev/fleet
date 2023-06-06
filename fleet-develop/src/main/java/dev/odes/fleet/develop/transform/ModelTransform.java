@@ -2,17 +2,14 @@ package dev.odes.fleet.develop.transform;
 
 import dev.odes.fleet.common.transform.Transform;
 import dev.odes.fleet.develop.entity.Model;
-import dev.odes.fleet.develop.entity.ModelField;
 import dev.odes.fleet.develop.entity.Module;
 import dev.odes.fleet.develop.model.ModelFieldModel;
 import dev.odes.fleet.develop.model.ModelModel;
 import dev.odes.fleet.develop.model.ModuleModel;
-import dev.odes.fleet.develop.repository.ModelFieldRepository;
 import dev.odes.fleet.develop.repository.ModuleRepository;
 import dev.odes.fleet.develop.service.ModelFieldService;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Component
@@ -40,7 +37,7 @@ public class ModelTransform implements Transform<Model, ModelModel> {
 //        modelFieldList.forEach(modelField -> {
 //            modelFields.add(new ModelFieldModel(modelField));
 //        });
-        modelModel.setModelFields(modelFields);
+        modelModel.setFields(modelFields);
 
         return modelModel;
     }

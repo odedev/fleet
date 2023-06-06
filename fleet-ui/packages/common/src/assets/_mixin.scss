@@ -150,6 +150,10 @@
   border-color: var(--theme-primary, $primary);
 }
 
+@mixin border-color-secondary() {
+  border-color: var(--theme-secondary, $secondary);
+}
+
 @mixin border-right-color-primary() {
   border-right-color: var(--theme-primary, $primary);
 }

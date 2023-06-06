@@ -6,19 +6,16 @@
 <script lang="ts" setup>
 import {computed} from "vue";
 import FlContentBase from "./FlContentBase.vue";
+import {getByValue} from "../../utils/enum_utils";
 
 const props = defineProps<{
   modelValue: number,
-  enums: any[],
+  enumeration: any,
 }>();
 
-const value = computed<number>(() => {
-  for (let item of props.enums) {
-    if (item.value === props.modelValue) {
-      return item;
-    }
-  }
-  return '';
+const value = computed<any>(() => {
+  console.log(getByValue(props.enumeration, props.modelValue))
+  return getByValue(props.enumeration, props.modelValue);
 });
 
 </script>

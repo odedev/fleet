@@ -46,6 +46,11 @@
               <FlTableCell v-model="value" :data-type="1" :is-editable="isEditable"/>
             </template>
           </TableColumn>
+            <TableColumn title="code" width="auto">
+              <template #cell>
+                <FlTableCell v-model="value" :data-type="1" :is-editable="isEditable"/>
+              </template>
+            </TableColumn>
           <TableColumn title="操作" :width="operationColumnWidth" align="center" fixed="right">
             <template #cell>
               <FlTableCellButton :is-editable="isEditable"/>

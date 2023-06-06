@@ -48,7 +48,7 @@ public class TemplateContext {
     }
 
     public List<ModelFieldModel> getModelList() {
-        List<ModelFieldModel> modelFields = this.getModel().getModelFields();
+        List<ModelFieldModel> modelFields = this.getModel().getFields();
         List<ModelFieldModel> modelFieldList = new ArrayList<>();
         modelFields.forEach(modelField -> {
             if (modelField.getDataType().equals(DataTypeEnum.MODEL)) {
@@ -59,7 +59,7 @@ public class TemplateContext {
     }
 
     public List<ModelFieldModel> getEnumList() {
-        List<ModelFieldModel> modelFields = this.getModel().getModelFields();
+        List<ModelFieldModel> modelFields = this.getModel().getFields();
         List<ModelFieldModel> modelFieldList = new ArrayList<>();
         modelFields.forEach(modelField -> {
             if (modelField.getDataType().equals(DataTypeEnum.ENUM)) {

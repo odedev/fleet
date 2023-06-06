@@ -13,7 +13,8 @@
           <FlContentNumber :model-value="12122122.33" />
           <FlContentBoolean  :model-value="false"/>
           <FlContentDate :model-value="'2023-05-27 11:33:31'"/>
-          <FlContentEnum :model-value="2" :enums="enumList"/>
+          <FlContentEnum :model-value="2" :enumeration="DataTypeEnum"/>
+          <FlContentEnum :model-value="2" :enumeration="DataTypeWidthEnum"/>
           <FlContentModel :model-value="user"/>
           <FlContentFile :model-value="resourceFile"/>
         </FlBox>
@@ -22,7 +23,7 @@
           <FlContentNumber :model-value="121212.1212212212212" :is-show-tip="false" />
           <FlContentBoolean :model-value="true"/>
           <FlContentDate :model-value="new Date()"/>
-          <FlContentEnum  :model-value="0" :enums="enumList"/>
+          <FlContentEnum  :model-value="0" :enumeration="DateFormatEnum"/>
           <FlContentModel :model-value="user" display-field="username"/>
           <FlContentFile :model-value="resourceFile"/>
         </FlBlock>
@@ -43,7 +44,9 @@ import {
   FlFormItem,
   FlTable, FlButton, FlSearch, FlAction
 } from '../components'
-
+import DataTypeEnum from "@/enumerations/data_type_enum";
+import DateFormatEnum from "@/enumerations/date_format_enum";
+import DataTypeWidthEnum from "@/enumerations/data_type_width_enum";
 
 const enumList = [
   {

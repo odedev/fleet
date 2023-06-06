@@ -18,29 +18,16 @@
         size="large"
       >
         <template #columns>
-          <TableColumn title="name">
-            <template #cell>
-              <FlContent  v-model="value" :data-type="1" />
-            </template>
-          </TableColumn>
+          <template v-for="column in columns">
+            <TableColumn :title="column.name" :data-index="column.code" :width="column.width">
+              <template #cell="{ record }">
+                <FlContent v-model="record[column.code]" :data-type="column.dataType" />
+              </template>
+            </TableColumn>
+          </template>
           <TableColumn title="code">
             <template #cell>
-              <FlContent v-model="value" :data-type="0" />
-            </template>
-          </TableColumn>
-          <TableColumn title="code" :width="221">
-            <template #cell>
-              <FlContent v-model="value" :data-type="1" />
-            </template>
-          </TableColumn>
-          <TableColumn title="code" :width="221">
-            <template #cell>
-              <FlContent v-model="value" :data-type="0" />
-            </template>
-          </TableColumn>
-          <TableColumn title="code" :width="221">
-            <template #cell>
-              <FlContent v-model="value" :data-type="1" />
+              <FlTableCell :model-value="12" :data-type="1" :is-editable="false"/>
             </template>
           </TableColumn>
         </template>
@@ -69,75 +56,73 @@ const emits = defineEmits([
 
 const props = defineProps<{
   modelValue: any,
-  datas: any[],
-  columns: any[],
-  dataType?: number,
+  model: any,
+  data?: any[],
+  columns?: any[],
 }>();
 
 const table = ref(null);
 const value = ref('123');
 
 const rowSelection = ref({
-  // type: 'radio',
-  type: 'checkbox',
+  type: 'radio',
+  // type: 'checkbox',
   showCheckedAll: true,
   onlyCurrent: false,
 });
 const selectedKeys = ref([])
 const selectedRows = ref([])
 
-const columns = [
+const columns = computed(() => {
+  let fields = props.columns || props.model.fields;
+  let columns = [];
+
+  for (let i = 0; i < fields.length; i++) {
+    let field = fields[i];
+    columns.push({
+      code: field.code,
+      name: field.name,
+      dataType: field.dataType,
+      width: field.width || 128,
+    });
+  }
+  columns[columns.length - 1].width = '';
+  return columns;
+});
+
+const data = computed(() => {
+  return props.modelValue;
+});
+
+
+ let c = [
   {
-    title: 'Name',
-    dataIndex: 'name',
+    name: 'Name',
+    code: 'name',
     ellipsis: true,
     tooltip: true,
-    width: 100
+    width: 100,
+    dataType: 1,
   },
   {
-    title: 'Salary',
-    dataIndex: 'salary',
+    name: 'Salary',
+    code: 'salary',
+    width: 100,
+    dataType: 2,
   },
   {
-    title: 'Address',
-    dataIndex: 'address',
+    name: 'Address',
+    code: 'address',
+    width: 100,
+    dataType: 1,
   },
   {
-    title: 'Email',
-    dataIndex: 'email',
+    name: 'Email',
+    code: 'email',
+    dataType: 1,
   },
 ];
-const data = reactive([{
-  id: '1',
-  name: 'Jane Doe',
-  salary: 23000,
-  address: '32 Park Road, London',
-  email: 'jane.doe@example.com'
-}, {
-  id: '2',
-  name: 'Alisa Ross',
-  salary: 25000,
-  address: '35 Park Road, London',
-  email: 'alisa.ross@example.com'
-}, {
-  id: '3',
-  name: 'Kevin Sandra',
-  salary: 22000,
-  address: '31 Park Road, London',
-  email: 'kevin.sandra@example.com'
-}, {
-  id: '4',
-  name: 'Ed Hellen',
-  salary: 17000,
-  address: '42 Park Road, London',
-  email: 'ed.hellen@example.com'
-}, {
-  id: '5',
-  name: 'William Smith',
-  salary: 27000,
-  address: '62 Park Road, London',
-  email: 'william.smith@example.com'
-}]);
+
 
 const handleRowClick = (row: never) => {
   selectedKeys.value = [row.id];

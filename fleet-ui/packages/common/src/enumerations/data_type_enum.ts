@@ -1,13 +1,14 @@
-export const enum DataTypeEnum {
-  Boolean = 0,
-  String = 1,
-  Text = 2,
-  Integer = 3,
-  Float = 4,
-  Date = 5,
-  Enum = 6,
-  Model = 7,
-  Json = 8,
-  File = 9,
-}
+const DataTypeEnum = {
+  Boolean: {value: 0, name: 'Boolean'},
+  String: {value: 1, name: 'String'},
+  Text: {value: 2, name: 'Text'},
+  Integer: {value: 3, name: 'Integer'},
+  Float: {value: 4, name: 'Float'},
+  Date: {value: 5, name: 'Date'},
+  Enum: {value: 6, name: 'Enum'},
+  Model: {value: 7, name: 'Model'},
+  Json: {value: 8, name: 'Json'},
+  File: {value: 9, name: 'File'},
+};
 
+export default DataTypeEnum;

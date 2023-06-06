@@ -166,6 +166,13 @@
   @include background-color-secondary-theme();
 }
 
+.arco-radio-checked .arco-radio-icon {
+  @include background-color-secondary();
+  @include border-color-secondary();
+}
+.arco-radio-checked:hover .arco-radio-icon {
+  @include border-color-secondary();
+}
 
 .arco-input-wrapper:focus-within,
 .arco-input-wrapper.arco-input-focus {
@@ -204,6 +211,10 @@
 .arco-table-tr-checked .arco-table-td {
   //@include background-color-tertiary();
   background-color: transparent;
+}
+
+.table-body .arco-table .arco-table-cell {
+  min-width: 32px;
 }
 
 .arco-table-stripe:not(.arco-table-dragging) .arco-table-tr:not(.arco-table-tr-empty):not(.arco-table-tr-summary):nth-child(even) .arco-table-td:not(.arco-table-col-fixed-left):not(.arco-table-col-fixed-right),
