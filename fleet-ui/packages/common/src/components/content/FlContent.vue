@@ -1,36 +1,37 @@
 <template>
   <FlContentBoolean
-    v-if="dataType === 'boolean'"
+    v-if="dataType === DataTypeEnum.Boolean.value"
     :model-value="value"
   />
   <FlContentText
-    v-else-if="dataType === 'text'"
+    v-else-if="dataType === DataTypeEnum.String.value || dataType === DataTypeEnum.Text.value"
     :model-value="value"
   />
   <FlContentNumber
-    v-else-if="dataType === 'number'"
+    v-else-if="dataType === DataTypeEnum.Integer.value || dataType === DataTypeEnum.Float.value"
     :model-value="value"
   />
   <FlContentDate
-    v-else-if="dataType === 'date'"
+    v-else-if="dataType === DataTypeEnum.Date.value"
     :model-value="value"
   />
   <FlContentEnum
-    v-else-if="dataType === 'enum'"
+    v-else-if="dataType === DataTypeEnum.Enum.value"
     :model-value="value"
-    :enums="props.enums"
+    :enumeration="props.enumeration"
   />
   <FlContentModel
-    v-else-if="dataType === 'model'"
+    v-else-if="dataType === DataTypeEnum.Model.value"
     :model-value="value"
+    :model="props.model"
     :display-field="props.displayField"
   />
   <FlContentJson
-    v-else-if="dataType === 'json'"
+    v-else-if="dataType === DataTypeEnum.Json.value"
     :model-value="value"
   />
   <FlContentFile
-    v-else-if="dataType === 'file'"
+    v-else-if="dataType === DataTypeEnum.File.value"
     :model-value="value"
   />
   <FlContentBase v-else>{{value}}</FlContentBase>
@@ -46,11 +47,13 @@ import FlContentDate from "./FlContentDate.vue";
 import FlContentModel from "./FlContentModel.vue";
 import FlContentJson from "./FlContentJson.vue";
 import FlContentFile from "./FlContentFile.vue";
+import DataTypeEnum from "../../enumerations/data_type_enum";
 
 const props = defineProps<{
   modelValue: any,
   dataType: number,
-  enums?: any[],
+  enumeration?: any,
+  model?: any,
   displayField?: string,
 }>();
 
@@ -58,29 +61,7 @@ const value = computed<any>(() => {
   return props.modelValue;
 });
 
-const dataType = computed<string>(() => {
-  switch (props.dataType) {
-    case 0:
-      return 'boolean';
-    case 1:
-    case 2:
-      return 'text';
-    case 3:
-    case 4:
-      return 'number';
-    case 5:
-      return 'date';
-    case 6:
-      return 'enum';
-    case 7:
-      return 'model';
-    case 8:
-      return 'json';
-    case 9:
-      return 'file';
-  }
-  return '';
-});
+const dataType = computed<number>(() => props.dataType);
 
 </script>
 <style lang="scss">

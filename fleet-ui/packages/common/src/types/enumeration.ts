@@ -1,4 +1,5 @@
 interface enumeration {
-  value: number,
+  code: string,
   name: string,
+  value: number,
 }

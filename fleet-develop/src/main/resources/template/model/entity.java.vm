@@ -11,6 +11,10 @@ public class ${modelCode} extends AbstractEntity {
     #set($type = $templateContext.getEntityFieldType($field))
     private $type $field.code;
     #end
+    #set($i = 1)
+    #foreach($i in [1..8])
+    private String extensionSegment${i};
+    #end
 
     #foreach($field in $modelFields)
     #set($fieldCode = $field.code)

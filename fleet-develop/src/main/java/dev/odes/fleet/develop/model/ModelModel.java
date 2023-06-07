@@ -9,8 +9,8 @@ public class ModelModel extends AbstractModel<Model> {
     private String id;
     private String code;
     private String name;
-    private String description;
     private String fullName;
+    private String description;
     private ModuleModel module;
     private List<ModelFieldModel> fields;
 
@@ -47,20 +47,20 @@ public class ModelModel extends AbstractModel<Model> {
         this.name = name;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
     public String getFullName() {
         return fullName;
     }
 
     public void setFullName(String fullName) {
         this.fullName = fullName;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public ModuleModel getModule() {

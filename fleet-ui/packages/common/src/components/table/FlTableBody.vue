@@ -32,6 +32,10 @@ import {IconFilter, IconSettings, IconUpload, IconDownload} from "@arco-design/w
   //  min-width: auto;
   //}
 
+  .arco-table-body {
+    min-height: 32px;
+    //min-height: 96px;
+  }
   .arco-table-th,
   .arco-table-td {
     min-width: 34px;

@@ -4,8 +4,9 @@ import dev.odes.fleet.common.entity.AbstractEntity;
 
 public class EnumerationValue extends AbstractEntity {
     private String id;
-    private Integer value;
+    private String code;
     private String name;
+    private Integer value;
     private String enumeration;
 
     @Override
@@ -18,12 +19,12 @@ public class EnumerationValue extends AbstractEntity {
         this.id = id;
     }
 
-    public Integer getValue() {
-        return value;
+    public String getCode() {
+        return code;
     }
 
-    public void setValue(Integer value) {
-        this.value = value;
+    public void setCode(String code) {
+        this.code = code;
     }
 
     public String getName() {
@@ -32,6 +33,14 @@ public class EnumerationValue extends AbstractEntity {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Integer getValue() {
+        return value;
+    }
+
+    public void setValue(Integer value) {
+        this.value = value;
     }
 
     public String getEnumeration() {

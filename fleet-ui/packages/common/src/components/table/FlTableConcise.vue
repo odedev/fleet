@@ -1,9 +1,8 @@
 <template>
   <FlTableBox ref="table">
-    <FlTableHead></FlTableHead>
+    <FlTableHead v-if="props.isShowHead" v-model="selectedRows" :model="model" ></FlTableHead>
     <FlTableBody>
       <Table
-        :columns="columns"
         :data="data"
         v-model:selected-keys="selectedKeys"
         row-key="id"
@@ -14,26 +13,22 @@
         :bordered="{cell:true}"
         :row-selection="rowSelection"
         @row-click="handleRowClick"
+        @cell-click="handleCellClick"
         :pagination="false"
         size="large"
       >
         <template #columns>
-          <template v-for="column in columns">
-            <TableColumn :title="column.name" :data-index="column.code" :width="column.width">
+          <template v-for="field in fields">
+            <TableColumn :title="field.name" :data-index="field.code" :width="field.width">
               <template #cell="{ record }">
-                <FlContent v-model="record[column.code]" :data-type="column.dataType" />
+                <FlContent v-model="record[field.code]" :data-type="field.dataType" :model="field.modelType" :enumeration="field.enumType" />
               </template>
             </TableColumn>
           </template>
-          <TableColumn title="code">
-            <template #cell>
-              <FlTableCell :model-value="12" :data-type="1" :is-editable="false"/>
-            </template>
-          </TableColumn>
         </template>
       </Table>
     </FlTableBody>
-    <FlTableFoot></FlTableFoot>
+    <FlTableFoot :count="10"></FlTableFoot>
   </FlTableBox>
 
 </template>
@@ -55,10 +50,11 @@ const emits = defineEmits([
 ]);
 
 const props = defineProps<{
-  modelValue: any,
+  modelValue: any[],
   model: any,
   data?: any[],
   columns?: any[],
+  isShowHead: boolean,
 }>();
 
 const table = ref(null);
@@ -72,6 +68,8 @@ const rowSelection = ref({
 });
 const selectedKeys = ref([])
 const selectedRows = ref([])
+const fields = computed(() => props.model.fields);
+
 
 const columns = computed(() => {
   let fields = props.columns || props.model.fields;
@@ -95,35 +93,6 @@ const data = computed(() => {
 });
 
 
- let c = [
-  {
-    name: 'Name',
-    code: 'name',
-    ellipsis: true,
-    tooltip: true,
-    width: 100,
-    dataType: 1,
-  },
-  {
-    name: 'Salary',
-    code: 'salary',
-    width: 100,
-    dataType: 2,
-  },
-  {
-    name: 'Address',
-    code: 'address',
-    width: 100,
-    dataType: 1,
-  },
-  {
-    name: 'Email',
-    code: 'email',
-    dataType: 1,
-  },
-];
-
-
 const handleRowClick = (row: never) => {
   selectedKeys.value = [row.id];
   selectedRows.value = [row];
@@ -133,6 +102,10 @@ const handleRowClick = (row: never) => {
 
   emits('update:modelValue', unref(selectedRows));
 };
+
+const handleCellClick = (row, column) => {
+  console.log(row, column)
+}
 
 onMounted(() => {
   console.log(table.value.clientHeight)

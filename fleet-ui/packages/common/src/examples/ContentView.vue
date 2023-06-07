@@ -15,17 +15,23 @@
           <FlContentDate :model-value="'2023-05-27 11:33:31'"/>
           <FlContentEnum :model-value="2" :enumeration="DataTypeEnum"/>
           <FlContentEnum :model-value="2" :enumeration="DataTypeWidthEnum"/>
-          <FlContentModel :model-value="user"/>
+          <FlContentModel :model-value="user" display-field="username"/>
           <FlContentFile :model-value="resourceFile"/>
         </FlBox>
         <FlBlock>
-          <FlContentText model-value="文本内容显示文本内容显示文本内容显示文本内容显示" :is-show-tip="false"/>
-          <FlContentNumber :model-value="121212.1212212212212" :is-show-tip="false" />
-          <FlContentBoolean :model-value="true"/>
-          <FlContentDate :model-value="new Date()"/>
-          <FlContentEnum  :model-value="0" :enumeration="DateFormatEnum"/>
-          <FlContentModel :model-value="user" display-field="username"/>
-          <FlContentFile :model-value="resourceFile"/>
+          <FlContent model-value="文本内容显示文本内容显示文本内容显示文本内容显示" :data-type="1"/>
+          <FlContent model-value="文本内容显示文本内容显示文本内容显示文本内容显示" :data-type="2"/>
+          <FlContent :model-value="121212.1212212212212" :data-type="3" />
+          <FlContent :model-value="121212.1212212212212" :data-type="4" />
+
+          <FlContent :model-value="new Date()" :data-type="5"/>
+          <FlContent :model-value="0" :enumeration="DateFormatEnum" :data-type="6"/>
+          <FlContent :model-value="7" :enumeration="DataTypeEnum" :data-type="6"/>
+
+          <FlContent :model-value="user" display-field="username" :data-type="7"/>
+          <FlContent :model-value="user" display-field="username" :data-type="8"/>
+          <FlContent :model-value="resourceFile" :data-type="9"/>
+
         </FlBlock>
       </FlViewBody>
     </FlViewMain>

@@ -2,33 +2,38 @@ package dev.odes.fleet.develop.transform;
 
 import dev.odes.fleet.common.transform.Transform;
 import dev.odes.fleet.develop.entity.Enumeration;
-import dev.odes.fleet.develop.entity.EnumerationValue;
+import dev.odes.fleet.develop.entity.Module;
 import dev.odes.fleet.develop.model.EnumerationModel;
 import dev.odes.fleet.develop.model.EnumerationValueModel;
-import dev.odes.fleet.develop.repository.EnumerationValueRepository;
+import dev.odes.fleet.develop.model.ModuleModel;
+import dev.odes.fleet.develop.repository.ModuleRepository;
+import dev.odes.fleet.develop.service.EnumerationValueService;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Component
 public class EnumerationTransform implements Transform<Enumeration, EnumerationModel> {
-    private final EnumerationValueRepository enumerationValueRepository;
+    private final ModuleRepository moduleRepository;
+//    private final EnumerationValueRepository enumerationValueRepository;
+    private final EnumerationValueService enumerationValueService;
 
-    public EnumerationTransform(EnumerationValueRepository enumerationValueRepository) {
-        this.enumerationValueRepository = enumerationValueRepository;
+    public EnumerationTransform(ModuleRepository moduleRepository, EnumerationValueService enumerationValueService) {
+        this.moduleRepository = moduleRepository;
+        this.enumerationValueService = enumerationValueService;
     }
 
     @Override
     public EnumerationModel toModel(Enumeration enumeration) {
         EnumerationModel enumerationModel = new EnumerationModel(enumeration);
 
-        List<EnumerationValue> enumerationValueList = this.enumerationValueRepository.findManyById("enumeration", enumeration.getId());
-        List<EnumerationValueModel> enumerationValues = new ArrayList<>();
-        enumerationValueList.forEach(enumerationValue -> {
-            enumerationValues.add(new EnumerationValueModel(enumerationValue));
-        });
-        enumerationModel.setEnumerationValues(enumerationValues);
+        Module module = this.moduleRepository.findOneById(enumeration.getModule());
+        if (module != null) {
+            enumerationModel.setModule(new ModuleModel(module));
+        }
+
+        List<EnumerationValueModel> enumerationValues = this.enumerationValueService.findManyById("enumeration", enumeration.getId());
+        enumerationModel.setValues(enumerationValues);
 
         return enumerationModel;
     }

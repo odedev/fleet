@@ -5,18 +5,13 @@ import dev.odes.fleet.develop.entity.Enumeration;
 
 import java.util.List;
 
-/**
- * package: dev.odes.fleet.develop.model
- * class: EnumerationModel
- * date: 2023/5/6 21:06
- * version: 1.0.0
- * description:
- */
 public class EnumerationModel extends AbstractModel<Enumeration> {
     private String id;
     private String code;
     private String name;
-    private List<EnumerationValueModel> enumerationValues;
+    private String fullName;
+    private ModuleModel module;
+    private List<EnumerationValueModel> values;
 
     public EnumerationModel() {
     }
@@ -51,12 +46,28 @@ public class EnumerationModel extends AbstractModel<Enumeration> {
         this.name = name;
     }
 
-    public List<EnumerationValueModel> getEnumerationValues() {
-        return enumerationValues;
+    public String getFullName() {
+        return fullName;
     }
 
-    public void setEnumerationValues(List<EnumerationValueModel> enumerationValues) {
-        this.enumerationValues = enumerationValues;
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
+
+    public ModuleModel getModule() {
+        return module;
+    }
+
+    public void setModule(ModuleModel module) {
+        this.module = module;
+    }
+
+    public List<EnumerationValueModel> getValues() {
+        return values;
+    }
+
+    public void setValues(List<EnumerationValueModel> values) {
+        this.values = values;
     }
 
     @Override
@@ -64,6 +75,7 @@ public class EnumerationModel extends AbstractModel<Enumeration> {
         this.setId(enumeration.getId());
         this.setCode(enumeration.getCode());
         this.setName(enumeration.getName());
+        this.setFullName(enumeration.getFullName());
     }
 
     @Override
@@ -72,6 +84,7 @@ public class EnumerationModel extends AbstractModel<Enumeration> {
         enumeration.setId(this.getId());
         enumeration.setCode(this.getCode());
         enumeration.setName(this.getName());
+        enumeration.setFullName(this.getFullName());
         return enumeration;
     }
 }

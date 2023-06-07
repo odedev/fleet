@@ -6,6 +6,7 @@
 <script lang="ts" setup>
 import {computed} from "vue";
 import FlContentBase from "./FlContentBase.vue";
+import {getDisplayFieldCode} from "../../utils/model_utils";
 
 const props = defineProps<{
   modelValue: any,
@@ -14,15 +15,7 @@ const props = defineProps<{
 }>();
 
 const value = computed<any>(() => {
-  let displayField: string = props.displayField || 'name';
-  if (props.model) {
-    for (const field of props.model.fields) {
-      if (field.isDefaultDisplay) {
-        displayField = field.code;
-        break
-      }
-    }
-  }
+  let displayField: string = props.displayField || getDisplayFieldCode(props.model);
   return props.modelValue[displayField] || props.modelValue;
 });
 </script>

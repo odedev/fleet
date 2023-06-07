@@ -6,8 +6,8 @@
       <slot></slot>
     </div>
   </div>
-  <Modal v-model:visible="visible" title="Modal Form" title-align="start" width="80%" unmountOnClose>
-    <FlTableConcise />
+  <Modal v-model:visible="visible" title="已选数据" title-align="start" width="80%" unmountOnClose>
+    <FlTableConcise :model-value="props.modelValue" :model="props.model"/>
   </Modal>
 </template>
 
@@ -16,6 +16,13 @@ import {Modal} from "@arco-design/web-vue";
 import "@arco-design/web-vue/es/modal/style/index.css";
 import FlTableConcise from "./FlTableConcise.vue";
 import {ref} from "vue";
+
+const props = defineProps<{
+  modelValue: any[],
+  model: any,
+  data?: any[],
+  columns?: any[],
+}>();
 
 const visible = ref(false);
 

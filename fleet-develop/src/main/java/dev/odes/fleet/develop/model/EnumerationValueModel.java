@@ -5,8 +5,9 @@ import dev.odes.fleet.develop.entity.EnumerationValue;
 
 public class EnumerationValueModel extends AbstractModel<EnumerationValue> {
     private String id;
-    private Integer value;
+    private String code;
     private String name;
+    private Integer value;
     private EnumerationModel enumeration;
 
     public EnumerationValueModel() {
@@ -26,12 +27,12 @@ public class EnumerationValueModel extends AbstractModel<EnumerationValue> {
         this.id = id;
     }
 
-    public Integer getValue() {
-        return value;
+    public String getCode() {
+        return code;
     }
 
-    public void setValue(Integer value) {
-        this.value = value;
+    public void setCode(String code) {
+        this.code = code;
     }
 
     public String getName() {
@@ -40,6 +41,14 @@ public class EnumerationValueModel extends AbstractModel<EnumerationValue> {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Integer getValue() {
+        return value;
+    }
+
+    public void setValue(Integer value) {
+        this.value = value;
     }
 
     public EnumerationModel getEnumeration() {
@@ -66,8 +75,9 @@ public class EnumerationValueModel extends AbstractModel<EnumerationValue> {
             return;
         }
         this.setId(enumerationValue.getId());
-        this.setValue(enumerationValue.getValue());
+        this.setCode(enumerationValue.getCode());
         this.setName(enumerationValue.getName());
+        this.setValue(enumerationValue.getValue());
         this.setEnumeration(enumerationValue.getEnumeration());
     }
 
@@ -75,8 +85,9 @@ public class EnumerationValueModel extends AbstractModel<EnumerationValue> {
     public EnumerationValue toEntity() {
         EnumerationValue enumerationValue = new EnumerationValue();
         enumerationValue.setId(this.getId());
-        enumerationValue.setValue(this.getValue());
+        enumerationValue.setCode(this.getCode());
         enumerationValue.setName(this.getName());
+        enumerationValue.setValue(this.getValue());
 
         EnumerationModel enumerationModel = this.getEnumeration();
         if (enumerationModel != null) {

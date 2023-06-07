@@ -3,6 +3,7 @@ package dev.odes.fleet.develop.service;
 import dev.odes.fleet.common.service.AbstractService;
 import dev.odes.fleet.develop.entity.Enumeration;
 import dev.odes.fleet.develop.model.EnumerationModel;
+import dev.odes.fleet.develop.model.ModuleModel;
 import dev.odes.fleet.develop.repository.EnumerationRepository;
 import dev.odes.fleet.develop.transform.EnumerationTransform;
 import org.springframework.stereotype.Service;
@@ -30,6 +31,13 @@ public class EnumerationService extends AbstractService<Enumeration, Enumeration
     @Override
     public void setDefaultValue(EnumerationModel enumerationModel) {
         super.setDefaultValue(enumerationModel);
+        String enumCode = enumerationModel.getCode();
+        String moduleCode = "";
+        ModuleModel module = enumerationModel.getModule();
+        if (module != null) {
+            moduleCode = module.getCode();
+        }
+        enumerationModel.setFullName("dev.odes.fleet.module." + moduleCode + ".enumeration." + enumCode + "Enum");
     }
 
     @Override

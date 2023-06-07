@@ -1,27 +1,51 @@
 <template>
   <div class="table-foot">
     <div class="table-action">
-      <i class="icon">
+      <i class="icon" v-if="props.isSettable">
         <Tooltip :mini="true" content="设置"><IconSettings /></Tooltip>
       </i>
-      <i class="icon">
+      <i class="icon" v-if="props.isImportable">
         <Tooltip :mini="true" content="导入"><IconUpload /></Tooltip>
       </i>
-      <i class="icon">
+      <i class="icon" v-if="props.isExportable">
         <Tooltip :mini="true" content="导出"><IconDownload /></Tooltip>
       </i>
     </div>
     <div class="table-pagination">
-      <div style="margin-right: 18px;">每页 10 条</div>
-      <Pagination  :total="150000" size="small" show-total></Pagination>
+      <div class="table-pagination-size">每页 10 条</div>
+      <Pagination
+        v-model:current="current"
+        :page-size="pageSize"
+        :total="count"
+        :show-total="true"
+        :hide-on-single-page="false"
+        @change="handleChange"
+        size="small" ></Pagination>
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
+import {ref, computed} from "vue";
 import {Pagination, Tooltip} from "@arco-design/web-vue";
 import "@arco-design/web-vue/es/pagination/style/index.css";
 import {IconFilter, IconSettings, IconUpload, IconDownload} from "@arco-design/web-vue/es/icon";
+
+const props = defineProps<{
+  count: number,
+  isSettable: boolean,
+  isImportable: boolean,
+  isExportable: boolean,
+}>();
+
+const count = computed<number>(() => props.count || 0);
+
+const current = ref(1);
+const pageSize = ref(10);
+
+const handleChange = (current) => {
+  console.log(current)
+}
 
 </script>
 
@@ -84,6 +108,9 @@ import {IconFilter, IconSettings, IconUpload, IconDownload} from "@arco-design/w
     overflow-x: overlay;
 
     font-size: 14px;
+  }
+  .table-pagination-size {
+    margin-right: 16px;
   }
 }
 </style>
