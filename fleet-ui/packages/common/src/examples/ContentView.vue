@@ -19,6 +19,7 @@
           <FlContentFile :model-value="resourceFile"/>
         </FlBox>
         <FlBlock>
+          <FlContent :model-value="true" :data-type="0"/>
           <FlContent model-value="文本内容显示文本内容显示文本内容显示文本内容显示" :data-type="1"/>
           <FlContent model-value="文本内容显示文本内容显示文本内容显示文本内容显示" :data-type="2"/>
           <FlContent :model-value="121212.1212212212212" :data-type="3" />
@@ -28,7 +29,7 @@
           <FlContent :model-value="0" :enumeration="DateFormatEnum" :data-type="6"/>
           <FlContent :model-value="7" :enumeration="DataTypeEnum" :data-type="6"/>
 
-          <FlContent :model-value="user" display-field="username" :data-type="7"/>
+          <FlContent :model-value="user" :model="userModel" :data-type="7"/>
           <FlContent :model-value="user" display-field="username" :data-type="8"/>
           <FlContent :model-value="resourceFile" :data-type="9"/>
 
@@ -51,6 +52,14 @@ import {
 import DataTypeEnum from "@/enumerations/data_type_enum";
 import DateFormatEnum from "@/enumerations/date_format_enum";
 import DataTypeWidthEnum from "@/enumerations/data_type_width_enum";
+import {getModelByFullName} from "@/core/application";
+
+const userModel = getModelByFullName("dev.odes.fleet.module.system.model.UserModel");
+userModel.name='dsdsds';
+console.log(userModel)
+
+const userModel1 = getModelByFullName("dev.odes.fleet.module.system.model.UserModel");
+console.log(userModel1)
 
 const enumList = [
   {
@@ -70,7 +79,8 @@ const enumList = [
 const user = {
   id: 'dsdsd',
   username: 'admin',
-  name: '管理员',
+  code: 'admin1',
+  name: '超级管理员',
 };
 
 const resourceFile = {

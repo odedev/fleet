@@ -2,7 +2,7 @@ interface Model {
   id: string,
   code: string,
   name: string,
-  fullName?: string,
+  fullName: string,
   description?: string,
   module: any,
   fields: ModelField[],
@@ -22,5 +22,5 @@ interface ModelField {
   isDefaultDisplay: boolean,
   note?: string,
   sequence: string,
-  model: Model,
+  model?: Model,
 }

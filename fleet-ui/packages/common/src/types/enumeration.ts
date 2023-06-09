@@ -1,5 +1,7 @@
 interface enumeration {
   code: string,
   name: string,
-  value: number,
+  fullName: string,
+  description?: string,
+  module: any,
 }

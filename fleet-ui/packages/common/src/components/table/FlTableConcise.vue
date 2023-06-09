@@ -9,7 +9,7 @@
         :stripe="false"
         :table-layout-fixed="true"
         :column-resizable="true"
-        :sticky-header="10"
+        :sticky-header="true"
         :bordered="{cell:true}"
         :row-selection="rowSelection"
         @row-click="handleRowClick"
@@ -54,7 +54,7 @@ const props = defineProps<{
   model: any,
   data?: any[],
   columns?: any[],
-  isShowHead: boolean,
+  isShowHead?: boolean,
 }>();
 
 const table = ref(null);

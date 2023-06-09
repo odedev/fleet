@@ -16,7 +16,7 @@ const props = defineProps<{
 
 const value = computed<any>(() => {
   let displayField: string = props.displayField || getDisplayFieldCode(props.model);
-  return props.modelValue[displayField] || props.modelValue;
+  return props.modelValue?.[displayField] || props.modelValue;
 });
 </script>
 <style lang="scss">

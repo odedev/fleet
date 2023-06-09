@@ -1,19 +1,23 @@
 <template>
-  <div class="tree">
-    <InputSearch size="small"/>
-    <slot></slot>
-    <Tree v-model:selected-keys="selectedKeys"
-      :data="treeData"
-      size="small"
-      :selectable="true"
-      :multiple="false"
-      :checkable="false"
-      :check-strictly="true"
-      :block-node="true"
-      :draggable="true"
-      :show-line="false"
-    ></Tree>
-  </div>
+  <section class="tree">
+    <div class="tree-head">
+      <slot></slot>
+      <InputSearch size="small"/>
+    </div>
+    <div class="tree-body">
+      <Tree v-model:selected-keys="selectedKeys"
+            :data="treeData"
+            size="small"
+            :selectable="true"
+            :multiple="false"
+            :checkable="false"
+            :check-strictly="true"
+            :block-node="true"
+            :draggable="true"
+            :show-line="false"
+      ></Tree>
+    </div>
+  </section>
 </template>
 <script lang="ts" setup>
 import {ref} from "vue";
@@ -124,6 +128,10 @@ const onDrop = ({ dragNode, dropNode, dropPosition }) => {
   flex-direction: column;
   padding: 0;
   overflow: auto;
+
+  .tree-head {
+    margin-bottom: 4px;
+  }
 
   .arco-tree-node-title {
     padding: 3px 0;
