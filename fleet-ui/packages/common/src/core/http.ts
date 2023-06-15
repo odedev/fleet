@@ -3,7 +3,7 @@ import qs from 'qs'
 
 const instance = axios.create({
   baseURL: '',
-  timeout: 6000,
+  timeout: 1800000,  // 1000*60*30
   headers: {'Authorization': ''}
 });
 
