@@ -1,6 +1,6 @@
 <template>
   <FlTableBox ref="table">
-    <FlTableHead v-if="props.isShowHead" v-model="selectedRows" :model="model" ></FlTableHead>
+    <FlTableHead v-if="false" v-model="selectedRows" :model="model" ></FlTableHead>
     <FlTableBody>
       <Table
         :data="data"
@@ -28,7 +28,7 @@
         </template>
       </Table>
     </FlTableBody>
-    <FlTableFoot :count="10"></FlTableFoot>
+    <FlTableFoot :count="10" :is-exportable="false" :is-importable="false" :is-settable="false"></FlTableFoot>
   </FlTableBox>
 
 </template>
@@ -61,8 +61,8 @@ const table = ref(null);
 const value = ref('123');
 
 const rowSelection = ref({
-  type: 'radio',
-  // type: 'checkbox',
+  // type: 'radio',
+  type: 'checkbox',
   showCheckedAll: true,
   onlyCurrent: false,
 });
@@ -94,8 +94,15 @@ const data = computed(() => {
 
 
 const handleRowClick = (row: never) => {
-  selectedKeys.value = [row.id];
-  selectedRows.value = [row];
+  const id = row.id;
+  // selectedKeys.value = [id];
+  // selectedRows.value = [row];
+  if (!selectedKeys.value.includes(id)) {
+    selectedKeys.value.push(id)
+    selectedRows.value.push(row)
+  } else {
+    selectedKeys.value.splice(selectedKeys.value.indexOf(id), 1);
+  }
 
   console.log(row);
   console.log(selectedKeys.value)

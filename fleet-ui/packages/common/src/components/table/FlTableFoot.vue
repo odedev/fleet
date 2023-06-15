@@ -10,9 +10,10 @@
       <i class="icon" v-if="props.isExportable">
         <Tooltip :mini="true" content="导出"><IconDownload /></Tooltip>
       </i>
+      <slot></slot>
     </div>
     <div class="table-pagination">
-      <div class="table-pagination-size">每页 10 条</div>
+      <div class="table-pagination-size">每页 {{pageSize}} 条</div>
       <Pagination
         v-model:current="current"
         :page-size="pageSize"

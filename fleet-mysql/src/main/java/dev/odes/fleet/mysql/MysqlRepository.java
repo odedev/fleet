@@ -96,4 +96,12 @@ public class MysqlRepository<E extends AbstractEntity, M extends GenericMapper<E
         String where = "";
         return this.mapper.count(where);
     }
+
+    public E findOne(String where) {
+        return this.mapper.findOne(where);
+    }
+
+    public List<E> findMany(String where, String order) {
+        return this.mapper.findMany(where, order);
+    }
 }

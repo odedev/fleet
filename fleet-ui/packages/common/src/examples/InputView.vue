@@ -10,7 +10,7 @@
       <FlViewBody>
         <FlBox>
           <FlInputBoolean v-model="booleanValue"/>
-          <FlInputText v-model="textValue"/>
+          <FlInputText v-model="textValue" :is-invalid="true"/>
           <FlInputDate />
           <FlInputNumber />
           <FlInputEnum v-model="enumValue" :enums="enums"/>

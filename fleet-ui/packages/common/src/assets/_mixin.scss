@@ -31,6 +31,10 @@
   background-color: var(--theme-background, $background);
 }
 
+@mixin background-color-surface() {
+  color: $on-surface;
+  background-color: var(--theme-white, $surface);
+}
 @mixin background-color-primary() {
   color: $on-primary;
   background-color: var(--theme-primary, $primary);
@@ -146,12 +150,20 @@
 }
 
 
+@mixin border-color() {
+  border-color: var(--theme-outline, $outline);
+}
+
 @mixin border-color-primary() {
   border-color: var(--theme-primary, $primary);
 }
 
 @mixin border-color-secondary() {
   border-color: var(--theme-secondary, $secondary);
+}
+
+@mixin border-color-error() {
+  border-color: var(--theme-error, $error);
 }
 
 @mixin border-right-color-primary() {

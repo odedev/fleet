@@ -3,6 +3,8 @@
     <div class="search-parameter">
       <FlFormItem />
       <FlFormItem />
+<!--      <FlFormItem />-->
+
     </div>
     <div class="search-action">
       <FlButton>搜索</FlButton>
@@ -32,9 +34,12 @@ import FlButtonReset from "../button/FlButtonReset.vue";
 
   .search-parameter {
     width: 100%;
+    width: max-content;
+    max-width: calc(100% - 132px);
     height: 100%;
     flex-basis: 100%;
-    flex-grow: 1;
+    flex-basis: auto;
+    //flex-grow: 1;
     flex-shrink: 1;
     display: flex;
     flex-direction: row;

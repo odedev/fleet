@@ -24,7 +24,21 @@
   //@include background-color-primary-theme();
 }
 
+.arco-btn-primary.arco-btn-disabled,
+.arco-btn-primary[type='button'].arco-btn-disabled,
+.arco-btn-primary[type='submit'].arco-btn-disabled {
+  @include background-color-primary();
+  opacity: 0.8;
+}
 
+.arco-btn-secondary,
+.arco-btn-secondary[type='button'],
+.arco-btn-secondary[type='submit'],
+.arco-btn-secondary:hover,
+.arco-btn-secondary[type='button']:hover,
+.arco-btn-secondary[type='submit']:hover {
+  @include background-color-neutral();
+}
 
 .arco-btn-primary {
   &.arco-btn-status-normal {
@@ -152,6 +166,7 @@
   @include background-color-secondary-theme();
 }
 
+
 .arco-checkbox-checked .arco-checkbox-icon {
   @include background-color-primary();
   @include background-color-primary-theme();
@@ -174,6 +189,20 @@
   @include border-color-secondary();
 }
 
+.arco-input-wrapper,
+.arco-picker,
+.arco-select-view-single,
+.arco-textarea-wrapper {
+  @include background-color-surface();
+  @include border-color();
+}
+.arco-input-wrapper:hover,
+.arco-picker:hover,
+.arco-select-view-single:hover,
+.arco-textarea-wrapper:hover {
+  @include background-color-surface();
+  @include border-color();
+}
 .arco-input-wrapper:focus-within,
 .arco-input-wrapper.arco-input-focus {
   @include border-color-primary();
@@ -187,7 +216,6 @@
   @include background-color-tertiary();
 }
 
-
 .arco-picker-focused,
 .arco-picker-focused:hover {
   @include border-color-primary();
@@ -195,6 +223,12 @@
 .arco-textarea-wrapper:focus-within,
 .arco-textarea-wrapper.arco-textarea-focus {
   @include border-color-primary();
+}
+
+.arco-input-wrapper.arco-input-error,
+.arco-input-wrapper.arco-input-error:hover {
+  @include background-color-surface();
+  @include border-color-error();
 }
 
 .arco-table-border-cell .arco-table-th-resizing,

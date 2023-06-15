@@ -1,5 +1,5 @@
 <template>
-  <FlButton type="primary" @click="handleClick">新增</FlButton>
+  <FlButton type="secondary" @click="handleClick">新增</FlButton>
 </template>
 <script lang="ts" setup>
 import FlButton from "./FlButton.vue";

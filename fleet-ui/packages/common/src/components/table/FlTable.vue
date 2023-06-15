@@ -2,10 +2,10 @@
   <FlTableBox ref="table">
     <FlTableHead>
       <FlButtonGroup>
-        <FlButton type="primary" size="small">执行DDL</FlButton>
-        <FlButton type="primary" size="small">生成代码</FlButton>
-        <FlButton type="primary" size="small">维护功能</FlButton>
-        <FlButton type="primary" size="small">新增</FlButton>
+        <FlButton type="primary">执行DDL</FlButton>
+        <FlButton type="success">生成代码</FlButton>
+        <FlButton type="primary">维护功能</FlButton>
+        <FlButtonAdd>新增</FlButtonAdd>
       </FlButtonGroup>
     </FlTableHead>
     <FlTableBody>
@@ -76,6 +76,7 @@ import FlTableCell from "./FlTableCell.vue";
 import FlTableCellButton from "./FlTableCellButton.vue";
 
 import FlButton from "../button/FlButton.vue";
+import FlButtonAdd from "../button/FlButtonAdd.vue";
 import FlButtonGroup from "../button/FlButtonGroup.vue";
 const table = ref(null);
 const value = ref('123456789abcdefghijklmnopqrstuvwxyz');
