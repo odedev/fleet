@@ -1,5 +1,5 @@
 import http from "node:http";
-import app from "./src/app.js";
+import app from "./app.js";
 
 const server = http.createServer(app.callback());
 

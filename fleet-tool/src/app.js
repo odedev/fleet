@@ -18,7 +18,19 @@ const app = new Koa();
 
 app.use(koaBody());
 app.use(serve(__rootDirname + "/public", {}));
-app.use(views(path.join(__dirname, '/views'), { extension: 'hbs', map: { hbs: 'handlebars' } }));
+app.use(views(path.join(__dirname, '/views'), {
+  extension: 'hbs',
+  map: { hbs: 'handlebars' },
+  options: {
+    helpers: {
+      uppercase: (str) => str.toUpperCase()
+    },
+    partials: {
+      layout: './_partial/layout' // requires ./_partial/layout.hbs
+    },
+    cache: true // cache the template string or not
+  }
+}));
 app.use(cors());
 app.use(responseTime({ hrtime: true }));
 
