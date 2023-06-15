@@ -25,6 +25,7 @@ import CardView from '../examples/CardView.vue'
 import TreeView from '../examples/TreeView.vue'
 
 import CellView from '../examples/CellView.vue'
+import RichTextView from '../examples/RichTextView.vue'
 
 
 const router = createRouter({
@@ -69,6 +70,11 @@ const router = createRouter({
       path: '/Tree',
       name: 'Tree',
       component: TreeView
+    },
+    {
+      path: '/RichText',
+      name: 'RichText',
+      component: RichTextView
     },
     {
       path: '/LayoutFormView',

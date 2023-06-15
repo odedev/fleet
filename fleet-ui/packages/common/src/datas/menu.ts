@@ -197,8 +197,8 @@ export const menus: any[] = [
   },
   {
     id: '1660898963689091128',
-    name: '表单页',
-    path: '',
+    name: 'RichText',
+    path: '/RichText',
     parent: '1660898963689091120',
     children: [],
   },
