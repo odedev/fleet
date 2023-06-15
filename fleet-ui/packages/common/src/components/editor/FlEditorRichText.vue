@@ -161,4 +161,8 @@ const handleInput = () => {
   @include border-color-primary();
 }
 
+.ck.ck-powered-by {
+  display: none;
+}
+
 </style>
