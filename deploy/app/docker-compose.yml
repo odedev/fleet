@@ -17,7 +17,8 @@ services:
     command: --default-authentication-plugin=mysql_native_password
 
   temurin:
-    image: eclipse-temurin:17-jdk
+    image: eclipse-temurin:17.0.7_7-jdk
+    working_dir: /home/app
     volumes:
       - ./temurin/data:/data
     ports:
@@ -27,6 +28,7 @@ services:
       - net
     restart: always
     user: root
+    command: "java -jar -Xms1024m -Xmx1024m -XX:MetaspaceSize=512M -XX:MaxMetaspaceSize=512M ./app.jar"
 
   amazoncorretto:
     image: amazoncorretto:17.0.7

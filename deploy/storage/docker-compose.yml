@@ -39,6 +39,24 @@ services:
     restart: always
     user: root
 
+  elasticsearch:
+    image: elasticsearch:8.8.0
+    environment:
+      - discovery.type: "single-node"
+      - ES_JAVA_OPTS: "-Xms512m -Xmx512m"
+    volumes:
+      - ./elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+      - ./elasticsearch/data:/usr/share/elasticsearch/data
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    hostname: elasticsearch
+    networks:
+      - net
+    privileged: true
+    restart: always
+    user: root
+
   mysql:
     image: mysql:8.0.33
     environment:
