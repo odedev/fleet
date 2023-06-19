@@ -1,15 +1,14 @@
 services:
-  mysql:
-    image: mysql:8.0.31
+  eclipse-temurin:
+    image: eclipse-temurin:17.0.7_7-jre
     environment:
-      MYSQL_ROOT_PASSWORD: "root"
+      SERVER_PORT: "8090"
     volumes:
-      - ./mysql/config:/etc/mysql/conf.d
-      - ./mysql/data:/var/lib/mysql
-      - ./mysql/init:/docker-entrypoint-initdb.d
+      - ./eclipse-temurin/config:/etc/mysql/conf.d
+      - ./eclipse-temurin/data:/var/lib/mysql
     ports:
-      - "3306:3306"
-    hostname: mysql
+      - "8090:8090"
+    hostname: eclipse-temurin
     networks:
       - net
     privileged: true
@@ -17,18 +16,45 @@ services:
     user: root
     command: --default-authentication-plugin=mysql_native_password
 
-  neo4j:
-    image: neo4j:5.1.0-community
+  temurin:
+    image: eclipse-temurin:17-jdk
     volumes:
-      - ./neo4j/data:/data
+      - ./temurin/data:/data
     ports:
-      - "7474:7474"  # HTTP
-      - "7687:7687"  # Bolt
-    hostname: neo4j
+      - "8090:8090"
+    hostname: temurin
     networks:
       - net
     restart: always
     user: root
+
+  amazoncorretto:
+    image: amazoncorretto:17.0.7
+    volumes:
+      - ./amazoncorretto/data:/data
+    ports:
+      - "8090:8090"
+    hostname: amazoncorretto
+    networks:
+      - net
+    restart: always
+    user: root
+
+  node:
+    image: node:18.16.0
+    environment:
+      - NODE_ENV=production
+    volumes:
+      - ./node/data:/home/node/app
+    working_dir: /home/node/app
+    ports:
+      - "8081:8081"
+    hostname: node
+    networks:
+      - net
+    restart: always
+    user: node
+    command: "npm start"
 
 networks:
   net:

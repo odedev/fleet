@@ -1,30 +1,53 @@
 services:
-  mysql:
-    image: mysql:8.0.31
+
+  gitlab:
+    image: gitlab/gitlab-ce:latest
     environment:
-      MYSQL_ROOT_PASSWORD: "root"
+      GITLAB_OMNIBUS_CONFIG: |
+        external_url 'http://192.168.0.110:1020'
+        gitlab_rails['gitlab_shell_ssh_port'] = 1022
     volumes:
-      - ./mysql/config:/etc/mysql/conf.d
-      - ./mysql/data:/var/lib/mysql
-      - ./mysql/init:/docker-entrypoint-initdb.d
+      - ./gitlab/config:/etc/gitlab
+      - ./gitlab/data:/var/opt/gitlab
+      - ./gitlab/logs:/var/log/gitlab
     ports:
-      - "3306:3306"
-    hostname: mysql
+      - "1020:1020"  # HTTP
+      - "1022:22"    # SSH
+      - "80:80"      # HTTP
+      - "443:443"    # HTTP
+      - "22:22"      # SSH
+    hostname: gitlab
+    networks:
+      - net
+    restart: always
+    user: root
+    shm_size: '256m'
+
+  nexus:
+    image: sonatype/nexus3:3.55.0
+    environment:
+      - NEXUS_CONTEXT: nexus
+    volumes:
+      - ./nexus/data:/nexus-data
+    ports:
+      - "8081:8081"
+    hostname: nexus
     networks:
       - net
     privileged: true
     restart: always
     user: root
-    command: --default-authentication-plugin=mysql_native_password
 
-  neo4j:
-    image: neo4j:5.1.0-community
+  jenkins:
+    image: jenkins/jenkins:latest
     volumes:
-      - ./neo4j/data:/data
+      - ./jenkins/home:/var/jenkins_home
+      - ./jenkins/distribution:/var/jenkins_distribution
+      - /var/run/docker.sock:/var/run/docker.sock:ro
     ports:
-      - "7474:7474"  # HTTP
-      - "7687:7687"  # Bolt
-    hostname: neo4j
+      - "8080:8080"
+      - "50000:50000"
+    hostname: jenkins
     networks:
       - net
     restart: always

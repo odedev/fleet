@@ -1,6 +1,28 @@
 services:
+  haproxy:
+    image: haproxy:2.8.0
+    volumes:
+      - ./haproxy/config/haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg:ro
+    ports:
+      - "80:80"
+      - "443:443"
+    hostname: haproxy
+    networks:
+      - net
+    privileged: true
+    restart: always
+    user: root
+
   reverse-proxy:
     image: traefik:v2.10
+    volumes:
+      # So that Traefik can listen to the Docker events
+      - /var/run/docker.sock:/var/run/docker.sock
+    ports:
+      # The HTTP port
+      - "80:80"
+      # The Web UI (enabled by --api.insecure=true)
+      - "8080:8080"
     # Enables the web UI and tells Traefik to listen to docker
     command:
       #- "--log.level=DEBUG"
@@ -8,15 +30,6 @@ services:
       - "--providers.docker=true"
       - "--providers.docker.exposedbydefault=false"
       - "--entrypoints.web.address=:80"
-    ports:
-      # The HTTP port
-      - "80:80"
-      # The Web UI (enabled by --api.insecure=true)
-      - "8080:8080"
-    volumes:
-      # So that Traefik can listen to the Docker events
-      - /var/run/docker.sock:/var/run/docker.sock
-
 
 networks:
   net:
