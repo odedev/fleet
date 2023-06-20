@@ -15,20 +15,13 @@
       </FlViewHead>
       <FlViewBody>
         <FlBox>
+          <FlFormItem></FlFormItem>
+          <FlFormItem></FlFormItem>
           <FlFormItem>
-            <input type="text" name="" id="">
           </FlFormItem>
           <FlFormItem>
-            <input type="text" name="" id="">
           </FlFormItem>
           <FlFormItem>
-            <input type="text" name="" id="">
-          </FlFormItem>
-          <FlFormItem>
-            <input type="text" name="" id="">
-          </FlFormItem>
-          <FlFormItem>
-            <input type="text" name="" id="">
           </FlFormItem>
         </FlBox>
         <!--        <FlBox>-->
