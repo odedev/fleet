@@ -1,6 +1,7 @@
 import path from 'node:path';
 import {fileURLToPath} from "node:url";
 import express from 'express';
+import cors from 'cors';
 import logger from 'morgan';
 import rid from 'connect-rid';
 import favicon from 'serve-favicon';
@@ -17,12 +18,14 @@ const app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 
+app.use(cors())
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(rid({headerName: 'X-RID'}));
 app.use('/public', express.static(path.join(__rootDirname, 'public')));
 app.use(favicon(path.join(__rootDirname, 'public', 'favicon.ico')))
+// app.use(favicon(path.join(__rootDirname, 'public', 'favicon.png')))
 
 // app.use('/', indexRouter);
 // app.use('/users', usersRouter);
