@@ -1,1 +1,2 @@
-import server from "./src/server.js";
+import "reflect-metadata";
+import "./src/server.js";

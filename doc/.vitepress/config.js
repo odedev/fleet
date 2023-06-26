@@ -5,16 +5,16 @@ const nav = [
     activeMatch: '^/manual/'
   },
   {
-    text: 'API',
-    link: '/api/',
-    activeMatch: '^/api/'
+    text: '参考',
+    link: '/reference/',
+    activeMatch: '^/reference/'
   },
   {
     text: '模块',
     link: '/module/',
     activeMatch: '^/module/'
   },
-]
+];
 
 
 const sidebar = {
@@ -44,12 +44,26 @@ const sidebar = {
       ]
     },
   ],
-  '/api/': [
+  '/reference/': [
+    {
+      text: 'Backend',
+      collapsed: false,
+      items: [
+        { text: 'api', link: '/reference/index' },
+      ]
+    },
+    {
+      text: 'Frontend',
+      collapsed: false,
+      items: [
+        { text: 'theme', link: '/reference/theme' },
+      ]
+    },
     {
       text: 'API',
       collapsed: false,
       items: [
-        { text: 'api', link: '/api/index' },
+        { text: 'api', link: '/reference/api' },
       ]
     },
   ],
@@ -58,8 +72,8 @@ const sidebar = {
       text: '核心模块',
       collapsed: false,
       items: [
-        { text: '用户管理', link: '/module/user' },
-        { text: '系统管理', link: '/module/system' },
+        { text: '用户管理', link: '/module/uc' },
+        { text: '资源文件', link: '/module/file' },
       ]
     },
   ],
