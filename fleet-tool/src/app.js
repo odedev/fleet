@@ -25,7 +25,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(rid({headerName: 'X-RID'}));
 app.use('/public', express.static(path.join(__rootDirname, 'public')));
 app.use(favicon(path.join(__rootDirname, 'public', 'favicon.ico')))
-// app.use(favicon(path.join(__rootDirname, 'public', 'favicon.png')))
 
 // app.use('/', indexRouter);
 // app.use('/users', usersRouter);

@@ -1,9 +1,10 @@
 import http from "node:http";
+import pc from "picocolors"
 import app from "./app.js";
 
 const server = http.createServer(app);
 
-server.listen(3000);
+server.listen(23506);
 
 server.on('error', error => {
   if (error.syscall !== 'listen') {
@@ -30,6 +31,7 @@ server.on('error', error => {
 server.on('listening', () => {
   const addr = server.address();
   const bind = typeof addr === 'string' ? 'pipe ' + addr : 'port ' + addr.port;
+  console.log(pc.green(`listening on ${bind} `))
 });
 
 export default server
