@@ -7,7 +7,7 @@
   "scripts": {
     "start": "node main.js",
     "dev": "node main.js",
-    "style": "npx tailwindcss -i ./src/style/index.css -o ./public/static/index.css --watch"
+    "style": "npx tailwindcss -i ./src/style/main.css -o ./public/static/main.css --watch"
   },
   "keywords": [],
   "author": "",
