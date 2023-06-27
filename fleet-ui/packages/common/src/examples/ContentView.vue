@@ -52,13 +52,13 @@ import {
 import DataTypeEnum from "@/enumerations/data_type_enum";
 import DateFormatEnum from "@/enumerations/date_format_enum";
 import DataTypeWidthEnum from "@/enumerations/data_type_width_enum";
-import {getModelByFullName} from "@/core/application";
+import {useModel} from "@/composables/model";
 
-const userModel = getModelByFullName("dev.odes.fleet.module.system.model.UserModel");
+const userModel = useModel("dev.odes.fleet.module.system.model.UserModel");
 userModel.name='dsdsds';
 console.log(userModel)
 
-const userModel1 = getModelByFullName("dev.odes.fleet.module.system.model.UserModel");
+const userModel1 = useModel("dev.odes.fleet.module.system.model.UserModel");
 console.log(userModel1)
 
 const enumList = [

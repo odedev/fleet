@@ -10,8 +10,8 @@ import {getDisplayFieldCode} from "../../utils/model_utils";
 
 const props = defineProps<{
   modelValue: any,
-  displayField?: string,
   model?: any,
+  displayField?: string,
 }>();
 
 const value = computed<any>(() => {

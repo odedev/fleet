@@ -17,15 +17,28 @@
   </FlInputBase>
 
   <Modal
+    class="input-model__modal"
     v-model:visible="visible"
-    title="Modal Form"
+    :title="modelName"
     title-align="start"
     width="80%"
     @ok="handleOk"
     @cancel="handleCancel"
     unmountOnClose
   >
-    <FlTableConcise v-model="rows" :datas="props.datas" :columns="props.columns"/>
+    <FlView>
+      <FlViewMain>
+        <FlViewHead>
+          <FlSearch></FlSearch>
+        </FlViewHead>
+        <FlViewBody>
+          <FlBlock>
+            <FlTableConcise v-model="rows" :model="props.model" />
+          </FlBlock>
+        </FlViewBody>
+      </FlViewMain>
+    </FlView>
+<!--    <FlTableConcise v-model="rows" :model="props.model" />-->
   </Modal>
 </template>
 <script lang="ts" setup>
@@ -36,6 +49,12 @@ import "@arco-design/web-vue/es/modal/style/index.css";
 import {IconFindReplace} from "@arco-design/web-vue/es/icon";
 import FlInputBase from "./FlInputBase.vue";
 import FlTableConcise from "../table/FlTableConcise.vue";
+import FlView from "@/components/view/FlView.vue";
+import FlViewMain from "@/components/view/FlViewMain.vue";
+import FlViewHead from "@/components/view/FlViewHead.vue";
+import FlViewBody from "@/components/view/FlViewBody.vue";
+import FlBlock from "@/components/block/FlBlock.vue";
+import FlSearch from "@/components/search/FlSearch.vue";
 
 const emits = defineEmits([
   'update:modelValue',
@@ -49,18 +68,19 @@ const emits = defineEmits([
 
 let props = withDefaults(defineProps<{
   modelValue: any,
+  model: any,
+  modelParameter?: any,
   displayField?: string,
   isNullable?: boolean,
   isDisabled?: boolean,
   isReadonly?: boolean,
   isInvalid?: boolean,
   autofocus?: boolean,
-  datas: any[],
-  models: any[],
-  columns: any[],
-  module: string,
-  model: any,
-  modelParameter: any,
+  data?: any[],
+  // models: any[],
+  columns?: any[],
+  // module?: string,
+
 }>(), {
   isNullable: true,
   isDisabled: false,
@@ -73,8 +93,14 @@ const value = computed<any>(() => {
   return props.displayField ? props.modelValue[props.displayField] : props.modelValue?.name || props.modelValue;
 });
 
+const modelName = computed(() => {
+  return props.model.name;
+})
 const visible = ref(false);
-const rows = ref([]);
+const rows = props.data;
+
+console.log(props.model)
+
 
 const handleFocus = (e: FocusEvent) => {
   console.log('focus')
@@ -131,5 +157,9 @@ const handleCancel = (e: FocusEvent) => {
     padding-bottom: 1px;
   }
 }
-
+.input-model__modal {
+  .arco-modal-body {
+    padding: 0;
+  }
+}
 </style>

@@ -1,13 +1,13 @@
 <template>
   <FlInputBoolean
-    v-if="dataType === 'boolean'"
+    v-if="dataType === DataTypeEnum.Boolean.value"
     :model-value="value"
     :is-disabled="isDisabled"
     @update:model-value="handleUpdate"
     @change="handleChange"
   />
   <FlInputText
-    v-else-if="dataType === 'text'"
+    v-else-if="dataType === DataTypeEnum.String.value"
     :model-value="value"
     :is-nullable="isNullable"
     :is-disabled="isDisabled"
@@ -21,12 +21,12 @@
     @blur="handleBlur"
     @clear="handleClear"
   />
-  <FlInputNumber v-else-if="dataType === 'number'"/>
-  <FlInputDate v-else-if="dataType === 'date'"/>
-  <FlInputEnum v-else-if="dataType === 'enum'"/>
-  <FlInputModel v-else-if="dataType === 'model'"/>
-  <FlInputJson v-else-if="dataType === 'json'"/>
-  <FlInputFile v-else-if="dataType === 'file'"/>
+  <FlInputNumber v-else-if="dataType === DataTypeEnum.Integer.value || dataType === DataTypeEnum.Float.value"/>
+  <FlInputDate v-else-if="dataType === DataTypeEnum.Date.value"/>
+  <FlInputEnum v-else-if="dataType === DataTypeEnum.Enum.value"/>
+  <FlInputModel v-else-if="dataType === DataTypeEnum.Model.value"/>
+  <FlInputJson v-else-if="dataType === DataTypeEnum.Json.value"/>
+  <FlInputFile v-else-if="dataType === DataTypeEnum.File.value"/>
   <FlInputBase v-else>{{value}}</FlInputBase>
 </template>
 
@@ -41,6 +41,7 @@ import FlInputEnum from "./FlInputEnum.vue";
 import FlInputModel from "./FlInputModel.vue";
 import FlInputJson from "./FlInputJson.vue";
 import FlInputFile from "./FlInputFile.vue";
+import DataTypeEnum from "../../enumerations/data_type_enum";
 
 const emits = defineEmits([
   'update:modelValue',
@@ -70,7 +71,9 @@ const props = withDefaults(defineProps<{
 
 const value = computed<any>(() => props.modelValue);
 
-const dataType = computed<string>(() => {
+const dataType = computed<number>(() => props.dataType);
+
+const dataTypes = computed<string>(() => {
   switch (props.dataType) {
     case 0:
       return 'boolean';

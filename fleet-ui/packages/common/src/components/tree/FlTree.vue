@@ -133,6 +133,13 @@ const onDrop = ({ dragNode, dropNode, dropPosition }) => {
     margin-bottom: 4px;
   }
 
+  .arco-input-search {
+    padding-left: 8px;
+    padding-right: 8px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+  }
+
   .arco-tree-node-title {
     padding: 3px 0;
   }

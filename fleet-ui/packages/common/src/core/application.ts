@@ -9,8 +9,8 @@ export function setModel(model: any): void {
   Application.model.set(model.fullName, model);
 }
 
-export function getModel(model: any): any {
-  return getModelByFullName(model.fullName);
+export function getModel(fullName: string): any {
+  return getModelByFullName(fullName);
 }
 
 export function getModelByFullName(fullName: string): any {
@@ -22,8 +22,8 @@ export function setEnumeration(enumeration: any): void {
   Application.enumeration.set(enumeration.fullName, enumeration);
 }
 
-export function getEnumeration(enumeration: any): any {
-  return getEnumerationByFullName(enumeration.fullName);
+export function getEnumeration(fullName: string): any {
+  return getEnumerationByFullName(fullName);
 }
 
 export function getEnumerationByFullName(fullName: string): any {

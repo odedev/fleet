@@ -1,6 +1,9 @@
 <template>
   <FlTableBox ref="table">
-    <FlTableHead v-if="false" v-model="selectedRows" :model="model" ></FlTableHead>
+<!--    <FlTableHead v-if="false" v-model="selectedRows" :model="model" ></FlTableHead>-->
+<!--    <div class="table-head">-->
+<!--      <h3>标题</h3>-->
+<!--    </div>-->
     <FlTableBody>
       <Table
         :data="data"

@@ -12,7 +12,7 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
-    "@arco-design/web-vue": "^2.46.0",
+    "@arco-design/web-vue": "^2.47.1",
     "@bytemd/plugin-breaks": "^1.21.0",
     "@bytemd/plugin-gemoji": "^1.21.0",
     "@bytemd/plugin-gfm": "^1.21.0",

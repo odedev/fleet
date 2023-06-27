@@ -38,7 +38,7 @@ const request = {
       throw err.response.data
     }
   },
-  async post(url, params) {
+  async post(url: string, params: any) {
     try {
       let res = await instance.post(url, params)
       return res.data
@@ -46,9 +46,9 @@ const request = {
       throw err.response.data
     }
   },
-  async postFormData(url, params) {
+  async postFormData(url: string, params: any) {
     const config = {
-      transformRequest: function (data, headers) {
+      transformRequest: function (data: any, headers: any) {
         let formData = new FormData()
         Object.keys(data).forEach(key => {
           let value = data[key]
@@ -64,12 +64,12 @@ const request = {
       throw err.response.data
     }
   },
-  async postFormUrlencoded(url, params) {
+  async postFormUrlencoded(url: string, params: any) {
     const config = {
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'
       },
-      transformRequest: function (data, headers) {
+      transformRequest: function (data: any, headers: any) {
         return qs.stringify(data, {arrayFormat: 'brackets'})
       },
     }

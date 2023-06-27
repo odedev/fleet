@@ -17,8 +17,8 @@ const handleClick = () => {
 .content {
   height: 28px;
   height: 32px;
-  //min-height: 32px;
   //height: 40px;
+  min-height: 28px;
   width: 336px;
   width: 272px;
   width: 100%;

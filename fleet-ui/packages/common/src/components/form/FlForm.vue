@@ -1,10 +1,10 @@
 <template>
 <form class="form">
-  <FlFormItem />
-  <FlFormItem />
-  <FlFormItem />
-  <FlFormItem />
-  <FlFormItem />
+  <FlFormItem :data-type="1"/>
+  <FlFormItem :data-type="1"/>
+  <FlFormItem :data-type="6"/>
+  <FlFormItem :data-type="0"/>
+  <FlFormItem :data-type="1"/>
 </form>
 </template>
 

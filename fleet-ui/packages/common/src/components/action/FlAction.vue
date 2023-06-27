@@ -12,6 +12,7 @@
   width: 100%;
   height: 100%;
   height: 64px;
+  height: 60px;
   display: flex;
   flex-direction: row;
   justify-content: flex-end;

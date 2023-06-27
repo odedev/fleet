@@ -12,7 +12,9 @@
 @mixin color-secondary() {
   color: var(--theme-color-secondary, $secondary);
 }
-
+@mixin color-neutral() {
+  color: var(--theme-color-neutral, $neutral);
+}
 @mixin color-success() {
   color: var(--theme-color-success, $success);
 }

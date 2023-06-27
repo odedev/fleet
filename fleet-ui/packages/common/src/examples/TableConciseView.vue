@@ -20,10 +20,10 @@ import {
   FlBlock, FlContent,
   FlTable, FlTableConcise, FlButton, FlSearch,
 } from '../components'
-import {getModel, getModelByFullName} from "@/core/application";
+import {useModel} from "@/composables/model";
 
-const model = getModelByFullName("dev.odes.fleet.module.system.model.UserModel");
-const userProfileModel = getModelByFullName("dev.odes.fleet.module.system.model.UserProfileModel");
+const model = useModel("dev.odes.fleet.module.system.model.UserModel");
+const userProfileModel = useModel("dev.odes.fleet.module.system.model.UserProfileModel");
 
 
 const datas = reactive([{

@@ -1,24 +1,23 @@
 <template>
   <section class="search">
     <div class="search-parameter">
-      <FlFormItem />
-      <FlFormItem />
+      <FlFormItem :data-type="1"/>
+      <FlFormItem :data-type="1"/>
 <!--      <FlFormItem />-->
-
     </div>
     <div class="search-action">
-      <FlButton>搜索</FlButton>
+      <FlButtonSearch />
       <FlButtonReset />
     </div>
   </section>
 </template>
 
 <script lang="ts" setup>
-import FlCell from "../table/FlTableCell.vue";
 import FlFormItem from "../form/FlFormItem.vue";
 import FlForm from "../form/FlForm.vue";
 
 import FlButton from "../button/FlButton.vue";
+import FlButtonSearch from "../button/FlButtonSearch.vue";
 import FlButtonReset from "../button/FlButtonReset.vue";
 
 </script>
@@ -30,6 +29,7 @@ import FlButtonReset from "../button/FlButtonReset.vue";
   display: flex;
   flex-direction: row;
   padding: 16px;
+  padding-bottom: 8px;
   overflow: hidden;
 
   .search-parameter {
@@ -47,7 +47,7 @@ import FlButtonReset from "../button/FlButtonReset.vue";
 
     overflow: auto;
     .item {
-      margin-bottom: 8px;
+      //margin-bottom: 8px;
     }
   }
   .search-action {

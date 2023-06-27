@@ -1,6 +1,10 @@
 import {copy} from './json_utils';
+import {getInitValue} from "./data_type_utils";
 
-
+/**
+ * 获取模型显示的字段
+ * @param model
+ */
 export function getDisplayFieldCode(model: any): string {
   let displayField = 'name';
 
@@ -31,4 +35,23 @@ export function getSearchableFields(model: any): any[] {
   // }
 
   return fields;
+}
+
+/**
+ * 获取模型的初始化值
+ * @param model
+ */
+export function getModelInitValue(model: any): any {
+  if (!model) {
+    return null;
+  }
+
+  let value: any = {};
+  for (const field of model.fields) {
+    const code = field.code;
+    const dataType = field.dataType;
+
+    value[code] = getInitValue(dataType);
+  }
+  return value;
 }
