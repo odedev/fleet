@@ -7,7 +7,7 @@ import logger from 'morgan';
 import rid from 'connect-rid';
 import favicon from 'serve-favicon';
 import httpErrors from 'http-errors';
-import {router} from "./module/index.js";
+import {router} from "./modules/index.js";
 
 // 执行命令的目录
 const __rootDirname = path.resolve();
@@ -27,7 +27,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(rid({headerName: 'X-RID'}));
 
-app.use(favicon(path.join(__rootDirname, 'public', 'favicon.ico')))
+app.use(favicon(path.join(__rootDirname, 'assets', 'favicon.ico')))
+app.use('/assets', express.static(path.join(__rootDirname, 'assets')));
 app.use('/public', express.static(path.join(__rootDirname, 'public')));
 
 app.use('', router);

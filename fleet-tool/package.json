@@ -6,14 +6,15 @@
   "type": "module",
   "scripts": {
     "start": "node main.js",
-    "dev": "node main.js",
-    "style": "npx tailwindcss -i ./src/style/main.css -o ./public/static/main.css --watch"
+    "dev": "npx nodemon main.js",
+    "style": "npx tailwindcss -i ./src/asset/main.css -o ./assets/main.css --watch"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "axios": "^1.4.0",
+    "change-case": "^4.1.2",
     "compression": "^1.7.4",
     "connect-rid": "^0.0.1",
     "connect-timeout": "^1.9.0",
@@ -36,10 +37,12 @@
     "sqlite3": "^5.1.6",
     "typeorm": "^0.3.16",
     "uuid": "^9.0.0",
-    "wait-on": "^7.0.1"
+    "wait-on": "^7.0.1",
+    "ws": "^8.13.0"
   },
   "devDependencies": {
     "@types/node": "^20.3.1",
+    "nodemon": "^2.0.22",
     "tailwindcss": "^3.3.2"
   }
 }

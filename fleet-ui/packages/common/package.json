@@ -39,6 +39,7 @@
     "@ckeditor/ckeditor5-vue": "^5.1.0",
     "axios": "^1.4.0",
     "bytemd": "^1.21.0",
+    "change-case": "^4.1.2",
     "crypto-js": "^4.1.1",
     "dayjs": "^1.11.7",
     "github-markdown-css": "^5.2.0",
