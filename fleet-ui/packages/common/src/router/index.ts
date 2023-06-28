@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
+import NotFoundView from '../views/NotFoundView.vue'
 
 import ContentView from '../examples/ContentView.vue'
 import InputView from '../examples/InputView.vue'
@@ -137,7 +138,12 @@ const router = createRouter({
       name: 'cell',
       component: CellView
     },
-
+    // 将匹配所有内容并将其放在 `$route.params.pathMatch` 下
+    {
+      path: '/:pathMatch(.*)*',
+      name: 'NotFound',
+      component: NotFoundView
+    },
   ]
 })
 

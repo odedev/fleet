@@ -12,7 +12,9 @@
     <div class="nav-action">
 <!--      <Tooltip :mini="true" content="设置"><IconSettings /></Tooltip>-->
       <Tooltip :mini="true" content="返回"><IconArrowLeft /></Tooltip>
-      <Tooltip :mini="true" content="刷新"><IconRefresh /></Tooltip>
+      <div class="nav-action__item" @click="onRefreshClick">
+        <Tooltip :mini="true" content="刷新"><IconRefresh /></Tooltip>
+      </div>
 <!--      <Tooltip :mini="true" content="帮助"><IconQuestionCircle /></Tooltip>-->
       <Tooltip :mini="true" content="文档" @click="onHelpClick"><IconBook /></Tooltip>
     </div>
@@ -30,9 +32,15 @@ import {Breadcrumb, BreadcrumbItem, Tooltip} from "@arco-design/web-vue";
 import {IconHome, IconArrowLeft, IconQuestionCircle, IconRefresh, IconBook, IconSettings} from "@arco-design/web-vue/es/icon";
 import FlDrawer from "../drawer/FlDrawer.vue";
 
+
+const onRefreshClick = () => {
+
+}
+
 const onHelpClick = () => {
 
 }
+
 </script>
 <style lang="scss">
 .nav {
