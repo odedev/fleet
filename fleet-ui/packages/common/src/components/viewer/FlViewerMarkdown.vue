@@ -1,5 +1,7 @@
 <template>
-  <Viewer class="markdown" :value="value" :plugins="plugins" :remark-rehype="config" />
+  <div class="viewer__markdown">
+    <Viewer :value="value" :plugins="plugins" :remark-rehype="config" />
+  </div>
 </template>
 
 <script lang="ts" setup>
@@ -13,7 +15,6 @@ import 'bytemd/dist/index.css';
 // import 'highlight.js/styles/default.css';
 import 'highlight.js/styles/atom-one-light.css';
 import 'github-markdown-css';
-
 
 const props = defineProps<{
   modelValue: any,
@@ -32,14 +33,13 @@ const config = {
   // lineNumbers: true
 }
 
-
-
 </script>
 
 <style lang="scss">
-.markdown {
+.viewer__markdown {
+  width: 100%;
   height: 100%;
-
+  overflow: auto;
   .bytemd {
     height: 100%;
 
