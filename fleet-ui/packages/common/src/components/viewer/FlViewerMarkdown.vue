@@ -11,6 +11,7 @@ import gfm from '@bytemd/plugin-gfm';
 import highlight from "@bytemd/plugin-highlight";
 import mermaid from '@bytemd/plugin-mermaid'
 import mediumZoom from "@bytemd/plugin-medium-zoom";
+import gemoji from '@bytemd/plugin-gemoji'
 import 'bytemd/dist/index.css';
 // import 'highlight.js/styles/default.css';
 import 'highlight.js/styles/atom-one-light.css';
@@ -27,6 +28,7 @@ const plugins = [
   highlight(),
   mermaid(),
   mediumZoom(),
+  gemoji(),
 ];
 
 const config = {

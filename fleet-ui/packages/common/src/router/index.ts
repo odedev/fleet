@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
+import RedirectView from '../views/RedirectView.vue'
 import NotFoundView from '../views/NotFoundView.vue'
 
 import ContentView from '../examples/ContentView.vue'
@@ -150,11 +151,12 @@ const router = createRouter({
     {
       path: '/redirect',
       name: 'Redirect',
-      redirect: to => {
-        // the function receives the target route as the argument
-        // we return a redirect path/location here.
-        return { path: to.query.path, query: {} }
-      },
+      component: RedirectView,
+      // redirect: to => {
+      //   // the function receives the target route as the argument
+      //   // we return a redirect path/location here.
+      //   return { path: to.query.path, query: {} }
+      // },
     },
     // 将匹配所有内容并将其放在 `$route.params.pathMatch` 下
     {

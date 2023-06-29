@@ -53,7 +53,8 @@ const onBackClick = () => {
 
 const onRefreshClick = () => {
   let path = route.path;
-  router.push(path);
+  // router.go(0);
+  // router.push(path);
   // router.replace(path);
   // router.replace(`/redirect?path=${path}`);
   console.log(path);
