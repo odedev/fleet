@@ -29,6 +29,8 @@ import CellView from '../examples/CellView.vue'
 import RichTextView from '../examples/RichTextView.vue'
 import MarkdownView from '../examples/MarkdownView.vue'
 
+import ViewerMarkdownView from "../examples/ViewerMarkdownView.vue";
+
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -137,6 +139,22 @@ const router = createRouter({
       path: '/cell',
       name: 'cell',
       component: CellView
+    },
+    {
+      path: '/ViewerMarkdown',
+      name: 'ViewerMarkdown',
+      component: ViewerMarkdownView
+    },
+
+    // 重定向刷新
+    {
+      path: '/redirect',
+      name: 'Redirect',
+      redirect: to => {
+        // the function receives the target route as the argument
+        // we return a redirect path/location here.
+        return { path: to.query.path, query: {} }
+      },
     },
     // 将匹配所有内容并将其放在 `$route.params.pathMatch` 下
     {

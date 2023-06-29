@@ -211,15 +211,15 @@ export const menus: any[] = [
   },
   {
     id: '1660898963689091130',
-    name: '数据组件',
+    name: '查看组件',
     path: '',
     parent: null,
     children: [],
   },
   {
     id: '1660898963689091131',
-    name: '表格',
-    path: '',
+    name: 'ViewerMarkdown',
+    path: '/ViewerMarkdown',
     parent: '1660898963689091130',
     children: [],
   },

@@ -6,7 +6,8 @@
           <Result status="404" subtitle="Whoops, that page is gone.">
             <template #extra>
               <Space>
-                <FlButton type="primary">Back</FlButton>
+                <FlButton type="neutral" @click="onBackClick">返回</FlButton>
+                <FlButton type="primary" @click="onHomeClick">首页</FlButton>
               </Space>
             </template>
           </Result>
@@ -16,12 +17,23 @@
   </FlView>
 </template>
 <script lang="ts" setup>
+import {useRouter} from "vue-router";
+import {Result, Space} from "@arco-design/web-vue";
+import "@arco-design/web-vue/es/result/style/index.css";
+import "@arco-design/web-vue/es/space/style/index.css";
 import {
-  FlHeader, FlBody, FlFooter, FlMenu, FlMain, FlNav, FlTab, FlPage,
-  FlView, FlViewAside, FlViewMain, FlViewNav, FlViewHead, FlViewBody,
-  FlBlock, FlBox, FlContent, FlTableCell, FlFormItem,
-  FlTable, FlButton, FlSearch, FlAction
+  FlView, FlViewMain, FlViewBody, FlBox, FlButton
 } from '../components/index.ts'
+
+const router = useRouter();
+
+const onBackClick = () => {
+  router.back();
+};
+
+const onHomeClick = () => {
+  router.replace("/");
+};
 
 </script>
 <style>
