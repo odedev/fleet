@@ -40,12 +40,6 @@ const config = {
   width: 100%;
   height: 100%;
   overflow: auto;
-  .bytemd {
-    height: 100%;
-
-    .bytemd-toolbar-right .bytemd-toolbar-icon[bytemd-tippy-path="5"] {
-      display: none;
-    }
-  }
+  padding: 16px;
 }
 </style>

@@ -1,16 +1,8 @@
 <template>
   <FlView>
     <FlViewMain>
-      <!--      <FlViewHead>-->
-      <!--        <FlAction>-->
-      <!--          <FlButton>保存</FlButton>-->
-      <!--          <FlButton>生成代码</FlButton>-->
-      <!--        </FlAction>-->
-      <!--      </FlViewHead>-->
       <FlViewBody>
-        <FlBlock>
-          <FlViewerMarkdown v-model="value"/>
-        </FlBlock>
+        <FlViewerMarkdown v-model="value"/>
       </FlViewBody>
     </FlViewMain>
   </FlView>
@@ -24,62 +16,62 @@ import {
   FlTable, FlButton, FlSearch, FlAction
 } from '../components'
 
-const value = `
+let value = `
 # fleet
 跑得快的;快速的
 
-## 参考
-+ [Apache Velocity](https://velocity.apache.org/)
-+ [MyBatis](https://mybatis.org/mybatis-3/index.html)
-+ [MyBatis](https://github.com/mybatis/mybatis-3)
-+ [vue](https://vuejs.org/)
+## Markdown Basic Syntax
+
+I just love **bold text**. Italicized text is the _cat's meow_. At the command prompt, type nano.
+
+My favorite markdown editor is [ByteMD](https://github.com/bytedance/bytemd).
+
+1. First item
+2. Second item
+3. Third item
+
+> Dorothy followed her through many of the beautiful rooms in her castle.
 
 
-## init
-\`\`\`sql
-CREATE DATABASE IF NOT EXISTS \`fleet\` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-CREATE DATABASE IF NOT EXISTS \`fleet\` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_bin;
-\`\`\`
+## GFM Extended Syntax
 
-\`\`\`text
+Automatic URL Linking: https://github.com/bytedance/bytemd
 
-dev.odes.fleet.develop.controller
-dev.odes.fleet.develop.service
-dev.odes.fleet.develop.repository
-dev.odes.fleet.develop.mapper
-dev.odes.fleet.develop.model
-dev.odes.fleet.develop.entity
-dev.odes.fleet.develop.enumeration
+~~The world is flat.~~ We now know that the world is round.
 
-dev.odes.fleet.develop.dto
+- [x] Write the press release
+- [ ] Update the website
+- [ ] Contact the media
 
-View
-ViewModel
-ViewMapper
-ViewController
-ViewRepository
-ViewService
-ViewTransform
+| Syntax    | Description |
+| --------- | ----------- |
+| Header    | Title       |
+| Paragraph | Text        |
 
-ViewMapper.xml
+## Footnotes
 
-view_create.sql
+Here's a simple footnote,[^1] and here's a longer one.[^bignote]
 
-TypeEnum
+[^1]: This is the first footnote.
+[^bignote]: Here's one with multiple paragraphs and code.
 
+    Indent paragraphs to include them in the footnote.
 
-abstract
-AbstractController
-AbstractService
-AbstractRepository
-AbstractEntity
-\`\`\`
+    Add as many paragraphs as you like.
 
+## Gemoji
 
-- [files icons](https://icons8.com/icon/set/files/color-glass)
+Thumbs up: :+1:, thumbs down: :-1:.
 
+Families: :family_man_man_boy_boy:
 
-`
+Long flags: :wales:, :scotland:, :england:.
+
+## Mermaid Diagrams
+
+`;
+
+value += "```mermaid \ngraph TD;\nA-->B;\nA-->C;\nB-->D;\nC-->D;\n```"
 
 </script>
 <style>
