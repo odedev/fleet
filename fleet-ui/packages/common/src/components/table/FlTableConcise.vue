@@ -17,6 +17,9 @@
         :row-selection="rowSelection"
         @row-click="handleRowClick"
         @cell-click="handleCellClick"
+        @select="handleSelect"
+        @selection-change="handleSelectionChange"
+        @select-all="handleSelectAll"
         :pagination="false"
         size="large"
       >
@@ -46,8 +49,11 @@ import FlTableBody from "./FlTableBody.vue";
 import FlTableFoot from "./FlTableFoot.vue";
 import FlContent from "../content/FlContent.vue";
 
+import type {TableRowSelection, TableData, TableColumnData} from "@arco-design/web-vue";
+
 const emits = defineEmits([
   'update:modelValue',
+  'update:selectionValue',
   'input',
   'change',
 ]);
@@ -55,40 +61,41 @@ const emits = defineEmits([
 const props = defineProps<{
   modelValue: any[],
   model: any,
-  data?: any[],
-  columns?: any[],
+  selectionValue?: any[],
+  selectionType?: 'none' | 'single' | 'multiple',
+  // data?: any[],
+  // columns?: any[],
   isShowHead?: boolean,
 }>();
 
 const table = ref(null);
 const value = ref('123');
 
-const rowSelection = ref({
-  // type: 'radio',
-  type: 'checkbox',
-  showCheckedAll: true,
-  onlyCurrent: false,
-});
-const selectedKeys = ref([])
-const selectedRows = ref([])
+const selectedKeys = ref<string[]>([]);
+const selectedRows = ref<any[]>([]);
 const fields = computed(() => props.model.fields);
 
-
-const columns = computed(() => {
-  let fields = props.columns || props.model.fields;
-  let columns = [];
-
-  for (let i = 0; i < fields.length; i++) {
-    let field = fields[i];
-    columns.push({
-      code: field.code,
-      name: field.name,
-      dataType: field.dataType,
-      width: field.width || 128,
-    });
+const rowSelection = computed<TableRowSelection | null>(() => {
+  if (props.selectionType === 'none') {
+    return null;
+  } else if (props.selectionType === 'single') {
+    return {
+      title: '#',
+      type: 'radio',
+      fixed: true,
+      showCheckedAll: true,
+      onlyCurrent: true,
+    }
+  } else if (props.selectionType === 'multiple') {
+    return {
+      type: 'checkbox',
+      fixed: true,
+      showCheckedAll: true,
+      onlyCurrent: false,
+    }
+  } else {
+    return null;
   }
-  columns[columns.length - 1].width = '';
-  return columns;
 });
 
 const data = computed(() => {
@@ -96,13 +103,21 @@ const data = computed(() => {
 });
 
 
-const handleRowClick = (row: never) => {
-  const id = row.id;
-  // selectedKeys.value = [id];
-  // selectedRows.value = [row];
+const handleRowClick = (row: TableData, e: Event) => {
+  const id = row?.id;
+  if (props.selectionType === 'none') {
+    return;
+  }
+
+  if (props.selectionType === 'single') {
+    selectedKeys.value = [id];
+    selectedRows.value = [row];
+    return;
+  }
+
   if (!selectedKeys.value.includes(id)) {
-    selectedKeys.value.push(id)
-    selectedRows.value.push(row)
+    selectedKeys.value.push(id);
+    selectedRows.value.push(row);
   } else {
     selectedKeys.value.splice(selectedKeys.value.indexOf(id), 1);
   }
@@ -110,15 +125,30 @@ const handleRowClick = (row: never) => {
   console.log(row);
   console.log(selectedKeys.value)
 
-  emits('update:modelValue', unref(selectedRows));
+  emits('update:selectionValue', unref(selectedRows));
 };
 
-const handleCellClick = (row, column) => {
+const handleCellClick = (row: TableData, column: TableColumnData, e: Event) => {
   console.log(row, column)
 }
 
+const handleSelect = (rowKeys: string | number[], rowKey: string | number, row: TableData) => {
+  console.log(rowKeys, rowKey, row)
+}
+
+const handleSelectionChange = (rowKeys: (string | number)[]) => {
+  console.log(rowKeys);
+}
+
+const handleSelectAll = (checked: boolean) => {
+  console.log(checked)
+}
+
+
+
 onMounted(() => {
-  console.log(table.value.clientHeight)
+  const tableEl = table.value as unknown as HTMLDivElement;
+  console.log(tableEl?.clientHeight)
 })
 </script>
 

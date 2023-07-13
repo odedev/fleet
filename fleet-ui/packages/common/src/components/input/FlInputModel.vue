@@ -28,12 +28,12 @@
   >
     <FlView>
       <FlViewMain>
-        <FlViewHead>
-          <FlSearch></FlSearch>
-        </FlViewHead>
+<!--        <FlViewHead>-->
+<!--          <FlSearch></FlSearch>-->
+<!--        </FlViewHead>-->
         <FlViewBody>
           <FlBlock>
-            <FlTableConcise v-model="rows" :model="props.model" />
+            <FlTableConcise v-model="rows" :model="props.model" selection-type="single"/>
           </FlBlock>
         </FlViewBody>
       </FlViewMain>

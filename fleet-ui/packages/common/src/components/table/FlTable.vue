@@ -18,7 +18,7 @@
         :column-resizable="true"
         :sticky-header="10"
         :bordered="{cell:true}"
-        :draggable="{ type: 'handle', width: 40 }"
+        :draggable="draggable"
         :pagination="false">
           <template #columns>
             <TableColumn title="name" :width="208">
@@ -87,6 +87,7 @@ const props = defineProps<{
   isEditable?: boolean,
   isNullable?: boolean,
   isDisabled?: boolean,
+  isDraggable?: boolean,
 }>();
 
 const isEditable = computed<boolean>(() => props.isEditable);
@@ -98,6 +99,15 @@ const operationColumnWidth = computed<number>(() => {
   }
 });
 
+const draggable = computed(() => {
+  if (props.isDraggable) {
+    return {
+      type: 'handle',
+      width: 40
+    }
+  }
+  return;
+})
 const columns = [
   {
     title: 'Name',

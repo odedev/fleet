@@ -6,7 +6,7 @@
       </FlViewHead>
       <FlViewBody>
         <FlBlock>
-          <FlTableConcise :model-value="datas" :model="userProfileModel" is-show-head></FlTableConcise>
+          <FlTableConcise :model-value="datas" :model="userProfileModel" selection-type="multiple" is-show-head></FlTableConcise>
         </FlBlock>
       </FlViewBody>
     </FlViewMain>
