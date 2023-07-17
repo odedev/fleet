@@ -40,7 +40,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, reactive, unref, computed, onMounted } from 'vue';
+import { ref, reactive, unref, computed, watch, watchEffect, onMounted } from 'vue';
 import {Table, TableColumn} from "@arco-design/web-vue";
 import '@arco-design/web-vue/es/table/style/css.js';
 import FlTableBox from "./FlTableBox.vue";
@@ -65,7 +65,7 @@ const props = defineProps<{
   selectionType?: 'none' | 'single' | 'multiple',
   // data?: any[],
   // columns?: any[],
-  isShowHead?: boolean,
+  // isShowHead?: boolean,
 }>();
 
 const table = ref(null);
@@ -74,6 +74,18 @@ const value = ref('123');
 const selectedKeys = ref<string[]>([]);
 const selectedRows = ref<any[]>([]);
 const fields = computed(() => props.model.fields);
+
+// watch(
+//   () => props.selectionValue,
+//   value => {
+//     if (value) {
+//       selectedRows.value = props.selectionValue || [];
+//       selectedKeys.value = props.selectionValue?.map(item => {
+//         return item.id
+//       }) || [];
+//     }
+//   }
+// )
 
 const rowSelection = computed<TableRowSelection | null>(() => {
   if (props.selectionType === 'none') {
@@ -112,20 +124,20 @@ const handleRowClick = (row: TableData, e: Event) => {
   if (props.selectionType === 'single') {
     selectedKeys.value = [id];
     selectedRows.value = [row];
-    return;
   }
 
-  if (!selectedKeys.value.includes(id)) {
-    selectedKeys.value.push(id);
-    selectedRows.value.push(row);
-  } else {
-    selectedKeys.value.splice(selectedKeys.value.indexOf(id), 1);
+  if (props.selectionType === 'multiple') {
+    if (!selectedKeys.value.includes(id)) {
+      selectedKeys.value.push(id);
+      selectedRows.value.push(row);
+    } else {
+      selectedKeys.value.splice(selectedKeys.value.indexOf(id), 1);
+    }
   }
-
-  console.log(row);
+  console.log(selectedRows.value);
   console.log(selectedKeys.value)
 
-  emits('update:selectionValue', unref(selectedRows));
+  emits('update:selectionValue', selectedRows.value);
 };
 
 const handleCellClick = (row: TableData, column: TableColumnData, e: Event) => {

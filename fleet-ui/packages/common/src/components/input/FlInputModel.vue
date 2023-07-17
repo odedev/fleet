@@ -33,7 +33,7 @@
 <!--        </FlViewHead>-->
         <FlViewBody>
           <FlBlock>
-            <FlTableConcise v-model="rows" :model="props.model" selection-type="single"/>
+            <FlTableConcise v-model="rows" :model="props.model" v-model:selection-value="selectionValue" selection-type="single"/>
           </FlBlock>
         </FlViewBody>
       </FlViewMain>
@@ -76,11 +76,10 @@ let props = withDefaults(defineProps<{
   isReadonly?: boolean,
   isInvalid?: boolean,
   autofocus?: boolean,
-  data?: any[],
-  // models: any[],
-  columns?: any[],
+  models?: any[],
+  // data?: any[],
+  // columns?: any[],
   // module?: string,
-
 }>(), {
   isNullable: true,
   isDisabled: false,
@@ -89,6 +88,10 @@ let props = withDefaults(defineProps<{
   autofocus: false,
 });
 
+const selectionValue = ref([]);
+const visible = ref(false);
+
+
 const value = computed<any>(() => {
   return props.displayField ? props.modelValue[props.displayField] : props.modelValue?.name || props.modelValue;
 });
@@ -96,8 +99,7 @@ const value = computed<any>(() => {
 const modelName = computed(() => {
   return props.model.name;
 })
-const visible = ref(false);
-const rows = props.data;
+const rows = props.models;
 
 console.log(props.model)
 
@@ -111,10 +113,6 @@ const handleFocus = (e: FocusEvent) => {
 
 const handleClick = () => {
   visible.value = true;
-  // Modal.open({
-  //   title: 'Info Title',
-  //   content: () => h('div', {class: 'info-modal-content'}, 'This is an nest info message')
-  // })
 };
 
 const handleClear = (e: MouseEvent) => {
@@ -125,10 +123,9 @@ const handleClear = (e: MouseEvent) => {
 };
 
 const handleOk = () => {
-  let datas = unref(rows);
-  let value = datas.length ? datas[0] : null;
+  let value = selectionValue.value.length ? selectionValue.value[0] : null;
+  console.log(selectionValue.value);
   emits('update:modelValue', value);
-  console.log(value)
 };
 
 const handleCancel = (e: FocusEvent) => {
