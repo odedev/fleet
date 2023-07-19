@@ -15,13 +15,13 @@
       </FlViewHead>
       <FlViewBody>
         <FlBox>
-          <FlFormItem></FlFormItem>
-          <FlFormItem></FlFormItem>
-          <FlFormItem>
+          <FlFormItem :data-type="1"></FlFormItem>
+          <FlFormItem :data-type="1"></FlFormItem>
+          <FlFormItem :data-type="1">
           </FlFormItem>
-          <FlFormItem>
+          <FlFormItem :data-type="1">
           </FlFormItem>
-          <FlFormItem>
+          <FlFormItem :data-type="1">
           </FlFormItem>
         </FlBox>
         <!--        <FlBox>-->

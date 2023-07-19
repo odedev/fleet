@@ -87,6 +87,11 @@
   background-color: var($surface, --theme-surface);
 }
 
+@mixin surface-variant-color() {
+  color: $on-surface-variant;
+  background-color: var($surface, --theme-surface);
+}
+
 @mixin color-primary-theme() {
   @include color-primary();
 

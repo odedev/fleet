@@ -8,7 +8,7 @@
         </svg>
       </strong>
       <label class="item-label__title">名称</label>
-      <span v-if="false" class="item-label__tip">
+      <span class="item-label__tip">
         <Tooltip :mini="true" content="文档"><IconQuestionCircle /></Tooltip>
       </span>
     </div>
@@ -128,7 +128,7 @@ const dataType = computed<any>(() => props.dataType);
       margin-right: 6px;
       .arco-icon {
         //color: #c9cdd4;
-        @include color-neutral();
+        @include surface-variant-color();
       }
     }
 

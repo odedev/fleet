@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import RedirectView from '../views/RedirectView.vue'
 import NotFoundView from '../views/NotFoundView.vue'
+import ComponentView from "../views/ComponentView.vue";
 
 import ContentView from '../examples/ContentView.vue'
 import InputView from '../examples/InputView.vue'
@@ -147,6 +148,12 @@ const router = createRouter({
       component: ViewerMarkdownView
     },
 
+    // 动态组件
+    {
+      path: '/Component',
+      name: 'Component',
+      component: ComponentView
+    },
     // 重定向刷新
     {
       path: '/redirect',
