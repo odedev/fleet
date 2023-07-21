@@ -38,6 +38,7 @@
     <module>fleet-mysql</module>
     <module>fleet-redis</module>
     <module>fleet-develop</module>
+    <module>fleet-bpmn</module>
   </modules>
 
   <dependencies>
