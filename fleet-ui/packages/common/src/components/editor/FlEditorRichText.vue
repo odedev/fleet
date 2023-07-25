@@ -10,7 +10,7 @@ import { ClassicEditor } from '@ckeditor/ckeditor5-editor-classic';
 import { EditorUI } from '@ckeditor/ckeditor5-ui';
 import { Heading, HeadingButtonsUI } from '@ckeditor/ckeditor5-heading';
 import { Essentials } from '@ckeditor/ckeditor5-essentials';
-import { Bold, Italic } from '@ckeditor/ckeditor5-basic-styles';
+import { Bold, Code, Italic, Strikethrough, Subscript, Superscript, Underline } from '@ckeditor/ckeditor5-basic-styles';
 import { Link, LinkImage } from '@ckeditor/ckeditor5-link';
 import { Paragraph, ParagraphButtonUI } from '@ckeditor/ckeditor5-paragraph';
 import { Font } from '@ckeditor/ckeditor5-font';
@@ -19,11 +19,25 @@ import { CodeBlock } from '@ckeditor/ckeditor5-code-block';
 import { Highlight } from '@ckeditor/ckeditor5-highlight';
 import { Indent, IndentBlock } from '@ckeditor/ckeditor5-indent';
 import { HorizontalLine } from '@ckeditor/ckeditor5-horizontal-line';
-import { Image, ImageCaption, ImageResize, ImageStyle, ImageToolbar } from '@ckeditor/ckeditor5-image';
+import { Image, ImageInsert, ImageCaption, ImageResize, ImageStyle, ImageToolbar } from '@ckeditor/ckeditor5-image';
 import { Undo } from '@ckeditor/ckeditor5-undo';
 import { Alignment } from '@ckeditor/ckeditor5-alignment';
 import { Style } from '@ckeditor/ckeditor5-style';
 import { GeneralHtmlSupport } from '@ckeditor/ckeditor5-html-support';
+import { FindAndReplace } from '@ckeditor/ckeditor5-find-and-replace';
+import { List, TodoList } from '@ckeditor/ckeditor5-list';
+import { SourceEditing } from '@ckeditor/ckeditor5-source-editing';
+import { Markdown } from '@ckeditor/ckeditor5-markdown-gfm';
+import { MediaEmbed } from '@ckeditor/ckeditor5-media-embed';
+import { HtmlEmbed } from '@ckeditor/ckeditor5-html-embed';
+import { Clipboard } from '@ckeditor/ckeditor5-clipboard';
+import { BlockQuote } from '@ckeditor/ckeditor5-block-quote';
+import { PageBreak } from '@ckeditor/ckeditor5-page-break';
+import { TextPartLanguage } from '@ckeditor/ckeditor5-language';
+import { ShowBlocks } from '@ckeditor/ckeditor5-show-blocks';
+import { RemoveFormat } from '@ckeditor/ckeditor5-remove-format';
+
+import { StandardEditingMode } from '@ckeditor/ckeditor5-restricted-editing';
 
 const Editor = CKEditor.component;
 
@@ -41,6 +55,7 @@ const config = ref({
     TableCaption,
     Bold,
     Italic,
+    Underline, Strikethrough, Code, Subscript, Superscript,
     Font,
     Link,
     Alignment,
@@ -51,39 +66,95 @@ const config = ref({
     Indent,
     IndentBlock,
     HorizontalLine,
-    Image, ImageToolbar, ImageCaption, ImageStyle, ImageResize, LinkImage,
+    Image, ImageInsert, ImageToolbar, ImageCaption, ImageStyle, ImageResize, LinkImage,
     Undo,
     Style,
     GeneralHtmlSupport,
+    FindAndReplace,
+    List,
+    TodoList,
+    SourceEditing,
+    Markdown,
+    MediaEmbed,
+    HtmlEmbed,
+    Clipboard,
+    BlockQuote,
+    PageBreak,
+    TextPartLanguage,
+    ShowBlocks,
+    RemoveFormat,
+
+    StandardEditingMode,
   ],
-  toolbar: [
-    'undo',
-    'redo',
-    'heading',
-    'bold',
-    'italic',
-    'fontSize',
-    'fontFamily',
-    'fontColor',
-    'fontBackgroundColor',
-    'alignment',
-    '|',
-    'insertTable',
-    'link',
-    'highlight',
-    'codeBlock',
-    'outdent',
-    'indent',
-    'horizontalLine',
-    'imageStyle:block',
-    'imageStyle:side',
-    '|',
-    'toggleImageCaption',
-    'imageTextAlternative',
-    '|',
-    'linkImage',
-    'style',
-  ],
+  toolbar: {
+    items: [
+      'undo',
+      'redo',
+      '|',
+      'sourceEditing',
+      'findAndReplace',
+      'selectAll',
+      '|',
+      'heading',
+      // 'style',
+      '|',
+      'bold',
+      'italic',
+      'underline',
+      'strikethrough',
+      'code',
+      'subscript',
+      'superscript',
+      'removeFormat',
+      '|',
+
+      'bulletedList',
+      'numberedList',
+      'todoList',
+      '|',
+
+      'fontSize',
+      'fontFamily',
+      'fontColor',
+      'fontBackgroundColor',
+      'highlight',
+      '|',
+      'alignment',
+      '|',
+
+      '-', // break point
+
+      // 'linkImage',
+      'link',
+      'insertImage',
+      'blockQuote',
+      'insertTable',
+      'mediaEmbed',
+      'codeBlock',
+      'htmlEmbed',
+      'restrictedEditingException',
+      '|',
+
+      'outdent',
+      'indent',
+      '|',
+      'specialCharacters',
+      'horizontalLine',
+      'pageBreak',
+      '|',
+      'textPartLanguage',
+      '|',
+
+      'imageToolbar',
+      'imageStyle:block',
+      'imageStyle:side',
+      '|',
+      'toggleImageCaption',
+      'imageTextAlternative',
+      '|',
+    ],
+    shouldNotGroupWhenFull: false
+  },
   table: {
     contentToolbar: [ 'tableColumn', 'tableRow', 'mergeTableCells', 'toggleTableCaption' ]
   },
