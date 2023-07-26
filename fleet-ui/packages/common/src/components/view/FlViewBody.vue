@@ -6,6 +6,8 @@
 <script setup>
 </script>
 <style lang="scss">
+@use "../../assets/mixin" as *;
+
 .view-body {
   height: 100%;
   flex-grow: 1;
@@ -16,5 +18,6 @@
   overflow: auto;
   overflow: overlay;
   padding: 0;
+  //@include background-color();
 }
 </style>

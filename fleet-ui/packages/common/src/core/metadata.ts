@@ -16,6 +16,9 @@ export function getModel(fullName: string): any {
 
 export function getModelByFullName(fullName: string): any {
   const model = Metadata.model.get(fullName);
+  if (!model) {
+    return null
+  }
   return copy(model);
 }
 
@@ -29,5 +32,8 @@ export function getEnumeration(fullName: string): any {
 
 export function getEnumerationByFullName(fullName: string): any {
   const enumeration = Metadata.enumeration.get(fullName);
+  if (!enumeration) {
+    return null
+  }
   return copy(enumeration);
 }

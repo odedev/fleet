@@ -35,7 +35,7 @@
 import {
   FlHeader, FlBody, FlFooter, FlMenu, FlMain, FlNav, FlTab, FlPage,
   FlView, FlViewAside, FlViewMain, FlViewNav, FlViewHead, FlViewBody,
-  FlBlock, FlBox, FlForm, FlFormItem, FlInputBoolean, FlInputPassword,
+  FlBlock, FlBox, FlSpace, FlForm, FlFormItem, FlInputBoolean, FlInputPassword,
   FlTable, FlButtonSave, FlButtonReset, FlSearch, FlAction
 } from '../components'
 

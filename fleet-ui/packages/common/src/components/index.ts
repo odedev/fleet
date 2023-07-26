@@ -16,6 +16,7 @@ import FlViewBody from './view/FlViewBody.vue';
 
 import FlBlock from "./block/FlBlock.vue";
 import FlBox from "./box/FlBox.vue";
+import FlSpace from "./space/FlSpace.vue";
 
 import FlContent from "./content/FlContent.vue";
 import FlContentBase from "./content/FlContentBase.vue";
@@ -96,7 +97,7 @@ export {
 
   FlBlock,
   FlBox,
-
+  FlSpace,
 
   FlContent,
   FlContentBase,

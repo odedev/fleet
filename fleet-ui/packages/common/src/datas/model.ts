@@ -1,4 +1,4 @@
-import {setModel} from "../core/application";
+import {setModel} from "../core/metadata";
 
 const UserModel = {
   id: "1665926265829355520",
