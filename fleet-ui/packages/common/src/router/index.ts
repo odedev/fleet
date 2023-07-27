@@ -30,6 +30,7 @@ import TreeView from '../examples/TreeView.vue'
 import CellView from '../examples/CellView.vue'
 import RichTextView from '../examples/RichTextView.vue'
 import MarkdownView from '../examples/MarkdownView.vue'
+import CodeView from '../examples/CodeView.vue'
 
 import ViewerMarkdownView from "../examples/ViewerMarkdownView.vue";
 
@@ -86,6 +87,11 @@ const router = createRouter({
       path: '/Markdown',
       name: 'Markdown',
       component: MarkdownView
+    },
+    {
+      path: '/Code',
+      name: 'Code',
+      component: CodeView
     },
     {
       path: '/LayoutFormView',

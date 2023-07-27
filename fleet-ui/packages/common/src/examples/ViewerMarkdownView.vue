@@ -2,7 +2,9 @@
   <FlView>
     <FlViewMain>
       <FlViewBody>
-        <FlViewerMarkdown v-model="value"/>
+        <FlViewer>
+          <FlViewerMarkdown v-model="value"/>
+        </FlViewer>
       </FlViewBody>
     </FlViewMain>
   </FlView>
@@ -12,7 +14,7 @@ import {
   FlHeader, FlBody, FlFooter, FlMenu, FlMain, FlNav, FlTab, FlPage,
   FlView, FlViewAside, FlViewMain, FlViewNav, FlViewHead, FlViewBody,
   FlBlock, FlBox, FlContent, FlContentText, FlContentNumber,
-  FlFormItem, FlEditorRichText, FlEditorMarkdown, FlViewerMarkdown,
+  FlFormItem, FlEditorRichText, FlEditorMarkdown, FlViewer, FlViewerMarkdown,
   FlTable, FlButton, FlSearch, FlAction
 } from '../components'
 

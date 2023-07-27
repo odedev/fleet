@@ -18,7 +18,7 @@
           <FlContentModel :model-value="user" display-field="username"/>
           <FlContentFile :model-value="resourceFile"/>
         </FlBox>
-        <FlBlock>
+        <FlBlock title="文本内容标题">
           <FlContent :model-value="true" :data-type="0"/>
           <FlContent model-value="文本内容显示文本内容显示文本内容显示文本内容显示" :data-type="1"/>
           <FlContent model-value="文本内容显示文本内容显示文本内容显示文本内容显示" :data-type="2"/>

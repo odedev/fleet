@@ -15,6 +15,7 @@
 <script lang="ts" setup>
 import {computed} from "vue";
 import {Tooltip} from '@arco-design/web-vue';
+import '@arco-design/web-vue/es/tooltip/style/css.js';
 import FlContentBase from "./FlContentBase.vue";
 
 const props = defineProps<{

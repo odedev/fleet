@@ -57,36 +57,9 @@ const config = ref({
     GeneralHtmlSupport,
   ],
   toolbar: [
-    'undo',
-    'redo',
-    'heading',
-    'bold',
-    'italic',
-    'fontSize',
-    'fontFamily',
-    'fontColor',
-    'fontBackgroundColor',
-    'alignment',
-    '|',
-    'insertTable',
-    'link',
-    'highlight',
-    'codeBlock',
-    'outdent',
-    'indent',
-    'horizontalLine',
-    'imageStyle:block',
-    'imageStyle:side',
-    '|',
-    'toggleImageCaption',
-    'imageTextAlternative',
-    '|',
-    'linkImage',
-    'style',
+
   ],
-  table: {
-    contentToolbar: [ 'tableColumn', 'tableRow', 'mergeTableCells', 'toggleTableCaption' ]
-  },
+
   style: {
     definitions: [
       // Styles definitions.

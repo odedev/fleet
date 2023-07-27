@@ -68,6 +68,9 @@ async function handleUpload(files) {
     .bytemd-toolbar-right .bytemd-toolbar-icon[bytemd-tippy-path="5"] {
       display: none;
     }
+    .CodeMirror-gutters {
+      //border-right: none;
+    }
   }
 }
 </style>

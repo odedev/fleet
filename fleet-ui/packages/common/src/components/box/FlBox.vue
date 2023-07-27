@@ -1,15 +1,21 @@
+<script lang="ts" setup>
+import {computed} from "vue";
+
+const props = defineProps<{
+  title?: string,
+}>();
+
+const title = computed<string | undefined>(() => props.title);
+</script>
+
 <template>
   <section class="box">
-    <h3 class="box-title">表单</h3>
-    <div class="box-content">
+    <h3 v-if="!!title" class="box__title">{{title}}</h3>
+    <div class="box__content">
       <slot></slot>
     </div>
   </section>
 </template>
-
-<script lang="ts" setup>
-
-</script>
 
 <style lang="scss">
 .box {
@@ -25,15 +31,15 @@
   align-content: flex-start;
   padding: 16px;
 
-  .box-title {
+  .box__title {
     width: 100%;
     padding-bottom: 8px;
-    font-size: 18px;
+    font-size: 16px;
     line-height: 1;
     font-weight: 600;
     display: none;
   }
-  .box-content {
+  .box__content {
     width: 100%;
     display: flex;
     flex-direction: row;

@@ -68,7 +68,9 @@ import FlTree from "./tree/FlTree.vue";
 
 import FlEditorMarkdown from "./editor/FlEditorMarkdown.vue";
 import FlEditorRichText from "./editor/FlEditorRichText.vue";
+import FlEditorCode from "./editor/FlEditorCode.vue";
 
+import FlViewer from "./viewer/FlViewer.vue";
 import FlViewerMarkdown from "./viewer/FlViewerMarkdown.vue";
 import FlViewerRichText from "./viewer/FlViewerRichText.vue";
 
@@ -148,8 +150,10 @@ export {
   FlEditorMarkdown,
   FlEditorRichText,
 
+  FlViewer,
   FlViewerMarkdown,
   FlViewerRichText,
+  FlEditorCode,
 
   FlLoading,
 

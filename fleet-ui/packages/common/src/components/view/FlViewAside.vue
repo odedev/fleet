@@ -30,7 +30,7 @@ import FlTree from '../tree/FlTree.vue'
 
   .view-aside-title {
     padding: 8px;
-    padding-bottom: 6px;
+    padding-bottom: 0px;
     font-size: 18px;
     line-height: 1;
     h3 {
