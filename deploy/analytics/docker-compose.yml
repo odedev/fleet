@@ -1,0 +1,45 @@
+services:
+
+  doris-fe:
+    image: apache/doris:2.0.0_alpha-fe-x86_64
+    environment:
+      - FE_SERVERS=fe1:${当前机器的内网IP}:9010
+      - FE_ID=1
+    volumes:
+      - ./doris-fe/doris-meta:/opt/apache-doris/fe/doris-meta
+      - ./doris-fe/log:/opt/apache-doris/fe/log
+    ports:
+      - "8030:8030"
+      - "9030:9030"
+    hostname: doris-fe
+    networks:
+      - net
+    privileged: true
+    restart: always
+    user: root
+
+  doris-be:
+    image: apache/doris:2.0.0_alpha-be-x86_64
+    environment:
+      - FE_SERVERS=fe1:${当前机器的内网IP}:9010
+      - BE_ADDR=${当前机器的内网IP}:9050
+    volumes:
+      - ./doris-be/storage:/opt/apache-doris/be/storage
+      - ./doris-be/log:/opt/apache-doris/be/log
+    ports:
+      - 8040:8040
+    hostname: doris-be
+    networks:
+      - net
+    privileged: true
+    restart: always
+    user: root
+    depends_on:
+      - doris-fe
+
+networks:
+  net:
+    ipam:
+      driver: default
+      config:
+        - subnet: 10.10.0.0/24
