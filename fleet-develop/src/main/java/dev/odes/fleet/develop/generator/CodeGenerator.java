@@ -101,8 +101,7 @@ public class CodeGenerator {
             if (templateFile == null) {
                 continue;
             }
-            System.out.println(path);
-//            write(velocityContext, templateFile, path);
+            write(velocityContext, templateFile, path);
         }
     }
 

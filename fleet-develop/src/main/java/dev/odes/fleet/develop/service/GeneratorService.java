@@ -22,6 +22,9 @@ public class GeneratorService {
     public Object generate(String moduleId) {
 
         ModuleModel module = this.moduleService.findOneById(moduleId);
+        if (module == null) {
+            throw new RuntimeException("该模块不存在！");
+        }
         List<ModelModel> models = this.modelService.findManyById("module", moduleId);
 
         CodeGenerator.generate(module, models);
