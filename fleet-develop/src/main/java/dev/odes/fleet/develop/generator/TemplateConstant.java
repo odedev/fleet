@@ -21,6 +21,7 @@ public class TemplateConstant {
     public static final String ROOT_PACKAGE = "dev.odes.fleet";
 
     public static final String MODULE_TARGET_POM = "pom.xml";
+    public static final String MODULE_TARGET_PACKAGE = "package.json";
 
     public static final String MODEL_TARGET_ENTITY = ".java";
     public static final String MODEL_TARGET_MODEL = "Model.java";

@@ -1,6 +1,6 @@
 #set($moduleCode = $templateContext.module.code.toLowerCase())
 #set($modelCode = $templateContext.model.code)
-#set($modelFields = $templateContext.model.modelFields)
+#set($modelFields = $templateContext.model.fields)
 package dev.odes.fleet.module.${moduleCode}.entity;
 
 import dev.odes.fleet.common.entity.AbstractEntity;
@@ -13,22 +13,9 @@ public class ${modelCode} extends AbstractEntity {
     #end
     #set($i = 1)
     #foreach($i in [1..8])
-    private String extensionSegment${i};
+    private String extSeg${i};
     #end
 
-    #foreach($field in $modelFields)
-    #set($fieldCode = $field.code)
-    #set($fieldCodeUpperCamel = $templateContext.upperCamel($fieldCode))
-    #set($type = $templateContext.getEntityFieldType($field))
-    public $type get${fieldCodeUpperCamel}() {
-        return $fieldCode;
-    }
-
-    public void set${fieldCodeUpperCamel}($type ${fieldCode}) {
-        this.${fieldCode} = ${fieldCode};
-    }
-
-    #end
     @Override
     public String getId() {
         return this.id;
@@ -38,4 +25,29 @@ public class ${modelCode} extends AbstractEntity {
     public void setId(String id) {
         this.id = id;
     }
+
+    #foreach($field in $modelFields)
+    #set($fieldCode = $field.code)
+    #set($fieldCodeUpperCamel = $templateContext.upperCamel($fieldCode))
+    #set($type = $templateContext.getEntityFieldType($field))
+    public $type get${fieldCodeUpperCamel}() {
+        return this.$fieldCode;
+    }
+
+    public void set${fieldCodeUpperCamel}($type ${fieldCode}) {
+        this.${fieldCode} = ${fieldCode};
+    }
+
+    #end
+    #set($i = 1)
+    #foreach($i in [1..8])
+    public String getExtSeg${i}() {
+        return this.extSeg${i};
+    }
+
+    public void setExtSeg${i}(String extSeg${i}) {
+        this.extSeg${i} = extSeg${i};
+    }
+
+    #end
 }

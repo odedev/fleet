@@ -2,6 +2,7 @@
 #set($modelCode = $templateContext.model.code)
 #set($modelCodeLowerCamel = $templateContext.lowerCamel($templateContext.model.code))
 #set($modelCodeLowerUnderscore = $templateContext.lowerUnderscore($templateContext.model.code))
+#set($modelFields = $templateContext.model.fields)
 package dev.odes.fleet.module.${moduleCode}.model;
 
 import dev.odes.fleet.common.model.AbstractModel;

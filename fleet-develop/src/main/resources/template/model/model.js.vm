@@ -1,15 +1,17 @@
 #set($moduleCode = $templateContext.module.code.toLowerCase())
+#set($moduleName = $templateContext.module.name)
 #set($modelCode = $templateContext.model.code)
 #set($modelName = $templateContext.model.name)
 #set($modelCodeLowerCamel = $templateContext.lowerCamel($templateContext.model.code))
 #set($modelCodeLowerUnderscore = $templateContext.lowerUnderscore($templateContext.model.code))
+#set($modelFields = $templateContext.model.fields)
 import {setModel} from "../core/metadata";
 
 const ${modelCode}Model = {
   code: "${modelCode}",
   name: "${modelName}",
-  fullName: "dev.odes.fleet.module.system.model.UserModel",
-  description: null,
+  fullName: "dev.odes.fleet.module.${moduleCode}.model.${modelCode}Model",
+  description: "",
   fields: [
     #foreach($field in $modelFields)
     #set($fieldCode = $field.code)
@@ -40,14 +42,13 @@ const ${modelCode}Model = {
     },
     #end
     #end
-
   ],
   module: {
-    id: "1665926009322500100",
-    code: "system",
-    name: "系统管理",
+    code: "${moduleCode}",
+    name: "${moduleName}",
     description: "",
     storageType: 0
   },
 }
 
+setModel(${modelCode}Model);

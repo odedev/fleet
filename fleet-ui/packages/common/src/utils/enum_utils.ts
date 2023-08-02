@@ -22,7 +22,7 @@ export function transform(enumeration: any): any {
 
   let enumData = {}
   enumeration.values.forEach((item: any) => {
-    enumData[item.code || ''] = {
+    enumData[item.code] = {
       value: item.value,
       name: item.name,
     }

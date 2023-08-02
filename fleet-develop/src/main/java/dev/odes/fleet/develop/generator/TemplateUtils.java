@@ -12,6 +12,10 @@ public class TemplateUtils {
         TemplateConstant.MODULE_TARGET_POM
     };
 
+    public static final String[] MODULE_UI_FILES = {
+        TemplateConstant.MODULE_TARGET_PACKAGE
+    };
+
     public static final String[] MODEL_JAVA_FILES = {
         TemplateConstant.MODEL_TARGET_ENTITY,
         TemplateConstant.MODEL_TARGET_MODEL,
@@ -41,6 +45,7 @@ public class TemplateUtils {
     public static final Map<String, String> TEMPLATE_FILE = new HashMap<>(
         Map.ofEntries(
             new AbstractMap.SimpleEntry<>(TemplateConstant.MODULE_TARGET_POM, getModuleVMFile("pom.xml.vm")),
+            new AbstractMap.SimpleEntry<>(TemplateConstant.MODULE_TARGET_PACKAGE, getModuleVMFile("package.json.vm")),
 
             new AbstractMap.SimpleEntry<>(TemplateConstant.MODEL_TARGET_ENTITY, getModelVMFile("entity.java.vm")),
             new AbstractMap.SimpleEntry<>(TemplateConstant.MODEL_TARGET_MODEL, getModelVMFile("model.java.vm")),
