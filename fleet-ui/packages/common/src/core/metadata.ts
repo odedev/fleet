@@ -1,5 +1,6 @@
 
 import {copy} from "../utils/json_utils";
+import {transform} from "@/utils/enum_utils";
 
 const Metadata = {
   model: new Map<string, any>(),
@@ -35,5 +36,7 @@ export function getEnumerationByFullName(fullName: string): any {
   if (!enumeration) {
     return null
   }
-  return copy(enumeration);
+
+  let enumData = copy(enumeration);
+  return transform(enumData);
 }

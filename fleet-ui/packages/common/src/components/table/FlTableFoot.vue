@@ -1,13 +1,16 @@
 <template>
   <div class="table-foot">
     <div class="table-action">
-      <i class="icon" v-if="props.isSettable">
+      <i class="icon" v-if="props.isFilterable" @click="handleFilterClick">
+        <Tooltip :mini="true" content="过滤"><IconFilter /></Tooltip>
+      </i>
+      <i class="icon" v-if="props.isSettable" @click="handleSettingClick">
         <Tooltip :mini="true" content="设置"><IconSettings /></Tooltip>
       </i>
-      <i class="icon" v-if="props.isImportable">
+      <i class="icon" v-if="props.isImportable" @click="handleImportClick">
         <Tooltip :mini="true" content="导入"><IconUpload /></Tooltip>
       </i>
-      <i class="icon" v-if="props.isExportable">
+      <i class="icon" v-if="props.isExportable" @click="handleExportClick">
         <Tooltip :mini="true" content="导出"><IconDownload /></Tooltip>
       </i>
       <slot></slot>
@@ -15,13 +18,13 @@
     <div class="table-pagination">
       <div class="table-pagination-size">每页 {{pageSize}} 条</div>
       <Pagination
-        v-model:current="current"
+        :current="pageNum"
         :page-size="pageSize"
-        :total="count"
+        :total="pageTotal"
         :show-total="true"
         :hide-on-single-page="false"
         @change="handleChange"
-        size="small" ></Pagination>
+        size="small" />
     </div>
   </div>
 </template>
@@ -32,20 +35,55 @@ import {Pagination, Tooltip} from "@arco-design/web-vue";
 import "@arco-design/web-vue/es/pagination/style/index.css";
 import {IconFilter, IconSettings, IconUpload, IconDownload} from "@arco-design/web-vue/es/icon";
 
-const props = defineProps<{
-  count: number,
+const emits = defineEmits([
+  'update:pageNum',
+  'filterClick',
+  'settingClick',
+  'importClick',
+  'exportClick',
+  'pageChange'
+]);
+
+const props = withDefaults(defineProps<{
+  pageNum: number,
+  pageSize: number,
+  pageTotal: number,
+  count?: number,
+  isFilterable: boolean,
   isSettable: boolean,
   isImportable: boolean,
   isExportable: boolean,
-}>();
+}>(), {
+  isFilterable: true,
+  isSettable: true,
+  isImportable: false,
+  isExportable: false,
+});
 
-const count = computed<number>(() => props.count || 0);
+const pageNum = computed<number>(() => props.pageNum || 1);
+const pageSize = computed<number>(() => props.pageSize || 10);
+const pageTotal = computed<number>(() => props.pageTotal || 0);
 
 const current = ref(1);
-const pageSize = ref(10);
 
-const handleChange = (current) => {
-  console.log(current)
+const handleFilterClick = () => {
+  emits('filterClick');
+};
+
+const handleSettingClick = () => {
+  emits('settingClick');
+}
+
+const handleImportClick = () => {
+  emits('importClick');
+}
+
+const handleExportClick = () => {
+  emits('exportClick');
+}
+
+const handleChange = (current: number) => {
+  emits('update:pageNum', current)
 }
 
 </script>
@@ -68,12 +106,14 @@ const handleChange = (current) => {
   .table-action {
     height: 100%;
     width: 80px;
+    width: 120px;
     flex-basis: 80px;
     flex-grow: 0;
     flex-shrink: 0;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
     font-size: 20px;
     line-height: 1;

@@ -26,18 +26,18 @@
     @cancel="handleCancel"
     unmountOnClose
   >
-    <FlView>
-      <FlViewMain>
+<!--    <FlView>-->
+<!--      <FlViewMain>-->
 <!--        <FlViewHead>-->
 <!--          <FlSearch></FlSearch>-->
 <!--        </FlViewHead>-->
-        <FlViewBody>
+<!--        <FlViewBody>-->
           <FlBlock>
             <FlTableConcise v-model="rows" :model="props.model" v-model:selection-value="selectionValue" selection-type="single"/>
           </FlBlock>
-        </FlViewBody>
-      </FlViewMain>
-    </FlView>
+<!--        </FlViewBody>-->
+<!--      </FlViewMain>-->
+<!--    </FlView>-->
 <!--    <FlTableConcise v-model="rows" :model="props.model" />-->
   </Modal>
 </template>
@@ -70,16 +70,13 @@ let props = withDefaults(defineProps<{
   modelValue: any,
   model: any,
   modelParameter?: any,
+  modelData?: any[],
   displayField?: string,
   isNullable?: boolean,
   isDisabled?: boolean,
   isReadonly?: boolean,
   isInvalid?: boolean,
   autofocus?: boolean,
-  models?: any[],
-  // data?: any[],
-  // columns?: any[],
-  // module?: string,
 }>(), {
   isNullable: true,
   isDisabled: false,
@@ -88,9 +85,8 @@ let props = withDefaults(defineProps<{
   autofocus: false,
 });
 
-const selectionValue = ref([]);
+const selectionValue = ref<any>([]);
 const visible = ref(false);
-
 
 const value = computed<any>(() => {
   return props.displayField ? props.modelValue[props.displayField] : props.modelValue?.name || props.modelValue;
@@ -99,7 +95,8 @@ const value = computed<any>(() => {
 const modelName = computed(() => {
   return props.model.name;
 })
-const rows = props.models;
+
+const rows = props.modelData;
 
 console.log(props.model)
 
@@ -112,6 +109,7 @@ const handleFocus = (e: FocusEvent) => {
 };
 
 const handleClick = () => {
+  selectionValue.value = [props.modelValue]
   visible.value = true;
 };
 

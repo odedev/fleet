@@ -66,6 +66,7 @@ public class CodeGenerator {
         Map<String, String> templateFileMap = TemplateUtils.TEMPLATE_FILE;
         Map<String, String> modelJavaTargetDir = TemplateUtils.MODEL_JAVA_TARGET_DIR;
         Map<String, String> modelResourcesTargetDir = TemplateUtils.MODEL_RESOURCES_TARGET_DIR;
+        Map<String, String> modelUITargetDir = TemplateUtils.MODEL_UI_TARGET_DIR;
 
 
         for (String file : TemplateUtils.MODEL_JAVA_FILES) {
@@ -90,6 +91,18 @@ public class CodeGenerator {
                 continue;
             }
             write(velocityContext, templateFile, path);
+        }
+
+
+        for (String file : TemplateUtils.MODEL_UI_FILES) {
+            String targetDir = modelUITargetDir.get(file);
+            String path = TemplateUtils.getModelUITargetPath(targetDir, file, moduleCode, modelCode);
+            String templateFile = templateFileMap.get(file);
+            if (templateFile == null) {
+                continue;
+            }
+            System.out.println(path);
+//            write(velocityContext, templateFile, path);
         }
     }
 

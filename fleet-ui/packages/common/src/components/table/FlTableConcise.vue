@@ -34,7 +34,16 @@
         </template>
       </Table>
     </FlTableBody>
-    <FlTableFoot :count="10" :is-exportable="false" :is-importable="false" :is-settable="false"></FlTableFoot>
+    <FlTableFoot
+      v-model:page-num="pageNum"
+      :page-size="10"
+      :page-total="120"
+      :is-filterable="true"
+      :is-settable="true"
+      :is-exportable="false"
+      :is-importable="false"
+      @filter-click="handleFilterClick"
+    />
   </FlTableBox>
 
 </template>
@@ -61,6 +70,7 @@ const emits = defineEmits([
 const props = defineProps<{
   modelValue: any[],
   model: any,
+  modelParameter?: any,
   selectionValue?: any[],
   selectionType?: 'none' | 'single' | 'multiple',
   // data?: any[],
@@ -70,6 +80,7 @@ const props = defineProps<{
 
 const table = ref(null);
 const value = ref('123');
+const pageNum = ref(1);
 
 const selectedKeys = ref<string[]>([]);
 const selectedRows = ref<any[]>([]);
@@ -157,6 +168,9 @@ const handleSelectAll = (checked: boolean) => {
 }
 
 
+const handleFilterClick = () => {
+  console.log('filterClick');
+};
 
 onMounted(() => {
   const tableEl = table.value as unknown as HTMLDivElement;

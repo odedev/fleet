@@ -27,6 +27,10 @@ public class TemplateUtils {
         TemplateConstant.MODEL_TARGET_CREATE_SQL
     };
 
+    public static final String[] MODEL_UI_FILES = {
+        TemplateConstant.MODEL_TARGET_JS
+    };
+
     public static final String[] JAVA_REWRITE_FILES = {
         TemplateConstant.MODEL_TARGET_ENTITY,
         TemplateConstant.MODEL_TARGET_MODEL,
@@ -47,7 +51,9 @@ public class TemplateUtils {
             new AbstractMap.SimpleEntry<>(TemplateConstant.MODEL_TARGET_MAPPER, getModelVMFile("mapper.java.vm")),
             new AbstractMap.SimpleEntry<>(TemplateConstant.MODEL_TARGET_TRANSFORM, getModelVMFile("transform.java.vm")),
             new AbstractMap.SimpleEntry<>(TemplateConstant.MODEL_TARGET_MAPPER_XML, getModelVMFile("mapper.xml.vm")),
-            new AbstractMap.SimpleEntry<>(TemplateConstant.MODEL_TARGET_CREATE_SQL, getModelVMFile("create.sql.vm"))
+            new AbstractMap.SimpleEntry<>(TemplateConstant.MODEL_TARGET_CREATE_SQL, getModelVMFile("create.sql.vm")),
+
+            new AbstractMap.SimpleEntry<>(TemplateConstant.MODEL_TARGET_JS, getModelVMFile("model.js.vm"))
         )
     );
 
@@ -68,6 +74,12 @@ public class TemplateUtils {
         Map.ofEntries(
             new AbstractMap.SimpleEntry<>(TemplateConstant.MODEL_TARGET_MAPPER_XML, "mapper"),
             new AbstractMap.SimpleEntry<>(TemplateConstant.MODEL_TARGET_CREATE_SQL, "sql")
+        )
+    );
+
+    public static final Map<String, String> MODEL_UI_TARGET_DIR = new HashMap<>(
+        Map.ofEntries(
+            new AbstractMap.SimpleEntry<>(TemplateConstant.MODEL_TARGET_JS, "models")
         )
     );
 
@@ -121,6 +133,25 @@ public class TemplateUtils {
         return path.toString();
     }
 
+
+    public static String getModuleUIPath(String moduleCode) {
+        StringBuilder path = new StringBuilder();
+
+//        path.append("workspace")
+//            .append(File.separator)
+//            .append("fleet")
+//            .append(File.separator);
+
+        path.append(TemplateConstant.UI_DIR)
+            .append(File.separator)
+            .append("modules")
+            .append(File.separator)
+            .append("module-")
+            .append(moduleCode);
+
+        return path.toString();
+    }
+
     public static String getModuleTargetPath(String targetDir, String fileName, String moduleCode) {
         StringBuilder path = new StringBuilder(getModulePath(moduleCode));
 
@@ -157,6 +188,22 @@ public class TemplateUtils {
 
         path.append(File.separator)
             .append(TemplateConstant.RESOURCES_PATH);
+
+        if (!StringUtils.isNullOrEmpty(targetDir)) {
+            path.append(File.separator).append(targetDir);
+        }
+
+        path.append(File.separator).append(modelCode).append(fileName);
+
+        return path.toString();
+    }
+
+
+    public static String getModelUITargetPath(String targetDir, String fileName, String moduleCode, String modelCode) {
+        StringBuilder path = new StringBuilder(getModuleUIPath(moduleCode));
+
+        path.append(File.separator)
+            .append(TemplateConstant.UI_PATH);
 
         if (!StringUtils.isNullOrEmpty(targetDir)) {
             path.append(File.separator).append(targetDir);

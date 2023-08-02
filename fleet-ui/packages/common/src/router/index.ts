@@ -1,4 +1,6 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router';
+import progress from "../core/progress";
+
 import HomeView from '../views/HomeView.vue'
 import RedirectView from '../views/RedirectView.vue'
 import NotFoundView from '../views/NotFoundView.vue'
@@ -178,6 +180,17 @@ const router = createRouter({
       component: NotFoundView
     },
   ]
-})
+});
+
+router.beforeEach((to, from) => {
+  progress.start();
+  // ...
+  // 返回 false 以取消导航
+  return true;
+});
+
+router.afterEach((to, from) => {
+  progress.done();
+});
 
 export default router

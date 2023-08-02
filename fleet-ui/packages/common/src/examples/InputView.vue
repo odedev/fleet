@@ -10,12 +10,12 @@
       <FlViewBody>
         <FlBox>
           <FlInputBoolean v-model="booleanValue"/>
-          <FlInputText v-model="textValue" :is-invalid="true"/>
+          <FlInputText v-model="textValue" :is-nullable="false"/>
           <FlInputDate />
-          <FlInputNumber />
+          <FlInputNumber  v-model="textValue" :is-nullable="false"/>
           <FlInputEnum v-model="enumValue" :enums="enums"/>
           <FlInputTree />
-          <FlInputModel v-model="modelValue" :model="userModel" :data="datas"/>
+          <FlInputModel v-model="modelValue" :model="userModel" :model-data="datas"/>
           <FlInputFile />
           <FlInputPassword />
           <FlInputTextarea />
@@ -26,7 +26,7 @@
           <FlInputText />
           <FlInputDate />
           <FlInputNumber />
-          <FlInputEnum />
+          <FlInputEnum v-model="enumValue" :enums="userTypeEnum"/>
           <FlInputTree />
           <FlInputModel  v-model="modelValue" :model="userModel" :data="datas"/>
           <FlInputFile />
@@ -50,8 +50,10 @@ import {
   FlTable, FlButton, FlSearch, FlAction
 } from '../components'
 import {useModel} from "@/composables/model";
+import {useEnumeration} from "@/composables/enumeration";
 
 const userModel = useModel("dev.odes.fleet.module.system.model.UserModel");
+const userTypeEnum = useEnumeration("dev.odes.fleet.module.system.enumeration.UserTypeEnum");
 
 const booleanValue = ref(true);
 const textValue = ref('');

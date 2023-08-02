@@ -12,7 +12,7 @@
       @change="handleChange"
       @clear="handleClear"
       size="small">
-      <Option v-for="item in props.enums" :value="item.value" :label="item.name"></Option>
+      <Option v-for="item in props.enums" :value="item.value" :label="item.name" />
     </Select>
   </FlInputBase>
 </template>
@@ -35,7 +35,7 @@ const emits = defineEmits([
 
 const props = withDefaults(defineProps<{
   modelValue: number,
-  enums: any[],
+  enums: any[] | any,
   isNullable?: boolean,
   isDisabled?: boolean,
   isReadonly?: boolean,

@@ -59,7 +59,14 @@
         </template>
       </Table>
     </FlTableBody>
-    <FlTableFoot></FlTableFoot>
+    <FlTableFoot
+      :page-size="10"
+      :page-total="1200"
+      :is-filterable="props.isFilterable"
+      :is-settable="props.isSettable"
+      :is-importable="props.isImportable"
+      :is-exportable="props.isExportable">
+    </FlTableFoot>
   </FlTableBox>
 
 </template>
@@ -81,14 +88,23 @@ import FlButtonGroup from "../button/FlButtonGroup.vue";
 const table = ref(null);
 const value = ref('123456789abcdefghijklmnopqrstuvwxyz');
 
-const props = defineProps<{
+const props = withDefaults(defineProps<{
   dataType: number,
   modelValue: string,
   isEditable?: boolean,
   isNullable?: boolean,
   isDisabled?: boolean,
   isDraggable?: boolean,
-}>();
+  isFilterable?: boolean,
+  isSettable?: boolean,
+  isImportable?: boolean,
+  isExportable?: boolean,
+}>(), {
+  isFilterable: true,
+  isSettable: true,
+  isImportable: true,
+  isExportable: true,
+});
 
 const isEditable = computed<boolean>(() => props.isEditable);
 const operationColumnWidth = computed<number>(() => {

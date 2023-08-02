@@ -8,12 +8,15 @@ public class TemplateConstant {
 
     public static final String TEMPLATE_DIR = "template";
     public static final String MODULE_DIR = "fleet-module";
+    public static final String UI_DIR = "fleet-ui";
 
-    public static final String JAVA_PATH = "src"+ File.separator + "main" + File.separator + "java";
-    public static final String RESOURCES_PATH = "src"+ File.separator + "main" + File.separator + "resources";
+    public static final String JAVA_PATH = "src" + File.separator + "main" + File.separator + "java";
+    public static final String RESOURCES_PATH = "src" + File.separator + "main" + File.separator + "resources";
 
     public static final String ROOT_PACKAGE_PATH = "dev" + File.separator + "odes" + File.separator + "fleet";
     public static final String MODULE_PACKAGE_PATH = ROOT_PACKAGE_PATH + File.separator + "module";
+
+    public static final String UI_PATH = "src";
 
     public static final String ROOT_PACKAGE = "dev.odes.fleet";
 
@@ -30,6 +33,8 @@ public class TemplateConstant {
 
     public static final String MODEL_TARGET_MAPPER_XML = "Mapper.xml";
     public static final String MODEL_TARGET_CREATE_SQL = "Create.sql";
+
+    public static final String MODEL_TARGET_JS = "Model.js";
 
 
     public static final String Enum_TARGET_ENUM = "Enum.java";
