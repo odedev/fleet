@@ -35,6 +35,7 @@ import MarkdownView from '../examples/MarkdownView.vue'
 import CodeView from '../examples/CodeView.vue'
 
 import ViewerMarkdownView from "../examples/ViewerMarkdownView.vue";
+import ViewerRichTextView from "../examples/ViewerRichTextView.vue";
 
 
 const router = createRouter({
@@ -155,7 +156,11 @@ const router = createRouter({
       name: 'ViewerMarkdown',
       component: ViewerMarkdownView
     },
-
+    {
+      path: '/ViewerRichText',
+      name: 'ViewerRichText',
+      component: ViewerRichTextView
+    },
     // 动态组件
     {
       path: '/Component',

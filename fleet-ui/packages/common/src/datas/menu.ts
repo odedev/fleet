@@ -163,8 +163,8 @@ export const menus: any[] = [
   },
   {
     id: '1660898963689091132',
-    name: '表格',
-    path: '',
+    name: 'ViewerRichText',
+    path: '/ViewerRichText',
     parent: '1660898963689091130',
     children: [],
   },

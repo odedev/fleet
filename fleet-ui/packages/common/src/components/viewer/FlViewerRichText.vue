@@ -1,5 +1,5 @@
 <template>
-  <Editor :model-value="value" :editor="ClassicEditor" :config="config" @input="handleInput" tag-name="textarea"></Editor>
+  <Editor :model-value="value" :editor="ClassicEditor" :config="config" tag-name="textarea"></Editor>
 </template>
 
 <script setup lang="ts">
@@ -28,6 +28,7 @@ import { GeneralHtmlSupport } from '@ckeditor/ckeditor5-html-support';
 const Editor = CKEditor.component;
 
 const config = ref({
+  isReadOnly: true,
   plugins: [
     EditorUI,
     Heading,
