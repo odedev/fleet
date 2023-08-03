@@ -2,13 +2,16 @@
   <FlInputBoolean
     v-if="dataType === DataTypeEnum.Boolean.value"
     :model-value="value"
+    :placeholder="placeholder"
     :is-disabled="isDisabled"
+    :is-readonly="isReadonly"
     @update:model-value="handleUpdate"
     @change="handleChange"
   />
   <FlInputText
     v-else-if="dataType === DataTypeEnum.String.value"
     :model-value="value"
+    :placeholder="placeholder"
     :is-nullable="isNullable"
     :is-disabled="isDisabled"
     :is-readonly="isReadonly"
@@ -21,12 +24,139 @@
     @blur="handleBlur"
     @clear="handleClear"
   />
-  <FlInputNumber v-else-if="dataType === DataTypeEnum.Integer.value || dataType === DataTypeEnum.Float.value"/>
-  <FlInputDate v-else-if="dataType === DataTypeEnum.Date.value"/>
-  <FlInputEnum v-else-if="dataType === DataTypeEnum.Enum.value"/>
-  <FlInputModel v-else-if="dataType === DataTypeEnum.Model.value"/>
-  <FlInputJson v-else-if="dataType === DataTypeEnum.Json.value"/>
-  <FlInputFile v-else-if="dataType === DataTypeEnum.File.value"/>
+  <FlInputTextarea
+    v-else-if="dataType === DataTypeEnum.Text.value"
+    :model-value="value"
+    :placeholder="placeholder"
+    :is-nullable="isNullable"
+    :is-disabled="isDisabled"
+    :is-readonly="isReadonly"
+    :is-invalid="isInvalid"
+    :autofocus="props.autofocus"
+    @update:model-value="handleUpdate"
+    @input="handleInput"
+    @change="handleChange"
+    @focus="handleFocus"
+    @blur="handleBlur"
+    @clear="handleClear"
+  />
+  <FlInputNumber
+    v-else-if="dataType === DataTypeEnum.Integer.value"
+    :model-value="value"
+    :precision="0"
+    :placeholder="placeholder"
+    :is-nullable="isNullable"
+    :is-disabled="isDisabled"
+    :is-readonly="isReadonly"
+    :is-invalid="isInvalid"
+    :autofocus="props.autofocus"
+    @update:model-value="handleUpdate"
+    @input="handleInput"
+    @change="handleChange"
+    @focus="handleFocus"
+    @blur="handleBlur"
+    @clear="handleClear"
+  />
+  <FlInputNumber
+    v-else-if="dataType === DataTypeEnum.Float.value"
+    :model-value="value"
+    :precision="2"
+    :is-nullable="isNullable"
+    :is-disabled="isDisabled"
+    :is-readonly="isReadonly"
+    :is-invalid="isInvalid"
+    :autofocus="props.autofocus"
+    @update:model-value="handleUpdate"
+    @input="handleInput"
+    @change="handleChange"
+    @focus="handleFocus"
+    @blur="handleBlur"
+    @clear="handleClear"
+  />
+  <FlInputDate
+    v-else-if="dataType === DataTypeEnum.Date.value"
+    :model-value="value"
+    :placeholder="placeholder"
+    :is-nullable="isNullable"
+    :is-disabled="isDisabled"
+    :is-readonly="isReadonly"
+    :is-invalid="isInvalid"
+    :autofocus="props.autofocus"
+    @update:model-value="handleUpdate"
+    @input="handleInput"
+    @change="handleChange"
+    @focus="handleFocus"
+    @blur="handleBlur"
+    @clear="handleClear"
+  />
+  <FlInputEnum
+    v-else-if="dataType === DataTypeEnum.Enum.value"
+    :model-value="value"
+    :enumeration="enumeration"
+    :placeholder="placeholder"
+    :is-nullable="isNullable"
+    :is-disabled="isDisabled"
+    :is-readonly="isReadonly"
+    :is-invalid="isInvalid"
+    :autofocus="props.autofocus"
+    @update:model-value="handleUpdate"
+    @input="handleInput"
+    @change="handleChange"
+    @focus="handleFocus"
+    @blur="handleBlur"
+    @clear="handleClear"
+  />
+  <FlInputModel
+    v-else-if="dataType === DataTypeEnum.Model.value"
+    :model-value="value"
+    :model="model"
+    :model-data="modelData"
+    :model-parameter="modelParameter"
+    :placeholder="placeholder"
+    :is-nullable="isNullable"
+    :is-disabled="isDisabled"
+    :is-readonly="isReadonly"
+    :is-invalid="isInvalid"
+    :autofocus="props.autofocus"
+    @update:model-value="handleUpdate"
+    @input="handleInput"
+    @change="handleChange"
+    @focus="handleFocus"
+    @blur="handleBlur"
+    @clear="handleClear"
+  />
+  <FlInputJson
+    v-else-if="dataType === DataTypeEnum.Json.value"
+    :model-value="value"
+    :placeholder="placeholder"
+    :is-nullable="isNullable"
+    :is-disabled="isDisabled"
+    :is-readonly="isReadonly"
+    :is-invalid="isInvalid"
+    :autofocus="props.autofocus"
+    @update:model-value="handleUpdate"
+    @input="handleInput"
+    @change="handleChange"
+    @focus="handleFocus"
+    @blur="handleBlur"
+    @clear="handleClear"
+  />
+  <FlInputFile
+    v-else-if="dataType === DataTypeEnum.File.value"
+    :model-value="value"
+    :placeholder="placeholder"
+    :is-nullable="isNullable"
+    :is-disabled="isDisabled"
+    :is-readonly="isReadonly"
+    :is-invalid="isInvalid"
+    :autofocus="props.autofocus"
+    @update:model-value="handleUpdate"
+    @input="handleInput"
+    @change="handleChange"
+    @focus="handleFocus"
+    @blur="handleBlur"
+    @clear="handleClear"
+  />
   <FlInputBase v-else>{{value}}</FlInputBase>
 </template>
 
@@ -35,6 +165,7 @@ import {computed} from "vue";
 import FlInputBase from "./FlInputBase.vue";
 import FlInputBoolean from "./FlInputBoolean.vue";
 import FlInputText from "./FlInputText.vue";
+import FlInputTextarea from "./FlInputTextarea.vue";
 import FlInputNumber from "./FlInputNumber.vue";
 import FlInputDate from "./FlInputDate.vue";
 import FlInputEnum from "./FlInputEnum.vue";
@@ -56,6 +187,11 @@ const emits = defineEmits([
 const props = withDefaults(defineProps<{
   modelValue: any,
   dataType: number,
+  enumeration?: any | any[],
+  model?: any,
+  modelData?: any[],
+  modelParameter?: any,
+  placeholder?: string,
   isNullable?: boolean,
   isDisabled?: boolean,
   isReadonly?: boolean,
@@ -70,49 +206,27 @@ const props = withDefaults(defineProps<{
 });
 
 const value = computed<any>(() => props.modelValue);
-
 const dataType = computed<number>(() => props.dataType);
-
-const dataTypes = computed<string>(() => {
-  switch (props.dataType) {
-    case 0:
-      return 'boolean';
-    case 1:
-    case 2:
-      return 'text';
-    case 3:
-    case 4:
-      return 'number';
-    case 5:
-      return 'date';
-    case 6:
-      return 'enum';
-    case 7:
-      return 'model';
-    case 8:
-      return 'json';
-    case 9:
-      return 'file';
-  }
-  return '';
-});
-
+const enumeration = computed<any>(() => props.enumeration);
+const model = computed<any>(() => props.model);
+const modelData = computed<any>(() => props.modelData);
+const modelParameter = computed<any>(() => props.modelParameter);
+const placeholder = computed<string>(() => props.placeholder || '');
 const isNullable = computed<boolean>(() => props.isNullable);
 const isDisabled = computed<boolean>(() => props.isDisabled);
 const isReadonly = computed<boolean>(() => props.isReadonly);
 const isInvalid = computed<boolean>(() => props.isInvalid);
 
 
-const handleUpdate = (value: string) => {
-  console.log(value);
+const handleUpdate = (value: any) => {
   emits('update:modelValue', value);
 };
 
-const handleInput = (value:string, e: Event) => {
+const handleInput = (value: any, e: Event) => {
   emits('input', value);
 };
 
-const handleChange = (value:string, e: Event) => {
+const handleChange = (value: any, e: Event) => {
   emits('change', value);
 };
 

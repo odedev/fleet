@@ -93,7 +93,7 @@ const config = ref({
       '|',
       'sourceEditing',
       'findAndReplace',
-      'selectAll',
+      // 'selectAll',
       '|',
       'heading',
       // 'style',
@@ -218,6 +218,10 @@ const handleInput = () => {
   height: calc(100% - 40px);
 
   .ck-content {
+    height: 100%;
+
+  }
+  .ck-source-editing-area {
     height: 100%;
   }
 }

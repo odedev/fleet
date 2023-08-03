@@ -17,7 +17,7 @@ import {reactive} from "vue";
 import {
   FlHeader, FlBody, FlFooter, FlMenu, FlMain, FlNav, FlTab, FlPage,
   FlView, FlViewAside, FlViewMain, FlViewNav, FlViewHead, FlViewBody,
-  FlBlock, FlContent,
+  FlBlock, FlBox, FlContent,
   FlTable, FlTableConcise, FlButton, FlSearch,
 } from '../components'
 import {useModel} from "@/composables/model";

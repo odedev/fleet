@@ -1,6 +1,8 @@
 <template>
   <FlContentBase class="content-json">
-    {{value}}
+<!--    <pre>-->
+      {{value}}
+<!--    </pre>-->
   </FlContentBase>
 </template>
 <script lang="ts" setup>
@@ -26,6 +28,8 @@ const value = computed<any>(() => {
 </script>
 <style lang="scss">
 .content.content-json {
-  //justify-content: flex-end;
+  //height: 64px;
+  overflow: auto;
+  align-items: flex-start;
 }
 </style>

@@ -1,19 +1,30 @@
-<template>
-  <div class="content" @click="handleClick">
-    <div class="content-value">
-      <slot></slot>
-    </div>
-  </div>
-</template>
 <script lang="ts" setup>
+import {computed} from "vue";
+
 const emit = defineEmits(['click']);
+
+const props = defineProps<{
+  color?: "primary" | "secondary" | "tertiary" | "neutral" | "error" | "warn" | "success" | "info" | undefined,
+}>();
+
+const color = computed(() => props.color ? 'color__' + props.color : '')
 
 const handleClick = () => {
   emit('click');
 };
 
 </script>
+
+<template>
+  <div class="content" :class="color" @click="handleClick">
+    <div class="content-value">
+      <slot></slot>
+    </div>
+  </div>
+</template>
+
 <style lang="scss">
+
 .content {
   height: 28px;
   height: 32px;
@@ -31,7 +42,6 @@ const handleClick = () => {
   flex-wrap: nowrap;
 
   .content-value {
-
     font-size: 14px;
     line-height: 22px;
     overflow: hidden;

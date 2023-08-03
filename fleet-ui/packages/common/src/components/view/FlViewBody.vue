@@ -1,10 +1,13 @@
+<script setup>
+
+</script>
+
 <template>
   <div class="view-body">
     <slot></slot>
   </div>
 </template>
-<script setup>
-</script>
+
 <style lang="scss">
 @use "../../assets/mixin" as *;
 
@@ -19,5 +22,6 @@
   overflow: overlay;
   padding: 0;
   //@include background-color();
+
 }
 </style>

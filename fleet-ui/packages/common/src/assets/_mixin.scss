@@ -4,13 +4,14 @@
 @use "variable/theme" as *;
 
 
-
 @mixin color-primary() {
   color: var(--theme-primary, $primary);
 }
-
 @mixin color-secondary() {
   color: var(--theme-color-secondary, $secondary);
+}
+@mixin color-tertiary() {
+  color: var(--theme-color-tertiary, $tertiary);
 }
 @mixin color-neutral() {
   color: var(--theme-color-neutral, $neutral);

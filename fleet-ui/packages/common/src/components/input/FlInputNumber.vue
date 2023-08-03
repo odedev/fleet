@@ -3,13 +3,16 @@
     <InputNumber
       ref="el"
       :model-value="value"
+      :min="min"
+      :max="max"
+      :precision="precision"
+      :placeholder="placeholder"
       :disabled="isDisabled"
       :readonly="isReadonly"
       :error="isInvalid"
       :allow-clear="isNullable"
       :hide-button="true"
       :step="1"
-      :precision="precision"
       @update:model-value="handleUpdate"
       @input="handleInput"
       @change="handleChange"
@@ -44,8 +47,11 @@ const emits = defineEmits([
 ]);
 
 let props = withDefaults(defineProps<{
-  modelValue: string,
+  modelValue: number,
+  min?: number,
+  max?: number,
   precision?: number,
+  placeholder?: string,
   isNullable?: boolean,
   isDisabled?: boolean,
   isReadonly?: boolean,
@@ -60,29 +66,31 @@ let props = withDefaults(defineProps<{
   autofocus: false,
 });
 
-const value = computed<string>(() => props.modelValue)
-const precision = computed<number>(() => props.precision)
+
+const value = computed<number>(() => props.modelValue);
+const min = computed<number>(() => props.min || -Infinity);
+const max = computed<number>(() => props.max || Infinity);
+const precision = computed<number>(() => props.precision);
+const placeholder = computed<string>(() => props.placeholder || '');
 const isNullable = computed<boolean>(() => props.isNullable);
 const isDisabled = computed<boolean>(() => props.isDisabled);
 const isReadonly = computed<boolean>(() => props.isReadonly);
 const isInvalid = computed<boolean>(() => props.isInvalid || (!props.isNullable && !props.modelValue));
 
 
-const handleUpdate = (value: string) => {
-  console.log(value);
+const handleUpdate = (value: number) => {
   emits('update:modelValue', value);
 };
 
-const handleInput = (value:string, e: Event) => {
+const handleInput = (value: number, e: Event) => {
   emits('input', value);
 };
 
-const handleChange = (value:string, e: Event) => {
+const handleChange = (value: number, e: Event) => {
   emits('change', value);
 };
 
 const handleFocus = (e: FocusEvent) => {
-  console.log('focus')
   emits('focus', e);
 };
 
@@ -91,8 +99,10 @@ const handleBlur = (e: FocusEvent) => {
 };
 
 const handleClear = (e: MouseEvent) => {
-  console.log('clear')
   emits('clear', e);
+  e.preventDefault();
+  e.stopPropagation();
+  emits('update:modelValue', 0);
 };
 
 

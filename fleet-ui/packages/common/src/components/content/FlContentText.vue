@@ -1,17 +1,3 @@
-<template>
-  <template v-if="isShowTip">
-    <Tooltip :content="value" position="tl" mini>
-      <FlContentBase>
-        {{value}}
-      </FlContentBase>
-    </Tooltip>
-  </template>
-  <template v-else>
-    <FlContentBase>
-      {{value}}
-    </FlContentBase>
-  </template>
-</template>
 <script lang="ts" setup>
 import {computed} from "vue";
 import {Tooltip} from '@arco-design/web-vue';
@@ -26,3 +12,23 @@ const props = defineProps<{
 const value = computed<string>(() => props.modelValue);
 
 </script>
+
+<template>
+  <template v-if="isShowTip">
+    <Tooltip :content="value" position="tl" mini>
+      <FlContentBase class="content-text">
+        {{value}}
+      </FlContentBase>
+    </Tooltip>
+  </template>
+  <template v-else>
+    <FlContentBase class="content-text">
+      {{value}}
+    </FlContentBase>
+  </template>
+</template>
+
+<style lang="scss">
+.content.content-text {
+}
+</style>

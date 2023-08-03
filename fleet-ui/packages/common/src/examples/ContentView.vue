@@ -1,89 +1,42 @@
-<template>
-  <FlView>
-    <FlViewMain>
-      <FlViewHead>
-        <FlAction>
-          <FlButton>保存</FlButton>
-          <FlButton>生成代码</FlButton>
-        </FlAction>
-      </FlViewHead>
-      <FlViewBody>
-        <FlBox>
-          <FlContentText model-value="文本内容显示文本内容显示" :is-show-tip="false"/>
-          <FlContentNumber :model-value="12122122.33" />
-          <FlContentBoolean  :model-value="false"/>
-          <FlContentDate :model-value="'2023-05-27 11:33:31'"/>
-          <FlContentEnum :model-value="2" :enumeration="DataTypeEnum"/>
-          <FlContentEnum :model-value="2" :enumeration="DataTypeWidthEnum"/>
-          <FlContentModel :model-value="user" display-field="username"/>
-          <FlContentFile :model-value="resourceFile"/>
-        </FlBox>
-        <FlBlock title="文本内容标题">
-          <FlContent :model-value="true" :data-type="0"/>
-          <FlContent model-value="文本内容显示文本内容显示文本内容显示文本内容显示" :data-type="1"/>
-          <FlContent model-value="文本内容显示文本内容显示文本内容显示文本内容显示" :data-type="2"/>
-          <FlContent :model-value="121212.1212212212212" :data-type="3" />
-          <FlContent :model-value="121212.1212212212212" :data-type="4" />
-
-          <FlContent :model-value="new Date()" :data-type="5"/>
-          <FlContent :model-value="0" :enumeration="DateFormatEnum" :data-type="6"/>
-          <FlContent :model-value="7" :enumeration="DataTypeEnum" :data-type="6"/>
-
-          <FlContent :model-value="user" :model="userModel" :data-type="7"/>
-          <FlContent :model-value="user" display-field="username" :data-type="8"/>
-          <FlContent :model-value="resourceFile" :data-type="9"/>
-
-        </FlBlock>
-      </FlViewBody>
-    </FlViewMain>
-  </FlView>
-</template>
 <script lang="ts" setup>
-
+import {ref} from 'vue'
 import {
-  FlHeader, FlBody, FlFooter, FlMenu, FlMain, FlNav, FlTab, FlPage,
   FlView, FlViewAside, FlViewMain, FlViewNav, FlViewHead, FlViewBody,
   FlBlock, FlBox,
   FlContent, FlContentText, FlContentNumber, FlContentBoolean, FlContentDate, FlContentEnum, FlContentModel,
-  FlContentFile,
-  FlFormItem,
-  FlTable, FlButton, FlSearch, FlAction
+  FlContentFile, FlContentTextarea, FlContentJson,
+  FlButton, FlAction
 } from '../components'
 import DataTypeEnum from "@/enumerations/data_type_enum";
 import DateFormatEnum from "@/enumerations/date_format_enum";
-import DataTypeWidthEnum from "@/enumerations/data_type_width_enum";
 import {useModel} from "@/composables/model";
+import {useEnumeration} from "@/composables/enumeration";
 
 const userModel = useModel("dev.odes.fleet.module.system.model.UserModel");
-userModel.name='dsdsds';
-console.log(userModel)
+const userTypeEnum = useEnumeration("dev.odes.fleet.module.system.enumeration.UserTypeEnum");
 
-const userModel1 = useModel("dev.odes.fleet.module.system.model.UserModel");
-console.log(userModel1)
-
-const enumList = [
-  {
-    value: 0,
-    name: '初始化',
-  },
-  {
-    value: 1,
-    name: '处理中',
-  },
-  {
-    value: 2,
-    name: '完成',
-  }
-]
-
-const user = {
+const booleanValue = ref(true);
+const textValue = ref('文本内容显示文本内容显示文本内容显示文本内容显示');
+const numValue = ref(12122122.33);
+const dateValue = ref('2023-05-27 11:33:31');
+const enumValue = ref(1);
+const modelValue = ref({
   id: 'dsdsd',
   username: 'admin',
-  code: 'admin1',
+  code: 'admin',
   name: '超级管理员',
-};
-
-const resourceFile = {
+});
+const textareaValue = ref(`
+文本内容显示文本内容
+显示文本内容显示文本内容显示
+`);
+const jsonValue = ref({
+  id: 'dsdsd',
+  username: 'admin',
+  code: 'admin',
+  name: '超级管理员',
+});
+const fileValue = ref({
   id: '',
   name: '资源文件手册.pdf',
   size: 12000,
@@ -95,12 +48,47 @@ const resourceFile = {
   category: '',
   status: '',
   scope: '',
-};
+});
 
 </script>
-<style>
-.arco-card {
-  margin-right: 16px;
-  margin-bottom: 16px;
-}
+
+<template>
+  <FlView>
+    <FlViewMain>
+      <FlViewHead>
+        <FlAction>
+          <FlButton>保存</FlButton>
+        </FlAction>
+      </FlViewHead>
+      <FlViewBody>
+        <FlBlock title="块内容标题">
+          <FlContent :model-value="booleanValue" :data-type="DataTypeEnum.Boolean.value"/>
+          <FlContent :model-value="textValue" :data-type="DataTypeEnum.String.value"/>
+          <FlContent :model-value="textareaValue" :data-type="DataTypeEnum.Text.value"/>
+          <FlContent :model-value="numValue" :data-type="DataTypeEnum.Integer.value"/>
+          <FlContent :model-value="numValue" :data-type="DataTypeEnum.Float.value" />
+          <FlContent :model-value="new Date()" :data-type="DataTypeEnum.Date.value"/>
+          <FlContent :model-value="enumValue" :enumeration="userTypeEnum" :data-type="DataTypeEnum.Enum.value"/>
+          <FlContent :model-value="modelValue" :model="userModel" :data-type="DataTypeEnum.Model.value"/>
+          <FlContent :model-value="fileValue" :data-type="DataTypeEnum.File.value"/>
+          <FlContent :model-value="jsonValue" :data-type="DataTypeEnum.Json.value"/>
+        </FlBlock>
+        <FlBox>
+          <FlContentBoolean :model-value="booleanValue"/>
+          <FlContentText :model-value="textValue" :is-show-tip="false"/>
+          <FlContentNumber :model-value="numValue" />
+          <FlContentDate :model-value="dateValue"/>
+          <FlContentEnum :model-value="enumValue" :enumeration="DataTypeEnum"/>
+          <FlContentModel :model-value="modelValue" :model="userModel" />
+          <FlContentFile :model-value="fileValue"/>
+          <FlContentTextarea :model-value="textareaValue"/>
+          <FlContentJson :model-value="jsonValue" />
+        </FlBox>
+      </FlViewBody>
+    </FlViewMain>
+  </FlView>
+</template>
+
+<style lang="scss">
+
 </style>

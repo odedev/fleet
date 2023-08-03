@@ -1,8 +1,3 @@
-<template>
-  <FlContentBase class="content-date">
-    {{value}}
-  </FlContentBase>
-</template>
 <script lang="ts" setup>
 import {computed} from "vue";
 import dayjs from "dayjs";
@@ -27,6 +22,13 @@ const value = computed<string>(() => {
 });
 
 </script>
+
+<template>
+  <FlContentBase class="content-date">
+    {{value}}
+  </FlContentBase>
+</template>
+
 <style lang="scss">
 .content.content-date {
   //justify-content: center;

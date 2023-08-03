@@ -4,6 +4,7 @@
 <!--    </InputSearch>-->
     <Input
       :model-value="value"
+      :placeholder="placeholder"
       :disabled="isDisabled"
       :readonly="true"
       :error="isInvalid"
@@ -33,7 +34,7 @@
 <!--        </FlViewHead>-->
 <!--        <FlViewBody>-->
           <FlBlock>
-            <FlTableConcise v-model="rows" :model="props.model" v-model:selection-value="selectionValue" selection-type="single"/>
+            <FlTableConcise v-model="rows" :model="model" v-model:selection-value="selectionValue" selection-type="single"/>
           </FlBlock>
 <!--        </FlViewBody>-->
 <!--      </FlViewMain>-->
@@ -49,12 +50,13 @@ import "@arco-design/web-vue/es/modal/style/index.css";
 import {IconFindReplace} from "@arco-design/web-vue/es/icon";
 import FlInputBase from "./FlInputBase.vue";
 import FlTableConcise from "../table/FlTableConcise.vue";
-import FlView from "@/components/view/FlView.vue";
-import FlViewMain from "@/components/view/FlViewMain.vue";
-import FlViewHead from "@/components/view/FlViewHead.vue";
-import FlViewBody from "@/components/view/FlViewBody.vue";
-import FlBlock from "@/components/block/FlBlock.vue";
-import FlSearch from "@/components/search/FlSearch.vue";
+import FlView from "../view/FlView.vue";
+import FlViewMain from "../view/FlViewMain.vue";
+import FlViewHead from "../view/FlViewHead.vue";
+import FlViewBody from "../view/FlViewBody.vue";
+import FlBlock from "../block/FlBlock.vue";
+import FlSearch from "../search/FlSearch.vue";
+import {getDisplayFieldCode} from "../../utils/model_utils";
 
 const emits = defineEmits([
   'update:modelValue',
@@ -69,8 +71,9 @@ const emits = defineEmits([
 let props = withDefaults(defineProps<{
   modelValue: any,
   model: any,
-  modelParameter?: any,
   modelData?: any[],
+  modelParameter?: any,
+  placeholder?: string,
   displayField?: string,
   isNullable?: boolean,
   isDisabled?: boolean,
@@ -89,12 +92,20 @@ const selectionValue = ref<any>([]);
 const visible = ref(false);
 
 const value = computed<any>(() => {
-  return props.displayField ? props.modelValue[props.displayField] : props.modelValue?.name || props.modelValue;
+  return props.modelValue[getDisplayFieldCode(props.model)];
+  // props.displayField ? props.modelValue[props.displayField] : props.modelValue?.name || props.modelValue;
 });
+const model = computed<any>(() => props.model);
+const modelData = computed<any>(() => props.modelData);
+const modelParameter = computed<any>(() => props.modelParameter);
 
-const modelName = computed(() => {
-  return props.model.name;
-})
+const placeholder = computed<string>(() => props.placeholder || '');
+const isNullable = computed<boolean>(() => props.isNullable);
+const isDisabled = computed<boolean>(() => props.isDisabled);
+const isReadonly = computed<boolean>(() => props.isReadonly);
+const isInvalid = computed<boolean>(() => props.isInvalid || (!props.isNullable && !props.modelValue));
+
+const modelName = computed(() => props.model.name);
 
 const rows = props.modelData;
 
@@ -109,6 +120,10 @@ const handleFocus = (e: FocusEvent) => {
 };
 
 const handleClick = () => {
+  console.log(isDisabled, isReadonly)
+  if (isDisabled.value || isReadonly.value) {
+    return;
+  }
   selectionValue.value = [props.modelValue]
   visible.value = true;
 };

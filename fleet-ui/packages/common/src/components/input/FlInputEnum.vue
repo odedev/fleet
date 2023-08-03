@@ -2,6 +2,7 @@
   <FlInputBase class="input-enum">
     <Select
       :model-value="value"
+      :placeholder="placeholder"
       :disabled="isDisabled"
       :readonly="isReadonly"
       :error="isInvalid"
@@ -12,7 +13,7 @@
       @change="handleChange"
       @clear="handleClear"
       size="small">
-      <Option v-for="item in props.enums" :value="item.value" :label="item.name" />
+      <Option v-for="item in enumeration" :value="item.value" :label="item.name" />
     </Select>
   </FlInputBase>
 </template>
@@ -35,7 +36,8 @@ const emits = defineEmits([
 
 const props = withDefaults(defineProps<{
   modelValue: number,
-  enums: any[] | any,
+  enumeration: any | any[],
+  placeholder?: string,
   isNullable?: boolean,
   isDisabled?: boolean,
   isReadonly?: boolean,
@@ -49,15 +51,16 @@ const props = withDefaults(defineProps<{
   autofocus: false,
 });
 
-const value = computed<number>(() => props.modelValue)
+const value = computed<number>(() => props.modelValue);
+const placeholder = computed<string>(() => props.placeholder || '');
+const enumeration = computed<any>(() => props.enumeration);
 const isNullable = computed<boolean>(() => props.isNullable);
 const isDisabled = computed<boolean>(() => props.isDisabled);
 const isReadonly = computed<boolean>(() => props.isReadonly);
-const isInvalid = computed<boolean>(() => props.isInvalid);
+const isInvalid = computed<boolean>(() => props.isInvalid || (!props.isNullable && (!props.modelValue && props.modelValue !== 0)));
 
 
 const handleUpdate = (value: number) => {
-  console.log(value);
   emits('update:modelValue', value);
 };
 

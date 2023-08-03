@@ -19,6 +19,7 @@ const handleClick = () => {
   width: 100%;
   height: 28px;
   height: 32px;
+  min-height: 32px;
   //height: 40px;
   display: flex;
   flex-direction: row;

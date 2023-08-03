@@ -1,0 +1,27 @@
+@use "mixin" as *;
+
+
+.color__primary {
+  @include color-primary();
+}
+.color__secondary {
+  @include color-secondary();
+}
+.color__tertiary {
+  @include color-tertiary();
+}
+.color__neutral {
+  @include color-neutral();
+}
+.color__error {
+  @include color-error();
+}
+.color__warn {
+  @include color-warn();
+}
+.color__success {
+  @include color-success();
+}
+.color__info {
+  @include color-info();
+}

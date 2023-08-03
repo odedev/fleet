@@ -1,11 +1,3 @@
-<template>
-  <FlContentBase class="content-boolean">
-    <FlInputBoolean
-      :model-value="value"
-      :is-disabled="true"
-    />
-  </FlContentBase>
-</template>
 <script lang="ts" setup>
 import {computed} from "vue";
 import FlContentBase from "./FlContentBase.vue";
@@ -18,6 +10,16 @@ const props = defineProps<{
 const value = computed<boolean>(() => props.modelValue);
 
 </script>
+
+<template>
+  <FlContentBase class="content-boolean">
+    <FlInputBoolean
+      :model-value="value"
+      :is-readonly="true"
+    />
+  </FlContentBase>
+</template>
+
 <style lang="scss">
 @use "../../assets/mixin" as *;
 

@@ -9,12 +9,9 @@ import FlContentBase from "./FlContentBase.vue";
 
 const props = defineProps<{
   modelValue: any,
-  displayField?: string,
 }>();
 
-const value = computed<any>(() => {
-  return props.displayField ? props.modelValue[props.displayField] : props.modelValue?.name;
-});
+const value = computed<any>(() => props.modelValue?.name);
 
 const handleClick = () => {
   console.log(props.modelValue);

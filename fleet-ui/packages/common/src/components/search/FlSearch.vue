@@ -1,8 +1,10 @@
 <template>
   <section class="search">
     <div class="search-parameter">
-      <FlFormItem :data-type="1"/>
-      <FlFormItem :data-type="1"/>
+      <FlFormItem title="名称" :data-type="1"/>
+      <FlFormItem title="编码" :data-type="1"/>
+      <FlFormItem title="编码" :data-type="1"/>
+
 <!--      <FlFormItem />-->
     </div>
     <div class="search-action">

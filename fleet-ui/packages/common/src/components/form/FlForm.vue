@@ -1,15 +1,32 @@
 <template>
 <form class="form">
-  <FlFormItem :data-type="1"/>
-  <FlFormItem :data-type="1"/>
-  <FlFormItem :data-type="6"/>
-  <FlFormItem :data-type="0"/>
-  <FlFormItem :data-type="1"/>
+  <template v-for="field in fields">
+    <FlFormItem
+      :title="field.name"
+      v-model="props.modelValue[field.code]"
+      :data-type="field.dataType"
+      :model="field.modelType"
+      :enumeration="field.enumType"
+    />
+  </template>
+  <FlFormItem title="字符串" :data-type="1" :is-disabled="true"/>
+  <FlFormItem title="字符串" :data-type="6"/>
+  <FlFormItem title="布尔" :data-type="0" :is-nullable="false"/>
+  <FlFormItem title="字符串" :data-type="1"/>
 </form>
 </template>
 
 <script lang="ts" setup>
 import FlFormItem from "./FlFormItem.vue";
+import {computed} from "vue";
+
+const props = withDefaults(defineProps<{
+  modelValue: any,
+  model: any,
+}>(), {
+});
+
+const fields = computed(() => props.model?.fields || []);
 
 </script>
 
