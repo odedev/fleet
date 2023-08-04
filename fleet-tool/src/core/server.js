@@ -57,6 +57,12 @@ server.on('listening', () => {
   console.log(pc.green(`listening on ${bind} `))
 });
 
-server.listen(23506);
+// server.listen(23506);
 
-export default server
+// export default server
+
+function serve() {
+  server.listen(23506);
+}
+
+export default serve

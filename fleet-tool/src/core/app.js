@@ -10,7 +10,7 @@ import rid from 'connect-rid';
 import favicon from 'serve-favicon';
 import logger from 'morgan';
 import httpErrors from 'http-errors';
-import {router, proxy} from "./modules/index.js";
+import {router, proxy} from "../modules/index.js";
 
 // 执行命令的目录
 const __rootDirname = path.resolve();
