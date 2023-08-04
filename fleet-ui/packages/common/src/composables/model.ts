@@ -1,5 +1,5 @@
 import {getModel} from "../core/metadata";
-import {getModelInitValue} from "../utils/model_utils";
+import {getModelInitValue} from "../core/model";
 
 export function useModel(name: string): any {
   return getModel(name);

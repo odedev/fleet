@@ -1,4 +1,4 @@
-import {copy} from './json_utils';
+import {copy} from '../utils/json_utils';
 
 
 export function getByValue(enumeration: any, value: number): any {

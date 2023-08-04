@@ -1,6 +1,6 @@
 
 import {copy} from "../utils/json_utils";
-import {transform} from "@/utils/enum_utils";
+import {transform} from "./enumeration";
 
 const Metadata = {
   model: new Map<string, any>(),

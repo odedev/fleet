@@ -56,7 +56,7 @@ import FlViewHead from "../view/FlViewHead.vue";
 import FlViewBody from "../view/FlViewBody.vue";
 import FlBlock from "../block/FlBlock.vue";
 import FlSearch from "../search/FlSearch.vue";
-import {getDisplayFieldCode} from "../../utils/model_utils";
+import {getDisplayFieldCode} from "../../core/model";
 
 const emits = defineEmits([
   'update:modelValue',

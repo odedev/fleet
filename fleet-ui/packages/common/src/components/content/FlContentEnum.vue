@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import {computed} from "vue";
 import FlContentBase from "./FlContentBase.vue";
-import {getByValue} from "../../utils/enum_utils";
+import {getByValue} from "../../core/enumeration";
 
 const props = defineProps<{
   modelValue: number,

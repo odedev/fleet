@@ -1,9 +1,9 @@
 <script lang="ts" setup>
 import {computed} from "vue";
-import dayjs from "dayjs";
 import FlContentBase from "./FlContentBase.vue";
 import DateFormatEnum from "../../enumerations/date_format_enum";
-import {getByValue} from "../../utils/enum_utils";
+import * as dateUtils from "../../utils/date_utils";
+import {getByValue} from "../../core/enumeration";
 
 const props = defineProps<{
   modelValue: Date | string,
@@ -18,7 +18,7 @@ const value = computed<string>(() => {
       format = dateFormat.name
     }
   }
-  return dayjs(props.modelValue).format(format);
+  return dateUtils.format(props.modelValue, format);
 });
 
 </script>

@@ -1,5 +1,5 @@
-import {copy} from './json_utils';
-import {getInitValue} from "./data_type_utils";
+import {copy} from '../utils/json_utils';
+import {getInitValue} from "./data_type";
 
 /**
  * 获取模型显示的字段

@@ -1,22 +1,21 @@
-<template>
-  <FlView>
+<script lang="ts">
+import { defineComponent, h } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
 
-  </FlView>
-</template>
-<script lang="ts" setup>
-import { onMounted } from "vue";
-import {useRouter, useRoute} from "vue-router";
-import {FlView} from '../components/index.ts'
-
-const router = useRouter();
-const route = useRoute();
-
-
-onMounted(() => {
-  router.replace(route.query.path);
-});
+export default defineComponent({
+  name: 'RedirectView',
+  created() {
+    const { params, query } = useRoute()
+    const { path } = params
+    const router = useRouter()
+    router.replace({ path: '/' + path, query }).catch(err => {
+      console.warn(err)
+    })
+  },
+  render() {
+    return h('div')
+  }
+})
 
 </script>
-<style>
 
-</style>

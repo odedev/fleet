@@ -169,9 +169,15 @@ const router = createRouter({
     },
     // 重定向刷新
     {
-      path: '/redirect',
+      path: '/redirect/:path(.*)',
       name: 'Redirect',
       component: RedirectView,
+      // children: [
+      //   {
+      //     path: '/redirect/:path(.*)',
+      //     component: RedirectView
+      //   }
+      // ]
       // redirect: to => {
       //   // the function receives the target route as the argument
       //   // we return a redirect path/location here.

@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import {computed} from "vue";
 import FlContentBase from "./FlContentBase.vue";
-import {getDisplayFieldCode} from "../../utils/model_utils";
+import {getDisplayFieldCode} from "../../core/model";
 
 const props = defineProps<{
   modelValue: any,
