@@ -29,6 +29,7 @@
     <module>fleet-core-base</module>
     <module>fleet-core-uc</module>
     <module>fleet-core-file</module>
+    <module>fleet-core-client</module>
   </modules>
 
   <dependencies>

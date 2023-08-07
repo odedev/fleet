@@ -35,6 +35,7 @@
             <FlButtonView />
             <FlButtonSave />
             <FlButtonReset />
+            <FlButtonSearch />
             <FlButtonUpload />
           </FlButtonGroup>
         </FlBlock>
@@ -49,7 +50,8 @@ import "@arco-design/web-vue/es/card/style/css.js";
 import {
   FlHeader, FlBody, FlFooter, FlMenu, FlMain, FlNav, FlTab, FlPage,
   FlView, FlViewAside, FlViewMain, FlViewNav, FlViewHead, FlViewBody, FlBlock, FlBox, FlAction,
-  FlButton, FlButtonAdd, FlButtonEdit, FlButtonDelete, FlButtonView, FlButtonSave, FlButtonReset, FlButtonUpload, FlButtonGroup
+  FlButton, FlButtonAdd, FlButtonEdit, FlButtonDelete, FlButtonView, FlButtonSave, FlButtonReset, FlButtonSearch, FlButtonUpload,
+  FlButtonGroup
 } from '../components'
 
 </script>

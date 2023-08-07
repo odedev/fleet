@@ -1,60 +1,80 @@
 <template>
   <div class="table-filter">
-    <slot></slot>
+    <i class="table-filter__icon" @click="handleClick">
+      <Tooltip :mini="true" content="过滤"><IconFilter /></Tooltip>
+    </i>
   </div>
+  <Modal
+    class="input-model__modal"
+    v-model:visible="visible"
+    :title="modelName"
+    title-align="start"
+    width="512px"
+    @ok="handleOk"
+    @cancel="handleCancel"
+    unmountOnClose
+  >
+
+    <FlBlock>
+      FlConditionItem
+    </FlBlock>
+  </Modal>
 </template>
 
 <script lang="ts" setup>
-import {Pagination, Tooltip} from "@arco-design/web-vue";
-import "@arco-design/web-vue/es/pagination/style/index.css";
+import {computed, ref} from "vue";
+import {Input, InputSearch, Modal} from "@arco-design/web-vue";
+import "@arco-design/web-vue/es/modal/style/index.css";
 import {IconFilter, IconSettings, IconUpload, IconDownload} from "@arco-design/web-vue/es/icon";
+import FlBlock from "../block/FlBlock.vue";
+
+import {getDisplayFieldCode} from "@/core/model";
+
+
+const emits = defineEmits([
+  'update:modelValue',
+  'input',
+  'change',
+  'focus',
+  'blur',
+  'clear',
+  'pressEnter'
+]);
+
+let props = withDefaults(defineProps<{
+  modelValue: any,
+  model: any,
+  modelParameter?: any,
+}>(), {
+});
+
+const visible = ref(false);
+
+const value = computed<any>(() => {
+  return props.modelValue;
+});
+
+const model = computed<any>(() => props.model);
+const modelParameter = computed<any>(() => props.modelParameter);
+
+const modelName = computed(() => props.model?.name);
+
+const handleClick = () => {
+  visible.value = true;
+};
+
+const handleOk = () => {
+  emits('update:modelValue', value);
+};
+
+const handleCancel = (e: FocusEvent) => {
+
+};
 
 </script>
 
 <style lang="scss">
 @use "../../assets/mixin" as *;
-.table-body {
-  height: 100%;
-  border: 1px solid #F6EDFF;
-  border-bottom-width: 0;
-  overflow: auto;
 
-  .arco-table-container {
-    border-radius: 0;
-  }
 
-  .arco-table-header {
-    background-color: transparent;
-  }
-
-  //.arco-table .arco-table-element {
-  //  width: auto;
-  //  min-width: auto;
-  //}
-
-  .arco-table-body {
-    min-height: 32px;
-    //min-height: 96px;
-  }
-  .arco-table-th,
-  .arco-table-td {
-    min-width: 34px;
-  }
-  .arco-table-th .arco-table-cell {
-    padding: 9px 8px;
-  }
-  .arco-table-td .arco-table-cell {
-    padding: 4px 0;
-    padding: 0;
-  }
-
-  .arco-table .arco-table-cell {
-    min-width: 48px;
-  }
-  .arco-table-border-cell .arco-table-th.arco-table-col-fixed-right,
-  .arco-table-border-cell .arco-table-td.arco-table-col-fixed-right:not(.arco-table-tr-expand) {
-    border-left: 1px solid var(--color-neutral-3);
-  }
-
-}
 </style>

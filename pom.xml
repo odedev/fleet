@@ -20,13 +20,14 @@
   <packaging>pom</packaging>
 
   <properties>
+    <encoding>UTF-8</encoding>
     <java.version>17</java.version>
+    <spring-boot.version>3.1.1</spring-boot.version>
     <maven.compiler.source>${java.version}</maven.compiler.source>
     <maven.compiler.target>${java.version}</maven.compiler.target>
-    <maven.compiler.encoding>UTF-8</maven.compiler.encoding>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-    <spring-boot.version>3.1.1</spring-boot.version>
+    <maven.compiler.encoding>${encoding}</maven.compiler.encoding>
+    <project.build.sourceEncoding>${encoding}</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>${encoding}</project.reporting.outputEncoding>
   </properties>
 
   <modules>

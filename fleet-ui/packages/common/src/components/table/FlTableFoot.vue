@@ -13,6 +13,7 @@
       <i class="icon" v-if="props.isExportable" @click="handleExportClick">
         <Tooltip :mini="true" content="导出"><IconDownload /></Tooltip>
       </i>
+<!--      <FlTableFilter />-->
       <slot></slot>
     </div>
     <div class="table-pagination">
@@ -34,7 +35,7 @@ import {ref, computed} from "vue";
 import {Pagination, Tooltip} from "@arco-design/web-vue";
 import "@arco-design/web-vue/es/pagination/style/index.css";
 import {IconFilter, IconSettings, IconUpload, IconDownload} from "@arco-design/web-vue/es/icon";
-
+import FlTableFilter from "./FlTableFilter.vue";
 const emits = defineEmits([
   'update:pageNum',
   'filterClick',

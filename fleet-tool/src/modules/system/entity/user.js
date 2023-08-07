@@ -1,7 +1,8 @@
 import { EntitySchema } from "typeorm";
 
+
 const User = new EntitySchema({
-  name: 'User',
+  name: 'user',
   tableName: 'user',
   columns: {
     id: {
@@ -9,7 +10,13 @@ const User = new EntitySchema({
       primary: true,
       generated: 'uuid',
     },
-    usernames: {
+
+    username: {
+      type: 'varchar',
+      nullable: true,
+      length: 255,
+    },
+    password: {
       type: 'varchar',
       nullable: true,
     },
@@ -23,7 +30,24 @@ const User = new EntitySchema({
     age: {
       type: 'int',
       nullable: true,
-    }
+    },
+
+    version: {
+      version: true,
+    },
+    createdAt: {
+      createDate: true
+    },
+    updatedAt: {
+      updateDate: true
+    },
+    deletedAt: {
+      deleteDate: true
+    },
+  },
+  uniques: [],
+  orderBy: {
+    username: "ASC"
   }
 });
 

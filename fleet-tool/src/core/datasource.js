@@ -1,11 +1,25 @@
 import path from 'node:path';
-import { DataSource } from "typeorm"
-import "reflect-metadata"
+import { DataSource } from 'typeorm';
+import 'reflect-metadata';
+
 // 执行命令的目录
 const __rootDirname = path.resolve();
 
 const entities = path.join(__rootDirname, "src", "**", "entity", "*{.js,.ts}");
-console.log(entities)
+
+export const AppDataSource = new DataSource({
+  type: "sqlite",
+  database: "fleet_tool.db",
+  synchronize: true,
+  logging: true,
+  entities: [entities],
+  migrations: [],
+  subscribers: [],
+})
+
+export default AppDataSource;
+
+
 // export const SqliteDataSource = new DataSource({
 //   type: "sqlite",
 //   database: "database.sqlite",
@@ -27,16 +41,3 @@ console.log(entities)
 //   entities: [path.join(__rootDirname, "entity", "*{.js,.ts}")],
 //   synchronize: true,
 // })
-
-export const AppDataSource = new DataSource({
-  type: "sqlite",
-  database: "fleet_tool.db",
-  synchronize: true,
-  logging: true,
-  entities: [entities],
-  migrations: [],
-  subscribers: [],
-})
-
-
-export default AppDataSource;

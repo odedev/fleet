@@ -1,11 +1,19 @@
 <template>
   <section class="search">
     <div class="search-parameter">
+      <template v-for="field in fields">
+        <FlFormItem
+          :title="field.name"
+          v-model="value[field.code]"
+          :data-type="field.dataType"
+          :model="field.modelType"
+          :enumeration="field.enumType"
+        />
+      </template>
+
       <FlFormItem title="名称" :data-type="1"/>
       <FlFormItem title="编码" :data-type="1"/>
       <FlFormItem title="编码" :data-type="1"/>
-
-<!--      <FlFormItem />-->
     </div>
     <div class="search-action">
       <FlButtonSearch />
@@ -15,12 +23,27 @@
 </template>
 
 <script lang="ts" setup>
+import {computed, ref} from "vue";
 import FlFormItem from "../form/FlFormItem.vue";
-import FlForm from "../form/FlForm.vue";
-
-import FlButton from "../button/FlButton.vue";
 import FlButtonSearch from "../button/FlButtonSearch.vue";
 import FlButtonReset from "../button/FlButtonReset.vue";
+import {getSearchableFields} from "../../core/model";
+
+const props = defineProps<{
+  model: any,
+  modelParameter?: any,
+  // data?: any[],
+  // columns?: any[],
+  // isShowHead?: boolean,
+}>();
+const value = ref({});
+
+const fields = computed(() => {
+  props.model.fields
+  let fields = getSearchableFields(props.model);
+  console.log(fields)
+  return fields;
+});
 
 </script>
 

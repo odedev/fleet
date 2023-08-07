@@ -4,13 +4,6 @@ import dev.odes.fleet.common.enumeration.DataTypeEnum;
 
 import java.util.List;
 
-/**
- * package: dev.odes.fleet.common.parameter
- * class: ParameterProperty
- * date: 2023/5/6 21:42
- * version: 1.0.0
- * description:
- */
 public class ParameterProperty {
     private String key;
     private Object value;

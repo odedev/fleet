@@ -2,7 +2,7 @@
   <FlView>
     <FlViewMain>
       <FlViewHead>
-        <FlSearch></FlSearch>
+        <FlSearch :model="userProfileModel"></FlSearch>
       </FlViewHead>
       <FlViewBody>
         <FlBlock>

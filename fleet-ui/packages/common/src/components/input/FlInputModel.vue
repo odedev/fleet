@@ -92,7 +92,7 @@ const selectionValue = ref<any>([]);
 const visible = ref(false);
 
 const value = computed<any>(() => {
-  return props.modelValue[getDisplayFieldCode(props.model)];
+  return props.modelValue?.[getDisplayFieldCode(props.model)];
   // props.displayField ? props.modelValue[props.displayField] : props.modelValue?.name || props.modelValue;
 });
 const model = computed<any>(() => props.model);
@@ -105,7 +105,7 @@ const isDisabled = computed<boolean>(() => props.isDisabled);
 const isReadonly = computed<boolean>(() => props.isReadonly);
 const isInvalid = computed<boolean>(() => props.isInvalid || (!props.isNullable && !props.modelValue));
 
-const modelName = computed(() => props.model.name);
+const modelName = computed(() => props.model?.name);
 
 const rows = props.modelData;
 
