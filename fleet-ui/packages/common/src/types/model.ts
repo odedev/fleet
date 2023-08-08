@@ -1,5 +1,5 @@
 interface Model {
-  id: string,
+  id?: string,
   code: string,
   name: string,
   fullName: string,
@@ -9,7 +9,7 @@ interface Model {
 }
 
 interface ModelField {
-  id: string,
+  id?: string,
   code: string,
   name: string,
   dataType: number,
@@ -23,4 +23,7 @@ interface ModelField {
   note?: string,
   sequence: string,
   model?: Model,
+  modelData?: any,
+  modelParameter?: any,
+  enumeration?: any | any[],
 }

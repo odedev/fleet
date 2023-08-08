@@ -11,5 +11,5 @@ interface EnumerationValue {
   code: string,
   name: string,
   value: number,
-  enumeration: any,
+  enumeration: Enumeration,
 }

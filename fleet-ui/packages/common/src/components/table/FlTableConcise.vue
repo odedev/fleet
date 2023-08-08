@@ -68,8 +68,9 @@ const emits = defineEmits([
 ]);
 
 const props = defineProps<{
-  modelValue: any[],
+  modelValue: any | any[],
   model: any,
+  modelData?: any[],
   modelParameter?: any,
   selectionValue?: any[],
   selectionType?: 'none' | 'single' | 'multiple',

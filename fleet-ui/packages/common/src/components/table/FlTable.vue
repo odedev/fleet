@@ -91,6 +91,9 @@ const value = ref('123456789abcdefghijklmnopqrstuvwxyz');
 const props = withDefaults(defineProps<{
   dataType: number,
   modelValue: string,
+  model: any,
+  modelData?: any[],
+  modelParameter?: any,
   isEditable?: boolean,
   isNullable?: boolean,
   isDisabled?: boolean,
