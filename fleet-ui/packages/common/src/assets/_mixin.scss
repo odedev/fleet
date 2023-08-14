@@ -84,8 +84,8 @@
 }
 
 @mixin surface-color() {
-  color: $on-surface;
-  background-color: var($surface, --theme-surface);
+  color: var(--theme-on-surface, $on-surface);
+  background-color: var(--theme-surface, $surface);
 }
 
 @mixin surface-variant-color() {

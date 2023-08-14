@@ -47,12 +47,18 @@ const isInvalid = computed<boolean>(() => props.isInvalid);
 
 </script>
 <style lang="scss">
+@use "../../assets/mixin" as *;
+
 .input-date {
   .arco-picker {
     width: 100%;
     height: 30px;
     padding-left: 0px;
     padding-right: 8px;
+
+    input {
+      @include surface-color();
+    }
   }
 }
 
