@@ -5,19 +5,17 @@
 </template>
 <script lang="ts" setup>
 import {onUnmounted} from 'vue';
-import {debounce, throttle} from 'lodash-es';
-import {Button} from "@arco-design/web-vue";
-import '@arco-design/web-vue/es/button/style/css.js';
+import {debounce} from '../../utils/func_utils';
 
 const emit = defineEmits(['click']);
 
-const handleClick = throttle(() => {
+const handleClick = debounce(() => {
   emit('click');
-}, 500);
+}, 300);
 
 onUnmounted(() => {
-  handleClick.flush()
-  handleClick.cancel();
+  // handleClick.flush()
+  // handleClick.cancel();
 });
 
 </script>

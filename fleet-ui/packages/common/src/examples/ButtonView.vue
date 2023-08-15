@@ -17,8 +17,8 @@
         </FlBox>
         <FlBox>
           <FlButtonGroup>
-            <FlButton type="primary">primary</FlButton>
-            <FlButton type="secondary">secondary</FlButton>
+            <FlButton type="primary" @click="handleClick">primary</FlButton>
+            <FlButton type="secondary" @click="handle1Click">secondary</FlButton>
             <FlButton type="tertiary">tertiary</FlButton>
             <FlButton type="neutral">neutral</FlButton>
             <FlButton type="error">error</FlButton>
@@ -44,16 +44,20 @@
   </FlView>
 </template>
 <script lang="ts" setup>
-import {Card} from "@arco-design/web-vue";
-import "@arco-design/web-vue/es/card/style/css.js";
-
 import {
   FlHeader, FlBody, FlFooter, FlMenu, FlMain, FlNav, FlTab, FlPage,
   FlView, FlViewAside, FlViewMain, FlViewNav, FlViewHead, FlViewBody, FlBlock, FlBox, FlAction,
   FlButton, FlButtonAdd, FlButtonEdit, FlButtonDelete, FlButtonView, FlButtonSave, FlButtonReset, FlButtonSearch, FlButtonUpload,
   FlButtonGroup
 } from '../components'
+import {debounce} from "@/utils/func_utils";
 
+const handleClick = () => {
+  console.log('click');
+};
+const handle1Click = () => {
+  console.log('handle1Click');
+};
 </script>
 <style>
 .arco-card {

@@ -18,7 +18,7 @@
         <Tooltip :mini="true" content="刷新"><IconRefresh /></Tooltip>
       </div>
       <div class="nav-action__item" @click="onHelpClick">
-        <Tooltip :mini="true" content="文档"><IconBook /></Tooltip>
+        <Tooltip :mini="true" content="文档"><IconQuestionCircle /></Tooltip>
       </div>
 <!--      <Tooltip :mini="true" content="帮助"><IconQuestionCircle /></Tooltip>-->
     </div>

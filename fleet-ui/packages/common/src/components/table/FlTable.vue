@@ -85,10 +85,9 @@ import FlTableCellButton from "./FlTableCellButton.vue";
 import FlButton from "../button/FlButton.vue";
 import FlButtonAdd from "../button/FlButtonAdd.vue";
 import FlButtonGroup from "../button/FlButtonGroup.vue";
-const table = ref(null);
-const value = ref('123456789abcdefghijklmnopqrstuvwxyz');
 
-const props = withDefaults(defineProps<{
+
+interface Props {
   dataType: number,
   modelValue: string,
   model: any,
@@ -102,12 +101,17 @@ const props = withDefaults(defineProps<{
   isSettable?: boolean,
   isImportable?: boolean,
   isExportable?: boolean,
-}>(), {
+}
+
+const props = withDefaults(defineProps<Props>(), {
   isFilterable: true,
   isSettable: true,
   isImportable: true,
   isExportable: true,
 });
+
+const table = ref<HTMLDivElement>();
+const value = ref('123456789abcdefghijklmnopqrstuvwxyz');
 
 const isEditable = computed<boolean>(() => props.isEditable);
 const operationColumnWidth = computed<number>(() => {

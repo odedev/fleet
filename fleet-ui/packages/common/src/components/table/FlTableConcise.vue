@@ -67,7 +67,7 @@ const emits = defineEmits([
   'change',
 ]);
 
-const props = defineProps<{
+interface Props {
   modelValue: any | any[],
   model: any,
   modelData?: any[],
@@ -77,7 +77,9 @@ const props = defineProps<{
   // data?: any[],
   // columns?: any[],
   // isShowHead?: boolean,
-}>();
+}
+
+const props = defineProps<Props>();
 
 const table = ref(null);
 const value = ref('123');
