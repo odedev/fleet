@@ -6,13 +6,16 @@ import RedirectView from '../views/RedirectView.vue'
 import NotFoundView from '../views/NotFoundView.vue'
 import ComponentView from "../views/ComponentView.vue";
 
-import ContentView from '../examples/ContentView.vue'
-import InputView from '../examples/InputView.vue'
-import ButtonView from '../examples/ButtonView.vue'
-import TableView from '../examples/TableView.vue'
-import TableConciseView from '../examples/TableConciseView.vue'
+import ContentView from '../examples/BaseContentView.vue'
+import InputView from '../examples/BaseInputView.vue'
+import CellView from '../examples/BaseCellView.vue'
+import ButtonView from '../examples/BaseButtonView.vue'
+import TableView from '../examples/BaseTableView.vue'
+import TableConciseView from '../examples/BaseTableConciseView.vue'
 
-import FormView from '../examples/FormView.vue'
+import FormView from '../examples/BaseFormView.vue'
+import CardView from '../examples/BaseCardView.vue'
+import TreeView from '../examples/BaseTreeView.vue'
 
 import LayoutTableView from '../examples/LayoutTableView.vue'
 
@@ -23,19 +26,20 @@ import LayoutFormTableListView from '../examples/LayoutFormTableListView.vue'
 import LayoutTreeFormView from '../examples/LayoutTreeFormView.vue'
 import PanelView from '../examples/PanelView.vue'
 import StepView from '../examples/StepView.vue'
-import DescView from '../examples/DescView.vue'
+import DescView from '../examples/BaseDescView.vue'
 
 import TreeTableView from '../examples/TreeTableView.vue'
-import CardView from '../examples/CardView.vue'
-import TreeView from '../examples/TreeView.vue'
 
-import CellView from '../examples/CellView.vue'
+
+
 import RichTextView from '../examples/RichTextView.vue'
 import MarkdownView from '../examples/MarkdownView.vue'
-import CodeView from '../examples/CodeView.vue'
+import CodeView from '../examples/BaseCodeView.vue'
 
 import ViewerMarkdownView from "../examples/ViewerMarkdownView.vue";
 import ViewerRichTextView from "../examples/ViewerRichTextView.vue";
+import ViewerImageView from "../examples/ViewerImageView.vue";
+import ViewerVideoView from "../examples/ViewerVideoView.vue";
 
 
 const router = createRouter({
@@ -160,6 +164,16 @@ const router = createRouter({
       path: '/ViewerRichText',
       name: 'ViewerRichText',
       component: ViewerRichTextView
+    },
+    {
+      path: '/ViewerImage',
+      name: 'ViewerImage',
+      component: ViewerImageView
+    },
+    {
+      path: '/ViewerVideo',
+      name: 'ViewerVideo',
+      component: ViewerVideoView
     },
     // 动态组件
     {

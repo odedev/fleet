@@ -75,6 +75,7 @@ import FlViewer from "./viewer/FlViewer.vue";
 import FlViewerMarkdown from "./viewer/FlViewerMarkdown.vue";
 import FlViewerRichText from "./viewer/FlViewerRichText.vue";
 import FlViewerVideo from "./viewer/FlViewerVideo.vue";
+import FlViewerImage from "./viewer/FlViewerImage.vue";
 
 
 import FlLoading from "./loading/FlLoading.vue";
@@ -152,12 +153,14 @@ export {
 
   FlEditorMarkdown,
   FlEditorRichText,
-  FlViewerVideo,
+  FlEditorCode,
+
 
   FlViewer,
   FlViewerMarkdown,
   FlViewerRichText,
-  FlEditorCode,
+  FlViewerImage,
+  FlViewerVideo,
 
   FlLoading,
 
