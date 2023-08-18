@@ -17,6 +17,8 @@ import FormView from '../examples/BaseFormView.vue'
 import CardView from '../examples/BaseCardView.vue'
 import TreeView from '../examples/BaseTreeView.vue'
 
+import BaseCalendarView from "@/examples/BaseCalendarView.vue";
+
 import LayoutTableView from '../examples/LayoutTableView.vue'
 
 import LayoutFormView from '../examples/LayoutFormView.vue'
@@ -99,6 +101,11 @@ const router = createRouter({
       path: '/Code',
       name: 'Code',
       component: CodeView
+    },
+    {
+      path: '/Calendar',
+      name: 'Calendar',
+      component: BaseCalendarView
     },
     {
       path: '/LayoutFormView',

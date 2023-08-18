@@ -37,6 +37,8 @@
             <FlButtonReset />
             <FlButtonSearch />
             <FlButtonUpload />
+            <FlButtonDropdown />
+            <FlButtonIcon />
           </FlButtonGroup>
         </FlBlock>
       </FlViewBody>
@@ -47,7 +49,8 @@
 import {
   FlHeader, FlBody, FlFooter, FlMenu, FlMain, FlNav, FlTab, FlPage,
   FlView, FlViewAside, FlViewMain, FlViewNav, FlViewHead, FlViewBody, FlBlock, FlBox, FlAction,
-  FlButton, FlButtonAdd, FlButtonEdit, FlButtonDelete, FlButtonView, FlButtonSave, FlButtonReset, FlButtonSearch, FlButtonUpload,
+  FlButton, FlButtonAdd, FlButtonEdit, FlButtonDelete, FlButtonView, FlButtonSave, FlButtonReset,
+  FlButtonSearch, FlButtonUpload, FlButtonDropdown, FlButtonIcon,
   FlButtonGroup
 } from '../components'
 import {debounce} from "@/utils/func_utils";

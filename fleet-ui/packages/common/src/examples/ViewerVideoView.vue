@@ -3,7 +3,7 @@
     <FlViewMain>
       <FlViewBody>
         <FlViewer>
-          <FlViewerVideo v-model="value" />
+          <FlViewerVideo v-model="value" :poster="poster"/>
         </FlViewer>
       </FlViewBody>
     </FlViewMain>
@@ -18,6 +18,7 @@ import {
 } from '../components'
 
 let value =  `http://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/byted-player-videos/1.0.0/xgplayer-demo-720p.mp4`
+let poster =  `//lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/byted-player-videos/1.0.0/poster.jpg`
 
 </script>
 <style>

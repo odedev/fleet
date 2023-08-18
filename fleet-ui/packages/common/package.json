@@ -64,6 +64,7 @@
     "@codemirror/view": "^6.15.3",
     "@vue/repl": "^2.4.0",
     "axios": "^1.4.0",
+    "bignumber.js": "^9.1.1",
     "bytemd": "^1.21.0",
     "bytes": "^3.1.2",
     "change-case": "^4.1.2",
@@ -78,12 +79,14 @@
     "monaco-editor": "^0.40.0",
     "nprogress": "^0.2.0",
     "qs": "^6.11.2",
+    "socket.io-client": "^4.7.2",
     "sortablejs": "^1.15.0",
     "video.js": "^8.3.0",
     "viewerjs": "^1.11.4",
     "vue": "^3.3.4",
     "vue-router": "^4.2.4",
     "xgplayer": "^3.0.8",
+    "xgplayer-flv": "^3.0.8",
     "xlsx": "https://cdn.sheetjs.com/xlsx-0.20.0/xlsx-0.20.0.tgz"
   },
   "devDependencies": {

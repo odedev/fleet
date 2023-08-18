@@ -1,17 +1,30 @@
 <template>
 <div class="card">
-  <Card></Card>
+  <Card :style="{ width: '360px' }" title="Arco Card" :hoverable="true">
+    <template #extra>
+      <Link>More</Link>
+    </template>
+    ByteDance's core product, Toutiao ("Headlines"), is a content platform in
+    China and around the world. Toutiao started out as a news recommendation
+    engine and gradually evolved into a platform delivering content in various
+    formats.
+  </Card>
 </div>
 </template>
 
 <script lang="ts" setup>
-import {Card} from "@arco-design/web-vue";
+import {Card, Link} from "@arco-design/web-vue";
 import "@arco-design/web-vue/es/card/style/css.js";
+
+
 </script>
 
 <style lang="scss">
-.arco-card {
-  margin-right: 16px;
-  margin-bottom: 16px;
+.card {
+  .arco-card {
+    margin-right: 16px;
+    margin-bottom: 16px;
+  }
 }
+
 </style>

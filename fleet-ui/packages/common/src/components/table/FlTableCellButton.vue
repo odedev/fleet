@@ -15,14 +15,17 @@
   <template v-else>
     <Button type="text" status="success" @click="handleViewClick">查看</Button>
     <Button type="text" status="warning" @click="handleEditClick">编辑</Button>
-    <Button type="text" status="danger" @click="handleDeleteClick">删除</Button>
+    <Popconfirm content="Are you sure you want to delete?" @ok="handleDeleteRowOkClick" @cancel="handleDeleteRowCancelClick">
+      <Button type="text" status="danger" @click="handleDeleteClick">删除</Button>
+    </Popconfirm>
   </template>
 </div>
 </template>
 
 <script lang="ts" setup>
-import {Button} from "@arco-design/web-vue";
+import {Button, Popconfirm} from "@arco-design/web-vue";
 import {IconPlusCircleFill, IconMinusCircleFill, IconCloseCircleFill} from "@arco-design/web-vue/es/icon";
+import '@arco-design/web-vue/es/popconfirm/style/css.js';
 
 const emits = defineEmits(['AddRow', 'DeleteRow', 'View', 'Edit', 'Delete']);
 
@@ -54,6 +57,17 @@ const handleEditClick = () => {
 const handleDeleteClick = () => {
   console.log('Delete')
   emits('Delete');
+};
+
+const handleDeleteRowOkClick = () => {
+  console.log('DeleteRow')
+  emits('DeleteRow');
+};
+
+
+const handleDeleteRowCancelClick = () => {
+  console.log('DeleteRow')
+  emits('DeleteRow');
 };
 
 </script>

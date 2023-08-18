@@ -47,6 +47,15 @@ export function isUndefined(obj: any): obj is undefined {
   return obj === undefined;
 }
 
+export function isJsonString(obj: any): boolean {
+  try {
+    JSON.parse(obj)
+    return true;
+  } catch (e) {
+    return false
+  }
+}
+
 function isHex(color: any) {
   return /^#[a-fA-F0-9]{3}$|#[a-fA-F0-9]{6}$/.test(color);
 }

@@ -54,6 +54,9 @@ import FlButtonSave from "./button/FlButtonSave.vue";
 import FlButtonReset from "./button/FlButtonReset.vue";
 import FlButtonSearch from "./button/FlButtonSearch.vue";
 import FlButtonUpload from "./button/FlButtonUpload.vue";
+import FlButtonDropdown from "./button/FlButtonDropdown.vue";
+import FlButtonIcon from "./button/FlButtonIcon.vue";
+
 import FlButtonGroup from "./button/FlButtonGroup.vue";
 
 
@@ -65,6 +68,8 @@ import FlTableConcise from "./table/FlTableConcise.vue";
 import FlTableCell from "./table/FlTableCell.vue";
 
 import FlTree from "./tree/FlTree.vue";
+
+import FlCalendar from "./calendar/FlCalendar.vue";
 
 
 import FlEditorMarkdown from "./editor/FlEditorMarkdown.vue";
@@ -140,6 +145,8 @@ export {
   FlButtonReset,
   FlButtonSearch,
   FlButtonUpload,
+  FlButtonDropdown,
+  FlButtonIcon,
   FlButtonGroup,
 
   FlForm,
@@ -150,6 +157,7 @@ export {
   FlTableCell,
 
   FlTree,
+  FlCalendar,
 
   FlEditorMarkdown,
   FlEditorRichText,
