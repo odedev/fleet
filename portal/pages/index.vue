@@ -1,5 +1,5 @@
 <script setup>
-import {ElButton, ElColorPicker} from 'element-plus';
+// import {ElButton, ElColorPicker} from 'element-plus';
 </script>
 <template>
   <Page>

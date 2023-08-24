@@ -14,8 +14,19 @@ export default defineNuxtConfig({
     // '@vueuse/nuxt',
     // '@pinia/nuxt',
     '@element-plus/nuxt',
+    '@nuxtjs/tailwindcss',
     // '@nuxtjs/color-mode'
   ],
+  // imports: {
+  //   dirs: ['./stores'],
+  // },
+  // pinia: {
+  //   autoImports: ['defineStore', 'acceptHMRUpdate'],
+  // },
+  // elementPlus: { /** Options */ },
+  // tailwindcss: {
+  //   // Options
+  // },
   devtools: { enabled: true },
   devServer: {
     port: 23507
