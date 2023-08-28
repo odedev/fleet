@@ -1,5 +1,7 @@
 import axios from 'axios'
 import qs from 'qs'
+import type {ResponseType} from 'axios'
+
 
 export class Request {
   readonly #instance;
@@ -51,8 +53,11 @@ export class Request {
     }
   }
 
-  async postFormData(url: string, params: any) {
+  async postForm(url: string, params: any) {
     const config = {
+      headers: {
+        'Content-Type': 'multipart/form-data;charset=utf-8'
+      },
       transformRequest: function (data: any, headers: any) {
         let formData = new FormData()
         Object.keys(data).forEach(key => {
@@ -63,7 +68,7 @@ export class Request {
       },
     }
     try {
-      let res = await this.#instance.post(url, params, config)
+      let res = await this.#instance.postForm(url, params, config)
       return res.data
     } catch (err: any) {
       throw err.response.data
@@ -97,8 +102,21 @@ export class Request {
   }
 
   async putForm(url: string, params: any) {
+    const config = {
+      headers: {
+        'Content-Type': 'multipart/form-data;charset=utf-8'
+      },
+      transformRequest: function (data: any, headers: any) {
+        let formData = new FormData()
+        Object.keys(data).forEach(key => {
+          let value = data[key]
+          formData.append(key, value)
+        })
+        return formData
+      },
+    }
     try {
-      let res = await this.#instance.putForm(url, params)
+      let res = await this.#instance.putForm(url, params, config)
       return res.data
     } catch (err: any) {
       throw err.response.data
@@ -115,8 +133,21 @@ export class Request {
   }
 
   async patchForm(url: string, params: any) {
+    const config = {
+      headers: {
+        'Content-Type': 'multipart/form-data;charset=utf-8'
+      },
+      transformRequest: function (data: any, headers: any) {
+        let formData = new FormData()
+        Object.keys(data).forEach(key => {
+          let value = data[key]
+          formData.append(key, value)
+        })
+        return formData
+      },
+    }
     try {
-      let res = await this.#instance.patchForm(url, params)
+      let res = await this.#instance.patchForm(url, params, config)
       return res.data
     } catch (err: any) {
       throw err.response.data
@@ -129,6 +160,25 @@ export class Request {
       return res.data
     } catch (err: any) {
       throw err.response.data
+    }
+  }
+
+  async getBinary(url: string, params: any) {
+    const config = {
+      responseType: 'blob' as ResponseType,
+      headers: {
+        'Content-Type': 'multipart/form-data;charset=utf-8'
+      },
+      transformRequest: function (data: any, headers: any) {
+        return qs.stringify(data, {arrayFormat: 'brackets'})
+      },
+    }
+    try {
+      let res = await this.#instance.post(url, params, config)
+      const blob = new Blob([res.data], {type: res.data.type});
+      return res.data
+    } catch (err: any) {
+      throw err.response?.data || err
     }
   }
 
