@@ -19,7 +19,7 @@ export function isEmail(value: string): boolean {
 }
 
 /**
- * IP 验证
+ * IPV4 验证
  * @param value
  */
 export function isIP(value: string): boolean {
