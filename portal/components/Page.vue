@@ -1,8 +1,6 @@
 <template>
-  <div class="page">
-    <Container>
-      <slot></slot>
-    </Container>
+  <div class="page w-full">
+    <slot></slot>
   </div>
 </template>
 <style>

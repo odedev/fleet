@@ -20,9 +20,14 @@ const value = computed<string>(() => props.modelValue);
 .viewer__image {
   width: 100%;
   height: 100%;
+  width: auto;  /* 图片宽度自适应 */
+  height: auto; /* 图片高度自适应 */
+  max-width: 100%; /* 最大宽度为100% */
+  max-height: 100%; /* 最大高度为100% */
   overflow: auto;
   padding: 16px;
   padding: 0;
+
 
 }
 </style>

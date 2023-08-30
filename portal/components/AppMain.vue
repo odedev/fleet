@@ -1,5 +1,5 @@
 <template>
-  <main class="app-main py-6">
+  <main class=" w-full">
     <slot></slot>
   </main>
 </template>
