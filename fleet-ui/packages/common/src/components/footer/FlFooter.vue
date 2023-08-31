@@ -73,7 +73,6 @@ const handleClick = () => {
   user-select: none;
 
   @include background-color-primary-container();
-  @include background-color-primary-container-theme();
 
 
   .footer-info {
@@ -98,7 +97,6 @@ const handleClick = () => {
 
     &:hover {
       @include background-color-tertiary();
-      @include background-color-tertiary-theme();
     }
   }
 

@@ -94,7 +94,6 @@ const onClose = (item: any) => {
 
       span, a {
         @include color-secondary();
-        @include color-secondary-theme();
       }
     }
 
@@ -102,7 +101,6 @@ const onClose = (item: any) => {
       line-height: 22px;
       padding: 0 4px;
       //@include color-secondary();
-      //@include color-secondary-theme();
       cursor: pointer;
       min-width: max-content;
     }
@@ -121,7 +119,6 @@ const onClose = (item: any) => {
 
       &:hover {
         @include background-color-tertiary();
-        @include background-color-tertiary-theme();
       }
     }
 

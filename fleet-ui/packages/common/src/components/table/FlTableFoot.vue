@@ -129,7 +129,6 @@ const handleChange = (current: number) => {
 
       &:hover {
         @include background-color-tertiary();
-        @include background-color-tertiary-theme();
       }
     }
   }

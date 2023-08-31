@@ -36,7 +36,6 @@ import FlProfile from './FlProfile.vue'
   background-color: #607D8B;
   background-color: #546E7A;
   @include background-color-primary();
-  @include background-color-primary-theme();
 }
 
 </style>

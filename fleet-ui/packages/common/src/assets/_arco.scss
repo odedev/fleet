@@ -1,8 +1,6 @@
 @use "mixin" as *;
 
-.arco-dropdown-list-wrapper {
-  max-height: 272px;
-}
+
 
 .arco-btn-size-small {
  padding: 0 12px;
@@ -12,16 +10,13 @@
 .arco-btn-primary[type='button'],
 .arco-btn-primary[type='submit'] {
   @include background-color-primary();
-  //@include background-color-primary-theme();
 }
 
 .arco-btn-primary:hover,
 .arco-btn-primary[type='button']:hover,
 .arco-btn-primary[type='submit']:hover {
   @include background-color-secondary();
-  //@include background-color-secondary-theme();
   @include background-color-primary();
-  //@include background-color-primary-theme();
 }
 
 .arco-btn-primary.arco-btn-disabled,
@@ -86,18 +81,14 @@
 
 .arco-menu-light .arco-menu-inline-header.arco-menu-selected {
   @include color-primary();
-  @include color-primary-theme();
 
   @include color-secondary();
-  @include color-secondary-theme();
 
   .arco-icon,
   .arco-menu-icon {
     @include color-primary();
-    @include color-primary-theme();
 
     @include color-secondary();
-    @include color-secondary-theme();
   }
 }
 
@@ -106,11 +97,9 @@
 .arco-menu-light .arco-menu-pop-header:hover,
 .arco-menu-light .arco-menu-inline-header:hover {
   @include background-color-tertiary();
-  @include background-color-tertiary-theme();
 }
 .arco-menu-light .arco-menu-item.arco-menu-selected {
   @include background-color-tertiary();
-  @include background-color-tertiary-theme();
 }
 
 .arco-menu-light .arco-menu-item.arco-menu-selected .arco-icon,
@@ -122,30 +111,23 @@
 .arco-menu-light .arco-menu-pop-header.arco-menu-selected .arco-menu-icon,
 .arco-menu-light .arco-menu-inline-header.arco-menu-selected .arco-menu-icon {
   @include color-primary();
-  @include color-primary-theme();
 }
 .arco-menu-light .arco-menu-group-title {
   @include color-primary();
-  @include color-primary-theme();
 }
 
 .arco-tree-node-selected .arco-tree-node-title,
 .arco-tree-node-selected .arco-tree-node-title:hover {
   //@include color-primary();
-  //@include color-primary-theme();
 
   //@include color-secondary();
-  //@include color-secondary-theme();
   @include background-color-tertiary();
-  @include background-color-tertiary-theme();
 }
 .arco-tree-node-title:hover {
   @include background-color-tertiary();
-  @include background-color-tertiary-theme();
 }
 .arco-tree-node-drag-icon {
   @include color-primary();
-  @include color-primary-theme();
 }
 .arco-tree-node-indent-block {
   margin-right: 8px;
@@ -155,21 +137,17 @@
 .arco-tabs-tab-active,
 .arco-tabs-tab-active:hover {
   @include color-secondary();
-  @include color-secondary-theme();
 }
 .arco-tabs-nav-type-line .arco-tabs-tab:hover .arco-tabs-tab-title::before {
   @include background-color-tertiary();
-  @include background-color-tertiary-theme();
 }
 .arco-tabs-nav-ink {
   @include background-color-secondary();
-  @include background-color-secondary-theme();
 }
 
 
 .arco-checkbox-checked .arco-checkbox-icon {
   @include background-color-primary();
-  @include background-color-primary-theme();
 }
 .arco-checkbox-indeterminate .arco-checkbox-icon {
   @include background-color-primary();
@@ -178,7 +156,6 @@
 .arco-checkbox-disabled.arco-checkbox-checked .arco-checkbox-icon,
 .arco-checkbox-disabled.arco-checkbox-checked:hover .arco-checkbox-icon {
   @include background-color-secondary();
-  @include background-color-secondary-theme();
 }
 
 .arco-radio-checked .arco-radio-icon {
@@ -211,8 +188,18 @@
 .arco-select-view-single.arco-select-view-focus {
   @include border-color-primary();
 }
+
 .arco-select-dropdown .arco-select-option-active,
 .arco-select-dropdown .arco-select-option:not(.arco-select-dropdown .arco-select-option-disabled):hover {
+  @include background-color-tertiary();
+}
+
+.arco-dropdown-list-wrapper {
+  max-height: 272px;
+}
+
+.arco-dropdown-option-active,
+.arco-dropdown-option:not(.arco-dropdown-option-disabled):hover {
   @include background-color-tertiary();
 }
 
@@ -239,7 +226,6 @@
 .arco-table-hover:not(.arco-table-dragging) .arco-table-tr:not(.arco-table-tr-empty):not(.arco-table-tr-summary):hover .arco-table-td:not(.arco-table-col-fixed-left):not(.arco-table-col-fixed-right),
 .arco-table-hover .arco-table-tr-drag .arco-table-td:not(.arco-table-col-fixed-left):not(.arco-table-col-fixed-right) {
   @include background-color-tertiary();
-  @include background-color-tertiary-theme();
 }
 
 .arco-table-tr-checked .arco-table-td {
@@ -260,7 +246,6 @@
 .arco-pagination-item-active,
 .arco-pagination-item-active:hover {
   @include background-color-tertiary();
-  @include background-color-tertiary-theme();
 }
 
 .arco-pagination .arco-pagination-item-previous.arco-pagination-item-disabled,
@@ -268,6 +253,7 @@
   color: rgb(201,205,212);
   background-color: transparent;
 }
+
 
 .arco-modal-header {
   padding: 0 16px;
