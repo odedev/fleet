@@ -91,6 +91,7 @@ const onClose = (item: any) => {
 
     &.active {
       background-color: #F8F8F8;
+      @include background-color();
 
       span, a {
         @include color-secondary();

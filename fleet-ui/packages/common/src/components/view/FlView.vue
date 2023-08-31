@@ -6,6 +6,8 @@
 <script setup>
 </script>
 <style lang="scss">
+@use "../../assets/mixin" as *;
+
 .view {
   width: 100%;
   height: 100%;
@@ -13,5 +15,6 @@
   flex-direction: row;
   padding: 0;
   background-color: #FFFFFF;
+  @include background-color-surface();
 }
 </style>

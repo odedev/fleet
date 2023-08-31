@@ -78,7 +78,15 @@
   }
 }
 
-
+.arco-menu {
+  @include background-color-surface();
+}
+.arco-menu-light .arco-menu-item,
+.arco-menu-light .arco-menu-group-title,
+.arco-menu-light .arco-menu-pop-header,
+.arco-menu-light .arco-menu-inline-header {
+  @include background-color-surface();
+}
 .arco-menu-light .arco-menu-inline-header.arco-menu-selected {
   @include color-primary();
 
@@ -173,6 +181,9 @@
   @include background-color-surface();
   @include border-color();
 }
+.arco-input-wrapper.arco-input-disabled {
+  // @include background-color-surface();
+}
 .arco-input-wrapper:hover,
 .arco-picker:hover,
 .arco-select-view-single:hover,
@@ -198,6 +209,9 @@
   max-height: 272px;
 }
 
+.arco-dropdown-option {
+  line-height: 32px;
+}
 .arco-dropdown-option-active,
 .arco-dropdown-option:not(.arco-dropdown-option-disabled):hover {
   @include background-color-tertiary();

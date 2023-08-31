@@ -39,11 +39,15 @@
 @mixin background-color() {
   color: $on-background;
   background-color: var(--theme-background, $background);
+
+  @include theme-background-color();
 }
 
 @mixin background-color-surface() {
   color: $on-surface;
   background-color: var(--theme-white, $surface);
+
+  // @include theme-background-color-surface();
 }
 @mixin background-color-primary() {
   color: $on-primary;

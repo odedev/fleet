@@ -24,17 +24,19 @@ import {RouterView} from 'vue-router';
 
 </script>
 <style lang="scss">
+@use "../../assets/mixin" as *;
+
 .page {
   height: 100%;
   width: 100%;
-  background-color: #F8F8F8;
   overflow: hidden;
   flex-basis: auto;
   flex-grow: 1;
   flex-shrink: 1;
   padding: 16px;
   padding: 20px;
-
+  background-color: #F8F8F8;
+  @include background-color();
   // display: flex;
   // flex-direction: row;
   // justify-content: flex-start;

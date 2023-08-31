@@ -23,7 +23,7 @@
 <!--      <Tooltip :mini="true" content="帮助"><IconQuestionCircle /></Tooltip>-->
     </div>
 
-    <Drawer :width="552" :visible="visible" @ok="handleOk" @cancel="handleCancel" unmountOnClose :footer="false">
+    <Drawer width="50%" :visible="visible" @ok="handleOk" @cancel="handleCancel" unmountOnClose :footer="false">
       <template #title>
         使用手册
       </template>
@@ -132,6 +132,8 @@ value += "```mermaid \ngraph TD;\nA-->B;\nA-->C;\nB-->D;\nC-->D;\n```"
 
 </script>
 <style lang="scss">
+@use "../../assets/mixin" as *;
+
 .nav {
   --nav-height: 40px;
   --nav-height: 28px;
@@ -149,6 +151,7 @@ value += "```mermaid \ngraph TD;\nA-->B;\nA-->C;\nB-->D;\nC-->D;\n```"
   padding: 0;
   //border-bottom: 1px solid #F5F5F5;
   background-color: #F8F8F8;
+  @include background-color();
 
   .nav-breadcrumb {
     padding: 0 20px;
@@ -166,6 +169,9 @@ value += "```mermaid \ngraph TD;\nA-->B;\nA-->C;\nB-->D;\nC-->D;\n```"
   }
   .nav-action__item {
     cursor: pointer;
+  }
+  .arco-breadcrumb-item {
+    @include background-color();
   }
 }
 </style>

@@ -1,3 +1,6 @@
+<script lang="ts" setup>
+
+</script>
 <template>
 <a href="/" class="logo">
   <h1>
@@ -5,10 +8,6 @@
   </h1>
 </a>
 </template>
-
-<script>
-
-</script>
 
 <style lang="scss">
 @use "../../assets/mixin" as *;

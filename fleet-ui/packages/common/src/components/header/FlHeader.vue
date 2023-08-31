@@ -2,11 +2,15 @@
   <header id="header" class="header">
     <FlLogo></FlLogo>
     <slot></slot>
-    <FlProfile></FlProfile>
+    <div class="header__action">
+      <FlIndicator />
+      <FlProfile></FlProfile>
+    </div>
   </header>
 </template>
 
 <script lang="ts" setup>
+import FlIndicator from './FlIndicator.vue'
 import FlLogo from './FlLogo.vue'
 import FlProfile from './FlProfile.vue'
 
@@ -36,6 +40,19 @@ import FlProfile from './FlProfile.vue'
   background-color: #607D8B;
   background-color: #546E7A;
   @include background-color-primary();
+
+  .header__action {
+    width: 552px;
+    height: 100%;
+    flex-basis: 552px;
+    flex-grow: 0;
+    flex-shrink: 0;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+  }
 }
 
 </style>

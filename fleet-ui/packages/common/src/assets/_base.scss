@@ -1,3 +1,5 @@
+@use "mixin" as *;
+
 /* color palette from <https://github.com/vuejs/theme> */
 :root {
   --vt-c-white: #ffffff;
@@ -76,6 +78,8 @@ body {
   -moz-osx-font-smoothing: grayscale;
   font-feature-settings: "tnum";
   font-variant: tabular-nums;
+
+  @include background-color-surface();
 }
 
 

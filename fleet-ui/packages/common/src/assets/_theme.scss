@@ -67,6 +67,23 @@
   }
 }
 
+@mixin theme-background-color() {
+  @each $name, $theme in $themes {
+    [data-theme="#{$name}"] & {
+      color: map.get($theme, "on-background");
+      background-color: map.get($theme, "background");
+    }
+  }
+}
+
+@mixin theme-background-color-surface() {
+  @each $name, $theme in $themes {
+    [data-theme="#{$name}"] & {
+      color: map.get($theme, "on-surface");
+      background-color: map.get($theme, "surface");
+    }
+  }
+}
 
 @mixin theme-background-color-primary() {
   @each $name, $theme in $themes {
