@@ -207,6 +207,13 @@
 .arco-picker-focused:hover {
   @include border-color-primary();
 }
+.arco-picker-cell-selected .arco-picker-date-value {
+  @include background-color-primary();
+}
+.arco-picker-cell-today::after {
+  @include background-color-primary();
+}
+
 .arco-textarea-wrapper:focus-within,
 .arco-textarea-wrapper.arco-textarea-focus {
   @include border-color-primary();
