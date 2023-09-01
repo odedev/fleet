@@ -3,6 +3,10 @@ import {ref} from 'vue';
 import {Modal} from "@arco-design/web-vue";
 import '@arco-design/web-vue/es/modal/style/css.js';
 
+import FlTable from "../table/FlTable.vue";
+
+const value = ref('');
+
 const visible = ref(false);
 
 const handleClick = () => {
@@ -22,6 +26,7 @@ const handleCancel = () => {
       Title
     </template>
     <div>
+      <component :is="FlTable" v-model="value" />
       You can customize modal body text by the current situation.
       This modal will be closed immediately once you press the OK button.
     </div>
