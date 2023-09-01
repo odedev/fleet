@@ -49,6 +49,14 @@
 
   // @include theme-background-color-surface();
 }
+
+@mixin background-color-surface-variant() {
+  color: $on-surface-variant;
+  background-color: var(--theme-white, $surface-variant);
+
+  // @include theme-background-color-surface();
+}
+
 @mixin background-color-primary() {
   color: $on-primary;
   background-color: var(--theme-primary, $primary);

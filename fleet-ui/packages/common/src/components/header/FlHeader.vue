@@ -2,17 +2,22 @@
   <header id="header" class="header">
     <FlLogo></FlLogo>
     <slot></slot>
-    <div class="header__action">
-      <FlIndicator />
-      <FlProfile></FlProfile>
-    </div>
+    <FlProfile :name="name"></FlProfile>
   </header>
 </template>
 
 <script lang="ts" setup>
-import FlIndicator from './FlIndicator.vue'
+import {computed} from "vue";
 import FlLogo from './FlLogo.vue'
 import FlProfile from './FlProfile.vue'
+
+
+interface Props {
+  name?: string,
+}
+
+const props = defineProps<Props>();
+const name = computed(() => props.name || '')
 
 </script>
 <style lang="scss">

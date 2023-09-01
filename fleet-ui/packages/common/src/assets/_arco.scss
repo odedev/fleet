@@ -181,8 +181,9 @@
   @include background-color-surface();
   @include border-color();
 }
-.arco-input-wrapper.arco-input-disabled {
-  // @include background-color-surface();
+.arco-input-wrapper.arco-input-disabled,
+.arco-input-wrapper.arco-input-disabled:hover {
+   @include background-color-surface-variant();
 }
 .arco-input-wrapper:hover,
 .arco-picker:hover,

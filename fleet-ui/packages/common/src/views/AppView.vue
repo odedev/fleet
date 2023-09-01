@@ -1,5 +1,5 @@
 <template>
-  <FlHeader></FlHeader>
+  <FlHeader name="平台功能有限公司"></FlHeader>
   <FlBody>
     <FlMenu v-model="current" :menus="menus" @update:model-value="onMenuChange"></FlMenu>
     <FlMain>

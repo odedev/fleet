@@ -4,6 +4,7 @@
     v-if="isEditable"
     :data-type="dataType"
     :model-value="value"
+    :is-nullable="false"
     @update:model-value="handleUpdate"
     @change="handleChange"
     @blur="handleBlur"
