@@ -1,9 +1,11 @@
 import express from 'express';
-import system from "./system/router.js";
+import baseRouter from './base/router.js';
+import systemRouter from "./system/router.js";
 
 const router = express.Router();
 
-router.use(system);
+router.use(baseRouter);
+router.use(systemRouter);
 
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Fleet Tool' });
