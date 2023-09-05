@@ -47,8 +47,8 @@ export function usePageSize(boxElement: HTMLDivElement, pageSize: number, rowHei
 
   onMounted(() => {
     const rect = boxElementValue?.getBoundingClientRect();
-    const s = Math.floor(rect?.height??400 / rowHeightValue) - 1;
-    size.value = pageSizeValue??s;
+    const rows = Math.floor(rect?.height / rowHeightValue) - 1;
+    size.value = pageSizeValue??rows;
   });
 
   return size;
