@@ -77,6 +77,7 @@ interface Props {
   // data?: any[],
   // columns?: any[],
   // isShowHead?: boolean,
+  load?: Function,
 }
 
 const props = defineProps<Props>();
