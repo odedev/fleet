@@ -250,6 +250,14 @@
   @include background-color-tertiary();
 }
 
+.arco-table-hover:not(.arco-table-dragging) .arco-table-tr:not(.arco-table-tr-empty):not(.arco-table-tr-summary):hover .arco-table-td.arco-table-col-fixed-left::before,
+.arco-table-hover .arco-table-tr-drag .arco-table-td.arco-table-col-fixed-left::before,
+.arco-table-hover:not(.arco-table-dragging) .arco-table-tr:not(.arco-table-tr-empty):not(.arco-table-tr-summary):hover .arco-table-td.arco-table-col-fixed-right::before,
+.arco-table-hover .arco-table-tr-drag .arco-table-td.arco-table-col-fixed-right::before {
+  @include background-color-tertiary();
+}
+
+
 .arco-table-tr-checked .arco-table-td {
   //@include background-color-tertiary();
   background-color: transparent;

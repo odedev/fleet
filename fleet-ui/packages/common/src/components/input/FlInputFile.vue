@@ -53,7 +53,7 @@ const emits = defineEmits([
 ]);
 
 let props = withDefaults(defineProps<{
-  modelValue: string,
+  modelValue: any,
   placeholder?: string,
   isNullable?: boolean,
   isDisabled?: boolean,
@@ -68,7 +68,7 @@ let props = withDefaults(defineProps<{
   autofocus: false,
 });
 
-const value = computed<string>(() => props.modelValue);
+const value = computed<any>(() => props.modelValue);
 const placeholder = computed<string>(() => props.placeholder || '');
 const isNullable = computed<boolean>(() => props.isNullable);
 const isDisabled = computed<boolean>(() => props.isDisabled);

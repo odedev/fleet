@@ -78,11 +78,11 @@ const isReadonly = computed<boolean>(() => props.isReadonly);
 const isInvalid = computed<boolean>(() => props.isInvalid || (!props.isNullable && !props.modelValue));
 
 
-const handleUpdate = (value: number) => {
+const handleUpdate = (value: number): void => {
   emits('update:modelValue', value);
 };
 
-const handleInput = (value: number, e: Event) => {
+const handleInput = (value: number, inputValue: string, e: Event): any => {
   emits('input', value);
 };
 
@@ -98,7 +98,7 @@ const handleBlur = (e: FocusEvent) => {
   emits('blur', e);
 };
 
-const handleClear = (e: MouseEvent) => {
+const handleClear = (e: MouseEvent): void => {
   emits('clear', e);
   e.preventDefault();
   e.stopPropagation();

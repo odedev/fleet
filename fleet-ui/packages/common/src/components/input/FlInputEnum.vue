@@ -60,15 +60,15 @@ const isReadonly = computed<boolean>(() => props.isReadonly);
 const isInvalid = computed<boolean>(() => props.isInvalid || (!props.isNullable && (!props.modelValue && props.modelValue !== 0)));
 
 
-const handleUpdate = (value: number) => {
+const handleUpdate = (value: number): void => {
   emits('update:modelValue', value);
 };
 
-const handleChange = (value:number, e: Event) => {
+const handleChange = (value: number, e: Event): any => {
   emits('change', value);
 };
 
-const handleClear = (e: MouseEvent) => {
+const handleClear = (e: MouseEvent): void => {
   emits('clear', e);
   handleUpdate(0);
   handleChange(0, e);

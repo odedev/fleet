@@ -33,11 +33,11 @@ let props = withDefaults(defineProps<{
 const value = computed<boolean>(() => props.modelValue)
 const isDisabled = computed<boolean>(() => props.isDisabled);
 
-const handleUpdate = (value: boolean) => {
+const handleUpdate = (value: boolean): void => {
   emits('update:modelValue', value);
 };
 
-const handleChange = (value: boolean, e: Event) => {
+const handleChange = (value: boolean, e: Event): void => {
   emits('change', value);
 };
 

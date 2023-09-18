@@ -32,6 +32,10 @@
             <template #icon><IconSun /></template>
             <template #default>蓝色</template>
           </Doption>
+          <Doption value="CyanBlack">
+            <template #icon><IconSun /></template>
+            <template #default>黛色</template>
+          </Doption>
         </Dgroup>
         <Dgroup>
           <Doption value="Dark">
@@ -107,12 +111,12 @@ const props = defineProps<Props>();
 const name = computed(() => props.name || '')
 const notification = computed(() => props.notification || 10)
 
-const handleThemeChange = (theme: string) => {
+const handleThemeChange = (theme: string): void => {
   console.log(theme);
   document.documentElement.setAttribute('data-theme', theme)
 };
 
-const handleUserClick = (theme: string) => {
+const handleUserClick = (theme: string): void => {
   console.log(theme);
 };
 

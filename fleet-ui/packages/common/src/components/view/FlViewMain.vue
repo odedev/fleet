@@ -1,10 +1,10 @@
+<script setup lang="ts">
+</script>
 <template>
   <div class="view-main">
     <slot></slot>
   </div>
 </template>
-<script setup>
-</script>
 <style lang="scss">
 .view-main {
   width: 100%;

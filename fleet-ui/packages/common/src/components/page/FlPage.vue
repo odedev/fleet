@@ -1,3 +1,7 @@
+<script setup lang="ts">
+import {RouterView} from 'vue-router';
+
+</script>
 <template>
   <div class="page">
     <RouterView v-slot="{ Component, route }">
@@ -19,10 +23,7 @@
     </RouterView>
   </div>
 </template>
-<script setup>
-import {RouterView} from 'vue-router';
 
-</script>
 <style lang="scss">
 @use "../../assets/mixin" as *;
 

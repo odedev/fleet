@@ -141,7 +141,7 @@ const handleOk = () => {
   emits('update:modelValue', value);
 };
 
-const handleCancel = (e: FocusEvent) => {
+const handleCancel = (e: Event): any => {
 
 };
 

@@ -1,10 +1,10 @@
+<script setup lang="ts">
+</script>
 <template>
   <div class="view-head">
     <slot></slot>
   </div>
 </template>
-<script setup>
-</script>
 <style lang="scss">
 .view-head {
   --view-head-height: 64px;
