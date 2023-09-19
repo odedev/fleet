@@ -29,18 +29,19 @@ const sidebar = {
       ]
     },
     {
-      text: '开发工具',
+      text: '开发',
       collapsed: false,
       items: [
         { text: 'DEV', link: '/manual/dev' },
+        { text: '端口', link: '/manual/port' },
       ]
     },
     {
       text: '部署',
       collapsed: false,
       items: [
-        { text: '端口', link: '/manual/port' },
         { text: '安装', link: '/manual/install' },
+        { text: '部署概览', link: '/manual/deploy' },
       ]
     },
   ],

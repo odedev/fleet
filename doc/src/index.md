@@ -1,44 +1,18 @@
-# Doc
+---
+layout: home
 
-
-## init
-```sql
-CREATE DATABASE IF NOT EXISTS `fleet` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-CREATE DATABASE IF NOT EXISTS `fleet` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_bin;
-```
-
-```text
-
-dev.odes.fleet.develop.controller
-dev.odes.fleet.develop.service
-dev.odes.fleet.develop.repository
-dev.odes.fleet.develop.mapper
-dev.odes.fleet.develop.model
-dev.odes.fleet.develop.entity
-dev.odes.fleet.develop.enumeration
-
-dev.odes.fleet.develop.dto
-
-View
-ViewModel
-ViewMapper
-ViewController
-ViewRepository
-ViewService
-ViewTransform
-
-ViewMapper.xml
-
-view_create.sql
-
-TypeEnum
-
-
-abstract
-AbstractController
-AbstractService
-AbstractRepository
-AbstractEntity
-```
-
-
+hero:
+  name: Fleet Doc
+  text: Fleet 开发文档.
+  tagline: 基于模型的低代码开发平台
+  image:
+    src: /logo.png
+    alt: Fleet
+  actions:
+    - theme: brand
+      text: 开始
+      link: /manual/introduction
+    - theme: alt
+      text: View on GitHub
+      link: https://github.com/vuejs/vitepress
+---
