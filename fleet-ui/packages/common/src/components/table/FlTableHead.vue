@@ -1,17 +1,4 @@
-<template>
-  <div class="table-head">
-    <h3>标题</h3>
-    <div style="font-size: 10px;line-height: 1;">已选 <span @click="handleView">3</span> 项 <span>清空</span></div>
-    <div>
-      <slot></slot>
-    </div>
-  </div>
-  <Modal v-model:visible="visible" title="已选数据" title-align="start" width="80%" unmountOnClose>
-    <FlTableConcise :model-value="props.modelValue" :model="props.model"/>
-  </Modal>
-</template>
-
-<script lang="ts" setup>
+<script setup lang="ts">
 import {Modal} from "@arco-design/web-vue";
 import "@arco-design/web-vue/es/modal/style/index.css";
 import FlTableConcise from "./FlTableConcise.vue";
@@ -32,6 +19,19 @@ const handleView = (e: FocusEvent) => {
 };
 
 </script>
+
+<template>
+  <div class="table-head">
+    <h3>标题</h3>
+    <div style="font-size: 10px;line-height: 1;">已选 <span @click="handleView">3</span> 项 <span>清空</span></div>
+    <div>
+      <slot></slot>
+    </div>
+  </div>
+  <Modal v-model:visible="visible" title="已选数据" title-align="start" width="80%" unmountOnClose>
+    <FlTableConcise :model-value="props.modelValue" :model="props.model"/>
+  </Modal>
+</template>
 
 <style lang="scss">
 .table-head {

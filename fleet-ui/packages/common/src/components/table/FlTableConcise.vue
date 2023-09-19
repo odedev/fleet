@@ -48,7 +48,7 @@
 
 </template>
 
-<script lang="ts" setup>
+<script setup lang="ts">
 import { ref, reactive, unref, computed, watch, watchEffect, onMounted } from 'vue';
 import {Table, TableColumn} from "@arco-design/web-vue";
 import '@arco-design/web-vue/es/table/style/css.js';
@@ -102,7 +102,7 @@ const fields = computed(() => props.model.fields);
 //   }
 // )
 
-const rowSelection = computed<TableRowSelection | null>(() => {
+const rowSelection = computed<TableRowSelection | undefined>(() => {
   if (props.selectionType === 'none') {
     return null;
   } else if (props.selectionType === 'single') {
@@ -159,7 +159,7 @@ const handleCellClick = (row: TableData, column: TableColumnData, e: Event) => {
   console.log(row, column)
 }
 
-const handleSelect = (rowKeys: string | number[], rowKey: string | number, row: TableData) => {
+const handleSelect = (rowKeys: (string | number)[], rowKey: string | number, row: TableData): void => {
   console.log(rowKeys, rowKey, row)
 }
 

@@ -65,8 +65,6 @@ const pageNum = computed<number>(() => props.pageNum || 1);
 const pageSize = computed<number>(() => props.pageSize || 10);
 const pageTotal = computed<number>(() => props.pageTotal || 0);
 
-const current = ref(1);
-
 const handleFilterClick = () => {
   emits('filterClick');
 };
