@@ -1,5 +1,37 @@
 import { ref, toValue, watchEffect, onMounted } from 'vue'
 
+export function usePageSize(boxDOMRect: DOMRect, pageSize: number, rowHeight: number = 40, headHeight: number = 40) {
+  const size = ref<number>(toValue(pageSize));
+  watchEffect(() => {
+    const rect = toValue(boxDOMRect);
+    const pageSizeValue = toValue(pageSize);
+    const rowHeightValue = toValue(rowHeight);
+    const rows = Math.floor(rect?.height / rowHeightValue) - 1;
+    size.value = rows??pageSizeValue;
+    console.log(size.value)
+  })
+
+  return size;
+}
+
+export function usePageSizes(boxElement: HTMLDivElement, pageSize: number, rowHeight: number = 40, headHeight: number = 40) {
+  const boxElementValue = toValue(boxElement);
+  const pageSizeValue = toValue(pageSize);
+  const rowHeightValue = toValue(rowHeight);
+  const size = ref<number>(pageSizeValue);
+
+  onMounted(() => {
+    const rect = boxElementValue?.getBoundingClientRect();
+    const rows = Math.floor(rect?.height / rowHeightValue) - 1;
+    size.value = rows??pageSizeValue;
+    console.log(boxElementValue)
+
+    console.log(size.value)
+  });
+
+  return size;
+}
+
 export function usePageData(data: any[], pageData: any[], pageNum: number, pageSize: number, total: number) {
   const pageValue = ref<any[]>();
 
@@ -38,18 +70,3 @@ export function usePageData(data: any[], pageData: any[], pageNum: number, pageS
   }
 }
 
-
-export function usePageSize(boxElement: HTMLDivElement, pageSize: number, rowHeight: number = 40) {
-  const boxElementValue = toValue(boxElement);
-  const pageSizeValue = toValue(pageSize);
-  const rowHeightValue = toValue(rowHeight);
-  const size = ref<number>(pageSizeValue);
-
-  onMounted(() => {
-    const rect = boxElementValue?.getBoundingClientRect();
-    const rows = Math.floor(rect?.height / rowHeightValue) - 1;
-    size.value = pageSizeValue??rows;
-  });
-
-  return size;
-}

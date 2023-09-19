@@ -53,6 +53,9 @@ import FlButtonView from "./button/FlButtonView.vue";
 import FlButtonSave from "./button/FlButtonSave.vue";
 import FlButtonReset from "./button/FlButtonReset.vue";
 import FlButtonSearch from "./button/FlButtonSearch.vue";
+import FlButtonBack from "./button/FlButtonBack.vue";
+import FlButtonConfirm from "./button/FlButtonConfirm.vue";
+import FlButtonCancel from "./button/FlButtonCancel.vue";
 import FlButtonUpload from "./button/FlButtonUpload.vue";
 import FlButtonDropdown from "./button/FlButtonDropdown.vue";
 import FlButtonIcon from "./button/FlButtonIcon.vue";
@@ -144,6 +147,9 @@ export {
   FlButtonSave,
   FlButtonReset,
   FlButtonSearch,
+  FlButtonBack,
+  FlButtonConfirm,
+  FlButtonCancel,
   FlButtonUpload,
   FlButtonDropdown,
   FlButtonIcon,

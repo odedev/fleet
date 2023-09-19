@@ -1,10 +1,10 @@
 <template>
-  <FlTableBox ref="table">
+  <FlTableBox>
 <!--    <FlTableHead v-if="false" v-model="selectedRows" :model="model" ></FlTableHead>-->
 <!--    <div class="table-head">-->
 <!--      <h3>标题</h3>-->
 <!--    </div>-->
-    <FlTableBody>
+    <FlTableBody v-model="tableBodyDOMRect" ref="tableBox" >
       <Table
         :data="data"
         v-model:selected-keys="selectedKeys"
@@ -36,7 +36,7 @@
     </FlTableBody>
     <FlTableFoot
       v-model:page-num="pageNum"
-      :page-size="10"
+      :page-size="pageSize"
       :page-total="120"
       :is-filterable="true"
       :is-settable="true"
@@ -45,7 +45,7 @@
       @filter-click="handleFilterClick"
     />
   </FlTableBox>
-
+<div ref="tableBox">dd</div>
 </template>
 
 <script setup lang="ts">
@@ -57,6 +57,7 @@ import FlTableHead from "./FlTableHead.vue";
 import FlTableBody from "./FlTableBody.vue";
 import FlTableFoot from "./FlTableFoot.vue";
 import FlContent from "../content/FlContent.vue";
+import {usePageSize} from "../../composables/data_grid";
 
 import type {TableRowSelection, TableData, TableColumnData} from "@arco-design/web-vue";
 
@@ -82,9 +83,12 @@ interface Props {
 
 const props = defineProps<Props>();
 
-const table = ref(null);
+const tableBox = ref<HTMLDivElement>();
+const tableBodyDOMRect = ref<DOMRect>();
+
 const value = ref('123');
 const pageNum = ref(1);
+const pageSize = usePageSize(tableBodyDOMRect, 10, 33, 41);
 
 const selectedKeys = ref<string[]>([]);
 const selectedRows = ref<any[]>([]);
@@ -177,8 +181,8 @@ const handleFilterClick = () => {
 };
 
 onMounted(() => {
-  const tableEl = table.value as unknown as HTMLDivElement;
-  console.log(tableEl?.clientHeight)
+  console.log(tableBox.value)
+  const tableEl = tableBox.value as unknown as HTMLDivElement;
 })
 </script>
 

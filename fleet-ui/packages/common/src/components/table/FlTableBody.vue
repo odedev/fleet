@@ -1,14 +1,30 @@
 <template>
-  <div class="table-body">
+  <div class="table-body" ref="tableBody">
     <slot></slot>
   </div>
 </template>
 
 <script lang="ts" setup>
+import { ref, onMounted } from 'vue';
 import {Pagination, Tooltip} from "@arco-design/web-vue";
 import "@arco-design/web-vue/es/pagination/style/index.css";
 import {IconFilter, IconSettings, IconUpload, IconDownload} from "@arco-design/web-vue/es/icon";
 
+const tableBody = ref<HTMLDivElement>();
+
+const emits = defineEmits(['update:modelValue']);
+
+interface Props {
+  modelValue: DOMRect,
+}
+
+const props = defineProps<Props>();
+
+onMounted(() => {
+  const rect = tableBody.value?.getBoundingClientRect();
+  console.log(rect)
+  emits('update:modelValue', rect);
+});
 </script>
 
 <style lang="scss">

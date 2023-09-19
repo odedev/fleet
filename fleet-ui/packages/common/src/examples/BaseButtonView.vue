@@ -36,6 +36,9 @@
             <FlButtonSave />
             <FlButtonReset />
             <FlButtonSearch />
+            <FlButtonBack />
+            <FlButtonConfirm />
+            <FlButtonCancel />
             <FlButtonUpload />
             <FlButtonDropdown />
             <FlButtonIcon />
@@ -50,6 +53,7 @@ import {
   FlHeader, FlBody, FlFooter, FlMenu, FlMain, FlNav, FlTab, FlPage,
   FlView, FlViewAside, FlViewMain, FlViewNav, FlViewHead, FlViewBody, FlBlock, FlBox, FlAction,
   FlButton, FlButtonAdd, FlButtonEdit, FlButtonDelete, FlButtonView, FlButtonSave, FlButtonReset,
+  FlButtonBack, FlButtonConfirm, FlButtonCancel,
   FlButtonSearch, FlButtonUpload, FlButtonDropdown, FlButtonIcon,
   FlButtonGroup
 } from '../components'
