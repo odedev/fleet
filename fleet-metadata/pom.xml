@@ -10,20 +10,23 @@
     <version>1.0.0</version>
   </parent>
 
-  <artifactId>fleet-couchbase</artifactId>
-  <version>1.0.0</version>
-  <name>fleet-couchbase</name>
-  <description>Fleet couchbase</description>
+  <artifactId>fleet-metadata</artifactId>
+  <version>${version}</version>
+  <name>fleet-metadata</name>
+  <description>Fleet metadata</description>
 
   <packaging>jar</packaging>
 
-  <properties>
-  </properties>
-
   <dependencies>
     <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-data-couchbase</artifactId>
+      <groupId>dev.odes</groupId>
+      <artifactId>fleet-common</artifactId>
+      <version>${version}</version>
+    </dependency>
+    <dependency>
+      <groupId>dev.odes</groupId>
+      <artifactId>fleet-mysql</artifactId>
+      <version>${version}</version>
     </dependency>
   </dependencies>
 

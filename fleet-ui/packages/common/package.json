@@ -83,6 +83,7 @@
     "qs": "^6.11.2",
     "socket.io-client": "^4.7.2",
     "sortablejs": "^1.15.0",
+    "validator": "^13.11.0",
     "video.js": "^8.3.0",
     "viewerjs": "^1.11.4",
     "vue": "^3.3.4",
