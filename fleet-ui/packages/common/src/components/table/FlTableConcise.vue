@@ -73,7 +73,7 @@ const emits = defineEmits([
 interface Props {
   modelValue: any | any[],
   model: any,
-  modelData?: any[],
+  modelData?: any[] | null,
   modelParameter?: any,
   selectionValue?: any[],
   selectionType?: 'none' | 'single' | 'multiple',
@@ -96,6 +96,10 @@ const pageSize = usePageSize(tableBody, 10, 33, 41);
 const selectedKeys = ref<string[]>([]);
 const selectedRows = ref<any[]>([]);
 const fields = computed(() => props.model.fields);
+
+const data = computed(() => {
+    return props.modelValue;
+});
 
 watch(
   pageSize,
@@ -141,9 +145,6 @@ const rowSelection = computed<TableRowSelection | undefined>(() => {
   }
 });
 
-const data = computed(() => {
-  return props.modelValue;
-});
 
 
 const handleRowClick = (row: TableData, e: Event) => {
