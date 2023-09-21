@@ -8,16 +8,17 @@ import {RouterView} from 'vue-router';
       <template v-if="Component">
         <Transition name="fade" mode="out-in" >
           <KeepAlive>
-            <Suspense>
-              <!-- 主要内容 -->
               <component :is="Component" :key="route.path"></component>
-
-              <!-- 加载中状态 -->
-              <template #fallback>
-                正在加载...
-              </template>
-            </Suspense>
           </KeepAlive>
+<!--          <KeepAlive>-->
+<!--            <Suspense>-->
+<!--              onMounted: 其所有同步子组件都已经被挂载 (不包含异步组件或 <Suspense> 树内的组件)。-->
+<!--              <component :is="Component" :key="route.path"></component>-->
+<!--              <template #fallback>-->
+<!--                正在加载...-->
+<!--              </template>-->
+<!--            </Suspense>-->
+<!--          </KeepAlive>-->
         </Transition>
       </template>
     </RouterView>

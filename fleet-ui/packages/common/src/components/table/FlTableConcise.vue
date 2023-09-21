@@ -4,7 +4,8 @@
 <!--    <div class="table-head">-->
 <!--      <h3>标题</h3>-->
 <!--    </div>-->
-    <FlTableBody v-model="tableBodyDOMRect" ref="tableBox" >
+<!--    <FlTableBody v-model="tableBodyDOMRect" ref="tableBody" >-->
+    <div class="table-body" ref="tableBody">
       <Table
         :data="data"
         v-model:selected-keys="selectedKeys"
@@ -33,7 +34,8 @@
           </template>
         </template>
       </Table>
-    </FlTableBody>
+    </div>
+<!--    </FlTableBody>-->
     <FlTableFoot
       v-model:page-num="pageNum"
       :page-size="pageSize"
@@ -42,10 +44,10 @@
       :is-settable="true"
       :is-exportable="false"
       :is-importable="false"
+      @change="handlePageNumChange"
       @filter-click="handleFilterClick"
     />
   </FlTableBox>
-<div ref="tableBox">dd</div>
 </template>
 
 <script setup lang="ts">
@@ -57,7 +59,7 @@ import FlTableHead from "./FlTableHead.vue";
 import FlTableBody from "./FlTableBody.vue";
 import FlTableFoot from "./FlTableFoot.vue";
 import FlContent from "../content/FlContent.vue";
-import {usePageSize} from "../../composables/data_grid";
+import {usePageSize, usePageSizes} from "../../composables/data_grid";
 
 import type {TableRowSelection, TableData, TableColumnData} from "@arco-design/web-vue";
 
@@ -83,16 +85,26 @@ interface Props {
 
 const props = defineProps<Props>();
 
-const tableBox = ref<HTMLDivElement>();
+const tableBody = ref<HTMLDivElement>();
 const tableBodyDOMRect = ref<DOMRect>();
 
 const value = ref('123');
 const pageNum = ref(1);
-const pageSize = usePageSize(tableBodyDOMRect, 10, 33, 41);
+// const pageSize = usePageSize(tableBodyDOMRect, 10, 33, 41);
+const pageSize = usePageSize(tableBody, 10, 33, 41);
 
 const selectedKeys = ref<string[]>([]);
 const selectedRows = ref<any[]>([]);
 const fields = computed(() => props.model.fields);
+
+watch(
+  pageSize,
+  value => {
+    if (value) {
+      handleLoad(pageNum.value, value)
+    }
+  }
+)
 
 // watch(
 //   () => props.selectionValue,
@@ -175,14 +187,21 @@ const handleSelectAll = (checked: boolean) => {
   console.log(checked)
 }
 
+const handlePageNumChange = (pageNum: number) => {
+    console.log('handlePageNumChange', pageNum);
+    handleLoad(pageNum, pageSize.value);
+};
 
 const handleFilterClick = () => {
   console.log('filterClick');
 };
 
+const handleLoad = (pageNum: number, pageSize: number) => {
+    console.log('onLoad', pageNum, pageSize);
+};
+
 onMounted(() => {
-  console.log(tableBox.value)
-  const tableEl = tableBox.value as unknown as HTMLDivElement;
+console.log('tableCOn')
 })
 </script>
 

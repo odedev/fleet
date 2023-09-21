@@ -1,6 +1,39 @@
-import { ref, toValue, watchEffect, onMounted } from 'vue'
+import {ref, toValue, watchEffect, onMounted, onUnmounted} from 'vue'
+import type {Ref} from 'vue';
 
-export function usePageSize(boxDOMRect: DOMRect, pageSize: number, rowHeight: number = 40, headHeight: number = 40) {
+
+export function usePageSize(
+    tableBodyElement: Ref<HTMLDivElement | undefined>,
+    pageSize: number,
+    rowHeight: number = 40,
+    headHeight: number = 40): Ref<number> {
+  const size = ref<number>(toValue(pageSize));
+  const pageSizeValue = toValue(pageSize);
+
+  function getRows() {
+    const tableBodyElementValue = toValue(tableBodyElement);
+    const rect = tableBodyElementValue?.getBoundingClientRect();
+    const height = rect?.height??(100 + headHeight);
+    const rowsHeight = height - headHeight;
+    const rows = Math.floor(rowsHeight / rowHeight);
+    size.value = rows??pageSizeValue;
+    console.log(rect)
+
+  }
+
+  onMounted(() => {
+    getRows()
+    window.addEventListener('resize', getRows)
+  });
+
+  onUnmounted(() => {
+    window.removeEventListener('resize', getRows)
+  });
+
+  return size;
+}
+
+export function usePageSizes(boxDOMRect: DOMRect, pageSize: number, rowHeight: number = 40, headHeight: number = 40) {
   const size = ref<number>(toValue(pageSize));
   watchEffect(() => {
     const rect = toValue(boxDOMRect);
@@ -10,24 +43,6 @@ export function usePageSize(boxDOMRect: DOMRect, pageSize: number, rowHeight: nu
     size.value = rows??pageSizeValue;
     console.log(size.value)
   })
-
-  return size;
-}
-
-export function usePageSizes(boxElement: HTMLDivElement, pageSize: number, rowHeight: number = 40, headHeight: number = 40) {
-  const boxElementValue = toValue(boxElement);
-  const pageSizeValue = toValue(pageSize);
-  const rowHeightValue = toValue(rowHeight);
-  const size = ref<number>(pageSizeValue);
-
-  onMounted(() => {
-    const rect = boxElementValue?.getBoundingClientRect();
-    const rows = Math.floor(rect?.height / rowHeightValue) - 1;
-    size.value = rows??pageSizeValue;
-    console.log(boxElementValue)
-
-    console.log(size.value)
-  });
 
   return size;
 }

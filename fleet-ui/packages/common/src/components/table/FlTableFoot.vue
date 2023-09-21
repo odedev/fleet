@@ -38,11 +38,11 @@ import {IconFilter, IconSettings, IconUpload, IconDownload} from "@arco-design/w
 import FlTableFilter from "./FlTableFilter.vue";
 const emits = defineEmits([
   'update:pageNum',
+  'change',
   'filterClick',
   'settingClick',
   'importClick',
   'exportClick',
-  'pageChange'
 ]);
 
 const props = withDefaults(defineProps<{
@@ -82,7 +82,8 @@ const handleExportClick = () => {
 }
 
 const handleChange = (current: number) => {
-  emits('update:pageNum', current)
+  emits('update:pageNum', current);
+  emits('change', current)
 }
 
 </script>

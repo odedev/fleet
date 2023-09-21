@@ -6,9 +6,6 @@
 
 <script lang="ts" setup>
 import { ref, onMounted } from 'vue';
-import {Pagination, Tooltip} from "@arco-design/web-vue";
-import "@arco-design/web-vue/es/pagination/style/index.css";
-import {IconFilter, IconSettings, IconUpload, IconDownload} from "@arco-design/web-vue/es/icon";
 
 const tableBody = ref<HTMLDivElement>();
 
@@ -19,6 +16,10 @@ interface Props {
 }
 
 const props = defineProps<Props>();
+
+defineExpose({
+  tableBody,
+});
 
 onMounted(() => {
   const rect = tableBody.value?.getBoundingClientRect();
