@@ -1,4 +1,4 @@
-# Dev
+# Develop
 
 ## init
 ```sql

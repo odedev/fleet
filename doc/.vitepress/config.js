@@ -44,6 +44,13 @@ const sidebar = {
         { text: '部署概览', link: '/manual/deploy' },
       ]
     },
+    {
+      text: '元数据',
+      collapsed: false,
+      items: [
+        { text: 'Metadata', link: '/manual/metadata' },
+      ]
+    },
   ],
   '/reference/': [
     {
