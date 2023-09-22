@@ -5,17 +5,19 @@
       <InputSearch size="small"/>
     </div>
     <div class="tree-body">
-      <Tree v-model:selected-keys="selectedKeys"
-            :data="treeData"
-            size="small"
-            :selectable="true"
-            :multiple="false"
-            :checkable="false"
-            :check-strictly="true"
-            :block-node="true"
-            :draggable="true"
-            :show-line="false"
-      ></Tree>
+      <Tree
+        v-model:selected-keys="selectedKeys"
+        :data="treeData"
+        size="small"
+        :selectable="true"
+        :multiple="false"
+        :checkable="false"
+        :check-strictly="true"
+        :block-node="true"
+        :draggable="true"
+        :show-line="false"
+      >
+      </Tree>
     </div>
   </section>
 </template>

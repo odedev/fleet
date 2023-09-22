@@ -36,6 +36,9 @@ onMounted(() => {
   border-bottom-width: 0;
   overflow: auto;
 
+  .arco-table {
+    height: 100%;
+  }
   .arco-table-container {
     border-radius: 0;
   }

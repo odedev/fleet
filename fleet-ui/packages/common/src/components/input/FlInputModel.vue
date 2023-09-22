@@ -168,7 +168,12 @@ const handleCancel = (e: Event): any => {
   }
 }
 .input-model__modal {
+
+  .arco-modal {
+    height: 80%;
+  }
   .arco-modal-body {
+    height: calc(100% - 113px);
     padding: 0;
   }
 }

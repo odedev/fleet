@@ -1,55 +1,3 @@
-<template>
-  <FlTableBox>
-<!--    <FlTableHead v-if="false" v-model="selectedRows" :model="model" ></FlTableHead>-->
-<!--    <div class="table-head">-->
-<!--      <h3>标题</h3>-->
-<!--    </div>-->
-<!--    <FlTableBody v-model="tableBodyDOMRect" ref="tableBody" >-->
-    <div class="table-body" ref="tableBody">
-      <Table
-        :data="data"
-        v-model:selected-keys="selectedKeys"
-        row-key="id"
-        :stripe="false"
-        :table-layout-fixed="true"
-        :column-resizable="true"
-        :sticky-header="true"
-        :bordered="{cell:true}"
-        :row-selection="rowSelection"
-        @row-click="handleRowClick"
-        @cell-click="handleCellClick"
-        @select="handleSelect"
-        @selection-change="handleSelectionChange"
-        @select-all="handleSelectAll"
-        :pagination="false"
-        size="large"
-      >
-        <template #columns>
-          <template v-for="field in fields">
-            <TableColumn :title="field.name" :data-index="field.code" :width="field.width">
-              <template #cell="{ record }">
-                <FlContent v-model="record[field.code]" :data-type="field.dataType" :model="field.modelType" :enumeration="field.enumType" />
-              </template>
-            </TableColumn>
-          </template>
-        </template>
-      </Table>
-    </div>
-<!--    </FlTableBody>-->
-    <FlTableFoot
-      v-model:page-num="pageNum"
-      :page-size="pageSize"
-      :page-total="120"
-      :is-filterable="true"
-      :is-settable="true"
-      :is-exportable="false"
-      :is-importable="false"
-      @change="handlePageNumChange"
-      @filter-click="handleFilterClick"
-    />
-  </FlTableBox>
-</template>
-
 <script setup lang="ts">
 import { ref, reactive, unref, computed, watch, watchEffect, onMounted } from 'vue';
 import {Table, TableColumn} from "@arco-design/web-vue";
@@ -59,9 +7,13 @@ import FlTableHead from "./FlTableHead.vue";
 import FlTableBody from "./FlTableBody.vue";
 import FlTableFoot from "./FlTableFoot.vue";
 import FlContent from "../content/FlContent.vue";
-import {usePageSize, usePageSizes} from "../../composables/data_grid";
+import {usePageSize, usePageValue} from "../../composables/data_grid";
 
 import type {TableRowSelection, TableData, TableColumnData} from "@arco-design/web-vue";
+
+
+let data: any[] = [];
+
 
 const emits = defineEmits([
   'update:modelValue',
@@ -73,14 +25,15 @@ const emits = defineEmits([
 interface Props {
   modelValue: any | any[],
   model: any,
-  modelData?: any[] | null,
+  // modelData?: any[] | null,
   modelParameter?: any,
   selectionValue?: any[],
   selectionType?: 'none' | 'single' | 'multiple',
-  // data?: any[],
-  // columns?: any[],
+
   // isShowHead?: boolean,
   load?: Function,
+
+  pageCount?: number,
 }
 
 const props = defineProps<Props>();
@@ -88,18 +41,18 @@ const props = defineProps<Props>();
 const tableBody = ref<HTMLDivElement>();
 const tableBodyDOMRect = ref<DOMRect>();
 
-const value = ref('123');
-const pageNum = ref(1);
-// const pageSize = usePageSize(tableBodyDOMRect, 10, 33, 41);
-const pageSize = usePageSize(tableBody, 10, 33, 41);
-
 const selectedKeys = ref<string[]>([]);
 const selectedRows = ref<any[]>([]);
-const fields = computed(() => props.model.fields);
 
-const data = computed(() => {
-    return props.modelValue;
-});
+const pageNum = ref(1);
+
+const fields = computed(() => props.model.fields);
+const pageCount = computed(() => props.pageCount ?? props.modelValue.length);
+
+// const pageSize = usePageSize(tableBodyDOMRect, 10, 33, 41);
+const pageSize = usePageSize(tableBody, 10, 33, 41);
+const value = usePageValue(data, props.modelValue, pageNum, pageSize, props.pageCount);
+
 
 watch(
   pageSize,
@@ -189,8 +142,8 @@ const handleSelectAll = (checked: boolean) => {
 }
 
 const handlePageNumChange = (pageNum: number) => {
-    console.log('handlePageNumChange', pageNum);
-    handleLoad(pageNum, pageSize.value);
+  console.log('handlePageNumChange', pageNum);
+  handleLoad(pageNum, pageSize.value);
 };
 
 const handleFilterClick = () => {
@@ -198,13 +151,65 @@ const handleFilterClick = () => {
 };
 
 const handleLoad = (pageNum: number, pageSize: number) => {
-    console.log('onLoad', pageNum, pageSize);
+  console.log('onLoad', pageNum, pageSize);
 };
 
 onMounted(() => {
-console.log('tableCOn')
+  console.log('tableCOn')
 })
 </script>
+
+<template>
+  <FlTableBox>
+<!--    <FlTableHead v-if="false" v-model="selectedRows" :model="model" ></FlTableHead>-->
+<!--    <div class="table-head">-->
+<!--      <h3>标题</h3>-->
+<!--    </div>-->
+<!--    <FlTableBody v-model="tableBodyDOMRect" ref="tableBody" >-->
+    <div class="table-body" ref="tableBody">
+      <Table
+        :data="value"
+        v-model:selected-keys="selectedKeys"
+        row-key="id"
+        :stripe="false"
+        :table-layout-fixed="true"
+        :column-resizable="true"
+        :sticky-header="true"
+        :bordered="{cell:true}"
+        :row-selection="rowSelection"
+        @row-click="handleRowClick"
+        @cell-click="handleCellClick"
+        @select="handleSelect"
+        @selection-change="handleSelectionChange"
+        @select-all="handleSelectAll"
+        :pagination="false"
+        size="large"
+      >
+        <template #columns>
+          <template v-for="field in fields">
+            <TableColumn :title="field.name" :data-index="field.code" :width="field.width">
+              <template #cell="{ record }">
+                <FlContent v-model="record[field.code]" :data-type="field.dataType" :model="field.modelType" :enumeration="field.enumType" />
+              </template>
+            </TableColumn>
+          </template>
+        </template>
+      </Table>
+    </div>
+<!--    </FlTableBody>-->
+    <FlTableFoot
+      v-model:page-num="pageNum"
+      :page-size="pageSize"
+      :page-total="pageCount"
+      :is-filterable="true"
+      :is-settable="true"
+      :is-exportable="false"
+      :is-importable="false"
+      @change="handlePageNumChange"
+      @filter-click="handleFilterClick"
+    />
+  </FlTableBox>
+</template>
 
 <style lang="scss">
 @use "../../assets/mixin" as *;
