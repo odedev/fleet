@@ -240,6 +240,16 @@
   @include border-color-error();
 }
 
+//.arco-table .arco-spin,
+//.arco-table .arco-table-container {
+//  height: 100%;
+//}
+//
+//.arco-table .arco-table-element,
+//.arco-table .arco-scrollbar.arco-scrollbar-type-embed:last-child {
+//  height: 100%;
+//}
+
 .arco-table-border-cell .arco-table-th-resizing,
 .arco-table-border-cell .arco-table-td-resizing:not(.arco-table-tr-expand) {
   @include border-right-color-primary();

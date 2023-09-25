@@ -61,7 +61,7 @@ watch(
       handleLoad(pageNum.value, value)
     }
   }
-)
+);
 
 // watch(
 //   () => props.selectionValue,
@@ -127,19 +127,19 @@ const handleRowClick = (row: TableData, e: Event) => {
 
 const handleCellClick = (row: TableData, column: TableColumnData, e: Event) => {
   console.log(row, column)
-}
+};
 
 const handleSelect = (rowKeys: (string | number)[], rowKey: string | number, row: TableData): void => {
   console.log(rowKeys, rowKey, row)
-}
+};
 
 const handleSelectionChange = (rowKeys: (string | number)[]) => {
   console.log(rowKeys);
-}
+};
 
 const handleSelectAll = (checked: boolean) => {
   console.log(checked)
-}
+};
 
 const handlePageNumChange = (pageNum: number) => {
   console.log('handlePageNumChange', pageNum);
@@ -156,7 +156,7 @@ const handleLoad = (pageNum: number, pageSize: number) => {
 
 onMounted(() => {
   console.log('tableCOn')
-})
+});
 </script>
 
 <template>

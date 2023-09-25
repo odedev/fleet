@@ -14,19 +14,26 @@ export function usePageSize(
 
   function getRows() {
     const tableBodyElementValue = toValue(tableBodyElement);
+    console.log(tableBodyElementValue?.getBoundingClientRect())
 
-    if (handle) {
-      clearTimeout(handle)
-    }
-    handle = setTimeout(() => {
-      console.log(tableBodyElementValue?.getBoundingClientRect())
+    const rect = tableBodyElementValue?.getBoundingClientRect();
+    const height = rect?.height??(100 + headHeight);
+    const rowsHeight = height - headHeight;
+    const rows = Math.floor(rowsHeight / rowHeight);
+    size.value = rows??pageSizeValue;
 
-      const rect = tableBodyElementValue?.getBoundingClientRect();
-      const height = rect?.height??(100 + headHeight);
-      const rowsHeight = height - headHeight;
-      const rows = Math.floor(rowsHeight / rowHeight);
-      size.value = rows??pageSizeValue;
-    }, 200);
+    // if (handle) {
+    //   clearTimeout(handle)
+    // }
+    // handle = setTimeout(() => {
+    //   console.log(tableBodyElementValue?.getBoundingClientRect())
+    //
+    //   const rect = tableBodyElementValue?.getBoundingClientRect();
+    //   const height = rect?.height??(100 + headHeight);
+    //   const rowsHeight = height - headHeight;
+    //   const rows = Math.floor(rowsHeight / rowHeight);
+    //   size.value = rows??pageSizeValue;
+    // }, 200);
   }
 
   onMounted(() => {

@@ -1,6 +1,6 @@
 <template>
   <FlTableBox ref="table">
-    <FlTableHead>
+    <FlTableHead :model="model">
       <FlButtonGroup>
         <FlButton type="primary">执行DDL</FlButton>
         <FlButton type="success">生成代码</FlButton>
@@ -8,7 +8,8 @@
         <FlButtonAdd>新增</FlButtonAdd>
       </FlButtonGroup>
     </FlTableHead>
-    <FlTableBody>
+    <div class="table-body" ref="tableBody">
+<!--    <FlTableBody>-->
       <Table
         :columns="columns"
         :data="data"
@@ -58,7 +59,8 @@
           </TableColumn>
         </template>
       </Table>
-    </FlTableBody>
+    </div>
+<!--    </FlTableBody>-->
     <FlTableFoot
       :page-size="10"
       :page-total="1200"
@@ -114,6 +116,10 @@ const table = ref<HTMLDivElement>();
 const value = ref('123456789abcdefghijklmnopqrstuvwxyz');
 
 const isEditable = computed<boolean>(() => props.isEditable);
+
+
+const model = computed<any>(() => props.model);
+
 const operationColumnWidth = computed<number>(() => {
   if (props.isEditable) {
     return 86;
