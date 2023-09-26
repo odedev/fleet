@@ -122,7 +122,8 @@ const model = computed<any>(() => props.model);
 
 const operationColumnWidth = computed<number>(() => {
   if (props.isEditable) {
-    return 86;
+    // return 86;
+    return 121;
   } else {
     return 140;
   }

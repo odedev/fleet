@@ -1,6 +1,11 @@
 <template>
 <div class="table-cell-button">
   <template v-if="props.isEditable">
+    <Button type="text" status="warning" @click="handleDeleteRowClick">
+      <template #icon>
+        <IconCopy />
+      </template>
+    </Button>
     <Button type="text" status="success" @click="handleAddRowClick">
       <template #icon>
         <IconPlusCircleFill />
@@ -24,7 +29,7 @@
 
 <script lang="ts" setup>
 import {Button, Popconfirm} from "@arco-design/web-vue";
-import {IconPlusCircleFill, IconMinusCircleFill, IconCloseCircleFill} from "@arco-design/web-vue/es/icon";
+import {IconPlusCircleFill, IconMinusCircleFill, IconCloseCircleFill, IconCopy} from "@arco-design/web-vue/es/icon";
 import '@arco-design/web-vue/es/popconfirm/style/css.js';
 
 const emits = defineEmits(['AddRow', 'DeleteRow', 'View', 'Edit', 'Delete']);
