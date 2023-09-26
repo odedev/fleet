@@ -85,6 +85,7 @@ const handleChange = (list: FileItem[], item: FileItem) => {
   console.log(item);
   fileList.value = [item]
   file.value = item.file;
+  emits('update:modelValue', item.file);
 };
 
 const handleClear = (e: MouseEvent) => {

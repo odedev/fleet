@@ -1,11 +1,11 @@
+<script setup lang="ts">
+
+</script>
 <template>
   <div class="button-group">
     <slot></slot>
   </div>
 </template>
-<script lang="ts" setup>
-
-</script>
 <style lang="scss">
 .button-group {
   //width: 100%;

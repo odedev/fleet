@@ -1,16 +1,11 @@
-<template>
-  <div class="button" @click="handleClick">
-    <slot></slot>
-  </div>
-</template>
 <script lang="ts" setup>
 import {onUnmounted} from 'vue';
 import {debounce} from '../../utils/func_utils';
 
-const emit = defineEmits(['click']);
+const emits = defineEmits(['click']);
 
 const handleClick = debounce(() => {
-  emit('click');
+  emits('click');
 }, 300);
 
 onUnmounted(() => {
@@ -19,6 +14,11 @@ onUnmounted(() => {
 });
 
 </script>
+<template>
+  <div class="button" @click="handleClick">
+    <slot></slot>
+  </div>
+</template>
 <style lang="scss">
 .button {
   height: 32px;

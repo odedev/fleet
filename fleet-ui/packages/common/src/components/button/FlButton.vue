@@ -1,31 +1,35 @@
+<script setup lang="ts">
+import {computed} from "vue";
+import {Button} from "@arco-design/web-vue";
+import '@arco-design/web-vue/es/button/style/css.js';
+import FlButtonBase from "./FlButtonBase.vue";
+
+interface Props {
+  type?: "primary" | "secondary" | "tertiary" | "neutral" | "error" | "warn" | "success" | "info" | undefined,
+  disabled?: boolean,
+}
+
+const props = withDefaults(defineProps<Props>(), {
+  disabled: false,
+});
+
+const emits = defineEmits(['click']);
+
+const type = computed(() => props.type ? 'button__' + props.type : 'button__primary');
+const disabled = computed(() => props.disabled || false);
+
+const handleClick = () => {
+  emits('click');
+};
+
+</script>
 <template>
   <FlButtonBase @click="handleClick" :class="type">
-    <Button type="primary" size="small">
+    <Button type="primary" size="small" :disabled="disabled">
       <slot></slot>
     </Button>
   </FlButtonBase>
 </template>
-<script lang="ts" setup>
-import {Button} from "@arco-design/web-vue";
-import '@arco-design/web-vue/es/button/style/css.js';
-import FlButtonBase from "./FlButtonBase.vue";
-import {computed} from "vue";
-
-// primary, secondary, neutral, error, warn, success, info
-
-const emit = defineEmits(['click']);
-
-const props = defineProps<{
-  type?: "primary" | "secondary" | "tertiary" | "neutral" | "error" | "warn" | "success" | "info" | undefined,
-}>();
-
-const type = computed(() => props.type ? 'button__' + props.type : 'button__primary')
-
-const handleClick = () => {
-  emit('click');
-};
-
-</script>
 <style lang="scss">
 @use "../../assets/mixin" as *;
 
@@ -35,11 +39,17 @@ const handleClick = () => {
     &:hover {
       @include background-color-primary();
     }
+    &.arco-btn-disabled {
+      @include background-color-primary();
+    }
   }
 
   &.button__secondary .arco-btn {
     @include background-color-secondary();
     &:hover {
+      @include background-color-secondary();
+    }
+    &.arco-btn-disabled {
       @include background-color-secondary();
     }
   }
@@ -49,11 +59,17 @@ const handleClick = () => {
     &:hover {
       @include background-color-tertiary();
     }
+    &.arco-btn-disabled {
+      @include background-color-tertiary();
+    }
   }
 
   &.button__neutral .arco-btn {
     @include background-color-neutral();
     &:hover {
+      @include background-color-neutral();
+    }
+    &.arco-btn-disabled {
       @include background-color-neutral();
     }
   }
@@ -62,10 +78,16 @@ const handleClick = () => {
     &:hover {
       @include background-color-error();
     }
+    &.arco-btn-disabled {
+      @include background-color-error();
+    }
   }
   &.button__warn .arco-btn {
     @include background-color-warn();
     &:hover {
+      @include background-color-warn();
+    }
+    &.arco-btn-disabled {
       @include background-color-warn();
     }
   }
@@ -74,16 +96,19 @@ const handleClick = () => {
     &:hover {
       @include background-color-success();
     }
+    &.arco-btn-disabled {
+      @include background-color-success();
+    }
   }
   &.button__info .arco-btn {
     @include background-color-info();
     &:hover {
       @include background-color-info();
     }
+    &.arco-btn-disabled {
+      @include background-color-info();
+    }
   }
 }
-
-
-
 
 </style>

@@ -7,6 +7,13 @@ export const menus: any[] = [
     children: [],
   },
   {
+    id: '1660898963680020103',
+    name: 'Button',
+    path: '/Button',
+    parent: '1660898963680020100',
+    children: [],
+  },
+  {
     id: '1660898963680020101',
     name: 'Content',
     path: '/Content',
@@ -17,13 +24,6 @@ export const menus: any[] = [
     id: '1660898963680020102',
     name: 'Input',
     path: '/Input',
-    parent: '1660898963680020100',
-    children: [],
-  },
-  {
-    id: '1660898963680020103',
-    name: 'Button',
-    path: '/Button',
     parent: '1660898963680020100',
     children: [],
   },
