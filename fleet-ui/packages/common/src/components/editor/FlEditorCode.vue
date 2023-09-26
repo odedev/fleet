@@ -12,8 +12,8 @@ import {
   crosshairCursor,
   lineNumbers,
   highlightActiveLineGutter
-} from "@codemirror/view"
-import {EditorState, Compartment} from "@codemirror/state"
+} from "@codemirror/view";
+import {EditorState, Compartment, Facet} from "@codemirror/state";
 import {defaultHighlightStyle, syntaxHighlighting, indentOnInput, bracketMatching, foldGutter, foldKeymap} from "@codemirror/language"
 import {defaultKeymap, history, historyKeymap} from "@codemirror/commands"
 import {searchKeymap, highlightSelectionMatches} from "@codemirror/search"
@@ -59,14 +59,16 @@ const basicSetup = [
 
 const tabSize = new Compartment();
 const language = new Compartment();
+const readOnly = new Compartment();
 
 let startState = EditorState.create({
-  doc: "{}",
+  doc: '{\n    "name": "abc",\n    "code": 1212\n}',
   extensions: [
     // keymap.of(defaultKeymap),
     basicSetup,
-    language.of(javascript()),
-    tabSize.of(EditorState.tabSize.of(4))
+    language.of(json()),
+    tabSize.of(EditorState.tabSize.of(4)),
+    readOnly.of(EditorState.readOnly.of(true)),
   ]
 })
 

@@ -69,6 +69,7 @@ onMounted(() => {
   }
 
   .arco-table .arco-table-cell {
+    // padding: 0;
     min-width: 48px;
   }
   .arco-table-border-cell .arco-table-th.arco-table-col-fixed-right,

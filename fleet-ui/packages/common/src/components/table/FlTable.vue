@@ -8,8 +8,8 @@
         <FlButtonAdd>新增</FlButtonAdd>
       </FlButtonGroup>
     </FlTableHead>
-    <div class="table-body" ref="tableBody">
-<!--    <FlTableBody>-->
+    <FlTableBody>
+    <!-- <div class="table-body" ref="tableBody"> -->
       <Table
         :columns="columns"
         :data="data"
@@ -59,8 +59,8 @@
           </TableColumn>
         </template>
       </Table>
-    </div>
-<!--    </FlTableBody>-->
+    <!-- </div> -->
+   </FlTableBody>
     <FlTableFoot
       :page-size="10"
       :page-total="1200"
