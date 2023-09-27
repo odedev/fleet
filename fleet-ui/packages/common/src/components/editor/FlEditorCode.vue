@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import {ref, onMounted} from "vue";
+import {ref, computed, onMounted, onUnmounted} from "vue";
 
 import {
   EditorView,
@@ -13,20 +13,50 @@ import {
   lineNumbers,
   highlightActiveLineGutter
 } from "@codemirror/view";
-import {EditorState, Compartment, Facet} from "@codemirror/state";
+import {EditorState, Compartment} from "@codemirror/state";
 import {defaultHighlightStyle, syntaxHighlighting, indentOnInput, bracketMatching, foldGutter, foldKeymap} from "@codemirror/language"
 import {defaultKeymap, history, historyKeymap} from "@codemirror/commands"
 import {searchKeymap, highlightSelectionMatches} from "@codemirror/search"
 import {autocompletion, completionKeymap, closeBrackets, closeBracketsKeymap} from "@codemirror/autocomplete"
 import {lintKeymap} from "@codemirror/lint"
-import {javascript} from "@codemirror/lang-javascript"
 import {json} from "@codemirror/lang-json"
+import {sql} from "@codemirror/lang-sql";
+import {javascript} from "@codemirror/lang-javascript"
 import {html} from "@codemirror/lang-html";
 import {markdown} from "@codemirror/lang-markdown";
 
 
-let value = ref('')
-const el = ref<HTMLDivElement>()
+interface Props {
+  modelValue: any,
+  language?: 'json' | 'markdown' | 'javascript' | 'html' | undefined,
+  isReadonly?: boolean,
+  isDisabled?: boolean,
+}
+
+const props = withDefaults(defineProps<Props>(), {
+  isDisabled: false,
+  isReadonly: false,
+});
+
+const emits = defineEmits([
+  'update:modelValue',
+  'input',
+  'change',
+]);
+
+let editorView: EditorView;
+
+const codeBox = ref<HTMLDivElement>();
+
+const value = computed(() => {
+  try {
+    return JSON.stringify(props.modelValue, null, '\t');
+  } catch (e) {
+    return props.modelValue;
+  }
+});
+const isDisabled = computed<boolean>(() => props.isDisabled);
+const isReadonly = computed<boolean>(() => props.isReadonly);
 
 const basicSetup = [
   lineNumbers(),
@@ -60,29 +90,60 @@ const basicSetup = [
 const tabSize = new Compartment();
 const language = new Compartment();
 const readOnly = new Compartment();
+const languageConf = new Compartment();
+
+const autoLanguage = EditorState.transactionExtender.of(tr => {
+  let lang = json();
+  if (props.language === 'markdown') {
+    lang = markdown();
+  } else if (props.language === 'javascript') {
+    lang = javascript();
+  } else if (props.language === 'html') {
+    lang = html();
+  }
+  return {
+    effects: languageConf.reconfigure(lang)
+  }
+});
+
 
 let startState = EditorState.create({
-  doc: '{\n    "name": "abc",\n    "code": 1212\n}',
+  doc: value.value,
   extensions: [
     // keymap.of(defaultKeymap),
     basicSetup,
     language.of(json()),
-    tabSize.of(EditorState.tabSize.of(4)),
-    readOnly.of(EditorState.readOnly.of(true)),
+    // autoLanguage,
+    tabSize.of(EditorState.tabSize.of(2)),
+    readOnly.of(EditorState.readOnly.of(isReadonly.value)),
+    EditorView.updateListener.of(viewUpdate => {
+      const val = viewUpdate.state.doc.toString();
+      let value: any = val;
+      try {
+        value = JSON.parse(val);
+      } catch (e) {
+        return
+      }
+      emits('update:modelValue', value);
+    }),
   ]
-})
+});
 
 
 onMounted(() => {
-  let view = new EditorView({
+  editorView = new EditorView({
     state: startState,
-    parent: el.value
-  })
-})
+    parent: codeBox.value
+  });
+});
+
+onUnmounted(() => {
+  editorView?.destroy();
+});
 
 </script>
 <template>
-  <div ref="el" class="code"></div>
+  <div ref="codeBox" class="code"></div>
 </template>
 
 <style lang="scss">

@@ -1,6 +1,13 @@
 <template>
   <FlInputBase class="input-json" @click="handleClick">
-    <Input allow-clear allow-search readonly size="small">
+    <Input
+      :model-value="value"
+      :placeholder="placeholder"
+      allow-clear
+      allow-search
+      readonly
+      size="small"
+    >
       <template #suffix>
         <IconCodeBlock />
       </template>
@@ -17,7 +24,7 @@
       unmountOnClose
   >
     <FlBlock>
-      <FlEditorCode/>
+      <FlEditorCode :model-value="codeValue" @update:model-value="handleUpdate"/>
     </FlBlock>
   </Modal>
 </template>
@@ -63,9 +70,17 @@ let props = withDefaults(defineProps<{
 
 
 const visible = ref(false);
+const codeValue = ref<any>();
 
-const modelName = computed(() => props.model?.name);
+const modelName = computed(() => props.model?.name || '详情');
 
+const value = computed<any>(() => {
+  try {
+    return JSON.stringify(props.modelValue);
+  } catch (e) {
+    return props.modelValue;
+  }
+});
 
 const placeholder = computed<string>(() => props.placeholder || '');
 const isNullable = computed<boolean>(() => props.isNullable);
@@ -79,6 +94,7 @@ const handleClick = () => {
   if (isDisabled.value || isReadonly.value) {
     return;
   }
+  codeValue.value = props.modelValue;
   visible.value = true;
 };
 
@@ -89,8 +105,13 @@ const handleClear = (e: MouseEvent) => {
   emits('update:modelValue', null);
 };
 
+const handleUpdate = (val: any) => {
+  console.log(val);
+  codeValue.value = val;
+};
+
 const handleOk = () => {
-  emits('update:modelValue', '');
+  emits('update:modelValue', codeValue.value);
 };
 
 const handleCancel = (e: Event): any => {
