@@ -1,16 +1,17 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 import {computed} from "vue";
 import FlContentBase from "./FlContentBase.vue";
 import FlInputBoolean from "../input/FlInputBoolean.vue";
 
-const props = defineProps<{
+interface Props {
   modelValue: boolean,
-}>();
+}
+
+const props = defineProps<Props>();
 
 const value = computed<boolean>(() => props.modelValue);
 
 </script>
-
 <template>
   <FlContentBase class="content-boolean">
     <FlInputBoolean
@@ -19,7 +20,6 @@ const value = computed<boolean>(() => props.modelValue);
     />
   </FlContentBase>
 </template>
-
 <style lang="scss">
 @use "../../assets/mixin" as *;
 

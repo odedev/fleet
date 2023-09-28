@@ -68,7 +68,7 @@ const fileValue = ref({
           <FlContent :model-value="numValue" :data-type="DataTypeEnum.Integer.value"/>
           <FlContent :model-value="numValue" :data-type="DataTypeEnum.Float.value" />
           <FlContent :model-value="new Date()" :data-type="DataTypeEnum.Date.value"/>
-          <FlContent :model-value="enumValue" :enumeration="userTypeEnum" :data-type="DataTypeEnum.Enum.value"/>
+          <FlContent :model-value="enumValue" :enumeration="userTypeEnum" :data-type="DataTypeEnum.Enum.value" color="secondary"/>
           <FlContent :model-value="modelValue" :model="userModel" :data-type="DataTypeEnum.Model.value"/>
           <FlContent :model-value="fileValue" :data-type="DataTypeEnum.File.value"/>
           <FlContent :model-value="jsonValue" :data-type="DataTypeEnum.Json.value"/>

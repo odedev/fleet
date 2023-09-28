@@ -17,15 +17,12 @@
     </Input>
   </FlInputBase>
 
-  <Modal
-    class="input-model__modal"
-    v-model:visible="visible"
+  <FlModal
+    v-model="visible"
     :title="modelName"
-    title-align="start"
     width="80%"
-    @ok="handleOk"
     @cancel="handleCancel"
-    unmountOnClose
+    @confirm="handleOk"
   >
 <!--    <FlView>-->
 <!--      <FlViewMain>-->
@@ -40,13 +37,12 @@
 <!--      </FlViewMain>-->
 <!--    </FlView>-->
 <!--    <FlTableConcise v-model="rows" :model="props.model" />-->
-  </Modal>
+  </FlModal>
 </template>
 <script lang="ts" setup>
 import {ref, unref, computed, reactive} from 'vue';
-import {Input, InputSearch, Modal} from "@arco-design/web-vue";
+import {Input, InputSearch} from "@arco-design/web-vue";
 import "@arco-design/web-vue/es/input/style/index.css";
-import "@arco-design/web-vue/es/modal/style/index.css";
 import {IconFindReplace} from "@arco-design/web-vue/es/icon";
 import FlInputBase from "./FlInputBase.vue";
 import FlTableConcise from "../table/FlTableConcise.vue";
@@ -55,6 +51,7 @@ import FlViewMain from "../view/FlViewMain.vue";
 import FlViewHead from "../view/FlViewHead.vue";
 import FlViewBody from "../view/FlViewBody.vue";
 import FlBlock from "../block/FlBlock.vue";
+import FlModal from "../modal/FlModal.vue";
 import FlSearch from "../search/FlSearch.vue";
 import {getDisplayFieldCode} from "../../core/model";
 
@@ -165,16 +162,6 @@ const handleCancel = (e: Event): any => {
     padding-right: 8px;
     padding-top: 1px;
     padding-bottom: 1px;
-  }
-}
-.input-model__modal {
-
-  .arco-modal {
-    height: 80%;
-  }
-  .arco-modal-body {
-    height: calc(100% - 113px);
-    padding: 0;
   }
 }
 </style>

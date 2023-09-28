@@ -31,6 +31,7 @@
     <module>fleet-core-uc</module>
     <module>fleet-core-file</module>
     <module>fleet-core-client</module>
+    <module>fleet-core-metadata</module>
   </modules>
 
   <dependencies>

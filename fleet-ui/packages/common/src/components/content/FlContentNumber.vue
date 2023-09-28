@@ -1,22 +1,28 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 import {computed} from "vue";
 import FlContentBase from "./FlContentBase.vue";
+import * as numberUtils from '../../utils/number_utils.ts';
 
-const props = defineProps<{
+interface Props {
   modelValue: number,
   precision?: number,
-}>();
+  color?: string,
+}
 
-const value = computed<number>(() => props.modelValue);
+const props = withDefaults(defineProps<Props>(), {
+    precision: 0,
+});
+
+const value = computed<string>(() => numberUtils.fixed(props.modelValue, props.precision));
+
+const color = computed<any>(() => props.color);
 
 </script>
-
 <template>
-  <FlContentBase class="content-number">
+  <FlContentBase class="content-number" :color="color">
     {{value}}
   </FlContentBase>
 </template>
-
 <style lang="scss">
 .content.content-number {
   //justify-content: flex-end;

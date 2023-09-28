@@ -1,21 +1,24 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 import {computed} from "vue";
 import FlContentBase from "./FlContentBase.vue";
 
-const props = defineProps<{
-  modelValue: any,
-}>();
+interface Props {
+  modelValue: string,
+  color?: string,
+}
+
+const props = defineProps<Props>();
 
 const value = computed<string>(() => props.modelValue);
 
-</script>
+const color = computed<any>(() => props.color);
 
+</script>
 <template>
-  <FlContentBase class="content-textarea">
+  <FlContentBase class="content-textarea" :color="color">
     {{value}}
   </FlContentBase>
 </template>
-
 <style lang="scss">
 .content.content-textarea {
   //height: 64px;

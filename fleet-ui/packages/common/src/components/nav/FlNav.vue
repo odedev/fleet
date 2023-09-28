@@ -23,25 +23,21 @@
 <!--      <Tooltip :mini="true" content="帮助"><IconQuestionCircle /></Tooltip>-->
     </div>
 
-    <Drawer width="50%" :visible="visible" @ok="handleOk" @cancel="handleCancel" unmountOnClose :footer="false">
-      <template #title>
-        使用手册
-      </template>
-      <div>
-        <FlViewerMarkdown v-model="value"/>
-      </div>
-    </Drawer>
+    <FlDrawer v-model="visible"  title="使用手册" @confirm="handleOk" @cancel="handleCancel">
+      <FlViewerMarkdown v-model="value"/>
+    </FlDrawer>
   </nav>
 </template>
 <script lang="ts" setup>
 import {ref} from "vue";
 import {useRouter, useRoute} from "vue-router";
-import {Breadcrumb, BreadcrumbItem, Drawer, Tooltip} from "@arco-design/web-vue";
+import {Breadcrumb, BreadcrumbItem, Tooltip} from "@arco-design/web-vue";
 import "@arco-design/web-vue/es/breadcrumb/style/index.css";
 import "@arco-design/web-vue/es/tooltip/style/index.css"
-import '@arco-design/web-vue/es/drawer/style/css.js';
 import {IconHome, IconArrowLeft, IconQuestionCircle, IconRefresh, IconBook, IconFile, IconSettings} from "@arco-design/web-vue/es/icon";
+import FlDrawer from "../drawer/FlDrawer.vue";
 import FlViewerMarkdown from "../viewer/FlViewerMarkdown.vue";
+
 const router = useRouter();
 const route = useRoute();
 

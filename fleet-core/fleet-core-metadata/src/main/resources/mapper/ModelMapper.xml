@@ -2,15 +2,15 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="dev.odes.fleet.metadata.mapper.ModelMapper">
+<mapper namespace="dev.odes.fleet.core.metadata.mapper.ModelMapper">
   <sql id="tableColumn">
     <trim suffixOverrides=",">
-      `metadata_model`.`id`,
-      `metadata_model`.`code`,
-      `metadata_model`.`name`,
-      `metadata_model`.`description`,
-      `metadata_model`.`full_name`,
-      `metadata_model`.`module`,
+      `develop_model`.`id`,
+      `develop_model`.`code`,
+      `develop_model`.`name`,
+      `develop_model`.`description`,
+      `develop_model`.`full_name`,
+      `develop_model`.`module`,
     </trim>
   </sql>
   <sql id="column">
@@ -74,7 +74,7 @@
     </trim>
   </sql>
 
-  <resultMap id="resultMap" type="dev.odes.fleet.metadata.entity.Model">
+  <resultMap id="resultMap" type="dev.odes.fleet.core.metadata.entity.Model">
     <id property="id" column="id"/>
     <result property="code" column="code"/>
     <result property="name" column="name"/>
@@ -83,10 +83,10 @@
     <result property="module" column="module"/>
   </resultMap>
 
-  <select id="findOne" resultMap="resultMap" resultType="dev.odes.fleet.metadata.entity.Model">
+  <select id="findOne" resultMap="resultMap" resultType="dev.odes.fleet.core.metadata.entity.Model">
     SELECT
     <include refid="column"/>
-    FROM `metadata_model`
+    FROM `develop_model`
     <if test="where != null and where != ''">
       <where>
         ${where}
@@ -95,10 +95,10 @@
     LIMIT 1
   </select>
 
-  <select id="findMany" resultMap="resultMap" resultType="dev.odes.fleet.metadata.entity.Model">
+  <select id="findMany" resultMap="resultMap" resultType="dev.odes.fleet.core.metadata.entity.Model">
     SELECT
     <include refid="column"/>
-    FROM `metadata_model`
+    FROM `develop_model`
     <if test="where != null and where != ''">
       <where>
         ${where}
@@ -114,15 +114,15 @@
     </choose>
   </select>
 
-  <insert id="insertOne" parameterType="dev.odes.fleet.metadata.entity.Model">
-    INSERT INTO `metadata_model`
+  <insert id="insertOne" parameterType="dev.odes.fleet.core.metadata.entity.Model">
+    INSERT INTO `develop_model`
     (<include refid="insertColumn"/>)
     VALUES
     (<include refid="insertValue"/>)
   </insert>
 
   <insert id="insertMany" parameterType="java.util.List">
-    INSERT INTO `metadata_model`
+    INSERT INTO `develop_model`
     (<include refid="insertColumn"/>)
     VALUES
     <foreach collection="list" item="module" separator=",">
@@ -130,8 +130,8 @@
     </foreach>
   </insert>
 
-  <update id="updateOne" parameterType="dev.odes.fleet.metadata.entity.Model">
-    UPDATE `metadata_model`
+  <update id="updateOne" parameterType="dev.odes.fleet.core.metadata.entity.Model">
+    UPDATE `develop_model`
     <include refid="updateColumn"/>
     WHERE id=#{id}
   </update>
@@ -145,11 +145,11 @@
   <!--  </update>-->
 
   <delete id="deleteOne" parameterType="java.lang.String">
-    DELETE FROM `metadata_model` WHERE id=#{id}
+    DELETE FROM `develop_model` WHERE id=#{id}
   </delete>
 
   <select id="count" resultType="java.lang.Integer">
-    SELECT COUNT(1) FROM `metadata_model`
+    SELECT COUNT(1) FROM `develop_model`
     <if test="where != null and where != ''">
       <where>
         ${where}

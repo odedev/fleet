@@ -13,28 +13,25 @@
       </template>
     </Input>
   </FlInputBase>
-  <Modal
-      class="input-model__modal"
-      v-model:visible="visible"
+  <FlModal
+      v-model="visible"
       :title="modelName"
-      title-align="start"
       width="60%"
-      @ok="handleOk"
+      @confirm="handleConfirm"
       @cancel="handleCancel"
-      unmountOnClose
   >
     <FlBlock>
       <FlEditorCode :model-value="codeValue" @update:model-value="handleUpdate"/>
     </FlBlock>
-  </Modal>
+  </FlModal>
 </template>
 <script lang="ts" setup>
 import {ref, computed} from "vue";
-import {Input, Modal} from "@arco-design/web-vue";
+import {Input} from "@arco-design/web-vue";
 import "@arco-design/web-vue/es/input/style/index.css";
-import "@arco-design/web-vue/es/modal/style/index.css";
 import {IconCodeBlock} from "@arco-design/web-vue/es/icon";
 import FlInputBase from "./FlInputBase.vue";
+import FlModal from "../modal/FlModal.vue";
 import FlBlock from "../block/FlBlock.vue";
 import FlEditorCode from "../editor/FlEditorCode.vue";
 
@@ -110,7 +107,7 @@ const handleUpdate = (val: any) => {
   codeValue.value = val;
 };
 
-const handleOk = () => {
+const handleConfirm = () => {
   emits('update:modelValue', codeValue.value);
 };
 

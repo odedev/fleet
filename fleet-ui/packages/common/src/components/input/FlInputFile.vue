@@ -105,7 +105,7 @@ const handlePreview = (e: Event) => {
 <style lang="scss">
 .input-file {
 
-  cursor: auto  ;
+  cursor: auto;
   .arco-upload {
     width: 100%;
   }

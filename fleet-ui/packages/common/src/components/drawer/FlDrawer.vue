@@ -1,36 +1,63 @@
-<template>
-  <Drawer :width="552" :visible="visible" @ok="handleOk" @cancel="handleCancel" unmountOnClose>
-    <template #title>
-      Title
-    </template>
-    <div>You can customize modal body text by the current situation. This modal will be closed immediately once you
-      press the OK button.
-    </div>
-  </Drawer>
-</template>
-
-<script lang="ts" setup>
-import {ref} from "vue";
-
-import {Drawer} from '@arco-design/web-vue';
+<script setup lang="ts">
+import {ref, computed} from "vue";
+import {Drawer, Modal} from '@arco-design/web-vue';
 import '@arco-design/web-vue/es/drawer/style/css.js';
 
 // width: 720, 552, 440, 336
-const visible = ref(false);
 
-
-const handleClick = () => {
-  visible.value = true;
-};
-const handleOk = () => {
-  visible.value = false;
-};
-const handleCancel = () => {
-  visible.value = false;
+interface Props {
+  modelValue: boolean,
+  title?: string,
+  width?: string,
 }
 
+const props = withDefaults(defineProps<Props>(), {
+  modelValue: false,
+});
+
+const emits = defineEmits(['update:modelValue', 'confirm', 'cancel']);
+
+const value = computed(() => props.modelValue);
+const title = computed(() => props.title || '详情');
+const width = computed(() => props.width || '50%');
+
+const handleUpdate = (value: boolean) => {
+  emits('update:modelValue', value);
+}
+
+const handleOk = () => {
+  emits('confirm');
+};
+
+const handleCancel = () => {
+  emits('cancel')
+}
+
+const handleClose = () => {
+};
+
 </script>
+<template>
+  <Drawer
+    class="drawer"
+    :width="width"
+    v-model:visible="value"
+    :unmount-on-close="true"
+    :footer="false"
+    @update:visible="handleUpdate"
+    @ok="handleOk"
+    @cancel="handleCancel"
+  >
+    <template #title>
+      {{title}}
+    </template>
+    <div>
+      <slot></slot>
+    </div>
+  </Drawer>
+</template>
+<style lang="scss">
+.drawer {
 
-<style scoped>
-
+}
 </style>

@@ -26,11 +26,6 @@
       <artifactId>fleet-develop</artifactId>
       <version>1.0.0</version>
     </dependency>
-    <dependency>
-      <groupId>dev.odes</groupId>
-      <artifactId>fleet-metadata</artifactId>
-      <version>1.0.0</version>
-    </dependency>
 
     <dependency>
       <groupId>dev.odes</groupId>
@@ -40,6 +35,11 @@
     <dependency>
       <groupId>dev.odes</groupId>
       <artifactId>fleet-core-file</artifactId>
+      <version>1.0.0</version>
+    </dependency>
+    <dependency>
+      <groupId>dev.odes</groupId>
+      <artifactId>fleet-core-uc</artifactId>
       <version>1.0.0</version>
     </dependency>
 

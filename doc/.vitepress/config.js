@@ -32,8 +32,8 @@ const sidebar = {
       text: '开发',
       collapsed: false,
       items: [
-        { text: 'DEV', link: '/manual/dev' },
-        { text: '端口', link: '/manual/port' },
+        { text: '开发', link: '/manual/develop' },
+        { text: '环境', link: '/manual/environment' },
       ]
     },
     {
@@ -42,13 +42,6 @@ const sidebar = {
       items: [
         { text: '安装', link: '/manual/install' },
         { text: '部署概览', link: '/manual/deploy' },
-      ]
-    },
-    {
-      text: '元数据',
-      collapsed: false,
-      items: [
-        { text: 'Metadata', link: '/manual/metadata' },
       ]
     },
   ],
@@ -82,6 +75,8 @@ const sidebar = {
       items: [
         { text: '用户管理', link: '/module/uc' },
         { text: '资源文件', link: '/module/file' },
+        { text: '元数据', link: '/module/metadata' },
+
       ]
     },
   ],

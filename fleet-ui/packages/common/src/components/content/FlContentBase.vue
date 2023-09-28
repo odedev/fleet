@@ -1,20 +1,21 @@
 <script lang="ts" setup>
 import {computed} from "vue";
 
+interface Props {
+  color?: "primary" | "secondary" | "tertiary" | "neutral" | "error" | "warn" | "success" | "info" | undefined,
+}
+
+const props = defineProps<Props>();
+
 const emit = defineEmits(['click']);
 
-const props = defineProps<{
-  color?: "primary" | "secondary" | "tertiary" | "neutral" | "error" | "warn" | "success" | "info" | undefined,
-}>();
-
-const color = computed(() => props.color ? 'color__' + props.color : '')
-
+const color = computed(() => 'color--' + (props.color ?? 'normal'))
+console.warn(color)
 const handleClick = () => {
   emit('click');
 };
 
 </script>
-
 <template>
   <div class="content" :class="color" @click="handleClick">
     <div class="content-value">
@@ -22,7 +23,6 @@ const handleClick = () => {
     </div>
   </div>
 </template>
-
 <style lang="scss">
 
 .content {

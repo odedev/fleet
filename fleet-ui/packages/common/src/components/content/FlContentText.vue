@@ -1,22 +1,26 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 import {computed} from "vue";
 import {Tooltip} from '@arco-design/web-vue';
 import '@arco-design/web-vue/es/tooltip/style/css.js';
 import FlContentBase from "./FlContentBase.vue";
 
-const props = defineProps<{
-  modelValue: any,
+interface Props {
+  modelValue: string,
   isShowTip?: boolean,
-}>();
+  color?: string,
+}
+
+const props = defineProps<Props>();
 
 const value = computed<string>(() => props.modelValue);
 
-</script>
+const color = computed<any>(() => props.color);
 
+</script>
 <template>
   <template v-if="isShowTip">
     <Tooltip :content="value" position="tl" mini>
-      <FlContentBase class="content-text">
+      <FlContentBase class="content-text" :color="color">
         {{value}}
       </FlContentBase>
     </Tooltip>
@@ -27,7 +31,6 @@ const value = computed<string>(() => props.modelValue);
     </FlContentBase>
   </template>
 </template>
-
 <style lang="scss">
 .content.content-text {
 }

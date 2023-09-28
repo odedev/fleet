@@ -26,13 +26,15 @@ import FlTree from '../tree/FlTree.vue'
   flex-direction: column;
   padding: 0;
   border-right: 1px solid #f5f5f5;
-  overflow: auto;
+  overflow: hidden;
 
   .view-aside-title {
     padding: 8px;
     padding-bottom: 0px;
     font-size: 18px;
     line-height: 1;
+    flex-grow: 0;
+    flex-shrink: 0;
     h3 {
       font-size: inherit;
     }
@@ -40,6 +42,9 @@ import FlTree from '../tree/FlTree.vue'
   .view-aside-content {
     padding: 8px;
     height: 100%;
+    flex-grow: 1;
+    flex-shrink: 1;
+    overflow: hidden;
   }
 }
 </style>
