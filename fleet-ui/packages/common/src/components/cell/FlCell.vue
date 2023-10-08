@@ -37,7 +37,7 @@ const emits = defineEmits([
 
 const props = withDefaults(defineProps<{
   dataType: number,
-  modelValue: string,
+  modelValue: any,
   isEditable?: boolean,
   isNullable?: boolean,
   isDisabled?: boolean,
@@ -47,7 +47,7 @@ const props = withDefaults(defineProps<{
   isDisabled: false,
 });
 
-const value = computed<string>(() => props.modelValue);
+const value = computed<any>(() => props.modelValue);
 const dataType = computed<number>(() => props.dataType);
 console.log(value)
 

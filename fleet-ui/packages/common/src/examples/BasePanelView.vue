@@ -2,19 +2,18 @@
   <FlView>
     <FlViewMain>
       <FlViewBody>
-        <FlBlock>
-          <FlTable></FlTable>
-        </FlBlock>
+        <FlPane>
+        </FlPane>
       </FlViewBody>
     </FlViewMain>
   </FlView>
 </template>
-<script setup lang="ts">
+<script lang="ts" setup>
 import {
   FlView, FlViewAside, FlViewMain, FlViewNav, FlViewHead, FlViewBody,
-  FlBlock, FlBox, FlContent, FlTableCell, FlFormItem,
-  FlTable, FlButton, FlSearch, FlAction
-} from '@/components/index.ts'
+  FlBlock, FlBox, FlPane, FlForm,
+  FlAction, FlButton
+} from '../components'
 
 </script>
 <style>

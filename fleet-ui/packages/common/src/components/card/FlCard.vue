@@ -1,6 +1,12 @@
+<script setup lang="ts">
+import {Card, Link} from "@arco-design/web-vue";
+import "@arco-design/web-vue/es/card/style/css.js";
+
+
+</script>
 <template>
 <div class="card">
-  <Card :style="{ width: '360px' }" title="Arco Card" :hoverable="true">
+  <Card title="Arco Card" :hoverable="true">
     <template #extra>
       <Link>More</Link>
     </template>
@@ -11,14 +17,6 @@
   </Card>
 </div>
 </template>
-
-<script lang="ts" setup>
-import {Card, Link} from "@arco-design/web-vue";
-import "@arco-design/web-vue/es/card/style/css.js";
-
-
-</script>
-
 <style lang="scss">
 .card {
   .arco-card {
@@ -26,5 +24,4 @@ import "@arco-design/web-vue/es/card/style/css.js";
     margin-bottom: 16px;
   }
 }
-
 </style>

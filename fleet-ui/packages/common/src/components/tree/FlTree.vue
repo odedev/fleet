@@ -10,19 +10,25 @@ import type {TreeFieldNames} from '@arco-design/web-vue'
 interface Props {
   modelValue: any | any[],
   title?: string,
-  disabled?: boolean,
-  checkable?: boolean,
+  // disabled?: boolean,
+  // checkable?: boolean,
+  isSearchable?: boolean,
+  isDraggable?: boolean,
   selectionType?: 'none' | 'single' | 'multiple',
 }
 
 const props = withDefaults(defineProps<Props>(), {
   disabled: false,
+  isSearchable: true,
+  isDraggable: false,
 });
 
 const emits = defineEmits(['click']);
 
 const value = computed(() => props.modelValue);
 const title = computed(() => props.title || '');
+const isSearchable = computed(() => props.isSearchable || true);
+const isDraggable = computed(() => props.isDraggable || false);
 
 const selectedKeys = ref([]);
 const multiple = ref(true);
@@ -30,7 +36,7 @@ const multiple = ref(true);
 // 指定节点数据中的字段名
 const fieldNames = ref<TreeFieldNames>({
   key: 'id',
-  title: 'title',
+  title: 'name',
   children: 'children',
   icon: 'icon',
   disabled: '',
@@ -81,7 +87,7 @@ const onDrop = ({ dragNode, dropNode, dropPosition }) => {
     <h3 class="tree-head" v-if="title">
       {{title}}
     </h3>
-    <div class="tree-search">
+    <div class="tree-search" v-if="isSearchable">
       <InputSearch size="small"/>
     </div>
     <div class="tree-body">
@@ -92,8 +98,9 @@ const onDrop = ({ dragNode, dropNode, dropPosition }) => {
         :multiple="false"
         :checkable="false"
         :check-strictly="true"
+        :default-expand-all="false"
+        :draggable="isDraggable"
         :block-node="true"
-        :draggable="true"
         :show-line="false"
         :field-names="fieldNames"
         size="small"

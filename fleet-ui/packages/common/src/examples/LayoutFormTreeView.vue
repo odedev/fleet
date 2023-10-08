@@ -1,8 +1,6 @@
 <template>
   <FlView>
-    <FlViewAside>
-
-    </FlViewAside>
+    <FlViewAside v-model="data" :is-draggable="true"></FlViewAside>
     <FlViewMain>
       <FlViewNav>
 
@@ -27,11 +25,13 @@
 </template>
 <script lang="ts" setup>
 import {
-  FlHeader, FlBody, FlFooter, FlMenu, FlMain, FlNav, FlTab, FlPage,
   FlView, FlViewAside, FlViewMain, FlViewNav, FlViewHead, FlViewBody,
   FlBlock, FlBox, FlForm, FlFormItem,
   FlTable, FlButton, FlButtonSave, FlButtonReset, FlSearch, FlAction
-} from '../components/index.ts'
+} from '@/components/index.ts'
+import {getModuleDetails} from "@/datas/ModuleDetail.ts";
+
+const data = getModuleDetails();
 
 </script>
 <style>

@@ -4,10 +4,9 @@
       <FlViewNav>
 
       </FlViewNav>
-
       <FlViewBody>
         <FlBlock>
-          <FlTree v-model="treeData"/>
+          <FlTree v-model="treeData" :is-draggable="true" />
         </FlBlock>
       </FlViewBody>
     </FlViewMain>
@@ -16,9 +15,8 @@
 <script lang="ts" setup>
 import {ref, h, computed} from "vue";
 import {
-  FlHeader, FlBody, FlFooter, FlMenu, FlMain, FlNav, FlTab, FlPage,
   FlView, FlViewAside, FlViewMain, FlViewNav, FlViewHead, FlViewBody,
-  FlBlock, FlContent,
+  FlBlock, FlBox,
   FlTable, FlButton, FlSearch, FlTree,
 } from '../components'
 
@@ -26,22 +24,22 @@ import { IconApps, IconCommon, IconLayout, IconRelation, IconUnorderedList } fro
 
 const treeData = ref([
   {
-    title: '用户中心',
+    name: '用户中心',
     id: '0-0',
     children: [
       {
         icon: () => h(IconApps),
         draggable: false,
-        title: '应用',
+        name: '应用',
         id: '0-0-11',
         children: [
           {
-            title: 'Leaf',
+            name: 'Leaf',
             id: '0-0-1-1'
           },
           {
             draggable: false,
-            title: 'Leaf 0-0-2-2 (Drag disabled)',
+            name: 'Leaf 0-0-2-2 (Drag disabled)',
             id: '0-0-1-2'
           }
         ]
@@ -49,15 +47,15 @@ const treeData = ref([
       {
         icon: () => h(IconRelation),
         draggable: false,
-        title: '接口',
+        name: '接口',
         id: '0-0-21',
         children: [
           {
-            title: 'Leaf',
+            name: 'Leaf',
             id: '0-0-21-1'
           },
           {
-            title: 'Leaf 0-0-2-2 (Drag disabled)',
+            name: 'Leaf 0-0-2-2 (Drag disabled)',
             id: '0-0-21-2'
           }
         ]
@@ -65,15 +63,15 @@ const treeData = ref([
       {
         icon: () => h(IconCommon),
         draggable: false,
-        title: '模型',
+        name: '模型',
         id: '0-0-2',
         children: [
           {
-            title: 'Leaf',
+            name: 'Leaf',
             id: '0-0-2-1'
           },
           {
-            title: 'Leaf 0-0-2-2 (Drag disabled)',
+            name: 'Leaf 0-0-2-2 (Drag disabled)',
             id: '0-0-2-2'
           }
         ]
@@ -81,16 +79,16 @@ const treeData = ref([
       {
         icon: () => h(IconUnorderedList),
         draggable: false,
-        title: '枚举',
+        name: '枚举',
         id: '0-0-3',
         children: [
           {
-            title: 'Leaf',
+            name: 'Leaf',
             id: '0-0-3-1'
           },
           {
             draggable: false,
-            title: 'Leaf 0-0-2-2 (Drag disabled)',
+            name: 'Leaf 0-0-2-2 (Drag disabled)',
             id: '0-0-3-2'
           }
         ]
@@ -99,16 +97,16 @@ const treeData = ref([
       {
         icon: () => h(IconLayout),
         draggable: false,
-        title: '视图',
+        name: '视图',
         id: '0-0-4',
         children: [
           {
-            title: 'Leaf',
+            name: 'Leaf',
             id: '0-0-4-1'
           },
           {
             draggable: false,
-            title: 'Leaf 0-0-2-2 (Drag disabled)',
+            name: 'Leaf 0-0-2-2 (Drag disabled)',
             id: '0-0-4-2'
           }
         ]
@@ -116,25 +114,25 @@ const treeData = ref([
     ],
   },
   {
-    title: '系统管理',
+    name: '系统管理',
     id: '0-1',
     children: [
       {
-        title: 'Branch 0-1-1',
+        name: 'Branch 0-1-1',
         id: '0-1-1',
         children: [
           {
-            title: 'Leaf',
+            name: 'Leaf',
             id: '0-1-1-1',
           },
           {
-            title: 'Leaf',
+            name: 'Leaf',
             id: '0-1-1-2',
           },
         ]
       },
       {
-        title: 'Leaf',
+        name: 'Leaf',
         id: '0-1-2',
       },
     ],

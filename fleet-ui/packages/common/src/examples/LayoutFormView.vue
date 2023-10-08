@@ -4,7 +4,8 @@
       <FlViewHead>
         <FlAction>
           <FlButtonSave />
-          <FlButtonReset />
+<!--          <FlButtonReset />-->
+          <FlButtonBack />
         </FlAction>
       </FlViewHead>
       <FlViewBody>
@@ -36,7 +37,7 @@ import {
   FlHeader, FlBody, FlFooter, FlMenu, FlMain, FlNav, FlTab, FlPage,
   FlView, FlViewAside, FlViewMain, FlViewNav, FlViewHead, FlViewBody,
   FlBlock, FlBox, FlSpace, FlForm, FlFormItem, FlInputBoolean, FlInputPassword,
-  FlTable, FlButtonSave, FlButtonReset, FlSearch, FlAction
+  FlTable, FlButtonSave, FlButtonReset, FlButtonBack, FlSearch, FlAction
 } from '../components'
 
 </script>

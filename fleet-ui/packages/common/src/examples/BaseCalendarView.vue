@@ -8,9 +8,9 @@
         </FlAction>
       </FlViewHead>
       <FlViewBody>
-        <FlBox>
+        <FlBlock>
           <FlCalendar v-model="value"/>
-        </FlBox>
+        </FlBlock>
       </FlViewBody>
     </FlViewMain>
   </FlView>

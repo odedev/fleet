@@ -10,7 +10,7 @@ const props = defineProps<Props>();
 const emit = defineEmits(['click']);
 
 const color = computed(() => 'color--' + (props.color ?? 'normal'))
-console.warn(color)
+
 const handleClick = () => {
   emit('click');
 };

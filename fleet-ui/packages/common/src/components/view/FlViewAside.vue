@@ -1,18 +1,37 @@
 <template>
   <aside class="view-aside">
-    <div class="view-aside-title">
-      <h3>标题</h3>
+    <div class="view-aside-title" v-if="title">
+      <h3>{{title}}</h3>
     </div>
     <slot></slot>
     <div class="view-aside-content">
-      <FlTree></FlTree>
+      <FlTree :model-value="value" :is-draggable="isDraggable"></FlTree>
     </div>
   </aside>
 </template>
 <script lang="ts" setup>
-import {ref} from "vue";
+import {ref, computed} from "vue";
 import FlTree from '../tree/FlTree.vue'
 
+interface Props {
+  modelValue: any | any[],
+  title?: string,
+  disabled?: boolean,
+  checkable?: boolean,
+  isDraggable?: boolean,
+  selectionType?: 'none' | 'single' | 'multiple',
+}
+
+
+const props = withDefaults(defineProps<Props>(), {
+  disabled: false,
+});
+
+const emits = defineEmits(['click']);
+
+const value = computed(() => props.modelValue);
+const title = computed(() => props.title || '');
+const isDraggable = computed(() => props.isDraggable || false);
 
 </script>
 <style lang="scss">

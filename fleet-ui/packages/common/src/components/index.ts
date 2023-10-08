@@ -45,6 +45,10 @@ import FlInputTextarea from "./input/FlInputTextarea.vue";
 import FlInputPassword from "./input/FlInputPassword.vue";
 import FlInputCheckbox from "./input/FlInputCheckbox.vue";
 
+import FlCell from "./cell/FlCell.vue";
+
+import FlItem from "./item/FlItem.vue";
+
 import FlButton from "./button/FlButton.vue";
 import FlButtonAdd from "./button/FlButtonAdd.vue";
 import FlButtonEdit from "./button/FlButtonEdit.vue";
@@ -74,7 +78,15 @@ import FlTableCell from "./table/FlTableCell.vue";
 import FlTree from "./tree/FlTree.vue";
 
 import FlCalendar from "./calendar/FlCalendar.vue";
+import FlList from "./list/FlList.vue";
 
+import FlCard from "./card/FlCard.vue";
+import FlCardGroup from "./card/FlCardGroup.vue";
+
+import FlDescription from "./description/FlDescription.vue";
+
+import FlPane from "./pane/FlPane.vue";
+import FlStep from "./step/FlStep.vue";
 
 import FlEditorMarkdown from "./editor/FlEditorMarkdown.vue";
 import FlEditorRichText from "./editor/FlEditorRichText.vue";
@@ -156,6 +168,9 @@ export {
   FlButtonIcon,
   FlButtonGroup,
 
+  FlCell,
+  FlItem,
+
   FlForm,
   FlFormItem,
 
@@ -165,6 +180,15 @@ export {
 
   FlTree,
   FlCalendar,
+  FlList,
+
+  FlCard,
+  FlCardGroup,
+
+  FlDescription,
+
+  FlPane,
+  FlStep,
 
   FlEditorMarkdown,
   FlEditorRichText,

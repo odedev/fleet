@@ -1,6 +1,6 @@
 <template>
   <FlView>
-<!--    <FlContent>-->
+    <!--    <FlContent>-->
 
     <Tabs type="line" default-active-key="1">
       <TabPane key="1" title="Tab 1">
@@ -18,7 +18,7 @@
         <FlBlock>Content of Tab Panel 3</FlBlock>
       </TabPane>
     </Tabs>
-<!--    </FlContent>-->
+    <!--    </FlContent>-->
 
   </FlView>
 </template>

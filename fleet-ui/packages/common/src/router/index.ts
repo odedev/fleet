@@ -6,43 +6,7 @@ import RedirectView from '../views/RedirectView.vue'
 import NotFoundView from '../views/NotFoundView.vue'
 import ComponentView from "../views/ComponentView.vue";
 
-import ContentView from '../examples/BaseContentView.vue'
-import InputView from '../examples/BaseInputView.vue'
-import CellView from '../examples/BaseCellView.vue'
-import ButtonView from '../examples/BaseButtonView.vue'
-import TableView from '../examples/BaseTableView.vue'
-import TableConciseView from '../examples/BaseTableConciseView.vue'
-
-import FormView from '../examples/BaseFormView.vue'
-import CardView from '../examples/BaseCardView.vue'
-import TreeView from '../examples/BaseTreeView.vue'
-
-import BaseCalendarView from "@/examples/BaseCalendarView.vue";
-
-import LayoutTableView from '../examples/LayoutTableView.vue'
-
-import LayoutFormView from '../examples/LayoutFormView.vue'
-import LayoutFormTableView from '../examples/LayoutFormTableView.vue'
-import LayoutFormTableListView from '../examples/LayoutFormTableListView.vue'
-
-import LayoutTreeFormView from '../examples/LayoutTreeFormView.vue'
-import PanelView from '../examples/PanelView.vue'
-import StepView from '../examples/StepView.vue'
-import DescView from '../examples/BaseDescView.vue'
-
-import TreeTableView from '../examples/TreeTableView.vue'
-
-
-
-import RichTextView from '../examples/RichTextView.vue'
-import MarkdownView from '../examples/MarkdownView.vue'
-import CodeView from '../examples/BaseCodeView.vue'
-
-import ViewerMarkdownView from "../examples/ViewerMarkdownView.vue";
-import ViewerRichTextView from "../examples/ViewerRichTextView.vue";
-import ViewerImageView from "../examples/ViewerImageView.vue";
-import ViewerVideoView from "../examples/ViewerVideoView.vue";
-
+import routes from './route.ts';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -52,6 +16,8 @@ const router = createRouter({
       name: 'home',
       component: HomeView
     },
+
+    ...routes,
 
     // 动态组件
     {

@@ -1,5 +1,5 @@
 <template>
-  <FlHeader name="平台功能有限公司"></FlHeader>
+  <FlHeader name="应用功能有限公司"></FlHeader>
   <FlBody>
     <FlMenu v-model="current" :menus="menus" @update:model-value="onMenuChange"></FlMenu>
     <FlMain>
@@ -8,14 +8,13 @@
       <FlPage />
     </FlMain>
   </FlBody>
+<!--  <FlFooter />-->
 </template>
 <script setup lang="ts">
 import {ref} from 'vue';
 import {
   FlHeader, FlBody, FlFooter, FlMenu, FlMain, FlNav, FlTab, FlPage,
-  FlView, FlViewAside, FlViewMain, FlViewNav, FlViewHead, FlViewBody,
-  FlTable, FlButton, FlSearch,
-} from '../components/index.ts';
+} from '@/components/index.ts';
 
 import {menus as menuList} from '../datas/menu';
 
