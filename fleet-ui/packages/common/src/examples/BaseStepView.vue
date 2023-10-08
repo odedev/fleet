@@ -8,10 +8,17 @@
         </FlAction>
       </FlViewHead>
       <FlViewBody>
-        <FlBlock>
-        <FlStep label-placement="vertical">
+        <FlStep :model-value="steps" label-placement="vertical">
+          <template #step1>
+            <div>step1</div>
+          </template>
+          <template #step2>
+            <div>step2</div>
+          </template>
+          <template #step3>
+            <div>step3</div>
+          </template>
         </FlStep>
-        </FlBlock>
       </FlViewBody>
     </FlViewMain>
   </FlView>
@@ -23,6 +30,23 @@ import {
   FlTable, FlButton, FlSearch, FlAction
 } from '@/components'
 
+const steps = [
+  {
+    name: '步骤1',
+    code: 'step1',
+    description: '',
+  },
+  {
+    name: '步骤2',
+    code: 'step2',
+    description: '',
+  },
+  {
+    name: '步骤3',
+    code: 'step3',
+    description: '',
+  }
+]
 </script>
 <style>
 
