@@ -1,6 +1,9 @@
 package dev.odes.fleet.core.base.controller;
 
 import dev.odes.fleet.common.response.ResponseError;
+import org.apache.commons.lang3.exception.ExceptionUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -9,6 +12,8 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @RestControllerAdvice
 public class ExceptionHandlerController {
 
+    private static final Logger logger = LoggerFactory.getLogger(ExceptionHandlerController.class);
+
     /**
      * 异常
      * @param e
@@ -16,7 +21,7 @@ public class ExceptionHandlerController {
      */
     @ExceptionHandler(Exception.class)
     public Object handler(Exception e) {
-        e.printStackTrace();
+        logger.error(ExceptionUtils.getStackTrace(e));
         return e.getMessage();
     }
 
@@ -27,7 +32,7 @@ public class ExceptionHandlerController {
      */
     @ExceptionHandler(RuntimeException.class)
     public ResponseEntity<ResponseError> handler(RuntimeException e) {
-        e.printStackTrace();
+        logger.error(ExceptionUtils.getStackTrace(e));
         return new ResponseEntity<>(new ResponseError("运行时异常", e.getMessage()), HttpStatus.INSUFFICIENT_STORAGE);
     }
 
@@ -38,7 +43,7 @@ public class ExceptionHandlerController {
      */
     @ExceptionHandler(NullPointerException.class)
     public ResponseEntity<ResponseError>  handler(NullPointerException e) {
-        e.printStackTrace();
+        logger.error(ExceptionUtils.getStackTrace(e));
         return new ResponseEntity<>(new ResponseError("空指针异常", e.getMessage()), HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
@@ -49,7 +54,7 @@ public class ExceptionHandlerController {
      */
     @ExceptionHandler(ArithmeticException.class)
     public Object handler(ArithmeticException e) {
-        e.printStackTrace();
+        logger.error(ExceptionUtils.getStackTrace(e));
         return new ResponseError("算术运算异常", e.getMessage());
     }
 }
