@@ -28,6 +28,12 @@
       <artifactId>fleet-mysql</artifactId>
       <version>${version}</version>
     </dependency>
+
+    <dependency>
+      <groupId>dev.odes</groupId>
+      <artifactId>fleet-core-uc</artifactId>
+      <version>${version}</version>
+    </dependency>
   </dependencies>
 
 </project>
