@@ -28,10 +28,11 @@
   <modules>
     <module>fleet-core-auth</module>
     <module>fleet-core-base</module>
-    <module>fleet-core-uc</module>
-    <module>fleet-core-file</module>
     <module>fleet-core-client</module>
+    <module>fleet-core-file</module>
     <module>fleet-core-metadata</module>
+    <module>fleet-core-system</module>
+    <module>fleet-core-uc</module>
   </modules>
 
   <dependencies>

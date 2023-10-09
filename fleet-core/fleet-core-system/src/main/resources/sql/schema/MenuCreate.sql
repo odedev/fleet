@@ -1,0 +1,21 @@
+CREATE TABLE IF NOT EXISTS `system_menu` (
+    `id` VARCHAR(32) NOT NULL COMMENT '主键ID',
+    `username` VARCHAR(32) NOT NULL COMMENT '用户名',
+    `password` VARCHAR(64) NOT NULL COMMENT '密码',
+    `code` VARCHAR(32) NOT NULL DEFAULT ''  COMMENT '编码',
+    `name` VARCHAR(32) NOT NULL DEFAULT '' COMMENT '名称',
+    `email` VARCHAR(32) NULL DEFAULT '8080' COMMENT '邮箱',
+    `phone` VARCHAR(16) NULL DEFAULT '8080' COMMENT '手机号',
+    `user_type` TINYINT NOT NULL DEFAULT '1' COMMENT '用户类型',
+    `is_super_admin` TINYINT NULL DEFAULT '0' COMMENT '是否超级管理员',
+    `note` VARCHAR(255) NULL DEFAULT '' COMMENT '备注',
+    `created_by` VARCHAR(32) NULL DEFAULT NULL COMMENT '创建人ID',
+    `created_at` DATETIME NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    `updated_by` VARCHAR(32) NULL DEFAULT NULL COMMENT '更新人ID',
+    `updated_at` DATETIME NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+    `deleted_by` VARCHAR(32) NULL DEFAULT NULL COMMENT '删除人ID',
+    `deleted_at` DATETIME NULL DEFAULT NULL COMMENT '删除时间',
+    PRIMARY KEY (`id`),
+    UNIQUE INDEX `username` (`username`),
+    UNIQUE INDEX `code` (`code`)
+);
