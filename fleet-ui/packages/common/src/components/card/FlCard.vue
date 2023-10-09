@@ -22,6 +22,8 @@ import "@arco-design/web-vue/es/card/style/css.js";
   .arco-card {
     margin-right: 16px;
     margin-bottom: 16px;
+    margin-right: 0px;
+    margin-bottom: 0px;
   }
 }
 </style>

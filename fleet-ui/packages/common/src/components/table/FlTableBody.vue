@@ -12,7 +12,7 @@ const tableBody = ref<HTMLDivElement>();
 const emits = defineEmits(['update:modelValue']);
 
 interface Props {
-  modelValue: DOMRect,
+  modelValue?: DOMRect,
 }
 
 const props = defineProps<Props>();

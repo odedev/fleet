@@ -10,10 +10,10 @@
           :enumeration="field.enumType"
         />
       </template>
-
+<!--
       <FlFormItem title="名称" :data-type="1"/>
       <FlFormItem title="编码" :data-type="1"/>
-      <FlFormItem title="编码" :data-type="1"/>
+      <FlFormItem title="编码" :data-type="1"/> -->
     </div>
     <div class="search-action">
       <FlButtonSearch />

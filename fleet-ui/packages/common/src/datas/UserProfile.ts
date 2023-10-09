@@ -6,7 +6,7 @@ function getUserProfile(count: number): any[] {
     let userProfile = {
       id: i,
       name: 'Dev' + i,
-      code: 23000 + i,
+      code: 23000 + i + '',
       address: '32 Park Road, London',
       remark: 'jane.doe@example.com',
       isPreset: false,

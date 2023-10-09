@@ -58,7 +58,7 @@ const UserProfileModel = {
     {
       id: "1665926651155869697",
       code: "name",
-      name: "名称",
+      name: "用户详细名称",
       dataType: 1,
       dataLength: 255,
       enumType: null,

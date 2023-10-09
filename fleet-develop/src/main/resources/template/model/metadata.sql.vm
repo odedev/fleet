@@ -1,0 +1,16 @@
+#set($moduleCode = $templateContext.module.code.toLowerCase())
+#set($modelCode = $templateContext.model.code)
+#set($modelCodeLowerUnderscore = $templateContext.lowerUnderscore($templateContext.model.code))
+#set($modelFields = $templateContext.model.fields)
+  INSERT INTO `metadata_model`
+    (`id`, `code`, `name`, `full_name`, `description`, `module`)
+  VALUES
+    ('${templateContext.model.id}', '${modelCode}', '${templateContext.model.name}', '${templateContext.model.fullName}', '${templateContext.model.description}', '${templateContext.model.module}');
+
+
+#foreach($field in $modelFields)
+  INSERT INTO `metadata_model_field`
+    (`id`, `code`, `name`, `full_name`, `description`, `module`)
+  VALUES
+    ('${templateContext.model.id}', '${modelCode}', '${templateContext.model.name}', '${templateContext.model.fullName}', '${templateContext.model.description}', '${templateContext.model.module}');
+#end

@@ -1,81 +1,6 @@
-<template>
-  <FlTableBox ref="table">
-    <FlTableHead :model="model">
-      <FlButtonGroup>
-        <FlButton type="primary">执行DDL</FlButton>
-        <FlButton type="success">生成代码</FlButton>
-        <FlButton type="primary">维护功能</FlButton>
-        <FlButtonAdd>新增</FlButtonAdd>
-      </FlButtonGroup>
-    </FlTableHead>
-    <FlTableBody>
-    <!-- <div class="table-body" ref="tableBody"> -->
-      <Table
-        :columns="columns"
-        :data="data"
-        size="large"
-        :stripe="true"
-        :table-layout-fixed="true"
-        :column-resizable="true"
-        :sticky-header="10"
-        :bordered="{cell:true}"
-        :draggable="draggable"
-        :pagination="false">
-          <template #columns>
-            <TableColumn title="name" :width="208">
-              <template #cell>
-                <FlTableCell  v-model="value" :data-type="1" :is-editable="isEditable"/>
-              </template>
-            </TableColumn>
-            <TableColumn title="code" :width="64">
-              <template #cell>
-                <FlTableCell v-model="value" :data-type="0" :is-editable="isEditable"/>
-              </template>
-            </TableColumn>
-            <TableColumn title="code" :width="208">
-              <template #cell>
-                <FlTableCell v-model="value" :data-type="1" :is-editable="isEditable"/>
-              </template>
-            </TableColumn>
-            <TableColumn title="code" :width="208">
-              <template #cell>
-                <FlTableCell v-model="value" :data-type="1" :is-editable="isEditable"/>
-              </template>
-            </TableColumn>
-            <TableColumn title="code" :width="221">
-            <template #cell>
-              <FlTableCell v-model="value" :data-type="1" :is-editable="isEditable"/>
-            </template>
-          </TableColumn>
-            <TableColumn title="code" width="auto">
-              <template #cell>
-                <FlTableCell v-model="value" :data-type="1" :is-editable="isEditable"/>
-              </template>
-            </TableColumn>
-          <TableColumn title="操作" :width="operationColumnWidth" align="center" fixed="right">
-            <template #cell>
-              <FlTableCellButton :is-editable="isEditable"/>
-            </template>
-          </TableColumn>
-        </template>
-      </Table>
-    <!-- </div> -->
-   </FlTableBody>
-    <FlTableFoot
-      :page-size="10"
-      :page-total="1200"
-      :is-filterable="props.isFilterable"
-      :is-settable="props.isSettable"
-      :is-importable="props.isImportable"
-      :is-exportable="props.isExportable">
-    </FlTableFoot>
-  </FlTableBox>
-
-</template>
-
-<script lang="ts" setup>
-import { ref, reactive, computed, onMounted } from 'vue';
-import {Table, TableColumn, Pagination, Tooltip, Button} from "@arco-design/web-vue";
+<script setup lang="ts">
+import {ref, computed, onMounted, watch} from 'vue';
+import {Table, TableColumn} from "@arco-design/web-vue";
 import '@arco-design/web-vue/es/table/style/css.js';
 import FlTableBox from "./FlTableBox.vue";
 import FlTableHead from "./FlTableHead.vue";
@@ -88,13 +13,22 @@ import FlButton from "../button/FlButton.vue";
 import FlButtonAdd from "../button/FlButtonAdd.vue";
 import FlButtonGroup from "../button/FlButtonGroup.vue";
 
+import {usePageSize, usePageValue} from "../../composables/data_grid";
+
+import type { TableDraggable } from '@arco-design/web-vue';
+
+let data: any[] = [];
+
 
 interface Props {
-  dataType: number,
-  modelValue: string,
+  modelValue: any[],
   model: any,
   modelData?: any[],
   modelParameter?: any,
+  load?: Function,
+
+  pageCount?: number,
+
   isEditable?: boolean,
   isNullable?: boolean,
   isDisabled?: boolean,
@@ -113,10 +47,20 @@ const props = withDefaults(defineProps<Props>(), {
 });
 
 const table = ref<HTMLDivElement>();
-const value = ref('123456789abcdefghijklmnopqrstuvwxyz');
+const tableBody = ref<HTMLDivElement>();
+
+const pageNum = ref(1);
+
+const selectionValues = ref<any[]>([]);
+
+// const value = computed(() => props.modelValue);
+const fields = computed(() => props.model.fields);
+const pageCount = computed(() => props.pageCount ?? props.modelValue.length);
 
 const isEditable = computed<boolean>(() => props.isEditable);
 
+const pageSize = usePageSize(tableBody, 10, 33, 41);
+const value = usePageValue(data, props.modelValue, pageNum, pageSize, props.pageCount);
 
 const model = computed<any>(() => props.model);
 
@@ -125,11 +69,11 @@ const operationColumnWidth = computed<number>(() => {
     // return 86;
     return 121;
   } else {
-    return 140;
+    return 141;
   }
 });
 
-const draggable = computed(() => {
+const draggable = computed<TableDraggable | undefined>(() => {
   if (props.isDraggable) {
     return {
       type: 'handle',
@@ -137,67 +81,88 @@ const draggable = computed(() => {
     }
   }
   return;
-})
-const columns = [
-  {
-    title: 'Name',
-    dataIndex: 'name',
-    ellipsis: true,
-    tooltip: true,
-    width: 100
-  },
-  {
-    title: 'Salary',
-    dataIndex: 'salary',
-  },
-  {
-    title: 'Address',
-    dataIndex: 'address',
-  },
-  {
-    title: 'Email',
-    dataIndex: 'email',
-  },
-];
-const data = reactive([{
-  key: '1',
-  name: 'Jane Doe',
-  salary: 23000,
-  address: '32 Park Road, London',
-  email: 'jane.doe@example.com'
-}, {
-  key: '2',
-  name: 'Alisa Ross',
-  salary: 25000,
-  address: '35 Park Road, London',
-  email: 'alisa.ross@example.com'
-}, {
-  key: '3',
-  name: 'Kevin Sandra',
-  salary: 22000,
-  address: '31 Park Road, London',
-  email: 'kevin.sandra@example.com'
-}, {
-  key: '4',
-  name: 'Ed Hellen',
-  salary: 17000,
-  address: '42 Park Road, London',
-  email: 'ed.hellen@example.com'
-}, {
-  key: '5',
-  name: 'William Smith',
-  salary: 27000,
-  address: '62 Park Road, London',
-  email: 'william.smith@example.com'
-}]);
+});
+
+
+watch(
+  pageSize,
+  value => {
+    if (value) {
+      handleLoad(pageNum.value, value)
+    }
+  }
+);
+
+const handlePageNumChange = (pageNum: number) => {
+  console.log('handlePageNumChange', pageNum);
+  handleLoad(pageNum, pageSize.value);
+};
+
+const handleLoad = (pageNum: number, pageSize: number) => {
+  console.log('onLoad', pageNum, pageSize);
+};
 
 onMounted(() => {
-  console.log(table.value.clientHeight)
 })
 </script>
+
+<template>
+  <FlTableBox>
+    <FlTableHead v-model="selectionValues" :model="model">
+      <FlButtonGroup>
+        <slot></slot>
+        <FlButtonAdd></FlButtonAdd>
+      </FlButtonGroup>
+    </FlTableHead>
+    <FlTableBody>
+     <div class="table-body--content" ref="tableBody">
+      <Table
+        :data="value"
+        size="large"
+        :stripe="true"
+        :table-layout-fixed="true"
+        :column-resizable="true"
+        :sticky-header="10"
+        :bordered="{cell:true}"
+        :draggable="draggable"
+        :pagination="false">
+          <template #columns>
+            <template v-for="field in fields">
+              <TableColumn :title="field.name" :data-index="field.code" :width="field.width">
+                <template #cell="{ record }">
+                  <FlTableCell v-model="record[field.code]" :data-type="field.dataType" :model="field.modelType" :enumeration="field.enumType"  :is-editable="isEditable"/>
+                </template>
+              </TableColumn>
+            </template>
+            <TableColumn title="操作" :width="operationColumnWidth" align="center" fixed="right">
+              <template #cell>
+                <FlTableCellButton :is-editable="isEditable"/>
+              </template>
+            </TableColumn>
+          </template>
+      </Table>
+     </div>
+   </FlTableBody>
+    <FlTableFoot
+      v-model:page-num="pageNum"
+      :page-size="pageSize"
+      :page-count="pageCount"
+      :is-filterable="props.isFilterable"
+      :is-settable="props.isSettable"
+      :is-importable="props.isImportable"
+      :is-exportable="props.isExportable"
+      @change="handlePageNumChange"
+    >
+    </FlTableFoot>
+  </FlTableBox>
+
+</template>
 
 <style lang="scss">
 @use "../../assets/mixin" as *;
 
-
+.table-body--content {
+  height: 100%;
+  overflow: auto;
+}
 </style>

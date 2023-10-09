@@ -37,8 +37,8 @@ const emits = defineEmits([
 ]);
 
 const props = withDefaults(defineProps<{
+  modelValue: any,
   dataType: number,
-  modelValue: string,
   isEditable?: boolean,
   isNullable?: boolean,
   isDisabled?: boolean,
@@ -50,8 +50,6 @@ const props = withDefaults(defineProps<{
 
 const value = computed<string>(() => props.modelValue);
 const dataType = computed<number>(() => props.dataType);
-console.log(value)
-
 const isNullable = computed<boolean>(() => props.isNullable);
 const isDisabled = computed<boolean>(() => props.isDisabled);
 
@@ -66,8 +64,7 @@ const handleDblclick = () => {
     return
   }
   isEditable.value = true;
-  console.log(el)
-  el.value?.querySelector('input')?.focus();
+  // el.value?.querySelector('input')?.focus();
 }
 
 

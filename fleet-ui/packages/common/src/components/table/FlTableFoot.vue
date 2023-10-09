@@ -21,7 +21,7 @@
       <Pagination
         :current="pageNum"
         :page-size="pageSize"
-        :total="pageTotal"
+        :total="pageCount"
         :show-total="true"
         :hide-on-single-page="false"
         @change="handleChange"
@@ -48,7 +48,7 @@ const emits = defineEmits([
 const props = withDefaults(defineProps<{
   pageNum: number,
   pageSize: number,
-  pageTotal: number,
+  pageCount: number,
   count?: number,
   isFilterable: boolean,
   isSettable: boolean,
@@ -63,7 +63,7 @@ const props = withDefaults(defineProps<{
 
 const pageNum = computed<number>(() => props.pageNum || 1);
 const pageSize = computed<number>(() => props.pageSize || 10);
-const pageTotal = computed<number>(() => props.pageTotal || 0);
+const pageCount = computed<number>(() => props.pageCount || 0);
 
 const handleFilterClick = () => {
   emits('filterClick');

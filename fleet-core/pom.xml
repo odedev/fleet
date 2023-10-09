@@ -35,6 +35,11 @@
   </modules>
 
   <dependencies>
+    <dependency>
+      <groupId>dev.odes</groupId>
+      <artifactId>fleet-common</artifactId>
+      <version>1.0.0</version>
+    </dependency>
   </dependencies>
 
 </project>

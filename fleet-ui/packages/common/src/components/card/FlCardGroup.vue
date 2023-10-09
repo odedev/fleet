@@ -10,8 +10,9 @@
 
 <style lang="scss">
 .card-group {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  grid-row-gap: 16px;
+  grid-column-gap: 16px;
 }
 </style>

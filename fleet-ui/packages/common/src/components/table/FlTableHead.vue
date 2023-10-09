@@ -23,7 +23,7 @@ const handleView = (e: FocusEvent) => {
 <template>
   <div class="table-head">
     <h3>标题</h3>
-    <div style="font-size: 10px;line-height: 1;">已选 <span @click="handleView">3</span> 项 <span>清空</span></div>
+    <div style="font-size: 11px;line-height: 1;">已选 <span @click="handleView">3</span> 项 <span>清空</span></div>
     <div>
       <slot></slot>
     </div>

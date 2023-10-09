@@ -1,6 +1,9 @@
 <script setup lang="ts">
-import {computed} from "vue";
+import {computed, ref} from "vue";
 import FlContentBase from "./FlContentBase.vue";
+import FlModal from "../modal/FlModal.vue";
+import FlBlock from "../block/FlBlock.vue";
+import FlDescription from "../description/FlDescription.vue";
 import {getDisplayFieldCode} from "../../core/model";
 
 interface Props {
@@ -12,6 +15,8 @@ interface Props {
 
 const props = defineProps<Props>();
 
+const visible = ref(false);
+
 const value = computed<any>(() => {
   let displayField: string = getDisplayFieldCode(props.model);
   let value = props.modelValue?.[displayField] || props.modelValue;
@@ -21,16 +26,28 @@ const value = computed<any>(() => {
   return value;
 });
 
+const modelName = computed(() => props.model?.name || '详情');
+
 const color = computed<any>(() => props.color);
+
+
+const handleClick = () => {
+  visible.value = true;
+};
 
 </script>
 <template>
-  <FlContentBase class="content-model" :color="color">
+  <FlContentBase class="content-model" :color="color" @click="handleClick">
     {{value}}
   </FlContentBase>
+  <FlModal v-model="visible" :title="modelName" width="70%">
+    <FlBlock>
+      <FlDescription :model-value="props.modelValue" :model="props.model"/>
+    </FlBlock>
+  </FlModal>
 </template>
 <style lang="scss">
 .content.content-model {
-
+  cursor: pointer;
 }
 </style>

@@ -3,7 +3,7 @@
     <FlViewMain>
       <FlViewBody>
         <FlBlock>
-        <FlDescription :model-value="data" title="用户信息" />
+        <FlDescription :model-value="data" :model="userProfileModel"  />
         </FlBlock>
       </FlViewBody>
     </FlViewMain>
@@ -15,23 +15,24 @@ import {
   FlBlock, FlBox, FlDescription,
   FlAction, FlButton
 } from '@/components'
+import {useModel} from "@/composables/model";
 
-const data = [{
-  label: 'Name',
-  value: 'Socrates',
-}, {
-  label: 'Mobile',
-  value: '123-1234-1234',
-}, {
-  label: 'Residence',
-  value: 'Beijing'
-}, {
-  label: 'Hometown',
-  value: 'Beijing',
-}, {
-  label: 'Address',
-  value: 'Yingdu Building, Zhichun Road, Beijing'
-}];
+const userModel = useModel("dev.odes.fleet.module.system.model.UserModel");
+const userProfileModel = useModel("dev.odes.fleet.module.system.model.UserProfileModel");
+
+const data = {
+  id: 'i',
+  name: 'Dev',
+  code: 23000 + '',
+  address: '32 Park Road, London',
+  remark: 'jane.doe@example.com',
+  isPreset: false,
+  user: {
+    id: '1',
+    name: 'Jane Doe',
+    code: 23000,
+  }
+};
 
 </script>
 <style>

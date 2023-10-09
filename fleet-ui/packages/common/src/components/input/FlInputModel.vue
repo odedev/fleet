@@ -9,6 +9,8 @@
       :readonly="true"
       :error="isInvalid"
       :allow-clear="isNullable"
+      @focus="handleFocus"
+      @blur="handleBlur"
       @clear="handleClear"
       size="small" >
       <template #suffix>
@@ -106,14 +108,12 @@ const modelName = computed(() => props.model?.name);
 
 const rows = props.modelData;
 
-console.log(props.model)
-
-
 const handleFocus = (e: FocusEvent) => {
-  console.log('focus')
   emits('focus', e);
+};
 
-  // visible.value = true;
+const handleBlur = (e: FocusEvent) => {
+  // emits('blur', e);
 };
 
 const handleClick = () => {
@@ -136,9 +136,11 @@ const handleOk = () => {
   let value = selectionValue.value.length ? selectionValue.value[0] : null;
   console.log(selectionValue.value);
   emits('update:modelValue', value);
+  emits('blur');
 };
 
 const handleCancel = (e: Event): any => {
+  emits('blur');
 
 };
 

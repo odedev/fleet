@@ -165,42 +165,42 @@ onMounted(() => {
 <!--    <div class="table-head">-->
 <!--      <h3>标题</h3>-->
 <!--    </div>-->
-<!--    <FlTableBody v-model="tableBodyDOMRect" ref="tableBody" >-->
-    <div class="table-body" ref="tableBody">
-      <Table
-        :data="value"
-        v-model:selected-keys="selectedKeys"
-        row-key="id"
-        :stripe="false"
-        :table-layout-fixed="true"
-        :column-resizable="true"
-        :sticky-header="true"
-        :bordered="{cell:true}"
-        :row-selection="rowSelection"
-        @row-click="handleRowClick"
-        @cell-click="handleCellClick"
-        @select="handleSelect"
-        @selection-change="handleSelectionChange"
-        @select-all="handleSelectAll"
-        :pagination="false"
-        size="large"
-      >
-        <template #columns>
-          <template v-for="field in fields">
-            <TableColumn :title="field.name" :data-index="field.code" :width="field.width">
-              <template #cell="{ record }">
-                <FlContent v-model="record[field.code]" :data-type="field.dataType" :model="field.modelType" :enumeration="field.enumType" />
-              </template>
-            </TableColumn>
+    <FlTableBody>
+      <div class="table-body--content" ref="tableBody">
+        <Table
+          :data="value"
+          v-model:selected-keys="selectedKeys"
+          row-key="id"
+          :stripe="false"
+          :table-layout-fixed="true"
+          :column-resizable="true"
+          :sticky-header="true"
+          :bordered="{cell:true}"
+          :row-selection="rowSelection"
+          @row-click="handleRowClick"
+          @cell-click="handleCellClick"
+          @select="handleSelect"
+          @selection-change="handleSelectionChange"
+          @select-all="handleSelectAll"
+          :pagination="false"
+          size="large"
+        >
+          <template #columns>
+            <template v-for="field in fields">
+              <TableColumn :title="field.name" :data-index="field.code" :width="field.width">
+                <template #cell="{ record }">
+                  <FlContent v-model="record[field.code]" :data-type="field.dataType" :model="field.modelType" :enumeration="field.enumType" />
+                </template>
+              </TableColumn>
+            </template>
           </template>
-        </template>
-      </Table>
-    </div>
-<!--    </FlTableBody>-->
+        </Table>
+      </div>
+    </FlTableBody>
     <FlTableFoot
       v-model:page-num="pageNum"
       :page-size="pageSize"
-      :page-total="pageCount"
+      :page-count="pageCount"
       :is-filterable="true"
       :is-settable="true"
       :is-exportable="false"
@@ -214,5 +214,9 @@ onMounted(() => {
 <style lang="scss">
 @use "../../assets/mixin" as *;
 
+.table-body--content {
+  height: 100%;
+  overflow: auto;
+}
 
 </style>

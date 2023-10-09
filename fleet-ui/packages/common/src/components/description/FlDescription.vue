@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {computed} from "vue";
+import {ref, computed} from "vue";
 import {Descriptions, DescriptionsItem, Tag} from "@arco-design/web-vue";
 import "@arco-design/web-vue/es/descriptions/style/css.js";
 import FlContent from "../content/FlContent.vue";
@@ -13,16 +13,30 @@ interface Props {
 const props = defineProps<Props>();
 
 const value = computed<any>(() => props.modelValue);
-const model = computed<any>(() => props.model);
-const title = computed<any>(() => props.title);
+const fields = computed(() => props.model?.fields);
+const title = computed<any>(() => props.title || props.model?.name);
 
+
+const column = ref({
+  xs: 1,
+  md: 2,
+  lg: 3,
+  // md: 1,
+  // lg: 1,
+})
 </script>
-
 <template>
 <div class="description">
-  <Descriptions :data="value" :title="title" :column="{xs:1, md:2, lg:3}" bordered>
-    <DescriptionsItem v-for="item of value" :label="item.label">
-      <FlContent :model-value="item.value" :data-type="1">{{ item.value }}</FlContent>
+  <Descriptions :column="column" :align="{label: 'left'}" table-layout="auto" :bordered="true">
+    <DescriptionsItem v-for="field of fields" :label="field.name">
+      <FlContent
+        :model-value="value[field.code]"
+        :data-type="field.dataType"
+        :model="field.modelType"
+        :enumeration="field.enumType"
+      >
+        {{ value[field.code] }}
+      </FlContent>
     </DescriptionsItem>
   </Descriptions>
 </div>

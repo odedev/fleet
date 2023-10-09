@@ -12,7 +12,12 @@
       </FlViewHead>
       <FlViewBody>
         <FlBlock>
-          <FlTable is-editable></FlTable>
+          <FlTable
+            :model-value="datas"
+            :model="userProfileModel"
+            :page-count="156"
+            :is-editable="true"
+          ></FlTable>
         </FlBlock>
 <!--              <FlContent>-->
 <!--                <FlTable></FlTable>-->
@@ -22,12 +27,22 @@
   </FlView>
 </template>
 <script lang="ts" setup>
+import {reactive} from "vue";
 import {
   FlHeader, FlBody, FlFooter, FlMenu, FlMain, FlNav, FlTab, FlPage,
   FlView, FlViewAside, FlViewMain, FlViewNav, FlViewHead, FlViewBody,
   FlBlock, FlContent,
   FlTable, FlButton, FlSearch,
 } from '../components'
+
+import {useModel} from "@/composables/model";
+
+import getUserProfile from "@/datas/UserProfile.ts";
+
+const model = useModel("dev.odes.fleet.module.system.model.UserModel");
+const userProfileModel = useModel("dev.odes.fleet.module.system.model.UserProfileModel");
+
+const datas = reactive(getUserProfile(156));
 
 </script>
 <style>
