@@ -8,6 +8,16 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="dev.odes.fleet.module.${moduleCode}.mapper.${modelCode}Mapper">
+
+  <resultMap id="resultMap" type="dev.odes.fleet.module.${moduleCode}.entity.${modelCode}">
+    <id property="id" column="id"/>
+    #foreach($field in $modelFields)
+      #set($fieldCode = $field.code)
+      #set($fieldCodeLowerUnderscore = $templateContext.lowerUnderscore($fieldCode))
+      <result property="${fieldCode}" column="${fieldCodeLowerUnderscore}"/>
+    #end
+  </resultMap>
+
   <sql id="tableColumn">
     <trim suffixOverrides=",">
       `${moduleCode}_${modelCodeLowerUnderscore}`.`id`,
@@ -76,15 +86,6 @@
       #end
     </trim>
   </sql>
-
-  <resultMap id="resultMap" type="dev.odes.fleet.module.${moduleCode}.entity.${modelCode}">
-    <id property="id" column="id"/>
-    #foreach($field in $modelFields)
-    #set($fieldCode = $field.code)
-    #set($fieldCodeLowerUnderscore = $templateContext.lowerUnderscore($fieldCode))
-    <result property="${fieldCode}" column="${fieldCodeLowerUnderscore}"/>
-    #end
-  </resultMap>
 
   <select id="findOne" resultMap="resultMap" resultType="dev.odes.fleet.module.${moduleCode}.entity.${modelCode}">
     SELECT

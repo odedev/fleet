@@ -11,8 +11,8 @@
   </parent>
 
 	<artifactId>fleet-app-main</artifactId>
-	<version>1.0.0</version>
-	<name>fleet-app-main</name>
+  <name>fleet-app-main</name>
+	<version>${version}</version>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
@@ -24,23 +24,34 @@
     <dependency>
       <groupId>dev.odes</groupId>
       <artifactId>fleet-develop</artifactId>
-      <version>1.0.0</version>
+      <version>${version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>dev.odes</groupId>
+      <artifactId>fleet-core-metadata</artifactId>
+      <version>${version}</version>
     </dependency>
 
     <dependency>
       <groupId>dev.odes</groupId>
       <artifactId>fleet-core-base</artifactId>
-      <version>1.0.0</version>
+      <version>${version}</version>
     </dependency>
     <dependency>
       <groupId>dev.odes</groupId>
       <artifactId>fleet-core-file</artifactId>
-      <version>1.0.0</version>
+      <version>${version}</version>
     </dependency>
     <dependency>
       <groupId>dev.odes</groupId>
-      <artifactId>fleet-core-uc</artifactId>
-      <version>1.0.0</version>
+      <artifactId>fleet-core-system</artifactId>
+      <version>${version}</version>
+    </dependency>
+    <dependency>
+      <groupId>dev.odes</groupId>
+      <artifactId>fleet-core-org</artifactId>
+      <version>${version}</version>
     </dependency>
 
     <dependency>

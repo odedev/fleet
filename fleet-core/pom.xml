@@ -11,8 +11,8 @@
   </parent>
 
   <artifactId>fleet-core</artifactId>
-  <version>1.0.0</version>
   <name>fleet-core</name>
+  <version>1.0.0</version>
   <description>Fleet core</description>
 
   <packaging>pom</packaging>
@@ -31,8 +31,8 @@
     <module>fleet-core-client</module>
     <module>fleet-core-file</module>
     <module>fleet-core-metadata</module>
+    <module>fleet-core-org</module>
     <module>fleet-core-system</module>
-    <module>fleet-core-uc</module>
   </modules>
 
   <dependencies>

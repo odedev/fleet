@@ -7,3 +7,19 @@ WIP
 ## 技术框架
 - 后端: Maven, Java17, Spring Boot 3, Mybatis, Mysql
 - 前端: Rush, Vue3, ArcoVue, Axios
+
+
+Role
+RoleModel
+RoleMapper
+RoleRepository
+RoleTransform
+RoleService
+RoleController
+
+RoleMapper.xml
+
+metadata/model/Role.sql
+schema/RoleCreate.sql
+
+RoleInsert.sql

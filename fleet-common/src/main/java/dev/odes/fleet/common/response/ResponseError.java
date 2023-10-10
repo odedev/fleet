@@ -1,6 +1,10 @@
 package dev.odes.fleet.common.response;
 
-public class ResponseError {
+import java.io.Serializable;
+
+public class ResponseError implements Serializable {
+    private static final long serialVersionUID = 1L;
+
     private String title;
     private String message;
     private Integer status;

@@ -11,8 +11,8 @@
   </parent>
 
   <artifactId>fleet-develop</artifactId>
-  <version>1.0.0</version>
   <name>fleet-develop</name>
+  <version>1.0.0</version>
   <description>Fleet develop</description>
 
   <packaging>jar</packaging>
