@@ -2,13 +2,13 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="dev.odes.fleet.develop.mapper.EnumerationValueMapper">
+<mapper namespace="dev.odes.fleet.core.metadata.mapper.EnumerationValueMapper">
   <sql id="tableColumn">
     <trim suffixOverrides=",">
-      `develop_enumeration_value`.`id`,
-      `develop_enumeration_value`.`value`,
-      `develop_enumeration_value`.`name`,
-      `develop_enumeration_value`.`enumeration`,
+      `metadata_enumeration_value`.`id`,
+      `metadata_enumeration_value`.`value`,
+      `metadata_enumeration_value`.`name`,
+      `metadata_enumeration_value`.`enumeration`,
     </trim>
   </sql>
   <sql id="column">
@@ -60,17 +60,17 @@
     </trim>
   </sql>
 
-  <resultMap id="resultMap" type="dev.odes.fleet.develop.entity.EnumerationValue">
+  <resultMap id="resultMap" type="dev.odes.fleet.core.metadata.entity.EnumerationValue">
     <id property="id" column="id"/>
     <result property="value" column="value"/>
     <result property="name" column="name"/>
     <result property="enumeration" column="enumeration"/>
   </resultMap>
 
-  <select id="findOne" resultMap="resultMap" resultType="dev.odes.fleet.develop.entity.EnumerationValue">
+  <select id="findOne" resultMap="resultMap" resultType="dev.odes.fleet.core.metadata.entity.EnumerationValue">
     SELECT
     <include refid="column"/>
-    FROM `develop_enumeration_value`
+    FROM `metadata_enumeration_value`
     <if test="where != null and where != ''">
       <where>
         ${where}
@@ -79,10 +79,10 @@
     LIMIT 1
   </select>
 
-  <select id="findMany" resultMap="resultMap" resultType="dev.odes.fleet.develop.entity.EnumerationValue">
+  <select id="findMany" resultMap="resultMap" resultType="dev.odes.fleet.core.metadata.entity.EnumerationValue">
     SELECT
     <include refid="column"/>
-    FROM `develop_enumeration_value`
+    FROM `metadata_enumeration_value`
     <if test="where != null and where != ''">
       <where>
         ${where}
@@ -101,15 +101,15 @@
     </choose>
   </select>
 
-  <insert id="insertOne" parameterType="dev.odes.fleet.develop.entity.EnumerationValue">
-    INSERT INTO `develop_enumeration_value`
+  <insert id="insertOne" parameterType="dev.odes.fleet.core.metadata.entity.EnumerationValue">
+    INSERT INTO `metadata_enumeration_value`
     (<include refid="insertColumn"/>)
     VALUES
     (<include refid="insertValue"/>)
   </insert>
 
   <insert id="insertMany" parameterType="java.util.List">
-    INSERT INTO `develop_enumeration_value`
+    INSERT INTO `metadata_enumeration_value`
     (<include refid="insertColumn"/>)
     VALUES
     <foreach collection="list" item="module" separator=",">
@@ -117,8 +117,8 @@
     </foreach>
   </insert>
 
-  <update id="updateOne" parameterType="dev.odes.fleet.develop.entity.EnumerationValue">
-    UPDATE `develop_enumeration_value`
+  <update id="updateOne" parameterType="dev.odes.fleet.core.metadata.entity.EnumerationValue">
+    UPDATE `metadata_enumeration_value`
     <include refid="updateColumn"/>
     WHERE id=#{id}
   </update>
@@ -132,11 +132,11 @@
   <!--  </update>-->
 
   <delete id="deleteOne" parameterType="java.lang.String">
-    DELETE FROM `develop_enumeration_value` WHERE id=#{id}
+    DELETE FROM `metadata_enumeration_value` WHERE id=#{id}
   </delete>
 
   <select id="count" resultType="java.lang.Integer">
-    SELECT COUNT(1) FROM `develop_enumeration_value`
+    SELECT COUNT(1) FROM `metadata_enumeration_value`
     <if test="where != null and where != ''">
       <where>
         ${where}

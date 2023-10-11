@@ -2,23 +2,23 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="dev.odes.fleet.develop.mapper.ModelFieldMapper">
+<mapper namespace="dev.odes.fleet.core.metadata.mapper.ModelFieldMapper">
   <sql id="tableColumn">
     <trim suffixOverrides=",">
-      `develop_model_field`.`id`,
-      `develop_model_field`.`code`,
-      `develop_model_field`.`name`,
-      `develop_model_field`.`data_type`,
-      `develop_model_field`.`data_length`,
-      `develop_model_field`.`enum_type`,
-      `develop_model_field`.`model_type`,
-      `develop_model_field`.`is_slave_model`,
-      `develop_model_field`.`is_nullable`,
-      `develop_model_field`.`is_searchable`,
-      `develop_model_field`.`is_default_display`,
-      `develop_model_field`.`note`,
-      `develop_model_field`.`sequence`,
-      `develop_model_field`.`model`,
+      `metadata_model_field`.`id`,
+      `metadata_model_field`.`code`,
+      `metadata_model_field`.`name`,
+      `metadata_model_field`.`data_type`,
+      `metadata_model_field`.`data_length`,
+      `metadata_model_field`.`enum_type`,
+      `metadata_model_field`.`model_type`,
+      `metadata_model_field`.`is_slave_model`,
+      `metadata_model_field`.`is_nullable`,
+      `metadata_model_field`.`is_searchable`,
+      `metadata_model_field`.`is_default_display`,
+      `metadata_model_field`.`note`,
+      `metadata_model_field`.`sequence`,
+      `metadata_model_field`.`model`,
     </trim>
   </sql>
   <sql id="column">
@@ -130,7 +130,7 @@
     </trim>
   </sql>
 
-  <resultMap id="resultMap" type="dev.odes.fleet.develop.entity.ModelField">
+  <resultMap id="resultMap" type="dev.odes.fleet.core.metadata.entity.ModelField">
     <id property="id" column="id"/>
     <result property="code" column="code"/>
     <result property="name" column="name"/>
@@ -147,10 +147,10 @@
     <result property="model" column="model"/>
   </resultMap>
 
-  <select id="findOne" resultMap="resultMap" resultType="dev.odes.fleet.develop.entity.ModelField">
+  <select id="findOne" resultMap="resultMap" resultType="dev.odes.fleet.core.metadata.entity.ModelField">
     SELECT
     <include refid="column"/>
-    FROM `develop_model_field`
+    FROM `metadata_model_field`
     <if test="where != null and where != ''">
       <where>
         ${where}
@@ -159,10 +159,10 @@
     LIMIT 1
   </select>
 
-  <select id="findMany" resultMap="resultMap" resultType="dev.odes.fleet.develop.entity.ModelField">
+  <select id="findMany" resultMap="resultMap" resultType="dev.odes.fleet.core.metadata.entity.ModelField">
     SELECT
     <include refid="column"/>
-    FROM `develop_model_field`
+    FROM `metadata_model_field`
     <if test="where != null and where != ''">
       <where>
         ${where}
@@ -178,15 +178,15 @@
     </choose>
   </select>
 
-  <insert id="insertOne" parameterType="dev.odes.fleet.develop.entity.ModelField">
-    INSERT INTO `develop_model_field`
+  <insert id="insertOne" parameterType="dev.odes.fleet.core.metadata.entity.ModelField">
+    INSERT INTO `metadata_model_field`
     (<include refid="insertColumn"/>)
     VALUES
     (<include refid="insertValue"/>)
   </insert>
 
   <insert id="insertMany" parameterType="java.util.List">
-    INSERT INTO `develop_model_field`
+    INSERT INTO `metadata_model_field`
     (<include refid="insertColumn"/>)
     VALUES
     <foreach collection="list" item="module" separator=",">
@@ -194,8 +194,8 @@
     </foreach>
   </insert>
 
-  <update id="updateOne" parameterType="dev.odes.fleet.develop.entity.ModelField">
-    UPDATE `develop_model_field`
+  <update id="updateOne" parameterType="dev.odes.fleet.core.metadata.entity.ModelField">
+    UPDATE `metadata_model_field`
     <include refid="updateColumn"/>
     WHERE id=#{id}
   </update>
@@ -209,11 +209,11 @@
   <!--  </update>-->
 
   <delete id="deleteOne" parameterType="java.lang.String">
-    DELETE FROM `develop_model_field` WHERE id=#{id}
+    DELETE FROM `metadata_model_field` WHERE id=#{id}
   </delete>
 
   <select id="count" resultType="java.lang.Integer">
-    SELECT COUNT(1) FROM `develop_model_field`
+    SELECT COUNT(1) FROM `metadata_model_field`
     <if test="where != null and where != ''">
       <where>
         ${where}

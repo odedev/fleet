@@ -2,13 +2,13 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="dev.odes.fleet.develop.mapper.ModuleMapper">
+<mapper namespace="dev.odes.fleet.core.metadata.mapper.ModuleMapper">
   <sql id="tableColumn">
-    `develop_module`.`id`,
-    `develop_module`.`code`,
-    `develop_module`.`name`,
-    `develop_module`.`description`,
-    `develop_module`.`storage_type`
+    `metadata_module`.`id`,
+    `metadata_module`.`code`,
+    `metadata_module`.`name`,
+    `metadata_module`.`description`,
+    `metadata_module`.`storage_type`
   </sql>
   <sql id="column">
     `id`,
@@ -63,7 +63,7 @@
     </trim>
   </sql>
 
-  <resultMap id="resultMap" type="dev.odes.fleet.develop.entity.Module">
+  <resultMap id="resultMap" type="dev.odes.fleet.core.metadata.entity.Module">
     <id property="id" column="id"/>
     <result property="code" column="code"/>
     <result property="name" column="name"/>
@@ -71,10 +71,10 @@
     <result property="storageType" column="storage_type"/>
   </resultMap>
 
-  <select id="findOne" resultMap="resultMap" resultType="dev.odes.fleet.develop.entity.Module">
+  <select id="findOne" resultMap="resultMap" resultType="dev.odes.fleet.core.metadata.entity.Module">
     SELECT
     <include refid="column"/>
-    FROM `develop_module`
+    FROM `metadata_module`
     <if test="where != null and where != ''">
       <where>
         ${where}
@@ -83,10 +83,10 @@
     LIMIT 1
   </select>
 
-  <select id="findMany" resultMap="resultMap" resultType="dev.odes.fleet.develop.entity.Module">
+  <select id="findMany" resultMap="resultMap" resultType="dev.odes.fleet.core.metadata.entity.Module">
     SELECT
     <include refid="column"/>
-    FROM `develop_module`
+    FROM `metadata_module`
     <if test="where != null and where != ''">
       <where>
         ${where}
@@ -105,15 +105,15 @@
     </choose>
   </select>
 
-  <insert id="insertOne" parameterType="dev.odes.fleet.develop.entity.Module">
-    INSERT INTO `develop_module`
+  <insert id="insertOne" parameterType="dev.odes.fleet.core.metadata.entity.Module">
+    INSERT INTO `metadata_module`
     (<include refid="insertColumn"/>)
     VALUES
     (<include refid="insertValue"/>)
   </insert>
 
   <insert id="insertMany" parameterType="java.util.List">
-    INSERT INTO `develop_module`
+    INSERT INTO `metadata_module`
     (<include refid="insertColumn"/>)
     VALUES
     <foreach collection="list" item="module" separator=",">
@@ -121,8 +121,8 @@
     </foreach>
   </insert>
 
-  <update id="updateOne" parameterType="dev.odes.fleet.develop.entity.Module">
-    UPDATE `develop_module`
+  <update id="updateOne" parameterType="dev.odes.fleet.core.metadata.entity.Module">
+    UPDATE `metadata_module`
     <include refid="updateColumn"/>
     WHERE id=#{id}
   </update>
@@ -136,11 +136,11 @@
   <!--  </update>-->
 
   <delete id="deleteOne" parameterType="java.lang.String">
-    DELETE FROM `develop_module` WHERE id=#{id}
+    DELETE FROM `metadata_module` WHERE id=#{id}
   </delete>
 
   <select id="count" resultType="java.lang.Integer">
-    SELECT COUNT(1) FROM `develop_module`
+    SELECT COUNT(1) FROM `metadata_module`
     <if test="where != null and where != ''">
       <where>
         ${where}

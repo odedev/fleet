@@ -12,7 +12,7 @@
 
 	<artifactId>fleet-app-main</artifactId>
   <name>fleet-app-main</name>
-	<version>${version}</version>
+	<version>1.0.0</version>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>

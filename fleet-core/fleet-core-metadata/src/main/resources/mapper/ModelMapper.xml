@@ -5,12 +5,12 @@
 <mapper namespace="dev.odes.fleet.core.metadata.mapper.ModelMapper">
   <sql id="tableColumn">
     <trim suffixOverrides=",">
-      `develop_model`.`id`,
-      `develop_model`.`code`,
-      `develop_model`.`name`,
-      `develop_model`.`description`,
-      `develop_model`.`full_name`,
-      `develop_model`.`module`,
+      `metadata_model`.`id`,
+      `metadata_model`.`code`,
+      `metadata_model`.`name`,
+      `metadata_model`.`description`,
+      `metadata_model`.`full_name`,
+      `metadata_model`.`module`,
     </trim>
   </sql>
   <sql id="column">
@@ -86,7 +86,7 @@
   <select id="findOne" resultMap="resultMap" resultType="dev.odes.fleet.core.metadata.entity.Model">
     SELECT
     <include refid="column"/>
-    FROM `develop_model`
+    FROM `metadata_model`
     <if test="where != null and where != ''">
       <where>
         ${where}
@@ -98,7 +98,7 @@
   <select id="findMany" resultMap="resultMap" resultType="dev.odes.fleet.core.metadata.entity.Model">
     SELECT
     <include refid="column"/>
-    FROM `develop_model`
+    FROM `metadata_model`
     <if test="where != null and where != ''">
       <where>
         ${where}
@@ -115,14 +115,14 @@
   </select>
 
   <insert id="insertOne" parameterType="dev.odes.fleet.core.metadata.entity.Model">
-    INSERT INTO `develop_model`
+    INSERT INTO `metadata_model`
     (<include refid="insertColumn"/>)
     VALUES
     (<include refid="insertValue"/>)
   </insert>
 
   <insert id="insertMany" parameterType="java.util.List">
-    INSERT INTO `develop_model`
+    INSERT INTO `metadata_model`
     (<include refid="insertColumn"/>)
     VALUES
     <foreach collection="list" item="module" separator=",">
@@ -131,7 +131,7 @@
   </insert>
 
   <update id="updateOne" parameterType="dev.odes.fleet.core.metadata.entity.Model">
-    UPDATE `develop_model`
+    UPDATE `metadata_model`
     <include refid="updateColumn"/>
     WHERE id=#{id}
   </update>
@@ -145,11 +145,11 @@
   <!--  </update>-->
 
   <delete id="deleteOne" parameterType="java.lang.String">
-    DELETE FROM `develop_model` WHERE id=#{id}
+    DELETE FROM `metadata_model` WHERE id=#{id}
   </delete>
 
   <select id="count" resultType="java.lang.Integer">
-    SELECT COUNT(1) FROM `develop_model`
+    SELECT COUNT(1) FROM `metadata_model`
     <if test="where != null and where != ''">
       <where>
         ${where}
