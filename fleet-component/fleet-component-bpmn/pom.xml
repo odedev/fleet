@@ -6,14 +6,14 @@
 
   <parent>
     <groupId>dev.odes</groupId>
-    <artifactId>fleet</artifactId>
+    <artifactId>fleet-component</artifactId>
     <version>1.0.0</version>
   </parent>
 
-  <artifactId>fleet-bpmn</artifactId>
+  <artifactId>fleet-component-bpmn</artifactId>
   <version>1.0.0</version>
-  <name>fleet-bpmn</name>
-  <description>Fleet bpmn</description>
+  <name>fleet-component-bpmn</name>
+  <description>Fleet component bpmn</description>
 
   <packaging>jar</packaging>
 

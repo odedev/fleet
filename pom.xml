@@ -34,11 +34,11 @@
   <modules>
     <module>fleet-app</module>
     <module>fleet-common</module>
+    <module>fleet-component</module>
+    <module>fleet-database</module>
     <module>fleet-core</module>
     <module>fleet-module</module>
-    <module>fleet-database</module>
     <module>fleet-develop</module>
-    <module>fleet-bpmn</module>
   </modules>
 
   <dependencies>
