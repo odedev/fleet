@@ -5,9 +5,8 @@
 package dev.odes.fleet.module.${moduleCode}.repository;
 
 import dev.odes.fleet.module.${moduleCode}.entity.${modelCode};
-import dev.odes.fleet.module.${moduleCode}.mapper.${modelCode}Mapper;
-import dev.odes.fleet.mysql.MysqlRepository;
-import org.springframework.stereotype.Repository;
+    ${moduleCode}.mapper.${modelCode}Mapper;
+import dev.odes.fleet.database.mysql.MysqlRepository;
 
 @Repository
 public class ${modelCode}Repository extends MysqlRepository<${modelCode}, ${modelCode}Mapper> {

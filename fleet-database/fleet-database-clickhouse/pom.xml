@@ -6,14 +6,14 @@
 
   <parent>
     <groupId>dev.odes</groupId>
-    <artifactId>fleet</artifactId>
+    <artifactId>fleet-database</artifactId>
     <version>1.0.0</version>
   </parent>
 
-  <artifactId>fleet-clickhouse</artifactId>
+  <artifactId>fleet-database-clickhouse</artifactId>
   <version>1.0.0</version>
-  <name>fleet-clickhouse</name>
-  <description>Fleet clickhouse</description>
+  <name>fleet-database-clickhouse</name>
+  <description>Fleet database clickhouse</description>
 
   <packaging>jar</packaging>
 

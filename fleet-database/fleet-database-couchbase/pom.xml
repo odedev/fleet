@@ -6,27 +6,24 @@
 
   <parent>
     <groupId>dev.odes</groupId>
-    <artifactId>fleet-core</artifactId>
+    <artifactId>fleet-database</artifactId>
     <version>1.0.0</version>
   </parent>
 
-  <artifactId>fleet-core-metadata</artifactId>
-  <version>${version}</version>
-  <name>fleet-core-metadata</name>
-  <description>Fleet core metadata</description>
+  <artifactId>fleet-database-couchbase</artifactId>
+  <version>1.0.0</version>
+  <name>fleet-database-couchbase</name>
+  <description>Fleet database couchbase</description>
 
   <packaging>jar</packaging>
 
+  <properties>
+  </properties>
+
   <dependencies>
     <dependency>
-      <groupId>dev.odes</groupId>
-      <artifactId>fleet-common</artifactId>
-      <version>${version}</version>
-    </dependency>
-    <dependency>
-      <groupId>dev.odes</groupId>
-      <artifactId>fleet-database-mysql</artifactId>
-      <version>${version}</version>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-data-couchbase</artifactId>
     </dependency>
   </dependencies>
 

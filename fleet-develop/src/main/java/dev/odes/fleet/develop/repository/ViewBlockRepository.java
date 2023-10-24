@@ -2,7 +2,7 @@ package dev.odes.fleet.develop.repository;
 
 import dev.odes.fleet.develop.entity.ViewBlock;
 import dev.odes.fleet.develop.mapper.ViewBlockMapper;
-import dev.odes.fleet.mysql.MysqlRepository;
+import dev.odes.fleet.database.mysql.MysqlRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository

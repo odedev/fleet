@@ -36,11 +36,7 @@
     <module>fleet-common</module>
     <module>fleet-core</module>
     <module>fleet-module</module>
-    <module>fleet-mongodb</module>
-    <module>fleet-mysql</module>
-    <module>fleet-redis</module>
-    <module>fleet-couchbase</module>
-    <module>fleet-clickhouse</module>
+    <module>fleet-database</module>
     <module>fleet-develop</module>
     <module>fleet-bpmn</module>
   </modules>

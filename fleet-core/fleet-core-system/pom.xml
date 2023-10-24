@@ -25,7 +25,7 @@
     </dependency>
     <dependency>
       <groupId>dev.odes</groupId>
-      <artifactId>fleet-mysql</artifactId>
+      <artifactId>fleet-database-mysql</artifactId>
       <version>${version}</version>
     </dependency>
 

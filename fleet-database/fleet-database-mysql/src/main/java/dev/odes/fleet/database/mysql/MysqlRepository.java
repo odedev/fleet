@@ -1,4 +1,4 @@
-package dev.odes.fleet.mysql;
+package dev.odes.fleet.database.mysql;
 
 import com.github.pagehelper.PageHelper;
 import dev.odes.fleet.common.entity.AbstractEntity;
