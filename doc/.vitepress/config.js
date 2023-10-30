@@ -26,6 +26,7 @@ const sidebar = {
         { text: '介绍', link: '/manual/introduction' },
         { text: '概览', link: '/manual/overview' },
         { text: '指南', link: '/manual/guide' },
+        { text: '依赖', link: '/manual/dependency' },
       ]
     },
     {
