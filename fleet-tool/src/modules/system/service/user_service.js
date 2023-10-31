@@ -1,4 +1,4 @@
-import AppDataSource from "../../../core/datasource.js";
+import AppDataSource from "../../../internal/datasource.js";
 
 const userRepository = AppDataSource.getRepository("user");
 

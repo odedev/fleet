@@ -1,6 +1,66 @@
 # overview
 
 
+
+## structure
+```txt
+.
+├── fleet-app
+│   ├── ...
+│   └── fleet-app-main
+│
+├── fleet-common
+│
+├── fleet-component
+│   ├── fleet-component-bpmn
+│   ├── fleet-component-kafka
+│   └── fleet-component-rabbitmq
+│
+├── fleet-core
+│   ├── fleet-core-auth
+│   ├── fleet-core-base
+│   ├── fleet-core-client
+│   ├── fleet-core-file
+│   ├── fleet-core-metadata
+│   ├── fleet-core-org
+│   └── fleet-core-system
+│
+├── fleet-database
+│   ├── fleet-database-clickhouse
+│   ├── fleet-database-couchbase
+│   ├── fleet-database-mongodb
+│   ├── fleet-database-mysql
+│   └── fleet-database-redis
+│
+├── fleet-develop
+│
+├── fleet-module
+│   ├── ...
+│   ├── fleet-module-test
+│   └── fleet-module-demo
+│
+├── fleet-tool
+│
+├── fleet-ui
+│   ├── apps
+│   ├── cores
+│   ├── modules
+│   └── packages
+│
+├── deploy   部署
+│
+├── doc      文档
+│
+├── operate  运维
+│
+├── portal   网站
+│
+├── resource 资源
+│
+├── CHANGELOG.md
+└── README.md
+```
+
 ## Dependencies
 ### Frontend
 + [vue](https://vuejs.org/)
@@ -38,46 +98,3 @@
 ### Doc
 + [VitePress](https://vitepress.dev/)
 + [Markdown: Syntax](https://www.appinn.com/markdown/)
-
-
-## structure
-```txt
-.
-├── fleet-app
-│   ├── ...
-│   └── fleet-app-main
-│
-├── fleet-common
-│
-├── fleet-core
-│   ├── fleet-core-auth
-│   ├── fleet-core-develop
-│   ├── fleet-core-system
-│   └── fleet-core-user
-│
-├── fleet-develop
-│
-├── fleet-module
-│   ├── ...
-│   ├── fleet-module-test
-│   └── fleet-module-demo
-│
-├── fleet-mongodb
-│
-├── fleet-mysql
-│
-├── fleet-redis
-│
-├── fleet-ui
-│   ├── apps
-│   ├── cores
-│   ├── modules
-│   └── packages
-│
-├── doc     文档
-│
-├── deploy  部署
-│
-├── index.md
-└── README.md
-```

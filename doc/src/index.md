@@ -11,8 +11,18 @@ hero:
   actions:
     - theme: brand
       text: 开始
-      link: /manual/introduction
+      link: /manual/
     - theme: alt
       text: View on GitHub
-      link: https://github.com/vuejs/vitepress
+      link: https://github.com/odedev/fleet
+
+features:
+  - title: 前端
+    details: 基于 Typescript + Vue3
+  - title: 后端
+    details: 基于 Java21 + Spring boot 3.x
+  - title: 部署
+    details: Docker + Docker compose
+  - title: 运维
+    details: 基于 Nodejs + Express
 ---

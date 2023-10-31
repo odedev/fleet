@@ -1,10 +1,15 @@
 # Develop
 
-## init
+## MySQL init
 ```sql
+-- 不区分大小写
 CREATE DATABASE IF NOT EXISTS `fleet` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+-- 区分大小写
 CREATE DATABASE IF NOT EXISTS `fleet` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_bin;
 ```
+
+
 
 ```txt
 

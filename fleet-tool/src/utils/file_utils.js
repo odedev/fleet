@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 // import fs from 'node:fs/promises';
 
-export function toBase64(filepath) {
+export function readBase64(filepath) {
   filepath = filepath || '../asset/logo.png';
   fs.readFile(filepath, 'binary', (err, data) => {
     if (err) {

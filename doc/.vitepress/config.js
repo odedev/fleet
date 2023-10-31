@@ -1,19 +1,11 @@
+import { defineConfig } from 'vitepress'
+
 const nav = [
-  {
-    text: '手册',
-    link: '/manual/introduction',
-    activeMatch: '^/manual/'
-  },
-  {
-    text: '参考',
-    link: '/reference/',
-    activeMatch: '^/reference/'
-  },
-  {
-    text: '模块',
-    link: '/module/',
-    activeMatch: '^/module/'
-  },
+  { text: '首页', link: '/', activeMatch: '^/$' },
+  // { text: '手册', link: '/manual/introduction', activeMatch: '^/manual/' },
+  { text: '手册', link: '/manual/', activeMatch: '^/manual/' },
+  { text: '参考', link: '/reference/', activeMatch: '^/reference/' },
+  { text: '模块', link: '/module/', activeMatch: '^/module/' },
 ];
 
 
@@ -74,27 +66,54 @@ const sidebar = {
       text: '核心模块',
       collapsed: false,
       items: [
-        { text: '用户管理', link: '/module/uc' },
-        { text: '资源文件', link: '/module/file' },
-        { text: '元数据', link: '/module/metadata' },
+        { text: '基础功能', link: '/module/core-base' },
+        { text: '元数据', link: '/module/core-metadata' },
+        { text: '资源文件', link: '/module/core-file' },
+        { text: '系统管理', link: '/module/core-system' },
+        { text: '组织架构', link: '/module/core-org' },
 
       ]
     },
   ],
 }
 
-export default {
+// https://vitepress.dev/reference/site-config
+export default defineConfig({
   // site-level options
+  lang: 'zh-CN',
   title: 'Fleet Doc',
   description: 'Fleet Doc.',
-  lang: 'zh-CN',
+  base: '/',
   srcDir: './src',
   scrollOffset: 'header',
+  lastUpdated: true,
+
+  // https://vitepress.dev/reference/default-theme-config
   themeConfig: {
     // theme-level options
-    nav,
-    sidebar,
+    nav: nav,
+    sidebar: sidebar,
     docsDir: 'src',
+    docsBranch: 'main',
     outDir: 'dist',
+  },
+  head: [
+    [
+      'link',
+      {
+        rel: 'shortcut icon',
+        href: 'favicon.ico',
+        type: 'image/x-icon'
+      }
+    ]
+  ],
+  markdown: {
+    lineNumbers: false,
+    toc: {
+      includeLevel: [1, 2]
+    },
+  },
+  vite: {
+//    publicDir: 'resources'
   }
-}
+})

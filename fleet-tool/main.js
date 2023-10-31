@@ -1,4 +1,4 @@
-import run from './src/app.js';
+import run from './src/run.js';
 
 run();
 
