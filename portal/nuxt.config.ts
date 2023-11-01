@@ -1,5 +1,11 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  app: {
+    // baseURL: '/',
+    head: {
+      title: 'Fleet',
+    }
+  },
   css: [
     '@/assets/scss/main.scss',
   ],
@@ -29,6 +35,7 @@ export default defineNuxtConfig({
   // },
   devtools: { enabled: true },
   devServer: {
-    port: 23507
+    port: 23507,
+    host: '0.0.0.0',
   }
 })
