@@ -23,18 +23,21 @@
 
   <dependencies>
     <!-- https://mvnrepository.com/artifact/org.camunda.bpm.springboot/camunda-bpm-spring-boot-starter -->
+    <!-- https://central.sonatype.com/artifact/org.camunda.bpm.springboot/camunda-bpm-spring-boot-starter -->
     <dependency>
       <groupId>org.camunda.bpm.springboot</groupId>
       <artifactId>camunda-bpm-spring-boot-starter</artifactId>
       <version>${camunda.version}</version>
     </dependency>
     <!-- https://mvnrepository.com/artifact/org.camunda.bpm.springboot/camunda-bpm-spring-boot-starter-rest -->
+    <!-- https://central.sonatype.com/artifact/org.camunda.bpm.springboot/camunda-bpm-spring-boot-starter-rest -->
     <dependency>
       <groupId>org.camunda.bpm.springboot</groupId>
       <artifactId>camunda-bpm-spring-boot-starter-rest</artifactId>
       <version>${camunda.version}</version>
     </dependency>
     <!-- https://mvnrepository.com/artifact/org.camunda.bpm.springboot/camunda-bpm-spring-boot-starter-webapp -->
+    <!-- https://central.sonatype.com/artifact/org.camunda.bpm.springboot/camunda-bpm-spring-boot-starter-webapp -->
     <dependency>
       <groupId>org.camunda.bpm.springboot</groupId>
       <artifactId>camunda-bpm-spring-boot-starter-webapp</artifactId>

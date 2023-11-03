@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>dev.odes</groupId>
+    <artifactId>fleet-component</artifactId>
+    <version>1.0.0</version>
+  </parent>
+
+  <artifactId>fleet-component-pulsar</artifactId>
+  <version>1.0.0</version>
+  <name>fleet-component-pulsar</name>
+  <description>Fleet component pulsar</description>
+
+  <packaging>jar</packaging>
+
+  <properties>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.springframework.pulsar</groupId>
+      <artifactId>spring-pulsar-spring-boot-starter</artifactId>
+      <version>0.2.0</version>
+    </dependency>
+
+  </dependencies>
+
+</project>
