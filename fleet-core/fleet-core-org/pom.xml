@@ -12,7 +12,7 @@
 
   <artifactId>fleet-core-org</artifactId>
   <name>fleet-core-org</name>
-  <version>${version}</version>
+<!--  <version>${version}</version>-->
   <description>Fleet core org</description>
 
   <packaging>jar</packaging>

@@ -11,7 +11,7 @@
   </parent>
 
   <artifactId>fleet-core-metadata</artifactId>
-  <version>${version}</version>
+<!--  <version>${version}</version>-->
   <name>fleet-core-metadata</name>
   <description>Fleet core metadata</description>
 
