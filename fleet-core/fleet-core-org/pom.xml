@@ -18,11 +18,11 @@
   <packaging>jar</packaging>
 
   <dependencies>
-    <dependency>
-      <groupId>dev.odes</groupId>
-      <artifactId>fleet-common</artifactId>
-      <version>${version}</version>
-    </dependency>
+<!--    <dependency>-->
+<!--      <groupId>dev.odes</groupId>-->
+<!--      <artifactId>fleet-common</artifactId>-->
+<!--      <version>${version}</version>-->
+<!--    </dependency>-->
     <dependency>
       <groupId>dev.odes</groupId>
       <artifactId>fleet-database-mysql</artifactId>
