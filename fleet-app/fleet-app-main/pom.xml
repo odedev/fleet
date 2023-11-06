@@ -12,7 +12,6 @@
 
   <artifactId>fleet-app-main</artifactId>
   <name>fleet-app-main</name>
-  <version>1.0.0</version>
   <description>Demo project for Spring Boot</description>
 
   <properties>
@@ -23,29 +22,6 @@
     <dependency>
       <groupId>dev.odes</groupId>
       <artifactId>fleet-tool-develop</artifactId>
-      <version>${version}</version>
-    </dependency>
-
-    <dependency>
-      <groupId>dev.odes</groupId>
-      <artifactId>fleet-core-metadata</artifactId>
-      <version>${version}</version>
-    </dependency>
-
-    <dependency>
-      <groupId>dev.odes</groupId>
-      <artifactId>fleet-core-base</artifactId>
-      <version>${version}</version>
-    </dependency>
-    <dependency>
-      <groupId>dev.odes</groupId>
-      <artifactId>fleet-core-file</artifactId>
-      <version>${version}</version>
-    </dependency>
-    <dependency>
-      <groupId>dev.odes</groupId>
-      <artifactId>fleet-core-system</artifactId>
-      <version>${version}</version>
     </dependency>
 
 

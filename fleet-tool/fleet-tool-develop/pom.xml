@@ -12,7 +12,6 @@
 
   <artifactId>fleet-tool-develop</artifactId>
   <name>fleet-tool-develop</name>
-  <version>1.0.0</version>
   <description>Fleet develop</description>
 
   <packaging>jar</packaging>
@@ -26,14 +25,9 @@
 
     <dependency>
       <groupId>dev.odes</groupId>
-      <artifactId>fleet-common</artifactId>
-      <version>1.0.0</version>
-    </dependency>
-    <dependency>
-      <groupId>dev.odes</groupId>
       <artifactId>fleet-component-mysql</artifactId>
-      <version>1.0.0</version>
     </dependency>
+
 
     <dependency>
       <groupId>org.apache.velocity</groupId>

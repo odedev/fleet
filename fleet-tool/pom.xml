@@ -11,7 +11,6 @@
   </parent>
 
   <artifactId>fleet-tool</artifactId>
-  <version>1.0.0</version>
   <name>fleet-tool</name>
   <description>Fleet tool</description>
 
@@ -24,7 +23,26 @@
     <module>fleet-tool-develop</module>
   </modules>
 
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>dev.odes</groupId>
+        <artifactId>fleet-common</artifactId>
+        <version>${version}</version>
+      </dependency>
+      <dependency>
+        <groupId>dev.odes</groupId>
+        <artifactId>fleet-component-mysql</artifactId>
+        <version>${version}</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
   <dependencies>
+    <dependency>
+      <groupId>dev.odes</groupId>
+      <artifactId>fleet-common</artifactId>
+    </dependency>
   </dependencies>
 
 </project>

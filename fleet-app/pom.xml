@@ -11,7 +11,6 @@
   </parent>
 
   <artifactId>fleet-app</artifactId>
-  <version>1.0.0</version>
   <name>fleet-app</name>
   <description>Fleet app project</description>
 
@@ -24,7 +23,60 @@
     <module>fleet-app-main</module>
   </modules>
 
+  <dependencyManagement>
+    <dependencies>
+
+      <dependency>
+        <groupId>dev.odes</groupId>
+        <artifactId>fleet-core-base</artifactId>
+        <version>${version}</version>
+      </dependency>
+      <dependency>
+        <groupId>dev.odes</groupId>
+        <artifactId>fleet-core-file</artifactId>
+        <version>${version}</version>
+      </dependency>
+      <dependency>
+        <groupId>dev.odes</groupId>
+        <artifactId>fleet-core-metadata</artifactId>
+        <version>${version}</version>
+      </dependency>
+      <dependency>
+        <groupId>dev.odes</groupId>
+        <artifactId>fleet-core-org</artifactId>
+        <version>${version}</version>
+      </dependency>
+      <dependency>
+        <groupId>dev.odes</groupId>
+        <artifactId>fleet-core-system</artifactId>
+        <version>${version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>dev.odes</groupId>
+        <artifactId>fleet-tool-develop</artifactId>
+        <version>${version}</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
   <dependencies>
+    <dependency>
+      <groupId>dev.odes</groupId>
+      <artifactId>fleet-core-base</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>dev.odes</groupId>
+      <artifactId>fleet-core-file</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>dev.odes</groupId>
+      <artifactId>fleet-core-metadata</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>dev.odes</groupId>
+      <artifactId>fleet-core-system</artifactId>
+    </dependency>
   </dependencies>
 
 </project>

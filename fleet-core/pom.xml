@@ -12,7 +12,6 @@
 
   <artifactId>fleet-core</artifactId>
   <name>fleet-core</name>
-  <version>1.0.0</version>
   <description>Fleet core</description>
 
   <packaging>pom</packaging>
@@ -31,11 +30,24 @@
     <module>fleet-core-system</module>
   </modules>
 
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>dev.odes</groupId>
+        <artifactId>fleet-common</artifactId>
+        <version>${version}</version>
+      </dependency>
+      <dependency>
+        <groupId>dev.odes</groupId>
+        <artifactId>fleet-component-mysql</artifactId>
+        <version>${version}</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
   <dependencies>
     <dependency>
       <groupId>dev.odes</groupId>
       <artifactId>fleet-common</artifactId>
-      <version>1.0.0</version>
     </dependency>
   </dependencies>
 
