@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="dev.odes.fleet.develop.mapper.EnumerationValueMapper">
+<mapper namespace="dev.odes.fleet.tool.develop.mapper.EnumerationValueMapper">
   <sql id="tableColumn">
     <trim suffixOverrides=",">
       `develop_enumeration_value`.`id`,
@@ -60,14 +60,14 @@
     </trim>
   </sql>
 
-  <resultMap id="resultMap" type="dev.odes.fleet.develop.entity.EnumerationValue">
+  <resultMap id="resultMap" type="dev.odes.fleet.tool.develop.entity.EnumerationValue">
     <id property="id" column="id"/>
     <result property="value" column="value"/>
     <result property="name" column="name"/>
     <result property="enumeration" column="enumeration"/>
   </resultMap>
 
-  <select id="findOne" resultMap="resultMap" resultType="dev.odes.fleet.develop.entity.EnumerationValue">
+  <select id="findOne" resultMap="resultMap" resultType="dev.odes.fleet.tool.develop.entity.EnumerationValue">
     SELECT
     <include refid="column"/>
     FROM `develop_enumeration_value`
@@ -79,7 +79,7 @@
     LIMIT 1
   </select>
 
-  <select id="findMany" resultMap="resultMap" resultType="dev.odes.fleet.develop.entity.EnumerationValue">
+  <select id="findMany" resultMap="resultMap" resultType="dev.odes.fleet.tool.develop.entity.EnumerationValue">
     SELECT
     <include refid="column"/>
     FROM `develop_enumeration_value`
@@ -101,7 +101,7 @@
     </choose>
   </select>
 
-  <insert id="insertOne" parameterType="dev.odes.fleet.develop.entity.EnumerationValue">
+  <insert id="insertOne" parameterType="dev.odes.fleet.tool.develop.entity.EnumerationValue">
     INSERT INTO `develop_enumeration_value`
     (<include refid="insertColumn"/>)
     VALUES
@@ -117,7 +117,7 @@
     </foreach>
   </insert>
 
-  <update id="updateOne" parameterType="dev.odes.fleet.develop.entity.EnumerationValue">
+  <update id="updateOne" parameterType="dev.odes.fleet.tool.develop.entity.EnumerationValue">
     UPDATE `develop_enumeration_value`
     <include refid="updateColumn"/>
     WHERE id=#{id}

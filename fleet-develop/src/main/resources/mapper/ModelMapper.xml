@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="dev.odes.fleet.develop.mapper.ModelMapper">
+<mapper namespace="dev.odes.fleet.tool.develop.mapper.ModelMapper">
   <sql id="tableColumn">
     <trim suffixOverrides=",">
       `develop_model`.`id`,
@@ -74,7 +74,7 @@
     </trim>
   </sql>
 
-  <resultMap id="resultMap" type="dev.odes.fleet.develop.entity.Model">
+  <resultMap id="resultMap" type="dev.odes.fleet.tool.develop.entity.Model">
     <id property="id" column="id"/>
     <result property="code" column="code"/>
     <result property="name" column="name"/>
@@ -83,7 +83,7 @@
     <result property="module" column="module"/>
   </resultMap>
 
-  <select id="findOne" resultMap="resultMap" resultType="dev.odes.fleet.develop.entity.Model">
+  <select id="findOne" resultMap="resultMap" resultType="dev.odes.fleet.tool.develop.entity.Model">
     SELECT
     <include refid="column"/>
     FROM `develop_model`
@@ -95,7 +95,7 @@
     LIMIT 1
   </select>
 
-  <select id="findMany" resultMap="resultMap" resultType="dev.odes.fleet.develop.entity.Model">
+  <select id="findMany" resultMap="resultMap" resultType="dev.odes.fleet.tool.develop.entity.Model">
     SELECT
     <include refid="column"/>
     FROM `develop_model`
@@ -114,7 +114,7 @@
     </choose>
   </select>
 
-  <insert id="insertOne" parameterType="dev.odes.fleet.develop.entity.Model">
+  <insert id="insertOne" parameterType="dev.odes.fleet.tool.develop.entity.Model">
     INSERT INTO `develop_model`
     (<include refid="insertColumn"/>)
     VALUES
@@ -130,7 +130,7 @@
     </foreach>
   </insert>
 
-  <update id="updateOne" parameterType="dev.odes.fleet.develop.entity.Model">
+  <update id="updateOne" parameterType="dev.odes.fleet.tool.develop.entity.Model">
     UPDATE `develop_model`
     <include refid="updateColumn"/>
     WHERE id=#{id}
