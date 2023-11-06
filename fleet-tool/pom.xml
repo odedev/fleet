@@ -21,6 +21,9 @@
 
   <modules>
     <module>fleet-tool-develop</module>
+    <module>fleet-tool-operate</module>
+    <module>fleet-tool-test</module>
+
   </modules>
 
   <dependencyManagement>
