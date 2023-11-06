@@ -21,11 +21,10 @@
   </properties>
 
   <modules>
-    <module>fleet-database-clickhouse</module>
-    <module>fleet-database-couchbase</module>
-    <module>fleet-database-mongodb</module>
+<!--    <module>fleet-database-clickhouse</module>-->
+<!--    <module>fleet-database-couchbase</module>-->
+<!--    <module>fleet-database-mongodb</module>-->
     <module>fleet-database-mysql</module>
-    <module>fleet-database-redis</module>
   </modules>
 
   <dependencies>

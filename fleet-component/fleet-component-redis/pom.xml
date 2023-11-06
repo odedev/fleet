@@ -6,24 +6,25 @@
 
   <parent>
     <groupId>dev.odes</groupId>
-    <artifactId>fleet-database</artifactId>
+    <artifactId>fleet-component</artifactId>
     <version>1.0.0</version>
   </parent>
 
-  <artifactId>fleet-database-couchbase</artifactId>
+  <artifactId>fleet-component-redis</artifactId>
   <version>1.0.0</version>
-  <name>fleet-database-couchbase</name>
-  <description>Fleet database couchbase</description>
+  <name>fleet-component-redis</name>
+  <description>Fleet component redis</description>
 
   <packaging>jar</packaging>
 
   <properties>
+
   </properties>
 
   <dependencies>
     <dependency>
       <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-data-couchbase</artifactId>
+      <artifactId>spring-boot-starter-data-redis</artifactId>
     </dependency>
   </dependencies>
 

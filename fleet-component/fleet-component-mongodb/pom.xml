@@ -6,14 +6,14 @@
 
   <parent>
     <groupId>dev.odes</groupId>
-    <artifactId>fleet-database</artifactId>
+    <artifactId>fleet-component</artifactId>
     <version>1.0.0</version>
   </parent>
 
-  <artifactId>fleet-database-mongodb</artifactId>
+  <artifactId>fleet-component-mongodb</artifactId>
   <version>1.0.0</version>
-  <name>fleet-database-mongodb</name>
-  <description>Fleet database mongodb</description>
+  <name>fleet-component-mongodb</name>
+  <description>Fleet component mongodb</description>
 
   <packaging>jar</packaging>
 
