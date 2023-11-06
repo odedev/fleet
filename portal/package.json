@@ -11,17 +11,17 @@
   },
   "dependencies": {
     "@element-plus/icons-vue": "^2.1.0",
-    "element-plus": "^2.3.9"
+    "element-plus": "^2.4.2"
   },
   "devDependencies": {
-    "@element-plus/nuxt": "^1.0.5",
-    "@nuxt/devtools": "latest",
-    "@nuxtjs/tailwindcss": "^6.8.0",
-    "@types/node": "^18.17.3",
-    "autoprefixer": "^10.4.15",
-    "nuxt": "^3.7.3",
-    "postcss": "^8.4.30",
-    "sass": "^1.67.0",
-    "tailwindcss": "^3.3.3"
+    "@element-plus/nuxt": "^1.0.6",
+    "@nuxt/devtools": "^1.0.0",
+    "@nuxtjs/tailwindcss": "^6.9.4",
+    "@types/node": "^18.18.8",
+    "autoprefixer": "^10.4.16",
+    "nuxt": "^3.8.0",
+    "postcss": "^8.4.31",
+    "sass": "^1.69.5",
+    "tailwindcss": "^3.3.5"
   }
 }
