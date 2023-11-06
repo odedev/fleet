@@ -27,7 +27,6 @@
     <module>fleet-core-client</module>
     <module>fleet-core-file</module>
     <module>fleet-core-metadata</module>
-    <module>fleet-core-org</module>
     <module>fleet-core-system</module>
   </modules>
 

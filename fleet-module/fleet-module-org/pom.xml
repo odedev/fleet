@@ -6,14 +6,14 @@
 
   <parent>
     <groupId>dev.odes</groupId>
-    <artifactId>fleet-core</artifactId>
+    <artifactId>fleet-module</artifactId>
     <version>1.0.0</version>
   </parent>
 
-  <artifactId>fleet-core-org</artifactId>
-  <name>fleet-core-org</name>
+  <artifactId>fleet-module-org</artifactId>
+  <name>fleet-module-org</name>
 <!--  <version>${version}</version>-->
-  <description>Fleet core org</description>
+  <description>Fleet module org</description>
 
   <packaging>jar</packaging>
 
