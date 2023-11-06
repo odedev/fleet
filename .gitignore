@@ -55,7 +55,7 @@ venv/
 *.so
 
 # Logs
-logs/
+#logs/
 *.log
 npm-debug.log*
 yarn-debug.log*
@@ -123,11 +123,13 @@ dist/
 dist-ssr
 coverage
 *.local
-site/
+
+#site/
 cache/
-workspace/
-public/
-!fleet-tool/public/
+
+#workspace/
+#public/
+#!fleet-tool/public/
 
 # data
 *.db
