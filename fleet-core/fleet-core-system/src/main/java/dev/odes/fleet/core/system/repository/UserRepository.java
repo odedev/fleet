@@ -2,7 +2,7 @@ package dev.odes.fleet.core.system.repository;
 
 import dev.odes.fleet.core.system.entity.User;
 import dev.odes.fleet.core.system.mapper.UserMapper;
-import dev.odes.fleet.database.mysql.MysqlRepository;
+import dev.odes.fleet.component.mysql.MysqlRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository

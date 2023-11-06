@@ -3,7 +3,7 @@
 package dev.odes.fleet.module.${moduleCode}.mapper;
 
 import dev.odes.fleet.module.${moduleCode}.entity.${modelCode};
-import dev.odes.fleet.database.mysql.GenericMapper;
+import dev.odes.fleet.component.mysql.GenericMapper;
 
 @Mapper
 public interface ${modelCode}Mapper extends GenericMapper<${modelCode}> {

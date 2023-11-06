@@ -1,4 +1,4 @@
-package dev.odes.fleet.database.mysql;
+package dev.odes.fleet.component.mysql;
 
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;

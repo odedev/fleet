@@ -2,7 +2,7 @@ package dev.odes.fleet.tool.develop.repository;
 
 import dev.odes.fleet.tool.develop.entity.Enumeration;
 import dev.odes.fleet.tool.develop.mapper.EnumerationMapper;
-import dev.odes.fleet.database.mysql.MysqlRepository;
+import dev.odes.fleet.component.mysql.MysqlRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository

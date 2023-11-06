@@ -1,7 +1,7 @@
 package dev.odes.fleet.core.system.mapper;
 
 import dev.odes.fleet.core.system.entity.UserProfile;
-import dev.odes.fleet.database.mysql.GenericMapper;
+import dev.odes.fleet.component.mysql.GenericMapper;
 import org.apache.ibatis.annotations.Mapper;
 
 @Mapper

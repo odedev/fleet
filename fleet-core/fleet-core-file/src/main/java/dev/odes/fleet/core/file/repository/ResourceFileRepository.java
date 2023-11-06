@@ -2,7 +2,7 @@ package dev.odes.fleet.core.file.repository;
 
 import dev.odes.fleet.core.file.entity.ResourceFile;
 import dev.odes.fleet.core.file.mapper.ResourceFileMapper;
-import dev.odes.fleet.database.mysql.MysqlRepository;
+import dev.odes.fleet.component.mysql.MysqlRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository

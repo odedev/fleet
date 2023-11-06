@@ -6,7 +6,7 @@ package dev.odes.fleet.module.${moduleCode}.repository;
 
 import dev.odes.fleet.module.${moduleCode}.entity.${modelCode};
     ${moduleCode}.mapper.${modelCode}Mapper;
-import dev.odes.fleet.database.mysql.MysqlRepository;
+import dev.odes.fleet.component.mysql.MysqlRepository;
 
 @Repository
 public class ${modelCode}Repository extends MysqlRepository<${modelCode}, ${modelCode}Mapper> {

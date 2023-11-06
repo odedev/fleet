@@ -1,4 +1,4 @@
-package dev.odes.fleet.database.mysql;
+package dev.odes.fleet.component.mysql;
 
 import org.apache.ibatis.annotations.Param;
 
