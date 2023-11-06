@@ -37,7 +37,6 @@
     <module>fleet-common</module>
     <module>fleet-component</module>
     <module>fleet-core</module>
-    <module>fleet-database</module>
     <module>fleet-module</module>
     <module>fleet-tool</module>
   </modules>

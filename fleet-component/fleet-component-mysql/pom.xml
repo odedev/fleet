@@ -6,14 +6,14 @@
 
   <parent>
     <groupId>dev.odes</groupId>
-    <artifactId>fleet-database</artifactId>
+    <artifactId>fleet-component</artifactId>
     <version>1.0.0</version>
   </parent>
 
-  <artifactId>fleet-database-mysql</artifactId>
+  <artifactId>fleet-component-mysql</artifactId>
   <version>1.0.0</version>
-  <name>fleet-database-mysql</name>
-  <description>Fleet database mysql</description>
+  <name>fleet-component-mysql</name>
+  <description>Fleet component mysql</description>
 
   <packaging>jar</packaging>
 

@@ -28,7 +28,7 @@
 <!--    </dependency>-->
     <dependency>
       <groupId>dev.odes</groupId>
-      <artifactId>fleet-database-mysql</artifactId>
+      <artifactId>fleet-component-mysql</artifactId>
       <version>1.0.0</version>
     </dependency>
 

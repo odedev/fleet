@@ -6,29 +6,26 @@
 
   <parent>
     <groupId>dev.odes</groupId>
-    <artifactId>fleet</artifactId>
+    <artifactId>fleet-component</artifactId>
     <version>1.0.0</version>
   </parent>
 
-  <artifactId>fleet-database</artifactId>
+  <artifactId>fleet-component-minio</artifactId>
   <version>1.0.0</version>
-  <name>fleet-database</name>
-  <description>Fleet database</description>
+  <name>fleet-component-minio</name>
+  <description>Fleet component minio</description>
 
-  <packaging>pom</packaging>
+  <packaging>jar</packaging>
 
   <properties>
   </properties>
 
-  <modules>
-<!--    <module>fleet-database-clickhouse</module>-->
-<!--    <module>fleet-database-couchbase</module>-->
-<!--    <module>fleet-database-mongodb</module>-->
-    <module>fleet-database-mysql</module>
-  </modules>
-
   <dependencies>
-
+    <dependency>
+      <groupId>io.minio</groupId>
+      <artifactId>minio</artifactId>
+      <version>8.5.3</version>
+    </dependency>
   </dependencies>
 
 </project>

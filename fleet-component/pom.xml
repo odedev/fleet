@@ -22,16 +22,16 @@
 
   <modules>
     <module>fleet-component-bpmn</module>
+    <module>fleet-component-clickhouse</module>
+    <module>fleet-component-couchbase</module>
     <module>fleet-component-doris</module>
     <module>fleet-component-flink</module>
     <module>fleet-component-kafka</module>
+    <module>fleet-component-minio</module>
+    <module>fleet-component-mongodb</module>
+    <module>fleet-component-mysql</module>
     <module>fleet-component-pulsar</module>
     <module>fleet-component-rabbitmq</module>
-
-    <module>fleet-component-clickhouse</module>
-    <module>fleet-component-couchbase</module>
-    <module>fleet-component-mongodb</module>
-<!--    <module>fleet-component-mysql</module>-->
     <module>fleet-component-redis</module>
   </modules>
 

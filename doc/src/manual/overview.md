@@ -1,7 +1,5 @@
 # overview
 
-
-
 ## structure
 ```txt
 .
@@ -13,8 +11,17 @@
 │
 ├── fleet-component
 │   ├── fleet-component-bpmn
+│   ├── fleet-component-clickhouse
+│   ├── fleet-component-couchbase
+│   ├── fleet-component-doris
+│   ├── fleet-component-flink
 │   ├── fleet-component-kafka
-│   └── fleet-component-rabbitmq
+│   ├── fleet-component-minio
+│   ├── fleet-component-mongodb
+│   ├── fleet-component-mysql
+│   ├── fleet-component-pulsar
+│   ├── fleet-component-rabbitmq
+│   └── fleet-component-redis
 │
 ├── fleet-core
 │   ├── fleet-core-auth
@@ -25,27 +32,22 @@
 │   ├── fleet-core-org
 │   └── fleet-core-system
 │
-├── fleet-database
-│   ├── fleet-database-clickhouse
-│   ├── fleet-database-couchbase
-│   ├── fleet-database-mongodb
-│   ├── fleet-database-mysql
-│   └── fleet-database-redis
-│
-├── fleet-develop
-│
 ├── fleet-module
 │   ├── ...
 │   ├── fleet-module-test
 │   └── fleet-module-demo
 │
 ├── fleet-tool
+│   ├── fleet-tool-develop
+│   └── fleet-tool-operate
 │
 ├── fleet-ui
 │   ├── apps
 │   ├── cores
 │   ├── modules
-│   └── packages
+│   ├── packages
+│   ├── tools
+│   └── rush.json
 │
 ├── deploy   部署
 │
@@ -56,6 +58,8 @@
 ├── portal   网站
 │
 ├── resource 资源
+│
+├── tool     工具
 │
 ├── CHANGELOG.md
 └── README.md
