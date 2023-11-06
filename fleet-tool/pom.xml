@@ -21,6 +21,7 @@
   </properties>
 
   <modules>
+    <module>fleet-tool-develop</module>
   </modules>
 
   <dependencies>

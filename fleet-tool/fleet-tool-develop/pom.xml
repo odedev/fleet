@@ -6,23 +6,18 @@
 
   <parent>
     <groupId>dev.odes</groupId>
-    <artifactId>fleet</artifactId>
+    <artifactId>fleet-tool</artifactId>
     <version>1.0.0</version>
   </parent>
 
-  <artifactId>fleet-develop</artifactId>
-  <name>fleet-develop</name>
+  <artifactId>fleet-tool-develop</artifactId>
+  <name>fleet-tool-develop</name>
   <version>1.0.0</version>
   <description>Fleet develop</description>
 
   <packaging>jar</packaging>
 
   <properties>
-    <maven.compiler.source>${java.version}</maven.compiler.source>
-    <maven.compiler.target>${java.version}</maven.compiler.target>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-
     <velocity.engine.version>2.3</velocity.engine.version>
     <velocity.tools.version>3.1</velocity.tools.version>
   </properties>

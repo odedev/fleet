@@ -22,7 +22,7 @@
 
     <dependency>
       <groupId>dev.odes</groupId>
-      <artifactId>fleet-develop</artifactId>
+      <artifactId>fleet-tool-develop</artifactId>
       <version>${version}</version>
     </dependency>
 
