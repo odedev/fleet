@@ -40,6 +40,8 @@
     <module>fleet-core</module>
     <module>fleet-module</module>
     <module>fleet-develop</module>
+    <module>fleet-tool</module>
+
   </modules>
 
   <dependencies>

@@ -80,6 +80,7 @@ const sidebar = {
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   // site-level options
+  mpa: true,
   lang: 'zh-CN',
   title: 'Fleet Doc',
   description: 'Fleet Doc.',

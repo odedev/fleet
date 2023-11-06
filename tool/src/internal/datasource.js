@@ -9,7 +9,7 @@ const entities = path.join(__rootDirname, "src", "**", "entity", "*{.js,.ts}");
 
 export const AppDataSource = new DataSource({
   type: "sqlite",
-  database: "fleet_tool.db",
+  database: "tool.db",
   synchronize: true,
   logging: true,
   entities: [entities],
