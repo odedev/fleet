@@ -124,14 +124,16 @@ dist-ssr
 coverage
 *.local
 
-#site/
-cache/
-
-#workspace/
-#public/
-#!fleet-tool/public/
-
 # data
 *.db
 # cache/
 temp/
+.cache/
+cache/
+
+# misc
+
+#site/
+#workspace/
+#public/
+#!fleet-tool/public/
