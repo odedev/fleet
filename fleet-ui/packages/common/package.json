@@ -94,8 +94,9 @@
     "validator": "^13.11.0",
     "video.js": "^8.3.0",
     "viewerjs": "^1.11.4",
-    "vue": "^3.3.7",
+    "vue": "^3.3.8",
     "vue-router": "^4.2.5",
+    "ws": "^8.14.2",
     "xgplayer": "^3.0.8",
     "xgplayer-flv": "^3.0.8",
     "xlsx": "https://cdn.sheetjs.com/xlsx-0.20.0/xlsx-0.20.0.tgz"
