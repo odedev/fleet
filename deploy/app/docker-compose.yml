@@ -1,4 +1,38 @@
 services:
+
+  app-main:
+    image: eclipse-temurin:17.0.7_7-jdk
+    working_dir: /home/app
+    volumes:
+      - ./app-main:/home/app
+      # - ./app-main/config:/home/app/config
+      # - ./app-main/logs:/home/app/logs
+      # - ./app-main/public:/home/app/public
+    ports:
+      - "23501:23501"
+    hostname: app-main
+    networks:
+      - net
+    restart: always
+    user: root
+    command: "java -jar -Xms1024m -Xmx1024m -XX:MetaspaceSize=512M -XX:MaxMetaspaceSize=512M ./app.jar"
+
+  tool:
+    image: node:18.18.2
+    environment:
+      - NODE_ENV=production
+    volumes:
+      - ./tool:/home/node/app
+    working_dir: /home/node/app
+    ports:
+      - "23506:23506"
+    hostname: tool
+    networks:
+      - net
+    restart: always
+    user: node
+    command: "npm start"
+
   eclipse-temurin:
     image: eclipse-temurin:17.0.7_7-jre
     environment:
@@ -14,7 +48,7 @@ services:
     privileged: true
     restart: always
     user: root
-    command: --default-authentication-plugin=mysql_native_password
+    command: "java -jar -Xms1024m -Xmx1024m -XX:MetaspaceSize=512M -XX:MaxMetaspaceSize=512M ./app.jar"
 
   temurin:
     image: eclipse-temurin:17.0.7_7-jdk

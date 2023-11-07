@@ -1,0 +1,52 @@
+services:
+
+  doc:
+    image: nginx:1.25.1
+    volumes:
+      - ./nginx/config/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx/data:/usr/share/nginx/html
+    ports:
+      - "23500:80"
+    hostname: nginx
+    networks:
+      - net
+    privileged: true
+    restart: always
+    user: root
+
+  portal:
+    image: nginx:1.25.1
+    volumes:
+      - ./nginx/config/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx/data:/usr/share/nginx/html
+    ports:
+      - "23501:80"
+    hostname: nginx
+    networks:
+      - net
+    privileged: true
+    restart: always
+    user: root
+
+  tool:
+    image: node:18.18.2
+    environment:
+      - NODE_ENV=production
+    volumes:
+      - ./tool:/home/node/app
+    working_dir: /home/node/app
+    ports:
+      - "23502:23506"
+    hostname: tool
+    networks:
+      - net
+    restart: always
+    user: node
+    command: "npm start"
+
+networks:
+  net:
+    ipam:
+      driver: default
+      config:
+        - subnet: 10.10.0.0/24
