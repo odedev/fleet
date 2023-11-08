@@ -5,8 +5,8 @@
  * @param value
  */
 export function isPhone (value: string): boolean {
-  const regex = /^1[0-9]{10}$/;
-  return regex.test(value);
+  const pattern = /^1[0-9]{10}$/;
+  return pattern.test(value);
 }
 
 /**
@@ -14,8 +14,8 @@ export function isPhone (value: string): boolean {
  * @param value
  */
 export function isEmail(value: string): boolean {
-  const reg = /^[A-Za-z0-9\u4e00-\u9fa5]+@[a-zA-Z0-9_-]+(.[a-zA-Z0-9_-]+)+$/;
-  return reg.test(value);
+  const pattern = /^[A-Za-z0-9\u4e00-\u9fa5]+@[a-zA-Z0-9_-]+(.[a-zA-Z0-9_-]+)+$/;
+  return pattern.test(value);
 }
 
 /**

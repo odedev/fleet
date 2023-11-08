@@ -110,7 +110,7 @@ services:
     privileged: true
     restart: always
     user: root
-    command: server /data --console-address ":9001"
+    command: server /data --address ":9000" --console-address ":9001"
 
   neo4j:
     image: neo4j:5.9.0-community
