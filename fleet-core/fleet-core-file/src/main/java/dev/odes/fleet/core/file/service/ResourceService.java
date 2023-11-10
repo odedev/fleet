@@ -5,7 +5,10 @@ import dev.odes.fleet.core.file.dto.ResourceDto;
 import dev.odes.fleet.core.file.dto.ResourceUploadDto;
 import dev.odes.fleet.core.file.model.ResourceFileModel;
 import dev.odes.fleet.core.file.repository.ResourceRepository;
+import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Service;
+
+import java.io.*;
 
 @Service
 public class ResourceService {
@@ -36,7 +39,42 @@ public class ResourceService {
         return fileModel;
     }
 
-    public void download() {
+    public void download(HttpServletResponse httpServletResponse) {
+        File file = new File("./demo.xlsx");
+        InputStream inputStream = null;
+        OutputStream outputStream = null;
+
+        httpServletResponse.setContentType("application/octet-stream");
+
+        httpServletResponse.setContentType("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=utf-8");
+        httpServletResponse.setHeader("Content-Disposition", "attachment;fileName=\"demo.xlsx\";filename*=utf-8''\"demo.xlsx\";");
+
+        try {
+            inputStream = new FileInputStream(file);
+            outputStream = httpServletResponse.getOutputStream();
+
+            int len = 0;
+            byte[] bytes = new byte[1024];
+            while ((len = inputStream.read(bytes)) != -1) {
+                outputStream.write(bytes, 0, bytes.length);
+                outputStream.flush();
+            }
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } finally {
+            try {
+                inputStream.close();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            try {
+                outputStream.close();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
 
     }
 }

@@ -37,7 +37,7 @@ export class Request {
       url = url + '?' + qs.stringify(params)
     }
     try {
-      let res = await this.#instance.get(url, params)
+      let res = await this.#instance.get(url)
       return res.data
     } catch (err: any) {
       throw err.response.data
@@ -163,15 +163,25 @@ export class Request {
     }
   }
 
-  async getBinary(url: string, params: any) {
+  async getForBinary(url: string, params: any) {
+    if (params) {
+      url = url + '?' + qs.stringify(params)
+    }
     const config = {
       responseType: 'blob' as ResponseType,
-      headers: {
-        'Content-Type': 'multipart/form-data;charset=utf-8'
-      },
-      transformRequest: function (data: any, headers: any) {
-        return qs.stringify(data, {arrayFormat: 'brackets'})
-      },
+    }
+    try {
+      let res = await this.#instance.get(url, config)
+      const blob = new Blob([res.data], {type: res.data.type});
+      return res.data
+    } catch (err: any) {
+      throw err.response?.data || err
+    }
+  }
+
+  async postForBinary(url: string, params: any) {
+    const config = {
+      responseType: 'blob' as ResponseType,
     }
     try {
       let res = await this.#instance.post(url, params, config)
@@ -181,7 +191,6 @@ export class Request {
       throw err.response?.data || err
     }
   }
-
 }
 
 
