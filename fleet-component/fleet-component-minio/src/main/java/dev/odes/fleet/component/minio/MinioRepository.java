@@ -1,7 +1,6 @@
-package dev.odes.fleet.core.file.repository;
+package dev.odes.fleet.component.minio;
 
 import dev.odes.fleet.common.utils.StringUtils;
-import dev.odes.fleet.core.file.config.MinioClientConfig;
 import io.minio.MakeBucketArgs;
 import io.minio.MinioClient;
 import io.minio.ObjectWriteResponse;

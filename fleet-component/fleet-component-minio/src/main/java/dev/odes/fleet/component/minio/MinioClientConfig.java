@@ -1,4 +1,4 @@
-package dev.odes.fleet.core.file.config;
+package dev.odes.fleet.component.minio;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;

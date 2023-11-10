@@ -2,6 +2,7 @@ package dev.odes.fleet.core.file.repository;
 
 import com.google.common.io.Files;
 import dev.odes.fleet.common.utils.StringUtils;
+import dev.odes.fleet.component.minio.MinioRepository;
 import dev.odes.fleet.core.file.constant.FileConstant;
 import dev.odes.fleet.core.file.dto.ResourceDto;
 import dev.odes.fleet.core.file.dto.ResourceUploadDto;

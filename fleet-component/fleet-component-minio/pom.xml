@@ -11,7 +11,6 @@
   </parent>
 
   <artifactId>fleet-component-minio</artifactId>
-  <version>1.0.0</version>
   <name>fleet-component-minio</name>
   <description>Fleet component minio</description>
 
@@ -21,6 +20,12 @@
   </properties>
 
   <dependencies>
+    <dependency>
+      <groupId>dev.odes</groupId>
+      <artifactId>fleet-common</artifactId>
+      <version>1.0.0</version>
+    </dependency>
+
     <!-- https://central.sonatype.com/artifact/io.minio/minio -->
     <dependency>
       <groupId>io.minio</groupId>

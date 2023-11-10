@@ -1,0 +1,5 @@
+
+minio:
+  endpoint: ""
+  accessKey: ""
+  secretKey: "dev.odes.fleet.component.minio"

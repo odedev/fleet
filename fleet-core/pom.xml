@@ -42,6 +42,11 @@
         <artifactId>fleet-component-mysql</artifactId>
         <version>${version}</version>
       </dependency>
+      <dependency>
+        <groupId>dev.odes</groupId>
+        <artifactId>fleet-component-minio</artifactId>
+        <version>${version}</version>
+      </dependency>
     </dependencies>
   </dependencyManagement>
   <dependencies>

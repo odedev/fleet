@@ -25,8 +25,7 @@ public class ResourceController {
     }
 
     @PostMapping(path = "/download")
-    public ResponseData download(HttpServletResponse httpServletResponse) {
+    public void download(HttpServletResponse httpServletResponse) {
         this.resourceService.download(httpServletResponse);
-        return new ResponseData("download");
     }
 }

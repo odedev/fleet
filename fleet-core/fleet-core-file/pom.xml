@@ -26,9 +26,8 @@
       <artifactId>fleet-component-mysql</artifactId>
     </dependency>
     <dependency>
-      <groupId>io.minio</groupId>
-      <artifactId>minio</artifactId>
-      <version>8.5.3</version>
+      <groupId>dev.odes</groupId>
+      <artifactId>fleet-component-minio</artifactId>
     </dependency>
   </dependencies>
 
