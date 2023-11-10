@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fleet SPA</title>
+    <script type="importmap">
+      {
+        "imports": {
+          "vue": "https://unpkg.com/vue@3/dist/vue.esm-browser.js"
+        }
+      }
+    </script>
+
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module">
+      import { createApp, ref, onMounted } from "vue"
+
+      const template = `<h1>{{ message }}</h1>`;
+      const style = `<style>h1 {color: red;}</style>`;
+
+      const script = `
+      (function setup(){
+        return function () {
+          const message = ref('Hello Vue!')
+
+          onMounted(() => {
+            console.log('mounted')
+          });
+
+          return {
+            message
+          }
+        }
+      })()
+      `;
+
+      const setup = eval(script);
+
+      const app = createApp({
+        template: template,
+        setup: setup,
+      });
+
+      document.body.insertAdjacentHTML('beforeend', style);
+      app.mount('#app');
+    </script>
+
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <div id="appGlobal">{{ message }}</div>
+    <script>
+      const scriptGlobal = `
+        const { createApp, ref } = Vue
+
+        createApp({
+          setup() {
+            const message = ref('Hello vue!')
+            return {
+              message
+            }
+          }
+        }).mount('#appGlobal')
+      `
+      eval(scriptGlobal)
+    </script>
+  </body>
+</html>
