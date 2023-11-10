@@ -1,4 +1,4 @@
-package dev.odes.fleet.core.base.controller;
+package dev.odes.fleet.core.base.interceptor;
 
 import dev.odes.fleet.common.response.ResponseError;
 import org.apache.commons.lang3.exception.ExceptionUtils;
@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 @RestControllerAdvice
-public class ExceptionHandlerController {
+public class ExceptionInterceptor {
 
-    private static final Logger logger = LoggerFactory.getLogger(ExceptionHandlerController.class);
+    private static final Logger logger = LoggerFactory.getLogger(ExceptionInterceptor.class);
 
     /**
      * 异常
