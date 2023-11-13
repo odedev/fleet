@@ -32,21 +32,6 @@ php artisan make:observer UserRoleObserver --model=UserRole
 php artisan make:resource UserRoleResource
 php artisan make:resource UserRoleCollection
 
-php artisan make:model Tenant -mfscr
-php artisan make:observer TenantObserver --model=Tenant
-php artisan make:resource TenantResource
-php artisan make:resource TenantCollection
-
-php artisan make:model TenantUser -mfscr
-php artisan make:observer TenantUserObserver --model=TenantUser
-php artisan make:resource TenantUserResource
-php artisan make:resource TenantUserCollection
-
-php artisan make:model TenantRole -mfscr
-php artisan make:observer TenantRoleObserver --model=TenantRole
-php artisan make:resource TenantRoleResource
-php artisan make:resource TenantRoleCollection
-
 sleep 10s
 
 # org
@@ -76,6 +61,26 @@ php artisan make:resource SituationResource
 php artisan make:resource SituationCollection
 
 sleep 10s
+
+# tenant
+php artisan make:model Tenant -mfscr
+php artisan make:observer TenantObserver --model=Tenant
+php artisan make:resource TenantResource
+php artisan make:resource TenantCollection
+
+php artisan make:model TenantUser -mfscr
+php artisan make:observer TenantUserObserver --model=TenantUser
+php artisan make:resource TenantUserResource
+php artisan make:resource TenantUserCollection
+
+php artisan make:model TenantRole -mfscr
+php artisan make:observer TenantRoleObserver --model=TenantRole
+php artisan make:resource TenantRoleResource
+php artisan make:resource TenantRoleCollection
+
+sleep 10s
+
+
 
 # file resource
 php artisan make:model ResourceFile -mfscr
