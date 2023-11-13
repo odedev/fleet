@@ -133,14 +133,13 @@ coverage
 
 # data
 *.db
+
 # cache/
 temp/
 .cache/
-cache/
+# cache/
 
 # misc
 
 #site/
 #workspace/
-#public/
-#!fleet-tool/public/
