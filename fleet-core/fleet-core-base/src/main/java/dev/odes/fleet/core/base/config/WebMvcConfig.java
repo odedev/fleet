@@ -1,7 +1,6 @@
 package dev.odes.fleet.core.base.config;
 
 import dev.odes.fleet.core.base.interceptor.RequestInterceptor;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
@@ -21,7 +20,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
             .maxAge(maxAge)
             .allowedOrigins("*")
             .allowedHeaders("*")
-            .allowedMethods("GET", "POST", String.valueOf(RequestMethod.PUT), String.valueOf(RequestMethod.PATCH))
+            .allowedMethods("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS")
             .exposedHeaders("*");
     }
 

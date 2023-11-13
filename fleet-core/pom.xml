@@ -17,7 +17,6 @@
   <packaging>pom</packaging>
 
   <properties>
-
   </properties>
 
   <modules>
@@ -27,6 +26,7 @@
     <module>fleet-core-file</module>
     <module>fleet-core-metadata</module>
     <module>fleet-core-org</module>
+    <module>fleet-core-tenant</module>
     <module>fleet-core-system</module>
   </modules>
 
@@ -49,6 +49,7 @@
       </dependency>
     </dependencies>
   </dependencyManagement>
+
   <dependencies>
     <dependency>
       <groupId>dev.odes</groupId>
