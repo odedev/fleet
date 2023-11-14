@@ -20,10 +20,10 @@
   </properties>
 
   <modules>
+    <module>fleet-core-asset</module>
     <module>fleet-core-auth</module>
     <module>fleet-core-base</module>
     <module>fleet-core-client</module>
-    <module>fleet-core-asset</module>
     <module>fleet-core-metadata</module>
     <module>fleet-core-org</module>
     <module>fleet-core-tenant</module>

@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS `resource_file` (
+CREATE TABLE IF NOT EXISTS `asset_resource_file` (
     `id` VARCHAR(32) NOT NULL COMMENT '主键ID',
     `name` VARCHAR(255) NOT NULL DEFAULT '' COMMENT '文件名',
     `size` BIGINT UNSIGNED NULL DEFAULT NULL COMMENT '文件大小',
