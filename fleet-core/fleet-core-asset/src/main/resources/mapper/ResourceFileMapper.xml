@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dev.odes.fleet.core.asset.mapper.ResourceFileMapper">
+  <sql id="tableColumn">
+    <trim suffixOverrides=",">
+      `resource_file`.`id`,
+      `resource_file`.`name`,
+      `resource_file`.`size`,
+      `resource_file`.`type`,
+      `resource_file`.`path`,
+      `resource_file`.`url`,
+      `resource_file`.`location`,
+      `resource_file`.`directory`,
+      `resource_file`.`category`,
+      `resource_file`.`status`,
+      `resource_file`.`scope`,
+    </trim>
+  </sql>
+  <sql id="column">
+    <trim suffixOverrides=",">
+      `id`,
+      `name`,
+      `size`,
+      `type`,
+      `path`,
+      `url`,
+      `location`,
+      `directory`,
+      `category`,
+      `status`,
+      `scope`,
+    </trim>
+  </sql>
+
+  <sql id="insertColumn">
+    <trim suffixOverrides=",">
+      `id`,
+      <if test="name != null">`name`,</if>
+      <if test="size != null">`size`,</if>
+      <if test="type != null">`type`,</if>
+      <if test="path != null">`path`,</if>
+      <if test="url != null">`url`,</if>
+      <if test="location != null">`location`,</if>
+      <if test="directory != null">`directory`,</if>
+      <if test="category != null">`category`,</if>
+      <if test="status != null">`status`,</if>
+      <if test="scope != null">`scope`,</if>
+    </trim>
+  </sql>
+  <sql id="insertValue">
+    <trim suffixOverrides=",">
+      #{id},
+      <if test="name != null">#{name},</if>
+      <if test="size != null">#{size},</if>
+      <if test="type != null">#{type},</if>
+      <if test="path != null">#{path},</if>
+      <if test="url != null">#{url},</if>
+      <if test="location != null">#{location},</if>
+      <if test="directory != null">#{directory},</if>
+      <if test="category != null">#{category},</if>
+      <if test="status != null">#{status},</if>
+      <if test="scope != null">#{scope},</if>
+    </trim>
+  </sql>
+  <sql id="insertEntityValue">
+    <trim suffixOverrides=",">
+      #{staticFile.id},
+      <if test="staticFile.name != null">#{staticFile.name},</if>
+      <if test="staticFile.size != null">#{staticFile.size},</if>
+      <if test="staticFile.type != null">#{staticFile.type},</if>
+      <if test="staticFile.path != null">#{staticFile.path},</if>
+      <if test="staticFile.url != null">#{staticFile.url},</if>
+      <if test="staticFile.location != null">#{staticFile.location},</if>
+      <if test="staticFile.directory != null">#{staticFile.directory},</if>
+      <if test="staticFile.category != null">#{staticFile.category},</if>
+      <if test="staticFile.status != null">#{staticFile.status},</if>
+      <if test="staticFile.scope != null">#{staticFile.scope},</if>
+    </trim>
+  </sql>
+
+  <sql id="updateColumn">
+    <trim prefix="set" suffixOverrides=",">
+      <if test="name != null">`name` = #{name},</if>
+      <if test="size != null">`size` = #{size},</if>
+      <if test="type != null">`type` = #{type},</if>
+      <if test="path != null">`path` = #{path},</if>
+      <if test="url != null">`url` = #{url},</if>
+      <if test="location != null">`location` = #{location},</if>
+      <if test="directory != null">`directory` = #{directory},</if>
+      <if test="category != null">`category` = #{category},</if>
+      <if test="status != null">`status` = #{status},</if>
+      <if test="scope != null">`scope` = #{scope},</if>
+    </trim>
+  </sql>
+  <sql id="updateEntityColumn">
+    <trim prefix="set" suffixOverrides=",">
+      <if test="staticFile.name != null">`name` = #{staticFile.name},</if>
+      <if test="staticFile.size != null">`size` = #{staticFile.size},</if>
+      <if test="staticFile.type != null">`type` = #{staticFile.type},</if>
+      <if test="staticFile.path != null">`path` = #{staticFile.path},</if>
+      <if test="staticFile.url != null">`url` = #{staticFile.url},</if>
+      <if test="staticFile.location != null">`location` = #{staticFile.location},</if>
+      <if test="staticFile.directory != null">`directory` = #{staticFile.directory},</if>
+      <if test="staticFile.category != null">`category` = #{staticFile.category},</if>
+      <if test="staticFile.status != null">`status` = #{staticFile.status},</if>
+      <if test="staticFile.scope != null">`scope` = #{staticFile.scope},</if>
+    </trim>
+  </sql>
+
+  <resultMap id="resultMap" type="dev.odes.fleet.core.asset.entity.ResourceFile">
+    <id property="id" column="id"/>
+    <result property="name" column="name"/>
+    <result property="size" column="size"/>
+    <result property="type" column="type"/>
+    <result property="path" column="path"/>
+    <result property="url" column="url"/>
+    <result property="location" column="location"/>
+    <result property="directory" column="directory"/>
+    <result property="category" column="category"/>
+    <result property="status" column="status"/>
+    <result property="scope" column="scope"/>
+  </resultMap>
+
+  <select id="findOne" resultMap="resultMap" resultType="dev.odes.fleet.core.asset.entity.ResourceFile">
+    SELECT
+    <include refid="column"/>
+    FROM `resource_file`
+    <if test="where != null and where != ''">
+      <where>
+        ${where}
+      </where>
+    </if>
+    LIMIT 1
+  </select>
+
+  <select id="findMany" resultMap="resultMap" resultType="dev.odes.fleet.core.asset.entity.ResourceFile">
+    SELECT
+    <include refid="column"/>
+    FROM `resource_file`
+    <if test="where != null and where != ''">
+      <where>
+        ${where}
+      </where>
+    </if>
+    <choose>
+      <when test="order != null and order != ''">
+        ORDER BY ${order}
+      </when>
+      <otherwise>
+        ORDER BY id DESC
+      </otherwise>
+    </choose>
+  </select>
+
+  <insert id="insertOne" parameterType="dev.odes.fleet.core.asset.entity.ResourceFile">
+    INSERT INTO `resource_file`
+    (<include refid="insertColumn"/>)
+    VALUES
+    (<include refid="insertValue"/>)
+  </insert>
+
+  <insert id="insertMany" parameterType="java.util.List">
+    INSERT INTO `resource_file`
+    (<include refid="insertColumn"/>)
+    VALUES
+    <foreach collection="list" item="module" separator=",">
+      (<include refid="insertEntityValue"/>)
+    </foreach>
+  </insert>
+
+  <update id="updateOne" parameterType="dev.odes.fleet.core.asset.entity.ResourceFile">
+    UPDATE `resource_file`
+    <include refid="updateColumn"/>
+    WHERE id=#{id}
+  </update>
+
+  <delete id="deleteOne" parameterType="java.lang.String">
+    DELETE FROM `resource_file` WHERE id=#{id}
+  </delete>
+
+  <select id="count" resultType="java.lang.Integer">
+    SELECT COUNT(1) FROM `resource_file`
+    <if test="where != null and where != ''">
+      <where>
+        ${where}
+      </where>
+    </if>
+    LIMIT 1
+  </select>
+
+</mapper>

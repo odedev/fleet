@@ -33,7 +33,7 @@
       </dependency>
       <dependency>
         <groupId>dev.odes</groupId>
-        <artifactId>fleet-core-file</artifactId>
+        <artifactId>fleet-core-asset</artifactId>
         <version>${version}</version>
       </dependency>
       <dependency>
@@ -67,7 +67,7 @@
     </dependency>
     <dependency>
       <groupId>dev.odes</groupId>
-      <artifactId>fleet-core-file</artifactId>
+      <artifactId>fleet-core-asset</artifactId>
     </dependency>
     <dependency>
       <groupId>dev.odes</groupId>
