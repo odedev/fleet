@@ -34,12 +34,13 @@
 │
 ├── fleet-module
 │   ├── ...
-│   ├── fleet-module-test
+│   ├── fleet-module-code
 │   └── fleet-module-demo
 │
 ├── fleet-tool
 │   ├── fleet-tool-develop
-│   └── fleet-tool-operate
+│   ├── fleet-tool-operate
+│   └── fleet-tool-test
 │
 ├── fleet-ui
 │   ├── apps
