@@ -1,8 +1,35 @@
 import chalk from 'chalk';
 
+import file from './file.js';
+import init from './init.js';
 
-console.log(chalk.yellow('Hello world!'));
-console.log(chalk.green('Hello world!'));
+async function main() {
+  const mods = {
+    'fleet-core': [
+      'fleet-core-metadata',
+      'fleet-core-system',
+      // 'fleet-core-org',
+    ]
+  };
+  const keys = Object.keys(mods);
+  for (let key of keys) {
+    const submods = mods[key];
+    for (let submod of submods) {
+      await init.initSchema(key, submod);
+    }
+  }
 
-console.log(chalk.red('Hello world!'));
+  for (let key of keys) {
+    const submods = mods[key];
+    for (let submod of submods) {
+      await init.initMetadata(key, submod);
+    }
+  }
 
+  // init.initSchema('fleet-core', 'fleet-core-org');
+  // init.initSchema('fleet-core', 'fleet-core-system');
+
+}
+
+
+main()
