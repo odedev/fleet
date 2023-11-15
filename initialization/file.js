@@ -34,9 +34,14 @@ async function readFile (sourceFilePath) {
   }
 }
 
+function getDestDir(type, submod = '') {
+  const dest = path.join('.', config.dir, type, submod);
+  return dest;
+}
+
 
 async function copyDirs (dirs, type, submod = '') {
-  const dest = path.join('.', config.dir, type, submod);
+  const dest = getDestDir(type, submod);
   for (let dir of dirs) {
     await cp(dir, dest);
   }
@@ -44,7 +49,7 @@ async function copyDirs (dirs, type, submod = '') {
 
 
 async function copyFiles (source, type, submod = '') {
-  const dest = path.join('.', config.dir, type, submod);
+  const dest = getDestDir(type, submod);
   await cp(source, dest);
 
   // const schemaFiles = await glob(
@@ -95,6 +100,7 @@ export default {
   copyFiles,
   copyDirs,
   readFile,
+  getDestDir,
   getSourceFiles,
   getDestFiles,
 }
