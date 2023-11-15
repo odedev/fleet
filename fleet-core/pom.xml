@@ -26,6 +26,7 @@
     <module>fleet-core-client</module>
     <module>fleet-core-metadata</module>
     <module>fleet-core-org</module>
+<!--    <module>fleet-core-organization</module>-->
     <module>fleet-core-tenant</module>
     <module>fleet-core-system</module>
   </modules>
