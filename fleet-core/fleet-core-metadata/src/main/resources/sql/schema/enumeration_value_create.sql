@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS `develop_enumeration_value` (
+CREATE TABLE IF NOT EXISTS `metadata_enumeration_value` (
     `id` VARCHAR(32) NOT NULL COMMENT '主键ID',
     `value` TINYINT NOT NULL DEFAULT '0' COMMENT '值',
     `name` VARCHAR(32) NOT NULL DEFAULT '' COMMENT '名称',
