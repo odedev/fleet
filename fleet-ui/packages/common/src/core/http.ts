@@ -53,7 +53,7 @@ export class Request {
     }
   }
 
-  async postForm(url: string, params: any) {
+  async postFormData(url: string, params: any) {
     const config = {
       headers: {
         'Content-Type': 'multipart/form-data;charset=utf-8'
