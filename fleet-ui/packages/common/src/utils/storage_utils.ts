@@ -1,9 +1,9 @@
-import {isJsonString} from "@/utils/is_utils";
+import {isObject, isJsonString} from "./is_utils";
 
 
 export function setItem(key: string, value: any) {
   let data = value
-  if (value && typeof value === 'object') {
+  if (value && isObject(value)) {
     data = JSON.stringify(value)
   }
   localStorage.setItem(key, data)

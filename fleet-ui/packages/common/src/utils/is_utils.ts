@@ -21,7 +21,7 @@ export function isObject(obj: any): obj is Record<string, unknown> {
 
 export const isPromise = <T>(obj: unknown): obj is Promise<T> => {
   return Object.prototype.toString.call(obj) === '[object Promise]';
-};
+}
 
 export function isString(obj: any): obj is string {
   return Object.prototype.toString.call(obj) === '[object String]';

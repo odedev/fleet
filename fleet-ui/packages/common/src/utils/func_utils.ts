@@ -29,3 +29,10 @@ export function debounce(fn: Function, n: number = 100, immediate: boolean = tru
     }
   }
 }
+
+// 等待
+export function sleep(time: number) {
+  return new Promise((resolve) => {
+    setTimeout(resolve, time);
+  })
+}
