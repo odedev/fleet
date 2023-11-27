@@ -48,6 +48,7 @@ const handleChange = (value: boolean, e: Event): void => {
   padding: 0;
   align-items: center;
   justify-content: center;
+  //justify-content: flex-start;
 
   .arco-checkbox {
     padding-left: 0;

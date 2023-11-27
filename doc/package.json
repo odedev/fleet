@@ -9,10 +9,7 @@
     "build": "vitepress build",
     "preview": "vitepress preview"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "vitepress": "^1.0.0-rc.25"
+  "dependencies": {
+    "vitepress": "^1.0.0-rc.31"
   }
 }
