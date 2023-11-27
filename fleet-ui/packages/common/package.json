@@ -12,7 +12,7 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
-    "@arco-design/web-vue": "^2.53.2",
+    "@arco-design/web-vue": "^2.53.3",
     "@bytemd/plugin-breaks": "^1.21.0",
     "@bytemd/plugin-gemoji": "^1.21.0",
     "@bytemd/plugin-gfm": "^1.21.0",
@@ -94,7 +94,7 @@
     "validator": "^13.11.0",
     "video.js": "^8.3.0",
     "viewerjs": "^1.11.4",
-    "vue": "^3.3.8",
+    "vue": "^3.3.9",
     "vue-router": "^4.2.5",
     "ws": "^8.14.2",
     "xgplayer": "^3.0.8",
@@ -109,7 +109,7 @@
     "@types/bytes": "^3.1.1",
     "@types/crypto-js": "^4.1.1",
     "@types/mime-types": "^2.1.1",
-    "@types/node": "^18.18.12",
+    "@types/node": "^18.18.13",
     "@types/nprogress": "^0.2.0",
     "@types/qs": "^6.9.7",
     "@vitejs/plugin-vue": "^4.5.0",
