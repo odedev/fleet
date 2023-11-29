@@ -8,6 +8,9 @@ npm install --save nanoid nodemailer picocolors puppeteer
 npm install --save reflect-metadata response-time serve-favicon sqlite3 typeorm
 npm install --save uuid wait-on ws
 npm install --save @playwright/test
+npm install --save jsonwebtoken
+
+npm install --save lowdb
 
 # npm install --save protobufjs
 
