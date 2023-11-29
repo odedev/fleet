@@ -3,6 +3,7 @@ npm install --save vue vue-router pinia
 npm install --save @arco-design/web-vue
 npm install --save axios qs ws socket.io-client dayjs
 npm install --save mitt crypto-js nprogress
+npm install --save vue-draggable-plus
 npm install --save @vue/repl
 
 npm install --save @bytemd/plugin-breaks @bytemd/plugin-gemoji @bytemd/plugin-gfm @bytemd/plugin-highlight
@@ -14,6 +15,7 @@ npm install --save @codemirror/language @codemirror/lang-markdown @codemirror/la
 npm install --save @codemirror/lang-javascript @codemirror/lang-html @codemirror/lang-css @codemirror/language-data
 
 npm install --save-dev vite vue-tsc @vue/tsconfig
+npm install --save-dev typescript
 npm install --save-dev prettier eslint eslint-plugin-vue
 npm install --save-dev @rushstack/eslint-patch npm-run-all
 npm install --save-dev @tsconfig/node18 @types/node
