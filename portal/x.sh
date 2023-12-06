@@ -1,4 +1,5 @@
 
+npm install --save @arco-design/web-vue
 npm install --save @element-plus/icons-vue element-plus
 
 npm install --save-dev nuxt vue vue-router
