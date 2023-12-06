@@ -1,0 +1,8 @@
+packages:
+  - 'apps/*'
+  - 'cores/*'
+  - 'modules/*'
+  - 'tools/*'
+  - 'packages/*'
+  - "!apps/app"
+  - '!**/test/**'
