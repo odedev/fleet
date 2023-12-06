@@ -2,6 +2,8 @@
   "name": "@fleet/component",
   "version": "1.0.0",
   "private": true,
+  "type": "module",
+  "main": "index.js",
   "scripts": {
     "dev": "vite",
     "build": "run-p type-check \"build-only {@}\" --",
