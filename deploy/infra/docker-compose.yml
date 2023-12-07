@@ -24,7 +24,7 @@ services:
     shm_size: '256m'
 
   nexus:
-    image: sonatype/nexus3:3.55.0
+    image: sonatype/nexus3:3.63.0
     environment:
       - NEXUS_CONTEXT: nexus
     volumes:

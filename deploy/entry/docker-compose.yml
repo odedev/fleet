@@ -1,6 +1,6 @@
 services:
   haproxy:
-    image: haproxy:2.8.0
+    image: haproxy:2.9.0
     volumes:
       - ./haproxy/config/haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg:ro
     ports:
@@ -14,7 +14,7 @@ services:
     user: root
 
   reverse-proxy:
-    image: traefik:v2.10
+    image: traefik:v2.10.7
     volumes:
       # So that Traefik can listen to the Docker events
       - /var/run/docker.sock:/var/run/docker.sock
