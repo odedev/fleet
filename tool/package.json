@@ -2,8 +2,8 @@
   "name": "fleet-tool",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "type": "module",
+  "main": "index.js",
   "scripts": {
     "start": "node main.js",
     "dev": "npx nodemon main.js",
@@ -37,19 +37,19 @@
     "nanoid": "^4.0.2",
     "nodemailer": "^6.9.7",
     "picocolors": "^1.0.0",
-    "puppeteer": "^21.5.2",
-    "reflect-metadata": "^0.1.13",
+    "puppeteer": "^21.6.0",
+    "reflect-metadata": "^0.1.14",
     "response-time": "^2.3.2",
     "serve-favicon": "^2.5.0",
     "sqlite3": "^5.1.6",
     "typeorm": "^0.3.17",
     "uuid": "^9.0.1",
     "wait-on": "^7.2.0",
-    "ws": "^8.14.2"
+    "ws": "^8.15.1"
   },
   "devDependencies": {
     "@types/express": "^4.17.21",
-    "@types/node": "^20.10.3",
+    "@types/node": "^20.10.4",
     "daisyui": "^3.9.4",
     "nodemon": "^2.0.22",
     "tailwindcss": "^3.3.6"

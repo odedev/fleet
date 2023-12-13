@@ -115,6 +115,8 @@ yarn.lock
 # dotenv environment variables file
 .env
 
+*.tsbuildinfo
+
 # next.js build output
 .next
 
