@@ -22,11 +22,12 @@ npm install --save interactjs
 npm install --save mime
 npm install --save validator
 
+npm install --save pdfjs-dist
+npm install --save docx
 npm install --save https://cdn.sheetjs.com/xlsx-0.20.1/xlsx-0.20.1.tgz
 npm install --save file-saver
 # npm install --save socket.io-client
 # npm install --save query-string
-
 
 
 npm install --save video.js
@@ -34,8 +35,30 @@ npm install --save viewerjs
 npm install --save xgplayer
 npm install --save xgplayer-flv
 npm install --save bpmn-js
-npm install --save dhtmlx-gantt
 
+npm install --save dhtmlx-gantt
+npm install --save echarts
+
+npm install --save d3
+npm install --save d3-array
+npm install --save d3-collection
+npm install --save d3-color
+npm install --save d3-dispatch
+npm install --save d3-ease
+npm install --save d3-format
+npm install --save d3-hierarchy
+npm install --save d3-interpolate
+npm install --save d3-path
+npm install --save d3-random
+npm install --save d3-scale
+npm install --save d3-selection
+npm install --save d3-shape
+npm install --save d3-time
+npm install --save d3-time-format
+npm install --save d3-transition
+
+npm install --save animate.css
+npm install --save normalize.css
 
 npm install --save vue
 npm install --save vue-router
@@ -47,7 +70,6 @@ npm install --save @vue/repl
 npm install --save @vueuse/core
 npm install --save vue-i18n
 
-# npm install --save echarts
 # npm install --save vue-echarts
 
 
@@ -80,6 +102,9 @@ npm install --save @codemirror/lang-css
 npm install --save @codemirror/language-data
 
 npm install --save monaco-editor
+
+npm install --save tinymce
+npm install --save @tinymce/tinymce-vue
 
 npm install --save @ckeditor/ckeditor5-alignment
 npm install --save @ckeditor/ckeditor5-autoformat

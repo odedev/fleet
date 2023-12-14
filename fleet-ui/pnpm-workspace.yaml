@@ -1,7 +1,7 @@
 packages:
   - 'apps/*'
   - 'cores/*'
-  - 'modules/*'
+  - '!modules/*'
   - 'tools/*'
   - 'packages/*'
   - "!apps/app"
