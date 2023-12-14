@@ -5,20 +5,9 @@
 
 | Port    | Link | Desc        |
 |---------|------|-------------|
-| `23500` |      | 文档          |
-| `23501` |      | App Main    |
-| `23502` |      | UI App Main |
-| `23503` |      | UI Common   |
-| `23505` |      | Portal        |
-| `23506` |      | Tool      |
-
-
-
-| Port    | Link | Desc        |
-|---------|------|-------------|
 | `23500` |      | Doc         |
-| `23501` |      | App Main    |
-| `23502` |      | UI App Main |
-| `23503` |      | UI Common   |
-| `23600` |      | Portal      |
-| `23601` |      | Tool        |
+| `23510` |      | App Main    |
+| `23520` |      | UI App Main |
+| `23521` |      | UI App Dev  |
+| `23550` |      | Portal      |
+| `23560` |      | Tool        |

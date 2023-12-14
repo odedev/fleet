@@ -11,7 +11,7 @@ const require = createRequire( import.meta.url );
 // https://vitejs.dev/config/
 export default defineConfig({
   server: {
-    port: 23503
+    port: 23530
   },
   plugins: [
     vue(),

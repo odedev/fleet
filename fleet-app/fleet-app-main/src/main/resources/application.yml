@@ -21,7 +21,7 @@ spring:
     active: dev
 
 server:
-  port: 23501
+  port: 23510
 
 mybatis:
   mapper-locations: classpath:mapper/*.xml, classpath*:mapper/*.xml
