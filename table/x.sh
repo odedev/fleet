@@ -35,25 +35,26 @@ php artisan make:resource UserRoleCollection
 sleep 10s
 
 # org
+
+php artisan make:model Department -mfscr
+php artisan make:observer DepartmentObserver --model=Department
+php artisan make:resource DepartmentResource
+php artisan make:resource DepartmentCollection
+
 php artisan make:model Org -mfscr
 php artisan make:observer OrgObserver --model=Org
 php artisan make:resource OrgResource
 php artisan make:resource OrgCollection
-
-php artisan make:model OrgUser -mfscr
-php artisan make:observer OrgUserObserver --model=OrgUser
-php artisan make:resource OrgUserResource
-php artisan make:resource OrgUserCollection
 
 php artisan make:model OrgRole -mfscr
 php artisan make:observer OrgRoleObserver --model=OrgRole
 php artisan make:resource OrgRoleResource
 php artisan make:resource OrgRoleCollection
 
-php artisan make:model Department -mfscr
-php artisan make:observer DepartmentObserver --model=Department
-php artisan make:resource DepartmentResource
-php artisan make:resource DepartmentCollection
+php artisan make:model OrgUser -mfscr
+php artisan make:observer OrgUserObserver --model=OrgUser
+php artisan make:resource OrgUserResource
+php artisan make:resource OrgUserCollection
 
 php artisan make:model Situation -mfscr
 php artisan make:observer SituationObserver --model=Situation
@@ -68,21 +69,19 @@ php artisan make:observer TenantObserver --model=Tenant
 php artisan make:resource TenantResource
 php artisan make:resource TenantCollection
 
-php artisan make:model TenantUser -mfscr
-php artisan make:observer TenantUserObserver --model=TenantUser
-php artisan make:resource TenantUserResource
-php artisan make:resource TenantUserCollection
-
 php artisan make:model TenantRole -mfscr
 php artisan make:observer TenantRoleObserver --model=TenantRole
 php artisan make:resource TenantRoleResource
 php artisan make:resource TenantRoleCollection
 
+php artisan make:model TenantUser -mfscr
+php artisan make:observer TenantUserObserver --model=TenantUser
+php artisan make:resource TenantUserResource
+php artisan make:resource TenantUserCollection
+
 sleep 10s
 
-
-
-# file resource
+# asset
 php artisan make:model ResourceFile -mfscr
 php artisan make:observer ResourceFileObserver --model=ResourceFile
 php artisan make:resource ResourceFileResource
@@ -136,4 +135,6 @@ php artisan make:observer ViewBlockObserver --model=ViewBlock
 php artisan make:resource ViewBlockResource
 php artisan make:resource ViewBlockCollection
 
-sleep 10s
+
+composer run-script post-install-cmd
+
