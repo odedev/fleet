@@ -136,5 +136,5 @@ php artisan make:resource ViewBlockResource
 php artisan make:resource ViewBlockCollection
 
 
-composer run-script post-install-cmd
+#composer run-script post-install-cmd
 
