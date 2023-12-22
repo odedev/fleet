@@ -12,19 +12,19 @@ import java.util.List;
 @RestController
 @RequestMapping(path = "/base/id")
 public class IdController {
-    @GetMapping(path = "")
+    @GetMapping(path = "/one")
     public ResponseData getId() {
         String id = IdUtils.getId();
         return new ResponseData(id);
     }
 
-    @GetMapping(path = "/list")
+    @GetMapping(path = "/many")
     public ResponseData getIds() {
         List<String> idList = IdUtils.getIdList();
         return new ResponseData(idList);
     }
 
-    @GetMapping(path = "/list/{num}")
+    @GetMapping(path = "/many/{num}")
     public ResponseData getIdList(@PathVariable int num) {
         List<String> idList = IdUtils.getIdList(num);
         return new ResponseData(idList);

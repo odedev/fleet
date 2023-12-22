@@ -17,12 +17,11 @@ public class UserModel extends AbstractModel<User> {
     private String note;
 
     public UserModel() {
-
     }
 
-    public UserModel(User user) {
-        this.fromEntity(user);
-    }
+//    public UserModel(User user) {
+//        this.fromEntity(user);
+//    }
 
     @Override
     public String getId() {
@@ -108,34 +107,11 @@ public class UserModel extends AbstractModel<User> {
 
     @Override
     public void fromEntity(User user) {
-        if (user == null) {
-            return;
-        }
-        this.setId(user.getId());
-        this.setUsername(user.getUsername());
-        this.setPassword(user.getPassword());
-        this.setCode(user.getCode());
-        this.setName(user.getName());
-        this.setEmail(user.getEmail());
-        this.setPhone(user.getPhone());
-        this.setUserType(UserTypeEnum.getByValue(user.getUserType()));
-        this.setIsSuperAdmin(user.getIsSuperAdmin());
-        this.setNote(user.getNote());
+
     }
 
     @Override
     public User toEntity() {
-        User user = new User();
-        user.setId(this.getId());
-        user.setUsername(this.getUsername());
-        user.setPassword(this.getPassword());
-        user.setCode(this.getCode());
-        user.setName(this.getName());
-        user.setEmail(this.getEmail());
-        user.setPhone(this.getPhone());
-        user.setUserType(this.getUserType().getValue());
-        user.setIsSuperAdmin(this.getIsSuperAdmin());
-        user.setNote(this.getNote());
-        return user;
+        return null;
     }
 }

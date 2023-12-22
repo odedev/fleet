@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(path = "/file/resource")
+@RequestMapping(path = "/asset/resource")
 public class ResourceController {
     private final ResourceService resourceService;
     public ResourceController(ResourceService resourceService) {

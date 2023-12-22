@@ -20,9 +20,9 @@ public class ResourceFileModel extends AbstractModel<ResourceFile> {
     public ResourceFileModel() {
     }
 
-    public ResourceFileModel(ResourceFile resourceFile) {
-        this.fromEntity(resourceFile);
-    }
+//    public ResourceFileModel(ResourceFile resourceFile) {
+//        this.fromEntity(resourceFile);
+//    }
 
     @Override
     public String getId() {
@@ -116,36 +116,37 @@ public class ResourceFileModel extends AbstractModel<ResourceFile> {
 
     @Override
     public void fromEntity(ResourceFile resourceFile) {
-        if (resourceFile == null) {
-            return;
-        }
-        this.setId(resourceFile.getId());
-        this.setName(resourceFile.getName());
-        this.setSize(resourceFile.getSize());
-        this.setType(resourceFile.getType());
-        this.setPath(resourceFile.getPath());
-        this.setUrl(resourceFile.getUrl());
-        this.setLocation(LocationEnum.getByValue(resourceFile.getLocation()));
-        this.setDirectory(resourceFile.getDirectory());
-        this.setCategory(resourceFile.getCategory());
-        this.setStatus(resourceFile.getStatus());
-        this.setScope(resourceFile.getScope());
+//        if (resourceFile == null) {
+//            return;
+//        }
+//        this.setId(resourceFile.getId());
+//        this.setName(resourceFile.getName());
+//        this.setSize(resourceFile.getSize());
+//        this.setType(resourceFile.getType());
+//        this.setPath(resourceFile.getPath());
+//        this.setUrl(resourceFile.getUrl());
+//        this.setLocation(LocationEnum.getByValue(resourceFile.getLocation()));
+//        this.setDirectory(resourceFile.getDirectory());
+//        this.setCategory(resourceFile.getCategory());
+//        this.setStatus(resourceFile.getStatus());
+//        this.setScope(resourceFile.getScope());
     }
 
     @Override
     public ResourceFile toEntity() {
-        ResourceFile resourceFile = new ResourceFile();
-        resourceFile.setId(this.getId());
-        resourceFile.setName(this.getName());
-        resourceFile.setSize(this.getSize());
-        resourceFile.setType(this.getType());
-        resourceFile.setPath(this.getPath());
-        resourceFile.setUrl(this.getUrl());
-        resourceFile.setLocation(this.getLocation().getValue());
-        resourceFile.setDirectory(this.getDirectory());
-        resourceFile.setCategory(this.getCategory());
-        resourceFile.setStatus(this.getStatus());
-        resourceFile.setScope(this.getScope());
-        return resourceFile;
+//        ResourceFile resourceFile = new ResourceFile();
+//        resourceFile.setId(this.getId());
+//        resourceFile.setName(this.getName());
+//        resourceFile.setSize(this.getSize());
+//        resourceFile.setType(this.getType());
+//        resourceFile.setPath(this.getPath());
+//        resourceFile.setUrl(this.getUrl());
+//        resourceFile.setLocation(this.getLocation().getValue());
+//        resourceFile.setDirectory(this.getDirectory());
+//        resourceFile.setCategory(this.getCategory());
+//        resourceFile.setStatus(this.getStatus());
+//        resourceFile.setScope(this.getScope());
+//        return resourceFile;
+        return null;
     }
 }
