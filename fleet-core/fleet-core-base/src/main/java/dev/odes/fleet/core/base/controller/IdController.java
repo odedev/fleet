@@ -25,7 +25,7 @@ public class IdController {
     }
 
     @GetMapping(path = "/many/{num}")
-    public ResponseData getIdList(@PathVariable int num) {
+    public ResponseData getIdList(@PathVariable("num") int num) {
         List<String> idList = IdUtils.getIdList(num);
         return new ResponseData(idList);
     }
