@@ -7,6 +7,7 @@
   "scripts": {
     "start": "node main.js",
     "dev": "npx nodemon main.js",
+    "postcss": "npx postcss -i ./src/asset/main.css -o ./assets/main.css",
     "style": "npx tailwindcss -i ./src/asset/main.css -o ./assets/main.css --watch"
   },
   "keywords": [],
