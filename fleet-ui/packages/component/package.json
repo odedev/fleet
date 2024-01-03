@@ -92,6 +92,7 @@
     "mitt": "^3.0.1",
     "monaco-editor": "^0.40.0",
     "nprogress": "^0.2.0",
+    "pdfjs-dist": "^4.0.379",
     "pinia": "^2.1.7",
     "qs": "^6.11.2",
     "socket.io-client": "^4.7.2",

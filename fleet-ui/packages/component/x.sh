@@ -90,6 +90,7 @@ npm install --save vue-router
 npm install --save ws
 npm install --save xgplayer
 npm install --save xgplayer-flv
+npm install --save pdfjs-dist
 npm install --save https://cdn.sheetjs.com/xlsx-0.20.1/xlsx-0.20.1.tgz
 
 npm install --save-dev @ckeditor/vite-plugin-ckeditor5
