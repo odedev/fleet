@@ -60,6 +60,9 @@ npm install --save bytemd
 npm install --save bytes
 npm install --save change-case
 npm install --save clipboard
+npm install --save file-saver
+npm install --save jszip
+npm install --save js-base64
 npm install --save color
 npm install --save cropperjs
 npm install --save crypto-js
