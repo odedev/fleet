@@ -68,7 +68,7 @@ const sidebar = {
       items: [
         { text: '基础功能', link: '/module/core-base' },
         { text: '元数据', link: '/module/core-metadata' },
-        { text: '资源文件', link: '/module/core-file' },
+        { text: '系统资源', link: '/module/core-asset' },
         { text: '系统管理', link: '/module/core-system' },
         { text: '组织架构', link: '/module/core-org' },
 

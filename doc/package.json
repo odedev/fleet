@@ -1,7 +1,7 @@
 {
   "name": "doc",
   "version": "1.0.0",
-  "description": "",
+  "description": "doc",
   "type": "module",
   "main": "index.js",
   "scripts": {
@@ -10,6 +10,6 @@
     "preview": "vitepress preview"
   },
   "dependencies": {
-    "vitepress": "^1.0.0-rc.31"
+    "vitepress": "^1.0.0-rc.35"
   }
 }
