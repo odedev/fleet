@@ -6,7 +6,7 @@ import dev.odes.fleet.core.asset.enumeration.LocationEnum;
 import dev.odes.fleet.core.asset.model.ResourceFileModel;
 import org.springframework.stereotype.Component;
 
-@Component
+@Component("dev.odes.fleet.core.asset.transform.ResourceFileTransform")
 public class ResourceFileTransform implements Transform<ResourceFile, ResourceFileModel> {
 
     @Override

@@ -5,17 +5,17 @@
 <mapper namespace="dev.odes.fleet.core.asset.mapper.ResourceFileMapper">
   <sql id="tableColumn">
     <trim suffixOverrides=",">
-      `resource_file`.`id`,
-      `resource_file`.`name`,
-      `resource_file`.`size`,
-      `resource_file`.`type`,
-      `resource_file`.`path`,
-      `resource_file`.`url`,
-      `resource_file`.`location`,
-      `resource_file`.`directory`,
-      `resource_file`.`category`,
-      `resource_file`.`status`,
-      `resource_file`.`scope`,
+      `asset_resource_file`.`id`,
+      `asset_resource_file`.`name`,
+      `asset_resource_file`.`size`,
+      `asset_resource_file`.`type`,
+      `asset_resource_file`.`path`,
+      `asset_resource_file`.`url`,
+      `asset_resource_file`.`location`,
+      `asset_resource_file`.`directory`,
+      `asset_resource_file`.`category`,
+      `asset_resource_file`.`status`,
+      `asset_resource_file`.`scope`,
     </trim>
   </sql>
   <sql id="column">
@@ -66,17 +66,17 @@
   </sql>
   <sql id="insertEntityValue">
     <trim suffixOverrides=",">
-      #{staticFile.id},
-      <if test="staticFile.name != null">#{staticFile.name},</if>
-      <if test="staticFile.size != null">#{staticFile.size},</if>
-      <if test="staticFile.type != null">#{staticFile.type},</if>
-      <if test="staticFile.path != null">#{staticFile.path},</if>
-      <if test="staticFile.url != null">#{staticFile.url},</if>
-      <if test="staticFile.location != null">#{staticFile.location},</if>
-      <if test="staticFile.directory != null">#{staticFile.directory},</if>
-      <if test="staticFile.category != null">#{staticFile.category},</if>
-      <if test="staticFile.status != null">#{staticFile.status},</if>
-      <if test="staticFile.scope != null">#{staticFile.scope},</if>
+      #{resourceFile.id},
+      <if test="resourceFile.name != null">#{resourceFile.name},</if>
+      <if test="resourceFile.size != null">#{resourceFile.size},</if>
+      <if test="resourceFile.type != null">#{resourceFile.type},</if>
+      <if test="resourceFile.path != null">#{resourceFile.path},</if>
+      <if test="resourceFile.url != null">#{resourceFile.url},</if>
+      <if test="resourceFile.location != null">#{resourceFile.location},</if>
+      <if test="resourceFile.directory != null">#{resourceFile.directory},</if>
+      <if test="resourceFile.category != null">#{resourceFile.category},</if>
+      <if test="resourceFile.status != null">#{resourceFile.status},</if>
+      <if test="resourceFile.scope != null">#{resourceFile.scope},</if>
     </trim>
   </sql>
 
@@ -96,16 +96,16 @@
   </sql>
   <sql id="updateEntityColumn">
     <trim prefix="set" suffixOverrides=",">
-      <if test="staticFile.name != null">`name` = #{staticFile.name},</if>
-      <if test="staticFile.size != null">`size` = #{staticFile.size},</if>
-      <if test="staticFile.type != null">`type` = #{staticFile.type},</if>
-      <if test="staticFile.path != null">`path` = #{staticFile.path},</if>
-      <if test="staticFile.url != null">`url` = #{staticFile.url},</if>
-      <if test="staticFile.location != null">`location` = #{staticFile.location},</if>
-      <if test="staticFile.directory != null">`directory` = #{staticFile.directory},</if>
-      <if test="staticFile.category != null">`category` = #{staticFile.category},</if>
-      <if test="staticFile.status != null">`status` = #{staticFile.status},</if>
-      <if test="staticFile.scope != null">`scope` = #{staticFile.scope},</if>
+      <if test="resourceFile.name != null">`name` = #{resourceFile.name},</if>
+      <if test="resourceFile.size != null">`size` = #{resourceFile.size},</if>
+      <if test="resourceFile.type != null">`type` = #{resourceFile.type},</if>
+      <if test="resourceFile.path != null">`path` = #{resourceFile.path},</if>
+      <if test="resourceFile.url != null">`url` = #{resourceFile.url},</if>
+      <if test="resourceFile.location != null">`location` = #{resourceFile.location},</if>
+      <if test="resourceFile.directory != null">`directory` = #{resourceFile.directory},</if>
+      <if test="resourceFile.category != null">`category` = #{resourceFile.category},</if>
+      <if test="resourceFile.status != null">`status` = #{resourceFile.status},</if>
+      <if test="resourceFile.scope != null">`scope` = #{resourceFile.scope},</if>
     </trim>
   </sql>
 
@@ -126,7 +126,7 @@
   <select id="findOne" resultMap="resultMap" resultType="dev.odes.fleet.core.asset.entity.ResourceFile">
     SELECT
     <include refid="column"/>
-    FROM `resource_file`
+    FROM `asset_resource_file`
     <if test="where != null and where != ''">
       <where>
         ${where}
@@ -138,7 +138,7 @@
   <select id="findMany" resultMap="resultMap" resultType="dev.odes.fleet.core.asset.entity.ResourceFile">
     SELECT
     <include refid="column"/>
-    FROM `resource_file`
+    FROM `asset_resource_file`
     <if test="where != null and where != ''">
       <where>
         ${where}
@@ -155,14 +155,14 @@
   </select>
 
   <insert id="insertOne" parameterType="dev.odes.fleet.core.asset.entity.ResourceFile">
-    INSERT INTO `resource_file`
+    INSERT INTO `asset_resource_file`
     (<include refid="insertColumn"/>)
     VALUES
     (<include refid="insertValue"/>)
   </insert>
 
   <insert id="insertMany" parameterType="java.util.List">
-    INSERT INTO `resource_file`
+    INSERT INTO `asset_resource_file`
     (<include refid="insertColumn"/>)
     VALUES
     <foreach collection="list" item="module" separator=",">
@@ -177,11 +177,11 @@
   </update>
 
   <delete id="deleteOne" parameterType="java.lang.String">
-    DELETE FROM `resource_file` WHERE id=#{id}
+    DELETE FROM `asset_resource_file` WHERE id=#{id}
   </delete>
 
   <select id="count" resultType="java.lang.Integer">
-    SELECT COUNT(1) FROM `resource_file`
+    SELECT COUNT(1) FROM `asset_resource_file`
     <if test="where != null and where != ''">
       <where>
         ${where}

@@ -1,11 +1,11 @@
 CREATE TABLE IF NOT EXISTS `system_user` (
     `id` VARCHAR(32) NOT NULL COMMENT '主键ID',
-    `username` VARCHAR(32) NOT NULL COMMENT '用户名',
+    `username` VARCHAR(64) NOT NULL COMMENT '用户名',
     `password` VARCHAR(64) NOT NULL COMMENT '密码',
-    `code` VARCHAR(32) NOT NULL DEFAULT ''  COMMENT '编码',
-    `name` VARCHAR(32) NOT NULL DEFAULT '' COMMENT '名称',
-    `email` VARCHAR(32) NULL DEFAULT '8080' COMMENT '邮箱',
-    `phone` VARCHAR(16) NULL DEFAULT '8080' COMMENT '手机号',
+    `code` VARCHAR(64) NOT NULL DEFAULT '' COMMENT '编码',
+    `name` VARCHAR(64) NOT NULL DEFAULT '' COMMENT '名称',
+    `email` VARCHAR(64) NULL DEFAULT NULL COMMENT '邮箱',
+    `phone` VARCHAR(16) NULL DEFAULT NULL COMMENT '手机号',
     `user_type` TINYINT NOT NULL DEFAULT '1' COMMENT '用户类型',
     `is_super_admin` TINYINT NOT NULL DEFAULT '0' COMMENT '是否超级管理员',
     `note` VARCHAR(255) NULL DEFAULT '' COMMENT '备注',
@@ -17,13 +17,15 @@ CREATE TABLE IF NOT EXISTS `system_user` (
     `ext_seg6` VARCHAR(255) NULL DEFAULT NULL COMMENT '扩展段6',
     `ext_seg7` VARCHAR(255) NULL DEFAULT NULL COMMENT '扩展段7',
     `ext_seg8` VARCHAR(255) NULL DEFAULT NULL COMMENT '扩展段8',
-    `created_by` VARCHAR(32) NULL DEFAULT NULL COMMENT '创建人ID',
+    `created_by` VARCHAR(32) NULL DEFAULT NULL COMMENT '创建人',
     `created_at` DATETIME NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
-    `updated_by` VARCHAR(32) NULL DEFAULT NULL COMMENT '更新人ID',
+    `updated_by` VARCHAR(32) NULL DEFAULT NULL COMMENT '更新人',
     `updated_at` DATETIME NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
-    `deleted_by` VARCHAR(32) NULL DEFAULT NULL COMMENT '删除人ID',
+    `updated_count` BIGINT UNSIGNED DEFAULT '0' COMMENT '更新次数',
+    `deleted_by` VARCHAR(32) NULL DEFAULT NULL COMMENT '删除人',
     `deleted_at` DATETIME NULL DEFAULT NULL COMMENT '删除时间',
+
     PRIMARY KEY (`id`),
-    UNIQUE INDEX `username` (`username`),
-    UNIQUE INDEX `code` (`code`)
+    UNIQUE KEY `system_user_username_unique` (`username`),
+    UNIQUE KEY `system_user_code_unique` (`code`)
 );

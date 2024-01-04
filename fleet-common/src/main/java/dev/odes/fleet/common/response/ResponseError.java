@@ -8,14 +8,12 @@ public class ResponseError implements Serializable {
     private String title;
     private String message;
     private Integer status;
-    private Boolean isOk;
     private Object error;
 
     public ResponseError(Object error) {
         this.setTitle("");
         this.setMessage("");
         this.setStatus(500);
-        this.setIsOk(false);
         this.setError(error);
     }
 
@@ -23,7 +21,6 @@ public class ResponseError implements Serializable {
         this.setTitle(title);
         this.setMessage(message);
         this.setStatus(500);
-        this.setIsOk(false);
         this.setError(null);
     }
 
@@ -31,7 +28,6 @@ public class ResponseError implements Serializable {
         this.setTitle(title);
         this.setMessage(message);
         this.setStatus(500);
-        this.setIsOk(false);
         this.setError(error);
     }
 
@@ -39,7 +35,6 @@ public class ResponseError implements Serializable {
         this.setTitle(title);
         this.setMessage(message);
         this.setStatus(status);
-        this.setIsOk(false);
         this.setError(null);
     }
 
@@ -65,14 +60,6 @@ public class ResponseError implements Serializable {
 
     public void setStatus(Integer status) {
         this.status = status;
-    }
-
-    public Boolean getIsOk() {
-        return isOk;
-    }
-
-    public void setIsOk(Boolean ok) {
-        isOk = ok;
     }
 
     public Object getError() {

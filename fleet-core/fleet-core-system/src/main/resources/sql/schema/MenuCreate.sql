@@ -1,9 +1,9 @@
 CREATE TABLE IF NOT EXISTS `system_menu` (
     `id` VARCHAR(32) NOT NULL COMMENT '主键ID',
-    `code` VARCHAR(32) NOT NULL DEFAULT ''  COMMENT '编码',
-    `name` VARCHAR(32) NOT NULL DEFAULT '' COMMENT '名称',
+    `code` VARCHAR(64) NOT NULL DEFAULT ''  COMMENT '编码',
+    `name` VARCHAR(64) NOT NULL DEFAULT '' COMMENT '名称',
     `path` VARCHAR(255) NULL DEFAULT '' COMMENT '路径',
-    `icon` VARCHAR(32) NULL DEFAULT '' COMMENT '图标',
+    `icon` VARCHAR(64) NULL DEFAULT '' COMMENT '图标',
     `sequence` INT NOT NULL DEFAULT '10' COMMENT '序号',
     `parent` VARCHAR(32) NULL DEFAULT NULL COMMENT '父级菜单',
     `note` VARCHAR(255) NULL DEFAULT '' COMMENT '备注',
@@ -20,8 +20,10 @@ CREATE TABLE IF NOT EXISTS `system_menu` (
     `created_at` DATETIME NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
     `updated_by` VARCHAR(32) NULL DEFAULT NULL COMMENT '更新人ID',
     `updated_at` DATETIME NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+    `updated_count` BIGINT UNSIGNED DEFAULT '0' COMMENT '更新次数',
     `deleted_by` VARCHAR(32) NULL DEFAULT NULL COMMENT '删除人ID',
     `deleted_at` DATETIME NULL DEFAULT NULL COMMENT '删除时间',
+
     PRIMARY KEY (`id`),
-    UNIQUE INDEX `code` (`code`)
+    UNIQUE KEY `system_menu_code_unique` (`code`)
 );

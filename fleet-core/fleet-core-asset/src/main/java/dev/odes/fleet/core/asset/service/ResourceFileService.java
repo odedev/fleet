@@ -7,7 +7,7 @@ import dev.odes.fleet.core.asset.repository.ResourceFileRepository;
 import dev.odes.fleet.core.asset.transform.ResourceFileTransform;
 import org.springframework.stereotype.Service;
 
-@Service
+@Service("dev.odes.fleet.core.asset.service.ResourceFileService")
 public class ResourceFileService extends AbstractService<ResourceFile, ResourceFileModel, ResourceFileRepository> {
     private final ResourceFileTransform resourceFileTransform;
     private final ResourceFileRepository resourceFileRepository;

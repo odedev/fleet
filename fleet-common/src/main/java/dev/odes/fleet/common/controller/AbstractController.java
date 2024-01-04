@@ -23,7 +23,7 @@ public abstract class AbstractController<E extends AbstractEntity, M extends Abs
 
     @Override
     @GetMapping(path = "/find/id/{id}")
-    public ResponseData findById(@PathVariable String id) {
+    public ResponseData findById(@PathVariable("id") String id) {
         M m = this.service.findOneById(id);
         return new ResponseData(m);
     }

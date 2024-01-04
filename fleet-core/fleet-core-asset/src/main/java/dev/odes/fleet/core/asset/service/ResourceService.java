@@ -10,13 +10,13 @@ import org.springframework.stereotype.Service;
 
 import java.io.*;
 
-@Service
+@Service("dev.odes.fleet.core.asset.service.ResourceService")
 public class ResourceService {
     private final ResourceRepository resourceRepository;
-    private final ResourceFileService staticFileService;
-    public ResourceService(ResourceRepository resourceRepository, ResourceFileService staticFileService) {
+    private final ResourceFileService resourceFileService;
+    public ResourceService(ResourceRepository resourceRepository, ResourceFileService resourceFileService) {
         this.resourceRepository = resourceRepository;
-        this.staticFileService = staticFileService;
+        this.resourceFileService = resourceFileService;
     }
 
     public ResourceFileModel upload(ResourceUploadDto resourceUploadDto) {
@@ -25,17 +25,18 @@ public class ResourceService {
             throw new RuntimeException("上传失败");
         }
         String category = resourceUploadDto.getCategory();
-        ResourceFileModel staticFileModel = new ResourceFileModel();
-        staticFileModel.setId(IdUtils.getId());
-        staticFileModel.setName(resourceDto.getName());
-        staticFileModel.setType(resourceDto.getType());
-        staticFileModel.setSize(resourceDto.getSize());
-        staticFileModel.setPath(resourceDto.getPath());
-        staticFileModel.setUrl(resourceDto.getUrl());
-        staticFileModel.setLocation(resourceDto.getLocation());
-        staticFileModel.setDirectory(resourceDto.getDirectory());
-        staticFileModel.setCategory(category);
-        ResourceFileModel fileModel = this.staticFileService.insertOne(staticFileModel);
+        ResourceFileModel resourceFileModel = new ResourceFileModel();
+        resourceFileModel.setId(IdUtils.getId());
+        resourceFileModel.setName(resourceDto.getName());
+        resourceFileModel.setType(resourceDto.getType());
+        resourceFileModel.setSize(resourceDto.getSize());
+        resourceFileModel.setPath(resourceDto.getPath());
+        resourceFileModel.setUrl(resourceDto.getUrl());
+        resourceFileModel.setLocation(resourceDto.getLocation());
+        resourceFileModel.setDirectory(resourceDto.getDirectory());
+        resourceFileModel.setCategory(category);
+        resourceFileModel.setScope(resourceUploadDto.getScope());
+        ResourceFileModel fileModel = this.resourceFileService.insertOne(resourceFileModel);
         return fileModel;
     }
 

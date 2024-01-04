@@ -1,5 +1,6 @@
 package dev.odes.fleet.core.base.config;
 
+import dev.odes.fleet.common.constant.PresetConstant;
 import dev.odes.fleet.core.base.interceptor.RequestInterceptor;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
@@ -37,7 +38,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         WebMvcConfigurer.super.addResourceHandlers(registry);
 
-        File file = new File("public");
+        File file = new File(PresetConstant.PUBLIC_PATH);
         if (!file.exists()) {
             boolean mkdir = file.mkdir();
         }

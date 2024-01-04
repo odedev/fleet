@@ -1,6 +1,6 @@
 CREATE TABLE IF NOT EXISTS `system_role_menu` (
     `id` VARCHAR(32) NOT NULL COMMENT '主键ID',
-    `role` VARCHAR(32) NOT NULL DEFAULT ''  COMMENT '角色',
+    `role` VARCHAR(32) NOT NULL DEFAULT '' COMMENT '角色',
     `menu` VARCHAR(32) NOT NULL DEFAULT '' COMMENT '菜单',
     `ext_seg1` VARCHAR(255) NULL DEFAULT NULL COMMENT '扩展段1',
     `ext_seg2` VARCHAR(255) NULL DEFAULT NULL COMMENT '扩展段2',
@@ -14,8 +14,10 @@ CREATE TABLE IF NOT EXISTS `system_role_menu` (
     `created_at` DATETIME NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
     `updated_by` VARCHAR(32) NULL DEFAULT NULL COMMENT '更新人ID',
     `updated_at` DATETIME NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+    `updated_count` BIGINT UNSIGNED DEFAULT '0' COMMENT '更新次数',
     `deleted_by` VARCHAR(32) NULL DEFAULT NULL COMMENT '删除人ID',
     `deleted_at` DATETIME NULL DEFAULT NULL COMMENT '删除时间',
+
     PRIMARY KEY (`id`),
-    INDEX `role` (`role`)
+    KEY `system_role_menu_role_index` (`role`)
 );

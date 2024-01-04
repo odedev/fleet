@@ -8,14 +8,12 @@ public class ResponseData implements Serializable {
     private String title;
     private String message;
     private Integer status;
-    private Boolean isOk;
     private Object data;
 
     public ResponseData(Object data) {
         this.setTitle("");
         this.setMessage("");
         this.setStatus(200);
-        this.setIsOk(true);
         this.setData(data);
     }
 
@@ -23,7 +21,6 @@ public class ResponseData implements Serializable {
         this.setTitle(title);
         this.setMessage(message);
         this.setStatus(200);
-        this.setIsOk(true);
         this.setData(null);
     }
 
@@ -31,7 +28,6 @@ public class ResponseData implements Serializable {
         this.setTitle(title);
         this.setMessage(message);
         this.setStatus(200);
-        this.setIsOk(true);
         this.setData(data);
     }
 
@@ -39,7 +35,6 @@ public class ResponseData implements Serializable {
         this.setTitle(title);
         this.setMessage(message);
         this.setStatus(status);
-        this.setIsOk(true);
         this.setData(null);
     }
 
@@ -65,14 +60,6 @@ public class ResponseData implements Serializable {
 
     public void setStatus(Integer status) {
         this.status = status;
-    }
-
-    public Boolean getIsOk() {
-        return isOk;
-    }
-
-    public void setIsOk(Boolean ok) {
-        isOk = ok;
     }
 
     public Object getData() {

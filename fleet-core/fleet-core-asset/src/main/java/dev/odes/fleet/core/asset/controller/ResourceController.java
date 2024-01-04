@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController
+@RestController("dev.odes.fleet.core.asset.controller.ResourceController")
 @RequestMapping(path = "/asset/resource")
 public class ResourceController {
     private final ResourceService resourceService;

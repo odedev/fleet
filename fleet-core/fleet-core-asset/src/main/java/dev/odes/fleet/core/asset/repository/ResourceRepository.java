@@ -1,9 +1,9 @@
 package dev.odes.fleet.core.asset.repository;
 
 import com.google.common.io.Files;
+import dev.odes.fleet.common.constant.PresetConstant;
 import dev.odes.fleet.common.utils.StringUtils;
 import dev.odes.fleet.component.minio.MinioRepository;
-import dev.odes.fleet.core.asset.constant.FileConstant;
 import dev.odes.fleet.core.asset.dto.ResourceDto;
 import dev.odes.fleet.core.asset.dto.ResourceUploadDto;
 import dev.odes.fleet.core.asset.enumeration.LocationEnum;
@@ -14,7 +14,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 
-@Repository
+@Repository("dev.odes.fleet.core.asset.repository.ResourceRepository")
 public class ResourceRepository {
     private final MinioRepository minioRepository;
 
@@ -51,14 +51,14 @@ public class ResourceRepository {
             }
         }
 
-        String publicPath = new File(FileConstant.PUBLIC_PATH).getAbsolutePath();
+        String publicPath = new File(PresetConstant.PUBLIC_PATH).getAbsolutePath();
         String path = publicPath + File.separator + filename;
-        String url = "/" + FileConstant.PUBLIC_PATH + "/" + filename;
+        String url = "/" + PresetConstant.PUBLIC_PATH + "/" + filename;
         if (!StringUtils.isNullOrEmpty(directory)) {
             directory = directory.replace("\\", File.separator);
             directory = directory.replace("/", File.separator);
             path = publicPath;
-            url = "/" + FileConstant.PUBLIC_PATH;
+            url = "/" + PresetConstant.PUBLIC_PATH;
             if (directory.startsWith(File.separator)) {
                 path = path + directory;
                 url = url + directory;

@@ -8,7 +8,7 @@ import dev.odes.fleet.core.asset.service.ResourceFileService;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController
+@RestController("dev.odes.fleet.core.asset.controller.ResourceFileController")
 @RequestMapping(path = "/asset/resource_file")
 public class ResourceFileController extends AbstractController<ResourceFile, ResourceFileModel, ResourceFileRepository, ResourceFileService> {
     private final ResourceFileService resourceFileService;
