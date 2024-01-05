@@ -1,7 +1,7 @@
 CREATE TABLE IF NOT EXISTS `system_role` (
     `id` VARCHAR(32) NOT NULL COMMENT '主键ID',
-    `code` VARCHAR(32) NOT NULL DEFAULT '' COMMENT '编码',
-    `name` VARCHAR(32) NOT NULL DEFAULT '' COMMENT '名称',
+    `code` VARCHAR(64) NOT NULL DEFAULT '' COMMENT '编码',
+    `name` VARCHAR(64) NOT NULL DEFAULT '' COMMENT '名称',
     `note` VARCHAR(255) NULL DEFAULT '' COMMENT '备注',
     `is_system` TINYINT NULL DEFAULT '0' COMMENT '是否系统预置',
     `ext_seg1` VARCHAR(255) NULL DEFAULT NULL COMMENT '扩展段1',

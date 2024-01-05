@@ -71,7 +71,7 @@
   </sql>
   <sql id="insertEntityValue">
     <trim suffixOverrides=",">
-      #{user.id},
+      #{menu.id},
       <if test="menu.code != null">#{menu.code},</if>
       <if test="menu.name != null">#{menu.name},</if>
       <if test="menu.path != null">#{menu.path},</if>
@@ -126,12 +126,12 @@
     <choose>
       <when test="where != null and where != ''">
         <where>
-          ${where} AND deleted_at is null
+          ${where} AND deleted_at is NULL
         </where>
       </when>
       <otherwise>
         <where>
-          deleted_at is null
+          deleted_at is NULL
         </where>
       </otherwise>
     </choose>
@@ -159,7 +159,7 @@
         ORDER BY ${order}
       </when>
       <otherwise>
-        ORDER BY code
+        ORDER BY created_at DESC
       </otherwise>
     </choose>
   </select>
@@ -168,24 +168,17 @@
     SELECT
     <include refid="column"/>
     FROM `system_menu`
-    <choose>
-      <when test="where != null and where != ''">
-        <where>
-          ${where} AND deleted_at is null
-        </where>
-      </when>
-      <otherwise>
-        <where>
-          deleted_at is null
-        </where>
-      </otherwise>
-    </choose>
+    <if test="where != null and where != ''">
+      <where>
+        ${where}
+      </where>
+    </if>
     <choose>
       <when test="order != null and order != ''">
         ORDER BY ${order}
       </when>
       <otherwise>
-        ORDER BY code
+        ORDER BY created_at DESC
       </otherwise>
     </choose>
   </select>
@@ -201,7 +194,7 @@
     INSERT INTO `system_menu`
     (<include refid="insertColumn"/>)
     VALUES
-    <foreach collection="list" item="user" separator=",">
+    <foreach collection="list" item="menu" separator=",">
       (<include refid="insertEntityValue"/>)
     </foreach>
   </insert>
@@ -221,7 +214,7 @@
   <!--  </update>-->
 
   <delete id="deleteOne" parameterType="java.lang.String">
-    DELETE FROM `system_menu` WHERE id=#{id}
+    DELETE FROM `system_menu` WHERE id=#{id, jdbcType=VARCHAR}
   </delete>
 
   <select id="count" resultType="java.lang.Integer">

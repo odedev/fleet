@@ -2,6 +2,7 @@ package dev.odes.fleet.core.system.model;
 
 import dev.odes.fleet.common.model.AbstractModel;
 import dev.odes.fleet.core.system.entity.User;
+import dev.odes.fleet.core.system.enumeration.UserStatusEnum;
 import dev.odes.fleet.core.system.enumeration.UserTypeEnum;
 
 public class UserModel extends AbstractModel<User> {
@@ -12,16 +13,13 @@ public class UserModel extends AbstractModel<User> {
     private String name;
     private String email;
     private String phone;
-    private UserTypeEnum userType;
+    private UserTypeEnum type;
+    private UserStatusEnum status;
     private Boolean isSuperAdmin;
     private String note;
 
     public UserModel() {
     }
-
-//    public UserModel(User user) {
-//        this.fromEntity(user);
-//    }
 
     @Override
     public String getId() {
@@ -81,12 +79,20 @@ public class UserModel extends AbstractModel<User> {
         this.phone = phone;
     }
 
-    public UserTypeEnum getUserType() {
-        return userType;
+    public UserTypeEnum getType() {
+        return type;
     }
 
-    public void setUserType(UserTypeEnum userType) {
-        this.userType = userType;
+    public void setType(UserTypeEnum type) {
+        this.type = type;
+    }
+
+    public UserStatusEnum getStatus() {
+        return status;
+    }
+
+    public void setStatus(UserStatusEnum status) {
+        this.status = status;
     }
 
     public Boolean getIsSuperAdmin() {
@@ -105,13 +111,4 @@ public class UserModel extends AbstractModel<User> {
         this.note = note;
     }
 
-    @Override
-    public void fromEntity(User user) {
-
-    }
-
-    @Override
-    public User toEntity() {
-        return null;
-    }
 }

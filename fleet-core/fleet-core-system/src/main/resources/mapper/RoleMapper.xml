@@ -46,7 +46,7 @@
       <if test="code != null">#{code},</if>
       <if test="name != null">#{name},</if>
       <if test="note != null">#{note},</if>
-      <if test="isSystem != null">#{is_system},</if>
+      <if test="isSystem != null">#{isSystem},</if>
     </trim>
   </sql>
   <sql id="insertEntityValue">
@@ -94,12 +94,12 @@
     <choose>
       <when test="where != null and where != ''">
         <where>
-          ${where} AND deleted_at is null
+          ${where} AND deleted_at is NULL
         </where>
       </when>
       <otherwise>
         <where>
-          deleted_at is null
+          deleted_at is NULL
         </where>
       </otherwise>
     </choose>
@@ -113,12 +113,12 @@
     <choose>
       <when test="where != null and where != ''">
         <where>
-          ${where} AND deleted_at is null
+          ${where} AND deleted_at is NULL
         </where>
       </when>
       <otherwise>
         <where>
-          deleted_at is null
+          deleted_at is NULL
         </where>
       </otherwise>
     </choose>
@@ -127,7 +127,7 @@
         ORDER BY ${order}
       </when>
       <otherwise>
-        ORDER BY code
+        ORDER BY created_at DESC
       </otherwise>
     </choose>
   </select>
@@ -136,24 +136,17 @@
     SELECT
     <include refid="column"/>
     FROM `system_role`
-    <choose>
-      <when test="where != null and where != ''">
-        <where>
-          ${where} AND deleted_at is null
-        </where>
-      </when>
-      <otherwise>
-        <where>
-          deleted_at is null
-        </where>
-      </otherwise>
-    </choose>
+    <if test="where != null and where != ''">
+      <where>
+        ${where}
+      </where>
+    </if>
     <choose>
       <when test="order != null and order != ''">
         ORDER BY ${order}
       </when>
       <otherwise>
-        ORDER BY code
+        ORDER BY created_at DESC
       </otherwise>
     </choose>
   </select>
@@ -189,7 +182,7 @@
   <!--  </update>-->
 
   <delete id="deleteOne" parameterType="java.lang.String">
-    DELETE FROM `system_role` WHERE id=#{id}
+    DELETE FROM `system_role` WHERE id=#{id, jdbcType=VARCHAR}
   </delete>
 
   <select id="count" resultType="java.lang.Integer">

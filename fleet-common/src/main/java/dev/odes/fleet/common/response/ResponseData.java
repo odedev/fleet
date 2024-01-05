@@ -5,37 +5,45 @@ import java.io.Serializable;
 public class ResponseData implements Serializable {
     private static final long serialVersionUID = 1L;
 
+    private Integer code;
     private String title;
     private String message;
-    private Integer status;
     private Object data;
 
     public ResponseData(Object data) {
+        this.setCode(200);
         this.setTitle("");
         this.setMessage("");
-        this.setStatus(200);
         this.setData(data);
     }
 
     public ResponseData(String title, String message) {
+        this.setCode(200);
         this.setTitle(title);
         this.setMessage(message);
-        this.setStatus(200);
         this.setData(null);
     }
 
     public ResponseData(String title, String message, Object data) {
+        this.setCode(200);
         this.setTitle(title);
         this.setMessage(message);
-        this.setStatus(200);
         this.setData(data);
     }
 
-    public ResponseData(String title, String message, Integer status) {
+    public ResponseData(Integer code, String title, String message) {
+        this.setCode(code);
         this.setTitle(title);
         this.setMessage(message);
-        this.setStatus(status);
         this.setData(null);
+    }
+
+    public Integer getCode() {
+        return code;
+    }
+
+    public void setCode(Integer code) {
+        this.code = code;
     }
 
     public String getTitle() {
@@ -52,14 +60,6 @@ public class ResponseData implements Serializable {
 
     public void setMessage(String message) {
         this.message = message;
-    }
-
-    public Integer getStatus() {
-        return status;
-    }
-
-    public void setStatus(Integer status) {
-        this.status = status;
     }
 
     public Object getData() {

@@ -7,7 +7,7 @@ import dev.odes.fleet.core.system.repository.UserRepository;
 import dev.odes.fleet.core.system.transform.UserTransform;
 import org.springframework.stereotype.Service;
 
-@Service
+@Service("dev.odes.fleet.core.system.service.UserService")
 public class UserService extends AbstractService<User, UserModel, UserRepository> {
     private final UserTransform userTransform;
     private final UserRepository userRepository;

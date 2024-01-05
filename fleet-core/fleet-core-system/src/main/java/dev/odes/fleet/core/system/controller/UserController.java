@@ -8,8 +8,8 @@ import dev.odes.fleet.core.system.service.UserService;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController
 @RequestMapping(path = "/system/user")
+@RestController("dev.odes.fleet.core.system.controller.UserController")
 public class UserController extends AbstractController<User, UserModel, UserRepository, UserService> {
     private final UserService userService;
 

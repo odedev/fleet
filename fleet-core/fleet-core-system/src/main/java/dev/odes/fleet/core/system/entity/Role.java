@@ -43,11 +43,11 @@ public class Role extends AbstractEntity {
         this.note = note;
     }
 
-    public Boolean getSystem() {
+    public Boolean getIsSystem() {
         return isSystem;
     }
 
-    public void setSystem(Boolean system) {
-        isSystem = system;
+    public void setIsSystem(Boolean isSystem) {
+        this.isSystem = isSystem;
     }
 }

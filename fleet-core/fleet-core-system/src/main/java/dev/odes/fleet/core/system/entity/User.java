@@ -10,7 +10,8 @@ public class User extends AbstractEntity {
     private String name;
     private String email;
     private String phone;
-    private Integer userType;
+    private Integer type;
+    private Integer status;
     private Boolean isSuperAdmin;
     private String note;
 
@@ -72,12 +73,20 @@ public class User extends AbstractEntity {
         this.phone = phone;
     }
 
-    public Integer getUserType() {
-        return userType;
+    public Integer getType() {
+        return type;
     }
 
-    public void setUserType(Integer userType) {
-        this.userType = userType;
+    public void setType(Integer type) {
+        this.type = type;
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 
     public Boolean getIsSuperAdmin() {

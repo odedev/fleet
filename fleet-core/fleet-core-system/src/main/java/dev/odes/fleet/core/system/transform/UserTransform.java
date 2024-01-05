@@ -2,11 +2,12 @@ package dev.odes.fleet.core.system.transform;
 
 import dev.odes.fleet.common.transform.Transform;
 import dev.odes.fleet.core.system.entity.User;
+import dev.odes.fleet.core.system.enumeration.UserStatusEnum;
 import dev.odes.fleet.core.system.enumeration.UserTypeEnum;
 import dev.odes.fleet.core.system.model.UserModel;
 import org.springframework.stereotype.Component;
 
-@Component
+@Component("dev.odes.fleet.core.system.transform.UserTransform")
 public class UserTransform implements Transform<User, UserModel> {
 
     @Override
@@ -20,7 +21,8 @@ public class UserTransform implements Transform<User, UserModel> {
             userModel.setName(user.getName());
             userModel.setEmail(user.getEmail());
             userModel.setPhone(user.getPhone());
-            userModel.setUserType(UserTypeEnum.getByValue(user.getUserType()));
+            userModel.setType(UserTypeEnum.getByValue(user.getType()));
+            userModel.setStatus(UserStatusEnum.getByValue(user.getStatus()));
             userModel.setIsSuperAdmin(user.getIsSuperAdmin());
             userModel.setNote(user.getNote());
         }
@@ -38,7 +40,8 @@ public class UserTransform implements Transform<User, UserModel> {
             user.setName(userModel.getName());
             user.setEmail(userModel.getEmail());
             user.setPhone(userModel.getPhone());
-            user.setUserType(userModel.getUserType().getValue());
+            user.setType(userModel.getType().getValue());
+            user.setStatus(userModel.getStatus().getValue());
             user.setIsSuperAdmin(userModel.getIsSuperAdmin());
             user.setNote(userModel.getNote());
         }

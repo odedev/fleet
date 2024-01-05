@@ -5,37 +5,52 @@ import java.io.Serializable;
 public class ResponseError implements Serializable {
     private static final long serialVersionUID = 1L;
 
+    private Integer code;
     private String title;
     private String message;
-    private Integer status;
     private Object error;
 
     public ResponseError(Object error) {
+        this.setCode(500);
         this.setTitle("");
         this.setMessage("");
-        this.setStatus(500);
         this.setError(error);
     }
 
     public ResponseError(String title, String message) {
+        this.setCode(500);
         this.setTitle(title);
         this.setMessage(message);
-        this.setStatus(500);
         this.setError(null);
     }
 
     public ResponseError(String title, String message, Object error) {
+        this.setCode(500);
         this.setTitle(title);
         this.setMessage(message);
-        this.setStatus(500);
         this.setError(error);
     }
 
-    public ResponseError(String title, String message, Integer status) {
+    public ResponseError(Integer code, String title, String message) {
+        this.setCode(code);
         this.setTitle(title);
         this.setMessage(message);
-        this.setStatus(status);
         this.setError(null);
+    }
+
+    public ResponseError(Integer code, String title, String message, Object error) {
+        this.setCode(code);
+        this.setTitle(title);
+        this.setMessage(message);
+        this.setError(error);
+    }
+
+    public Integer getCode() {
+        return code;
+    }
+
+    public void setCode(Integer code) {
+        this.code = code;
     }
 
     public String getTitle() {
@@ -52,14 +67,6 @@ public class ResponseError implements Serializable {
 
     public void setMessage(String message) {
         this.message = message;
-    }
-
-    public Integer getStatus() {
-        return status;
-    }
-
-    public void setStatus(Integer status) {
-        this.status = status;
     }
 
     public Object getError() {

@@ -10,17 +10,9 @@ public class MenuModel extends AbstractModel<Menu> {
     private String path;
     private String icon;
     private Integer sequence;
-    private String parent;
+    private MenuModel parent;
     private String note;
     private Boolean isSystem;
-
-    public MenuModel() {
-
-    }
-
-    public MenuModel(Menu menu) {
-        this.fromEntity(menu);
-    }
 
     @Override
     public String getId() {
@@ -72,11 +64,11 @@ public class MenuModel extends AbstractModel<Menu> {
         this.sequence = sequence;
     }
 
-    public String getParent() {
+    public MenuModel getParent() {
         return parent;
     }
 
-    public void setParent(String parent) {
+    public void setParent(MenuModel parent) {
         this.parent = parent;
     }
 
@@ -96,13 +88,4 @@ public class MenuModel extends AbstractModel<Menu> {
         this.isSystem = isSystem;
     }
 
-    @Override
-    public void fromEntity(Menu menu) {
-
-    }
-
-    @Override
-    public Menu toEntity() {
-        return null;
-    }
 }

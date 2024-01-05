@@ -5,7 +5,7 @@ import dev.odes.fleet.core.system.mapper.UserMapper;
 import dev.odes.fleet.component.mysql.MysqlRepository;
 import org.springframework.stereotype.Repository;
 
-@Repository
+@Repository("dev.odes.fleet.core.system.repository.UserRepository")
 public class UserRepository extends MysqlRepository<User, UserMapper> {
     private final UserMapper userMapper;
 
