@@ -60,6 +60,9 @@ npm install --save d3-transition
 npm install --save animate.css
 npm install --save normalize.css
 
+npm install --save @floating-ui/dom
+npm install --save @floating-ui/vue
+
 npm install --save vue
 npm install --save vue-router
 npm install --save pinia
