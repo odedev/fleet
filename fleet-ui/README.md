@@ -13,12 +13,17 @@ corepack enable
 pnpm install
 ```
 
+## 更新所有依赖
+```shell
+pnpm update -r
+```
+
 ## 开发
 ```shell
-npm run dev
+pnpm run dev
 ```
 
 ## 构建
 ```shell
-npm run build
+pnpm run build
 ```

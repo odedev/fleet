@@ -8,21 +8,21 @@ npm install --save file-saver
 npm install --save jszip
 npm install --save js-base64
 npm install --save color
-npm install --save cropperjs
+# npm install --save cropperjs
 npm install --save crypto-js
 npm install --save dayjs
-npm install --save highlight.js
-npm install --save interactjs
+# npm install --save highlight.js
+# npm install --save interactjs
 npm install --save lodash
 npm install --save lodash-es
 npm install --save mime
 npm install --save mitt
 npm install --save qs
 npm install --save socket.io-client
-npm install --save sortablejs
+# npm install --save sortablejs
 npm install --save validator
 npm install --save ws
-npm install --save https://cdn.sheetjs.com/xlsx-0.20.1/xlsx-0.20.1.tgz
+# npm install --save https://cdn.sheetjs.com/xlsx-0.20.1/xlsx-0.20.1.tgz
 
 npm install --save-dev @interactjs/types
 npm install --save-dev @rushstack/eslint-patch
