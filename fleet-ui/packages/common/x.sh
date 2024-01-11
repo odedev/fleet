@@ -21,10 +21,11 @@ npm install --save qs
 npm install --save socket.io-client
 # npm install --save sortablejs
 npm install --save validator
+npm install --save vue
 npm install --save ws
 # npm install --save https://cdn.sheetjs.com/xlsx-0.20.1/xlsx-0.20.1.tgz
 
-npm install --save-dev @interactjs/types
+# npm install --save-dev @interactjs/types
 npm install --save-dev @rushstack/eslint-patch
 npm install --save-dev @tsconfig/node18
 npm install --save-dev @types/bytes
@@ -32,6 +33,7 @@ npm install --save-dev @types/crypto-js
 npm install --save-dev @types/mime-types
 npm install --save-dev @types/node
 npm install --save-dev @types/qs
+npm install --save-dev @vitejs/plugin-vue
 npm install --save-dev @vue/eslint-config-prettier
 npm install --save-dev @vue/eslint-config-typescript
 npm install --save-dev @vue/tsconfig
