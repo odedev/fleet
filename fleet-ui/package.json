@@ -20,7 +20,7 @@
     "node": "^18.18.0 || >=20.10.0",
     "pnpm": ">=8"
   },
-  "packageManager": "pnpm@8.10.5",
+  "packageManager": "pnpm@8.11.0",
   "keywords": [],
   "author": "",
   "license": "ISC"

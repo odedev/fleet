@@ -23,6 +23,8 @@ npm install --save socket.io-client
 npm install --save validator
 npm install --save vue
 npm install --save ws
+npm install --save js-cookie
+
 # npm install --save https://cdn.sheetjs.com/xlsx-0.20.1/xlsx-0.20.1.tgz
 
 # npm install --save-dev @interactjs/types
