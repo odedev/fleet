@@ -1,7 +1,7 @@
 import app from './internal/app.js';
 import serve from "./internal/server.js";
 import AppDataSource from "./internal/datasource.js";
-import {notFoundHandler, errorHandler} from './core/request.js';
+import { notFoundHandler, errorHandler } from './internal/middleware.js';
 import router from './modules/router.js';
 import proxy from './modules/proxy.js';
 

@@ -33,6 +33,7 @@ npm install --save change-case
 npm install --save mime-types
 npm install --save uuid
 npm install --save nanoid
+npm install --save crypto-js
 
 npm install --save wait-on
 npm install --save ws
@@ -46,7 +47,16 @@ npm install --save dotenv
 
 npm install --save-dev @types/express
 npm install --save-dev @types/node
+npm install --save-dev @types/uuid
+npm install --save-dev @types/ws
+npm install --save-dev @types/jsonwebtoken
+npm install --save-dev @types/http-errors
+npm install --save-dev @types/mime
+npm install --save-dev @types/mime-types
+npm install --save-dev @types/crypto-js
+
 npm install --save-dev nodemon
+npm install --save-dev cross-env
 npm install --save-dev tailwindcss
 npm install --save-dev postcss
 npm install --save-dev autoprefixer

@@ -11,20 +11,55 @@ import favicon from 'serve-favicon';
 import logger from 'morgan';
 import httpErrors from 'http-errors';
 
+import { clientRequestHandler } from "./middleware.js";
+
 // 执行命令的目录
 const __rootDirname = path.resolve();
+
 // 当前文件的目录
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const app = express();
 
+// Enables the "X-Powered-By: Express" HTTP header.
+app.set('x-powered-by', false);
+
 // view engine setup
 app.set('views', path.join(__rootDirname, 'src', 'views'));
 app.set('view engine', 'hbs');
 
+// Indicates the app is behind a front-facing proxy,
+// and to use the X-Forwarded-* headers to determine the connection and the IP address of the client.
+// Default: false (disabled)
+app.set('trust proxy', false);
+
+app.use(clientRequestHandler);
+
+// app.use((req, res, next) => {
+//   res.setHeader('Access-Control-Allow-Origin', '*');
+//   res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content, Accept, Content-Type, Authorization');
+//   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
+//   // res.setHeader('Cross-origin-Opener-Policy', 'same-origin');
+//   res.setHeader('Cross-origin-Opener-Policy', 'unsafe-none');
+//   res.setHeader('Cross-Origin-Resource-Policy', 'cross-origin');
+//   res.setHeader('Cross-origin-Embedder-Policy', 'require-corp');
+
+//   if (req.method === 'OPTIONS') {
+//     res.sendStatus(200)
+//   } else {
+//     next()
+//   }
+// });
+
 app.use(compression());
 app.use(cors());
-app.use(helmet());
+// app.use(helmet());
+app.use(helmet({
+  contentSecurityPolicy: false,
+  // strictTransportSecurity: false,
+  // crossOriginOpenerPolicy: false,
+  // crossOriginResourcePolicy: false,
+}));
 app.use(connectTimeout('60s'));
 app.use(responseTime());
 app.use(rid({headerName: 'X-RID'}));
