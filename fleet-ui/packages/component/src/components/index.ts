@@ -89,12 +89,12 @@ import FlPane from "./pane/FlPane.vue";
 import FlStep from "./step/FlStep.vue";
 
 import FlEditorMarkdown from "./editor/FlEditorMarkdown.vue";
-import FlEditorRichText from "./editor/FlEditorRichText.vue";
+// import FlEditorRichText from "./editor/FlEditorRichText.vue";
 import FlEditorCode from "./editor/FlEditorCode.vue";
 
 import FlViewer from "./viewer/FlViewer.vue";
 import FlViewerMarkdown from "./viewer/FlViewerMarkdown.vue";
-import FlViewerRichText from "./viewer/FlViewerRichText.vue";
+// import FlViewerRichText from "./viewer/FlViewerRichText.vue";
 import FlViewerVideo from "./viewer/FlViewerVideo.vue";
 import FlViewerImage from "./viewer/FlViewerImage.vue";
 
@@ -191,13 +191,13 @@ export {
   FlStep,
 
   FlEditorMarkdown,
-  FlEditorRichText,
+  // FlEditorRichText,
   FlEditorCode,
 
 
   FlViewer,
   FlViewerMarkdown,
-  FlViewerRichText,
+  // FlViewerRichText,
   FlViewerImage,
   FlViewerVideo,
 

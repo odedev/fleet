@@ -1,5 +1,17 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router';
+// import progress from "../core/progress";
+
+import {
+  RedirectView,
+  NotFoundView,
+  ComponentView,
+  MainView,
+} from "@fleet/view";
+
 import HomeView from '../views/HomeView.vue'
+import DashboardView from "../views/DashboardView.vue";
+
+import routes from './route.ts';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -7,17 +19,60 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: HomeView
+      component: HomeView,
+      children: [
+        {
+          path: '',
+          name: 'Dashboard',
+          component: DashboardView
+        },
+
+        ...routes,
+
+      ]
     },
-    {
-      path: '/about',
-      name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import('../views/AboutView.vue')
-    }
+
+    // // 动态组件
+    // {
+    //     path: '/Component',
+    //     name: 'Component',
+    //     component: ComponentView
+    // },
+    // // 重定向刷新
+    // {
+    //     path: '/redirect/:path(.*)',
+    //     name: 'Redirect',
+    //     component: RedirectView,
+    //     // children: [
+    //     //   {
+    //     //     path: '/redirect/:path(.*)',
+    //     //     component: RedirectView
+    //     //   }
+    //     // ]
+    //     // redirect: to => {
+    //     //   // the function receives the target route as the argument
+    //     //   // we return a redirect path/location here.
+    //     //   return { path: to.query.path, query: {} }
+    //     // },
+    // },
+    // // 将匹配所有内容并将其放在 `$route.params.pathMatch` 下
+    // {
+    //     path: '/:pathMatch(.*)*',
+    //     name: 'NotFound',
+    //     component: NotFoundView
+    // },
   ]
-})
+});
+
+router.beforeEach((to, from) => {
+  // progress.start();
+  // ...
+  // 返回 false 以取消导航
+  return true;
+});
+
+router.afterEach((to, from) => {
+  // progress.done();
+});
 
 export default router

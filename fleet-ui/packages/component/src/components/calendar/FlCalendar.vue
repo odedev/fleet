@@ -2,7 +2,7 @@
 import {ref, computed} from "vue";
 import {Calendar} from '@arco-design/web-vue';
 import '@arco-design/web-vue/es/calendar/style/css.js';
-import {isDate} from "@/utils/is_utils";
+import {isDate} from "../../utils/is_utils";
 
 const emits = defineEmits([
   'update:modelValue',

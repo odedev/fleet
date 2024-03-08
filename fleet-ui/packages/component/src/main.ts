@@ -1,6 +1,6 @@
 import { createApp } from 'vue'
 import App from './App.vue'
-import router from './router/index';
+// import router from './router/index';
 
 import './assets/main.scss'
 
@@ -8,7 +8,7 @@ import './init'
 
 const app = createApp(App)
 
-app.use(router)
+// app.use(router)
 
 app.config.errorHandler = (err, instance, info) => {
   // 向追踪服务报告错误
