@@ -1,6 +1,6 @@
 {
-  "name": "core-system",
-  "version": "0.0.0",
+  "name": "@fleet/core-system",
+  "version": "1.0.0",
   "private": true,
   "type": "module",
   "scripts": {

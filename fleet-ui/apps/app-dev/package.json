@@ -1,6 +1,6 @@
 {
-  "name": "app-dev",
-  "version": "0.0.0",
+  "name": "@fleet/app-dev",
+  "version": "1.0.0",
   "private": true,
   "type": "module",
   "scripts": {

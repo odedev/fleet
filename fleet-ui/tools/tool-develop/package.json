@@ -1,6 +1,6 @@
 {
-  "name": "tool-develop",
-  "version": "0.0.0",
+  "name": "@fleet/tool-develop",
+  "version": "1.0.0",
   "private": true,
   "type": "module",
   "scripts": {
