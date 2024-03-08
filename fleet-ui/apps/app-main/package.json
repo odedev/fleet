@@ -13,9 +13,11 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "@fleet/core-asset": "workspace:^",
     "@fleet/core-metadata": "workspace:^",
     "@fleet/core-org": "workspace:^",
     "@fleet/core-system": "workspace:^",
+    "@fleet/core-tenant": "workspace:^",
     "@fleet/tool-develop": "workspace:^",
     "pinia": "^2.1.7",
     "vue": "^3.4.21",
