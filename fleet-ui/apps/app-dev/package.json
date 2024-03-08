@@ -13,6 +13,10 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "@fleet/base": "workspace:^",
+    "@fleet/common": "workspace:^",
+    "@fleet/component": "workspace:^",
+    "@fleet/view": "workspace:^",
     "pinia": "^2.1.7",
     "vue": "^3.4.15",
     "vue-router": "^4.2.5"
