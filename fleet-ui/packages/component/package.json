@@ -57,7 +57,7 @@
     "@ckeditor/ckeditor5-ui": "^41.2.0",
     "@ckeditor/ckeditor5-undo": "^38.1.1",
     "@ckeditor/ckeditor5-vue": "^5.1.0",
-    "@codemirror/autocomplete": "^6.13.0",
+    "@codemirror/autocomplete": "^6.14.0",
     "@codemirror/commands": "^6.3.3",
     "@codemirror/lang-css": "^6.2.1",
     "@codemirror/lang-html": "^6.4.8",
@@ -109,8 +109,8 @@
     "vue-draggable-plus": "^0.3.5",
     "vue-router": "^4.3.0",
     "ws": "^8.16.0",
-    "xgplayer": "^3.0.13",
-    "xgplayer-flv": "^3.0.13",
+    "xgplayer": "^3.0.14",
+    "xgplayer-flv": "^3.0.14",
     "xlsx": "https://cdn.sheetjs.com/xlsx-0.20.1/xlsx-0.20.1.tgz"
   },
   "devDependencies": {
