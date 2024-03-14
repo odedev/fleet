@@ -25,6 +25,7 @@ npm install --save lowdb
 
 npm install --save nodemailer
 npm install --save picocolors
+npm install --save chalk
 
 npm install --save handlebars
 
