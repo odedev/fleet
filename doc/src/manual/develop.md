@@ -37,6 +37,13 @@ pnpm install
 pnpm update -r
 ```
 
+### 检查过期的所有依赖
+在 `fleet-ui` 根目录运行
+
+```shell
+pnpm outdated -r
+```
+
 ### 开发
 在 `fleet-ui` 根目录运行所有应用
 
