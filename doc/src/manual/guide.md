@@ -2,17 +2,27 @@
 
 ## Requirement
 
+## Java
+### JDK
+版本要求 JDK 21
+
+
 ## UI
 基于 pnpm 的单仓库, `npm` 命令需用 `pnpm` 替代
 
 ### Nodejs
 Nodejs 版本要求 >= v20.10.0
 
-### 安装pnpm
+### 安装 pnpm
 ```shell
 corepack enable
 ## or
 npm install -g pnpm
+```
+
+### 更新 pnpm
+```shell
+corepack prepare pnpm@8.15.5 --activate
 ```
 
 ## MySQL init
