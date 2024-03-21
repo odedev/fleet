@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { AppView } from "@fleet/view";
-
 </script>
 
 <template>

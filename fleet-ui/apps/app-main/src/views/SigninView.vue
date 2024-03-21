@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { AppView } from "@fleet/view";
+import { SigninView } from "@fleet/view";
 </script>
 
 <template>
-  <AppView />
+  <SigninView />
 </template>
 
 <style lang="scss" scoped>

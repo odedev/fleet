@@ -1,15 +1,9 @@
 import { createRouter, createWebHistory } from 'vue-router';
 // import progress from "../core/progress";
 
-import {
-  RedirectView,
-  NotFoundView,
-  ComponentView,
-  MainView,
-} from "@fleet/view";
-
 import HomeView from '../views/HomeView.vue'
 import DashboardView from "../views/DashboardView.vue";
+import NotFoundView from "../views/NotFoundView.vue";
 
 import routes from './route.ts';
 
@@ -29,6 +23,7 @@ const router = createRouter({
 
         ...routes,
 
+        { path: '/:pathMatch(.*)*', name: 'NotFound', component: NotFoundView },
       ]
     },
 

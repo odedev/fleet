@@ -1,21 +1,8 @@
-<template>
-  <FlView>
-    <FlViewMain>
-      <FlViewBody>
-        <FlViewer>
-          <FlViewerMarkdown v-model="value"/>
-        </FlViewer>
-      </FlViewBody>
-    </FlViewMain>
-  </FlView>
-</template>
-<script lang="ts" setup>
+<script setup lang="ts">
 import {
   FlHeader, FlBody, FlFooter, FlMenu, FlMain, FlNav, FlTab, FlPage,
   FlView, FlViewAside, FlViewMain, FlViewNav, FlViewHead, FlViewBody,
-  FlBlock, FlBox, FlContent, FlContentText, FlContentNumber,
-  FlFormItem, FlEditorRichText, FlEditorMarkdown, FlViewer, FlViewerMarkdown,
-  FlTable, FlButton, FlSearch, FlAction
+  FlBlock, FlBox, FlEditorMarkdown, FlViewer, FlViewerMarkdown,
 } from "@fleet/component";
 
 let value = `
@@ -76,9 +63,19 @@ Long flags: :wales:, :scotland:, :england:.
 value += "```mermaid \ngraph TD;\nA-->B;\nA-->C;\nB-->D;\nC-->D;\n```"
 
 </script>
-<style>
-.arco-card {
-  margin-right: 16px;
-  margin-bottom: 16px;
-}
+
+<template>
+  <FlView>
+    <FlViewMain>
+      <FlViewBody>
+        <FlViewer>
+          <FlViewerMarkdown v-model="value"/>
+        </FlViewer>
+      </FlViewBody>
+    </FlViewMain>
+  </FlView>
+</template>
+
+<style lang="scss">
+
 </style>

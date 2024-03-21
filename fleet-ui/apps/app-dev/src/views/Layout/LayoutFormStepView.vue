@@ -23,8 +23,6 @@
   </FlView>
 </template>
 <script lang="ts" setup>
-// import {Tabs, TabPane} from "@arco-design/web-vue";
-// import "@arco-design/web-vue/es/tabs/style/css.js";
 
 import {
   FlHeader, FlBody, FlFooter, FlMenu, FlMain, FlNav, FlTab, FlPage,

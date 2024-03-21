@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import { AppView } from "@fleet/view";
+import { NotFoundView } from "@fleet/view";
+
 </script>
 
 <template>
-  <AppView />
+  <NotFoundView />
 </template>
 
 <style lang="scss" scoped>

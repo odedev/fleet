@@ -12,37 +12,52 @@
           <FlForm />
         </FlBox>
         <FlBlock>
-          <Tabs type="line" default-active-key="1">
-            <TabPane key="1" title="Tab 1">
+          <FlPane :model-value="steps">
+            <template #step1>
               <FlBox>
                 <FlForm />
               </FlBox>
-            </TabPane>
-            <TabPane key="2" title="Tab 2">
+            </template>
+            <template #step2>
               <FlBlock>
                 <FlTable></FlTable>
               </FlBlock>
-            </TabPane>
-            <TabPane key="3">
-              <template #title>Tab 3</template>
+            </template>
+            <template #step3>
               <FlBlock>Content of Tab Panel 3</FlBlock>
-            </TabPane>
-          </Tabs>
+            </template>
+          </FlPane>
         </FlBlock>
       </FlViewBody>
     </FlViewMain>
   </FlView>
 </template>
 <script lang="ts" setup>
-import {Tabs, TabPane} from "@arco-design/web-vue";
-import "@arco-design/web-vue/es/tabs/style/css.js";
-
+import { ref } from "vue";
 import {
   FlHeader, FlBody, FlFooter, FlMenu, FlMain, FlNav, FlTab, FlPage,
   FlView, FlViewAside, FlViewMain, FlViewNav, FlViewHead, FlViewBody,
-  FlBlock, FlBox, FlContent, FlForm, FlFormItem,
+  FlBlock, FlBox, FlPane, FlForm, FlFormItem,
   FlTable, FlButton, FlSearch, FlAction, FlButtonReset, FlButtonSave
 } from '@fleet/component'
+
+const steps = ref([
+  {
+    name: '步骤1',
+    code: 'step1',
+    description: '',
+  },
+  {
+    name: '步骤2',
+    code: 'step2',
+    description: '',
+  },
+  {
+    name: '步骤3',
+    code: 'step3',
+    description: '',
+  }
+]);
 
 </script>
 <style>
