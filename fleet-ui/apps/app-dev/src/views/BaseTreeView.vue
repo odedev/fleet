@@ -20,7 +20,7 @@ import {
   FlTable, FlButton, FlSearch, FlTree,
 } from '@fleet/component'
 
-import { IconApps, IconCommon, IconLayout, IconRelation, IconUnorderedList } from '@arco-design/web-vue/es/icon';
+// import { IconApps, IconCommon, IconLayout, IconRelation, IconUnorderedList } from '@arco-design/web-vue/es/icon';
 
 const treeData = ref([
   {

@@ -55,12 +55,8 @@ const router = createRouter({
     //     //   return { path: to.query.path, query: {} }
     //     // },
     // },
-    // // 将匹配所有内容并将其放在 `$route.params.pathMatch` 下
-    // {
-    //     path: '/:pathMatch(.*)*',
-    //     name: 'NotFound',
-    //     component: NotFoundView
-    // },
+    // 将匹配所有内容并将其放在 `$route.params.pathMatch` 下
+    // { path: '/:pathMatch(.*)*', name: 'NotFound', component: NotFoundView },
   ]
 });
 

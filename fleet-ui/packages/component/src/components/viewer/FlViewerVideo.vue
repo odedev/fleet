@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import {computed, ref, onMounted, onUnmounted} from "vue";
 import Player from 'xgplayer';
-import 'xgplayer/dist/index.min.css';
+import 'xgplayer/dist/xgplayer.min.css';
 import Controls from "xgplayer/es/plugins/controls";
 import Play from "xgplayer/es/plugins/play";
 import Fullscreen from "xgplayer/es/plugins/fullscreen";
