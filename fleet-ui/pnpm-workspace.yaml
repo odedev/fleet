@@ -4,5 +4,8 @@ packages:
   - '!modules/*'
   - 'tools/*'
   - 'packages/*'
-  - "!apps/app"
   - '!**/test/**'
+  - "!apps/template"
+  - "!modules/template"
+#  - "!apps/app-legacy"
+#  - "!apps/app-website"
