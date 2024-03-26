@@ -40,3 +40,6 @@ export function getEnumerationByFullName(fullName: string): any {
   let enumData = copy(enumeration);
   return transform(enumData);
 }
+
+
+export default Metadata;

@@ -28,7 +28,7 @@ import "@arco-design/web-vue/es/modal/style/index.css";
 import {IconFilter, IconSettings, IconUpload, IconDownload} from "@arco-design/web-vue/es/icon";
 import FlBlock from "../block/FlBlock.vue";
 
-import {getDisplayFieldCode} from "@/core/model";
+// import {model as Model } from "@fleet/common";
 
 
 const emits = defineEmits([

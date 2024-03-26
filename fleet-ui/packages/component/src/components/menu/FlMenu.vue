@@ -91,7 +91,7 @@ import {
   IconSettings,
   IconCode,
 } from '@arco-design/web-vue/es/icon';
-import {arrayToTree, arrayToMap} from "../../utils/array_utils";
+import { ArrayUtils } from "@fleet/common";
 
 const router = useRouter();
 
@@ -113,7 +113,7 @@ const menu = computed<any>({
 });
 
 const menus = computed(() => {
-  return arrayToTree(props.menus);
+  return ArrayUtils.arrayToTree(props.menus);
 });
 
 const selectedKeys = computed(() => {
@@ -124,7 +124,7 @@ const openKeys = computed(() => {
   return props.modelValue ? [props.modelValue.parent?.id || props.modelValue.parent] : [];
 });
 
-const menuMap = arrayToMap(props.menus);
+const menuMap = ArrayUtils.arrayToMap(props.menus);
 
 console.log(menus, menuMap)
 

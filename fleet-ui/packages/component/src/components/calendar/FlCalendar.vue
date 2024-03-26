@@ -1,8 +1,8 @@
 <script lang="ts" setup>
-import {ref, computed} from "vue";
-import {Calendar} from '@arco-design/web-vue';
+import { ref, computed } from "vue";
+import { Calendar } from '@arco-design/web-vue';
 import '@arco-design/web-vue/es/calendar/style/css.js';
-import {isDate} from "../../utils/is_utils";
+import { IsUtils } from "@fleet/common";
 
 const emits = defineEmits([
   'update:modelValue',
@@ -14,7 +14,7 @@ const props = defineProps<{
 }>();
 
 const value = computed<Date>(() => {
-  if (isDate(props.modelValue)) {
+  if (IsUtils.isDate(props.modelValue)) {
     return props.modelValue as Date;
   } else {
     return new Date(props.modelValue);

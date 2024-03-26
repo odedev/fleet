@@ -55,7 +55,7 @@ import FlViewBody from "../view/FlViewBody.vue";
 import FlBlock from "../block/FlBlock.vue";
 import FlModal from "../modal/FlModal.vue";
 import FlSearch from "../search/FlSearch.vue";
-import {getDisplayFieldCode} from "../../core/model";
+import { model as Model } from "@fleet/common";
 
 const emits = defineEmits([
   'update:modelValue',
@@ -91,7 +91,7 @@ const selectionValue = ref<any>([]);
 const visible = ref(false);
 
 const value = computed<any>(() => {
-  return props.modelValue?.[getDisplayFieldCode(props.model)];
+  return props.modelValue?.[Model.getDisplayFieldCode(props.model)];
   // props.displayField ? props.modelValue[props.displayField] : props.modelValue?.name || props.modelValue;
 });
 const model = computed<any>(() => props.model);

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import {computed} from "vue";
 import FlContentBase from "./FlContentBase.vue";
-import {getByValue} from "../../core/enumeration";
+import { enumeration } from "@fleet/common";
 
 interface Props {
   modelValue: number,
@@ -12,7 +12,7 @@ interface Props {
 const props = defineProps<Props>();
 
 const value = computed<any>(() => {
-  return getByValue(props.enumeration, props.modelValue);
+  return enumeration.getByValue(props.enumeration, props.modelValue);
 });
 
 const color = computed<any>(() => props.color);

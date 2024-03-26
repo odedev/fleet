@@ -7,7 +7,7 @@ import FlTableHead from "./FlTableHead.vue";
 import FlTableBody from "./FlTableBody.vue";
 import FlTableFoot from "./FlTableFoot.vue";
 import FlContent from "../content/FlContent.vue";
-import {usePageSize, usePageValue} from "../../composables/data_grid";
+import {usePageSize, usePageValue} from "@fleet/base";
 
 import type {TableRowSelection, TableData, TableColumnData} from "@arco-design/web-vue";
 

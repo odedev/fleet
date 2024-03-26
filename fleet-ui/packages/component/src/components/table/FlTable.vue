@@ -13,7 +13,7 @@ import FlButton from "../button/FlButton.vue";
 import FlButtonAdd from "../button/FlButtonAdd.vue";
 import FlButtonGroup from "../button/FlButtonGroup.vue";
 
-import {usePageSize, usePageValue} from "../../composables/data_grid";
+import {usePageSize, usePageValue} from "@fleet/base";
 
 import type { TableDraggable } from '@arco-design/web-vue';
 

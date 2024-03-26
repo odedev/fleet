@@ -1,10 +1,10 @@
 <script lang="ts" setup>
 import {onUnmounted} from 'vue';
-import {debounce} from '../../utils/func_utils';
+import { FuncUtils } from '@fleet/common';
 
 const emits = defineEmits(['click']);
 
-const handleClick = debounce(() => {
+const handleClick = FuncUtils.debounce(() => {
   emits('click');
 }, 300);
 

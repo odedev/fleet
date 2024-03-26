@@ -30,3 +30,5 @@ export function getEnumerationByFullName(fullName: string): any {
   const enumeration = Application.enumeration.get(fullName);
   return copy(enumeration);
 }
+
+export default Application;

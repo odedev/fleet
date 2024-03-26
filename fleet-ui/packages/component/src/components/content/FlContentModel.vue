@@ -4,7 +4,7 @@ import FlContentBase from "./FlContentBase.vue";
 import FlModal from "../modal/FlModal.vue";
 import FlBlock from "../block/FlBlock.vue";
 import FlDescription from "../description/FlDescription.vue";
-import {getDisplayFieldCode} from "../../core/model";
+import { model } from "@fleet/common";
 
 interface Props {
   modelValue: any,
@@ -18,7 +18,7 @@ const props = defineProps<Props>();
 const visible = ref(false);
 
 const value = computed<any>(() => {
-  let displayField: string = getDisplayFieldCode(props.model);
+  let displayField: string = model.getDisplayFieldCode(props.model);
   let value = props.modelValue?.[displayField] || props.modelValue;
   if (props.display) {
     value = props.display(props.modelValue);

@@ -1,4 +1,4 @@
-import {clear, getItem, removeItem, setItem} from "@/utils/storage_utils";
+import {clear, getItem, removeItem, setItem} from "../utils/storage_utils";
 
 export class Storage {
   readonly #scope: string;

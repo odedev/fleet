@@ -1,4 +1,4 @@
-import {copy} from './json_utils';
+import { copy } from './json_utils';
 
 /**
  * 数组转树形结构

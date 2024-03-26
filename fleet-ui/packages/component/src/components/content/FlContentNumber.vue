@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import {computed} from "vue";
 import FlContentBase from "./FlContentBase.vue";
-import * as numberUtils from '../../utils/number_utils.ts';
+import { NumberUtils } from '@fleet/common';
 
 interface Props {
   modelValue: number,
@@ -13,7 +13,7 @@ const props = withDefaults(defineProps<Props>(), {
     precision: 0,
 });
 
-const value = computed<string>(() => numberUtils.fixed(props.modelValue, props.precision));
+const value = computed<string>(() => NumberUtils.fixed(props.modelValue, props.precision));
 
 const color = computed<any>(() => props.color);
 

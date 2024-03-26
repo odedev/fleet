@@ -2,8 +2,7 @@ import axios from 'axios'
 import qs from 'qs'
 import type {ResponseType} from 'axios'
 
-
-export class Request {
+class Request {
   readonly #instance;
 
   constructor(base: string, headers: any) {
@@ -326,5 +325,4 @@ export function newInstance(base: string, headers: any) {
   return request;
 }
 
-
-export default new Request('', {'Authorization': ''});
+export default Request;

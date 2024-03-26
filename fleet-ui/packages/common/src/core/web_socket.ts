@@ -1,7 +1,7 @@
 import {io, Socket} from "socket.io-client";
 
 
-export class WebSocket {
+class WebSocket {
   readonly #url: string;
   readonly #socket: Socket;
 
@@ -21,3 +21,5 @@ export class WebSocket {
 
 
 }
+
+export default WebSocket;

@@ -172,7 +172,7 @@ import FlInputEnum from "./FlInputEnum.vue";
 import FlInputModel from "./FlInputModel.vue";
 import FlInputJson from "./FlInputJson.vue";
 import FlInputFile from "./FlInputFile.vue";
-import DataTypeEnum from "../../enumerations/data_type_enum";
+import { DataTypeEnum } from "@fleet/common";
 
 const emits = defineEmits([
   'update:modelValue',

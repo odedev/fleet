@@ -10,7 +10,7 @@ import FlContentModel from "./FlContentModel.vue";
 import FlContentTextarea from "./FlContentTextarea.vue";
 import FlContentJson from "./FlContentJson.vue";
 import FlContentFile from "./FlContentFile.vue";
-import DataTypeEnum from "../../enumerations/data_type_enum";
+import { DataTypeEnum } from "@fleet/common";
 
 
 interface Props {

@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router';
-// import progress from "../core/progress";
+import { progress }  from "@fleet/base";
 
 import HomeView from '../views/HomeView.vue'
 import DashboardView from "../views/DashboardView.vue";
@@ -56,14 +56,14 @@ const router = createRouter({
 });
 
 router.beforeEach((to, from) => {
-  // progress.start();
+  progress.start();
   // ...
   // 返回 false 以取消导航
   return true;
 });
 
 router.afterEach((to, from) => {
-  // progress.done();
+  progress.done();
 });
 
 export default router

@@ -27,7 +27,7 @@ import {computed, ref} from "vue";
 import FlFormItem from "../form/FlFormItem.vue";
 import FlButtonSearch from "../button/FlButtonSearch.vue";
 import FlButtonReset from "../button/FlButtonReset.vue";
-import {getSearchableFields} from "../../core/model";
+import {model as Model } from "@fleet/common";
 
 const props = defineProps<{
   model: any,
@@ -39,8 +39,7 @@ const props = defineProps<{
 const value = ref({});
 
 const fields = computed(() => {
-  props.model.fields
-  let fields = getSearchableFields(props.model);
+  let fields = Model.getSearchableFields(props.model);
   console.log(fields)
   return fields;
 });
