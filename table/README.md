@@ -8,6 +8,10 @@ php artisan serve
 php artisan migrate:refresh
 ```
 
+## 导出数据库
+```shell
+php artisan schema:dump
+```
 
 ```sql
 CREATE DATABASE IF NOT EXISTS `fleet_table` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_bin;
