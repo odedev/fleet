@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('menus', function (Blueprint $table) {
             $table->char('id', 32)->comment('ID');
+
             $table->string('code', 64)->comment('编码');
             $table->string('name', 64)->comment('名称');
-
             $table->string('path', 255)->comment('路径');
             $table->string('icon', 255)->comment('图标');
             $table->integer('sequence', false)->comment('序号');

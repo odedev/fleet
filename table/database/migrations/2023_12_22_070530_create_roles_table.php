@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('roles', function (Blueprint $table) {
             $table->char('id', 32)->comment('ID');
+
             $table->string('code', 64)->comment('编码');
             $table->string('name', 64)->comment('名称');
 

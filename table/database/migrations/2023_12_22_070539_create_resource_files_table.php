@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('resource_files', function (Blueprint $table) {
             $table->char('id', 32)->comment('ID');
-            $table->string('name', 255)->nullable(false)->default('')->comment('文件名');
 
+            $table->string('name', 255)->nullable(false)->default('')->comment('文件名');
             $table->bigInteger('size', false, true)->comment('文件大小');
             $table->string('type', 255)->comment('文件类型');
             $table->string('path', 255)->nullable(false)->default('')->comment('文件路径');

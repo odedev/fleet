@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('role_menus', function (Blueprint $table) {
             $table->string('id', 32)->comment('ID');
+
             $table->string('role', 64)->nullable(false)->default('')->comment('角色');
             $table->string('menu', 64)->nullable(false)->default('')->comment('菜单');
 

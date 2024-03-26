@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->string('id', 32)->comment('ID');
+
             $table->string('username', 64)->comment('用户名');
             $table->string('password', 64)->comment('密码');
             $table->string('code', 64)->comment('编码');
