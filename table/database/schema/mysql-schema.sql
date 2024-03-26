@@ -48,6 +48,35 @@ CREATE TABLE `apps` (
   UNIQUE KEY `apps_code_unique` (`code`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
+DROP TABLE IF EXISTS `data_types`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `data_types` (
+  `id` char(32) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'ID',
+  `Booleans` tinyint(1) DEFAULT '0' COMMENT 'Booleans',
+  `Strings` varchar(64) COLLATE utf8mb4_unicode_ci DEFAULT '' COMMENT 'Strings',
+  `Texts` text COLLATE utf8mb4_unicode_ci COMMENT 'Texts',
+  `Integers` int DEFAULT NULL COMMENT 'Integers',
+  `Floats` decimal(12,4) NOT NULL COMMENT 'Floats',
+  `Dates` datetime(3) DEFAULT NULL COMMENT 'Dates',
+  `Enums` int NOT NULL DEFAULT '0' COMMENT 'Enums',
+  `Models` char(32) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Models',
+  `Jsons` json DEFAULT NULL COMMENT 'Jsons',
+  `Files` char(32) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Files',
+  `note` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '备注',
+  `is_system` tinyint(1) NOT NULL DEFAULT '1' COMMENT '系统预置',
+  `remark` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT '' COMMENT '备注',
+  `is_valid` tinyint(1) NOT NULL DEFAULT '1' COMMENT '是否有效',
+  `created_by` char(32) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '创建人ID',
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `updated_by` char(32) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '更新人ID',
+  `updated_at` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+  `updated_count` int unsigned DEFAULT '0' COMMENT '更新总次数',
+  `deleted_by` char(32) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '删除人ID',
+  `deleted_at` datetime DEFAULT NULL COMMENT '删除时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 DROP TABLE IF EXISTS `departments`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
@@ -570,6 +599,36 @@ CREATE TABLE `tenants` (
   UNIQUE KEY `tenants_code_unique` (`code`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
+DROP TABLE IF EXISTS `types`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `types` (
+  `id` char(32) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'ID',
+  `Booleans` tinyint(1) NOT NULL COMMENT 'Booleans',
+  `Strings` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Strings',
+  `Texts` text COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Texts',
+  `Integers` int NOT NULL COMMENT 'Integers',
+  `Floats` decimal(12,4) NOT NULL COMMENT 'Floats',
+  `Dates` datetime(3) NOT NULL COMMENT 'Dates',
+  `Enums` int NOT NULL COMMENT 'Enums',
+  `Models` char(32) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Models',
+  `Jsons` json NOT NULL COMMENT 'Jsons',
+  `Files` char(32) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Files',
+  `note` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '备注',
+  `is_system` tinyint(1) NOT NULL DEFAULT '1' COMMENT '系统预置',
+  `remark` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT '' COMMENT '备注',
+  `is_valid` tinyint(1) NOT NULL DEFAULT '1' COMMENT '是否有效',
+  `created_by` char(32) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '创建人ID',
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `updated_by` char(32) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '更新人ID',
+  `updated_at` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+  `updated_count` int unsigned DEFAULT '0' COMMENT '更新总次数',
+  `deleted_by` char(32) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '删除人ID',
+  `deleted_at` datetime DEFAULT NULL COMMENT '删除时间',
+  PRIMARY KEY (`id`),
+  KEY `types_remark_updated_count_index` (`remark`,`updated_count`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 DROP TABLE IF EXISTS `user_profiles`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
@@ -697,33 +756,35 @@ CREATE TABLE `views` (
 /*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
-INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES (167,'2014_10_12_000000_create_users_table',1);
-INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES (168,'2014_10_12_100000_create_password_reset_tokens_table',1);
-INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES (169,'2019_08_19_000000_create_failed_jobs_table',1);
-INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES (170,'2019_12_14_000001_create_personal_access_tokens_table',1);
-INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES (171,'2023_12_22_070529_create_menus_table',1);
-INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES (172,'2023_12_22_070530_create_role_menus_table',1);
-INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES (173,'2023_12_22_070530_create_roles_table',1);
-INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES (174,'2023_12_22_070532_create_user_profiles_table',1);
-INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES (175,'2023_12_22_070532_create_user_roles_table',1);
-INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES (176,'2023_12_22_070533_create_departments_table',1);
-INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES (177,'2023_12_22_070534_create_orgs_table',1);
-INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES (178,'2023_12_22_070535_create_org_roles_table',1);
-INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES (179,'2023_12_22_070535_create_org_users_table',1);
-INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES (180,'2023_12_22_070536_create_situations_table',1);
-INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES (181,'2023_12_22_070537_create_tenants_table',1);
-INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES (182,'2023_12_22_070538_create_tenant_roles_table',1);
-INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES (183,'2023_12_22_070538_create_tenant_users_table',1);
-INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES (184,'2023_12_22_070539_create_resource_files_table',1);
-INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES (185,'2023_12_22_070540_create_apps_table',1);
-INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES (186,'2023_12_22_070541_create_app_modules_table',1);
-INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES (187,'2023_12_22_070541_create_enumerations_table',1);
-INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES (188,'2023_12_22_070542_create_enumeration_values_table',1);
-INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES (189,'2023_12_22_070543_create_models_table',1);
-INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES (190,'2023_12_22_070544_create_model_fields_table',1);
-INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES (191,'2023_12_22_070544_create_modules_table',1);
-INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES (192,'2023_12_22_070545_create_views_table',1);
-INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES (193,'2023_12_22_070546_create_view_blocks_table',1);
-INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES (194,'2024_03_26_154644_create_dictionaries_table',1);
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES (195,'2024_03_26_164004_create_dicts_table',1);
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES (196,'2024_03_26_164029_alert_dicts_table',1);
+INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES (567,'2014_10_12_000000_create_users_table',2);
+INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES (568,'2014_10_12_100000_create_password_reset_tokens_table',2);
+INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES (569,'2019_08_19_000000_create_failed_jobs_table',2);
+INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES (570,'2019_12_14_000001_create_personal_access_tokens_table',2);
+INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES (571,'2023_12_22_070529_create_menus_table',2);
+INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES (572,'2023_12_22_070530_create_role_menus_table',2);
+INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES (573,'2023_12_22_070530_create_roles_table',2);
+INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES (574,'2023_12_22_070532_create_user_profiles_table',2);
+INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES (575,'2023_12_22_070532_create_user_roles_table',2);
+INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES (576,'2023_12_22_070533_create_departments_table',2);
+INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES (577,'2023_12_22_070534_create_orgs_table',2);
+INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES (578,'2023_12_22_070535_create_org_roles_table',2);
+INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES (579,'2023_12_22_070535_create_org_users_table',2);
+INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES (580,'2023_12_22_070536_create_situations_table',2);
+INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES (581,'2023_12_22_070537_create_tenants_table',2);
+INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES (582,'2023_12_22_070538_create_tenant_roles_table',2);
+INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES (583,'2023_12_22_070538_create_tenant_users_table',2);
+INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES (584,'2023_12_22_070539_create_resource_files_table',2);
+INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES (585,'2023_12_22_070540_create_apps_table',2);
+INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES (586,'2023_12_22_070541_create_app_modules_table',2);
+INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES (587,'2023_12_22_070541_create_enumerations_table',2);
+INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES (588,'2023_12_22_070542_create_enumeration_values_table',2);
+INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES (589,'2023_12_22_070543_create_models_table',2);
+INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES (590,'2023_12_22_070544_create_model_fields_table',2);
+INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES (591,'2023_12_22_070544_create_modules_table',2);
+INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES (592,'2023_12_22_070545_create_views_table',2);
+INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES (593,'2023_12_22_070546_create_view_blocks_table',2);
+INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES (594,'2024_03_26_154644_create_dictionaries_table',2);
+INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES (595,'2024_03_26_165523_create_data_types_table',2);
+INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES (596,'2024_03_26_171057_create_types_table',2);

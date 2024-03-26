@@ -23,3 +23,8 @@ metadata/model/Role.sql
 schema/RoleCreate.sql
 
 RoleInsert.sql
+
+
+```txt
+BLOB, TEXT, GEOMETRY or JSON column 'Texts' can't have a default value ''
+```
