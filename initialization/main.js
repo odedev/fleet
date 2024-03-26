@@ -1,7 +1,7 @@
 import chalk from 'chalk';
 
-import file from './file.js';
-import init from './init.js';
+import file from './src/file.js';
+import init from './src/init.js';
 
 async function main() {
   const mods = {
