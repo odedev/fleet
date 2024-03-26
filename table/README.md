@@ -9,6 +9,11 @@ php artisan migrate:refresh
 ```
 
 
+```sql
+CREATE DATABASE IF NOT EXISTS `fleet_table` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_bin;
+USE `fleet_table`;
+```
+
 
 ## About Laravel
 
