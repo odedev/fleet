@@ -74,6 +74,8 @@ return new class extends Migration
 
             $table->primary('id');
             $table->unique('code');
+            $table->index(['number', 'note']);
+
         });
     }
 
