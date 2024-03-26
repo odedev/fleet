@@ -29,7 +29,7 @@ export { default as FlContentEnum } from './src/components/content/FlContentEnum
 export { default as FlContentModel } from './src/components/content/FlContentModel.vue';
 export { default as FlContentFile } from './src/components/content/FlContentFile.vue';
 export { default as FlContentJson } from './src/components/content/FlContentJson.vue';
-export { default as FlContentTextarea } from './src/components/action/FlContentTextarea.vue';
+export { default as FlContentTextarea } from './src/components/content/FlContentTextarea.vue';
 
 export { default as FlInput } from './src/components/input/FlInput.vue';
 export { default as FlInputBase } from './src/components/input/FlInputBase.vue';
@@ -84,12 +84,12 @@ export { default as FlPane } from './src/components/pane/FlPane.vue';
 export { default as FlStep } from './src/components/step/FlStep.vue';
 
 export { default as FlEditorMarkdown } from './src/components/editor/FlEditorMarkdown.vue';
-// export { default as FlEditorRichText } from './src/components/editor/FlEditorRichText.vue';
+export { default as FlEditorRichText } from './src/components/editor/FlEditorRichText.vue';
 export { default as FlEditorCode } from './src/components/editor/FlEditorCode.vue';
 
 export { default as FlViewer } from './src/components/viewer/FlViewer.vue';
 export { default as FlViewerMarkdown } from './src/components/viewer/FlViewerMarkdown.vue';
-// export { default as FlViewerRichText } from './src/components/viewer/FlViewerRichText.vue';
+export { default as FlViewerRichText } from './src/components/viewer/FlViewerRichText.vue';
 export { default as FlViewerImage } from './src/components/viewer/FlViewerImage.vue';
 export { default as FlViewerVideo } from './src/components/viewer/FlViewerVideo.vue';
 

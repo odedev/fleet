@@ -14,7 +14,7 @@ import BaseTableView from '../views/Base/BaseTableView.vue'
 import BaseTableConciseView from '../views/Base/BaseTableConciseView.vue'
 import BaseMarkdownView from '../views/Base/BaseMarkdownView.vue'
 import BaseCodeView from '../views/Base/BaseCodeView.vue'
-// import BaseRichTextView from '../views/Base/BaseRichTextView.vue'
+import BaseRichTextView from '../views/Base/BaseRichTextView.vue'
 import BaseCalendarView from "@/views/Base/BaseCalendarView.vue";
 import BasePanelView from '../views/Base/BasePanelView.vue'
 import BaseStepView from '../views/Base/BaseStepView.vue'
@@ -29,7 +29,7 @@ import LayoutTableView from '../views/Layout/LayoutTableView.vue'
 import LayoutTableTreeView from '../views/Layout/LayoutTableTreeView.vue'
 
 import ViewerMarkdownView from "../views/Viewer/ViewerMarkdownView.vue";
-// import ViewerRichTextView from "../views/Viewer/ViewerRichTextView.vue";
+import ViewerRichTextView from "../views/Viewer/ViewerRichTextView.vue";
 import ViewerImageView from "../views/Viewer/ViewerImageView.vue";
 import ViewerVideoView from "../views/Viewer/ViewerVideoView.vue";
 import ViewerPdfView from "../views/Viewer/ViewerPdfView.vue";
@@ -49,7 +49,7 @@ const routes: RouteRecordRaw[] = [
   { path: '/Base/BaseTableConcise', name: 'BaseTableConcise', component: BaseTableConciseView },
   { path: '/Base/BaseMarkdown', name: 'BaseMarkdown', component: BaseMarkdownView },
   { path: '/Base/BaseCode', name: 'BaseCode', component: BaseCodeView },
-  // { path: '/Base/BaseRichText', name: 'BaseRichText', component: BaseRichTextView },
+  { path: '/Base/BaseRichText', name: 'BaseRichText', component: BaseRichTextView },
   { path: '/Base/BaseCalendar', name: 'BaseCalendar', component: BaseCalendarView },
   { path: '/Base/BasePanel', name: 'BasePanel', component: BasePanelView },
   { path: '/Base/BaseStep', name: 'BaseStep', component: BaseStepView },
@@ -62,7 +62,7 @@ const routes: RouteRecordRaw[] = [
   { path: '/Layout/LayoutTableTree', name: 'LayoutTableTree', component: LayoutTableTreeView },
 
   { path: '/Viewer/ViewerMarkdown', name: 'ViewerMarkdown', component: ViewerMarkdownView },
-  // { path: '/Viewer/ViewerRichText', name: 'ViewerRichText', component: ViewerRichTextView },
+  { path: '/Viewer/ViewerRichText', name: 'ViewerRichText', component: ViewerRichTextView },
   { path: '/Viewer/ViewerImage', name: 'ViewerImage', component: ViewerImageView },
   { path: '/Viewer/ViewerVideo', name: 'ViewerVideo', component: ViewerVideoView },
   { path: '/Viewer/ViewerPdf', name: 'ViewerPdf', component: ViewerPdfView },
