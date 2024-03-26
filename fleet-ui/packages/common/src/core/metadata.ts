@@ -1,45 +1,51 @@
 
 import {copy} from "../utils/json_utils";
-import {transform} from "./enumeration";
+import Model from "./model";
+import Enumeration from "./enumeration";
 
-const Metadata = {
-  model: new Map<string, any>(),
-  enumeration: new Map<string, any>(),
-}
+class Metadata {
+  #model: Map<string, any>;
+  #enumeration: Map<string, any>;
 
-export function setModel(model: any): void {
-  Metadata.model.set(model.fullName, model);
-}
-
-export function getModel(fullName: string): any {
-  return getModelByFullName(fullName);
-}
-
-export function getModelByFullName(fullName: string): any {
-  const model = Metadata.model.get(fullName);
-  if (!model) {
-    return null
-  }
-  return copy(model);
-}
-
-export function setEnumeration(enumeration: any): void {
-  Metadata.enumeration.set(enumeration.fullName, enumeration);
-}
-
-export function getEnumeration(fullName: string): any {
-  return getEnumerationByFullName(fullName);
-}
-
-export function getEnumerationByFullName(fullName: string): any {
-  const enumeration = Metadata.enumeration.get(fullName);
-  if (!enumeration) {
-    return null
+  constructor() {
+    this.#model = new Map<string, any>();
+    this.#enumeration = new Map<string, any>();
   }
 
-  let enumData = copy(enumeration);
-  return transform(enumData);
-}
+  setModel(model: any): void {
+    this.#model.set(model.fullName, model);
+  }
 
+  getModelByFullName(fullName: string): any {
+    const model = this.#model.get(fullName);
+    if (!model) {
+      return null
+    }
+    return copy(model);
+  }
+
+  getModel(fullName: string): any {
+    return this.getModelByFullName(fullName);
+  }
+
+  setEnumeration(enumeration: any): void {
+    this.#enumeration.set(enumeration.fullName, enumeration);
+  }
+
+  getEnumeration(fullName: string): any {
+    return this.getEnumerationByFullName(fullName);
+  }
+
+  getEnumerationByFullName(fullName: string): any {
+    const enumeration = this.#enumeration.get(fullName);
+    if (!enumeration) {
+      return null
+    }
+
+    let enumData = copy(enumeration);
+    return Enumeration.transform(enumData);
+  }
+
+}
 
 export default Metadata;

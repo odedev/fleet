@@ -1,4 +1,4 @@
-import request from "../core/http";
+import request from "../core/request";
 
 
 class ModelRepository {

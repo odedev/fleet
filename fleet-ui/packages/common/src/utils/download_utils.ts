@@ -1,5 +1,5 @@
 
-function downloadForBlob(data: Blob, filename: string) {
+export function downloadForBlob(data: Blob, filename: string) {
   const url = window.URL.createObjectURL(data);
   var downloadElement = document.createElement("a");
   downloadElement.href = url;
@@ -11,7 +11,7 @@ function downloadForBlob(data: Blob, filename: string) {
 }
 
 
-function downloadForURL(url: string, filename: string) {
+export function downloadForURL(url: string, filename: string) {
   const ele = document.createElement("a");
   ele.href = url;
   ele.download = filename;

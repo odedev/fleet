@@ -2,19 +2,20 @@ import { copy } from './json_utils';
 
 /**
  * 数组转树形结构
- * @param list
+ * @param data
  * @return Array
  */
 export function arrayToTree(list: any[]): any[] {
+  const data: any[] = copy(list);
   const dataMap: any = new Map();
   const dataTree: any = [];
 
-  list.forEach(item => {
+  data.forEach(item => {
     const id = item.id || item.code;
     dataMap.set(id, item);
   });
 
-  list.forEach(item => {
+  data.forEach(item => {
     const parentId = item.parent?.id || item.parent;
     const parent = dataMap.get(parentId);
     if (parent) {

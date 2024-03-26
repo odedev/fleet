@@ -1,17 +1,17 @@
-import {getModel} from "../core/metadata";
-import {getModelInitValue} from "../core/model";
+import metadata from "../core/metadata";
+import { Model } from "@fleet/common";
 import ModelRepository from "../repositories/model_repository";
 
 export function useModel(name: string): any {
-  return getModel(name);
+  return metadata.getModel(name);
 }
 
 export function useModelInitValue(name: string): any {
-  return getModelInitValue(getModel(name));
+  return Model.getModelInitValue(metadata.getModel(name));
 }
 
 export function useModelRepository(name: string): any {
-  const model = getModel(name);
+  const model = metadata.getModel(name);
   const moduleCode = model?.module.code;
   const modelCode = model?.code;
   return new ModelRepository(moduleCode, modelCode);

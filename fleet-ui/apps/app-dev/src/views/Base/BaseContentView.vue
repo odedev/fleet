@@ -7,8 +7,9 @@ import {
   FlContentFile, FlContentTextarea, FlContentJson,
   FlButton, FlAction
 } from '@fleet/component'
-// import DataTypeEnum from "@/enumerations/data_type_enum";
-// import DateFormatEnum from "@/enumerations/date_format_enum";
+import { DataTypeEnum, DateFormatEnum } from '@fleet/common';
+// import { useModel } from '@fleet/base';
+
 // import {useModel} from "@/composables/model";
 // import {useEnumeration} from "@/composables/enumeration";
 

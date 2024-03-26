@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 import {
   FlHeader, FlBody, FlFooter, FlMenu, FlMain, FlNav, FlTab, FlPage,
   FlView, FlViewAside, FlViewMain, FlViewNav, FlViewHead, FlViewBody,
@@ -18,7 +18,7 @@ import {
       <!--      </FlViewHead>-->
       <FlViewBody>
         <FlBlock>
-          <FlEditorMarkdown></FlEditorMarkdown>
+          <FlEditorMarkdown />
         </FlBlock>
       </FlViewBody>
     </FlViewMain>

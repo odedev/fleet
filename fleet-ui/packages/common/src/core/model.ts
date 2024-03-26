@@ -1,57 +1,61 @@
-import {copy} from '../utils/json_utils';
-import {getInitValue} from "./data_type";
+import { copy } from '../utils/json_utils';
+import DataType from "./data_type";
 
-/**
- * 获取模型显示的字段
- * @param model
- */
-export function getDisplayFieldCode(model: any): string {
-  let displayField = 'name';
+class Model {
 
-  if (model) {
-    for (const field of model.fields) {
-      if (field.isDefaultDisplay) {
-        displayField = field.code;
-        break
+  /**
+   * 获取模型显示的字段
+   * @param model
+   */
+  static getDisplayFieldCode(model: any): string {
+    let displayField = 'name';
+
+    if (model) {
+      for (const field of model.fields) {
+        if (field.isDefaultDisplay) {
+          displayField = field.code;
+          break
+        }
       }
     }
+
+    return displayField;
   }
 
-  return displayField;
-}
+  static getSearchableFields(model: any): any[] {
+    let fields = [];
 
+    fields = model.fields.filter((field: { isSearchable: any; }) => field.isSearchable);
 
-export function getSearchableFields(model: any): any[] {
-  let fields = [];
+    // if (model) {
+    //   for (const field of model.fields) {
+    //     if (field.isSearchable) {
+    //       fields.push(field)
+    //     }
+    //   }
+    // }
 
-  fields = model.fields.filter((field: { isSearchable: any; }) => field.isSearchable);
-
-  // if (model) {
-  //   for (const field of model.fields) {
-  //     if (field.isSearchable) {
-  //       fields.push(field)
-  //     }
-  //   }
-  // }
-
-  return fields;
-}
-
-/**
- * 获取模型的初始化值
- * @param model
- */
-export function getModelInitValue(model: any): any {
-  if (!model) {
-    return null;
+    return fields;
   }
 
-  let value: any = {};
-  for (const field of model.fields) {
-    const code = field.code;
-    const dataType = field.dataType;
+  /**
+   * 获取模型的初始化值
+   * @param model
+   */
+  static getModelInitValue(model: any): any {
+    if (!model) {
+      return null;
+    }
 
-    value[code] = getInitValue(dataType);
+    let value: any = {};
+    for (const field of model.fields) {
+      const code = field.code;
+      const dataType = field.dataType;
+
+      value[code] = DataType.getInitValue(dataType);
+    }
+    return value;
   }
-  return value;
 }
+
+export default Model;

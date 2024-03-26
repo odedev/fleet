@@ -45,6 +45,7 @@ import {
   FlInputTextarea, FlInputPassword,
   FlButton, FlSearch, FlAction
 } from '@fleet/component'
+import { DataTypeEnum } from '@fleet/common';
 // import DataTypeEnum from "@/enumerations/data_type_enum";
 //
 // import {useModel} from "@/composables/model";

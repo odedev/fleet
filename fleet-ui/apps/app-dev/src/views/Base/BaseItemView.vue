@@ -21,7 +21,7 @@
     </FlViewMain>
   </FlView>
 </template>
-<script lang="ts" setup>
+<script setup lang="ts">
 import {
   FlView, FlViewAside, FlViewMain, FlViewNav, FlViewHead, FlViewBody,
   FlBlock, FlBox, FlItem,

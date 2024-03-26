@@ -93,6 +93,8 @@ export { default as FlViewerRichText } from './src/components/viewer/FlViewerRic
 export { default as FlViewerImage } from './src/components/viewer/FlViewerImage.vue';
 export { default as FlViewerVideo } from './src/components/viewer/FlViewerVideo.vue';
 
+export { default as FlIcon } from './src/components/icon/FlIcon.vue';
+
 export { default as FlLoading } from './src/components/loading/FlLoading.vue';
 
 export { default as FlSearch } from './src/components/search/FlSearch.vue';

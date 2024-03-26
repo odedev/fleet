@@ -9,7 +9,7 @@
       <!--      </FlViewHead>-->
       <FlViewBody>
         <FlBlock>
-          <FlEditorRichText></FlEditorRichText>
+          <FlEditorRichText />
         </FlBlock>
       </FlViewBody>
     </FlViewMain>

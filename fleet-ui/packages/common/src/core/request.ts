@@ -1,6 +1,6 @@
 import axios from 'axios'
 import qs from 'qs'
-import type {ResponseType} from 'axios'
+import type { ResponseType, AxiosRequestConfig } from 'axios'
 
 class Request {
   readonly #instance;
@@ -30,6 +30,15 @@ class Request {
     });
   }
 
+
+  async request(config: AxiosRequestConfig<any>) {
+    try {
+      let res = await this.#instance.request(config)
+      return res.data
+    } catch (err: any) {
+      throw err.response.data
+    }
+  }
 
   async get(url: string, params: any = null) {
     if (params) {

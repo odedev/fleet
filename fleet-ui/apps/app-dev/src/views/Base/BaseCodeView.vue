@@ -1,4 +1,5 @@
-<script lang="ts" setup>
+<script setup lang="ts">
+import { ref } from 'vue';
 import {
   FlHeader, FlBody, FlFooter, FlMenu, FlMain, FlNav, FlTab, FlPage,
   FlView, FlViewAside, FlViewMain, FlViewNav, FlViewHead, FlViewBody,
@@ -7,6 +8,7 @@ import {
   FlTable, FlButton, FlSearch, FlAction
 } from '@fleet/component'
 
+const value = ref('');
 </script>
 
 <template>
@@ -20,7 +22,7 @@ import {
       <!--      </FlViewHead>-->
       <FlViewBody>
         <FlBlock>
-          <FlEditorCode></FlEditorCode>
+          <FlEditorCode v-model="value"></FlEditorCode>
         </FlBlock>
       </FlViewBody>
     </FlViewMain>
