@@ -11,15 +11,11 @@
 │
 ├── fleet-component
 │   ├── fleet-component-bpmn
-│   ├── fleet-component-clickhouse
 │   ├── fleet-component-couchbase
-│   ├── fleet-component-doris
-│   ├── fleet-component-flink
 │   ├── fleet-component-kafka
 │   ├── fleet-component-minio
 │   ├── fleet-component-mongodb
 │   ├── fleet-component-mysql
-│   ├── fleet-component-pulsar
 │   ├── fleet-component-rabbitmq
 │   └── fleet-component-redis
 │
@@ -50,15 +46,15 @@
 │   ├── tools
 │   └── rush.json
 │
-├── deploy   部署
+├── docs      文档
 │
-├── doc      文档
-│
-├── operate  运维
+├── operate  部署
 │
 ├── portal   网站
 │
 ├── resource 资源
+│
+├── script   脚本
 │
 ├── tool     工具
 │

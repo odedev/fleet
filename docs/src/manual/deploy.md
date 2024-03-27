@@ -8,15 +8,6 @@
 │   ├── ...
 │   └── docker-compose.yml
 │
-├── data   数据仓库
-│   ├── ...
-│   └── docker-compose.yml
-│
-├── entry  接口入口
-│   ├── haproxy
-│   ├── traefik
-│   └── docker-compose.yml
-│
 ├── gateway  网关
 │   ├── ...
 │   └── docker-compose.yml
