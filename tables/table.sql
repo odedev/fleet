@@ -26,6 +26,8 @@ CREATE TABLE IF NOT EXISTS `apps` (
   `id` char(32) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'ID',
   `code` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '编码',
   `name` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '名称',
+  `port` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '8080' COMMENT '端口',
+  `description` varchar(64) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '描述',
   `note` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '备注',
   `isSystem` tinyint(1) NOT NULL DEFAULT '1' COMMENT '系统预置',
   `remark` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT '' COMMENT '备注',
@@ -37,6 +39,7 @@ CREATE TABLE IF NOT EXISTS `apps` (
   `updated_count` int unsigned DEFAULT '0' COMMENT '更新总次数',
   `deleted_by` char(32) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '删除人ID',
   `deleted_at` datetime DEFAULT NULL COMMENT '删除时间',
+  `ext_seg` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '扩展字段',
   PRIMARY KEY (`id`),
   UNIQUE KEY `apps_code_unique` (`code`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -62,6 +65,36 @@ CREATE TABLE IF NOT EXISTS `app_modules` (
   `deleted_at` datetime DEFAULT NULL COMMENT '删除时间',
   PRIMARY KEY (`id`),
   KEY `app_modules_app_index` (`app`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- 数据导出被取消选择。
+
+-- 导出  表 fleet_table.data_types 结构
+DROP TABLE IF EXISTS `data_types`;
+CREATE TABLE IF NOT EXISTS `data_types` (
+  `id` char(32) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'ID',
+  `Booleans` tinyint(1) DEFAULT '0' COMMENT 'Booleans',
+  `Strings` varchar(64) COLLATE utf8mb4_unicode_ci DEFAULT '' COMMENT 'Strings',
+  `Texts` text COLLATE utf8mb4_unicode_ci COMMENT 'Texts',
+  `Integers` int DEFAULT NULL COMMENT 'Integers',
+  `Floats` decimal(12,4) NOT NULL COMMENT 'Floats',
+  `Dates` datetime(3) DEFAULT NULL COMMENT 'Dates',
+  `Enums` int NOT NULL DEFAULT '0' COMMENT 'Enums',
+  `Models` char(32) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Models',
+  `Jsons` json DEFAULT NULL COMMENT 'Jsons',
+  `Files` char(32) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Files',
+  `note` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '备注',
+  `is_system` tinyint(1) NOT NULL DEFAULT '1' COMMENT '系统预置',
+  `remark` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT '' COMMENT '备注',
+  `is_valid` tinyint(1) NOT NULL DEFAULT '1' COMMENT '是否有效',
+  `created_by` char(32) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '创建人ID',
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `updated_by` char(32) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '更新人ID',
+  `updated_at` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+  `updated_count` int unsigned DEFAULT '0' COMMENT '更新总次数',
+  `deleted_by` char(32) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '删除人ID',
+  `deleted_at` datetime DEFAULT NULL COMMENT '删除时间',
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- 数据导出被取消选择。
@@ -111,7 +144,7 @@ CREATE TABLE IF NOT EXISTS `dictionaries` (
   `sunrise` time NOT NULL,
   `added_at` timestamp NOT NULL,
   `created_on` date NOT NULL,
-  `amount` decimal(8,2) NOT NULL,
+  `amount` decimal(16,4) NOT NULL,
   `amounts` double NOT NULL,
   `amounting` double(53,2) NOT NULL,
   `difficulty` enum('easy','hard') COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -161,9 +194,10 @@ CREATE TABLE IF NOT EXISTS `dictionaries` (
 DROP TABLE IF EXISTS `enumerations`;
 CREATE TABLE IF NOT EXISTS `enumerations` (
   `id` char(32) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'ID',
-  `module` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '模块',
-  `code` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '编码',
-  `name` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '名称',
+  `code` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '编码',
+  `name` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '名称',
+  `full_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '全称',
+  `module` char(32) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '模块',
   `note` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '备注',
   `isSystem` tinyint(1) NOT NULL DEFAULT '1' COMMENT '系统预置',
   `remark` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT '' COMMENT '备注',
@@ -186,9 +220,10 @@ CREATE TABLE IF NOT EXISTS `enumerations` (
 DROP TABLE IF EXISTS `enumeration_values`;
 CREATE TABLE IF NOT EXISTS `enumeration_values` (
   `id` char(32) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'ID',
-  `enumeration` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '枚举',
   `code` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '编码',
   `name` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '名称',
+  `value` tinyint NOT NULL DEFAULT '0' COMMENT '值',
+  `enumeration` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '枚举',
   `note` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '备注',
   `isSystem` tinyint(1) NOT NULL DEFAULT '1' COMMENT '系统预置',
   `remark` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT '' COMMENT '备注',
@@ -257,7 +292,7 @@ CREATE TABLE IF NOT EXISTS `migrations` (
   `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=139 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- 数据导出被取消选择。
 
@@ -265,9 +300,11 @@ CREATE TABLE IF NOT EXISTS `migrations` (
 DROP TABLE IF EXISTS `models`;
 CREATE TABLE IF NOT EXISTS `models` (
   `id` char(32) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'ID',
-  `module` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '模块',
-  `code` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '编码',
-  `name` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '名称',
+  `code` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '编码',
+  `name` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '名称',
+  `full_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '全称',
+  `description` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT '' COMMENT '描述',
+  `module` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT '模块',
   `note` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '备注',
   `isSystem` tinyint(1) NOT NULL DEFAULT '1' COMMENT '系统预置',
   `remark` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT '' COMMENT '备注',
@@ -290,10 +327,22 @@ CREATE TABLE IF NOT EXISTS `models` (
 DROP TABLE IF EXISTS `model_fields`;
 CREATE TABLE IF NOT EXISTS `model_fields` (
   `id` char(32) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'ID',
-  `model` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '模型',
   `code` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '编码',
   `name` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '名称',
-  `note` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '备注',
+  `data_type` tinyint NOT NULL COMMENT '数据类型',
+  `data_length` int NOT NULL COMMENT '数据长度',
+  `enum_type` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '枚举类型',
+  `model_type` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '模型类型',
+  `is_slave_model` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否从模型',
+  `is_nullable` tinyint(1) NOT NULL DEFAULT '1' COMMENT '可空',
+  `is_searchable` tinyint(1) NOT NULL DEFAULT '0' COMMENT '可搜索',
+  `is_hidden` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否隐藏',
+  `is_default_display` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否默认显示',
+  `is_default_hidden` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否默认隐藏',
+  `note` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '备注',
+  `sequence` int NOT NULL COMMENT '顺序',
+  `model` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '模型',
+  `notes` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '备注',
   `isSystem` tinyint(1) NOT NULL DEFAULT '1' COMMENT '系统预置',
   `remark` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT '' COMMENT '备注',
   `is_valid` tinyint(1) NOT NULL DEFAULT '1' COMMENT '是否有效',
@@ -317,6 +366,8 @@ CREATE TABLE IF NOT EXISTS `modules` (
   `id` char(32) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'ID',
   `code` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '编码',
   `name` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '名称',
+  `description` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '描述',
+  `storage_type` tinyint NOT NULL DEFAULT '0' COMMENT '存储类型',
   `note` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '备注',
   `isSystem` tinyint(1) NOT NULL DEFAULT '1' COMMENT '系统预置',
   `remark` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT '' COMMENT '备注',
@@ -598,6 +649,37 @@ CREATE TABLE IF NOT EXISTS `tenant_users` (
 
 -- 数据导出被取消选择。
 
+-- 导出  表 fleet_table.types 结构
+DROP TABLE IF EXISTS `types`;
+CREATE TABLE IF NOT EXISTS `types` (
+  `id` char(32) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'ID',
+  `Booleans` tinyint(1) NOT NULL COMMENT 'Booleans',
+  `Strings` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Strings',
+  `Texts` text COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Texts',
+  `Integers` int NOT NULL COMMENT 'Integers',
+  `Floats` decimal(12,4) NOT NULL COMMENT 'Floats',
+  `Dates` datetime(3) NOT NULL COMMENT 'Dates',
+  `Enums` int NOT NULL COMMENT 'Enums',
+  `Models` char(32) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Models',
+  `Jsons` json NOT NULL COMMENT 'Jsons',
+  `Files` char(32) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Files',
+  `note` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '备注',
+  `is_system` tinyint(1) NOT NULL DEFAULT '1' COMMENT '系统预置',
+  `remark` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT '' COMMENT '备注',
+  `is_valid` tinyint(1) NOT NULL DEFAULT '1' COMMENT '是否有效',
+  `created_by` char(32) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '创建人ID',
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `updated_by` char(32) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '更新人ID',
+  `updated_at` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+  `updated_count` int unsigned DEFAULT '0' COMMENT '更新总次数',
+  `deleted_by` char(32) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '删除人ID',
+  `deleted_at` datetime DEFAULT NULL COMMENT '删除时间',
+  PRIMARY KEY (`id`),
+  KEY `types_remark_updated_count_index` (`remark`,`updated_count`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- 数据导出被取消选择。
+
 -- 导出  表 fleet_table.users 结构
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE IF NOT EXISTS `users` (
@@ -609,6 +691,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `email` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '邮箱',
   `phone` varchar(11) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '手机',
   `userType` tinyint NOT NULL COMMENT '类型',
+  `userStatus` tinyint NOT NULL COMMENT '状态',
   `isSuperAdmin` tinyint(1) NOT NULL DEFAULT '0' COMMENT '超级管理员',
   `remark` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT '' COMMENT '备注',
   `is_valid` tinyint(1) NOT NULL DEFAULT '1' COMMENT '是否有效',
@@ -631,8 +714,9 @@ DROP TABLE IF EXISTS `user_profiles`;
 CREATE TABLE IF NOT EXISTS `user_profiles` (
   `id` char(32) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'ID',
   `user` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '用户',
-  `code` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '编码',
   `name` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '名称',
+  `email` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '编码',
+  `address` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '地址',
   `note` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '备注',
   `isSystem` tinyint(1) NOT NULL DEFAULT '1' COMMENT '系统预置',
   `remark` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT '' COMMENT '备注',
@@ -677,9 +761,14 @@ CREATE TABLE IF NOT EXISTS `user_roles` (
 DROP TABLE IF EXISTS `views`;
 CREATE TABLE IF NOT EXISTS `views` (
   `id` char(32) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'ID',
-  `module` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '模块',
   `code` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '编码',
   `name` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '名称',
+  `path` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '路径',
+  `is_master_view` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否主视图',
+  `view_type` tinyint NOT NULL DEFAULT '0' COMMENT '视图类型',
+  `parent` varchar(32) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '父级',
+  `sequence` int NOT NULL DEFAULT '10' COMMENT '顺序',
+  `module` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '模块',
   `note` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '备注',
   `isSystem` tinyint(1) NOT NULL DEFAULT '1' COMMENT '系统预置',
   `remark` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT '' COMMENT '备注',
@@ -702,9 +791,12 @@ CREATE TABLE IF NOT EXISTS `views` (
 DROP TABLE IF EXISTS `view_blocks`;
 CREATE TABLE IF NOT EXISTS `view_blocks` (
   `id` char(32) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'ID',
-  `view` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '视图',
   `code` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '编码',
   `name` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '名称',
+  `block_type` tinyint NOT NULL DEFAULT '0' COMMENT '视图类型',
+  `sequence` int NOT NULL DEFAULT '10' COMMENT '顺序',
+  `model` varchar(32) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '模型',
+  `view` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '视图',
   `note` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '备注',
   `isSystem` tinyint(1) NOT NULL DEFAULT '1' COMMENT '系统预置',
   `remark` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT '' COMMENT '备注',

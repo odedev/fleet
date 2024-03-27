@@ -30,7 +30,7 @@ return new class extends Migration
             $table->integer('sequence', false)->comment('顺序');
             $table->string('model', 32)->nullable(false)->comment('模型');
 
-            $table->string('note', 64)->comment('备注');
+            $table->string('notes', 64)->comment('备注');
             $table->boolean('isSystem', 64)->nullable(false)->default(true)->comment('系统预置');
 
             $table->string('remark', 255)->nullable(true)->default('')->comment('备注');

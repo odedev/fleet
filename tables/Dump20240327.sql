@@ -64,6 +64,8 @@ CREATE TABLE `apps` (
   `id` char(32) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'ID',
   `code` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '编码',
   `name` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '名称',
+  `port` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '8080' COMMENT '端口',
+  `description` varchar(64) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '描述',
   `note` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '备注',
   `isSystem` tinyint(1) NOT NULL DEFAULT '1' COMMENT '系统预置',
   `remark` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT '' COMMENT '备注',
@@ -75,6 +77,7 @@ CREATE TABLE `apps` (
   `updated_count` int unsigned DEFAULT '0' COMMENT '更新总次数',
   `deleted_by` char(32) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '删除人ID',
   `deleted_at` datetime DEFAULT NULL COMMENT '删除时间',
+  `ext_seg` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '扩展字段',
   PRIMARY KEY (`id`),
   UNIQUE KEY `apps_code_unique` (`code`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -87,6 +90,49 @@ CREATE TABLE `apps` (
 LOCK TABLES `apps` WRITE;
 /*!40000 ALTER TABLE `apps` DISABLE KEYS */;
 /*!40000 ALTER TABLE `apps` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `data_types`
+--
+
+DROP TABLE IF EXISTS `data_types`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `data_types` (
+  `id` char(32) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'ID',
+  `Booleans` tinyint(1) DEFAULT '0' COMMENT 'Booleans',
+  `Strings` varchar(64) COLLATE utf8mb4_unicode_ci DEFAULT '' COMMENT 'Strings',
+  `Texts` text COLLATE utf8mb4_unicode_ci COMMENT 'Texts',
+  `Integers` int DEFAULT NULL COMMENT 'Integers',
+  `Floats` decimal(12,4) NOT NULL COMMENT 'Floats',
+  `Dates` datetime(3) DEFAULT NULL COMMENT 'Dates',
+  `Enums` int NOT NULL DEFAULT '0' COMMENT 'Enums',
+  `Models` char(32) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Models',
+  `Jsons` json DEFAULT NULL COMMENT 'Jsons',
+  `Files` char(32) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Files',
+  `note` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '备注',
+  `is_system` tinyint(1) NOT NULL DEFAULT '1' COMMENT '系统预置',
+  `remark` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT '' COMMENT '备注',
+  `is_valid` tinyint(1) NOT NULL DEFAULT '1' COMMENT '是否有效',
+  `created_by` char(32) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '创建人ID',
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `updated_by` char(32) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '更新人ID',
+  `updated_at` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+  `updated_count` int unsigned DEFAULT '0' COMMENT '更新总次数',
+  `deleted_by` char(32) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '删除人ID',
+  `deleted_at` datetime DEFAULT NULL COMMENT '删除时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `data_types`
+--
+
+LOCK TABLES `data_types` WRITE;
+/*!40000 ALTER TABLE `data_types` DISABLE KEYS */;
+/*!40000 ALTER TABLE `data_types` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -152,7 +198,7 @@ CREATE TABLE `dictionaries` (
   `sunrise` time NOT NULL,
   `added_at` timestamp NOT NULL,
   `created_on` date NOT NULL,
-  `amount` decimal(8,2) NOT NULL,
+  `amount` decimal(16,4) NOT NULL,
   `amounts` double NOT NULL,
   `amounting` double(53,2) NOT NULL,
   `difficulty` enum('easy','hard') COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -192,7 +238,8 @@ CREATE TABLE `dictionaries` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `dictionaries_code_unique` (`code`),
   KEY `dictionaries_taggable_type_taggable_id_index` (`taggable_type`,`taggable_id`),
-  KEY `dictionaries_taggables_type_taggables_id_index` (`taggables_type`,`taggables_id`)
+  KEY `dictionaries_taggables_type_taggables_id_index` (`taggables_type`,`taggables_id`),
+  KEY `dictionaries_number_note_index` (`number`,`note`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -214,9 +261,10 @@ DROP TABLE IF EXISTS `enumeration_values`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `enumeration_values` (
   `id` char(32) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'ID',
-  `enumeration` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '枚举',
   `code` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '编码',
   `name` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '名称',
+  `value` tinyint NOT NULL DEFAULT '0' COMMENT '值',
+  `enumeration` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '枚举',
   `note` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '备注',
   `isSystem` tinyint(1) NOT NULL DEFAULT '1' COMMENT '系统预置',
   `remark` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT '' COMMENT '备注',
@@ -252,9 +300,10 @@ DROP TABLE IF EXISTS `enumerations`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `enumerations` (
   `id` char(32) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'ID',
-  `module` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '模块',
-  `code` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '编码',
-  `name` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '名称',
+  `code` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '编码',
+  `name` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '名称',
+  `full_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '全称',
+  `module` char(32) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '模块',
   `note` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '备注',
   `isSystem` tinyint(1) NOT NULL DEFAULT '1' COMMENT '系统预置',
   `remark` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT '' COMMENT '备注',
@@ -362,7 +411,7 @@ CREATE TABLE `migrations` (
   `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -371,7 +420,7 @@ CREATE TABLE `migrations` (
 
 LOCK TABLES `migrations` WRITE;
 /*!40000 ALTER TABLE `migrations` DISABLE KEYS */;
-INSERT INTO `migrations` VALUES (1,'2014_10_12_000000_create_users_table',1),(2,'2014_10_12_100000_create_password_reset_tokens_table',1),(3,'2019_08_19_000000_create_failed_jobs_table',1),(4,'2019_12_14_000001_create_personal_access_tokens_table',1),(5,'2023_12_22_070529_create_menus_table',1),(6,'2023_12_22_070530_create_role_menus_table',1),(7,'2023_12_22_070530_create_roles_table',1),(8,'2023_12_22_070532_create_user_profiles_table',1),(9,'2023_12_22_070532_create_user_roles_table',1),(10,'2023_12_22_070533_create_departments_table',1),(11,'2023_12_22_070534_create_orgs_table',1),(12,'2023_12_22_070535_create_org_roles_table',1),(13,'2023_12_22_070535_create_org_users_table',1),(14,'2023_12_22_070536_create_situations_table',1),(15,'2023_12_22_070537_create_tenants_table',1),(16,'2023_12_22_070538_create_tenant_roles_table',1),(17,'2023_12_22_070538_create_tenant_users_table',1),(18,'2023_12_22_070539_create_resource_files_table',1),(19,'2023_12_22_070540_create_apps_table',1),(20,'2023_12_22_070541_create_app_modules_table',1),(21,'2023_12_22_070541_create_enumerations_table',1),(22,'2023_12_22_070542_create_enumeration_values_table',1),(23,'2023_12_22_070543_create_models_table',1),(24,'2023_12_22_070544_create_model_fields_table',1),(25,'2023_12_22_070544_create_modules_table',1),(26,'2023_12_22_070545_create_views_table',1),(27,'2023_12_22_070546_create_view_blocks_table',1),(28,'2024_03_26_154644_create_dictionaries_table',1);
+INSERT INTO `migrations` VALUES (1,'2014_10_12_000000_create_users_table',1),(2,'2014_10_12_100000_create_password_reset_tokens_table',1),(3,'2019_08_19_000000_create_failed_jobs_table',1),(4,'2019_12_14_000001_create_personal_access_tokens_table',1),(5,'2023_12_22_070529_create_menus_table',1),(6,'2023_12_22_070530_create_role_menus_table',1),(7,'2023_12_22_070530_create_roles_table',1),(8,'2023_12_22_070532_create_user_profiles_table',1),(9,'2023_12_22_070532_create_user_roles_table',1),(10,'2023_12_22_070533_create_departments_table',1),(11,'2023_12_22_070534_create_orgs_table',1),(12,'2023_12_22_070535_create_org_roles_table',1),(13,'2023_12_22_070535_create_org_users_table',1),(14,'2023_12_22_070536_create_situations_table',1),(15,'2023_12_22_070537_create_tenants_table',1),(16,'2023_12_22_070538_create_tenant_roles_table',1),(17,'2023_12_22_070538_create_tenant_users_table',1),(18,'2023_12_22_070539_create_resource_files_table',1),(19,'2023_12_22_070540_create_apps_table',1),(20,'2023_12_22_070541_create_app_modules_table',1),(21,'2023_12_22_070541_create_enumerations_table',1),(22,'2023_12_22_070542_create_enumeration_values_table',1),(23,'2023_12_22_070543_create_models_table',1),(24,'2023_12_22_070544_create_model_fields_table',1),(25,'2023_12_22_070544_create_modules_table',1),(26,'2023_12_22_070545_create_views_table',1),(27,'2023_12_22_070546_create_view_blocks_table',1),(28,'2024_03_26_154644_create_dictionaries_table',1),(29,'2024_03_26_165523_create_data_types_table',1),(30,'2024_03_26_171057_create_types_table',1);
 /*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -384,10 +433,22 @@ DROP TABLE IF EXISTS `model_fields`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `model_fields` (
   `id` char(32) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'ID',
-  `model` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '模型',
   `code` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '编码',
   `name` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '名称',
-  `note` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '备注',
+  `data_type` tinyint NOT NULL COMMENT '数据类型',
+  `data_length` int NOT NULL COMMENT '数据长度',
+  `enum_type` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '枚举类型',
+  `model_type` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '模型类型',
+  `is_slave_model` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否从模型',
+  `is_nullable` tinyint(1) NOT NULL DEFAULT '1' COMMENT '可空',
+  `is_searchable` tinyint(1) NOT NULL DEFAULT '0' COMMENT '可搜索',
+  `is_hidden` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否隐藏',
+  `is_default_display` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否默认显示',
+  `is_default_hidden` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否默认隐藏',
+  `note` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '备注',
+  `sequence` int NOT NULL COMMENT '顺序',
+  `model` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '模型',
+  `notes` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '备注',
   `isSystem` tinyint(1) NOT NULL DEFAULT '1' COMMENT '系统预置',
   `remark` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT '' COMMENT '备注',
   `is_valid` tinyint(1) NOT NULL DEFAULT '1' COMMENT '是否有效',
@@ -422,9 +483,11 @@ DROP TABLE IF EXISTS `models`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `models` (
   `id` char(32) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'ID',
-  `module` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '模块',
-  `code` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '编码',
-  `name` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '名称',
+  `code` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '编码',
+  `name` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '名称',
+  `full_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '全称',
+  `description` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT '' COMMENT '描述',
+  `module` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT '模块',
   `note` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '备注',
   `isSystem` tinyint(1) NOT NULL DEFAULT '1' COMMENT '系统预置',
   `remark` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT '' COMMENT '备注',
@@ -462,6 +525,8 @@ CREATE TABLE `modules` (
   `id` char(32) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'ID',
   `code` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '编码',
   `name` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '名称',
+  `description` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '描述',
+  `storage_type` tinyint NOT NULL DEFAULT '0' COMMENT '存储类型',
   `note` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '备注',
   `isSystem` tinyint(1) NOT NULL DEFAULT '1' COMMENT '系统预置',
   `remark` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT '' COMMENT '备注',
@@ -908,6 +973,50 @@ LOCK TABLES `tenants` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `types`
+--
+
+DROP TABLE IF EXISTS `types`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `types` (
+  `id` char(32) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'ID',
+  `Booleans` tinyint(1) NOT NULL COMMENT 'Booleans',
+  `Strings` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Strings',
+  `Texts` text COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Texts',
+  `Integers` int NOT NULL COMMENT 'Integers',
+  `Floats` decimal(12,4) NOT NULL COMMENT 'Floats',
+  `Dates` datetime(3) NOT NULL COMMENT 'Dates',
+  `Enums` int NOT NULL COMMENT 'Enums',
+  `Models` char(32) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Models',
+  `Jsons` json NOT NULL COMMENT 'Jsons',
+  `Files` char(32) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Files',
+  `note` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '备注',
+  `is_system` tinyint(1) NOT NULL DEFAULT '1' COMMENT '系统预置',
+  `remark` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT '' COMMENT '备注',
+  `is_valid` tinyint(1) NOT NULL DEFAULT '1' COMMENT '是否有效',
+  `created_by` char(32) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '创建人ID',
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `updated_by` char(32) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '更新人ID',
+  `updated_at` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+  `updated_count` int unsigned DEFAULT '0' COMMENT '更新总次数',
+  `deleted_by` char(32) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '删除人ID',
+  `deleted_at` datetime DEFAULT NULL COMMENT '删除时间',
+  PRIMARY KEY (`id`),
+  KEY `types_remark_updated_count_index` (`remark`,`updated_count`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `types`
+--
+
+LOCK TABLES `types` WRITE;
+/*!40000 ALTER TABLE `types` DISABLE KEYS */;
+/*!40000 ALTER TABLE `types` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `user_profiles`
 --
 
@@ -917,8 +1026,9 @@ DROP TABLE IF EXISTS `user_profiles`;
 CREATE TABLE `user_profiles` (
   `id` char(32) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'ID',
   `user` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '用户',
-  `code` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '编码',
   `name` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '名称',
+  `email` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '编码',
+  `address` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '地址',
   `note` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '备注',
   `isSystem` tinyint(1) NOT NULL DEFAULT '1' COMMENT '系统预置',
   `remark` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT '' COMMENT '备注',
@@ -996,6 +1106,7 @@ CREATE TABLE `users` (
   `email` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '邮箱',
   `phone` varchar(11) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '手机',
   `userType` tinyint NOT NULL COMMENT '类型',
+  `userStatus` tinyint NOT NULL COMMENT '状态',
   `isSuperAdmin` tinyint(1) NOT NULL DEFAULT '0' COMMENT '超级管理员',
   `remark` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT '' COMMENT '备注',
   `is_valid` tinyint(1) NOT NULL DEFAULT '1' COMMENT '是否有效',
@@ -1030,9 +1141,12 @@ DROP TABLE IF EXISTS `view_blocks`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `view_blocks` (
   `id` char(32) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'ID',
-  `view` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '视图',
   `code` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '编码',
   `name` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '名称',
+  `block_type` tinyint NOT NULL DEFAULT '0' COMMENT '视图类型',
+  `sequence` int NOT NULL DEFAULT '10' COMMENT '顺序',
+  `model` varchar(32) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '模型',
+  `view` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '视图',
   `note` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '备注',
   `isSystem` tinyint(1) NOT NULL DEFAULT '1' COMMENT '系统预置',
   `remark` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT '' COMMENT '备注',
@@ -1068,9 +1182,14 @@ DROP TABLE IF EXISTS `views`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `views` (
   `id` char(32) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'ID',
-  `module` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '模块',
   `code` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '编码',
   `name` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '名称',
+  `path` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '路径',
+  `is_master_view` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否主视图',
+  `view_type` tinyint NOT NULL DEFAULT '0' COMMENT '视图类型',
+  `parent` varchar(32) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '父级',
+  `sequence` int NOT NULL DEFAULT '10' COMMENT '顺序',
+  `module` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '模块',
   `note` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '备注',
   `isSystem` tinyint(1) NOT NULL DEFAULT '1' COMMENT '系统预置',
   `remark` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT '' COMMENT '备注',
@@ -1106,4 +1225,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-03-27  0:23:52
+-- Dump completed on 2024-03-27 21:51:05
