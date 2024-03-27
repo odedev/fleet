@@ -4,6 +4,7 @@ CREATE TABLE IF NOT EXISTS `develop_model_field` (
     `name` VARCHAR(64) NULL DEFAULT '' COMMENT '名称',
     `data_type` TINYINT NOT NULL DEFAULT '1' COMMENT '数据类型',
     `data_length` INT NULL DEFAULT '255' COMMENT '数据长度',
+    `precision` INT NULL DEFAULT '0' COMMENT '精度',
     `enum_type` VARCHAR(32) NULL DEFAULT NULL COMMENT '枚举类型',
     `model_type` VARCHAR(32) NULL DEFAULT NULL COMMENT '模型类型',
     `is_slave_model` TINYINT NULL DEFAULT '0' COMMENT '是否从模型',
@@ -20,5 +21,6 @@ CREATE TABLE IF NOT EXISTS `develop_model_field` (
     `deleted_by` VARCHAR(32) NULL DEFAULT NULL COMMENT '删除人',
     `deleted_at` DATETIME NULL DEFAULT NULL COMMENT '删除时间',
     PRIMARY KEY (`id`),
-    UNIQUE INDEX `code_model` (`code`, `model`)
+    UNIQUE KEY `develop_model_field__code_model__unique` (`code`, `model`),
+    KEY `develop_model_field__model__index` (`model`)
 );
