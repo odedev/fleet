@@ -14,9 +14,10 @@ return new class extends Migration
         Schema::create('enumeration_values', function (Blueprint $table) {
             $table->char('id', 32)->comment('ID');
 
-            $table->string('enumeration', 32)->comment('枚举');
             $table->string('code', 64)->comment('编码');
             $table->string('name', 64)->comment('名称');
+            $table->tinyInteger('value', false)->nullable(false)->default(0)->comment('值');
+            $table->string('enumeration', 32)->comment('枚举');
 
             $table->string('note', 64)->comment('备注');
             $table->boolean('isSystem', 64)->nullable(false)->default(true)->comment('系统预置');

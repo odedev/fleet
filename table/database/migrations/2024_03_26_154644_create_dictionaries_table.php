@@ -32,7 +32,7 @@ return new class extends Migration
             $table->time('sunrise',   0);
             $table->timestamp('added_at',  0);
             $table->date('created_on');
-            $table->decimal('amount', 8, 2);
+            $table->decimal('amount', 16, 4);
             $table->double('amounts');
             $table->float('amounting', 53);
             $table->enum('difficulty', ['easy', 'hard']);

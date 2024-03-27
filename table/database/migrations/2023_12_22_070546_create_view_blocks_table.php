@@ -14,9 +14,12 @@ return new class extends Migration
         Schema::create('view_blocks', function (Blueprint $table) {
             $table->char('id', 32)->comment('ID');
 
+//            $table->string('code', 64)->nullable(false)->comment('编码');
+//            $table->string('name', 64)->nullable(false)->comment('名称');
+            $table->tinyInteger('block_type', false)->nullable(false)->default(0)->comment('视图类型');
+            $table->integer('sequence', false)->nullable(false)->default(10)->comment('顺序');
+            $table->string('model', 32)->nullable(true)->comment('模型');
             $table->string('view', 32)->comment('视图');
-            $table->string('code', 64)->comment('编码');
-            $table->string('name', 64)->comment('名称');
 
             $table->string('note', 64)->comment('备注');
             $table->boolean('isSystem', 64)->nullable(false)->default(true)->comment('系统预置');

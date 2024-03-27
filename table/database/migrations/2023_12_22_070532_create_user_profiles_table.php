@@ -15,8 +15,9 @@ return new class extends Migration
             $table->char('id', 32)->comment('ID');
 
             $table->string('user', 32)->comment('用户');
-            $table->string('code', 64)->comment('编码');
             $table->string('name', 64)->comment('名称');
+            $table->string('email', 64)->comment('编码');
+            $table->string('address', 255)->comment('地址');
 
             $table->string('note', 64)->comment('备注');
             $table->boolean('isSystem', 64)->nullable(false)->default(true)->comment('系统预置');

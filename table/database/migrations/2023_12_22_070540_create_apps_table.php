@@ -14,8 +14,10 @@ return new class extends Migration
         Schema::create('apps', function (Blueprint $table) {
             $table->char('id', 32)->comment('ID');
 
-            $table->string('code', 64)->comment('编码');
-            $table->string('name', 64)->comment('名称');
+            $table->string('code', 64)->nullable(false)->comment('编码');
+            $table->string('name', 64)->nullable(false)->comment('名称');
+            $table->string('port', 10)->nullable(false)->default('8080')->comment('端口');
+            $table->string('description', 64)->nullable(true)->comment('描述');
 
             $table->string('note', 64)->comment('备注');
             $table->boolean('isSystem', 64)->nullable(false)->default(true)->comment('系统预置');
@@ -29,6 +31,9 @@ return new class extends Migration
             $table->unsignedInteger('updated_count')->nullable(true)->default(0)->comment('更新总次数');
             $table->char('deleted_by', 32)->nullable(true)->default(null)->comment('删除人ID');
             $table->dateTime('deleted_at', $precision = 0)->nullable(true)->default(null)->comment('删除时间');
+
+            $table->string('ext_seg', 255)->nullable(true)->default(null)->comment('扩展字段');
+
 
             $table->primary('id');
             $table->unique('code');

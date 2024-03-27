@@ -11,6 +11,7 @@ public enum DataTypeEnum {
     TEXT(2, "Text"),
     INTEGER(3, "Integer"),
     FLOAT(4, "Float"),
+    // decimal(5, "Decimal"),
     DATE(5, "Date"),
     ENUM(6, "Enum"),
     MODEL(7, "Model"),

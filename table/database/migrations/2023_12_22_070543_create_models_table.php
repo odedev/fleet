@@ -14,9 +14,11 @@ return new class extends Migration
         Schema::create('models', function (Blueprint $table) {
             $table->char('id', 32)->comment('ID');
 
-            $table->string('module', 32)->comment('模块');
-            $table->string('code', 64)->comment('编码');
-            $table->string('name', 64)->comment('名称');
+            $table->string('code', 128)->nullable(false)->comment('编码');
+            $table->string('name', 128)->nullable(false)->comment('名称');
+            $table->string('full_name', 255)->nullable(false)->comment('全称');
+            $table->string('description', 255)->nullable(true)->default('')->comment('描述');
+            $table->string('module', 32)->nullable(false)->default('')->comment('模块');
 
             $table->string('note', 64)->comment('备注');
             $table->boolean('isSystem', 64)->nullable(false)->default(true)->comment('系统预置');

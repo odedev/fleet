@@ -16,6 +16,8 @@ return new class extends Migration
 
             $table->string('code', 64)->comment('编码');
             $table->string('name', 64)->comment('名称');
+            $table->string('description', 255)->comment('描述');
+            $table->tinyInteger('storage_type', false)->nullable(false)->default(0)->comment('存储类型');
 
             $table->string('note', 64)->comment('备注');
             $table->boolean('isSystem', 64)->nullable(false)->default(true)->comment('系统预置');

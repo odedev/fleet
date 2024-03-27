@@ -14,9 +14,14 @@ return new class extends Migration
         Schema::create('views', function (Blueprint $table) {
             $table->char('id', 32)->comment('ID');
 
+            $table->string('code', 64)->nullable(false)->comment('编码');
+            $table->string('name', 64)->nullable(false)->comment('名称');
+            $table->string('path', 255)->nullable(true)->comment('路径');
+            $table->boolean('is_master_view')->nullable(false)->default(false)->comment('是否主视图');
+            $table->tinyInteger('view_type', false)->nullable(false)->default(0)->comment('视图类型');
+            $table->string('parent', 32)->nullable(true)->comment('父级');
+            $table->integer('sequence', false)->nullable(false)->default(10)->comment('顺序');
             $table->string('module', 32)->comment('模块');
-            $table->string('code', 64)->comment('编码');
-            $table->string('name', 64)->comment('名称');
 
             $table->string('note', 64)->comment('备注');
             $table->boolean('isSystem', 64)->nullable(false)->default(true)->comment('系统预置');

@@ -14,9 +14,21 @@ return new class extends Migration
         Schema::create('model_fields', function (Blueprint $table) {
             $table->char('id', 32)->comment('ID');
 
-            $table->string('model', 32)->comment('模型');
             $table->string('code', 64)->comment('编码');
             $table->string('name', 64)->comment('名称');
+            $table->tinyInteger('data_type', false)->comment('数据类型');
+            $table->integer('data_length', false)->comment('数据长度');
+            $table->string('enum_type', 32)->comment('枚举类型');
+            $table->string('model_type', 32)->comment('模型类型');
+            $table->boolean('is_slave_model')->nullable(false)->default(false)->comment('是否从模型');
+            $table->boolean('is_nullable')->nullable(false)->default(true)->comment('可空');
+            $table->boolean('is_searchable')->nullable(false)->default(false)->comment('可搜索');
+            $table->boolean('is_hidden')->nullable(false)->default(false)->comment('是否隐藏');
+            $table->boolean('is_default_display')->nullable(false)->default(false)->comment('是否默认显示');
+            $table->boolean('is_default_hidden')->nullable(false)->default(false)->comment('是否默认隐藏');
+            $table->string('note', 255)->comment('备注');
+            $table->integer('sequence', false)->comment('顺序');
+            $table->string('model', 32)->nullable(false)->comment('模型');
 
             $table->string('note', 64)->comment('备注');
             $table->boolean('isSystem', 64)->nullable(false)->default(true)->comment('系统预置');

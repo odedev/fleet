@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('email', 64)->comment('邮箱');
             $table->string('phone', 11)->comment('手机');
             $table->tinyInteger('userType', false)->comment('类型');
+            $table->tinyInteger('userStatus', false)->comment('状态');
             $table->boolean('isSuperAdmin')->nullable(false)->default(false)->comment('超级管理员');
 
             $table->string('remark', 255)->nullable(true)->default('')->comment('备注');
