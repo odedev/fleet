@@ -1,4 +1,5 @@
 services:
+
   rabbitmq:
     image: rabbitmq:3.12.10-management
     environment:
@@ -38,24 +39,6 @@ services:
       - "9092:9092"
       - "9093:9093"
     hostname: kafka
-    networks:
-      - net
-    privileged: true
-    restart: always
-    user: root
-
-  pulsar:
-    image: apachepulsar/pulsar:3.1.1
-    environment:
-      - RABBITMQ_DEFAULT_USER=root
-      - RABBITMQ_DEFAULT_PASS=root
-    volumes:
-      - ./pulsar/config/:/pulsar/conf
-      - ./pulsar/data:/pulsar/data
-    ports:
-      - "6650:6650"
-      - "8080:8080"
-    hostname: pulsar
     networks:
       - net
     privileged: true

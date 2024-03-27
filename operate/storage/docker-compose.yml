@@ -1,24 +1,5 @@
 services:
 
-  clickhouse:
-    image: clickhouse/clickhouse-server:23.11.1.2711
-    volumes:
-      - ./clickhouse/config/config.xml:/etc/clickhouse-server/config.xml
-      - ./clickhouse/data:/var/lib/clickhouse
-      - ./clickhouse/log:/var/log/clickhouse-server
-      - ./clickhouse/init:/docker-entrypoint-initdb.d
-      - ./clickhouse/configs:/etc/clickhouse-server/config.d
-      - ./clickhouse/users:/etc/clickhouse-server/users.d
-    ports:
-      - "8123:8123"
-      - "9000:9000"
-    hostname: clickhouse
-    networks:
-      - net
-    privileged: true
-    restart: always
-    user: root
-
   couchbase:
     image: couchbase:community-7.2.2
     volumes:
@@ -122,23 +103,6 @@ services:
       - "7474:7474"  # HTTP
       - "7687:7687"  # Bolt
     hostname: neo4j
-    networks:
-      - net
-    restart: always
-    user: root
-
-  orientdb:
-    image: orientdb:3.2.25
-    environment:
-      ORIENTDB_ROOT_PASSWORD: root
-    volumes:
-      - ./orientdb/config:/orientdb/config
-      - ./orientdb/data:/orientdb/databases
-      - ./orientdb/backup:/orientdb/backup
-    ports:
-      - "2424:2424"
-      - "2480:2480"
-    hostname: orientdb
     networks:
       - net
     restart: always
