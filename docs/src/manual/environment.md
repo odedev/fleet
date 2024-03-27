@@ -10,5 +10,4 @@
 | `23520` |      | UI App Main |
 | `23521` |      | UI App Legacy  |
 | `23522` |      | UI App Dev  |
-| `23550` |      | Portal      |
-| `23560` |      | Tool        |
+| `23550` |      | Website      |
