@@ -6,7 +6,7 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "dev": "pnpm --filter './apps/**' run dev",
+    "dev": "pnpm --filter './apps/**' --filter=!./apps/app-website run dev",
     "build": "pnpm --filter './apps/**' run build"
   },
   "workspaces": [
