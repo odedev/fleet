@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import {computed, ref} from "vue";
+import { computed, ref } from "vue";
+import { Model } from "@fleet/common";
 import FlContentBase from "./FlContentBase.vue";
 import FlModal from "../modal/FlModal.vue";
 import FlBlock from "../block/FlBlock.vue";
 import FlDescription from "../description/FlDescription.vue";
-import { model } from "@fleet/common";
 
 interface Props {
   modelValue: any,
@@ -18,7 +18,7 @@ const props = defineProps<Props>();
 const visible = ref(false);
 
 const value = computed<any>(() => {
-  let displayField: string = model.getDisplayFieldCode(props.model);
+  let displayField: string = Model.getDisplayFieldCode(props.model);
   let value = props.modelValue?.[displayField] || props.modelValue;
   if (props.display) {
     value = props.display(props.modelValue);

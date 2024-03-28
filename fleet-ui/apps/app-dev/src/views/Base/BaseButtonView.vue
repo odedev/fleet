@@ -1,5 +1,5 @@
-<script lang="ts" setup>
-import {ref} from 'vue';
+<script setup lang="ts">
+import { ref } from 'vue';
 import {
   FlView, FlViewAside, FlViewMain, FlViewNav, FlViewHead, FlViewBody, FlBlock, FlBox, FlAction,
   FlButton, FlButtonAdd, FlButtonEdit, FlButtonDelete, FlButtonView, FlButtonSave, FlButtonReset,

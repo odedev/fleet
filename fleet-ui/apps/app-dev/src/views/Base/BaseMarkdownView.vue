@@ -10,12 +10,6 @@ import {
 <template>
   <FlView>
     <FlViewMain>
-      <!--      <FlViewHead>-->
-      <!--        <FlAction>-->
-      <!--          <FlButton>保存</FlButton>-->
-      <!--          <FlButton>生成代码</FlButton>-->
-      <!--        </FlAction>-->
-      <!--      </FlViewHead>-->
       <FlViewBody>
         <FlBlock>
           <FlEditorMarkdown />

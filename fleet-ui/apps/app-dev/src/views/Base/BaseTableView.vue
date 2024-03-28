@@ -1,41 +1,18 @@
-<template>
-  <FlView>
-    <FlViewMain>
-      <FlViewHead>
-        <FlSearch :model="userProfileModel"></FlSearch>
-      </FlViewHead>
-      <FlViewBody>
-        <FlBlock>
-          <FlTable
-            :model-value="datas"
-            :model="userProfileModel"
-            :page-count="156"
-            :is-editable="true"
-          >
-            <FlButton type="error">执行DDL</FlButton>
-            <FlButton type="warn">生成代码</FlButton>
-            <FlButton type="primary">维护功能</FlButton>
-          </FlTable>
-        </FlBlock>
-      </FlViewBody>
-    </FlViewMain>
-  </FlView>
-</template>
-<script lang="ts" setup>
-import {reactive} from "vue";
+<script setup lang="ts">
+import { reactive } from "vue";
 import {
   FlView, FlViewAside, FlViewMain, FlViewNav, FlViewHead, FlViewBody,
   FlBlock, FlContent,
   FlTable, FlButton, FlSearch,
 } from '@fleet/component'
-// import {useModel} from "@/composables/model";
-//
-// import getUserProfile from "@/datas/UserProfile.ts";
-//
-// const model = useModel("dev.odes.fleet.module.system.model.UserModel");
-// const userProfileModel = useModel("dev.odes.fleet.module.system.model.UserProfileModel");
-//
-// const datas = reactive(getUserProfile(156));
+import { useModel, useModelInitValue } from "@fleet/base";
+
+import getUserProfile from "@/datas/UserProfile";
+
+const model = useModel("dev.odes.fleet.module.system.model.UserModel");
+const userProfileModel = useModel("dev.odes.fleet.module.system.model.UserProfileModel");
+
+const datas = reactive(getUserProfile(156));
 
 
 const columns = [
@@ -91,6 +68,31 @@ const data = reactive([{
   email: 'william.smith@example.com'
 }]);
 </script>
+
+<template>
+  <FlView>
+    <FlViewMain>
+      <FlViewHead>
+        <FlSearch :model="userProfileModel"></FlSearch>
+      </FlViewHead>
+      <FlViewBody>
+        <FlBlock>
+          <FlTable
+            :model-value="datas"
+            :model="userProfileModel"
+            :page-count="156"
+            :is-editable="true"
+          >
+            <FlButton type="error">执行DDL</FlButton>
+            <FlButton type="warn">生成代码</FlButton>
+            <FlButton type="primary">维护功能</FlButton>
+          </FlTable>
+        </FlBlock>
+      </FlViewBody>
+    </FlViewMain>
+  </FlView>
+</template>
+
 <style>
 
 </style>

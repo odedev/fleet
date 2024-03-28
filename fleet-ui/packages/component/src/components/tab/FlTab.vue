@@ -1,31 +1,19 @@
-<template>
-  <nav class="tab">
-    <IconMenuFold />
-    <IconMenuUnfold />
-    <slot></slot>
-    <ol class="tab-list">
-      <li class="tab-item" v-for="item in tabs" :key="item.id" :class="{'active': tab && tab.id === item.id}">
-        <span @click="onClick(item)">{{item.name}}</span>
-        <i class="icon" @click="onClose(item)"><IconClose /></i>
-      </li>
-    </ol>
-  </nav>
-</template>
-<script lang="ts" setup>
-import {computed} from 'vue';
+<script setup lang="ts">
+import { computed } from 'vue';
+// import { useRouter } from "vue-router";
 import {IconMenuFold, IconMenuUnfold, IconClose} from "@arco-design/web-vue/es/icon";
-import router from "@/router";
+
+// const router = useRouter();
+
+const emit = defineEmits(['update:modelValue', 'update:tabs'])
 
 const props = defineProps<{
   modelValue: any,
   tabs: any[],
 }>();
 
-const emit = defineEmits(['update:modelValue', 'update:tabs'])
-
 const tab = computed<any>({
   get: () => {
-    console.log(props.modelValue)
     return props.modelValue
   },
   set: (value) => {
@@ -42,7 +30,7 @@ const tabs = computed<any []>({
 
 const onClick = (item: any) => {
   tab.value = item;
-  router.push(item.path);
+  // router.push(item.path);
 };
 
 const onClose = (item: any) => {
@@ -56,6 +44,21 @@ const onClose = (item: any) => {
 };
 
 </script>
+
+<template>
+  <nav class="tab">
+    <IconMenuFold />
+    <IconMenuUnfold />
+    <slot></slot>
+    <ol class="tab-list">
+      <li class="tab-item" v-for="item in tabs" :key="item.id" :class="{'active': tab && tab.id === item.id}">
+        <span @click="onClick(item)">{{item.name}}</span>
+        <i class="icon" @click="onClose(item)"><IconClose /></i>
+      </li>
+    </ol>
+  </nav>
+</template>
+
 <style lang="scss">
 @use "../../assets/mixin" as *;
 

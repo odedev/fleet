@@ -1,21 +1,4 @@
-<template>
-  <FlView>
-    <FlViewMain>
-      <!--      <FlViewHead>-->
-      <!--        <FlAction>-->
-      <!--          <FlButton>保存</FlButton>-->
-      <!--          <FlButton>生成代码</FlButton>-->
-      <!--        </FlAction>-->
-      <!--      </FlViewHead>-->
-      <FlViewBody>
-        <FlBlock>
-          <FlEditorRichText />
-        </FlBlock>
-      </FlViewBody>
-    </FlViewMain>
-  </FlView>
-</template>
-<script lang="ts" setup>
+<script setup lang="ts">
 import {
   FlHeader, FlBody, FlFooter, FlMenu, FlMain, FlNav, FlTab, FlPage,
   FlView, FlViewAside, FlViewMain, FlViewNav, FlViewHead, FlViewBody,
@@ -42,6 +25,25 @@ const data = [{
 }];
 
 </script>
+
+<template>
+  <FlView>
+    <FlViewMain>
+      <!--      <FlViewHead>-->
+      <!--        <FlAction>-->
+      <!--          <FlButton>保存</FlButton>-->
+      <!--          <FlButton>生成代码</FlButton>-->
+      <!--        </FlAction>-->
+      <!--      </FlViewHead>-->
+      <FlViewBody>
+        <FlBlock>
+          <FlEditorRichText />
+        </FlBlock>
+      </FlViewBody>
+    </FlViewMain>
+  </FlView>
+</template>
+
 <style>
 .arco-card {
   margin-right: 16px;

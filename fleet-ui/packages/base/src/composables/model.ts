@@ -1,5 +1,5 @@
-import metadata from "../core/metadata";
 import { Model } from "@fleet/common";
+import metadata from "../core/metadata";
 import ModelRepository from "../repositories/model_repository";
 
 export function useModel(name: string): any {

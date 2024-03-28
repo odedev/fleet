@@ -4,6 +4,8 @@ import App from "./App.vue";
 import pinia from "./stores";
 import router from "./router";
 
+import "./metadata/index";
+
 const app = createApp(App);
 
 app.use(pinia);

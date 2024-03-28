@@ -1,14 +1,15 @@
-import { createRouter, createWebHistory } from 'vue-router';
+import { createRouter, createWebHistory, createWebHashHistory } from 'vue-router';
 import { progress }  from "@fleet/base";
 
 import HomeView from '../views/HomeView.vue'
 import DashboardView from "../views/DashboardView.vue";
 import NotFoundView from "../views/NotFoundView.vue";
 
-import routes from './route.ts';
+import routes from './route';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
+  // history: createWebHashHistory(),
   routes: [
     {
       path: '/',
@@ -56,14 +57,15 @@ const router = createRouter({
 });
 
 router.beforeEach((to, from) => {
-  progress.start();
+  // progress.start();
   // ...
   // 返回 false 以取消导航
   return true;
 });
 
-router.afterEach((to, from) => {
-  progress.done();
-});
+// router.afterEach((to, from) => {
+//   progress.done();
+//   return true;
+// });
 
 export default router

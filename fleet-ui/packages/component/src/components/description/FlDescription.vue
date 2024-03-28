@@ -19,10 +19,10 @@ const title = computed<any>(() => props.title || props.model?.name);
 
 const column = ref({
   xs: 1,
-  md: 2,
-  lg: 3,
-  // md: 1,
-  // lg: 1,
+  // md: 2,
+  // lg: 3,
+  md: 1,
+  lg: 1,
 })
 </script>
 <template>

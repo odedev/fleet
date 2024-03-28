@@ -1,15 +1,4 @@
-<template>
-  <FlView>
-    <FlViewMain>
-      <FlViewBody>
-        <FlViewer>
-          <FlViewerRichText />
-        </FlViewer>
-      </FlViewBody>
-    </FlViewMain>
-  </FlView>
-</template>
-<script lang="ts" setup>
+<script setup lang="ts">
 import {
   FlHeader, FlBody, FlFooter, FlMenu, FlMain, FlNav, FlTab, FlPage,
   FlView, FlViewAside, FlViewMain, FlViewNav, FlViewHead, FlViewBody,
@@ -76,6 +65,19 @@ Long flags: :wales:, :scotland:, :england:.
 value += "```mermaid \ngraph TD;\nA-->B;\nA-->C;\nB-->D;\nC-->D;\n```"
 
 </script>
+
+<template>
+  <FlView>
+    <FlViewMain>
+      <FlViewBody>
+        <FlViewer>
+          <FlViewerRichText v-model="value"/>
+        </FlViewer>
+      </FlViewBody>
+    </FlViewMain>
+  </FlView>
+</template>
+
 <style>
 .arco-card {
   margin-right: 16px;

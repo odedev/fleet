@@ -2,48 +2,53 @@
   <div class="wrapper">
     <FlHeader name="应用功能有限公司"></FlHeader>
     <FlBody>
-      <FlMenu v-model="current" :menus="menus" @update:model-value="onMenuChange"></FlMenu>
+      <FlMenu v-model="currentMenu" :menus="menus" @update:model-value="onMenuChange"></FlMenu>
       <FlMain>
-        <FlTab v-model="current" v-model:tabs="tabs" @update:model-value="onTabChange"></FlTab>
+        <FlTab v-model="currentMenu" v-model:tabs="tabs" @update:model-value="onTabChange"></FlTab>
         <FlNav></FlNav>
         <FlPage />
       </FlMain>
     </FlBody>
-    <!--  <FlFooter />-->
+    <!-- <FlFooter /> -->
   </div>
 </template>
 <script setup lang="ts">
-import { ref, computed } from 'vue';
+import { ref, computed, toValue } from 'vue';
+import { RouterView } from 'vue-router';
 import {
   FlHeader, FlBody, FlFooter, FlMenu, FlMain, FlNav, FlTab, FlPage,
 } from '@fleet/component';
 
+const emit = defineEmits(['update:modelValue', 'menuChange']);
 
 interface Props {
+  // modelValue: any,
   menus?: any[],
 }
 
 const props = defineProps<Props>();
 
-const menus = computed(() => props.menus ?? [])
-
 const tabs = ref<any[]>([]);
-const current = ref<any>(null);
+const currentMenu = ref<any>(null);
+
+const menus = computed(() => props.menus ?? []);
 
 const onMenuChange = (menu: any) => {
   let item = tabs.value.find(tab => tab.id === menu.id);
   if (item) {
-    current.value = item;
+    currentMenu.value = item;
   } else {
     tabs.value.push(menu);
-    current.value = menu;
+    currentMenu.value = menu;
   }
+
+  emit('menuChange', toValue(currentMenu));
 };
 
 const onTabChange = (menu: any) => {
   let item = tabs.value.find(tab => tab.id === menu.id);
   if (item) {
-    current.value = item;
+    currentMenu.value = item;
   }
 };
 

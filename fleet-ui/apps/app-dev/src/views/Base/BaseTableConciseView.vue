@@ -1,3 +1,19 @@
+<script setup lang="ts">
+import {reactive} from "vue";
+import {
+  FlView, FlViewAside, FlViewMain, FlViewNav, FlViewHead, FlViewBody,
+  FlBlock, FlBox, FlTable, FlTableConcise, FlSearch, FlButton,
+} from '@fleet/component'
+import { useModel, useModelInitValue } from "@fleet/base";
+
+import getUserProfile from "@/datas/UserProfile";
+
+const model = useModel("dev.odes.fleet.module.system.model.UserModel");
+const userProfileModel = useModel("dev.odes.fleet.module.system.model.UserProfileModel");
+
+const datas = reactive(getUserProfile(156));
+</script>
+
 <template>
   <FlView>
     <FlViewMain>
@@ -18,21 +34,7 @@
     </FlViewMain>
   </FlView>
 </template>
-<script lang="ts" setup>
-import {reactive} from "vue";
-import {
-  FlView, FlViewAside, FlViewMain, FlViewNav, FlViewHead, FlViewBody,
-  FlBlock, FlBox, FlTable, FlTableConcise, FlSearch, FlButton,
-} from '@fleet/component'
-// import {useModel} from "@/composables/model";
-//
-// import getUserProfile from "@/datas/UserProfile.ts";
-//
-// const model = useModel("dev.odes.fleet.module.system.model.UserModel");
-// const userProfileModel = useModel("dev.odes.fleet.module.system.model.UserProfileModel");
-//
-// const datas = reactive(getUserProfile(156));
-</script>
+
 <style>
 
 </style>

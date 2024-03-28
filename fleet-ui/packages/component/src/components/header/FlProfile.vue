@@ -1,3 +1,43 @@
+<script setup lang="ts">
+import {computed} from "vue";
+import {Avatar, Dropdown, Doption, Dgroup, Badge} from "@arco-design/web-vue";
+import {
+  IconUser,
+  IconUserGroup,
+  IconPoweroff,
+  IconSafe,
+  IconSunFill,
+  IconSun,
+  IconMoon,
+  IconSettings,
+  IconNotification,
+  IconRelation
+} from "@arco-design/web-vue/es/icon";
+import '@arco-design/web-vue/es/avatar/style/css.js'
+import '@arco-design/web-vue/es/badge/style/css.js';
+import '@arco-design/web-vue/es/dropdown/style/css.js';
+
+interface Props {
+  name?: string,
+  notification?: number,
+}
+
+const props = defineProps<Props>();
+
+const name = computed(() => props.name || '')
+const notification = computed(() => props.notification || 10)
+
+const handleThemeChange = (theme: string): void => {
+  console.log(theme);
+  document.documentElement.setAttribute('data-theme', theme)
+};
+
+const handleUserClick = (theme: string): void => {
+  console.log(theme);
+};
+
+</script>
+
 <template>
 <div class="profile">
   <div class="profile__text">{{name}}</div>
@@ -8,10 +48,6 @@
       </i>
       <template #content>
         <Dgroup>
-          <Doption value="Purple">
-            <template #icon><IconSun /></template>
-            <template #default>紫色</template>
-          </Doption>
           <Doption value="Red">
             <template #icon><IconSun /></template>
             <template #default>红色</template>
@@ -32,9 +68,9 @@
             <template #icon><IconSun /></template>
             <template #default>蓝色</template>
           </Doption>
-          <Doption value="CyanBlack">
+          <Doption value="Pink">
             <template #icon><IconSun /></template>
-            <template #default>黛色</template>
+            <template #default>粉色</template>
           </Doption>
         </Dgroup>
         <Dgroup>
@@ -93,34 +129,6 @@
 </div>
 </template>
 
-<script lang="ts" setup>
-import {computed} from "vue";
-import {Avatar, Dropdown, Doption, Dgroup, Badge} from "@arco-design/web-vue";
-import {IconUser, IconUserGroup, IconPoweroff, IconSafe, IconSunFill, IconSun, IconMoon, IconSettings, IconNotification, IconRelation} from "@arco-design/web-vue/es/icon";
-import '@arco-design/web-vue/es/avatar/style/css.js'
-import '@arco-design/web-vue/es/badge/style/css.js';
-import '@arco-design/web-vue/es/dropdown/style/css.js';
-
-interface Props {
-  name?: string,
-  notification?: number,
-}
-
-const props = defineProps<Props>();
-
-const name = computed(() => props.name || '')
-const notification = computed(() => props.notification || 10)
-
-const handleThemeChange = (theme: string): void => {
-  console.log(theme);
-  document.documentElement.setAttribute('data-theme', theme)
-};
-
-const handleUserClick = (theme: string): void => {
-  console.log(theme);
-};
-
-</script>
 
 <style lang="scss">
 .profile {

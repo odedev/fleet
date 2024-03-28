@@ -1,3 +1,14 @@
+<script setup lang="ts">
+import {
+  FlHeader, FlBody, FlFooter, FlMenu, FlMain, FlNav, FlTab, FlPage,
+  FlView, FlViewAside, FlViewMain, FlViewNav, FlViewHead, FlViewBody,
+  FlBlock, FlBox, FlCell, FlContentText, FlContentNumber,
+  FlFormItem,
+  FlTable, FlButton, FlSearch, FlAction
+} from '@fleet/component'
+
+</script>
+
 <template>
   <FlView>
     <FlViewMain>
@@ -22,16 +33,7 @@
     </FlViewMain>
   </FlView>
 </template>
-<script lang="ts" setup>
-import {
-  FlHeader, FlBody, FlFooter, FlMenu, FlMain, FlNav, FlTab, FlPage,
-  FlView, FlViewAside, FlViewMain, FlViewNav, FlViewHead, FlViewBody,
-  FlBlock, FlBox, FlCell, FlContentText, FlContentNumber,
-  FlFormItem,
-  FlTable, FlButton, FlSearch, FlAction
-} from '@fleet/component'
 
-</script>
 <style>
 .arco-card {
   margin-right: 16px;

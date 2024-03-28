@@ -37,7 +37,7 @@ import {
 
 // import {useModel} from "@/composables/model";
 //
-// import getUserProfile from "@/datas/UserProfile.ts";
+// import getUserProfile from "@/datas/UserProfile";
 //
 // const model = useModel("dev.odes.fleet.module.system.model.UserModel");
 // const userProfileModel = useModel("dev.odes.fleet.module.system.model.UserProfileModel");

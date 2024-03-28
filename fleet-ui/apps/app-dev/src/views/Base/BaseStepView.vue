@@ -1,3 +1,29 @@
+<script setup lang="ts">
+import {
+  FlView, FlViewAside, FlViewMain, FlViewNav, FlViewHead, FlViewBody,
+  FlBlock, FlBox, FlStep,
+  FlTable, FlButton, FlSearch, FlAction
+} from '@fleet/component'
+
+const steps = [
+  {
+    name: '步骤1',
+    code: 'step1',
+    description: '',
+  },
+  {
+    name: '步骤2',
+    code: 'step2',
+    description: '',
+  },
+  {
+    name: '步骤3',
+    code: 'step3',
+    description: '',
+  }
+]
+</script>
+
 <template>
   <FlView>
     <FlViewMain>
@@ -23,31 +49,7 @@
     </FlViewMain>
   </FlView>
 </template>
-<script lang="ts" setup>
-import {
-  FlView, FlViewAside, FlViewMain, FlViewNav, FlViewHead, FlViewBody,
-  FlBlock, FlBox, FlStep,
-  FlTable, FlButton, FlSearch, FlAction
-} from '@fleet/component'
 
-const steps = [
-  {
-    name: '步骤1',
-    code: 'step1',
-    description: '',
-  },
-  {
-    name: '步骤2',
-    code: 'step2',
-    description: '',
-  },
-  {
-    name: '步骤3',
-    code: 'step3',
-    description: '',
-  }
-]
-</script>
 <style>
 
 </style>

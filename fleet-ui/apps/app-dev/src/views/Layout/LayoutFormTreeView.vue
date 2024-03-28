@@ -29,7 +29,7 @@ import {
   FlBlock, FlBox, FlForm, FlFormItem,
   FlTable, FlButton, FlButtonSave, FlButtonReset, FlSearch, FlAction
 } from "@fleet/component";
-// import {getModuleDetails} from "@/datas/ModuleDetail.ts";
+// import {getModuleDetails} from "@/datas/ModuleDetail";
 //
 // const data = getModuleDetails();
 

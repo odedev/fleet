@@ -1,3 +1,12 @@
+<script setup lang="ts">
+import {
+  FlView, FlViewAside, FlViewMain, FlViewNav, FlViewHead, FlViewBody,
+  FlBlock, FlBox, FlItem,
+  FlAction, FlButtonSave, FlButtonBack
+} from '@fleet/component'
+
+</script>
+
 <template>
   <FlView>
     <FlViewMain>
@@ -21,14 +30,7 @@
     </FlViewMain>
   </FlView>
 </template>
-<script setup lang="ts">
-import {
-  FlView, FlViewAside, FlViewMain, FlViewNav, FlViewHead, FlViewBody,
-  FlBlock, FlBox, FlItem,
-  FlAction, FlButtonSave, FlButtonBack
-} from '@fleet/component'
 
-</script>
 <style>
 
 </style>

@@ -1,42 +1,4 @@
-<template>
-  <FlView>
-    <FlViewMain>
-      <FlViewHead>
-        <FlAction>
-          <FlButton>保存</FlButton>
-        </FlAction>
-      </FlViewHead>
-      <FlViewBody>
-        <FlBlock title="输入内容标题">
-          <FlInput v-model="booleanValue" :data-type="DataTypeEnum.Boolean.value"/>
-          <FlInput v-model="textValue" :data-type="DataTypeEnum.String.value"/>
-          <FlInput v-model="numValue" :data-type="DataTypeEnum.Integer.value"/>
-          <FlInput v-model="numValue" :data-type="DataTypeEnum.Float.value" />
-          <FlInput v-model="dateValue" :data-type="DataTypeEnum.Date.value"/>
-          <FlInput v-model="enumValue" :data-type="DataTypeEnum.Enum.value" :enumeration="userTypeEnum"/>
-          <FlInput v-model="modelValue" :data-type="DataTypeEnum.Model.value" :model="userProfileModel" :model-data="datas"/>
-          <FlInput v-model="jsonValue" :data-type="DataTypeEnum.Json.value"/>
-          <FlInput v-model="fileValue" :data-type="DataTypeEnum.File.value"/>
-          <FlInput v-model="textareaValue" :data-type="DataTypeEnum.Text.value"/>
-        </FlBlock>
-        <FlBlock>
-          <FlInputBoolean v-model="booleanValue"/>
-          <FlInputText v-model="textValue" :is-nullable="false"/>
-          <FlInputTextarea v-model="textareaValue"/>
-          <FlInputDate v-model="dateValue"/>
-          <FlInputNumber  v-model="textValue" :is-nullable="false"/>
-          <FlInputEnum v-model="enumValue" :enums="enums"/>
-          <FlInputTree />
-          <FlInputModel v-model="modelValue" :model="userProfileModel" :model-data="datas"/>
-          <FlInputFile />
-          <FlInputPassword />
-        </FlBlock>
-
-      </FlViewBody>
-    </FlViewMain>
-  </FlView>
-</template>
-<script lang="ts" setup>
+<script setup lang="ts">
 import {reactive, ref} from 'vue';
 import {
   FlView, FlViewAside, FlViewMain, FlViewNav, FlViewHead, FlViewBody,
@@ -46,15 +8,13 @@ import {
   FlButton, FlSearch, FlAction
 } from '@fleet/component'
 import { DataTypeEnum } from '@fleet/common';
-// import DataTypeEnum from "@/enumerations/data_type_enum";
-//
-// import {useModel} from "@/composables/model";
-// import {useEnumeration} from "@/composables/enumeration";
-// import getUserProfile from "@/datas/UserProfile.ts";
+import { useModel, useEnumeration } from "@fleet/base";
 
-// const userModel = useModel("dev.odes.fleet.module.system.model.UserModel");
-// const userProfileModel = useModel("dev.odes.fleet.module.system.model.UserProfileModel");
-// const userTypeEnum = useEnumeration("dev.odes.fleet.module.system.enumeration.UserTypeEnum");
+import getUserProfile from "@/datas/UserProfile";
+
+const userModel = useModel("dev.odes.fleet.module.system.model.UserModel");
+const userProfileModel = useModel("dev.odes.fleet.module.system.model.UserProfileModel");
+const userTypeEnum = useEnumeration("dev.odes.fleet.module.system.enumeration.UserTypeEnum");
 
 const booleanValue = ref(true);
 const textValue = ref('文本内容显示文本内容显示文本内容显示文本内容显示');
@@ -109,6 +69,46 @@ const enums = ref([
 // const datas = reactive(getUserProfile(156));
 
 </script>
+
+<template>
+  <FlView>
+    <FlViewMain>
+      <FlViewHead>
+        <FlAction>
+          <FlButton>保存</FlButton>
+        </FlAction>
+      </FlViewHead>
+      <FlViewBody>
+        <FlBlock title="输入内容标题">
+          <FlInput v-model="booleanValue" :data-type="DataTypeEnum.Boolean.value"/>
+          <FlInput v-model="textValue" :data-type="DataTypeEnum.String.value"/>
+          <FlInput v-model="numValue" :data-type="DataTypeEnum.Integer.value"/>
+          <FlInput v-model="numValue" :data-type="DataTypeEnum.Float.value" />
+          <FlInput v-model="dateValue" :data-type="DataTypeEnum.Date.value"/>
+          <FlInput v-model="enumValue" :data-type="DataTypeEnum.Enum.value" :enumeration="userTypeEnum"/>
+          <FlInput v-model="modelValue" :data-type="DataTypeEnum.Model.value" :model="userProfileModel" :model-data="datas"/>
+          <FlInput v-model="jsonValue" :data-type="DataTypeEnum.Json.value"/>
+          <FlInput v-model="fileValue" :data-type="DataTypeEnum.File.value"/>
+          <FlInput v-model="textareaValue" :data-type="DataTypeEnum.Text.value"/>
+        </FlBlock>
+        <FlBlock>
+          <FlInputBoolean v-model="booleanValue"/>
+          <FlInputText v-model="textValue" :is-nullable="false"/>
+          <FlInputTextarea v-model="textareaValue"/>
+          <FlInputDate v-model="dateValue"/>
+          <FlInputNumber  v-model="textValue" :is-nullable="false"/>
+          <FlInputEnum v-model="enumValue" :enums="enums"/>
+          <FlInputTree />
+          <FlInputModel v-model="modelValue" :model="userProfileModel" :model-data="datas"/>
+          <FlInputFile  v-model="fileValue"/>
+          <FlInputPassword />
+        </FlBlock>
+
+      </FlViewBody>
+    </FlViewMain>
+  </FlView>
+</template>
+
 <style>
 
 </style>

@@ -34,11 +34,22 @@ export function arrayToTree(list: any[]): any[] {
 }
 
 export function arrayToMap(list: any[]): Map<any, any> {
+  const data: any[] = copy(list);
   const dataMap: any = new Map();
 
-  list.forEach(item => {
+  data.forEach(item => {
     const id = item.id || item.code;
     dataMap.set(id, item);
+  });
+
+  data.forEach(item => {
+    const parentId = item.parent?.id || item.parent;
+    const parent = dataMap.get(parentId);
+    if (parent) {
+      const parentCopy = copy(parent);
+      parentCopy.children = [];
+      item.parent = parentCopy;
+    }
   });
 
   return dataMap;

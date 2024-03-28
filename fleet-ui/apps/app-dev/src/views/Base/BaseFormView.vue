@@ -1,3 +1,23 @@
+<script setup lang="ts">
+import { reactive } from "vue";
+import {
+  FlView, FlViewAside, FlViewMain, FlViewNav, FlViewHead, FlViewBody,
+  FlBlock, FlBox,
+  FlForm, FlFormItem, FlButtonSave, FlButtonReset, FlAction
+} from '@fleet/component'
+import { useModel, useModelInitValue } from "@fleet/base";
+
+const userModel = useModel("dev.odes.fleet.module.system.model.UserModel");
+
+const model = reactive({
+  userModel: useModelInitValue("dev.odes.fleet.module.system.model.UserModel"),
+  userProfileModel: useModelInitValue("dev.odes.fleet.module.system.model.UserProfileModel"),
+});
+
+model.userProfileModel.user = model.userModel;
+
+</script>
+
 <template>
   <FlView>
     <FlViewMain>
@@ -18,37 +38,7 @@
     </FlViewMain>
   </FlView>
 </template>
-<script lang="ts" setup>
-import {reactive} from "vue";
-import {
-  FlView, FlViewAside, FlViewMain, FlViewNav, FlViewHead, FlViewBody,
-  FlBlock, FlBox,
-  FlForm, FlFormItem, FlButtonSave, FlButtonReset, FlAction
-} from '@fleet/component'
 
-// import {useModel, useModelInitValue} from "@/composables/model";
-//
-// const userModel = useModel("dev.odes.fleet.module.system.model.UserModel");
-
-// userModel.fields.forEach((item: any) => {
-//   if (item.code === 'name') {
-//     item.isNullable = false;
-//     item.tip = '请输入名称';
-//     item.isDisabled = true;
-//   } else {
-//     item.isNullable = true;
-//   }
-// })
-
-// const model = reactive({
-//   userModel: useModelInitValue("dev.odes.fleet.module.system.model.UserModel"),
-//   userProfileModel: useModelInitValue("dev.odes.fleet.module.system.model.UserProfileModel"),
-// });
-//
-// console.log(model)
-// model.userProfileModel.user = model.userModel;
-
-</script>
 <style>
 
 </style>

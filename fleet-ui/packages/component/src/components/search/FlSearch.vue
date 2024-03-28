@@ -1,3 +1,27 @@
+<script setup lang="ts">
+import { computed, ref } from "vue";
+import { Model } from "@fleet/common";
+import FlFormItem from "../form/FlFormItem.vue";
+import FlButtonSearch from "../button/FlButtonSearch.vue";
+import FlButtonReset from "../button/FlButtonReset.vue";
+
+const props = defineProps<{
+  model: any,
+  modelParameter?: any,
+  // data?: any[],
+  // columns?: any[],
+  // isShowHead?: boolean,
+}>();
+const value = ref<any>({});
+
+const fields = computed(() => {
+  let fields = Model.getSearchableFields(props.model);
+  console.log(fields)
+  return fields;
+});
+
+</script>
+
 <template>
   <section class="search">
     <div class="search-parameter">
@@ -21,30 +45,6 @@
     </div>
   </section>
 </template>
-
-<script lang="ts" setup>
-import {computed, ref} from "vue";
-import FlFormItem from "../form/FlFormItem.vue";
-import FlButtonSearch from "../button/FlButtonSearch.vue";
-import FlButtonReset from "../button/FlButtonReset.vue";
-import {model as Model } from "@fleet/common";
-
-const props = defineProps<{
-  model: any,
-  modelParameter?: any,
-  // data?: any[],
-  // columns?: any[],
-  // isShowHead?: boolean,
-}>();
-const value = ref({});
-
-const fields = computed(() => {
-  let fields = Model.getSearchableFields(props.model);
-  console.log(fields)
-  return fields;
-});
-
-</script>
 
 <style lang="scss">
 .search {

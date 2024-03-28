@@ -1,45 +1,20 @@
-<template>
-  <FlView>
-    <FlViewMain>
-      <FlViewHead>
-        <FlAction>
-          <FlButtonSave />
-          <FlButtonReset />
-        </FlAction>
-      </FlViewHead>
-      <FlViewBody>
-        <FlBox>
-          <FlForm />
-        </FlBox>
-        <FlBlock>
-          <FlPane :model-value="steps">
-            <template #step1>
-              <FlBox>
-                <FlForm />
-              </FlBox>
-            </template>
-            <template #step2>
-              <FlBlock>
-                <FlTable></FlTable>
-              </FlBlock>
-            </template>
-            <template #step3>
-              <FlBlock>Content of Tab Panel 3</FlBlock>
-            </template>
-          </FlPane>
-        </FlBlock>
-      </FlViewBody>
-    </FlViewMain>
-  </FlView>
-</template>
-<script lang="ts" setup>
-import { ref } from "vue";
+<script setup lang="ts">
+import { ref, reactive } from "vue";
 import {
-  FlHeader, FlBody, FlFooter, FlMenu, FlMain, FlNav, FlTab, FlPage,
   FlView, FlViewAside, FlViewMain, FlViewNav, FlViewHead, FlViewBody,
-  FlBlock, FlBox, FlPane, FlForm, FlFormItem,
-  FlTable, FlButton, FlSearch, FlAction, FlButtonReset, FlButtonSave
+  FlBlock, FlBox, FlPane, FlTable,
+  FlForm, FlFormItem, FlButtonSave, FlButtonReset, FlAction
 } from '@fleet/component'
+import { useModel, useModelInitValue } from "@fleet/base";
+
+const userModel = useModel("dev.odes.fleet.module.system.model.UserModel");
+
+const model = reactive({
+  userModel: useModelInitValue("dev.odes.fleet.module.system.model.UserModel"),
+  userProfileModel: useModelInitValue("dev.odes.fleet.module.system.model.UserProfileModel"),
+});
+
+model.userProfileModel.user = model.userModel;
 
 const steps = ref([
   {
@@ -60,6 +35,41 @@ const steps = ref([
 ]);
 
 </script>
+<template>
+  <FlView>
+    <FlViewMain>
+      <FlViewHead>
+        <FlAction>
+          <FlButtonSave />
+          <FlButtonReset />
+        </FlAction>
+      </FlViewHead>
+      <FlViewBody>
+        <FlBox>
+          <FlForm v-model="model.userModel" :model="userModel"/>
+        </FlBox>
+        <FlBlock>
+          <FlPane :model-value="steps">
+            <template #step1>
+              <FlBox>
+                <FlForm v-model="model.userModel" :model="userModel"/>
+              </FlBox>
+            </template>
+            <template #step2>
+              <FlBlock>
+                <FlTable v-model="model.userModel" :model="userModel"></FlTable>
+              </FlBlock>
+            </template>
+            <template #step3>
+              <FlBlock>Content of Tab Panel 3</FlBlock>
+            </template>
+          </FlPane>
+        </FlBlock>
+      </FlViewBody>
+    </FlViewMain>
+  </FlView>
+</template>
+
 <style>
 
 </style>

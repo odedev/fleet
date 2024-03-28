@@ -38,7 +38,7 @@
     "ws": "^8.16.0"
   },
   "devDependencies": {
-    "@rushstack/eslint-patch": "^1.8.0",
+    "@rushstack/eslint-patch": "^1.9.0",
     "@tsconfig/node20": "^20.1.4",
     "@types/bytes": "^3.1.4",
     "@types/crypto-js": "^4.2.2",

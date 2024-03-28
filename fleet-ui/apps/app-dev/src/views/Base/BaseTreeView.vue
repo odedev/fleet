@@ -1,18 +1,4 @@
-<template>
-  <FlView>
-    <FlViewMain>
-      <FlViewNav>
-
-      </FlViewNav>
-      <FlViewBody>
-        <FlBlock>
-          <FlTree v-model="treeData" :is-draggable="true" />
-        </FlBlock>
-      </FlViewBody>
-    </FlViewMain>
-  </FlView>
-</template>
-<script lang="ts" setup>
+<script setup lang="ts">
 import {ref, h, computed} from "vue";
 import {
   FlView, FlViewAside, FlViewMain, FlViewNav, FlViewHead, FlViewBody,
@@ -20,7 +6,7 @@ import {
   FlTable, FlButton, FlSearch, FlTree,
 } from '@fleet/component'
 
-// import { IconApps, IconCommon, IconLayout, IconRelation, IconUnorderedList } from '@arco-design/web-vue/es/icon';
+import { IconApps, IconCommon, IconLayout, IconRelation, IconUnorderedList } from '@arco-design/web-vue/es/icon';
 
 const treeData = ref([
   {
@@ -139,6 +125,22 @@ const treeData = ref([
   },
 ]);
 </script>
+
+<template>
+  <FlView>
+    <FlViewMain>
+      <FlViewNav>
+
+      </FlViewNav>
+      <FlViewBody>
+        <FlBlock>
+          <FlTree v-model="treeData" :is-draggable="true" />
+        </FlBlock>
+      </FlViewBody>
+    </FlViewMain>
+  </FlView>
+</template>
+
 <style>
 
 </style>

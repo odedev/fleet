@@ -1,24 +1,13 @@
-<template>
-  <FlView>
-    <FlViewMain>
-      <FlViewBody>
-        <FlBlock>
-        <FlDescription :model-value="data" :model="userProfileModel"  />
-        </FlBlock>
-      </FlViewBody>
-    </FlViewMain>
-  </FlView>
-</template>
-<script lang="ts" setup>
+<script setup lang="ts">
 import {
   FlView, FlViewAside, FlViewMain, FlViewNav, FlViewHead, FlViewBody,
   FlBlock, FlBox, FlDescription,
   FlAction, FlButton
 } from '@fleet/component'
-// import {useModel} from "@/composables/model";
-//
-// const userModel = useModel("dev.odes.fleet.module.system.model.UserModel");
-// const userProfileModel = useModel("dev.odes.fleet.module.system.model.UserProfileModel");
+import { useModel, useModelInitValue } from "@fleet/base";
+
+const userModel = useModel("dev.odes.fleet.module.system.model.UserModel");
+const userProfileModel = useModel("dev.odes.fleet.module.system.model.UserProfileModel");
 
 const data = {
   id: 'i',
@@ -35,6 +24,19 @@ const data = {
 };
 
 </script>
+
+<template>
+  <FlView>
+    <FlViewMain>
+      <FlViewBody>
+        <FlBlock>
+        <FlDescription :model-value="data" :model="userProfileModel"  />
+        </FlBlock>
+      </FlViewBody>
+    </FlViewMain>
+  </FlView>
+</template>
+
 <style>
 
 </style>

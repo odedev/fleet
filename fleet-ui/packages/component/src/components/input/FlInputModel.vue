@@ -46,6 +46,8 @@ import {ref, unref, computed, reactive} from 'vue';
 import {Input, InputSearch} from "@arco-design/web-vue";
 import "@arco-design/web-vue/es/input/style/index.css";
 import {IconFindReplace} from "@arco-design/web-vue/es/icon";
+import { Model } from "@fleet/common";
+
 import FlInputBase from "./FlInputBase.vue";
 import FlTableConcise from "../table/FlTableConcise.vue";
 import FlView from "../view/FlView.vue";
@@ -55,7 +57,6 @@ import FlViewBody from "../view/FlViewBody.vue";
 import FlBlock from "../block/FlBlock.vue";
 import FlModal from "../modal/FlModal.vue";
 import FlSearch from "../search/FlSearch.vue";
-import { model as Model } from "@fleet/common";
 
 const emits = defineEmits([
   'update:modelValue',

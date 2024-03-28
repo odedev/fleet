@@ -1,9 +1,83 @@
+<script setup lang="ts">
+import { ref, computed } from 'vue';
+// import { useRouter } from "vue-router";
+import { Menu, SubMenu, MenuItem, MenuItemGroup, Message } from '@arco-design/web-vue';
+import '@arco-design/web-vue/es/menu/style/css.js';
+import {
+  IconMenuFold,
+  IconMenuUnfold,
+  IconList,
+  IconApps,
+  IconBug,
+  IconBulb,
+  IconUser,
+  IconUserGroup,
+  IconSettings,
+  IconCode,
+} from '@arco-design/web-vue/es/icon';
+import { ArrayUtils } from "@fleet/common";
+
+// const router = useRouter();
+
+const emit = defineEmits(['update:modelValue', 'change']);
+
+const props = defineProps<{
+  modelValue: any,
+  menus: any[],
+}>();
+
+const menuMap = ArrayUtils.arrayToMap(props.menus);
+
+const menus = computed(() => {
+  return ArrayUtils.arrayToTree(props.menus);
+});
+
+const menu = computed<any>({
+  get: () => {
+    return props.modelValue
+  },
+  set: (value) => {
+    emit('update:modelValue', value);
+  }
+});
+
+const selectedKeys = computed(() => {
+  return props.modelValue ? [props.modelValue.id] : [];
+});
+
+const openKeys = computed(() => {
+  return props.modelValue ? [props.modelValue.parent?.id || props.modelValue.parent] : [];
+});
+
+const onCollapse = (val: any, type: string) => {
+  const content = type === 'responsive' ? '触发响应式收缩' : '点击触发收缩';
+  Message.info({
+    content,
+    duration: 2000,
+  });
+}
+
+const onSubMenuClick = (key: string) => {
+  console.log(key)
+}
+
+const onMenuItemClick = (key: string) => {
+  const item = menuMap.get(key);
+  if (item && item.path) {
+    // router.push(item.path);
+    menu.value = item;
+  }
+}
+
+</script>
+
 <template>
   <menu class="menu">
     <slot></slot>
     <Menu
       :selected-keys="selectedKeys"
       :show-collapse-button="false"
+      :auto-open-selected="true"
       :accordion="true"
       breakpoint="xl"
       @menu-item-click="onMenuItemClick"
@@ -74,81 +148,6 @@
   </menu>
 </template>
 
-<script lang="ts" setup>
-import { ref, computed } from 'vue';
-import {useRouter} from "vue-router";
-import {Menu, SubMenu, MenuItem, MenuItemGroup, Message} from '@arco-design/web-vue';
-import '@arco-design/web-vue/es/menu/style/css.js';
-import {
-  IconMenuFold,
-  IconMenuUnfold,
-  IconList,
-  IconApps,
-  IconBug,
-  IconBulb,
-  IconUser,
-  IconUserGroup,
-  IconSettings,
-  IconCode,
-} from '@arco-design/web-vue/es/icon';
-import { ArrayUtils } from "@fleet/common";
-
-const router = useRouter();
-
-const emit = defineEmits(['update:modelValue', 'change']);
-
-const props = defineProps<{
-  modelValue: any,
-  menus: any[],
-}>();
-
-const menu = computed<any>({
-  get: () => {
-    console.log(props.modelValue)
-    return props.modelValue
-  },
-  set: (value) => {
-    emit('update:modelValue', value);
-  }
-});
-
-const menus = computed(() => {
-  return ArrayUtils.arrayToTree(props.menus);
-});
-
-const selectedKeys = computed(() => {
-  return props.modelValue ? [props.modelValue.id] : [];
-});
-
-const openKeys = computed(() => {
-  return props.modelValue ? [props.modelValue.parent?.id || props.modelValue.parent] : [];
-});
-
-const menuMap = ArrayUtils.arrayToMap(props.menus);
-
-console.log(menus, menuMap)
-
-const onCollapse = (val: any, type: string) => {
-  const content = type === 'responsive' ? '触发响应式收缩' : '点击触发收缩';
-  Message.info({
-    content,
-    duration: 2000,
-  });
-}
-
-const onSubMenuClick = (key: string) => {
-  console.log(key)
-}
-
-const onMenuItemClick = (key: string) => {
-  const item = menuMap.get(key);
-  if (item && item.path) {
-    router.push(item.path);
-    menu.value = item;
-  }
-}
-
-</script>
 <style lang="scss">
 @use "../../assets/mixin" as *;
 

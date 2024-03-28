@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import {computed} from "vue";
+import { computed } from "vue";
+import { DateUtils, DateFormatEnum, Enumeration } from "@fleet/common";
 import FlContentBase from "./FlContentBase.vue";
-import { DateUtils, DateFormatEnum, enumeration } from "@fleet/common";
 
 interface Props {
   modelValue: Date | string,
@@ -16,7 +16,7 @@ const props = withDefaults(defineProps<Props>(), {
 const value = computed<string>(() => {
   let format = DateFormatEnum.YYYY_MM_DD_HH_mm_ss.name || 'YYYY-MM-DD HH:mm:ss'
   if (props.format) {
-    let dateFormat = enumeration.getByValue(DateFormatEnum, props.format)
+    let dateFormat = Enumeration.getByValue(DateFormatEnum, props.format)
     if (dateFormat) {
       format = dateFormat.name
     }

@@ -1,5 +1,5 @@
-<script lang="ts" setup>
-import {ref} from 'vue'
+<script setup lang="ts">
+import { ref } from 'vue'
 import {
   FlView, FlViewAside, FlViewMain, FlViewNav, FlViewHead, FlViewBody,
   FlBlock, FlBox,
@@ -8,13 +8,10 @@ import {
   FlButton, FlAction
 } from '@fleet/component'
 import { DataTypeEnum, DateFormatEnum } from '@fleet/common';
-// import { useModel } from '@fleet/base';
+import { useModel, useEnumeration } from '@fleet/base';
 
-// import {useModel} from "@/composables/model";
-// import {useEnumeration} from "@/composables/enumeration";
-
-// const userModel = useModel("dev.odes.fleet.module.system.model.UserModel");
-// const userTypeEnum = useEnumeration("dev.odes.fleet.module.system.enumeration.UserTypeEnum");
+const userModel = useModel("dev.odes.fleet.module.system.model.UserModel");
+const userTypeEnum = useEnumeration("dev.odes.fleet.module.system.enumeration.UserTypeEnum");
 
 const booleanValue = ref(true);
 const textValue = ref('文本内容显示文本内容显示文本内容显示文本内容显示');

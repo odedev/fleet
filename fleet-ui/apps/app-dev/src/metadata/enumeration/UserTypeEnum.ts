@@ -1,4 +1,4 @@
-import {setEnumeration} from "../core/metadata";
+
 
 const UserTypeEnum = {
   id: "1665926265829355520",
@@ -35,4 +35,4 @@ const UserTypeEnum = {
   },
 }
 
-setEnumeration(UserTypeEnum);
+export default UserTypeEnum;

@@ -1,3 +1,18 @@
+<script setup lang="ts">
+import { ref } from 'vue';
+import {
+  FlHeader, FlBody, FlFooter, FlMenu, FlMain, FlNav, FlTab, FlPage,
+  FlView, FlViewAside, FlViewMain, FlViewNav, FlViewHead, FlViewBody,
+  FlBlock, FlBox, FlContent, FlContentText, FlContentNumber,
+  FlCalendar,
+  FlTable, FlButton, FlSearch, FlAction
+} from '@fleet/component'
+
+
+const value = ref(new Date());
+
+</script>
+
 <template>
   <FlView>
     <FlViewMain>
@@ -15,21 +30,7 @@
     </FlViewMain>
   </FlView>
 </template>
-<script lang="ts" setup>
-import {ref} from 'vue';
 
-import {
-  FlHeader, FlBody, FlFooter, FlMenu, FlMain, FlNav, FlTab, FlPage,
-  FlView, FlViewAside, FlViewMain, FlViewNav, FlViewHead, FlViewBody,
-  FlBlock, FlBox, FlContent, FlContentText, FlContentNumber,
-  FlCalendar,
-  FlTable, FlButton, FlSearch, FlAction
-} from '@fleet/component'
-
-
-const value = ref(new Date());
-
-</script>
 <style>
 .arco-card {
   margin-right: 16px;
