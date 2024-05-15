@@ -1,0 +1,23 @@
+#set($moduleCode = $templateContext.module.code.toLowerCase())
+#set($modelCode = $templateContext.model.code)
+#set($modelCodeLowerCamel = $templateContext.lowerCamel($templateContext.model.code))
+#set($modelCodeLowerUnderscore = $templateContext.lowerUnderscore($templateContext.model.code))
+package dev.osmanthus.fleet.module.${moduleCode}.controller;
+
+import dev.osmanthus.fleet.common.controller.AbstractController;
+import dev.osmanthus.fleet.module.${moduleCode}.entity.${modelCode};
+    ${moduleCode}.model.${modelCode}Model;
+    ${moduleCode}.repository.${modelCode}Repository;
+    ${moduleCode}.service.${modelCode}Service;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@RequestMapping(path = "/${moduleCode}/${modelCodeLowerUnderscore}")
+public class ${modelCode}Controller extends AbstractController<${modelCode}, ${modelCode}Model, ${modelCode}Repository, ${modelCode}Service> {
+    private final ${modelCode}Service ${modelCodeLowerCamel}Service;
+    public ${modelCode}Controller(${modelCode}Service ${modelCodeLowerCamel}Service) {
+        super(${modelCodeLowerCamel}Service);
+        this.${modelCodeLowerCamel}Service = ${modelCodeLowerCamel}Service;
+    }
+}

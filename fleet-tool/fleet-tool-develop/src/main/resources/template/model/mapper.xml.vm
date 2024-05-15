@@ -1,0 +1,157 @@
+#set($moduleCode = $templateContext.module.code.toLowerCase())
+#set($modelCode = $templateContext.model.code)
+#set($modelCodeLowerCamel = $templateContext.lowerCamel($templateContext.model.code))
+#set($modelCodeLowerUnderscore = $templateContext.lowerUnderscore($templateContext.model.code))
+#set($modelFields = $templateContext.model.fields)
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dev.osmanthus.fleet.module.${moduleCode}.mapper.${modelCode}Mapper">
+
+  <resultMap id="resultMap" type="dev.osmanthus.fleet.module.${moduleCode}.entity.${modelCode}">
+    <id property="id" column="id"/>
+    #foreach($field in $modelFields)
+      #set($fieldCode = $field.code)
+      #set($fieldCodeLowerUnderscore = $templateContext.lowerUnderscore($fieldCode))
+      <result property="${fieldCode}" column="${fieldCodeLowerUnderscore}"/>
+    #end
+  </resultMap>
+
+  <sql id="tableColumn">
+    <trim suffixOverrides=",">
+      `${moduleCode}_${modelCodeLowerUnderscore}`.`id`,
+      #foreach($field in $modelFields)
+      #set($fieldCode = $field.code)
+      #set($fieldCodeLowerUnderscore = $templateContext.lowerUnderscore($fieldCode))
+      `${moduleCode}_${modelCodeLowerUnderscore}`.`${fieldCodeLowerUnderscore}`,
+      #end
+    </trim>
+  </sql>
+  <sql id="column">
+    <trim suffixOverrides=",">
+      `id`,
+      #foreach($field in $modelFields)
+      #set($fieldCode = $field.code)
+      #set($fieldCodeLowerUnderscore = $templateContext.lowerUnderscore($fieldCode))
+      `${fieldCodeLowerUnderscore}`,
+      #end
+    </trim>
+  </sql>
+
+  <sql id="insertColumn">
+    <trim suffixOverrides=",">
+      `id`,
+      #foreach($field in $modelFields)
+      #set($fieldCode = $field.code)
+      #set($fieldCodeLowerUnderscore = $templateContext.lowerUnderscore($fieldCode))
+      <if test="${fieldCode} != null">`${fieldCodeLowerUnderscore}`,</if>
+      #end
+    </trim>
+  </sql>
+  <sql id="insertValue">
+    <trim suffixOverrides=",">
+      #{id},
+      #foreach($field in $modelFields)
+      #set($fieldCode = $field.code)
+      <if test="${fieldCode} != null">#{${fieldCode}},</if>
+      #end
+    </trim>
+  </sql>
+  <sql id="insertEntityValue">
+    <trim suffixOverrides=",">
+      #{${modelCodeLowerCamel}.id},
+      #foreach($field in $modelFields)
+      #set($fieldCode = $field.code)
+      <if test="${modelCodeLowerCamel}.${fieldCode} != null">#{${modelCodeLowerCamel}.${fieldCode}},</if>
+      #end
+    </trim>
+  </sql>
+
+  <sql id="updateColumn">
+    <trim prefix="set" suffixOverrides=",">
+      #foreach($field in $modelFields)
+      #set($fieldCode = $field.code)
+      #set($fieldCodeLowerUnderscore = $templateContext.lowerUnderscore($fieldCode))
+      <if test="${fieldCode} != null">`${fieldCodeLowerUnderscore}` = #{${fieldCode}},</if>
+      #end
+    </trim>
+  </sql>
+  <sql id="updateEntityColumn">
+    <trim prefix="set" suffixOverrides=",">
+      #foreach($field in $modelFields)
+      #set($fieldCode = $field.code)
+      #set($fieldCodeLowerUnderscore = $templateContext.lowerUnderscore($fieldCode))
+      <if test="${modelCodeLowerCamel}.${fieldCode} != null">`${fieldCodeLowerUnderscore}` = #{${modelCodeLowerCamel}.${fieldCode}},</if>
+      #end
+    </trim>
+  </sql>
+
+  <select id="findOne" resultMap="resultMap" resultType="dev.osmanthus.fleet.module.${moduleCode}.entity.${modelCode}">
+    SELECT
+    <include refid="column"/>
+    FROM `${moduleCode}_${modelCodeLowerUnderscore}`
+    <if test="where != null and where != ''">
+      <where>
+        ${where}
+      </where>
+    </if>
+    LIMIT 1
+  </select>
+
+  <select id="findMany" resultMap="resultMap" resultType="dev.osmanthus.fleet.module.${moduleCode}.entity.${modelCode}">
+    SELECT
+    <include refid="column"/>
+    FROM `${moduleCode}_${modelCodeLowerUnderscore}`
+    <if test="where != null and where != ''">
+      <where>
+        ${where}
+      </where>
+    </if>
+    <choose>
+      <when test="order != null and order != ''">
+        ORDER BY ${order}
+      </when>
+      <otherwise>
+        ORDER BY id DESC
+      </otherwise>
+    </choose>
+  </select>
+
+  <insert id="insertOne" parameterType="dev.osmanthus.fleet.module.${moduleCode}.entity.${modelCode}">
+    INSERT INTO `${moduleCode}_${modelCodeLowerUnderscore}`
+    (<include refid="insertColumn"/>)
+    VALUES
+    (<include refid="insertValue"/>)
+  </insert>
+
+  <insert id="insertMany" parameterType="java.util.List">
+    INSERT INTO `${moduleCode}_${modelCodeLowerUnderscore}`
+    (<include refid="insertColumn"/>)
+    VALUES
+    <foreach collection="list" item="module" separator=",">
+      (<include refid="insertEntityValue"/>)
+    </foreach>
+  </insert>
+
+  <update id="updateOne" parameterType="dev.osmanthus.fleet.module.${moduleCode}.entity.${modelCode}">
+    UPDATE `${moduleCode}_${modelCodeLowerUnderscore}`
+    <include refid="updateColumn"/>
+    WHERE id=#{id}
+  </update>
+
+  <delete id="deleteOne" parameterType="java.lang.String">
+    DELETE FROM `${moduleCode}_${modelCodeLowerUnderscore}` WHERE id=#{id}
+  </delete>
+
+  <select id="count" resultType="java.lang.Integer">
+    SELECT COUNT(1) FROM `${moduleCode}_${modelCodeLowerUnderscore}`
+    <if test="where != null and where != ''">
+      <where>
+        ${where}
+      </where>
+    </if>
+    LIMIT 1
+  </select>
+
+</mapper>

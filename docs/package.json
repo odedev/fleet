@@ -1,0 +1,15 @@
+{
+  "name": "doc",
+  "version": "1.0.0",
+  "description": "doc",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vitepress dev --port 23500",
+    "build": "vitepress build",
+    "preview": "vitepress preview"
+  },
+  "dependencies": {
+    "vitepress": "^1.1.3"
+  }
+}

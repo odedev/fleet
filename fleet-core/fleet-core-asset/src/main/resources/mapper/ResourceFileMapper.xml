@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dev.osmanthus.fleet.core.asset.mapper.ResourceFileMapper">
+  <sql id="tableColumn">
+    <trim suffixOverrides=",">
+      `asset_resource_file`.`id`,
+      `asset_resource_file`.`name`,
+      `asset_resource_file`.`size`,
+      `asset_resource_file`.`type`,
+      `asset_resource_file`.`path`,
+      `asset_resource_file`.`url`,
+      `asset_resource_file`.`location`,
+      `asset_resource_file`.`directory`,
+      `asset_resource_file`.`category`,
+      `asset_resource_file`.`status`,
+      `asset_resource_file`.`scope`,
+    </trim>
+  </sql>
+  <sql id="column">
+    <trim suffixOverrides=",">
+      `id`,
+      `name`,
+      `size`,
+      `type`,
+      `path`,
+      `url`,
+      `location`,
+      `directory`,
+      `category`,
+      `status`,
+      `scope`,
+    </trim>
+  </sql>
+
+  <sql id="insertColumn">
+    <trim suffixOverrides=",">
+      `id`,
+      <if test="name != null">`name`,</if>
+      <if test="size != null">`size`,</if>
+      <if test="type != null">`type`,</if>
+      <if test="path != null">`path`,</if>
+      <if test="url != null">`url`,</if>
+      <if test="location != null">`location`,</if>
+      <if test="directory != null">`directory`,</if>
+      <if test="category != null">`category`,</if>
+      <if test="status != null">`status`,</if>
+      <if test="scope != null">`scope`,</if>
+    </trim>
+  </sql>
+  <sql id="insertValue">
+    <trim suffixOverrides=",">
+      #{id},
+      <if test="name != null">#{name},</if>
+      <if test="size != null">#{size},</if>
+      <if test="type != null">#{type},</if>
+      <if test="path != null">#{path},</if>
+      <if test="url != null">#{url},</if>
+      <if test="location != null">#{location},</if>
+      <if test="directory != null">#{directory},</if>
+      <if test="category != null">#{category},</if>
+      <if test="status != null">#{status},</if>
+      <if test="scope != null">#{scope},</if>
+    </trim>
+  </sql>
+  <sql id="insertEntityValue">
+    <trim suffixOverrides=",">
+      #{resourceFile.id},
+      <if test="resourceFile.name != null">#{resourceFile.name},</if>
+      <if test="resourceFile.size != null">#{resourceFile.size},</if>
+      <if test="resourceFile.type != null">#{resourceFile.type},</if>
+      <if test="resourceFile.path != null">#{resourceFile.path},</if>
+      <if test="resourceFile.url != null">#{resourceFile.url},</if>
+      <if test="resourceFile.location != null">#{resourceFile.location},</if>
+      <if test="resourceFile.directory != null">#{resourceFile.directory},</if>
+      <if test="resourceFile.category != null">#{resourceFile.category},</if>
+      <if test="resourceFile.status != null">#{resourceFile.status},</if>
+      <if test="resourceFile.scope != null">#{resourceFile.scope},</if>
+    </trim>
+  </sql>
+
+  <sql id="updateColumn">
+    <trim prefix="set" suffixOverrides=",">
+      <if test="name != null">`name` = #{name},</if>
+      <if test="size != null">`size` = #{size},</if>
+      <if test="type != null">`type` = #{type},</if>
+      <if test="path != null">`path` = #{path},</if>
+      <if test="url != null">`url` = #{url},</if>
+      <if test="location != null">`location` = #{location},</if>
+      <if test="directory != null">`directory` = #{directory},</if>
+      <if test="category != null">`category` = #{category},</if>
+      <if test="status != null">`status` = #{status},</if>
+      <if test="scope != null">`scope` = #{scope},</if>
+    </trim>
+  </sql>
+  <sql id="updateEntityColumn">
+    <trim prefix="set" suffixOverrides=",">
+      <if test="resourceFile.name != null">`name` = #{resourceFile.name},</if>
+      <if test="resourceFile.size != null">`size` = #{resourceFile.size},</if>
+      <if test="resourceFile.type != null">`type` = #{resourceFile.type},</if>
+      <if test="resourceFile.path != null">`path` = #{resourceFile.path},</if>
+      <if test="resourceFile.url != null">`url` = #{resourceFile.url},</if>
+      <if test="resourceFile.location != null">`location` = #{resourceFile.location},</if>
+      <if test="resourceFile.directory != null">`directory` = #{resourceFile.directory},</if>
+      <if test="resourceFile.category != null">`category` = #{resourceFile.category},</if>
+      <if test="resourceFile.status != null">`status` = #{resourceFile.status},</if>
+      <if test="resourceFile.scope != null">`scope` = #{resourceFile.scope},</if>
+    </trim>
+  </sql>
+
+  <resultMap id="resultMap" type="dev.osmanthus.fleet.core.asset.entity.ResourceFile">
+    <id property="id" column="id"/>
+    <result property="name" column="name"/>
+    <result property="size" column="size"/>
+    <result property="type" column="type"/>
+    <result property="path" column="path"/>
+    <result property="url" column="url"/>
+    <result property="location" column="location"/>
+    <result property="directory" column="directory"/>
+    <result property="category" column="category"/>
+    <result property="status" column="status"/>
+    <result property="scope" column="scope"/>
+  </resultMap>
+
+  <select id="findOne" resultMap="resultMap" resultType="dev.osmanthus.fleet.core.asset.entity.ResourceFile">
+    SELECT
+    <include refid="column"/>
+    FROM `asset_resource_file`
+    <if test="where != null and where != ''">
+      <where>
+        ${where}
+      </where>
+    </if>
+    LIMIT 1
+  </select>
+
+  <select id="findMany" resultMap="resultMap" resultType="dev.osmanthus.fleet.core.asset.entity.ResourceFile">
+    SELECT
+    <include refid="column"/>
+    FROM `asset_resource_file`
+    <if test="where != null and where != ''">
+      <where>
+        ${where}
+      </where>
+    </if>
+    <choose>
+      <when test="order != null and order != ''">
+        ORDER BY ${order}
+      </when>
+      <otherwise>
+        ORDER BY created_at DESC
+      </otherwise>
+    </choose>
+  </select>
+
+  <insert id="insertOne" parameterType="dev.osmanthus.fleet.core.asset.entity.ResourceFile">
+    INSERT INTO `asset_resource_file`
+    (<include refid="insertColumn"/>)
+    VALUES
+    (<include refid="insertValue"/>)
+  </insert>
+
+  <insert id="insertMany" parameterType="java.util.List">
+    INSERT INTO `asset_resource_file`
+    (<include refid="insertColumn"/>)
+    VALUES
+    <foreach collection="list" item="resourceFile" separator=",">
+      (<include refid="insertEntityValue"/>)
+    </foreach>
+  </insert>
+
+  <update id="updateOne" parameterType="dev.osmanthus.fleet.core.asset.entity.ResourceFile">
+    UPDATE `resource_file`
+    <include refid="updateColumn"/>
+    WHERE id=#{id}
+  </update>
+
+  <delete id="deleteOne" parameterType="java.lang.String">
+    DELETE FROM `asset_resource_file` WHERE id=#{id}
+  </delete>
+
+  <select id="count" resultType="java.lang.Integer">
+    SELECT COUNT(1) FROM `asset_resource_file`
+    <if test="where != null and where != ''">
+      <where>
+        ${where}
+      </where>
+    </if>
+    LIMIT 1
+  </select>
+
+</mapper>

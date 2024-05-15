@@ -1,0 +1,11 @@
+packages:
+  - 'apps/*'
+  - 'cores/*'
+  - '!modules/*'
+  - 'tools/*'
+  - 'packages/*'
+  - '!**/test/**'
+  - "!apps/template"
+  - "!modules/template"
+#  - "!apps/app-legacy"
+#  - "!apps/app-website"

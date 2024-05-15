@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dev.osmanthus.fleet.tool.develop.mapper.ViewMapper">
+  <sql id="tableColumn">
+    `develop_view`.`id`,
+    `develop_view`.`code`,
+    `develop_view`.`name`,
+    `develop_view`.`path`,
+    `develop_view`.`sequence`,
+    `develop_view`.`is_master_view`,
+    `develop_view`.`parent`,
+    `develop_view`.`module`
+  </sql>
+  <sql id="column">
+    `id`,
+    `code`,
+    `name`,
+    `path`,
+    `sequence`,
+    `is_master_view`,
+    `module`,
+    `parent`
+  </sql>
+
+  <sql id="insertColumn">
+    <trim suffixOverrides=",">
+      `id`,
+      <if test="code != null">`code`,</if>
+      <if test="name != null">`name`,</if>
+      <if test="path != null">`path`,</if>
+      <if test="sequence != null">`sequence`,</if>
+      <if test="isMasterView != null">`is_master_view`,</if>
+      <if test="module != null">`module`,</if>
+      <if test="parent != null">`parent`,</if>
+    </trim>
+  </sql>
+  <sql id="insertValue">
+    <trim suffixOverrides=",">
+      #{id},
+      <if test="code != null">#{code},</if>
+      <if test="name != null">#{name},</if>
+      <if test="path != null">#{path},</if>
+      <if test="sequence != null">#{sequence},</if>
+      <if test="isMasterView != null">#{isMasterView},</if>
+      <if test="module != null">#{module},</if>
+      <if test="parent != null">#{parent},</if>
+    </trim>
+  </sql>
+  <sql id="insertEntityValue">
+    <trim suffixOverrides=",">
+      #{view.id},
+      <if test="view.code != null">#{view.code},</if>
+      <if test="view.name != null">#{view.name},</if>
+      <if test="view.path != null">#{view.path},</if>
+      <if test="view.sequence != null">#{view.sequence},</if>
+      <if test="view.isMasterView != null">#{view.isMasterView},</if>
+      <if test="view.module != null">#{view.module},</if>
+      <if test="view.parent != null">#{view.parent},</if>
+    </trim>
+  </sql>
+
+  <sql id="updateColumn">
+    <trim prefix="set" suffixOverrides=",">
+      <if test="code != null">`code` = #{code},</if>
+      <if test="name != null">`name` = #{name},</if>
+      <if test="path != null">`path` = #{path},</if>
+      <if test="sequence != null">`sequence` = #{sequence},</if>
+      <if test="isMasterView != null">`is_master_view` = #{isMasterView},</if>
+      <if test="module != null">`module` = #{module},</if>
+      <if test="parent != null">`parent` = #{parent},</if>
+    </trim>
+  </sql>
+  <sql id="updateEntityColumn">
+    <trim prefix="set" suffixOverrides=",">
+      <if test="view.code != null">`code` = #{view.code},</if>
+      <if test="view.name != null">`name` = #{view.name},</if>
+      <if test="view.path != null">`path` = #{view.path},</if>
+      <if test="view.sequence != null">`sequence` = #{view.sequence},</if>
+      <if test="view.isMasterView != null">`is_master_view` = #{view.isMasterView},</if>
+      <if test="view.module != null">`module` = #{view.module},</if>
+      <if test="view.parent != null">`parent` = #{view.parent},</if>
+    </trim>
+  </sql>
+
+  <sql id="deleteColumn">
+    <trim prefix="set" suffixOverrides=",">
+      <if test="deletedAt != null">`deleted_at` = #{deletedAt},</if>
+    </trim>
+  </sql>
+  <sql id="deleteEntityColumn">
+    <trim prefix="set" suffixOverrides=",">
+      <if test="view.deletedAt != null">`deleted_at` = #{view.deletedAt},</if>
+    </trim>
+  </sql>
+
+  <resultMap id="resultMap" type="dev.osmanthus.fleet.tool.develop.entity.View">
+    <id property="id" column="id"/>
+    <result property="code" column="code"/>
+    <result property="name" column="name"/>
+    <result property="path" column="path"/>
+    <result property="sequence" column="sequence"/>
+    <result property="isMasterView" column="is_master_view"/>
+    <result property="module" column="module"/>
+    <result property="parent" column="parent"/>
+  </resultMap>
+
+  <select id="findOne" resultMap="resultMap" resultType="dev.osmanthus.fleet.tool.develop.entity.View">
+    SELECT
+    <include refid="column"/>
+    FROM `develop_view`
+    <if test="where != null and where != ''">
+      <where>
+        ${where}
+      </where>
+    </if>
+    LIMIT 1
+  </select>
+
+  <select id="findMany" resultMap="resultMap" resultType="dev.osmanthus.fleet.tool.develop.entity.View">
+    SELECT
+    <include refid="column"/>
+    FROM `develop_view`
+    <if test="where != null and where != ''">
+      <where>
+        ${where}
+      </where>
+    </if>
+    <!--    <if test="order != null and order != ''">-->
+    <!--      ORDER BY ${order}-->
+    <!--    </if>-->
+    <choose>
+      <when test="order != null and order != ''">
+        ORDER BY ${order}
+      </when>
+      <otherwise>
+        ORDER BY id DESC
+      </otherwise>
+    </choose>
+  </select>
+
+  <insert id="insertOne" parameterType="dev.osmanthus.fleet.tool.develop.entity.View">
+    INSERT INTO `develop_view`
+    (<include refid="insertColumn"/>)
+    VALUES
+    (<include refid="insertValue"/>)
+  </insert>
+
+  <insert id="insertMany" parameterType="java.util.List">
+    INSERT INTO `develop_view`
+    (<include refid="insertColumn"/>)
+    VALUES
+    <foreach collection="list" item="view" separator=",">
+      (<include refid="insertEntityValue"/>)
+    </foreach>
+  </insert>
+
+  <update id="updateOne" parameterType="dev.osmanthus.fleet.tool.develop.entity.View">
+    UPDATE `develop_view`
+    <include refid="updateColumn"/>
+    WHERE id=#{id}
+  </update>
+
+  <!--  <update id="updateMany" parameterType="java.util.HashMap">-->
+  <!--    UPDATE `view`-->
+  <!--    <foreach collection="viewList" item="view" separator=",">-->
+  <!--      <include refid="updateColumn"/>-->
+  <!--    </foreach>-->
+  <!--    WHERE id=#{id} AND updated_count=#{updatedCount, jdbcType=INTEGER}-->
+  <!--  </update>-->
+
+  <delete id="deleteOne" parameterType="java.lang.String">
+    DELETE FROM `develop_view` WHERE id=#{id}
+  </delete>
+
+  <select id="count" resultType="java.lang.Integer">
+    SELECT COUNT(1) FROM `develop_view`
+    <if test="where != null and where != ''">
+      <where>
+        ${where}
+      </where>
+    </if>
+    LIMIT 1
+  </select>
+
+</mapper>

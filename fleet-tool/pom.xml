@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>dev.osmanthus</groupId>
+    <artifactId>fleet</artifactId>
+    <version>1.0.0</version>
+  </parent>
+
+  <artifactId>fleet-tool</artifactId>
+  <name>fleet-tool</name>
+  <description>Fleet tool</description>
+
+  <packaging>pom</packaging>
+
+  <properties>
+  </properties>
+
+  <modules>
+    <module>fleet-tool-develop</module>
+    <module>fleet-tool-operate</module>
+    <module>fleet-tool-test</module>
+
+  </modules>
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>dev.osmanthus</groupId>
+        <artifactId>fleet-common</artifactId>
+        <version>${version}</version>
+      </dependency>
+      <dependency>
+        <groupId>dev.osmanthus</groupId>
+        <artifactId>fleet-component-mysql</artifactId>
+        <version>${version}</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
+  <dependencies>
+    <dependency>
+      <groupId>dev.osmanthus</groupId>
+      <artifactId>fleet-common</artifactId>
+    </dependency>
+  </dependencies>
+
+</project>

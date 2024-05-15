@@ -1,0 +1,3 @@
+<template>
+  UserEditView.vue
+</template>

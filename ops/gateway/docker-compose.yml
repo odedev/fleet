@@ -1,0 +1,87 @@
+services:
+
+  apisix-dashboard:
+    image: apache/apisix-dashboard:3.0.1-centos
+    volumes:
+      - ./apisix-dashboard/config/conf.yaml:/usr/local/apisix-dashboard/conf/conf.yaml
+      # - ./apisix-dashboard/logs:/usr/local/apisix-dashboard/logs
+    ports:
+      - "9000:9000"
+    hostname: apisix-dashboard
+    networks:
+      - net
+    depends_on:
+      - apisix
+    restart: always
+    privileged: true
+
+  apisix:
+    image: apache/apisix:3.8.0-debian
+    volumes:
+      - ./apisix/config/config.yaml:/usr/local/apisix/conf/config.yaml:ro
+    ports:
+      - "9080:9080"
+      - "9443:9443"
+      - "9180:9180"
+      - "9091:9091"
+      - "9092:9092"
+    hostname: apisix
+    networks:
+      - net
+    depends_on:
+      - etcd
+    restart: always
+    privileged: true
+
+  etcd:
+    image: bitnami/etcd:3.5.12
+    environment:
+      # - ETCD_ENABLE_V2="true"
+      - ALLOW_NONE_AUTHENTICATION=yes
+      # - ETCD_ADVERTISE_CLIENT_URLS=http://etcd:2379
+      # - ETCD_LISTEN_CLIENT_URLS="http://0.0.0.0:2379"
+    volumes:
+      - ./etcd/config/etcd.yaml:/opt/bitnami/etcd/conf/etcd.yaml
+      - ./etcd/data:/bitnami/etcd
+    ports:
+      - "2379:2379"
+      - "2380:2380"
+    hostname: etcd
+    networks:
+      - net
+    restart: always
+    privileged: true
+
+  prometheus:
+    image: bitnami/prometheus:2.51.1
+    volumes:
+      - ./prometheus/config/prometheus.yml:/opt/bitnami/prometheus/conf/prometheus.yml
+      - ./prometheus/data:/opt/bitnami/prometheus/data
+    ports:
+      - "9090:9090"
+    networks:
+      - net
+    restart: always
+    privileged: true
+
+  grafana:
+    image: grafana/grafana:10.4.1
+    volumes:
+      - ./grafana/config/grafana.ini:/etc/grafana/grafana.ini
+      - ./grafana/data:/var/lib/grafana
+      - ./grafana/data/dashboards:/var/lib/grafana/dashboards
+      - ./grafana/provisioning:/etc/grafana/provisioning
+    ports:
+      - "3000:3000"
+    networks:
+      - net
+    restart: always
+    privileged: true
+
+networks:
+  net:
+    ipam:
+      driver: default
+      config:
+        - subnet: 30.10.0.0/24
+

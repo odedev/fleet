@@ -1,0 +1,54 @@
+#set($moduleCode = $templateContext.module.code.toLowerCase())
+#set($moduleName = $templateContext.module.name)
+#set($modelCode = $templateContext.model.code)
+#set($modelName = $templateContext.model.name)
+#set($modelCodeLowerCamel = $templateContext.lowerCamel($templateContext.model.code))
+#set($modelCodeLowerUnderscore = $templateContext.lowerUnderscore($templateContext.model.code))
+#set($modelFields = $templateContext.model.fields)
+import {setModel} from "../core/metadata";
+
+const ${modelCode}Model = {
+  code: "${modelCode}",
+  name: "${modelName}",
+  fullName: "dev.osmanthus.fleet.module.${moduleCode}.model.${modelCode}Model",
+  description: "",
+  fields: [
+    #foreach($field in $modelFields)
+    #set($fieldCode = $field.code)
+    #set($fieldName = $field.name)
+    #set($type = $templateContext.getModelFieldType($field))
+    #if($templateContext.isModelDataType($field))
+    private ${type}Model $fieldCode;
+    #elseif($templateContext.isEnumDataType($field))
+    private ${type}Enum $fieldCode;
+    #elseif($templateContext.isFileDataType($field))
+    private StaticFileModel $fieldCode;
+    #elseif($field.isSlaveModel)
+    private List<${type}Model> $fieldCode;
+    #else
+    {
+      code: "${fieldCode}",
+      name: "${fieldName}",
+      dataType: 1,
+      dataLength: 255,
+      enumType: null,
+      modelType: null,
+      isSlaveModel: false,
+      isNullable: false,
+      isSearchable: true,
+      isDefaultDisplay: true,
+      note: null,
+      sequence: "10",
+    },
+    #end
+    #end
+  ],
+  module: {
+    code: "${moduleCode}",
+    name: "${moduleName}",
+    description: "",
+    storageType: 0
+  },
+}
+
+setModel(${modelCode}Model);

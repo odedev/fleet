@@ -1,0 +1,130 @@
+services:
+
+  couchbase:
+    image: couchbase:community-7.6.0
+    volumes:
+      - ./couchbase/config:/etc/couchbase/conf.d
+      - ./couchbase/data:/opt/couchbase/var
+      - ./couchbase/init:/docker-entrypoint-initdb.d
+    ports:
+      - "8091-8097:8091-8097"
+      - "9123:9123"
+      - "11207:11207"
+      - "11210:11210"
+      - "11280:11280"
+      - "18091-18097:18091-18097"
+    hostname: couchbase
+    networks:
+      - net
+    privileged: true
+    restart: always
+    user: root
+
+  elasticsearch:
+    image: elasticsearch:8.13.0
+    environment:
+      discovery.type: "single-node"
+      ES_JAVA_OPTS: "-Xms512m -Xmx512m"
+    volumes:
+      - ./elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+      - ./elasticsearch/data:/usr/share/elasticsearch/data
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    hostname: elasticsearch
+    networks:
+      - net
+    privileged: true
+    restart: always
+    # user: root
+
+  mysql:
+    image: mysql:8.3.0
+    environment:
+      MYSQL_ROOT_PASSWORD: 12345678
+    volumes:
+      - ./mysql/config:/etc/mysql/conf.d
+      - ./mysql/data:/var/lib/mysql
+      - ./mysql/init:/docker-entrypoint-initdb.d
+    ports:
+      - "3306:3306"
+    hostname: mysql
+    networks:
+      - net
+    privileged: true
+    restart: always
+    user: root
+    command: --default-authentication-plugin=mysql_native_password
+
+  mongo:
+    image: mongo:7.0.7
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: 12345678
+    volumes:
+      - ./mongo/config:/etc/mongo
+      - ./mongo/data:/data/db
+      - ./mongo/init:/docker-entrypoint-initdb.d
+    ports:
+      - "27017:27017"
+    hostname: mongo
+    networks:
+      - net
+    privileged: true
+    restart: always
+    user: root
+    command: mongod --config /etc/mongo/mongod.conf
+
+  minio:
+    image: minio/minio:RELEASE.2024-03-26T22-10-45Z
+    environment:
+      MINIO_ROOT_USER: root
+      MINIO_ROOT_PASSWORD: 12345678
+    volumes:
+      - ./minio/data:/data
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    hostname: minio
+    networks:
+      - net
+    privileged: true
+    restart: always
+    user: root
+    command: server /data --address ":9000" --console-address ":9001"
+
+  neo4j:
+    image: neo4j:5.14.0-community
+    environment:
+      NEO4J_AUTH: none
+    volumes:
+      - ./neo4j/data:/data
+    ports:
+      - "7474:7474"  # HTTP
+      - "7687:7687"  # Bolt
+    hostname: neo4j
+    networks:
+      - net
+    restart: always
+    user: root
+
+  redis:
+    image: redis:7.2.4
+    volumes:
+      - ./redis/config:/usr/local/etc/redis
+      - ./redis/data:/data
+    ports:
+      - "6379:6379"
+    hostname: redis
+    networks:
+      - net
+    restart: always
+    user: root
+    command: redis-server /usr/local/etc/redis/redis.conf
+
+networks:
+  net:
+    ipam:
+      driver: default
+      config:
+        - subnet: 10.10.0.0/24

@@ -1,0 +1,60 @@
+
+$black: #000000;
+$white: #FFFFFF;
+
+$primary: #6750A4; // primary-40, 主题
+$secondary: #9A82DB; // primary-60, 文字高亮
+$tertiary: #F6EDFF; // primary-95, or primary-98, 背景高亮
+
+$neutral: #F2F3F5;
+$neutral: #E5E6EB;
+
+$error: #DC362E;
+//$error: #F53F3F;
+$warn: #FF9800;
+//$warn: #FF7D00;
+$success: #4CAF50;
+//$success: #00B42A;
+$info: #61B7E5;
+
+//$background: #F5F5F5;
+$background: #F8F8F8;
+$surface: #FFFFFF;
+$surface-variant: #FAFAFA;
+$surface-variant: #F2F3F5;
+
+$outline: #E0E0E0;
+$overlay: #BFBFBF;
+
+$on-primary: #FFFFFF;
+$on-secondary: #FFFFFF;
+$on-tertiary: #1C1B1F;
+
+//$on-neutral: #4E5969;
+$on-neutral: #272E3B;
+
+$on-background: #1C1B1F;
+$on-surface: #1C1B1F;
+$on-surface-variant: #49454F;
+
+$on-error: #FFFFFF;
+$on-warn: #FFFFFF;
+$on-success: #FFFFFF;
+
+// $primary-container: #EADDFF;
+// $on-primary-container: #21005D;
+
+$padding: 16px;
+$margin: 16px;
+
+$line-height: 1.5;
+
+$typography-headline: 26px;
+$typography-title: 18px;
+$typography-body: 14px;
+$typography-button: 14px;
+$typography-hint: 12px;
+$shape: 4px;
+
+$button-height: 28px;
+$cell-height: 28px;

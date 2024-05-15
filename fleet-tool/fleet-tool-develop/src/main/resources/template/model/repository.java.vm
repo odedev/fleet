@@ -1,0 +1,18 @@
+#set($moduleCode = $templateContext.module.code.toLowerCase())
+#set($modelCode = $templateContext.model.code)
+#set($modelCodeLowerCamel = $templateContext.lowerCamel($templateContext.model.code))
+#set($modelCodeLowerUnderscore = $templateContext.lowerUnderscore($templateContext.model.code))
+package dev.osmanthus.fleet.module.${moduleCode}.repository;
+
+import dev.osmanthus.fleet.module.${moduleCode}.entity.${modelCode};
+    ${moduleCode}.mapper.${modelCode}Mapper;
+import dev.osmanthus.fleet.component.mysql.MysqlRepository;
+
+@Repository
+public class ${modelCode}Repository extends MysqlRepository<${modelCode}, ${modelCode}Mapper> {
+    private final ${modelCode}Mapper ${modelCodeLowerCamel}Mapper;
+    public ${modelCode}Repository(${modelCode}Mapper ${modelCodeLowerCamel}Mapper) {
+        super(${modelCodeLowerCamel}Mapper);
+        this.${modelCodeLowerCamel}Mapper = ${modelCodeLowerCamel}Mapper;
+    }
+}

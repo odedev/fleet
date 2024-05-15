@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fleet SFC</title>
+    <script type="importmap">
+      {
+        "imports": {
+          "vue":"https://play.vuejs.org/vue.runtime.esm-browser.js",
+          "vue/server-renderer":"https://play.vuejs.org/server-renderer.esm-browser.js"
+        }
+      }
+    </script>
+
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module">
+      import { toDisplayString as _toDisplayString, openBlock as _openBlock, createElementBlock as _createElementBlock, createApp } from "vue"
+
+      const _hoisted_1 = { class: "message" }
+      function render(_ctx, _cache, $props, $setup, $data, $options) {
+        return (_openBlock(), _createElementBlock("div", _hoisted_1, _toDisplayString("message"), 1 /* TEXT */))
+      }
+
+      createApp(render).mount('#app');
+    </script>
+  </body>
+</html>

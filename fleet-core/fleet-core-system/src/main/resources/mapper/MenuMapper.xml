@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dev.osmanthus.fleet.core.system.mapper.MenuMapper">
+
+  <resultMap id="resultMap" type="dev.osmanthus.fleet.core.system.entity.Menu">
+    <id property="id" column="id"/>
+    <result property="code" column="code"/>
+    <result property="name" column="name"/>
+    <result property="path" column="path"/>
+    <result property="icon" column="icon"/>
+    <result property="sequence" column="sequence"/>
+    <result property="parent" column="parent"/>
+    <result property="note" column="note"/>
+    <result property="isSystem" column="is_system"/>
+  </resultMap>
+
+  <sql id="tableColumn">
+    <trim suffixOverrides=",">
+      `system_menu`.`id`,
+      `system_menu`.`code`,
+      `system_menu`.`name`,
+      `system_menu`.`path`,
+      `system_menu`.`icon`,
+      `system_menu`.`sequence`,
+      `system_menu`.`parent`,
+      `system_menu`.`note`,
+      `system_menu`.`is_system`,
+    </trim>
+  </sql>
+  <sql id="column">
+    <trim suffixOverrides=",">
+      `id`,
+      `code`,
+      `name`,
+      `path`,
+      `icon`,
+      `sequence`,
+      `parent`,
+      `note`,
+      `is_system`,
+    </trim>
+  </sql>
+
+  <sql id="insertColumn">
+    <trim suffixOverrides=",">
+      `id`,
+      <if test="code != null">`code`,</if>
+      <if test="name != null">`name`,</if>
+      <if test="path != null">`path`,</if>
+      <if test="icon != null">`icon`,</if>
+      <if test="sequence != null">`sequence`,</if>
+      <if test="parent != null">`parent`,</if>
+      <if test="note != null">`note`,</if>
+      <if test="isSystem != null">`is_system`,</if>
+    </trim>
+  </sql>
+  <sql id="insertValue">
+    <trim suffixOverrides=",">
+      #{id},
+      <if test="code != null">#{code},</if>
+      <if test="name != null">#{name},</if>
+      <if test="path != null">#{path},</if>
+      <if test="icon != null">#{icon},</if>
+      <if test="sequence != null">#{sequence},</if>
+      <if test="parent != null">#{parent},</if>
+      <if test="note != null">#{note},</if>
+      <if test="isSystem != null">#{isSystem},</if>
+    </trim>
+  </sql>
+  <sql id="insertEntityValue">
+    <trim suffixOverrides=",">
+      #{menu.id},
+      <if test="menu.code != null">#{menu.code},</if>
+      <if test="menu.name != null">#{menu.name},</if>
+      <if test="menu.path != null">#{menu.path},</if>
+      <if test="menu.icon != null">#{menu.icon},</if>
+      <if test="menu.sequence != null">#{menu.sequence},</if>
+      <if test="menu.parent != null">#{menu.parent},</if>
+      <if test="menu.note != null">#{menu.note},</if>
+      <if test="menu.isSystem != null">#{menu.isSystem},</if>
+    </trim>
+  </sql>
+
+  <sql id="updateColumn">
+    <trim prefix="set" suffixOverrides=",">
+      <if test="code != null">`code` = #{code},</if>
+      <if test="name != null">`name` = #{name},</if>
+      <if test="path != null">`path` = #{path},</if>
+      <if test="icon != null">`icon` = #{icon},</if>
+      <if test="sequence != null">`sequence` = #{sequence},</if>
+      <if test="parent != null">`parent` = #{parent},</if>
+      <if test="note != null">`note` = #{note},</if>
+      <if test="isSystem != null">`is_system` = #{isSystem},</if>
+    </trim>
+  </sql>
+  <sql id="updateEntityColumn">
+    <trim prefix="set" suffixOverrides=",">
+      <if test="menu.code != null">`code` = #{menu.code},</if>
+      <if test="menu.name != null">`name` = #{menu.name},</if>
+      <if test="menu.path != null">`path` = #{menu.path},</if>
+      <if test="menu.icon != null">`icon` = #{menu.icon},</if>
+      <if test="menu.sequence != null">`sequence` = #{menu.sequence},</if>
+      <if test="menu.parent != null">`parent` = #{menu.parent},</if>
+      <if test="menu.note != null">`note` = #{menu.note},</if>
+      <if test="menu.isSystem != null">`is_system` = #{menu.isSystem},</if>
+    </trim>
+  </sql>
+
+  <sql id="deleteColumn">
+    <trim prefix="set" suffixOverrides=",">
+      <if test="deletedAt != null">`deleted_at` = #{deletedAt},</if>
+    </trim>
+  </sql>
+  <sql id="deleteEntityColumn">
+    <trim prefix="set" suffixOverrides=",">
+      <if test="menu.deletedAt != null">`deleted_at` = #{menu.deletedAt},</if>
+    </trim>
+  </sql>
+
+  <select id="findOne" resultMap="resultMap" resultType="dev.osmanthus.fleet.core.system.entity.Menu">
+    SELECT
+    <include refid="column"/>
+    FROM `system_menu`
+    <choose>
+      <when test="where != null and where != ''">
+        <where>
+          ${where} AND deleted_at is NULL
+        </where>
+      </when>
+      <otherwise>
+        <where>
+          deleted_at is NULL
+        </where>
+      </otherwise>
+    </choose>
+    LIMIT 1
+  </select>
+
+  <select id="findMany" resultMap="resultMap" resultType="dev.osmanthus.fleet.core.system.entity.Menu">
+    SELECT
+    <include refid="column"/>
+    FROM `system_menu`
+    <choose>
+      <when test="where != null and where != ''">
+        <where>
+          ${where} AND deleted_at is null
+        </where>
+      </when>
+      <otherwise>
+        <where>
+          deleted_at is null
+        </where>
+      </otherwise>
+    </choose>
+    <choose>
+      <when test="order != null and order != ''">
+        ORDER BY ${order}
+      </when>
+      <otherwise>
+        ORDER BY created_at DESC
+      </otherwise>
+    </choose>
+  </select>
+
+  <select id="findAll" resultMap="resultMap" resultType="dev.osmanthus.fleet.core.system.entity.Menu">
+    SELECT
+    <include refid="column"/>
+    FROM `system_menu`
+    <if test="where != null and where != ''">
+      <where>
+        ${where}
+      </where>
+    </if>
+    <choose>
+      <when test="order != null and order != ''">
+        ORDER BY ${order}
+      </when>
+      <otherwise>
+        ORDER BY created_at DESC
+      </otherwise>
+    </choose>
+  </select>
+
+  <insert id="insertOne" parameterType="dev.osmanthus.fleet.core.system.entity.Menu">
+    INSERT INTO `system_menu`
+    (<include refid="insertColumn"/>)
+    VALUES
+    (<include refid="insertValue"/>)
+  </insert>
+
+  <insert id="insertMany" parameterType="java.util.List">
+    INSERT INTO `system_menu`
+    (<include refid="insertColumn"/>)
+    VALUES
+    <foreach collection="list" item="menu" separator=",">
+      (<include refid="insertEntityValue"/>)
+    </foreach>
+  </insert>
+
+  <update id="updateOne" parameterType="dev.osmanthus.fleet.core.system.entity.Menu">
+    UPDATE `system_menu`
+    <include refid="updateColumn"/>
+    WHERE id=#{id}
+  </update>
+
+  <!--  <update id="updateMany" parameterType="java.util.HashMap">-->
+  <!--    UPDATE `user`-->
+  <!--    <foreach collection="userList" item="user" separator=",">-->
+  <!--      <include refid="updateColumn"/>-->
+  <!--    </foreach>-->
+  <!--    WHERE id=#{id} AND updated_count=#{updatedCount, jdbcType=INTEGER}-->
+  <!--  </update>-->
+
+  <delete id="deleteOne" parameterType="java.lang.String">
+    DELETE FROM `system_menu` WHERE id=#{id, jdbcType=VARCHAR}
+  </delete>
+
+  <select id="count" resultType="java.lang.Integer">
+    SELECT COUNT(1) FROM `system_menu`
+    <if test="where != null and where != ''">
+      ${where}
+    </if>
+    LIMIT 1
+  </select>
+
+  <select id="exist" resultType="java.lang.Integer">
+    SELECT COUNT(1) FROM `system_menu`
+    <if test="where != null and where != ''">
+      ${where}
+    </if>
+    LIMIT 1
+  </select>
+
+</mapper>

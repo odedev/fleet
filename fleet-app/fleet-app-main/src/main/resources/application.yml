@@ -1,0 +1,52 @@
+# https://docs.spring.io/spring-boot/docs/current/reference/html/application-properties.html
+
+server:
+  port: 23510
+
+spring:
+  application:
+    name: FleetAppMain
+  main:
+    allow-bean-definition-overriding: true
+  servlet:
+    multipart:
+      max-file-size: 256MB
+      max-request-size: 1024MB
+  mvc:
+    dispatch-options-request: true
+  datasource:
+    username: root
+    password: 12345678
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/fleet?autoReconnect=false&useUnicode=true&characterEncoding=utf8&characterSetResults=UTF-8&serverTimezone=UTC&zeroDateTimeBehavior=convertToNull&useSSL=false
+  sql:
+    init:
+      platform: mysql
+  # profiles:
+  #   active: dev
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml, classpath*:mapper/*.xml
+  #  config-location: classpath:mybatis/mybatis-config.xml
+  #  type-aliases-package: dev.osmanthus.demo.user
+  #  type-handlers-package: dev.osmanthus.persist.typehandler
+  configuration:
+    map-underscore-to-camel-case: true
+    default-fetch-size: 100
+    default-statement-timeout: 300
+    cache-enabled: false
+
+pagehelper:
+  helperDialect: mysql
+  propertyName: propertyValue
+  reasonable: false
+  defaultCount: true # 分页插件默认参数支持 default-count 形式，自定义扩展的参数，必须大小写一致
+
+logging:
+  file:
+    path: "./logs"
+
+minio:
+  endpoint: "http://127.0.0.1:9000"
+  accessKey: "root"
+  secretKey: "12345678"

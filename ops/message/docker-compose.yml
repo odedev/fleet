@@ -1,0 +1,57 @@
+services:
+
+  kafka:
+    image: bitnami/kafka:3.7.0
+    environment:
+      # KRaft settings
+      - KAFKA_CFG_NODE_ID=0
+      - KAFKA_CFG_PROCESS_ROLES=controller,broker
+      - KAFKA_CFG_CONTROLLER_QUORUM_VOTERS=0@kafka:9093
+      # Listeners
+      - KAFKA_CFG_LISTENERS=PLAINTEXT://:9092,CONTROLLER://:9093
+      - KAFKA_CFG_ADVERTISED_LISTENERS=PLAINTEXT://:9092
+      - KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP=CONTROLLER:PLAINTEXT,PLAINTEXT:PLAINTEXT
+      - KAFKA_CFG_CONTROLLER_LISTENER_NAMES=CONTROLLER
+      - KAFKA_CFG_INTER_BROKER_LISTENER_NAME=PLAINTEXT
+      - ALLOW_PLAINTEXT_LISTENER="yes"
+      - KAFKA_CLIENT_USERS=root
+      - KAFKA_CLIENT_PASSWORDS=12345678
+      - KAFKA_CONTROLLER_USER=root
+      - KAFKA_CONTROLLER_PASSWORD=12345678
+    volumes:
+      - ./kafka/config:/opt/bitnami/kafka/config
+      - ./kafka/data:/bitnami/kafka/data
+    ports:
+      - "9092:9092"
+      - "9093:9093"
+    hostname: kafka
+    networks:
+      - net
+    restart: always
+    privileged: true
+    user: root
+
+  rabbitmq:
+    image: rabbitmq:3.13.1-management
+    environment:
+      - RABBITMQ_DEFAULT_USER=root
+      - RABBITMQ_DEFAULT_PASS=12345678
+    volumes:
+      - ./rabbitmq/config/rabbitmq.conf:/etc/rabbitmq/rabbitmq.conf
+      - ./rabbitmq/data:/var/lib/rabbitmq
+    ports:
+      - "5673:5673"
+      - "15672:15672"
+    hostname: rabbitmq
+    networks:
+      - net
+    restart: always
+    privileged: true
+    user: root
+
+networks:
+  net:
+    ipam:
+      driver: default
+      config:
+        - subnet: 10.20.0.0/24

@@ -1,0 +1,23 @@
+CREATE TABLE IF NOT EXISTS `develop_model_field` (
+    `id` VARCHAR(32) NOT NULL,
+    `code` VARCHAR(64) NOT NULL,
+    `name` VARCHAR(64) NULL DEFAULT '',
+    `data_type` TINYINT NOT NULL DEFAULT '1',
+    `data_length` INT NULL DEFAULT '255',
+    `enum_type` VARCHAR(32) NULL DEFAULT NULL,
+    `model_type` VARCHAR(32) NULL DEFAULT NULL,
+    `is_slave_model` TINYINT NULL DEFAULT '0',
+    `is_nullable` TINYINT NULL DEFAULT '1',
+    `is_searchable` TINYINT NULL DEFAULT '0',
+    `is_default_display` TINYINT NULL DEFAULT '0',
+    `note` VARCHAR(255) NULL DEFAULT '',
+    `sequence` VARCHAR(64) NULL DEFAULT '10',
+    `model` VARCHAR(32) NOT NULL DEFAULT '',
+    `created_by` VARCHAR(32) NULL DEFAULT NULL,
+    `created_at` DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
+    `updated_by` VARCHAR(32) NULL DEFAULT NULL,
+    `updated_at` DATETIME NULL DEFAULT NULL,
+    `deleted_by` VARCHAR(32) NULL DEFAULT NULL,
+    `deleted_at` DATETIME NULL DEFAULT NULL,
+    PRIMARY KEY (`id`)
+);

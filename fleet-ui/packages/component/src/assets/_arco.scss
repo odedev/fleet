@@ -1,0 +1,304 @@
+@use "mixin" as *;
+
+
+
+.arco-btn-size-small {
+ padding: 0 12px;
+}
+
+.arco-btn-primary,
+.arco-btn-primary[type='button'],
+.arco-btn-primary[type='submit'] {
+  @include background-color-primary();
+}
+
+.arco-btn-primary:hover,
+.arco-btn-primary[type='button']:hover,
+.arco-btn-primary[type='submit']:hover {
+  @include background-color-secondary();
+  @include background-color-primary();
+}
+
+.arco-btn-primary.arco-btn-disabled,
+.arco-btn-primary[type='button'].arco-btn-disabled,
+.arco-btn-primary[type='submit'].arco-btn-disabled {
+  @include background-color-primary();
+  opacity: 0.8;
+}
+
+.arco-btn-secondary,
+.arco-btn-secondary[type='button'],
+.arco-btn-secondary[type='submit'],
+.arco-btn-secondary:hover,
+.arco-btn-secondary[type='button']:hover,
+.arco-btn-secondary[type='submit']:hover {
+  @include background-color-neutral();
+}
+
+.arco-btn-primary {
+  &.arco-btn-status-normal {
+
+  }
+  &.arco-btn-status-success,
+  &.arco-btn-status-success:hover {
+    @include background-color-success();
+  }
+  &.arco-btn-status-danger,
+  &.arco-btn-status-danger:hover {
+    @include background-color-error();
+  }
+  &.arco-btn-status-warning,
+  &.arco-btn-status-warning:hover {
+    @include background-color-warn();
+  }
+}
+
+.arco-btn-text.arco-btn-status-success {
+  @include color-success();
+  background-color: transparent;
+  &:hover {
+    @include color-success();
+    background-color: transparent;
+  }
+}
+.arco-btn-text.arco-btn-status-danger {
+  @include color-error();
+  background-color: transparent;
+  &:hover {
+    @include color-error();
+    background-color: transparent;
+  }
+}
+.arco-btn-text.arco-btn-status-warning {
+  @include color-warn();
+  background-color: transparent;
+  &:hover {
+    @include color-warn();
+    background-color: transparent;
+  }
+}
+
+.arco-menu {
+  @include background-color-surface();
+}
+.arco-menu-light .arco-menu-item,
+.arco-menu-light .arco-menu-group-title,
+.arco-menu-light .arco-menu-pop-header,
+.arco-menu-light .arco-menu-inline-header {
+  @include background-color-surface();
+}
+.arco-menu-light .arco-menu-inline-header.arco-menu-selected {
+  @include color-primary();
+
+  @include color-secondary();
+
+  .arco-icon,
+  .arco-menu-icon {
+    @include color-primary();
+
+    @include color-secondary();
+  }
+}
+
+.arco-menu-light .arco-menu-item:hover,
+.arco-menu-light .arco-menu-group-title:hover,
+.arco-menu-light .arco-menu-pop-header:hover,
+.arco-menu-light .arco-menu-inline-header:hover {
+  @include background-color-tertiary();
+}
+.arco-menu-light .arco-menu-item.arco-menu-selected {
+  @include background-color-tertiary();
+}
+
+.arco-menu-light .arco-menu-item.arco-menu-selected .arco-icon,
+.arco-menu-light .arco-menu-group-title.arco-menu-selected .arco-icon,
+.arco-menu-light .arco-menu-pop-header.arco-menu-selected .arco-icon,
+.arco-menu-light .arco-menu-inline-header.arco-menu-selected .arco-icon,
+.arco-menu-light .arco-menu-item.arco-menu-selected .arco-menu-icon,
+.arco-menu-light .arco-menu-group-title.arco-menu-selected .arco-menu-icon,
+.arco-menu-light .arco-menu-pop-header.arco-menu-selected .arco-menu-icon,
+.arco-menu-light .arco-menu-inline-header.arco-menu-selected .arco-menu-icon {
+  @include color-primary();
+}
+.arco-menu-light .arco-menu-group-title {
+  @include color-primary();
+}
+
+.arco-tree-node-selected .arco-tree-node-title,
+.arco-tree-node-selected .arco-tree-node-title:hover {
+  //@include color-primary();
+
+  //@include color-secondary();
+  @include background-color-tertiary();
+}
+.arco-tree-node-title:hover {
+  @include background-color-tertiary();
+}
+.arco-tree-node-drag-icon {
+  @include color-primary();
+}
+.arco-tree-node-indent-block {
+  margin-right: 8px;
+}
+
+
+.arco-tabs-tab-active,
+.arco-tabs-tab-active:hover {
+  @include color-secondary();
+}
+.arco-tabs-nav-type-line .arco-tabs-tab:hover .arco-tabs-tab-title::before {
+  @include background-color-tertiary();
+}
+.arco-tabs-nav-ink {
+  @include background-color-secondary();
+}
+
+
+.arco-checkbox-checked .arco-checkbox-icon {
+  @include background-color-primary();
+}
+.arco-checkbox-indeterminate .arco-checkbox-icon {
+  @include background-color-primary();
+}
+
+.arco-checkbox-disabled.arco-checkbox-checked .arco-checkbox-icon,
+.arco-checkbox-disabled.arco-checkbox-checked:hover .arco-checkbox-icon {
+  @include background-color-secondary();
+}
+
+.arco-radio-checked .arco-radio-icon {
+  @include background-color-secondary();
+  @include border-color-secondary();
+}
+.arco-radio-checked:hover .arco-radio-icon {
+  @include border-color-secondary();
+}
+
+.arco-input-wrapper,
+.arco-picker,
+.arco-select-view-single,
+.arco-textarea-wrapper {
+  @include background-color-surface();
+  @include border-color();
+}
+.arco-input-wrapper.arco-input-disabled,
+.arco-input-wrapper.arco-input-disabled:hover {
+   @include background-color-surface-variant();
+}
+.arco-input-wrapper:hover,
+.arco-picker:hover,
+.arco-select-view-single:hover,
+.arco-textarea-wrapper:hover {
+  @include background-color-surface();
+  @include border-color();
+}
+.arco-input-wrapper:focus-within,
+.arco-input-wrapper.arco-input-focus {
+  @include border-color-primary();
+}
+.arco-select-view-single:focus-within,
+.arco-select-view-single.arco-select-view-focus {
+  @include border-color-primary();
+}
+
+.arco-select-dropdown .arco-select-option-active,
+.arco-select-dropdown .arco-select-option:not(.arco-select-dropdown .arco-select-option-disabled):hover {
+  @include background-color-tertiary();
+}
+
+.arco-dropdown-list-wrapper {
+  max-height: 272px;
+}
+
+.arco-dropdown-option {
+  line-height: 32px;
+}
+.arco-dropdown-option-active,
+.arco-dropdown-option:not(.arco-dropdown-option-disabled):hover {
+  @include background-color-tertiary();
+}
+
+.arco-picker-focused,
+.arco-picker-focused:hover {
+  @include border-color-primary();
+}
+.arco-picker-cell-selected .arco-picker-date-value {
+  @include background-color-primary();
+}
+.arco-picker-cell-today::after {
+  @include background-color-primary();
+}
+
+.arco-textarea-wrapper:focus-within,
+.arco-textarea-wrapper.arco-textarea-focus {
+  @include border-color-primary();
+}
+
+.arco-input-wrapper.arco-input-error,
+.arco-input-wrapper.arco-input-error:hover {
+  @include background-color-surface();
+  @include border-color-error();
+}
+
+//.arco-table .arco-spin,
+//.arco-table .arco-table-container {
+//  height: 100%;
+//}
+//
+//.arco-table .arco-table-element,
+//.arco-table .arco-scrollbar.arco-scrollbar-type-embed:last-child {
+//  height: 100%;
+//}
+
+.arco-table-border-cell .arco-table-th-resizing,
+.arco-table-border-cell .arco-table-td-resizing:not(.arco-table-tr-expand) {
+  @include border-right-color-primary();
+}
+
+.arco-table-hover:not(.arco-table-dragging) .arco-table-tr:not(.arco-table-tr-empty):not(.arco-table-tr-summary):hover .arco-table-td:not(.arco-table-col-fixed-left):not(.arco-table-col-fixed-right),
+.arco-table-hover .arco-table-tr-drag .arco-table-td:not(.arco-table-col-fixed-left):not(.arco-table-col-fixed-right) {
+  @include background-color-tertiary();
+}
+
+.arco-table-hover:not(.arco-table-dragging) .arco-table-tr:not(.arco-table-tr-empty):not(.arco-table-tr-summary):hover .arco-table-td.arco-table-col-fixed-left::before,
+.arco-table-hover .arco-table-tr-drag .arco-table-td.arco-table-col-fixed-left::before,
+.arco-table-hover:not(.arco-table-dragging) .arco-table-tr:not(.arco-table-tr-empty):not(.arco-table-tr-summary):hover .arco-table-td.arco-table-col-fixed-right::before,
+.arco-table-hover .arco-table-tr-drag .arco-table-td.arco-table-col-fixed-right::before {
+  @include background-color-tertiary();
+}
+
+
+.arco-table-tr-checked .arco-table-td {
+  //@include background-color-tertiary();
+  background-color: transparent;
+}
+
+.table-body .arco-table .arco-table-cell {
+  min-width: 32px;
+}
+
+.arco-table-stripe:not(.arco-table-dragging) .arco-table-tr:not(.arco-table-tr-empty):not(.arco-table-tr-summary):nth-child(even) .arco-table-td:not(.arco-table-col-fixed-left):not(.arco-table-col-fixed-right),
+.arco-table-stripe .arco-table-tr-drag .arco-table-td:not(.arco-table-col-fixed-left):not(.arco-table-col-fixed-right) {
+
+}
+
+.arco-pagination-item:hover,
+.arco-pagination-item-active,
+.arco-pagination-item-active:hover {
+  @include background-color-tertiary();
+}
+
+.arco-pagination .arco-pagination-item-previous.arco-pagination-item-disabled,
+.arco-pagination .arco-pagination-item-next.arco-pagination-item-disabled {
+  color: rgb(201,205,212);
+  background-color: transparent;
+}
+
+
+.arco-modal-header {
+  padding: 0 16px;
+}
+.arco-modal-footer,
+.arco-modal-body {
+  padding: 16px;
+}

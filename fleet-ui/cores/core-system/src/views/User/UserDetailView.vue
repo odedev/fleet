@@ -1,0 +1,3 @@
+<template>
+  UserDetailView.vue
+</template>

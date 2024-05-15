@@ -1,0 +1,59 @@
+#set($moduleCode = $templateContext.module.code.toLowerCase())
+#set($modelCode = $templateContext.model.code)
+#set($modelCodeLowerCamel = $templateContext.lowerCamel($templateContext.model.code))
+#set($modelCodeLowerUnderscore = $templateContext.lowerUnderscore($templateContext.model.code))
+#set($repositoryTypeList = $templateContext.getRepositoryTypeList())
+package dev.osmanthus.fleet.module.${moduleCode}.transform;
+
+    ${moduleCode}.entity.${modelCode};
+import dev.osmanthus.fleet.module.${moduleCode}.model.${modelCode}Model;
+
+#foreach($field in $templateContext.getModelList())
+#set($type = $templateContext.getModelFieldType($field))
+#set($entityImport = $templateContext.getEntityImport($field.modelType))
+#set($repositoryImport = $templateContext.getRepositoryImport($field.modelType))
+import ${entityImport};
+import ${field.modelType.fullName};
+import ${repositoryImport};
+#end
+
+import org.springframework.stereotype.Component;
+
+@Component
+public class ${modelCode}Transform implements Transform<${modelCode}, ${modelCode}Model> {
+    #foreach($field in $templateContext.getModelList())
+    #set($type = $templateContext.getModelFieldType($field))
+    #set($typeLowerCamel = $templateContext.lowerCamel($type))
+    private final ${type}Repository ${typeLowerCamel}Repository;
+    #end
+    public ${modelCode}Transform(${repositoryTypeList}) {
+        #foreach($field in $templateContext.getModelList())
+        #set($type = $templateContext.getModelFieldType($field))
+        #set($typeLowerCamel = $templateContext.lowerCamel($type))
+        this.${typeLowerCamel}Repository = ${typeLowerCamel}Repository;
+        #end
+    }
+
+    @Override
+    public ${modelCode}Model toModel(${modelCode} ${modelCodeLowerCamel}) {
+        ${modelCode}Model ${modelCodeLowerCamel}Model = new ${modelCode}Model(${modelCodeLowerCamel});
+
+        #foreach($field in $templateContext.getModelList())
+        #set($fieldCode = $field.code)
+        #set($fieldCodeUpperCamel = $templateContext.upperCamel($fieldCode))
+        #set($type = $templateContext.getModelFieldType($field))
+        #set($typeLowerCamel = $templateContext.lowerCamel($type))
+        ${type} ${typeLowerCamel}${fieldCodeUpperCamel} = this.${typeLowerCamel}Repository.findOneById(${modelCodeLowerCamel}.get${fieldCodeUpperCamel}());
+        if (${typeLowerCamel}${fieldCodeUpperCamel} != null) {
+            ${modelCodeLowerCamel}Model.set${fieldCodeUpperCamel}(new ${type}Model(${typeLowerCamel}${fieldCodeUpperCamel}));
+        }
+        #end
+
+        return ${modelCodeLowerCamel}Model;
+    }
+
+    @Override
+    public ${modelCode} toEntity(${modelCode}Model ${modelCodeLowerCamel}Model) {
+        return ${modelCodeLowerCamel}Model.toEntity();
+    }
+}

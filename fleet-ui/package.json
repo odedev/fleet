@@ -1,0 +1,27 @@
+{
+  "name": "fleet-ui",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "dev": "pnpm --filter './apps/**' --filter=!./apps/app-website run dev",
+    "build": "pnpm --filter './apps/**' run build"
+  },
+  "workspaces": [
+    "apps/*",
+    "cores/*",
+    "modules/*",
+    "tools/*",
+    "packages/*"
+  ],
+  "engines": {
+    "node": "^18.18.0 || >=20.10.0",
+    "pnpm": ">=8"
+  },
+  "packageManager": "pnpm@9.1.1",
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

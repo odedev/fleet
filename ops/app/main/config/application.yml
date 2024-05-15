@@ -1,0 +1,15 @@
+server:
+  port: 23510
+
+spring:
+  application:
+    name: FleetAppMain
+  datasource:
+    username: root
+    password: 12345678
+    url: jdbc:mysql://127.0.0.1:3306/fleet?autoReconnect=false&useUnicode=true&characterEncoding=utf8&characterSetResults=UTF-8&serverTimezone=UTC&zeroDateTimeBehavior=convertToNull&useSSL=false
+
+minio:
+  endpoint: http://127.0.0.1:9000
+  accessKey: root
+  secretKey: 12345678

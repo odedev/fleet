@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dev.osmanthus.fleet.tool.develop.mapper.AppMapper">
+  <sql id="tableColumn">
+    `develop_app`.`id`,
+    `develop_app`.`code`,
+    `develop_app`.`name`,
+    `develop_app`.`port`,
+    `develop_app`.`description`
+  </sql>
+  <sql id="column">
+    `id`,
+    `code`,
+    `name`,
+    `port`,
+    `description`
+  </sql>
+
+  <sql id="insertColumn">
+    <trim suffixOverrides=",">
+      `id`,
+      <if test="code != null">`code`,</if>
+      <if test="name != null">`name`,</if>
+      <if test="port != null">`port`,</if>
+      <if test="description != null">`description`,</if>
+    </trim>
+  </sql>
+  <sql id="insertValue">
+    <trim suffixOverrides=",">
+      #{id},
+      <if test="code != null">#{code},</if>
+      <if test="name != null">#{name},</if>
+      <if test="port != null">#{port},</if>
+      <if test="description != null">#{description},</if>
+    </trim>
+  </sql>
+  <sql id="insertEntityValue">
+    <trim suffixOverrides=",">
+      #{app.id},
+      <if test="app.code != null">#{app.code},</if>
+      <if test="app.name != null">#{app.name},</if>
+      <if test="app.port != null">#{app.port},</if>
+      <if test="app.description != null">#{app.description},</if>
+    </trim>
+  </sql>
+
+  <sql id="updateColumn">
+    <trim prefix="set" suffixOverrides=",">
+      <if test="code != null">`code` = #{code},</if>
+      <if test="name != null">`name` = #{name},</if>
+      <if test="email != null">`email` = #{email},</if>
+      <if test="phone != null">`phone` = #{phone},</if>
+      <if test="type != null">`type` = #{type},</if>
+      <if test="status != null">`status` = #{status},</if>
+      <if test="isAdmin != null">`is_admin` = #{isAdmin},</if>
+    </trim>
+  </sql>
+  <sql id="updateEntityColumn">
+    <trim prefix="set" suffixOverrides=",">
+      <if test="app.code != null">`code` = #{app.code},</if>
+      <if test="app.name != null">`name` = #{app.name},</if>
+      <if test="app.email != null">`email` = #{app.email},</if>
+      <if test="app.phone != null">`phone` = #{app.phone},</if>
+      <if test="app.type != null">`type` = #{app.type},</if>
+      <if test="app.status != null">`status` = #{app.status},</if>
+      <if test="app.isAdmin != null">`is_admin` = #{app.isAdmin},</if>
+    </trim>
+  </sql>
+
+  <sql id="deleteColumn">
+    <trim prefix="set" suffixOverrides=",">
+      <if test="deletedAt != null">`deleted_at` = #{deletedAt},</if>
+    </trim>
+  </sql>
+  <sql id="deleteEntityColumn">
+    <trim prefix="set" suffixOverrides=",">
+      <if test="app.deletedAt != null">`deleted_at` = #{app.deletedAt},</if>
+    </trim>
+  </sql>
+
+  <resultMap id="resultMap" type="dev.osmanthus.fleet.tool.develop.entity.App">
+    <id property="id" column="id"/>
+    <result property="code" column="code"/>
+    <result property="name" column="name"/>
+    <result property="email" column="email"/>
+    <result property="phone" column="phone"/>
+    <result property="type" column="type"/>
+    <result property="status" column="status"/>
+    <result property="isAdmin" column="is_admin"/>
+  </resultMap>
+
+  <select id="findOne" resultMap="resultMap" resultType="dev.osmanthus.fleet.tool.develop.entity.App">
+    SELECT
+    <include refid="column"/>
+    FROM `develop_app`
+    <if test="where != null and where != ''">
+      <where>
+        ${where}
+      </where>
+    </if>
+    LIMIT 1
+  </select>
+
+  <select id="findMany" resultMap="resultMap" resultType="dev.osmanthus.fleet.tool.develop.entity.App">
+    SELECT
+    <include refid="column"/>
+    FROM `develop_app`
+    <if test="where != null and where != ''">
+      <where>
+        ${where}
+      </where>
+    </if>
+    <!--    <if test="order != null and order != ''">-->
+    <!--      ORDER BY ${order}-->
+    <!--    </if>-->
+    <choose>
+      <when test="order != null and order != ''">
+        ORDER BY ${order}
+      </when>
+      <otherwise>
+        ORDER BY id DESC
+      </otherwise>
+    </choose>
+  </select>
+
+  <insert id="insertOne" parameterType="dev.osmanthus.fleet.tool.develop.entity.App">
+    INSERT INTO `develop_app`
+    (<include refid="insertColumn"/>)
+    VALUES
+    (<include refid="insertValue"/>)
+  </insert>
+
+  <insert id="insertMany" parameterType="java.util.List">
+    INSERT INTO `develop_app`
+    (<include refid="insertColumn"/>)
+    VALUES
+    <foreach collection="list" item="app" separator=",">
+      (<include refid="insertEntityValue"/>)
+    </foreach>
+  </insert>
+
+  <update id="updateOne" parameterType="dev.osmanthus.fleet.tool.develop.entity.App">
+    UPDATE `develop_app`
+    <include refid="updateColumn"/>
+    WHERE id=#{id}
+  </update>
+
+  <!--  <update id="updateMany" parameterType="java.util.HashMap">-->
+  <!--    UPDATE `app`-->
+  <!--    <foreach collection="appList" item="app" separator=",">-->
+  <!--      <include refid="updateColumn"/>-->
+  <!--    </foreach>-->
+  <!--    WHERE id=#{id} AND updated_count=#{updatedCount, jdbcType=INTEGER}-->
+  <!--  </update>-->
+
+  <delete id="deleteOne" parameterType="java.lang.String">
+    DELETE FROM `develop_app` WHERE id=#{id}
+  </delete>
+
+  <select id="count" resultType="java.lang.Integer">
+    SELECT COUNT(1) FROM `develop_app`
+    <if test="where != null and where != ''">
+      <where>
+        ${where}
+      </where>
+    </if>
+    LIMIT 1
+  </select>
+
+</mapper>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>dev.osmanthus</groupId>
+    <artifactId>fleet</artifactId>
+    <version>1.0.0</version>
+  </parent>
+
+  <artifactId>fleet-component</artifactId>
+  <version>1.0.0</version>
+  <name>fleet-component</name>
+  <description>Fleet component</description>
+
+  <packaging>pom</packaging>
+
+  <properties>
+  </properties>
+
+  <modules>
+    <module>fleet-component-bpmn</module>
+    <module>fleet-component-couchbase</module>
+    <module>fleet-component-kafka</module>
+    <module>fleet-component-minio</module>
+    <module>fleet-component-mongodb</module>
+    <module>fleet-component-mysql</module>
+    <module>fleet-component-rabbitmq</module>
+    <module>fleet-component-redis</module>
+  </modules>
+
+  <dependencies>
+  </dependencies>
+
+</project>

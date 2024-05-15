@@ -1,0 +1,119 @@
+#set($moduleCode = $templateContext.module.code.toLowerCase())
+#set($modelCode = $templateContext.model.code)
+#set($modelCodeLowerCamel = $templateContext.lowerCamel($templateContext.model.code))
+#set($modelCodeLowerUnderscore = $templateContext.lowerUnderscore($templateContext.model.code))
+#set($modelFields = $templateContext.model.fields)
+package dev.osmanthus.fleet.module.${moduleCode}.model;
+
+import dev.osmanthus.fleet.common.model.AbstractModel;
+import dev.osmanthus.fleet.module.${moduleCode}.entity.${modelCode};
+
+#foreach($field in $templateContext.getModelList())
+#if($field.modelType.fullName != $templateContext.model.fullName)
+import ${field.modelType.fullName};
+#end
+#end
+#foreach($field in $templateContext.getEnumList())
+import ${field.enumType.fullName};
+#end
+
+public class ${modelCode}Model extends AbstractModel<${modelCode}> {
+    private String id;
+    #foreach($field in $modelFields)
+    #set($fieldCode = $field.code)
+    #set($type = $templateContext.getModelFieldType($field))
+    #if($templateContext.isModelDataType($field))
+    private ${type}Model $fieldCode;
+    #elseif($templateContext.isEnumDataType($field))
+    private ${type}Enum $fieldCode;
+    #elseif($templateContext.isFileDataType($field))
+    private StaticFileModel $fieldCode;
+    #elseif($field.isSlaveModel)
+    private List<${type}Model> $fieldCode;
+    #else
+    private $type $fieldCode;
+    #end
+    #end
+
+    public ${modelCode}Model() {
+    }
+
+    public ${modelCode}Model(${modelCode} ${modelCodeLowerCamel}) {
+        this.fromEntity(${modelCodeLowerCamel});
+    }
+
+    @Override
+    public String getId() {
+        return id;
+    }
+
+    @Override
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    #foreach($field in $modelFields)
+    #set($fieldCode = $field.code)
+    #set($fieldCodeUpperCamel = $templateContext.upperCamel($fieldCode))
+    #set($type = $templateContext.getModelFieldType($field))
+    #if($templateContext.isModelDataType($field))
+    public ${type}Model get${fieldCodeUpperCamel}() {
+        return $fieldCode;
+    }
+
+    public void set${fieldCodeUpperCamel}(${type}Model ${fieldCode}) {
+        this.${fieldCode} = ${fieldCode};
+    }
+    public void set${fieldCodeUpperCamel}(String ${fieldCode}) {
+        if (${fieldCode} == null) {
+            this.${fieldCode} = null;
+        } else {
+            ${type}Model ${fieldCode}Model = new ${type}Model();
+            ${fieldCode}Model.setId(${fieldCode});
+            this.${fieldCode} = ${fieldCode}Model;
+        }
+    }
+    #else
+    public $type get${fieldCodeUpperCamel}() {
+        return $fieldCode;
+    }
+
+    public void set${fieldCodeUpperCamel}($type ${fieldCode}) {
+        this.${fieldCode} = ${fieldCode};
+    }
+    #end
+    #end
+    @Override
+    public void fromEntity(${modelCode} ${modelCodeLowerCamel}) {
+        if (${modelCodeLowerCamel} == null) {
+            return;
+        }
+        this.setId(${modelCodeLowerCamel}.getId());
+        #foreach($field in $modelFields)
+        #set($fieldCode = $field.code)
+        #set($fieldCodeUpperCamel = $templateContext.upperCamel($fieldCode))
+        this.set${fieldCodeUpperCamel}(${modelCodeLowerCamel}.get${fieldCodeUpperCamel}());
+        #end
+
+    }
+
+    @Override
+    public ${modelCode} toEntity() {
+        ${modelCode} ${modelCodeLowerCamel} = new ${modelCode}();
+        ${modelCodeLowerCamel}.setId(this.getId());
+        #foreach($field in $modelFields)
+        #set($fieldCode = $field.code)
+        #set($fieldCodeUpperCamel = $templateContext.upperCamel($fieldCode))
+        #set($type = $templateContext.getModelFieldType($field))
+        #if($templateContext.isModelDataType($field))
+        ${type}Model ${fieldCode}Model = this.get${fieldCodeUpperCamel}();
+        if (${fieldCode}Model != null) {
+            ${modelCodeLowerCamel}.set${fieldCodeUpperCamel}(${fieldCode}Model.getId());
+        }
+        #else
+        ${modelCodeLowerCamel}.set${fieldCodeUpperCamel}(this.get${fieldCodeUpperCamel}());
+        #end
+        #end
+        return ${modelCodeLowerCamel};
+    }
+}

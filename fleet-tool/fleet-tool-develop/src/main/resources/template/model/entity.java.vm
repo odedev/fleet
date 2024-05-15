@@ -1,0 +1,51 @@
+#set($moduleCode = $templateContext.module.code.toLowerCase())
+#set($modelCode = $templateContext.model.code)
+#set($modelFields = $templateContext.model.fields)
+package dev.osmanthus.fleet.module.${moduleCode}.entity;
+
+public class ${modelCode} extends AbstractEntity {
+    private String id;
+    #foreach($field in $modelFields)
+    #set($type = $templateContext.getEntityFieldType($field))
+    private $type $field.code;
+    #end
+    #set($i = 1)
+    #foreach($i in [1..8])
+    private String extSeg${i};
+    #end
+
+    @Override
+    public String getId() {
+        return this.id;
+    }
+
+    @Override
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    #foreach($field in $modelFields)
+    #set($fieldCode = $field.code)
+    #set($fieldCodeUpperCamel = $templateContext.upperCamel($fieldCode))
+    #set($type = $templateContext.getEntityFieldType($field))
+    public $type get${fieldCodeUpperCamel}() {
+        return this.$fieldCode;
+    }
+
+    public void set${fieldCodeUpperCamel}($type ${fieldCode}) {
+        this.${fieldCode} = ${fieldCode};
+    }
+
+    #end
+    #set($i = 1)
+    #foreach($i in [1..8])
+    public String getExtSeg${i}() {
+        return this.extSeg${i};
+    }
+
+    public void setExtSeg${i}(String extSeg${i}) {
+        this.extSeg${i} = extSeg${i};
+    }
+
+    #end
+}

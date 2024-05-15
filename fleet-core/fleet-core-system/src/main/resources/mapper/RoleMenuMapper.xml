@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dev.osmanthus.fleet.core.system.mapper.RoleMenuMapper">
+
+  <resultMap id="resultMap" type="dev.osmanthus.fleet.core.system.entity.RoleMenu">
+    <id property="id" column="id"/>
+    <result property="role" column="role"/>
+    <result property="menu" column="menu"/>
+  </resultMap>
+
+  <sql id="tableColumn">
+    <trim suffixOverrides=",">
+      `system_role_menu`.`id`,
+      `system_role_menu`.`role`,
+      `system_role_menu`.`menu`,
+    </trim>
+  </sql>
+  <sql id="column">
+    <trim suffixOverrides=",">
+      `id`,
+      `role`,
+      `menu`,
+    </trim>
+  </sql>
+
+  <sql id="insertColumn">
+    <trim suffixOverrides=",">
+      `id`,
+      <if test="role != null">`role`,</if>
+      <if test="menu != null">`menu`,</if>
+    </trim>
+  </sql>
+  <sql id="insertValue">
+    <trim suffixOverrides=",">
+      #{id},
+      <if test="role != null">#{role},</if>
+      <if test="menu != null">#{menu},</if>
+    </trim>
+  </sql>
+  <sql id="insertEntityValue">
+    <trim suffixOverrides=",">
+      #{roleMenu.id},
+      <if test="roleMenu.role != null">#{roleMenu.role},</if>
+      <if test="roleMenu.menu != null">#{roleMenu.menu},</if>
+    </trim>
+  </sql>
+
+  <sql id="updateColumn">
+    <trim prefix="set" suffixOverrides=",">
+      <if test="role != null">`role` = #{role},</if>
+      <if test="menu != null">`menu` = #{menu},</if>
+    </trim>
+  </sql>
+  <sql id="updateEntityColumn">
+    <trim prefix="set" suffixOverrides=",">
+      <if test="roleMenu.role != null">`role` = #{roleMenu.role},</if>
+      <if test="roleMenu.menu != null">`menu` = #{roleMenu.menu},</if>
+    </trim>
+  </sql>
+
+  <sql id="deleteColumn">
+    <trim prefix="set" suffixOverrides=",">
+      <if test="deletedAt != null">`deleted_at` = #{deletedAt},</if>
+    </trim>
+  </sql>
+  <sql id="deleteEntityColumn">
+    <trim prefix="set" suffixOverrides=",">
+      <if test="roleMenu.deletedAt != null">`deleted_at` = #{roleMenu.deletedAt},</if>
+    </trim>
+  </sql>
+
+  <select id="findOne" resultMap="resultMap" resultType="dev.osmanthus.fleet.core.system.entity.RoleMenu">
+    SELECT
+    <include refid="column"/>
+    FROM `system_role_menu`
+    <choose>
+      <when test="where != null and where != ''">
+        <where>
+          ${where} AND deleted_at is null
+        </where>
+      </when>
+      <otherwise>
+        <where>
+          deleted_at is null
+        </where>
+      </otherwise>
+    </choose>
+    LIMIT 1
+  </select>
+
+  <select id="findMany" resultMap="resultMap" resultType="dev.osmanthus.fleet.core.system.entity.RoleMenu">
+    SELECT
+    <include refid="column"/>
+    FROM `system_role_menu`
+    <choose>
+      <when test="where != null and where != ''">
+        <where>
+          ${where} AND deleted_at is null
+        </where>
+      </when>
+      <otherwise>
+        <where>
+          deleted_at is null
+        </where>
+      </otherwise>
+    </choose>
+    <choose>
+      <when test="order != null and order != ''">
+        ORDER BY ${order}
+      </when>
+      <otherwise>
+        ORDER BY role
+      </otherwise>
+    </choose>
+  </select>
+
+  <select id="findAll" resultMap="resultMap" resultType="dev.osmanthus.fleet.core.system.entity.RoleMenu">
+    SELECT
+    <include refid="column"/>
+    FROM `system_role_menu`
+    <choose>
+      <when test="where != null and where != ''">
+        <where>
+          ${where} AND deleted_at is null
+        </where>
+      </when>
+      <otherwise>
+        <where>
+          deleted_at is null
+        </where>
+      </otherwise>
+    </choose>
+    <choose>
+      <when test="order != null and order != ''">
+        ORDER BY ${order}
+      </when>
+      <otherwise>
+        ORDER BY role
+      </otherwise>
+    </choose>
+  </select>
+
+  <insert id="insertOne" parameterType="dev.osmanthus.fleet.core.system.entity.RoleMenu">
+    INSERT INTO `system_role_menu`
+    (<include refid="insertColumn"/>)
+    VALUES
+    (<include refid="insertValue"/>)
+  </insert>
+
+  <insert id="insertMany" parameterType="java.util.List">
+    INSERT INTO `system_role_menu`
+    (<include refid="insertColumn"/>)
+    VALUES
+    <foreach collection="list" item="roleMenu" separator=",">
+      (<include refid="insertEntityValue"/>)
+    </foreach>
+  </insert>
+
+  <update id="updateOne" parameterType="dev.osmanthus.fleet.core.system.entity.RoleMenu">
+    UPDATE `system_role_menu`
+    <include refid="updateColumn"/>
+    WHERE id=#{id}
+  </update>
+
+  <!--  <update id="updateMany" parameterType="java.util.HashMap">-->
+  <!--    UPDATE `roleMenu`-->
+  <!--    <foreach collection="roleMenuList" item="roleMenu" separator=",">-->
+  <!--      <include refid="updateColumn"/>-->
+  <!--    </foreach>-->
+  <!--    WHERE id=#{id} AND updated_count=#{updatedCount, jdbcType=INTEGER}-->
+  <!--  </update>-->
+
+  <delete id="deleteOne" parameterType="java.lang.String">
+    DELETE FROM `system_role_menu` WHERE id=#{id}
+  </delete>
+
+  <select id="count" resultType="java.lang.Integer">
+    SELECT COUNT(1) FROM `system_role_menu`
+    <if test="where != null and where != ''">
+      ${where}
+    </if>
+    LIMIT 1
+  </select>
+
+  <select id="exist" resultType="java.lang.Integer">
+    SELECT COUNT(1) FROM `system_role_menu`
+    <if test="where != null and where != ''">
+      ${where}
+    </if>
+    LIMIT 1
+  </select>
+
+</mapper>

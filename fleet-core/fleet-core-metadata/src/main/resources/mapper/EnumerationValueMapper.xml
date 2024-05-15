@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dev.osmanthus.fleet.core.metadata.mapper.EnumerationValueMapper">
+  <sql id="tableColumn">
+    <trim suffixOverrides=",">
+      `metadata_enumeration_value`.`id`,
+      `metadata_enumeration_value`.`value`,
+      `metadata_enumeration_value`.`name`,
+      `metadata_enumeration_value`.`enumeration`,
+    </trim>
+  </sql>
+  <sql id="column">
+    <trim suffixOverrides=",">
+      `id`,
+      `value`,
+      `name`,
+      `enumeration`,
+    </trim>
+  </sql>
+
+  <sql id="insertColumn">
+    <trim suffixOverrides=",">
+      `id`,
+      <if test="value != null">`value`,</if>
+      <if test="name != null">`name`,</if>
+      <if test="enumeration != null">`enumeration`,</if>
+    </trim>
+  </sql>
+  <sql id="insertValue">
+    <trim suffixOverrides=",">
+      #{id},
+      <if test="value != null">#{value},</if>
+      <if test="name != null">#{name},</if>
+      <if test="enumeration != null">#{enumeration},</if>
+    </trim>
+  </sql>
+  <sql id="insertEntityValue">
+    <trim suffixOverrides=",">
+      #{module.id},
+      <if test="module.value != null">#{module.value},</if>
+      <if test="module.name != null">#{module.name},</if>
+      <if test="module.enumeration != null">#{module.enumeration},</if>
+    </trim>
+  </sql>
+
+  <sql id="updateColumn">
+    <trim prefix="set" suffixOverrides=",">
+      <if test="value != null">`value` = #{value},</if>
+      <if test="name != null">`name` = #{name},</if>
+      <if test="enumeration != null">`enumeration` = #{enumeration},</if>
+    </trim>
+  </sql>
+  <sql id="updateEntityColumn">
+    <trim prefix="set" suffixOverrides=",">
+      <if test="module.value != null">`value` = #{module.value},</if>
+      <if test="module.name != null">`name` = #{module.name},</if>
+      <if test="module.enumeration != null">`enumeration` = #{module.enumeration},</if>
+    </trim>
+  </sql>
+
+  <resultMap id="resultMap" type="dev.osmanthus.fleet.core.metadata.entity.EnumerationValue">
+    <id property="id" column="id"/>
+    <result property="value" column="value"/>
+    <result property="name" column="name"/>
+    <result property="enumeration" column="enumeration"/>
+  </resultMap>
+
+  <select id="findOne" resultMap="resultMap" resultType="dev.osmanthus.fleet.core.metadata.entity.EnumerationValue">
+    SELECT
+    <include refid="column"/>
+    FROM `metadata_enumeration_value`
+    <if test="where != null and where != ''">
+      <where>
+        ${where}
+      </where>
+    </if>
+    LIMIT 1
+  </select>
+
+  <select id="findMany" resultMap="resultMap" resultType="dev.osmanthus.fleet.core.metadata.entity.EnumerationValue">
+    SELECT
+    <include refid="column"/>
+    FROM `metadata_enumeration_value`
+    <if test="where != null and where != ''">
+      <where>
+        ${where}
+      </where>
+    </if>
+    <!--    <if test="order != null and order != ''">-->
+    <!--      ORDER BY ${order}-->
+    <!--    </if>-->
+    <choose>
+      <when test="order != null and order != ''">
+        ORDER BY ${order}
+      </when>
+      <otherwise>
+        ORDER BY id DESC
+      </otherwise>
+    </choose>
+  </select>
+
+  <insert id="insertOne" parameterType="dev.osmanthus.fleet.core.metadata.entity.EnumerationValue">
+    INSERT INTO `metadata_enumeration_value`
+    (<include refid="insertColumn"/>)
+    VALUES
+    (<include refid="insertValue"/>)
+  </insert>
+
+  <insert id="insertMany" parameterType="java.util.List">
+    INSERT INTO `metadata_enumeration_value`
+    (<include refid="insertColumn"/>)
+    VALUES
+    <foreach collection="list" item="module" separator=",">
+      (<include refid="insertEntityValue"/>)
+    </foreach>
+  </insert>
+
+  <update id="updateOne" parameterType="dev.osmanthus.fleet.core.metadata.entity.EnumerationValue">
+    UPDATE `metadata_enumeration_value`
+    <include refid="updateColumn"/>
+    WHERE id=#{id}
+  </update>
+
+  <!--  <update id="updateMany" parameterType="java.util.HashMap">-->
+  <!--    UPDATE `module`-->
+  <!--    <foreach collection="moduleList" item="module" separator=",">-->
+  <!--      <include refid="updateColumn"/>-->
+  <!--    </foreach>-->
+  <!--    WHERE id=#{id} AND updated_count=#{updatedCount, jdbcType=INTEGER}-->
+  <!--  </update>-->
+
+  <delete id="deleteOne" parameterType="java.lang.String">
+    DELETE FROM `metadata_enumeration_value` WHERE id=#{id}
+  </delete>
+
+  <select id="count" resultType="java.lang.Integer">
+    SELECT COUNT(1) FROM `metadata_enumeration_value`
+    <if test="where != null and where != ''">
+      <where>
+        ${where}
+      </where>
+    </if>
+    LIMIT 1
+  </select>
+
+</mapper>

@@ -1,0 +1,25 @@
+services:
+
+  main:
+    image: eclipse-temurin:21.0.2_13-jdk
+    working_dir: /home/app
+    volumes:
+      - ./main:/home/app
+      # - ./main/config:/home/app/config
+      # - ./main/logs:/home/app/logs
+      # - ./main/public:/home/app/public
+    ports:
+      - "23501:23501"
+    hostname: app-main
+    networks:
+      - net
+    restart: always
+    user: root
+    command: "java -jar -Xms1024m -Xmx1024m -XX:MetaspaceSize=512M -XX:MaxMetaspaceSize=512M ./app.jar"
+
+networks:
+  net:
+    ipam:
+      driver: default
+      config:
+        - subnet: 20.10.0.0/24

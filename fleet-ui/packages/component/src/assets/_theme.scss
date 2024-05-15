@@ -1,0 +1,184 @@
+@use 'sass:map';
+
+@use "variable/theme" as *;
+
+
+@mixin theme-color-primary() {
+  @each $name, $theme in $themes {
+    [data-theme="#{$name}"] & {
+      color: map.get($theme, "primary");
+    }
+  }
+}
+
+@mixin theme-color-secondary() {
+  @each $name, $theme in $themes {
+    [data-theme="#{$name}"] & {
+      color: map.get($theme, "secondary");
+    }
+  }
+}
+
+@mixin theme-color-tertiary() {
+  @each $name, $theme in $themes {
+    [data-theme="#{$name}"] & {
+      color: map.get($theme, "tertiary");
+    }
+  }
+}
+
+@mixin theme-color-neutral() {
+  @each $name, $theme in $themes {
+    [data-theme="#{$name}"] & {
+      color: map.get($theme, "neutral");
+    }
+  }
+}
+
+@mixin theme-color-success() {
+  @each $name, $theme in $themes {
+    [data-theme="#{$name}"] & {
+      color: map.get($theme, "success");
+    }
+  }
+}
+
+@mixin theme-color-error() {
+  @each $name, $theme in $themes {
+    [data-theme="#{$name}"] & {
+      color: map.get($theme, "error");
+    }
+  }
+}
+
+@mixin theme-color-warn() {
+  @each $name, $theme in $themes {
+    [data-theme="#{$name}"] & {
+      color: map.get($theme, "warn");
+    }
+  }
+}
+
+@mixin theme-color-info() {
+  @each $name, $theme in $themes {
+    [data-theme="#{$name}"] & {
+      color: map.get($theme, "info");
+    }
+  }
+}
+
+@mixin theme-background-color() {
+  @each $name, $theme in $themes {
+    [data-theme="#{$name}"] & {
+      color: map.get($theme, "on-background");
+      background-color: map.get($theme, "background");
+    }
+  }
+}
+
+@mixin theme-background-color-surface() {
+  @each $name, $theme in $themes {
+    [data-theme="#{$name}"] & {
+      color: map.get($theme, "on-surface");
+      background-color: map.get($theme, "surface");
+    }
+  }
+}
+
+@mixin theme-background-color-primary() {
+  @each $name, $theme in $themes {
+    [data-theme="#{$name}"] & {
+      color: map.get($theme, "on-primary");
+      background-color: map.get($theme, "primary");
+    }
+  }
+}
+
+@mixin theme-background-color-secondary() {
+  @each $name, $theme in $themes {
+    [data-theme="#{$name}"] & {
+      color: map.get($theme, "on-secondary");
+      background-color: map.get($theme, "secondary");
+    }
+  }
+}
+
+@mixin theme-background-color-tertiary() {
+  @each $name, $theme in $themes {
+    [data-theme="#{$name}"] & {
+      color: map.get($theme, "on-tertiary");
+      background-color: map.get($theme, "tertiary");
+    }
+  }
+}
+
+@mixin theme-background-color-neutral() {
+  @each $name, $theme in $themes {
+    [data-theme="#{$name}"] & {
+      color: map.get($theme, "on-neutral");
+      background-color: map.get($theme, "neutral");
+    }
+  }
+}
+
+@mixin theme-background-color-success() {
+  @each $name, $theme in $themes {
+    [data-theme="#{$name}"] & {
+      color: map.get($theme, "on-success");
+      background-color: map.get($theme, "success");
+    }
+  }
+}
+
+@mixin theme-background-color-error() {
+  @each $name, $theme in $themes {
+    [data-theme="#{$name}"] & {
+      color: map.get($theme, "on-error");
+      background-color: map.get($theme, "error");
+    }
+  }
+}
+
+@mixin theme-background-color-warn() {
+  @each $name, $theme in $themes {
+    [data-theme="#{$name}"] & {
+      color: map.get($theme, "on-warn");
+      background-color: map.get($theme, "warn");
+    }
+  }
+}
+
+@mixin theme-background-color-info() {
+  @each $name, $theme in $themes {
+    [data-theme="#{$name}"] & {
+      color: map.get($theme, "on-info");
+      background-color: map.get($theme, "info");
+    }
+  }
+}
+
+@mixin theme-background-color-primary-container() {
+  @each $name, $theme in $themes {
+    [data-theme="#{$name}"] & {
+      color: map.get($theme, "on-primary-container");
+      background-color: map.get($theme, "primary-container");
+    }
+  }
+}
+
+
+@mixin theme-border-color() {
+  @each $name, $theme in $themes {
+    [data-theme="#{$name}"] & {
+      border-color: map.get($theme, "outline");
+    }
+  }
+}
+
+@mixin theme-border-color-primary() {
+  @each $name, $theme in $themes {
+    [data-theme="#{$name}"] & {
+      border-color: map.get($theme, "primary");
+    }
+  }
+}

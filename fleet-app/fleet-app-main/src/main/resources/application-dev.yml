@@ -1,0 +1,33 @@
+spring:
+  datasource:
+    username: root
+    password: 123456
+    url: jdbc:mysql://127.0.0.1:3306/fleet?autoReconnect=false&useUnicode=true&characterEncoding=utf8&characterSetResults=UTF-8&serverTimezone=UTC&zeroDateTimeBehavior=convertToNull&useSSL=false
+#  datasource:
+#    username: root
+#    password: 123456
+#    driver-class-name: org.sqlite.JDBC
+#    url: jdbc:sqlite:fleet.db
+#  sql:
+#    init:
+#      platform: sqlite
+  devtools:
+    restart:
+      poll-interval: "2s"
+      quiet-period: "1s"
+      exclude: "static/**,public/**"
+  flyway:
+    enabled: false
+    locations: "classpath:db/migration, classpath:db/sqlite"
+    table: flyway_schema_history
+    encoding: UTF-8
+    clean-disabled: true
+    baseline-on-migrate: true
+    validate-on-migrate: true
+    create-schemas: false
+    schemas: flyway
+
+minio:
+  endpoint: ""
+  accessKey: ""
+  secretKey: ""

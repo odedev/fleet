@@ -1,0 +1,171 @@
+
+@use "variable/base" as *;
+@use "theme" as *;
+
+
+@mixin color-primary() {
+  color: var(--theme-primary, $primary);
+  @include theme-color-primary();
+}
+@mixin color-secondary() {
+  color: var(--theme-color-secondary, $secondary);
+  @include theme-color-secondary();
+}
+@mixin color-tertiary() {
+  color: var(--theme-color-tertiary, $tertiary);
+  @include theme-color-tertiary();
+}
+@mixin color-neutral() {
+  color: var(--theme-color-neutral, $neutral);
+  @include theme-color-neutral();
+}
+@mixin color-success() {
+  color: var(--theme-color-success, $success);
+  @include theme-color-success();
+}
+@mixin color-error() {
+  color: var(--theme-color-error, $error);
+  @include theme-color-error();
+}
+@mixin color-warn() {
+  color: var(--theme-color-warn, $warn);
+  @include theme-color-warn();
+}
+@mixin color-info() {
+  color: var(--theme-color-info, $info);
+  @include theme-color-info();
+}
+
+@mixin background-color() {
+  color: $on-background;
+  background-color: var(--theme-background, $background);
+
+  @include theme-background-color();
+}
+
+@mixin background-color-surface() {
+  color: $on-surface;
+  background-color: var(--theme-white, $surface);
+
+  // @include theme-background-color-surface();
+}
+
+@mixin background-color-surface-variant() {
+  color: $on-surface-variant;
+  background-color: var(--theme-white, $surface-variant);
+
+  // @include theme-background-color-surface();
+}
+
+@mixin background-color-primary() {
+  color: $on-primary;
+  background-color: var(--theme-primary, $primary);
+
+  @include theme-background-color-primary();
+}
+
+@mixin background-color-secondary() {
+  color: $on-secondary;
+  background-color: var(--theme-color-secondary, $secondary);
+
+  @include theme-background-color-secondary();
+}
+
+@mixin background-color-tertiary() {
+  color: $on-tertiary;
+  background-color: var(--theme-color-tertiary, $tertiary);
+
+  @include theme-background-color-tertiary();
+}
+
+@mixin background-color-neutral() {
+  color: $on-neutral;
+  background-color: var(--theme-color-neutral, $neutral);
+
+  @include theme-background-color-neutral();
+}
+
+@mixin background-color-success() {
+  color: $on-primary;
+  background-color: var(--theme-color-success, $success);
+
+  @include theme-background-color-success();
+}
+
+@mixin background-color-error() {
+  color: $on-primary;
+  background-color: var(--theme-color-error, $error);
+
+  @include theme-background-color-error();
+}
+
+@mixin background-color-warn() {
+  color: $on-primary;
+  background-color: var(--theme-color-warn, $warn);
+
+  @include theme-background-color-warn();
+}
+
+@mixin background-color-info() {
+  color: $on-primary;
+  background-color: var(--theme-color-info, $info);
+
+  @include theme-background-color-info();
+}
+
+@mixin background-color-primary-container() {
+  //color: $on-primary-container;
+  //background-color: var($primary-container, --theme-primary-container);
+}
+
+@mixin surface-color() {
+  color: var(--theme-on-surface, $on-surface);
+  background-color: var(--theme-surface, $surface);
+}
+
+@mixin surface-variant-color() {
+  color: $on-surface-variant;
+  background-color: var($surface, --theme-surface);
+}
+
+@mixin border-color() {
+  border-color: var(--theme-outline, $outline);
+
+  @include theme-border-color();
+}
+
+@mixin border-color-primary() {
+  border-color: var(--theme-primary, $primary);
+
+  @include theme-border-color-primary();
+}
+
+@mixin border-color-secondary() {
+  border-color: var(--theme-secondary, $secondary);
+}
+
+@mixin border-color-error() {
+  border-color: var(--theme-error, $error);
+}
+
+@mixin border-right-color-primary() {
+  border-right-color: var(--theme-primary, $primary);
+}
+@mixin caret-color-primary() {
+  caret-color: var($primary, --theme-primary);
+}
+
+@mixin selection() {
+  * {
+    &::selection,
+    &::-moz-selection {
+      @include background-color-primary();
+    }
+  }
+}
+
+@mixin ellipsis {
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+}

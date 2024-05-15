@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dev.osmanthus.fleet.core.metadata.mapper.ModelMapper">
+  <sql id="tableColumn">
+    <trim suffixOverrides=",">
+      `metadata_model`.`id`,
+      `metadata_model`.`code`,
+      `metadata_model`.`name`,
+      `metadata_model`.`description`,
+      `metadata_model`.`full_name`,
+      `metadata_model`.`module`,
+    </trim>
+  </sql>
+  <sql id="column">
+    <trim suffixOverrides=",">
+      `id`,
+      `code`,
+      `name`,
+      `description`,
+      `full_name`,
+      `module`,
+    </trim>
+  </sql>
+
+  <sql id="insertColumn">
+    <trim suffixOverrides=",">
+      `id`,
+      <if test="code != null">`code`,</if>
+      <if test="name != null">`name`,</if>
+      <if test="description != null">`description`,</if>
+      <if test="fullName != null">`full_name`,</if>
+      <if test="module != null">`module`,</if>
+    </trim>
+  </sql>
+  <sql id="insertValue">
+    <trim suffixOverrides=",">
+      #{id},
+      <if test="code != null">#{code},</if>
+      <if test="name != null">#{name},</if>
+      <if test="description != null">#{description},</if>
+      <if test="fullName != null">#{fullName},</if>
+      <if test="module != null">#{module},</if>
+    </trim>
+  </sql>
+  <sql id="insertEntityValue">
+    <trim suffixOverrides=",">
+      #{module.id},
+      <if test="module.code != null">#{module.code},</if>
+      <if test="module.name != null">#{module.name},</if>
+      <if test="module.description != null">#{module.description},</if>
+      <if test="module.fullName != null">#{module.fullName},</if>
+      <if test="module.module != null">#{module.module},</if>
+    </trim>
+  </sql>
+
+  <sql id="updateColumn">
+    <trim prefix="set" suffixOverrides=",">
+      <if test="code != null">`code` = #{code},</if>
+      <if test="name != null">`name` = #{name},</if>
+      <if test="description != null">`description` = #{description},</if>
+      <if test="fullName != null">`full_name` = #{fullName},</if>
+      <if test="module != null">`module` = #{module},</if>
+    </trim>
+  </sql>
+  <sql id="updateEntityColumn">
+    <trim prefix="set" suffixOverrides=",">
+      <if test="module.code != null">`code` = #{module.code},</if>
+      <if test="module.name != null">`name` = #{module.name},</if>
+      <if test="module.description != null">`description` = #{module.description},</if>
+      <if test="module.fullName != null">`full_name` = #{module.fullName},</if>
+      <if test="module.module != null">`module` = #{module.module},</if>
+    </trim>
+  </sql>
+
+  <resultMap id="resultMap" type="dev.osmanthus.fleet.core.metadata.entity.Model">
+    <id property="id" column="id"/>
+    <result property="code" column="code"/>
+    <result property="name" column="name"/>
+    <result property="description" column="description"/>
+    <result property="fullName" column="full_name"/>
+    <result property="module" column="module"/>
+  </resultMap>
+
+  <select id="findOne" resultMap="resultMap" resultType="dev.osmanthus.fleet.core.metadata.entity.Model">
+    SELECT
+    <include refid="column"/>
+    FROM `metadata_model`
+    <if test="where != null and where != ''">
+      <where>
+        ${where}
+      </where>
+    </if>
+    LIMIT 1
+  </select>
+
+  <select id="findMany" resultMap="resultMap" resultType="dev.osmanthus.fleet.core.metadata.entity.Model">
+    SELECT
+    <include refid="column"/>
+    FROM `metadata_model`
+    <if test="where != null and where != ''">
+      <where>
+        ${where}
+      </where>
+    </if>
+    <choose>
+      <when test="order != null and order != ''">
+        ORDER BY ${order}
+      </when>
+      <otherwise>
+        ORDER BY id DESC
+      </otherwise>
+    </choose>
+  </select>
+
+  <insert id="insertOne" parameterType="dev.osmanthus.fleet.core.metadata.entity.Model">
+    INSERT INTO `metadata_model`
+    (<include refid="insertColumn"/>)
+    VALUES
+    (<include refid="insertValue"/>)
+  </insert>
+
+  <insert id="insertMany" parameterType="java.util.List">
+    INSERT INTO `metadata_model`
+    (<include refid="insertColumn"/>)
+    VALUES
+    <foreach collection="list" item="module" separator=",">
+      (<include refid="insertEntityValue"/>)
+    </foreach>
+  </insert>
+
+  <update id="updateOne" parameterType="dev.osmanthus.fleet.core.metadata.entity.Model">
+    UPDATE `metadata_model`
+    <include refid="updateColumn"/>
+    WHERE id=#{id}
+  </update>
+
+  <!--  <update id="updateMany" parameterType="java.util.HashMap">-->
+  <!--    UPDATE `module`-->
+  <!--    <foreach collection="moduleList" item="module" separator=",">-->
+  <!--      <include refid="updateColumn"/>-->
+  <!--    </foreach>-->
+  <!--    WHERE id=#{id} AND updated_count=#{updatedCount, jdbcType=INTEGER}-->
+  <!--  </update>-->
+
+  <delete id="deleteOne" parameterType="java.lang.String">
+    DELETE FROM `metadata_model` WHERE id=#{id}
+  </delete>
+
+  <select id="count" resultType="java.lang.Integer">
+    SELECT COUNT(1) FROM `metadata_model`
+    <if test="where != null and where != ''">
+      <where>
+        ${where}
+      </where>
+    </if>
+    LIMIT 1
+  </select>
+
+</mapper>

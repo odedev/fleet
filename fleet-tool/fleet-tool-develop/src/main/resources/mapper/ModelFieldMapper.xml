@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dev.osmanthus.fleet.tool.develop.mapper.ModelFieldMapper">
+  <sql id="tableColumn">
+    <trim suffixOverrides=",">
+      `develop_model_field`.`id`,
+      `develop_model_field`.`code`,
+      `develop_model_field`.`name`,
+      `develop_model_field`.`data_type`,
+      `develop_model_field`.`data_length`,
+      `develop_model_field`.`enum_type`,
+      `develop_model_field`.`model_type`,
+      `develop_model_field`.`is_slave_model`,
+      `develop_model_field`.`is_nullable`,
+      `develop_model_field`.`is_searchable`,
+      `develop_model_field`.`is_default_display`,
+      `develop_model_field`.`note`,
+      `develop_model_field`.`sequence`,
+      `develop_model_field`.`model`,
+    </trim>
+  </sql>
+  <sql id="column">
+    <trim suffixOverrides=",">
+      `id`,
+      `code`,
+      `name`,
+      `data_type`,
+      `data_length`,
+      `enum_type`,
+      `model_type`,
+      `is_slave_model`,
+      `is_nullable`,
+      `is_searchable`,
+      `is_default_display`,
+      `note`,
+      `sequence`,
+      `model`,
+    </trim>
+  </sql>
+
+  <sql id="insertColumn">
+    <trim suffixOverrides=",">
+      `id`,
+      <if test="code != null">`code`,</if>
+      <if test="name != null">`name`,</if>
+      <if test="dataType != null">`data_type`,</if>
+      <if test="dataLength != null">`data_length`,</if>
+      <if test="enumType != null">`enum_type`,</if>
+      <if test="modelType != null">`model_type`,</if>
+      <if test="isSlaveModel != null">`is_slave_model`,</if>
+      <if test="isNullable != null">`is_nullable`,</if>
+      <if test="isSearchable != null">`is_searchable`,</if>
+      <if test="isDefaultDisplay != null">`is_default_display`,</if>
+      <if test="note != null">`note`,</if>
+      <if test="sequence != null">`sequence`,</if>
+      <if test="model != null">`model`,</if>
+    </trim>
+  </sql>
+  <sql id="insertValue">
+    <trim suffixOverrides=",">
+      #{id},
+      <if test="code != null">#{code},</if>
+      <if test="name != null">#{name},</if>
+      <if test="dataType != null">#{dataType},</if>
+      <if test="dataLength != null">#{dataLength},</if>
+      <if test="enumType != null">#{enumType},</if>
+      <if test="modelType != null">#{modelType},</if>
+      <if test="isSlaveModel != null">#{isSlaveModel},</if>
+      <if test="isNullable != null">#{isNullable},</if>
+      <if test="isSearchable != null">#{isSearchable},</if>
+      <if test="isDefaultDisplay != null">#{isDefaultDisplay},</if>
+      <if test="note != null">#{note},</if>
+      <if test="sequence != null">#{sequence},</if>
+      <if test="model != null">#{model},</if>
+    </trim>
+  </sql>
+  <sql id="insertEntityValue">
+    <trim suffixOverrides=",">
+      #{module.id},
+      <if test="module.code != null">#{module.code},</if>
+      <if test="module.name != null">#{module.name},</if>
+      <if test="module.dataType != null">#{module.dataType},</if>
+      <if test="module.dataLength != null">#{module.dataLength},</if>
+      <if test="module.enumType != null">#{module.enumType},</if>
+      <if test="module.modelType != null">#{module.modelType},</if>
+      <if test="module.isSlaveModel != null">#{module.isSlaveModel},</if>
+      <if test="module.isNullable != null">#{module.isNullable},</if>
+      <if test="module.isSearchable != null">#{module.isSearchable},</if>
+      <if test="module.isDefaultDisplay != null">#{module.isDefaultDisplay},</if>
+      <if test="module.note != null">#{module.note},</if>
+      <if test="module.sequence != null">#{module.sequence},</if>
+      <if test="module.model != null">#{module.model},</if>
+    </trim>
+  </sql>
+
+  <sql id="updateColumn">
+    <trim prefix="set" suffixOverrides=",">
+      <if test="code != null">`code` = #{code},</if>
+      <if test="name != null">`name` = #{name},</if>
+      <if test="dataType != null">`data_type` = #{dataType},</if>
+      <if test="dataLength != null">`data_length` = #{dataLength},</if>
+      <if test="enumType != null">`enum_type` = #{enumType},</if>
+      <if test="modelType != null">`model_type` = #{modelType},</if>
+      <if test="isSlaveModel != null">`is_slave_model` = #{isSlaveModel},</if>
+      <if test="isNullable != null">`is_nullable` = #{isNullable},</if>
+      <if test="isSearchable != null">`is_searchable` = #{isSearchable},</if>
+      <if test="isDefaultDisplay != null">`is_default_display` = #{isDefaultDisplay},</if>
+      <if test="note != null">`note` = #{note},</if>
+      <if test="sequence != null">`sequence` = #{sequence},</if>
+      <if test="model != null">`model` = #{model},</if>
+    </trim>
+  </sql>
+  <sql id="updateEntityColumn">
+    <trim prefix="set" suffixOverrides=",">
+      <if test="module.code != null">`code` = #{module.code},</if>
+      <if test="module.name != null">`name` = #{module.name},</if>
+      <if test="module.dataType != null">`data_type` = #{module.dataType},</if>
+      <if test="module.dataLength != null">`data_length` = #{module.dataLength},</if>
+      <if test="module.enumType != null">`enum_type` = #{module.enumType},</if>
+      <if test="module.modelType != null">`model_type` = #{module.modelType},</if>
+      <if test="module.isSlaveModel != null">`is_slave_model` = #{module.isSlaveModel},</if>
+      <if test="module.isNullable != null">`is_nullable` = #{module.isNullable},</if>
+      <if test="module.isSearchable != null">`is_searchable` = #{module.isSearchable},</if>
+      <if test="module.isDefaultDisplay != null">`is_default_display` = #{module.isDefaultDisplay},</if>
+      <if test="module.note != null">`note` = #{module.note},</if>
+      <if test="module.sequence != null">`sequence` = #{module.sequence},</if>
+      <if test="module.model != null">`model` = #{module.model},</if>
+    </trim>
+  </sql>
+
+  <resultMap id="resultMap" type="dev.osmanthus.fleet.tool.develop.entity.ModelField">
+    <id property="id" column="id"/>
+    <result property="code" column="code"/>
+    <result property="name" column="name"/>
+    <result property="dataType" column="data_type"/>
+    <result property="dataLength" column="data_length"/>
+    <result property="enumType" column="enum_type"/>
+    <result property="modelType" column="model_type"/>
+    <result property="isSlaveModel" column="is_slave_model"/>
+    <result property="isNullable" column="is_nullable"/>
+    <result property="isSearchable" column="is_searchable"/>
+    <result property="isDefaultDisplay" column="is_default_display"/>
+    <result property="note" column="note"/>
+    <result property="sequence" column="sequence"/>
+    <result property="model" column="model"/>
+  </resultMap>
+
+  <select id="findOne" resultMap="resultMap" resultType="dev.osmanthus.fleet.tool.develop.entity.ModelField">
+    SELECT
+    <include refid="column"/>
+    FROM `develop_model_field`
+    <if test="where != null and where != ''">
+      <where>
+        ${where}
+      </where>
+    </if>
+    LIMIT 1
+  </select>
+
+  <select id="findMany" resultMap="resultMap" resultType="dev.osmanthus.fleet.tool.develop.entity.ModelField">
+    SELECT
+    <include refid="column"/>
+    FROM `develop_model_field`
+    <if test="where != null and where != ''">
+      <where>
+        ${where}
+      </where>
+    </if>
+    <choose>
+      <when test="order != null and order != ''">
+        ORDER BY ${order}
+      </when>
+      <otherwise>
+        ORDER BY id DESC
+      </otherwise>
+    </choose>
+  </select>
+
+  <insert id="insertOne" parameterType="dev.osmanthus.fleet.tool.develop.entity.ModelField">
+    INSERT INTO `develop_model_field`
+    (<include refid="insertColumn"/>)
+    VALUES
+    (<include refid="insertValue"/>)
+  </insert>
+
+  <insert id="insertMany" parameterType="java.util.List">
+    INSERT INTO `develop_model_field`
+    (<include refid="insertColumn"/>)
+    VALUES
+    <foreach collection="list" item="module" separator=",">
+      (<include refid="insertEntityValue"/>)
+    </foreach>
+  </insert>
+
+  <update id="updateOne" parameterType="dev.osmanthus.fleet.tool.develop.entity.ModelField">
+    UPDATE `develop_model_field`
+    <include refid="updateColumn"/>
+    WHERE id=#{id}
+  </update>
+
+  <!--  <update id="updateMany" parameterType="java.util.HashMap">-->
+  <!--    UPDATE `module`-->
+  <!--    <foreach collection="moduleList" item="module" separator=",">-->
+  <!--      <include refid="updateColumn"/>-->
+  <!--    </foreach>-->
+  <!--    WHERE id=#{id} AND updated_count=#{updatedCount, jdbcType=INTEGER}-->
+  <!--  </update>-->
+
+  <delete id="deleteOne" parameterType="java.lang.String">
+    DELETE FROM `develop_model_field` WHERE id=#{id}
+  </delete>
+
+  <select id="count" resultType="java.lang.Integer">
+    SELECT COUNT(1) FROM `develop_model_field`
+    <if test="where != null and where != ''">
+      <where>
+        ${where}
+      </where>
+    </if>
+    LIMIT 1
+  </select>
+</mapper>

@@ -1,0 +1,5 @@
+
+minio:
+  endpoint: ""
+  accessKey: ""
+  secretKey: "dev.osmanthus.fleet.component.minio"

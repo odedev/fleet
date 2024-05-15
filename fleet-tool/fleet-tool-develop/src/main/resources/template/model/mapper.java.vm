@@ -1,0 +1,10 @@
+#set($moduleCode = $templateContext.module.code.toLowerCase())
+#set($modelCode = $templateContext.model.code)
+package dev.osmanthus.fleet.module.${moduleCode}.mapper;
+
+import dev.osmanthus.fleet.module.${moduleCode}.entity.${modelCode};
+import dev.osmanthus.fleet.component.mysql.GenericMapper;
+
+@Mapper
+public interface ${modelCode}Mapper extends GenericMapper<${modelCode}> {
+}

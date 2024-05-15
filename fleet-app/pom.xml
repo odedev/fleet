@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>dev.osmanthus</groupId>
+    <artifactId>fleet</artifactId>
+    <version>1.0.0</version>
+  </parent>
+
+  <artifactId>fleet-app</artifactId>
+  <name>fleet-app</name>
+  <description>Fleet app project</description>
+
+  <packaging>pom</packaging>
+
+  <properties>
+  </properties>
+
+  <modules>
+    <module>fleet-app-main</module>
+  </modules>
+
+  <dependencyManagement>
+    <dependencies>
+
+      <dependency>
+        <groupId>dev.osmanthus</groupId>
+        <artifactId>fleet-core-base</artifactId>
+        <version>${version}</version>
+      </dependency>
+      <dependency>
+        <groupId>dev.osmanthus</groupId>
+        <artifactId>fleet-core-asset</artifactId>
+        <version>${version}</version>
+      </dependency>
+      <dependency>
+        <groupId>dev.osmanthus</groupId>
+        <artifactId>fleet-core-metadata</artifactId>
+        <version>${version}</version>
+      </dependency>
+      <dependency>
+        <groupId>dev.osmanthus</groupId>
+        <artifactId>fleet-core-org</artifactId>
+        <version>${version}</version>
+      </dependency>
+      <dependency>
+        <groupId>dev.osmanthus</groupId>
+        <artifactId>fleet-core-system</artifactId>
+        <version>${version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>dev.osmanthus</groupId>
+        <artifactId>fleet-tool-develop</artifactId>
+        <version>${version}</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
+  <dependencies>
+    <dependency>
+      <groupId>dev.osmanthus</groupId>
+      <artifactId>fleet-core-base</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>dev.osmanthus</groupId>
+      <artifactId>fleet-core-asset</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>dev.osmanthus</groupId>
+      <artifactId>fleet-core-metadata</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>dev.osmanthus</groupId>
+      <artifactId>fleet-core-system</artifactId>
+    </dependency>
+  </dependencies>
+
+</project>
