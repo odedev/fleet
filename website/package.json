@@ -11,6 +11,7 @@
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare"
   },
+  "packageManager": "pnpm@9.1.3",
   "dependencies": {
     "@arco-design/web-vue": "^2.55.1",
     "@element-plus/icons-vue": "^2.3.1",
