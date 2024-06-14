@@ -48,7 +48,7 @@
     "color": "^4.2.3",
     "cropperjs": "^1.6.2",
     "dhtmlx-gantt": "^8.0.8",
-    "github-markdown-css": "^5.5.1",
+    "github-markdown-css": "^5.6.0",
     "highlight.js": "^11.9.0",
     "interactjs": "^1.10.27",
     "lodash": "^4.17.21",
@@ -59,7 +59,7 @@
     "sortablejs": "^1.15.2",
     "video.js": "^8.12.0",
     "viewerjs": "^1.11.6",
-    "vue": "^3.4.27",
+    "vue": "^3.4.28",
     "vue-draggable-plus": "^0.5.0",
     "vue-router": "^4.3.3",
     "xgplayer": "^3.0.18",
@@ -83,7 +83,7 @@
     "prettier": "^3.3.2",
     "sass": "^1.77.5",
     "typescript": "^5.4.5",
-    "vite": "^5.3.0",
+    "vite": "^5.3.1",
     "vue-tsc": "^2.0.21"
   }
 }
