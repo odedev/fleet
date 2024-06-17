@@ -23,7 +23,7 @@
     "@fleet/view": "workspace:^",
     "pinia": "^2.1.7",
     "pinia-plugin-persistedstate": "^3.2.1",
-    "vue": "^3.4.28",
+    "vue": "^3.4.29",
     "vue-router": "^4.3.3"
   },
   "devDependencies": {
@@ -35,7 +35,7 @@
     "@vue/eslint-config-prettier": "^9.0.0",
     "@vue/eslint-config-typescript": "^13.0.0",
     "@vue/tsconfig": "^0.5.1",
-    "eslint": "^9.4.0",
+    "eslint": "^9.5.0",
     "eslint-plugin-vue": "^9.26.0",
     "less": "^4.2.0",
     "npm-run-all2": "^6.2.0",
