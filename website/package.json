@@ -15,18 +15,18 @@
   "dependencies": {
     "@arco-design/web-vue": "^2.56.2",
     "@element-plus/icons-vue": "^2.3.1",
-    "element-plus": "^2.8.3"
+    "element-plus": "^2.8.3",
+    "nuxt": "^3.13.2",
+    "vue": "^3.5.8",
+    "vue-router": "^4.4.5"
   },
   "devDependencies": {
     "@element-plus/nuxt": "^1.0.10",
     "@nuxtjs/tailwindcss": "^6.12.1",
     "@types/node": "^22.7.2",
     "autoprefixer": "^10.4.20",
-    "nuxt": "^3.13.2",
     "postcss": "^8.4.47",
     "sass": "^1.79.3",
-    "tailwindcss": "^3.4.13",
-    "vue": "^3.5.8",
-    "vue-router": "^4.4.5"
+    "tailwindcss": "^3.4.13"
   }
 }
