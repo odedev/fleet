@@ -29,6 +29,7 @@
     <module>fleet-component-mysql</module>
     <module>fleet-component-rabbitmq</module>
     <module>fleet-component-redis</module>
+    <module>fleet-component-rocksdb</module>
   </modules>
 
   <dependencies>

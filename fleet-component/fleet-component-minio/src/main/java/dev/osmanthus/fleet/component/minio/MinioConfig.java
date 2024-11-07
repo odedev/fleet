@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class MinioClientConfig {
+public class MinioConfig {
     @Value("${minio.endpoint:#{null}}")
     private String endpoint;
     @Value("${minio.accessKey:#{null}}")
@@ -12,7 +12,7 @@ public class MinioClientConfig {
     @Value("${minio.secretKey:#{null}}")
     private String secretKey;
 
-    public MinioClientConfig() {
+    public MinioConfig() {
     }
 
     public String getEndpoint() {

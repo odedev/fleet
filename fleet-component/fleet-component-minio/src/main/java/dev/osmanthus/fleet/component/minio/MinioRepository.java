@@ -14,17 +14,21 @@ import java.security.NoSuchAlgorithmException;
 
 @Repository
 public class MinioRepository {
-    private MinioClientConfig minioClientConfig;
+    private final MinioConfig minioConfig;
     private MinioClient minioClient;
 
-    public MinioRepository(MinioClientConfig minioClientConfig) {
-        this.minioClientConfig = minioClientConfig;
-        if (!StringUtils.isNullOrEmpty(this.minioClientConfig.getEndpoint())) {
+    public MinioRepository(MinioConfig minioConfig) {
+        this.minioConfig = minioConfig;
+        this.init();
+    }
+
+    private void init() {
+        if (!StringUtils.isNullOrEmpty(this.minioConfig.getEndpoint())) {
             try {
                 this.minioClient = MinioClient
                     .builder()
-                    .endpoint(this.minioClientConfig.getEndpoint())
-                    .credentials(this.minioClientConfig.getAccessKey(), this.minioClientConfig.getSecretKey())
+                    .endpoint(this.minioConfig.getEndpoint())
+                    .credentials(this.minioConfig.getAccessKey(), this.minioConfig.getSecretKey())
                     .build();
             } catch (Exception e) {
                 e.printStackTrace();
