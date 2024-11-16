@@ -1,7 +1,7 @@
 services:
 
   main:
-    image: eclipse-temurin:21.0.2_13-jdk
+    image: eclipse-temurin:21.0.5_11-jdk
     working_dir: /home/app
     volumes:
       - ./main:/home/app

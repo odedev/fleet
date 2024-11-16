@@ -15,7 +15,7 @@ services:
     user: root
 
   website:
-    image: node:20.12.0
+    image: node:22.11.0
     environment:
       - NODE_ENV=production
       - PORT=23550

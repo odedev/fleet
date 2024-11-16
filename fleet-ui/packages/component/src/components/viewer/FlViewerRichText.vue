@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { ref, watch } from "vue";
-import CKEditor from '@ckeditor/ckeditor5-vue';
+import { Ckeditor } from '@ckeditor/ckeditor5-vue';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
-const Editor = CKEditor.component;
+// const Editor = CKEditor.component;
 
 const config = ref({
   toolbar: [],
@@ -23,7 +23,7 @@ const handleUpdate = (val: any) => {
 
 <template>
   <div class="viewer__richtext">
-    <Editor
+    <Ckeditor
       :model-value="value"
       :editor="ClassicEditor"
       :config="config"
@@ -32,7 +32,7 @@ const handleUpdate = (val: any) => {
       @update:model-value="handleUpdate"
       tag-name="textarea"
     >
-    </Editor>
+    </Ckeditor>
   </div>
 </template>
 
