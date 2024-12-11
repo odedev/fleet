@@ -24,6 +24,11 @@
       <artifactId>fleet-tool-develop</artifactId>
     </dependency>
 
+    <dependency>
+      <groupId>dev.osmanthus</groupId>
+      <artifactId>fleet-component-rocksdb</artifactId>
+      <version>1.0.0</version>
+    </dependency>
 
     <dependency>
       <groupId>org.springframework.boot</groupId>

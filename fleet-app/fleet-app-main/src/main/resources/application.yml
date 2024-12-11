@@ -17,8 +17,8 @@ spring:
   datasource:
     username: root
     password: 12345678
-    driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://127.0.0.1:3306/fleet?autoReconnect=false&useUnicode=true&characterEncoding=utf8&characterSetResults=UTF-8&serverTimezone=UTC&zeroDateTimeBehavior=convertToNull&useSSL=false
+    driver-class-name: com.mysql.cj.jdbc.Driver
   sql:
     init:
       platform: mysql
@@ -50,3 +50,7 @@ minio:
   endpoint: "http://127.0.0.1:9000"
   accessKey: "root"
   secretKey: "12345678"
+
+rocksdb:
+  directory: "data"
+  name: "rocksdb"
