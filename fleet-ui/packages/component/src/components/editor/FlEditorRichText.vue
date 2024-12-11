@@ -1,14 +1,23 @@
 <script setup lang="ts">
-import { ref, watch } from "vue";
+import { ref, computed, watch } from "vue";
 import { Ckeditor } from '@ckeditor/ckeditor5-vue';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 // const Editor = CKEditor.component;
 
 const config = ref({
-
+  licenseKey: 'GPL',
 });
-
+// const config = computed( () => {
+//   // const { Essentials, Paragraph, Bold, Italic } = cloud.data.value.CKEditor;
+//   // const { FormatPainter } = cloud.data.value.CKEditorPremiumFeatures;
+//
+//   return {
+//     licenseKey: 'GPL',
+//     // plugins: [ Essentials, Paragraph, Bold, Italic, FormatPainter ],
+//     toolbar: [ 'undo', 'redo', '|', 'bold', 'italic', '|', 'formatPainter' ]
+//   };
+// } );
 const value = ref('<p>Content of the editor.</p>');
 
 const handleInput = () => {

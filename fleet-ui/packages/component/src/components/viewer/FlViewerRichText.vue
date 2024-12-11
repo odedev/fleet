@@ -6,6 +6,7 @@ import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 // const Editor = CKEditor.component;
 
 const config = ref({
+  licenseKey: 'GPL',
   toolbar: [],
 });
 
