@@ -58,8 +58,10 @@
 }
 
 @mixin background-color-primary() {
-  color: $on-primary;
-  background-color: var(--theme-primary, $primary);
+  & {
+    color: $on-primary;
+    background-color: var(--theme-primary, $primary);
+  }
 
   @include theme-background-color-primary();
 }
