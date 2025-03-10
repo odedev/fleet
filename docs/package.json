@@ -9,8 +9,8 @@
     "build": "vitepress build",
     "preview": "vitepress preview"
   },
-  "packageManager": "pnpm@9.13.2",
+  "packageManager": "pnpm@10.6.2",
   "dependencies": {
-    "vitepress": "^1.5.0"
+    "vitepress": "^1.6.3"
   }
 }
