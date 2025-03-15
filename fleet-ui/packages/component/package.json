@@ -32,7 +32,7 @@
     "@codemirror/lang-json": "^6.0.1",
     "@codemirror/lang-markdown": "^6.3.2",
     "@codemirror/lang-sql": "^6.8.0",
-    "@codemirror/language": "^6.10.8",
+    "@codemirror/language": "^6.11.0",
     "@codemirror/language-data": "^6.5.1",
     "@codemirror/lint": "^6.8.4",
     "@codemirror/search": "^6.5.10",
@@ -57,7 +57,7 @@
     "monaco-editor": "^0.52.2",
     "pdfjs-dist": "^4.10.38",
     "sortablejs": "^1.15.6",
-    "video.js": "^8.21.0",
+    "video.js": "^8.22.0",
     "viewerjs": "^1.11.7",
     "vue": "^3.5.13",
     "vue-draggable-plus": "^0.6.0",
@@ -68,7 +68,7 @@
   },
   "devDependencies": {
     "@interactjs/types": "^1.10.27",
-    "@rushstack/eslint-patch": "^1.10.5",
+    "@rushstack/eslint-patch": "^1.11.0",
     "@tsconfig/node20": "^20.1.4",
     "@types/node": "^22.13.10",
     "@vitejs/plugin-vue": "^5.2.1",
@@ -83,7 +83,7 @@
     "prettier": "^3.5.3",
     "sass": "^1.85.1",
     "typescript": "^5.8.2",
-    "vite": "^6.2.1",
+    "vite": "^6.2.2",
     "vue-tsc": "^2.2.8"
   }
 }

@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "@ctrl/tinycolor": "^4.1.0",
-    "axios": "^1.8.2",
+    "axios": "^1.8.3",
     "bignumber.js": "^9.1.2",
     "bytes": "^3.1.2",
     "change-case": "^5.4.4",
@@ -38,7 +38,7 @@
     "ws": "^8.18.1"
   },
   "devDependencies": {
-    "@rushstack/eslint-patch": "^1.10.5",
+    "@rushstack/eslint-patch": "^1.11.0",
     "@tsconfig/node20": "^20.1.4",
     "@types/bytes": "^3.1.5",
     "@types/crypto-js": "^4.2.2",
@@ -55,7 +55,7 @@
     "npm-run-all2": "^7.0.2",
     "prettier": "^3.5.3",
     "typescript": "^5.8.2",
-    "vite": "^6.2.1",
+    "vite": "^6.2.2",
     "vue-tsc": "^2.2.8"
   }
 }
