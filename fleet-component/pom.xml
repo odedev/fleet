@@ -27,9 +27,11 @@
     <module>fleet-component-minio</module>
     <module>fleet-component-mongodb</module>
     <module>fleet-component-mysql</module>
+    <module>fleet-component-postgre</module>
     <module>fleet-component-rabbitmq</module>
     <module>fleet-component-redis</module>
     <module>fleet-component-rocksdb</module>
+    <module>fleet-component-sqlite</module>
   </modules>
 
   <dependencies>

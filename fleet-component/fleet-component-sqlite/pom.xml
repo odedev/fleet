@@ -10,38 +10,29 @@
     <version>1.0.0</version>
   </parent>
 
-  <artifactId>fleet-component-rocksdb</artifactId>
+  <artifactId>fleet-component-sqlite</artifactId>
   <version>1.0.0</version>
-  <name>fleet-component-rocksdb</name>
-  <description>Fleet component rocksdb</description>
+  <name>fleet-component-sqlite</name>
+  <description>Fleet component sqlite</description>
 
   <packaging>jar</packaging>
 
   <properties>
-
+    <querydsl.version>5.0.0</querydsl.version>
   </properties>
 
   <dependencies>
-<!--    <dependency>-->
-<!--      <groupId>org.springframework</groupId>-->
-<!--      <artifactId>spring-context</artifactId>-->
-<!--    </dependency>-->
-<!--    <dependency>-->
-<!--      <groupId>org.springframework.boot</groupId>-->
-<!--      <artifactId>spring-boot-starter-logging</artifactId>-->
-<!--    </dependency>-->
-
     <dependency>
       <groupId>dev.osmanthus</groupId>
       <artifactId>fleet-common</artifactId>
       <version>1.0.0</version>
     </dependency>
 
-    <!-- https://mvnrepository.com/artifact/org.rocksdb/rocksdbjni -->
+    <!-- https://mvnrepository.com/artifact/org.xerial/sqlite-jdbc -->
     <dependency>
-      <groupId>org.rocksdb</groupId>
-      <artifactId>rocksdbjni</artifactId>
-      <version>9.10.0</version>
+      <groupId>org.xerial</groupId>
+      <artifactId>sqlite-jdbc</artifactId>
+      <version>3.49.1.0</version>
     </dependency>
 
   </dependencies>

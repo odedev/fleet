@@ -10,39 +10,24 @@
     <version>1.0.0</version>
   </parent>
 
-  <artifactId>fleet-component-rocksdb</artifactId>
+  <artifactId>fleet-component-postgre</artifactId>
   <version>1.0.0</version>
-  <name>fleet-component-rocksdb</name>
-  <description>Fleet component rocksdb</description>
+  <name>fleet-component-postgre</name>
+  <description>Fleet component postgre</description>
 
   <packaging>jar</packaging>
 
   <properties>
-
+    <querydsl.version>5.0.0</querydsl.version>
   </properties>
 
   <dependencies>
-<!--    <dependency>-->
-<!--      <groupId>org.springframework</groupId>-->
-<!--      <artifactId>spring-context</artifactId>-->
-<!--    </dependency>-->
-<!--    <dependency>-->
-<!--      <groupId>org.springframework.boot</groupId>-->
-<!--      <artifactId>spring-boot-starter-logging</artifactId>-->
-<!--    </dependency>-->
-
     <dependency>
       <groupId>dev.osmanthus</groupId>
       <artifactId>fleet-common</artifactId>
       <version>1.0.0</version>
     </dependency>
 
-    <!-- https://mvnrepository.com/artifact/org.rocksdb/rocksdbjni -->
-    <dependency>
-      <groupId>org.rocksdb</groupId>
-      <artifactId>rocksdbjni</artifactId>
-      <version>9.10.0</version>
-    </dependency>
 
   </dependencies>
 
