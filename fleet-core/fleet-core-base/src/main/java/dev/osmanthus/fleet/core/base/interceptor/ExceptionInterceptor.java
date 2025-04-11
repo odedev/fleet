@@ -11,6 +11,7 @@ import org.springframework.jdbc.BadSqlGrammarException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.servlet.resource.NoResourceFoundException;
 
 import java.sql.*;
 
@@ -62,6 +63,17 @@ public class ExceptionInterceptor {
     public ResponseEntity<ResponseError> handler(ArithmeticException e) {
         logger.error(ExceptionUtils.getStackTrace(e));
         return new ResponseEntity<>(new ResponseError("算术运算异常", e.getMessage()), HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+    /**
+     * 资源未找到异常
+     * @param e
+     * @return
+     */
+    @ExceptionHandler(NoResourceFoundException.class)
+    public ResponseEntity<ResponseError> handler(NoResourceFoundException e) {
+        logger.error(ExceptionUtils.getStackTrace(e));
+        return new ResponseEntity<>(new ResponseError("资源未找到异常", e.getMessage()), HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     /**
